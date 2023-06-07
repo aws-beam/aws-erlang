@@ -87,6 +87,10 @@
          create_mitigation_action/4,
          create_ota_update/3,
          create_ota_update/4,
+         create_package/3,
+         create_package/4,
+         create_package_version/4,
+         create_package_version/5,
          create_policy/3,
          create_policy/4,
          create_policy_version/3,
@@ -147,6 +151,10 @@
          delete_mitigation_action/4,
          delete_ota_update/3,
          delete_ota_update/4,
+         delete_package/3,
+         delete_package/4,
+         delete_package_version/4,
+         delete_package_version/5,
          delete_policy/3,
          delete_policy/4,
          delete_policy_version/4,
@@ -310,6 +318,15 @@
          get_ota_update/2,
          get_ota_update/4,
          get_ota_update/5,
+         get_package/2,
+         get_package/4,
+         get_package/5,
+         get_package_configuration/1,
+         get_package_configuration/3,
+         get_package_configuration/4,
+         get_package_version/3,
+         get_package_version/5,
+         get_package_version/6,
          get_percentiles/2,
          get_percentiles/3,
          get_policy/2,
@@ -413,6 +430,12 @@
          list_outgoing_certificates/1,
          list_outgoing_certificates/3,
          list_outgoing_certificates/4,
+         list_package_versions/2,
+         list_package_versions/4,
+         list_package_versions/5,
+         list_packages/1,
+         list_packages/3,
+         list_packages/4,
          list_policies/1,
          list_policies/3,
          list_policies/4,
@@ -579,6 +602,12 @@
          update_job/4,
          update_mitigation_action/3,
          update_mitigation_action/4,
+         update_package/3,
+         update_package/4,
+         update_package_configuration/2,
+         update_package_configuration/3,
+         update_package_version/4,
+         update_package_version/5,
          update_provisioning_template/3,
          update_provisioning_template/4,
          update_role_alias/3,
@@ -1145,7 +1174,7 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% Requires permission to access the CreateCertificateFromCsr action.
 %%
 %% The CSR must include a public key that is either an RSA key with a length
-%% of at least 2048 bits or an ECC key from NIST P-25 or NIST P-384 curves.
+%% of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384 curves.
 %% For supported certificates, consult Certificate signing algorithms
 %% supported by IoT.
 %%
@@ -1477,6 +1506,60 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an IoT software package that can be deployed to your fleet.
+%%
+%% Requires permission to access the CreatePackage and
+%% GetIndexingConfiguration actions.
+create_package(Client, PackageName, Input) ->
+    create_package(Client, PackageName, Input, []).
+create_package(Client, PackageName, Input0, Options0) ->
+    Method = put,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new version for an existing IoT software package.
+%%
+%% Requires permission to access the CreatePackageVersion and
+%% GetIndexingConfiguration actions.
+create_package_version(Client, PackageName, VersionName, Input) ->
+    create_package_version(Client, PackageName, VersionName, Input, []).
+create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an IoT policy.
@@ -2306,6 +2389,62 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     QueryMapping = [
                      {<<"deleteStream">>, <<"deleteStream">>},
                      {<<"forceDeleteAWSJob">>, <<"forceDeleteAWSJob">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specific version from a software package.
+%%
+%% Note: All package versions must be deleted before deleting the software
+%% package.
+%%
+%% Requires permission to access the DeletePackageVersion action.
+delete_package(Client, PackageName, Input) ->
+    delete_package(Client, PackageName, Input, []).
+delete_package(Client, PackageName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specific version from a software package.
+%%
+%% Note: If a package version is designated as default, you must remove the
+%% designation from the package using the `UpdatePackage' action.
+delete_package_version(Client, PackageName, VersionName, Input) ->
+    delete_package_version(Client, PackageName, VersionName, Input, []).
+delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -3978,6 +4117,82 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified software package.
+%%
+%% Requires permission to access the GetPackage action.
+get_package(Client, PackageName)
+  when is_map(Client) ->
+    get_package(Client, PackageName, #{}, #{}).
+
+get_package(Client, PackageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package(Client, PackageName, QueryMap, HeadersMap, []).
+
+get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified software package's
+%% configuration.
+%%
+%% Requires permission to access the GetPackageConfiguration action.
+get_package_configuration(Client)
+  when is_map(Client) ->
+    get_package_configuration(Client, #{}, #{}).
+
+get_package_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package_configuration(Client, QueryMap, HeadersMap, []).
+
+get_package_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/package-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified package version.
+%%
+%% Requires permission to access the GetPackageVersion action.
+get_package_version(Client, PackageName, VersionName)
+  when is_map(Client) ->
+    get_package_version(Client, PackageName, VersionName, #{}, #{}).
+
+get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, []).
+
+get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Groups the aggregated values that match the query into percentile
 %% groupings.
 %%
@@ -5088,6 +5303,67 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
         {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
         {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
         {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the software package versions associated to the account.
+%%
+%% Requires permission to access the ListPackageVersions action.
+list_package_versions(Client, PackageName)
+  when is_map(Client) ->
+    list_package_versions(Client, PackageName, #{}, #{}).
+
+list_package_versions(Client, PackageName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_package_versions(Client, PackageName, QueryMap, HeadersMap, []).
+
+list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the software packages associated to the account.
+%%
+%% Requires permission to access the ListPackages action.
+list_packages(Client)
+  when is_map(Client) ->
+    list_packages(Client, #{}, #{}).
+
+list_packages(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_packages(Client, QueryMap, HeadersMap, []).
+
+list_packages(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/packages"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7157,6 +7433,87 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the supported fields for a specific package.
+%%
+%% Requires permission to access the UpdatePackage and
+%% GetIndexingConfiguration actions.
+update_package(Client, PackageName, Input) ->
+    update_package(Client, PackageName, Input, []).
+update_package(Client, PackageName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the package configuration.
+%%
+%% Requires permission to access the UpdatePackageConfiguration and
+%% iam:PassRole actions.
+update_package_configuration(Client, Input) ->
+    update_package_configuration(Client, Input, []).
+update_package_configuration(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/package-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the supported fields for a specific package version.
+%%
+%% Requires permission to access the UpdatePackageVersion and
+%% GetIndexingConfiguration actions.
+update_package_version(Client, PackageName, VersionName, Input) ->
+    update_package_version(Client, PackageName, VersionName, Input, []).
+update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/packages/", aws_util:encode_uri(PackageName), "/versions/", aws_util:encode_uri(VersionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a provisioning template.

@@ -32,6 +32,8 @@
          create_slot/7,
          create_slot_type/5,
          create_slot_type/6,
+         create_test_set_discrepancy_report/3,
+         create_test_set_discrepancy_report/4,
          create_upload_url/2,
          create_upload_url/3,
          delete_bot/3,
@@ -58,6 +60,8 @@
          delete_slot/8,
          delete_slot_type/6,
          delete_slot_type/7,
+         delete_test_set/3,
+         delete_test_set/4,
          delete_utterances/3,
          delete_utterances/4,
          describe_bot/2,
@@ -96,6 +100,21 @@
          describe_slot_type/5,
          describe_slot_type/7,
          describe_slot_type/8,
+         describe_test_execution/2,
+         describe_test_execution/4,
+         describe_test_execution/5,
+         describe_test_set/2,
+         describe_test_set/4,
+         describe_test_set/5,
+         describe_test_set_discrepancy_report/2,
+         describe_test_set_discrepancy_report/4,
+         describe_test_set_discrepancy_report/5,
+         describe_test_set_generation/2,
+         describe_test_set_generation/4,
+         describe_test_set_generation/5,
+         get_test_execution_artifacts_url/2,
+         get_test_execution_artifacts_url/4,
+         get_test_execution_artifacts_url/5,
          list_aggregated_utterances/3,
          list_aggregated_utterances/4,
          list_bot_aliases/3,
@@ -129,12 +148,24 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_test_execution_result_items/3,
+         list_test_execution_result_items/4,
+         list_test_executions/2,
+         list_test_executions/3,
+         list_test_set_records/3,
+         list_test_set_records/4,
+         list_test_sets/2,
+         list_test_sets/3,
          search_associated_transcripts/6,
          search_associated_transcripts/7,
          start_bot_recommendation/5,
          start_bot_recommendation/6,
          start_import/2,
          start_import/3,
+         start_test_execution/3,
+         start_test_execution/4,
+         start_test_set_generation/2,
+         start_test_set_generation/3,
          stop_bot_recommendation/6,
          stop_bot_recommendation/7,
          tag_resource/3,
@@ -158,7 +189,9 @@
          update_slot/7,
          update_slot/8,
          update_slot_type/6,
-         update_slot_type/7]).
+         update_slot_type/7,
+         update_test_set/3,
+         update_test_set/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -570,6 +603,30 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a report that describes the differences between the bot and
+%% the test set.
+create_test_set_discrepancy_report(Client, TestSetId, Input) ->
+    create_test_set_discrepancy_report(Client, TestSetId, Input, []).
+create_test_set_discrepancy_report(Client, TestSetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/testsetdiscrepancy"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a pre-signed S3 write URL that you use to upload the zip archive
 %% when importing a bot or a bot locale.
 create_upload_url(Client, Input) ->
@@ -908,6 +965,29 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The action to delete the selected test set.
+delete_test_set(Client, TestSetId, Input) ->
+    delete_test_set(Client, TestSetId, Input, []).
+delete_test_set(Client, TestSetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes stored utterances.
 %%
 %% Amazon Lex stores the utterances that users send to your bot. Utterances
@@ -1214,6 +1294,122 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
 describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets metadata information about the test execution.
+describe_test_execution(Client, TestExecutionId)
+  when is_map(Client) ->
+    describe_test_execution(Client, TestExecutionId, #{}, #{}).
+
+describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, []).
+
+describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets metadata information about the test set.
+describe_test_set(Client, TestSetId)
+  when is_map(Client) ->
+    describe_test_set(Client, TestSetId, #{}, #{}).
+
+describe_test_set(Client, TestSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_test_set(Client, TestSetId, QueryMap, HeadersMap, []).
+
+describe_test_set(Client, TestSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets metadata information about the test set discrepancy report.
+describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId)
+  when is_map(Client) ->
+    describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, #{}, #{}).
+
+describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap, []).
+
+describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/testsetdiscrepancy/", aws_util:encode_uri(TestSetDiscrepancyReportId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets metadata information about the test set generation.
+describe_test_set_generation(Client, TestSetGenerationId)
+  when is_map(Client) ->
+    describe_test_set_generation(Client, TestSetGenerationId, #{}, #{}).
+
+describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, []).
+
+describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/testsetgenerations/", aws_util:encode_uri(TestSetGenerationId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The pre-signed Amazon S3 URL to download the test execution result
+%% artifacts.
+get_test_execution_artifacts_url(Client, TestExecutionId)
+  when is_map(Client) ->
+    get_test_execution_artifacts_url(Client, TestExecutionId, #{}, #{}).
+
+get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, []).
+
+get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), "/artifacturl"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1641,6 +1837,98 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of test execution result items.
+list_test_execution_result_items(Client, TestExecutionId, Input) ->
+    list_test_execution_result_items(Client, TestExecutionId, Input, []).
+list_test_execution_result_items(Client, TestExecutionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/testexecutions/", aws_util:encode_uri(TestExecutionId), "/results"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The list of test set executions.
+list_test_executions(Client, Input) ->
+    list_test_executions(Client, Input, []).
+list_test_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/testexecutions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The list of test set records.
+list_test_set_records(Client, TestSetId, Input) ->
+    list_test_set_records(Client, TestSetId, Input, []).
+list_test_set_records(Client, TestSetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/records"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The list of the test sets
+list_test_sets(Client, Input) ->
+    list_test_sets(Client, Input, []).
+list_test_sets(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/testsets"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Search for associated transcripts that meet the specified criteria.
 search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
@@ -1695,6 +1983,52 @@ start_import(Client, Input) ->
 start_import(Client, Input0, Options0) ->
     Method = put,
     Path = ["/imports/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The action to start test set execution.
+start_test_execution(Client, TestSetId, Input) ->
+    start_test_execution(Client, TestSetId, Input, []).
+start_test_execution(Client, TestSetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), "/testexecutions"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The action to start the generation of test set.
+start_test_set_generation(Client, Input) ->
+    start_test_set_generation(Client, Input, []).
+start_test_set_generation(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/testsetgenerations"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1985,6 +2319,29 @@ update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The action to update the test set.
+update_test_set(Client, TestSetId, Input) ->
+    update_test_set(Client, TestSetId, Input, []).
+update_test_set(Client, TestSetId, Input0, Options0) ->
+    Method = put,
+    Path = ["/testsets/", aws_util:encode_uri(TestSetId), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}

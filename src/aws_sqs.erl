@@ -44,6 +44,8 @@
 
 -export([add_permission/2,
          add_permission/3,
+         cancel_message_move_task/2,
+         cancel_message_move_task/3,
          change_message_visibility/2,
          change_message_visibility/3,
          change_message_visibility_batch/2,
@@ -62,6 +64,8 @@
          get_queue_url/3,
          list_dead_letter_source_queues/2,
          list_dead_letter_source_queues/3,
+         list_message_move_tasks/2,
+         list_message_move_tasks/3,
          list_queue_tags/2,
          list_queue_tags/3,
          list_queues/2,
@@ -78,6 +82,8 @@
          send_message_batch/3,
          set_queue_attributes/2,
          set_queue_attributes/3,
+         start_message_move_task/2,
+         start_message_move_task/3,
          tag_queue/2,
          tag_queue/3,
          untag_queue/2,
@@ -104,22 +110,17 @@
 %% information, see Using Custom Policies with the Amazon SQS Access Policy
 %% Language in the Amazon SQS Developer Guide.
 %%
-%% An Amazon SQS policy can have a maximum of 7 actions.
+%% An Amazon SQS policy can have a maximum of seven actions per statement.
 %%
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission', and
 %% `SetQueueAttributes' actions in your IAM policy.
 %%
-%% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1.
-%% For example, a parameter list with two elements looks like this:
-%%
-%% `&amp;AttributeName.1=first'
-%%
-%% `&amp;AttributeName.2=second'
+%% Amazon SQS `AddPermission' does not support adding a non-account
+%% principal.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -128,6 +129,21 @@ add_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPermission">>, Input, Options).
 
+%% @doc Cancels a specified message movement task.
+%%
+%% A message movement can only be cancelled when the current status is
+%% RUNNING.
+%%
+%% Cancelling a message movement task does not revert the messages that have
+%% already been moved. It can only stop the messages that have not been moved
+%% yet.
+cancel_message_move_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_message_move_task(Client, Input, []).
+cancel_message_move_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelMessageMoveTask">>, Input, Options).
+
 %% @doc Changes the visibility timeout of a specified message in a queue to a
 %% new value.
 %%
@@ -135,12 +151,14 @@ add_permission(Client, Input, Options)
 %% 0 seconds. The maximum is 12 hours. For more information, see Visibility
 %% Timeout in the Amazon SQS Developer Guide.
 %%
-%% For example, you have a message with a visibility timeout of 5 minutes.
-%% After 3 minutes, you call `ChangeMessageVisibility' with a timeout of
-%% 10 minutes. You can continue to call `ChangeMessageVisibility' to
-%% extend the visibility timeout to the maximum allowed time. If you try to
-%% extend the visibility timeout beyond the maximum, your request is
-%% rejected.
+%% For example, if the default timeout for a queue is 60 seconds, 15 seconds
+%% have elapsed since you received the message, and you send a
+%% ChangeMessageVisibility call with `VisibilityTimeout' set to 10
+%% seconds, the 10 seconds begin to count from the time that you make the
+%% `ChangeMessageVisibility' call. Thus, any attempt to change the
+%% visibility timeout or to delete that message 10 seconds after you
+%% initially change the visibility timeout (a total of 25 seconds) might
+%% result in an error.
 %%
 %% An Amazon SQS message has three basic states:
 %%
@@ -155,14 +173,14 @@ add_permission(Client, Input, Options)
 %% (that is, between states 1 and 2). There is no limit to the number of
 %% stored messages. A message is considered to be in flight after it is
 %% received from a queue by a consumer, but not yet deleted from the queue
-%% (that is, between states 2 and 3). There is a limit to the number of
-%% inflight messages.
+%% (that is, between states 2 and 3). There is a limit to the number of in
+%% flight messages.
 %%
-%% Limits that apply to inflight messages are unrelated to the unlimited
+%% Limits that apply to in flight messages are unrelated to the unlimited
 %% number of stored messages.
 %%
 %% For most standard queues (depending on queue traffic and message backlog),
-%% there can be a maximum of approximately 120,000 inflight messages
+%% there can be a maximum of approximately 120,000 in flight messages
 %% (received from a queue by a consumer, but not yet deleted from the queue).
 %% If you reach this limit, Amazon SQS returns the `OverLimit' error
 %% message. To avoid reaching the limit, you should delete messages from the
@@ -170,7 +188,7 @@ add_permission(Client, Input, Options)
 %% queues you use to process your messages. To request a limit increase, file
 %% a support request.
 %%
-%% For FIFO queues, there can be a maximum of 20,000 inflight messages
+%% For FIFO queues, there can be a maximum of 20,000 in flight messages
 %% (received from a queue by a consumer, but not yet deleted from the queue).
 %% If you reach this limit, Amazon SQS returns no error messages.
 %%
@@ -203,14 +221,6 @@ change_message_visibility(Client, Input, Options)
 %% Because the batch request can result in a combination of successful and
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns an HTTP status code of `200'.
-%%
-%% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1.
-%% For example, a parameter list with two elements looks like this:
-%%
-%% `&amp;AttributeName.1=first'
-%%
-%% `&amp;AttributeName.2=second'
 change_message_visibility_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility_batch(Client, Input, []).
@@ -257,18 +267,9 @@ change_message_visibility_batch(Client, Input, Options)
 %% </li> <li> If the queue name, attribute names, or attribute values
 %% don't match an existing queue, `CreateQueue' returns an error.
 %%
-%% </li> </ul> Some actions take lists of parameters. These lists are
-%% specified using the `param.n' notation. Values of `n' are integers
-%% starting from 1. For example, a parameter list with two elements looks
-%% like this:
-%%
-%% `&amp;AttributeName.1=first'
-%%
-%% `&amp;AttributeName.2=second'
-%%
-%% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon SQS Developer Guide.
+%% </li> </ul> Cross-account permissions don't apply to this action. For
+%% more information, see Grant cross-account permissions to a role and a
+%% username in the Amazon SQS Developer Guide.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
@@ -290,7 +291,7 @@ create_queue(Client, Input, Options)
 %% `ReceiptHandle' is different each time you receive a message. When you
 %% use the `DeleteMessage' action, you must provide the most recently
 %% received `ReceiptHandle' for the message (otherwise, the request
-%% succeeds, but the message might not be deleted).
+%% succeeds, but the message will not be deleted).
 %%
 %% For standard queues, it is possible to receive a message even after you
 %% delete it. This might happen on rare occasions if one of the servers which
@@ -314,14 +315,6 @@ delete_message(Client, Input, Options)
 %% Because the batch request can result in a combination of successful and
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns an HTTP status code of `200'.
-%%
-%% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1.
-%% For example, a parameter list with two elements looks like this:
-%%
-%% `&amp;AttributeName.1=first'
-%%
-%% `&amp;AttributeName.2=second'
 delete_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message_batch(Client, Input, []).
@@ -344,8 +337,10 @@ delete_message_batch(Client, Input, Options)
 %% a queue with the same name.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
+%%
+%% The delete operation uses the HTTP `GET' verb.
 delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queue(Client, Input, []).
@@ -400,6 +395,15 @@ list_dead_letter_source_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeadLetterSourceQueues">>, Input, Options).
 
+%% @doc Gets the most recent message movement tasks (up to 10) under a
+%% specific source queue.
+list_message_move_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_message_move_tasks(Client, Input, []).
+list_message_move_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMessageMoveTasks">>, Input, Options).
+
 %% @doc List all cost allocation tags added to the specified Amazon SQS
 %% queue.
 %%
@@ -407,7 +411,7 @@ list_dead_letter_source_queues(Client, Input, Options)
 %% Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -431,7 +435,7 @@ list_queue_tags(Client, Input, Options)
 %% request to `listQueues' to receive the next page of results.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -523,7 +527,7 @@ receive_message(Client, Input, Options)
 %% Only the owner of a queue can remove permissions from it.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -553,7 +557,9 @@ send_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMessage">>, Input, Options).
 
-%% @doc Delivers up to ten messages to the specified queue.
+%% @doc You can use `SendMessageBatch' to send up to 10 messages to the
+%% specified queue by assigning either identical or different values to each
+%% message (or by not assigning values at all).
 %%
 %% This is a batch version of ` `SendMessage'.' For a FIFO queue,
 %% multiple messages within a single batch are enqueued in the order they are
@@ -566,7 +572,7 @@ send_message(Client, Input, Options)
 %%
 %% The maximum allowed individual message size and the maximum total payload
 %% size (the sum of the individual lengths of all of the batched messages)
-%% are both 256 KB (262,144 bytes).
+%% are both 256 KiB (262,144 bytes).
 %%
 %% A message can include only XML, JSON, and unformatted text. The following
 %% Unicode characters are allowed:
@@ -579,14 +585,6 @@ send_message(Client, Input, Options)
 %%
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS uses the default value for the queue.
-%%
-%% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1.
-%% For example, a parameter list with two elements looks like this:
-%%
-%% `&amp;AttributeName.1=first'
-%%
-%% `&amp;AttributeName.2=second'
 send_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message_batch(Client, Input, []).
@@ -599,14 +597,17 @@ send_message_batch(Client, Input, Options)
 %% When you change a queue's attributes, the change can take up to 60
 %% seconds for most of the attributes to propagate throughout the Amazon SQS
 %% system. Changes made to the `MessageRetentionPeriod' attribute can
-%% take up to 15 minutes.
+%% take up to 15 minutes and will impact existing messages in the queue
+%% potentially causing them to be expired and deleted if the
+%% `MessageRetentionPeriod' is reduced below the age of existing
+%% messages.
 %%
 %% In the future, new attributes might be added. If you write code that calls
 %% this action, we recommend that you structure your code so that it can
 %% handle new attributes gracefully.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -618,6 +619,26 @@ set_queue_attributes(Client, Input)
 set_queue_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetQueueAttributes">>, Input, Options).
+
+%% @doc Starts an asynchronous task to move messages from a specified source
+%% queue to a specified destination queue.
+%%
+%% This action is currently limited to supporting message redrive from
+%% dead-letter queues (DLQs) only. In this context, the source queue is the
+%% dead-letter queue (DLQ), while the destination queue can be the original
+%% source queue (from which the messages were driven to the
+%% dead-letter-queue), or a custom destination queue.
+%%
+%% Currently, only standard queues are supported.
+%%
+%% Only one active message movement task is supported per queue at any given
+%% time.
+start_message_move_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_message_move_task(Client, Input, []).
+start_message_move_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMessageMoveTask">>, Input, Options).
 
 %% @doc Add cost allocation tags to the specified Amazon SQS queue.
 %%
@@ -640,7 +661,7 @@ set_queue_attributes(Client, Input, Options)
 %% queues in the Amazon SQS Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -655,7 +676,7 @@ tag_queue(Client, Input, Options)
 %% Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a user name
+%% information, see Grant cross-account permissions to a role and a username
 %% in the Amazon SQS Developer Guide.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->

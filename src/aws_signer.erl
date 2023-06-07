@@ -18,6 +18,8 @@
 %% certificate using ACM, and use that to sign updates in Amazon FreeRTOS and
 %% AWS IoT Device Management.
 %%
+%% With code signing for containers …(TBD)
+%%
 %% For more information about AWS Signer, see the AWS Signer Developer Guide.
 -module(aws_signer).
 
@@ -28,6 +30,9 @@
          describe_signing_job/2,
          describe_signing_job/4,
          describe_signing_job/5,
+         get_revocation_status/6,
+         get_revocation_status/8,
+         get_revocation_status/9,
          get_signing_platform/2,
          get_signing_platform/4,
          get_signing_platform/5,
@@ -57,6 +62,8 @@
          revoke_signature/4,
          revoke_signing_profile/3,
          revoke_signing_profile/4,
+         sign_payload/2,
+         sign_payload/3,
          start_signing_job/2,
          start_signing_job/3,
          tag_resource/3,
@@ -144,6 +151,38 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the revocation status of one or more of the signing
+%% profile, signing job, and signing certificate.
+get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp)
+  when is_map(Client) ->
+    get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, #{}, #{}).
+
+get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, []).
+
+get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/revocations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"certificateHashes">>, CertificateHashes},
+        {<<"jobArn">>, JobArn},
+        {<<"platformId">>, PlatformId},
+        {<<"profileVersionArn">>, ProfileVersionArn},
+        {<<"signatureTimestamp">>, SignatureTimestamp}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -375,8 +414,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Creates a signing profile.
 %%
 %% A signing profile is a code signing template that can be used to carry out
-%% a pre-defined signing job. For more information, see
-%% [http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html]
+%% a pre-defined signing job.
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
 put_signing_profile(Client, ProfileName, Input0, Options0) ->
@@ -474,13 +512,36 @@ revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Signs a binary payload and returns a signature envelope.
+sign_payload(Client, Input) ->
+    sign_payload(Client, Input, []).
+sign_payload(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/signing-jobs/with-payload"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a signing job to be performed on the code provided.
 %%
 %% Signing jobs are viewable by the `ListSigningJobs' operation for two
 %% years after they are performed. Note the following requirements:
 %%
 %% <ul> <li> You must create an Amazon S3 source bucket. For more
-%% information, see Create a Bucket in the Amazon S3 Getting Started Guide.
+%% information, see Creating a Bucket in the Amazon S3 Getting Started Guide.
 %%
 %% </li> <li> Your S3 source bucket must be version enabled.
 %%
@@ -496,8 +557,7 @@ revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
 %% </li> </ul> You can call the `DescribeSigningJob' and the
 %% `ListSigningJobs' actions after you call `StartSigningJob'.
 %%
-%% For a Java example that shows how to use this action, see
-%% [http://docs.aws.amazon.com/acm/latest/userguide/]
+%% For a Java example that shows how to use this action, see StartSigningJob.
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
 start_signing_job(Client, Input0, Options0) ->

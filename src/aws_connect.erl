@@ -2782,9 +2782,6 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% For a description of the historical metrics that are supported by
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
 %% definitions in the Amazon Connect Administrator's Guide.
-%%
-%% This API is not available in the Amazon Web Services GovCloud (US)
-%% Regions.
 get_metric_data_v2(Client, Input) ->
     get_metric_data_v2(Client, Input, []).
 get_metric_data_v2(Client, Input0, Options0) ->

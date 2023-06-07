@@ -484,8 +484,8 @@ create_access_key(Client, Input, Options)
 %% @doc Creates an alias for your Amazon Web Services account.
 %%
 %% For information about using an Amazon Web Services account alias, see
-%% Using an alias for your Amazon Web Services account ID in the IAM User
-%% Guide.
+%% Creating, deleting, and listing an Amazon Web Services account alias in
+%% the Amazon Web Services Sign-In User Guide.
 create_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_alias(Client, Input, []).
@@ -778,8 +778,8 @@ delete_access_key(Client, Input, Options)
 %% @doc Deletes the specified Amazon Web Services account alias.
 %%
 %% For information about using an Amazon Web Services account alias, see
-%% Using an alias for your Amazon Web Services account ID in the IAM User
-%% Guide.
+%% Creating, deleting, and listing an Amazon Web Services account alias in
+%% the Amazon Web Services Sign-In User Guide.
 delete_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_alias(Client, Input, []).
@@ -1936,8 +1936,8 @@ list_access_keys(Client, Input, Options)
 %% account (Note: you can have only one).
 %%
 %% For information about using an Amazon Web Services account alias, see
-%% Using an alias for your Amazon Web Services account ID in the IAM User
-%% Guide.
+%% Creating, deleting, and listing an Amazon Web Services account alias in
+%% the Amazon Web Services Sign-In User Guide.
 list_account_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_aliases(Client, Input, []).
