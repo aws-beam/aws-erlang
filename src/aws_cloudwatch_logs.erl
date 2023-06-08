@@ -49,6 +49,8 @@
          create_log_group/3,
          create_log_stream/2,
          create_log_stream/3,
+         delete_account_policy/2,
+         delete_account_policy/3,
          delete_data_protection_policy/2,
          delete_data_protection_policy/3,
          delete_destination/2,
@@ -67,6 +69,8 @@
          delete_retention_policy/3,
          delete_subscription_filter/2,
          delete_subscription_filter/3,
+         describe_account_policies/2,
+         describe_account_policies/3,
          describe_destinations/2,
          describe_destinations/3,
          describe_export_tasks/2,
@@ -103,6 +107,8 @@
          list_tags_for_resource/3,
          list_tags_log_group/2,
          list_tags_log_group/3,
+         put_account_policy/2,
+         put_account_policy/3,
          put_data_protection_policy/2,
          put_data_protection_policy/3,
          put_destination/2,
@@ -235,8 +241,8 @@ create_export_task(Client, Input, Options)
 %% encrypted with the KMS key is still within CloudWatch Logs. This enables
 %% CloudWatch Logs to decrypt this data whenever it is requested.
 %%
-%% If you attempt to associate a KMS key with the log group but the KMS
-%% keydoes not exist or the KMS key is disabled, you receive an
+%% If you attempt to associate a KMS key with the log group but the KMS key
+%% does not exist or the KMS key is disabled, you receive an
 %% `InvalidParameterException' error.
 %%
 %% CloudWatch Logs supports only symmetric KMS keys. Do not associate an
@@ -275,6 +281,18 @@ create_log_stream(Client, Input)
 create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
+
+%% @doc Deletes a CloudWatch Logs account policy.
+%%
+%% To use this operation, you must be signed on with the
+%% `logs:DeleteDataProtectionPolicy' and `logs:DeleteAccountPolicy'
+%% permissions.
+delete_account_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_account_policy(Client, Input, []).
+delete_account_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAccountPolicy">>, Input, Options).
 
 %% @doc Deletes the data protection policy from the specified log group.
 %%
@@ -371,6 +389,15 @@ delete_subscription_filter(Client, Input)
 delete_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
+
+%% @doc Returns a list of all CloudWatch Logs account policies in the
+%% account.
+describe_account_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_account_policies(Client, Input, []).
+describe_account_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccountPolicies">>, Input, Options).
 
 %% @doc Lists all your destinations.
 %%
@@ -515,7 +542,7 @@ disassociate_kms_key(Client, Input, Options)
 %% You can list all the log events or filter the results using a filter
 %% pattern, a time range, and the name of the log stream.
 %%
-%% You must have the `logs;FilterLogEvents' permission to perform this
+%% You must have the `logs:FilterLogEvents' permission to perform this
 %% operation.
 %%
 %% You can specify the log group to search by using either
@@ -668,6 +695,52 @@ list_tags_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
 
+%% @doc Creates an account-level data protection policy that applies to all
+%% log groups in the account.
+%%
+%% A data protection policy can help safeguard sensitive data that's
+%% ingested by your log groups by auditing and masking the sensitive log
+%% data. Each account can have only one account-level policy.
+%%
+%% Sensitive data is detected and masked when it is ingested into a log
+%% group. When you set a data protection policy, log events ingested into the
+%% log groups before that time are not masked.
+%%
+%% If you use `PutAccountPolicy' to create a data protection policy for
+%% your whole account, it applies to both existing log groups and all log
+%% groups that are created later in this account. The account policy is
+%% applied to existing log groups with eventual consistency. It might take up
+%% to 5 minutes before sensitive data in existing log groups begins to be
+%% masked.
+%%
+%% By default, when a user views a log event that includes masked data, the
+%% sensitive data is replaced by asterisks. A user who has the
+%% `logs:Unmask' permission can use a GetLogEvents or FilterLogEvents
+%% operation with the `unmask' parameter set to `true' to view the
+%% unmasked log events. Users with the `logs:Unmask' can also view
+%% unmasked data in the CloudWatch Logs console by running a CloudWatch Logs
+%% Insights query with the `unmask' query command.
+%%
+%% For more information, including a list of types of data that can be
+%% audited and masked, see Protect sensitive log data with masking.
+%%
+%% To use the `PutAccountPolicy' operation, you must be signed on with
+%% the `logs:PutDataProtectionPolicy' and `logs:PutAccountPolicy'
+%% permissions.
+%%
+%% The `PutAccountPolicy' operation applies to all log groups in the
+%% account. You can also use PutDataProtectionPolicy to create a data
+%% protection policy that applies to just one log group. If a log group has
+%% its own data protection policy and the account also has an account-level
+%% data protection policy, then the two policies are cumulative. Any
+%% sensitive term specified in either policy is masked.
+put_account_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_policy(Client, Input, []).
+put_account_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountPolicy">>, Input, Options).
+
 %% @doc Creates a data protection policy for the specified log group.
 %%
 %% A data protection policy can help safeguard sensitive data that's
@@ -687,6 +760,14 @@ list_tags_log_group(Client, Input, Options)
 %%
 %% For more information, including a list of types of data that can be
 %% audited and masked, see Protect sensitive log data with masking.
+%%
+%% The `PutDataProtectionPolicy' operation applies to only the specified
+%% log group. You can also use PutAccountPolicy to create an account-level
+%% data protection policy that applies to all log groups in the account,
+%% including both existing log groups and log groups that are created level.
+%% If a log group has its own data protection policy and the account also has
+%% an account-level data protection policy, then the two policies are
+%% cumulative. Any sensitive term specified in either policy is masked.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
@@ -761,6 +842,8 @@ put_destination_policy(Client, Input, Options)
 %%
 %% </li> <li> A batch of log events in a single request cannot span more than
 %% 24 hours. Otherwise, the operation fails.
+%%
+%% </li> <li> Each log event can be no larger than 256 KB.
 %%
 %% </li> <li> The maximum number of log events in a batch is 10,000.
 %%
@@ -897,8 +980,9 @@ put_retention_policy(Client, Input, Options)
 %% associated with it. If you are updating an existing filter, you must
 %% specify the correct name in `filterName'.
 %%
-%% To perform a `PutSubscriptionFilter' operation, you must also have the
-%% `iam:PassRole' permission.
+%% To perform a `PutSubscriptionFilter' operation for any destination
+%% except a Lambda function, you must also have the `iam:PassRole'
+%% permission.
 put_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_subscription_filter(Client, Input, []).
@@ -913,7 +997,7 @@ put_subscription_filter(Client, Input, Options)
 %%
 %% For more information, see CloudWatch Logs Insights Query Syntax.
 %%
-%% Queries time out after 15 minutes of runtime. If your queries are timing
+%% Queries time out after 60 minutes of runtime. If your queries are timing
 %% out, reduce the time range being searched or partition your query into a
 %% number of queries.
 %%
@@ -923,7 +1007,7 @@ put_subscription_filter(Client, Input, Options)
 %% For a cross-account `StartQuery' operation, the query definition must
 %% be defined in the monitoring account.
 %%
-%% You can have up to 20 concurrent CloudWatch Logs insights queries,
+%% You can have up to 30 concurrent CloudWatch Logs insights queries,
 %% including queries that have been added to dashboards.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->

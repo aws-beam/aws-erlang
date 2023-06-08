@@ -20,6 +20,8 @@
          create_calculated_attribute_definition/5,
          create_domain/3,
          create_domain/4,
+         create_event_stream/4,
+         create_event_stream/5,
          create_integration_workflow/3,
          create_integration_workflow/4,
          create_profile/3,
@@ -28,6 +30,8 @@
          delete_calculated_attribute_definition/5,
          delete_domain/3,
          delete_domain/4,
+         delete_event_stream/4,
+         delete_event_stream/5,
          delete_integration/3,
          delete_integration/4,
          delete_profile/3,
@@ -51,6 +55,9 @@
          get_domain/2,
          get_domain/4,
          get_domain/5,
+         get_event_stream/3,
+         get_event_stream/5,
+         get_event_stream/6,
          get_identity_resolution_job/3,
          get_identity_resolution_job/5,
          get_identity_resolution_job/6,
@@ -82,6 +89,9 @@
          list_domains/1,
          list_domains/3,
          list_domains/4,
+         list_event_streams/2,
+         list_event_streams/4,
+         list_event_streams/5,
          list_identity_resolution_jobs/2,
          list_identity_resolution_jobs/4,
          list_identity_resolution_jobs/5,
@@ -223,6 +233,35 @@ create_domain(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an event stream, which is a subscription to real-time events,
+%% such as when profiles are created and updated through Amazon Connect
+%% Customer Profiles.
+%%
+%% Each event stream can be associated with only one Kinesis Data Stream
+%% destination in the same region and Amazon Web Services account as the
+%% customer profiles domain
+create_event_stream(Client, DomainName, EventStreamName, Input) ->
+    create_event_stream(Client, DomainName, EventStreamName, Input, []).
+create_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an integration workflow.
 %%
 %% An integration workflow is an async process which ingests historic data
@@ -311,6 +350,29 @@ delete_domain(Client, DomainName, Input) ->
 delete_domain(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disables and deletes the specified event stream.
+delete_event_stream(Client, DomainName, EventStreamName, Input) ->
+    delete_event_stream(Client, DomainName, EventStreamName, Input, []).
+delete_event_stream(Client, DomainName, EventStreamName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -572,6 +634,30 @@ get_domain(Client, DomainName, QueryMap, HeadersMap)
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the specified event stream in a specific
+%% domain.
+get_event_stream(Client, DomainName, EventStreamName)
+  when is_map(Client) ->
+    get_event_stream(Client, DomainName, EventStreamName, #{}, #{}).
+
+get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, []).
+
+get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams/", aws_util:encode_uri(EventStreamName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -899,6 +985,34 @@ list_domains(Client, QueryMap, HeadersMap)
 list_domains(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the event streams in a specific domain.
+list_event_streams(Client, DomainName)
+  when is_map(Client) ->
+    list_event_streams(Client, DomainName, #{}, #{}).
+
+list_event_streams(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_streams(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_event_streams(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/event-streams"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

@@ -1105,7 +1105,7 @@ update_lag(Client, Input, Options)
 %% support jumbo frames. Updating the connection disrupts network
 %% connectivity for all virtual interfaces associated with the connection for
 %% up to 30 seconds. To check whether your connection supports jumbo frames,
-%% call `DescribeConnections'. To check whether your virtual q interface
+%% call `DescribeConnections'. To check whether your virtual interface
 %% supports jumbo frames, call `DescribeVirtualInterfaces'.
 update_virtual_interface_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->

@@ -24,7 +24,7 @@
 %% CloudFormation makes use of other Amazon Web Services products. If you
 %% need additional technical information about a specific Amazon Web Services
 %% product, you can find the product's technical documentation at
-%% `docs.aws.amazon.com' .
+%% docs.aws.amazon.com.
 -module(aws_cloudformation).
 
 -export([activate_organizations_access/2,
@@ -287,7 +287,7 @@ create_change_set(Client, Input, Options)
 %% @doc Creates a stack as specified in the template.
 %%
 %% After the call completes successfully, the stack creation starts. You can
-%% check the status of the stack through the `DescribeStacks'operation.
+%% check the status of the stack through the `DescribeStacks' operation.
 create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
@@ -644,12 +644,12 @@ describe_type(Client, Input, Options)
 %% @doc Returns information about an extension's registration, including
 %% its current status and type and version identifiers.
 %%
-%% When you initiate a registration request using ` `RegisterType' ',
-%% you can then use ` `DescribeTypeRegistration' ' to monitor the
-%% progress of that registration request.
+%% When you initiate a registration request using `RegisterType', you can
+%% then use `DescribeTypeRegistration' to monitor the progress of that
+%% registration request.
 %%
-%% Once the registration request has completed, use ` `DescribeType'
-%% ' to return detailed information about an extension.
+%% Once the registration request has completed, use `DescribeType' to
+%% return detailed information about an extension.
 describe_type_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type_registration(Client, Input, []).
@@ -726,8 +726,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% detection on a stack set.
 %%
 %% `DetectStackSetDrift' returns the `OperationId' of the stack set
-%% drift detection operation. Use this operation id with `
-%% `DescribeStackSetOperation' ' to monitor the progress of the drift
+%% drift detection operation. Use this operation id with
+%% `DescribeStackSetOperation' to monitor the progress of the drift
 %% detection operation. The drift detection operation may take some time,
 %% depending on the number of stack instances included in the stack set, in
 %% addition to the number of resources included in each stack.
@@ -735,18 +735,18 @@ detect_stack_resource_drift(Client, Input, Options)
 %% Once the operation has completed, use the following actions to return
 %% drift information:
 %%
-%% <ul> <li> Use ` `DescribeStackSet' ' to return detailed
-%% information about the stack set, including detailed information about the
-%% last completed drift operation performed on the stack set. (Information
-%% about drift operations that are in progress isn't included.)
+%% <ul> <li> Use `DescribeStackSet' to return detailed information about
+%% the stack set, including detailed information about the last completed
+%% drift operation performed on the stack set. (Information about drift
+%% operations that are in progress isn't included.)
 %%
-%% </li> <li> Use ` `ListStackInstances' ' to return a list of stack
+%% </li> <li> Use `ListStackInstances' to return a list of stack
 %% instances belonging to the stack set, including the drift status and last
 %% drift time checked of each instance.
 %%
-%% </li> <li> Use ` `DescribeStackInstance' ' to return detailed
-%% information about a specific stack instance, including its drift status
-%% and last drift time checked.
+%% </li> <li> Use `DescribeStackInstance' to return detailed information
+%% about a specific stack instance, including its drift status and last drift
+%% time checked.
 %%
 %% </li> </ul> For more information about performing a drift detection
 %% operation on a stack set, see Detecting unmanaged changes in stack sets.
@@ -754,8 +754,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% You can only run a single drift detection operation on a given stack set
 %% at one time.
 %%
-%% To stop a drift detection stack set operation, use `
-%% `StopStackSetOperation' '.
+%% To stop a drift detection stack set operation, use
+%% `StopStackSetOperation'.
 detect_stack_set_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_set_drift(Client, Input, []).
@@ -872,7 +872,7 @@ list_change_sets(Client, Input, Options)
 %% you call this action.
 %%
 %% Use this action to see the exported output values that you can import into
-%% other stacks. To import values, use the `Fn::ImportValue' function.
+%% other stacks. To import values, use the Fn::ImportValue function.
 %%
 %% For more information, see CloudFormation export stack output values.
 list_exports(Client, Input)
@@ -889,7 +889,7 @@ list_exports(Client, Input, Options)
 %% account, see `ListExports'.
 %%
 %% For more information about importing an exported output value, see the
-%% `Fn::ImportValue' function.
+%% Fn::ImportValue function.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
@@ -1067,9 +1067,9 @@ register_publisher(Client, Input, Options)
 %% time. This maximum is per account and per Region. Use DeregisterType to
 %% deregister specific extension versions if necessary.
 %%
-%% Once you have initiated a registration request using ` `RegisterType'
-%% ', you can use ` `DescribeTypeRegistration' ' to monitor the
-%% progress of the registration request.
+%% Once you have initiated a registration request using `RegisterType',
+%% you can use `DescribeTypeRegistration' to monitor the progress of the
+%% registration request.
 %%
 %% Once you have registered a private extension in your account and Region,
 %% use SetTypeConfiguration to specify configuration properties for the
