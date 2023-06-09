@@ -72,10 +72,10 @@
 %% A batch load task processes data from a CSV source in an S3 location and
 %% writes to a Timestream table. A mapping from source to target is defined
 %% in a batch load task. Errors and events are written to a report at an S3
-%% location. For the report, if the KMS key is not specified, the batch load
-%% task will be encrypted with a Timestream managed KMS key located in your
-%% account. For more information, see Amazon Web Services managed keys.
-%% Service quotas apply. For details, see code sample.
+%% location. For the report, if the KMS key is not specified, the report will
+%% be encrypted with an S3 managed key when `SSE_S3' is the option.
+%% Otherwise an error is thrown. For more information, see Amazon Web
+%% Services managed keys. Service quotas apply. For details, see code sample.
 create_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_load_task(Client, Input, []).
