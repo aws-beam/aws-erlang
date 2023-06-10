@@ -343,8 +343,14 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_hours_of_operations/2,
+         search_hours_of_operations/3,
+         search_prompts/2,
+         search_prompts/3,
          search_queues/2,
          search_queues/3,
+         search_quick_connects/2,
+         search_quick_connects/3,
          search_routing_profiles/2,
          search_routing_profiles/3,
          search_security_profiles/2,
@@ -4141,6 +4147,54 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches the hours of operation in an Amazon Connect instance, with
+%% optional filtering.
+search_hours_of_operations(Client, Input) ->
+    search_hours_of_operations(Client, Input, []).
+search_hours_of_operations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-hours-of-operations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches prompts in an Amazon Connect instance, with optional
+%% filtering.
+search_prompts(Client, Input) ->
+    search_prompts(Client, Input, []).
+search_prompts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-prompts"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -4150,6 +4204,30 @@ search_queues(Client, Input) ->
 search_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-queues"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches quick connects in an Amazon Connect instance, with optional
+%% filtering.
+search_quick_connects(Client, Input) ->
+    search_quick_connects(Client, Input, []).
+search_quick_connects(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-quick-connects"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
