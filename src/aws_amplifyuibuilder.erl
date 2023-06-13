@@ -41,6 +41,9 @@
          export_themes/3,
          export_themes/5,
          export_themes/6,
+         get_codegen_job/4,
+         get_codegen_job/6,
+         get_codegen_job/7,
          get_component/4,
          get_component/6,
          get_component/7,
@@ -53,6 +56,9 @@
          get_theme/4,
          get_theme/6,
          get_theme/7,
+         list_codegen_jobs/3,
+         list_codegen_jobs/5,
+         list_codegen_jobs/6,
          list_components/3,
          list_components/5,
          list_components/6,
@@ -66,6 +72,8 @@
          put_metadata_flag/6,
          refresh_token/3,
          refresh_token/4,
+         start_codegen_job/4,
+         start_codegen_job/5,
          update_component/5,
          update_component/6,
          update_form/5,
@@ -103,7 +111,7 @@ create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new form for an Amplify app.
+%% @doc Creates a new form for an Amplify.
 create_form(Client, AppId, EnvironmentName, Input) ->
     create_form(Client, AppId, EnvironmentName, Input, []).
 create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
@@ -327,6 +335,29 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns an existing code generation job.
+get_codegen_job(Client, AppId, EnvironmentName, Id)
+  when is_map(Client) ->
+    get_codegen_job(Client, AppId, EnvironmentName, Id, #{}, #{}).
+
+get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
+
+get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns an existing component for an Amplify app.
 get_component(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
@@ -416,6 +447,35 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of code generation jobs for a specified Amplify app
+%% and backend environment.
+list_codegen_jobs(Client, AppId, EnvironmentName)
+  when is_map(Client) ->
+    list_codegen_jobs(Client, AppId, EnvironmentName, #{}, #{}).
+
+list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
+
+list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -550,6 +610,31 @@ refresh_token(Client, Provider, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a code generation job for for a specified Amplify app and
+%% backend environment.
+start_codegen_job(Client, AppId, EnvironmentName, Input) ->
+    start_codegen_job(Client, AppId, EnvironmentName, Input, []).
+start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/codegen-jobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing component.

@@ -10,13 +10,19 @@
 %%
 %% Amazon Rekognition Image
 %%
-%% <ul> <li> CompareFaces
+%% <ul> <li> AssociateFaces
+%%
+%% </li> <li> CompareFaces
 %%
 %% </li> <li> CreateCollection
+%%
+%% </li> <li> CreateUser
 %%
 %% </li> <li> DeleteCollection
 %%
 %% </li> <li> DeleteFaces
+%%
+%% </li> <li> DeleteUser
 %%
 %% </li> <li> DescribeCollection
 %%
@@ -30,6 +36,8 @@
 %%
 %% </li> <li> DetectText
 %%
+%% </li> <li> DisassociateFaces
+%%
 %% </li> <li> GetCelebrityInfo
 %%
 %% </li> <li> IndexFaces
@@ -38,11 +46,17 @@
 %%
 %% </li> <li> ListFaces
 %%
+%% </li> <li> ListUsers
+%%
 %% </li> <li> RecognizeCelebrities
 %%
 %% </li> <li> SearchFaces
 %%
 %% </li> <li> SearchFacesByImage
+%%
+%% </li> <li> SearchUsers
+%%
+%% </li> <li> SearchUsersByImage
 %%
 %% </li> </ul> Amazon Rekognition Custom Labels
 %%
@@ -139,7 +153,9 @@
 %% </li> </ul>
 -module(aws_rekognition).
 
--export([compare_faces/2,
+-export([associate_faces/2,
+         associate_faces/3,
+         compare_faces/2,
          compare_faces/3,
          copy_project_version/2,
          copy_project_version/3,
@@ -155,6 +171,8 @@
          create_project_version/3,
          create_stream_processor/2,
          create_stream_processor/3,
+         create_user/2,
+         create_user/3,
          delete_collection/2,
          delete_collection/3,
          delete_dataset/2,
@@ -169,6 +187,8 @@
          delete_project_version/3,
          delete_stream_processor/2,
          delete_stream_processor/3,
+         delete_user/2,
+         delete_user/3,
          describe_collection/2,
          describe_collection/3,
          describe_dataset/2,
@@ -191,6 +211,8 @@
          detect_protective_equipment/3,
          detect_text/2,
          detect_text/3,
+         disassociate_faces/2,
+         disassociate_faces/3,
          distribute_dataset_entries/2,
          distribute_dataset_entries/3,
          get_celebrity_info/2,
@@ -229,6 +251,8 @@
          list_stream_processors/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_users/2,
+         list_users/3,
          put_project_policy/2,
          put_project_policy/3,
          recognize_celebrities/2,
@@ -237,6 +261,10 @@
          search_faces/3,
          search_faces_by_image/2,
          search_faces_by_image/3,
+         search_users/2,
+         search_users/3,
+         search_users_by_image/2,
+         search_users_by_image/3,
          start_celebrity_recognition/2,
          start_celebrity_recognition/3,
          start_content_moderation/2,
@@ -275,6 +303,48 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates one or more faces with an existing UserID.
+%%
+%% Takes an array of `FaceIds'. Each `FaceId' that are present in the
+%% `FaceIds' list is associated with the provided UserID. The maximum
+%% number of total `FaceIds' per UserID is 100.
+%%
+%% The `UserMatchThreshold' parameter specifies the minimum user match
+%% confidence required for the face to be associated with a UserID that has
+%% at least one `FaceID' already associated. This ensures that the
+%% `FaceIds' are associated with the right UserID. The value ranges from
+%% 0-100 and default value is 75.
+%%
+%% If successful, an array of `AssociatedFace' objects containing the
+%% associated `FaceIds' is returned. If a given face is already
+%% associated with the given `UserID', it will be ignored and will not be
+%% returned in the response. If a given face is already associated to a
+%% different `UserID', isn't found in the collection, doesn’t meet
+%% the `UserMatchThreshold', or there are already 100 faces associated
+%% with the `UserID', it will be returned as part of an array of
+%% `UnsuccessfulFaceAssociations.'
+%%
+%% The `UserStatus' reflects the status of an operation which updates a
+%% UserID representation with a list of given faces. The `UserStatus' can
+%% be:
+%%
+%% <ul> <li> ACTIVE - All associations or disassociations of FaceID(s) for a
+%% UserID are complete.
+%%
+%% </li> <li> CREATED - A UserID has been created, but has no FaceID(s)
+%% associated with it.
+%%
+%% </li> <li> UPDATING - A UserID is being updated and there are current
+%% associations or disassociations of FaceID(s) taking place.
+%%
+%% </li> </ul>
+associate_faces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_faces(Client, Input, []).
+associate_faces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateFaces">>, Input, Options).
 
 %% @doc Compares a face in the source input image with each of the 100
 %% largest faces detected in the target input image.
@@ -566,6 +636,26 @@ create_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStreamProcessor">>, Input, Options).
 
+%% @doc Creates a new User within a collection specified by
+%% `CollectionId'.
+%%
+%% Takes `UserId' as a parameter, which is a user provided ID which
+%% should be unique within the collection. The provided `UserId' will
+%% alias the system generated UUID to make the `UserId' more user
+%% friendly.
+%%
+%% Uses a `ClientToken', an idempotency token that ensures a call to
+%% `CreateUser' completes only once. If the value is not supplied, the
+%% AWS SDK generates an idempotency token for the requests. This prevents
+%% retries after a network error results from making multiple
+%% `CreateUser' calls.
+create_user(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_user(Client, Input, []).
+create_user(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUser">>, Input, Options).
+
 %% @doc Deletes the specified collection.
 %%
 %% Note that this operation removes all faces in the collection. For an
@@ -678,6 +768,20 @@ delete_stream_processor(Client, Input)
 delete_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStreamProcessor">>, Input, Options).
+
+%% @doc Deletes the specified UserID within the collection.
+%%
+%% Faces that are associated with the UserID are disassociated from the
+%% UserID before deleting the specified UserID. If the specified
+%% `Collection' or `UserID' is already deleted or not found, a
+%% `ResourceNotFoundException' will be thrown. If the action is
+%% successful with a 200 response, an empty HTTP body is returned.
+delete_user(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_user(Client, Input, []).
+delete_user(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteUser">>, Input, Options).
 
 %% @doc Describes the specified collection.
 %%
@@ -1065,6 +1169,24 @@ detect_text(Client, Input)
 detect_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectText">>, Input, Options).
+
+%% @doc Removes the association between a `Face' supplied in an array of
+%% `FaceIds' and the User.
+%%
+%% If the User is not present already, then a `ResourceNotFound'
+%% exception is thrown. If successful, an array of faces that are
+%% disassociated from the User is returned. If a given face is already
+%% disassociated from the given UserID, it will be ignored and not be
+%% returned in the response. If a given face is already associated with a
+%% different User or not found in the collection it will be returned as part
+%% of `UnsuccessfulDisassociations'. You can remove 1 - 100 face IDs from
+%% a user at one time.
+disassociate_faces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_faces(Client, Input, []).
+disassociate_faces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateFaces">>, Input, Options).
 
 %% @doc Distributes the entries (images) in a training dataset across the
 %% training dataset and the test dataset for a project.
@@ -1732,6 +1854,21 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Returns metadata of the User such as `UserID' in the specified
+%% collection.
+%%
+%% Anonymous User (to reserve faces without any identity) is not returned as
+%% part of this request. The results are sorted by system generated primary
+%% key ID. If the response is truncated, `NextToken' is returned in the
+%% response that can be used in the subsequent request to retrieve the next
+%% set of identities.
+list_users(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_users(Client, Input, []).
+list_users(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUsers">>, Input, Options).
+
 %% @doc Attaches a project policy to a Amazon Rekognition Custom Labels
 %% project in a trusting AWS account.
 %%
@@ -1887,6 +2024,42 @@ search_faces_by_image(Client, Input)
 search_faces_by_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchFacesByImage">>, Input, Options).
+
+%% @doc Searches for UserIDs within a collection based on a `FaceId' or
+%% `UserId'.
+%%
+%% This API can be used to find the closest UserID (with a highest
+%% similarity) to associate a face. The request must be provided with either
+%% `FaceId' or `UserId'. The operation returns an array of UserID
+%% that match the `FaceId' or `UserId', ordered by similarity score
+%% with the highest similarity first.
+search_users(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_users(Client, Input, []).
+search_users(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchUsers">>, Input, Options).
+
+%% @doc Searches for UserIDs using a supplied image.
+%%
+%% It first detects the largest face in the image, and then searches a
+%% specified collection for matching UserIDs.
+%%
+%% The operation returns an array of UserIDs that match the face in the
+%% supplied image, ordered by similarity score with the highest similarity
+%% first. It also returns a bounding box for the face found in the input
+%% image.
+%%
+%% Information about faces detected in the supplied image, but not used for
+%% the search, is returned in an array of `UnsearchedFace' objects. If no
+%% valid face is detected in the image, the response will contain an empty
+%% `UserMatches' list and no `SearchedFace' object.
+search_users_by_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_users_by_image(Client, Input, []).
+search_users_by_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchUsersByImage">>, Input, Options).
 
 %% @doc Starts asynchronous recognition of celebrities in a stored video.
 %%

@@ -238,7 +238,8 @@ create_backup(Client, Input, Options)
 %% A data repository association is a link between a directory on the file
 %% system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data
 %% repository associations on a file system. Data repository associations are
-%% supported for all file systems except for `Scratch_1' deployment type.
+%% supported on all FSx for Lustre 2.12 and newer file systems, excluding
+%% `scratch_1' deployment type.
 %%
 %% Each data repository association must have a unique Amazon FSx file system
 %% directory and a unique S3 bucket or prefix associated with it. You can
@@ -477,8 +478,9 @@ delete_backup(Client, Input, Options)
 %% Deleting the data repository association unlinks the file system from the
 %% Amazon S3 bucket. When deleting a data repository association, you have
 %% the option of deleting the data in the file system that corresponds to the
-%% data repository association. Data repository associations are supported
-%% for all file systems except for `Scratch_1' deployment type.
+%% data repository association. Data repository associations are supported on
+%% all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1'
+%% deployment type.
 delete_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_repository_association(Client, Input, []).
@@ -620,8 +622,8 @@ describe_backups(Client, Input, Options)
 %% used in the request.
 %%
 %% Data repository associations are supported on Amazon File Cache resources
-%% and all Amazon FSx for Lustre file systems excluding `Scratch_1'
-%% deployment types.
+%% and all FSx for Lustre 2.12 and newer file systems, excluding
+%% `scratch_1' deployment type.
 %%
 %% You can use filters to narrow the response to include just data repository
 %% associations for specific file systems (use the `file-system-id'
@@ -900,8 +902,8 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the configuration of an existing data repository association
 %% on an Amazon FSx for Lustre file system.
 %%
-%% Data repository associations are supported for all file systems except for
-%% `Scratch_1' deployment type.
+%% Data repository associations are supported on all FSx for Lustre 2.12 and
+%% newer file systems, excluding `scratch_1' deployment type.
 update_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_repository_association(Client, Input, []).
@@ -1014,7 +1016,7 @@ update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
 
-%% @doc Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+%% @doc Updates an FSx for ONTAP storage virtual machine (SVM).
 update_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_storage_virtual_machine(Client, Input, []).
