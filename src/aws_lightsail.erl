@@ -1402,7 +1402,7 @@ get_bundles(Client, Input, Options)
 %% @doc Returns information about one or more Amazon Lightsail SSL/TLS
 %% certificates.
 %%
-%% To get a summary of a certificate, ommit `includeCertificateDetails'
+%% To get a summary of a certificate, omit `includeCertificateDetails'
 %% from your request. The response will include only the certificate Amazon
 %% Resource Name (ARN), certificate name, domain name, and tags.
 get_certificates(Client, Input)

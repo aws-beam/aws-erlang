@@ -4,12 +4,16 @@
 %% @doc AWS Elastic Disaster Recovery Service.
 -module(aws_drs).
 
--export([create_extended_source_server/2,
+-export([associate_source_network_stack/2,
+         associate_source_network_stack/3,
+         create_extended_source_server/2,
          create_extended_source_server/3,
          create_launch_configuration_template/2,
          create_launch_configuration_template/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
+         create_source_network/2,
+         create_source_network/3,
          delete_job/2,
          delete_job/3,
          delete_launch_configuration_template/2,
@@ -18,6 +22,8 @@
          delete_recovery_instance/3,
          delete_replication_configuration_template/2,
          delete_replication_configuration_template/3,
+         delete_source_network/2,
+         delete_source_network/3,
          delete_source_server/2,
          delete_source_server/3,
          describe_job_log_items/2,
@@ -32,12 +38,16 @@
          describe_recovery_snapshots/3,
          describe_replication_configuration_templates/2,
          describe_replication_configuration_templates/3,
+         describe_source_networks/2,
+         describe_source_networks/3,
          describe_source_servers/2,
          describe_source_servers/3,
          disconnect_recovery_instance/2,
          disconnect_recovery_instance/3,
          disconnect_source_server/2,
          disconnect_source_server/3,
+         export_source_network_cfn_template/2,
+         export_source_network_cfn_template/3,
          get_failback_replication_configuration/2,
          get_failback_replication_configuration/3,
          get_launch_configuration/2,
@@ -64,10 +74,16 @@
          start_recovery/3,
          start_replication/2,
          start_replication/3,
+         start_source_network_recovery/2,
+         start_source_network_recovery/3,
+         start_source_network_replication/2,
+         start_source_network_replication/3,
          stop_failback/2,
          stop_failback/3,
          stop_replication/2,
          stop_replication/3,
+         stop_source_network_replication/2,
+         stop_source_network_replication/3,
          tag_resource/3,
          tag_resource/4,
          terminate_recovery_instances/2,
@@ -90,6 +106,32 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associate a Source Network to an existing CloudFormation Stack and
+%% modify launch templates to use this network.
+%%
+%% Can be used for reverting to previously deployed CloudFormation stacks.
+associate_source_network_stack(Client, Input) ->
+    associate_source_network_stack(Client, Input, []).
+associate_source_network_stack(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/AssociateSourceNetworkStack"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create an extended source server in the target Account based on the
 %% source server in staging account.
@@ -144,6 +186,29 @@ create_replication_configuration_template(Client, Input) ->
 create_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateReplicationConfigurationTemplate"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a new Source Network resource for a provided VPC ID.
+create_source_network(Client, Input) ->
+    create_source_network(Client, Input, []).
+create_source_network(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateSourceNetwork"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -240,6 +305,29 @@ delete_replication_configuration_template(Client, Input) ->
 delete_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteReplicationConfigurationTemplate"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete Source Network resource.
+delete_source_network(Client, Input) ->
+    delete_source_network(Client, Input, []).
+delete_source_network(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteSourceNetwork"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -429,6 +517,29 @@ describe_replication_configuration_templates(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all Source Networks or multiple Source Networks filtered by ID.
+describe_source_networks(Client, Input) ->
+    describe_source_networks(Client, Input, []).
+describe_source_networks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DescribeSourceNetworks"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all Source Servers or multiple Source Servers filtered by ID.
 describe_source_servers(Client, Input) ->
     describe_source_servers(Client, Input, []).
@@ -506,6 +617,29 @@ disconnect_source_server(Client, Input) ->
 disconnect_source_server(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectSourceServer"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Export the Source Network CloudFormation template to an S3 bucket.
+export_source_network_cfn_template(Client, Input) ->
+    export_source_network_cfn_template(Client, Input, []).
+export_source_network_cfn_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ExportSourceNetworkCfnTemplate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -831,6 +965,57 @@ start_replication(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deploy VPC for the specified Source Network and modify launch
+%% templates to use this network.
+%%
+%% The VPC will be deployed using a dedicated CloudFormation stack.
+start_source_network_recovery(Client, Input) ->
+    start_source_network_recovery(Client, Input, []).
+start_source_network_recovery(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartSourceNetworkRecovery"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts replication for a Source Network.
+%%
+%% This action would make the Source Network protected.
+start_source_network_replication(Client, Input) ->
+    start_source_network_replication(Client, Input, []).
+start_source_network_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartSourceNetworkReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops the failback process for a specified Recovery Instance.
 %%
 %% This changes the Failback State of the Recovery Instance back to
@@ -866,6 +1051,31 @@ stop_replication(Client, Input) ->
 stop_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops replication for a Source Network.
+%%
+%% This action would make the Source Network unprotected.
+stop_source_network_replication(Client, Input) ->
+    stop_source_network_replication(Client, Input, []).
+stop_source_network_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopSourceNetworkReplication"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

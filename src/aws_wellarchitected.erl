@@ -12,12 +12,18 @@
 
 -export([associate_lenses/3,
          associate_lenses/4,
+         associate_profiles/3,
+         associate_profiles/4,
          create_lens_share/3,
          create_lens_share/4,
          create_lens_version/3,
          create_lens_version/4,
          create_milestone/3,
          create_milestone/4,
+         create_profile/2,
+         create_profile/3,
+         create_profile_share/3,
+         create_profile_share/4,
          create_workload/2,
          create_workload/3,
          create_workload_share/3,
@@ -26,12 +32,18 @@
          delete_lens/4,
          delete_lens_share/4,
          delete_lens_share/5,
+         delete_profile/3,
+         delete_profile/4,
+         delete_profile_share/4,
+         delete_profile_share/5,
          delete_workload/3,
          delete_workload/4,
          delete_workload_share/4,
          delete_workload_share/5,
          disassociate_lenses/3,
          disassociate_lenses/4,
+         disassociate_profiles/3,
+         disassociate_profiles/4,
          export_lens/2,
          export_lens/4,
          export_lens/5,
@@ -56,6 +68,12 @@
          get_milestone/3,
          get_milestone/5,
          get_milestone/6,
+         get_profile/2,
+         get_profile/4,
+         get_profile/5,
+         get_profile_template/1,
+         get_profile_template/3,
+         get_profile_template/4,
          get_workload/2,
          get_workload/4,
          get_workload/5,
@@ -84,6 +102,15 @@
          list_milestones/4,
          list_notifications/2,
          list_notifications/3,
+         list_profile_notifications/1,
+         list_profile_notifications/3,
+         list_profile_notifications/4,
+         list_profile_shares/2,
+         list_profile_shares/4,
+         list_profile_shares/5,
+         list_profiles/1,
+         list_profiles/3,
+         list_profiles/4,
          list_share_invitations/1,
          list_share_invitations/3,
          list_share_invitations/4,
@@ -105,6 +132,8 @@
          update_global_settings/3,
          update_lens_review/4,
          update_lens_review/5,
+         update_profile/3,
+         update_profile/4,
          update_share_invitation/3,
          update_share_invitation/4,
          update_workload/3,
@@ -112,7 +141,9 @@
          update_workload_share/4,
          update_workload_share/5,
          upgrade_lens_review/4,
-         upgrade_lens_review/5]).
+         upgrade_lens_review/5,
+         upgrade_profile_version/4,
+         upgrade_profile_version/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -136,6 +167,29 @@ associate_lenses(Client, WorkloadId, Input) ->
 associate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateLenses"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate a profile with a workload.
+associate_profiles(Client, WorkloadId, Input) ->
+    associate_profiles(Client, WorkloadId, Input, []).
+associate_profiles(Client, WorkloadId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateProfiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -236,6 +290,52 @@ create_milestone(Client, WorkloadId, Input) ->
 create_milestone(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a profile.
+create_profile(Client, Input) ->
+    create_profile(Client, Input, []).
+create_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/profiles"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a profile share.
+create_profile_share(Client, ProfileArn, Input) ->
+    create_profile_share(Client, ProfileArn, Input, []).
+create_profile_share(Client, ProfileArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -399,6 +499,62 @@ delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete a profile.
+%%
+%% Disclaimer
+%%
+%% By sharing your profile with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your profile available to
+%% those other accounts. Those other accounts may continue to access and use
+%% your shared profile even if you delete the profile from your own Amazon
+%% Web Services account or terminate your Amazon Web Services account.
+delete_profile(Client, ProfileArn, Input) ->
+    delete_profile(Client, ProfileArn, Input, []).
+delete_profile(Client, ProfileArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a profile share.
+delete_profile_share(Client, ProfileArn, ShareId, Input) ->
+    delete_profile_share(Client, ProfileArn, ShareId, Input, []).
+delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares/", aws_util:encode_uri(ShareId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an existing workload.
 delete_workload(Client, WorkloadId, Input) ->
     delete_workload(Client, WorkloadId, Input, []).
@@ -459,6 +615,29 @@ disassociate_lenses(Client, WorkloadId, Input) ->
 disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/disassociateLenses"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociate a profile from a workload.
+disassociate_profiles(Client, WorkloadId, Input) ->
+    disassociate_profiles(Client, WorkloadId, Input, []).
+disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/disassociateProfiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -711,6 +890,56 @@ get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get profile information.
+get_profile(Client, ProfileArn)
+  when is_map(Client) ->
+    get_profile(Client, ProfileArn, #{}, #{}).
+
+get_profile(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+get_profile(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"ProfileVersion">>, maps:get(<<"ProfileVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get profile template.
+get_profile_template(Client)
+  when is_map(Client) ->
+    get_profile_template(Client, #{}, #{}).
+
+get_profile_template(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile_template(Client, QueryMap, HeadersMap, []).
+
+get_profile_template(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/profileTemplate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get an existing workload.
 get_workload(Client, WorkloadId)
   when is_map(Client) ->
@@ -803,7 +1032,8 @@ list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)}
+        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)},
+        {<<"QuestionPriority">>, maps:get(<<"QuestionPriority">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -881,7 +1111,8 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)}
+        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)},
+        {<<"QuestionPriority">>, maps:get(<<"QuestionPriority">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1023,6 +1254,95 @@ list_notifications(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List profile notifications.
+list_profile_notifications(Client)
+  when is_map(Client) ->
+    list_profile_notifications(Client, #{}, #{}).
+
+list_profile_notifications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_notifications(Client, QueryMap, HeadersMap, []).
+
+list_profile_notifications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/profileNotifications/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"WorkloadId">>, maps:get(<<"WorkloadId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List profile shares.
+list_profile_shares(Client, ProfileArn)
+  when is_map(Client) ->
+    list_profile_shares(Client, ProfileArn, #{}, #{}).
+
+list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List profiles.
+list_profiles(Client)
+  when is_map(Client) ->
+    list_profiles(Client, #{}, #{}).
+
+list_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_profiles(Client, QueryMap, HeadersMap, []).
+
+list_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/profileSummaries"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ProfileNamePrefix">>, maps:get(<<"ProfileNamePrefix">>, QueryMap, undefined)},
+        {<<"ProfileOwnerType">>, maps:get(<<"ProfileOwnerType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List the workload invitations.
 list_share_invitations(Client)
   when is_map(Client) ->
@@ -1047,6 +1367,7 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
         {<<"LensNamePrefix">>, maps:get(<<"LensNamePrefix">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ProfileNamePrefix">>, maps:get(<<"ProfileNamePrefix">>, QueryMap, undefined)},
         {<<"ShareResourceType">>, maps:get(<<"ShareResourceType">>, QueryMap, undefined)},
         {<<"WorkloadNamePrefix">>, maps:get(<<"WorkloadNamePrefix">>, QueryMap, undefined)}
       ],
@@ -1056,8 +1377,8 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the tags for a resource.
 %%
-%% The WorkloadArn parameter can be either a workload ARN or a custom lens
-%% ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+%% profile ARN.
 list_tags_for_resource(Client, WorkloadArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, WorkloadArn, #{}, #{}).
@@ -1135,8 +1456,8 @@ list_workloads(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tags to the specified resource.
 %%
-%% The WorkloadArn parameter can be either a workload ARN or a custom lens
-%% ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+%% profile ARN.
 tag_resource(Client, WorkloadArn, Input) ->
     tag_resource(Client, WorkloadArn, Input, []).
 tag_resource(Client, WorkloadArn, Input0, Options0) ->
@@ -1161,8 +1482,8 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
 
 %% @doc Deletes specified tags from a resource.
 %%
-%% The WorkloadArn parameter can be either a workload ARN or a custom lens
-%% ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+%% profile ARN.
 %%
 %% To specify multiple tags, use separate tagKeys parameters, for example:
 %%
@@ -1260,6 +1581,29 @@ update_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update a profile.
+update_profile(Client, ProfileArn, Input) ->
+    update_profile(Client, ProfileArn, Input, []).
+update_profile(Client, ProfileArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update a workload or custom lens share invitation.
 %%
 %% This API operation can be called independently of any resource. Previous
@@ -1338,6 +1682,29 @@ upgrade_lens_review(Client, LensAlias, WorkloadId, Input) ->
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     Method = put,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/upgrade"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Upgrade a profile.
+upgrade_profile_version(Client, ProfileArn, WorkloadId, Input) ->
+    upgrade_profile_version(Client, ProfileArn, WorkloadId, Input, []).
+upgrade_profile_version(Client, ProfileArn, WorkloadId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/profiles/", aws_util:encode_uri(ProfileArn), "/upgrade"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

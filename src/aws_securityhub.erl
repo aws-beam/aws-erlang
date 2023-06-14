@@ -53,22 +53,30 @@
          accept_administrator_invitation/3,
          accept_invitation/2,
          accept_invitation/3,
+         batch_delete_automation_rules/2,
+         batch_delete_automation_rules/3,
          batch_disable_standards/2,
          batch_disable_standards/3,
          batch_enable_standards/2,
          batch_enable_standards/3,
+         batch_get_automation_rules/2,
+         batch_get_automation_rules/3,
          batch_get_security_controls/2,
          batch_get_security_controls/3,
          batch_get_standards_control_associations/2,
          batch_get_standards_control_associations/3,
          batch_import_findings/2,
          batch_import_findings/3,
+         batch_update_automation_rules/2,
+         batch_update_automation_rules/3,
          batch_update_findings/2,
          batch_update_findings/3,
          batch_update_standards_control_associations/2,
          batch_update_standards_control_associations/3,
          create_action_target/2,
          create_action_target/3,
+         create_automation_rule/2,
+         create_automation_rule/3,
          create_finding_aggregator/2,
          create_finding_aggregator/3,
          create_insight/2,
@@ -149,6 +157,9 @@
          get_members/3,
          invite_members/2,
          invite_members/3,
+         list_automation_rules/1,
+         list_automation_rules/3,
+         list_automation_rules/4,
          list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
@@ -272,6 +283,29 @@ accept_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes one or more automation rules.
+batch_delete_automation_rules(Client, Input) ->
+    batch_delete_automation_rules(Client, Input, []).
+batch_delete_automation_rules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/automationrules/delete"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disables the standards specified by the provided
 %% `StandardsSubscriptionArns'.
 %%
@@ -311,6 +345,30 @@ batch_enable_standards(Client, Input) ->
 batch_enable_standards(Client, Input0, Options0) ->
     Method = post,
     Path = ["/standards/register"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of details for automation rules based on rule Amazon
+%% Resource Names (ARNs).
+batch_get_automation_rules(Client, Input) ->
+    batch_get_automation_rules(Client, Input, []).
+batch_get_automation_rules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/automationrules/get"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -448,6 +506,30 @@ batch_import_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates one or more automation rules based on rule Amazon Resource
+%% Names (ARNs) and input parameters.
+batch_update_automation_rules(Client, Input) ->
+    batch_update_automation_rules(Client, Input, []).
+batch_update_automation_rules(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/automationrules/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Used by Security Hub customers to update information about their
 %% investigation into a finding.
 %%
@@ -538,6 +620,29 @@ create_action_target(Client, Input) ->
 create_action_target(Client, Input0, Options0) ->
     Method = post,
     Path = ["/actionTargets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an automation rule based on input parameters.
+create_automation_rule(Client, Input) ->
+    create_automation_rule(Client, Input, []).
+create_automation_rule(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/automationrules/create"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1608,6 +1713,35 @@ invite_members(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc A list of automation rules and their metadata for the calling
+%% account.
+list_automation_rules(Client)
+  when is_map(Client) ->
+    list_automation_rules(Client, #{}, #{}).
+
+list_automation_rules(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automation_rules(Client, QueryMap, HeadersMap, []).
+
+list_automation_rules(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automationrules/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all findings-generating solutions (products) that you are
 %% subscribed to receive findings from in Security Hub.

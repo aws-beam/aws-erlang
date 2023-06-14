@@ -25,128 +25,6 @@
 %%
 %% See the CloudTrail User Guide for information about the data that is
 %% included with each Amazon Web Services API call listed in the log files.
-%%
-%% Actions available for CloudTrail trails
-%%
-%% The following actions are available for CloudTrail trails.
-%%
-%% <ul> <li> `AddTags'
-%%
-%% </li> <li> `CreateTrail'
-%%
-%% </li> <li> `DeleteTrail'
-%%
-%% </li> <li> `DescribeTrails'
-%%
-%% </li> <li> `GetEventSelectors'
-%%
-%% </li> <li> `GetInsightSelectors'
-%%
-%% </li> <li> `GetTrail'
-%%
-%% </li> <li> `GetTrailStatus'
-%%
-%% </li> <li> `ListTags'
-%%
-%% </li> <li> `ListTrails'
-%%
-%% </li> <li> `PutEventSelectors'
-%%
-%% </li> <li> `PutInsightSelectors'
-%%
-%% </li> <li> `RemoveTags'
-%%
-%% </li> <li> `StartLogging'
-%%
-%% </li> <li> `StopLogging'
-%%
-%% </li> <li> `UpdateTrail'
-%%
-%% </li> </ul> Actions available for CloudTrail event data stores
-%%
-%% The following actions are available for CloudTrail event data stores.
-%%
-%% <ul> <li> `AddTags'
-%%
-%% </li> <li> `CancelQuery'
-%%
-%% </li> <li> `CreateEventDataStore'
-%%
-%% </li> <li> `DeleteEventDataStore'
-%%
-%% </li> <li> `DescribeQuery'
-%%
-%% </li> <li> `GetEventDataStore'
-%%
-%% </li> <li> `GetQueryResults'
-%%
-%% </li> <li> `ListEventDataStores'
-%%
-%% </li> <li> `ListTags'
-%%
-%% </li> <li> `ListQueries'
-%%
-%% </li> <li> `RemoveTags'
-%%
-%% </li> <li> `RestoreEventDataStore'
-%%
-%% </li> <li> `StartEventDataStoreIngestion'
-%%
-%% </li> <li> `StartImport'
-%%
-%% The following additional actions are available for imports.
-%%
-%% <ul> <li> `GetImport'
-%%
-%% </li> <li> `ListImportFailures'
-%%
-%% </li> <li> `ListImports'
-%%
-%% </li> <li> `StopImport'
-%%
-%% </li> </ul> </li> <li> `StartQuery'
-%%
-%% </li> <li> `StartEventDataStoreIngestion'
-%%
-%% </li> <li> `UpdateEventDataStore'
-%%
-%% </li> </ul> Actions available for CloudTrail channels
-%%
-%% The following actions are available for CloudTrail channels.
-%%
-%% <ul> <li> `AddTags'
-%%
-%% </li> <li> `CreateChannel'
-%%
-%% </li> <li> `DeleteChannel'
-%%
-%% </li> <li> `DeleteResourcePolicy'
-%%
-%% </li> <li> `GetChannel'
-%%
-%% </li> <li> `GetResourcePolicy'
-%%
-%% </li> <li> `ListChannels'
-%%
-%% </li> <li> `ListTags'
-%%
-%% </li> <li> `PutResourcePolicy'
-%%
-%% </li> <li> `RemoveTags'
-%%
-%% </li> <li> `UpdateChannel'
-%%
-%% </li> </ul> Actions available for managing delegated administrators
-%%
-%% The following actions are available for adding or a removing a delegated
-%% administrator to manage an Organizations organization’s CloudTrail
-%% resources.
-%%
-%% <ul> <li> `DeregisterOrganizationDelegatedAdmin'
-%%
-%% </li> <li> `RegisterOrganizationDelegatedAdmin'
-%%
-%% </li> </ul>
 -module(aws_cloudtrail).
 
 -export([add_tags/2,
@@ -370,8 +248,12 @@ deregister_organization_delegated_admin(Client, Input, Options)
 %% @doc Returns metadata about a query, including query run time in
 %% milliseconds, number of events scanned and matched, and query status.
 %%
-%% You must specify an ARN for `EventDataStore', and a value for
-%% `QueryID'.
+%% If the query results were delivered to an S3 bucket, the response also
+%% provides the S3 URI and the delivery status.
+%%
+%% You must specify either a `QueryID' or a `QueryAlias'. Specifying
+%% the `QueryAlias' parameter returns information about the last query
+%% run for the alias.
 describe_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query(Client, Input, []).
@@ -463,7 +345,7 @@ get_insight_selectors(Client, Input, Options)
 %% @doc Gets event data results of a query.
 %%
 %% You must specify the `QueryID' value returned by the `StartQuery'
-%% operation, and an ARN for `EventDataStore'.
+%% operation.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -807,9 +689,15 @@ start_logging(Client, Input, Options)
 
 %% @doc Starts a CloudTrail Lake query.
 %%
-%% The required `QueryStatement' parameter provides your SQL query,
-%% enclosed in single quotation marks. Use the optional `DeliveryS3Uri'
-%% parameter to deliver the query results to an S3 bucket.
+%% Use the `QueryStatement' parameter to provide your SQL query, enclosed
+%% in single quotation marks. Use the optional `DeliveryS3Uri' parameter
+%% to deliver the query results to an S3 bucket.
+%%
+%% `StartQuery' requires you specify either the `QueryStatement'
+%% parameter, or a `QueryAlias' and any `QueryParameters'. In the
+%% current release, the `QueryAlias' and `QueryParameters' parameters
+%% are used only for the queries that populate the CloudTrail Lake
+%% dashboards.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
@@ -874,7 +762,7 @@ update_channel(Client, Input, Options)
 %% For event data stores for CloudTrail events, `AdvancedEventSelectors'
 %% includes or excludes management and data events in your event data store.
 %% For more information about `AdvancedEventSelectors', see
-%% `PutEventSelectorsRequest$AdvancedEventSelectors'.
+%% AdvancedEventSelectors.
 %%
 %% For event data stores for Config configuration items, Audit Manager
 %% evidence, or non-Amazon Web Services events, `AdvancedEventSelectors'
