@@ -318,7 +318,7 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Uploads position update data for one or more devices to a tracker
-%% resource.
+%% resource (up to 10 devices per batch).
 %%
 %% Amazon Location uses the data when it reports the last known device
 %% position and position history. Amazon Location retains location data for

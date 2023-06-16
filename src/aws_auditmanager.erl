@@ -98,6 +98,9 @@
          get_evidence_by_evidence_folder/4,
          get_evidence_by_evidence_folder/6,
          get_evidence_by_evidence_folder/7,
+         get_evidence_file_upload_url/2,
+         get_evidence_file_upload_url/4,
+         get_evidence_file_upload_url/5,
          get_evidence_folder/4,
          get_evidence_folder/6,
          get_evidence_folder/7,
@@ -311,19 +314,19 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Uploads one or more pieces of evidence to a control in an Audit
-%% Manager assessment.
+%% @doc Adds one or more pieces of evidence to a control in an Audit Manager
+%% assessment.
 %%
-%% You can upload manual evidence from any Amazon Simple Storage Service
-%% (Amazon S3) bucket by specifying the S3 URI of the evidence.
-%%
-%% You must upload manual evidence to your S3 bucket before you can upload it
-%% to your assessment. For instructions, see CreateBucket and PutObject in
-%% the Amazon Simple Storage Service API Reference.
+%% You can import manual evidence from any S3 bucket by specifying the S3 URI
+%% of the object. You can also upload a file from your browser, or enter
+%% plain text in response to a risk assessment question.
 %%
 %% The following restrictions apply to this action:
 %%
-%% <ul> <li> Maximum size of an individual evidence file: 100 MB
+%% <ul> <li> `manualEvidence' can be only one of the following:
+%% `evidenceFileName', `s3ResourcePath', or `textResponse'
+%%
+%% </li> <li> Maximum size of an individual evidence file: 100 MB
 %%
 %% </li> <li> Number of daily manual evidence uploads per control: 100
 %%
@@ -563,6 +566,12 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a custom control in Audit Manager.
+%%
+%% When you invoke this operation, the custom control is deleted from any
+%% frameworks or assessments that it’s currently part of. As a result, Audit
+%% Manager will stop collecting evidence for that custom control in all of
+%% your assessments. This includes assessments that you previously created
+%% before you deleted the custom control.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
 delete_control(Client, ControlId, Input0, Options0) ->
@@ -718,7 +727,7 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the registration status of an account in Audit Manager.
+%% @doc Gets the registration status of an account in Audit Manager.
 get_account_status(Client)
   when is_map(Client) ->
     get_account_status(Client, #{}, #{}).
@@ -741,7 +750,7 @@ get_account_status(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an assessment from Audit Manager.
+%% @doc Gets information about a specified assessment.
 get_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_assessment(Client, AssessmentId, #{}, #{}).
@@ -764,7 +773,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a framework from Audit Manager.
+%% @doc Gets information about a specified framework.
 get_assessment_framework(Client, FrameworkId)
   when is_map(Client) ->
     get_assessment_framework(Client, FrameworkId, #{}, #{}).
@@ -787,7 +796,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the URL of an assessment report in Audit Manager.
+%% @doc Gets the URL of an assessment report in Audit Manager.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
   when is_map(Client) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, #{}, #{}).
@@ -810,7 +819,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of changelogs from Audit Manager.
+%% @doc Gets a list of changelogs from Audit Manager.
 get_change_logs(Client, AssessmentId)
   when is_map(Client) ->
     get_change_logs(Client, AssessmentId, #{}, #{}).
@@ -840,7 +849,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a control from Audit Manager.
+%% @doc Gets information about a specified control.
 get_control(Client, ControlId)
   when is_map(Client) ->
     get_control(Client, ControlId, #{}, #{}).
@@ -863,7 +872,7 @@ get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of delegations from an audit owner to a delegate.
+%% @doc Gets a list of delegations from an audit owner to a delegate.
 get_delegations(Client)
   when is_map(Client) ->
     get_delegations(Client, #{}, #{}).
@@ -891,7 +900,7 @@ get_delegations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns evidence from Audit Manager.
+%% @doc Gets information about a specified evidence item.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
   when is_map(Client) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, #{}, #{}).
@@ -914,8 +923,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all evidence from a specified evidence folder in Audit
-%% Manager.
+%% @doc Gets all evidence from a specified evidence folder in Audit Manager.
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
@@ -943,8 +951,50 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an evidence folder from the specified assessment in Audit
-%% Manager.
+%% @doc Creates a presigned Amazon S3 URL that can be used to upload a file
+%% as manual evidence.
+%%
+%% For instructions on how to use this operation, see Upload a file from your
+%% browser in the Audit Manager User Guide.
+%%
+%% The following restrictions apply to this operation:
+%%
+%% <ul> <li> Maximum size of an individual evidence file: 100 MB
+%%
+%% </li> <li> Number of daily manual evidence uploads per control: 100
+%%
+%% </li> <li> Supported file formats: See Supported file types for manual
+%% evidence in the Audit Manager User Guide
+%%
+%% </li> </ul> For more information about Audit Manager service restrictions,
+%% see Quotas and restrictions for Audit Manager.
+get_evidence_file_upload_url(Client, FileName)
+  when is_map(Client) ->
+    get_evidence_file_upload_url(Client, FileName, #{}, #{}).
+
+get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, []).
+
+get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evidenceFileUploadUrl"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"fileName">>, FileName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets an evidence folder from a specified assessment in Audit Manager.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
@@ -967,7 +1017,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the evidence folders from a specified assessment in Audit
+%% @doc Gets the evidence folders from a specified assessment in Audit
 %% Manager.
 get_evidence_folders_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
@@ -996,8 +1046,8 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of evidence folders that are associated with a
-%% specified control in an Audit Manager assessment.
+%% @doc Gets a list of evidence folders that are associated with a specified
+%% control in an Audit Manager assessment.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
@@ -1072,8 +1122,8 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the name of the delegated Amazon Web Services administrator
-%% account for the organization.
+%% @doc Gets the name of the delegated Amazon Web Services administrator
+%% account for a specified organization.
 get_organization_admin_account(Client)
   when is_map(Client) ->
     get_organization_admin_account(Client, #{}, #{}).
@@ -1096,8 +1146,8 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all of the Amazon Web Services that you can choose
-%% to include in your assessment.
+%% @doc Gets a list of all of the Amazon Web Services that you can choose to
+%% include in your assessment.
 %%
 %% When you create an assessment, specify which of these services you want to
 %% include to narrow the assessment's scope.
@@ -1123,7 +1173,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the settings for the specified Amazon Web Services account.
+%% @doc Gets the settings for a specified Amazon Web Services account.
 get_settings(Client, Attribute)
   when is_map(Client) ->
     get_settings(Client, Attribute, #{}, #{}).
