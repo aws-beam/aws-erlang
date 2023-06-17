@@ -3,43 +3,47 @@
 
 %% @doc Amazon Web Services Application Discovery Service
 %%
-%% Amazon Web Services Application Discovery Service helps you plan
-%% application migration projects.
+%% Amazon Web Services Application Discovery Service (Application Discovery
+%% Service) helps you plan application migration projects.
 %%
 %% It automatically identifies servers, virtual machines (VMs), and network
 %% dependencies in your on-premises data centers. For more information, see
-%% the Amazon Web Services Application Discovery Service FAQ. Application
-%% Discovery Service offers three ways of performing discovery and collecting
-%% data about your on-premises servers:
+%% the Amazon Web Services Application Discovery Service FAQ.
 %%
-%% <ul> <li> Agentless discovery is recommended for environments that use
-%% VMware vCenter Server. This mode doesn't require you to install an
-%% agent on each host. It does not work in non-VMware environments.
+%% Application Discovery Service offers three ways of performing discovery
+%% and collecting data about your on-premises servers:
 %%
-%% <ul> <li> Agentless discovery gathers server information regardless of the
+%% <ul> <li> Agentless discovery using Amazon Web Services Application
+%% Discovery Service Agentless Collector (Agentless Collector), which
+%% doesn't require you to install an agent on each host.
+%%
+%% <ul> <li> Agentless Collector gathers server information regardless of the
 %% operating systems, which minimizes the time required for initial
 %% on-premises infrastructure assessment.
 %%
-%% </li> <li> Agentless discovery doesn't collect information about
+%% </li> <li> Agentless Collector doesn't collect information about
 %% network dependencies, only agent-based discovery collects that
 %% information.
 %%
-%% </li> </ul> </li> </ul> <ul> <li> Agent-based discovery collects a richer
-%% set of data than agentless discovery by using the Amazon Web Services
-%% Application Discovery Agent, which you install on one or more hosts in
-%% your data center.
+%% </li> </ul> </li> </ul> <ul> <li> Agent-based discovery using the Amazon
+%% Web Services Application Discovery Agent (Application Discovery Agent)
+%% collects a richer set of data than agentless discovery, which you install
+%% on one or more hosts in your data center.
 %%
 %% <ul> <li> The agent captures infrastructure and application information,
 %% including an inventory of running processes, system performance
 %% information, resource utilization, and network dependencies.
 %%
 %% </li> <li> The information collected by agents is secured at rest and in
-%% transit to the Application Discovery Service database in the cloud.
+%% transit to the Application Discovery Service database in the Amazon Web
+%% Services cloud. For more information, see Amazon Web Services Application
+%% Discovery Agent.
 %%
 %% </li> </ul> </li> </ul> <ul> <li> Amazon Web Services Partner Network
 %% (APN) solutions integrate with Application Discovery Service, enabling you
-%% to import details of your on-premises environment directly into Migration
-%% Hub without using the discovery connector or discovery agent.
+%% to import details of your on-premises environment directly into Amazon Web
+%% Services Migration Hub (Migration Hub) without using Agentless Collector
+%% or Application Discovery Agent.
 %%
 %% <ul> <li> Third-party application discovery tools can query Amazon Web
 %% Services Application Discovery Service, and they can write to the
@@ -49,16 +53,7 @@
 %% it, so that you can associate applications with servers and track
 %% migrations.
 %%
-%% </li> </ul> </li> </ul> Recommendations
-%%
-%% We recommend that you use agent-based discovery for non-VMware
-%% environments, and whenever you want to collect information about network
-%% dependencies. You can run agent-based and agentless discovery
-%% simultaneously. Use agentless discovery to complete the initial
-%% infrastructure assessment quickly, and then install agents on select hosts
-%% to collect additional information.
-%%
-%% Working With This Guide
+%% </li> </ul> </li> </ul> Working With This Guide
 %%
 %% This API reference provides descriptions, syntax, and usage examples for
 %% each of the actions and data types for Application Discovery Service. The
@@ -67,22 +62,22 @@
 %% an API that is tailored to the programming language or platform that
 %% you're using. For more information, see Amazon Web Services SDKs.
 %%
-%% Remember that you must set your Migration Hub home region before you call
+%% Remember that you must set your Migration Hub home Region before you call
 %% any of these APIs.
 %%
 %% You must make API calls for write actions (create, notify, associate,
-%% disassociate, import, or put) while in your home region, or a
+%% disassociate, import, or put) while in your home Region, or a
 %% `HomeRegionNotSetException' error is returned.
 %%
 %% API calls for read actions (list, describe, stop, and delete) are
-%% permitted outside of your home region.
+%% permitted outside of your home Region.
 %%
-%% Although it is unlikely, the Migration Hub home region could change. If
-%% you call APIs outside the home region, an `InvalidInputException' is
+%% Although it is unlikely, the Migration Hub home Region could change. If
+%% you call APIs outside the home Region, an `InvalidInputException' is
 %% returned.
 %%
 %% You must call `GetHomeRegion' to obtain the latest Migration Hub home
-%% region.
+%% Region.
 %%
 %% This guide is intended for use with the Amazon Web Services Application
 %% Discovery Service User Guide.
@@ -217,10 +212,10 @@ delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
 
-%% @doc Lists agents or connectors as specified by ID or other filters.
+%% @doc Lists agents or collectors as specified by ID or other filters.
 %%
-%% All agents/connectors associated with your user account can be listed if
-%% you call `DescribeAgents' as is without passing any parameters.
+%% All agents/collectors associated with your user can be listed if you call
+%% `DescribeAgents' as is without passing any parameters.
 describe_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agents(Client, Input, []).
@@ -258,9 +253,8 @@ describe_configurations(Client, Input, Options)
 
 %% @doc Lists exports as specified by ID.
 %%
-%% All continuous exports associated with your user account can be listed if
-%% you call `DescribeContinuousExports' as is without passing any
-%% parameters.
+%% All continuous exports associated with your user can be listed if you call
+%% `DescribeContinuousExports' as is without passing any parameters.
 describe_continuous_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_exports(Client, Input, []).
@@ -310,9 +304,9 @@ describe_import_tasks(Client, Input, Options)
 %%
 %% </li> <li> configurationId
 %%
-%% </li> </ul> Also, all configuration items associated with your user
-%% account that have tags can be listed if you call `DescribeTags' as is
-%% without passing any parameters.
+%% </li> </ul> Also, all configuration items associated with your user that
+%% have tags can be listed if you call `DescribeTags' as is without
+%% passing any parameters.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
@@ -385,8 +379,7 @@ start_continuous_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartContinuousExport">>, Input, Options).
 
-%% @doc Instructs the specified agents or connectors to start collecting
-%% data.
+%% @doc Instructs the specified agents to start collecting data.
 start_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_collection_by_agent_ids(Client, Input, []).
@@ -394,19 +387,32 @@ start_data_collection_by_agent_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataCollectionByAgentIds">>, Input, Options).
 
-%% @doc Begins the export of discovered data to an S3 bucket.
+%% @doc Begins the export of a discovered data report to an Amazon S3 bucket
+%% managed by Amazon Web Services.
+%%
+%% Exports might provide an estimate of fees and savings based on certain
+%% information that you provide. Fee estimates do not include any taxes that
+%% might apply. Your actual fees and savings depend on a variety of factors,
+%% including your actual usage of Amazon Web Services services, which might
+%% vary from the estimates provided in this report.
+%%
+%% If you do not specify `preferences' or `agentIds' in the filter, a
+%% summary of all servers, applications, tags, and performance is generated.
+%% This data is an aggregation of all server data collected through
+%% on-premises tooling, file import, application grouping and applying tags.
 %%
 %% If you specify `agentIds' in a filter, the task exports up to 72 hours
 %% of detailed data collected by the identified Application Discovery Agent,
 %% including network, process, and performance details. A time range for
 %% exported agent data may be set by using `startTime' and `endTime'.
 %% Export of detailed agent data is limited to five concurrently running
-%% exports.
+%% exports. Export of detailed agent data is limited to two exports per day.
 %%
-%% If you do not include an `agentIds' filter, summary data is exported
-%% that includes both Amazon Web Services Agentless Discovery Connector data
-%% and summary data from Amazon Web Services Discovery Agents. Export of
-%% summary data is limited to two exports per day.
+%% If you enable `ec2RecommendationsPreferences' in `preferences' ,
+%% an Amazon EC2 instance matching the characteristics of each server in
+%% Application Discovery Service is generated. Changing the attributes of the
+%% `ec2RecommendationsPreferences' changes the criteria of the
+%% recommendation.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
@@ -416,8 +422,10 @@ start_export_task(Client, Input, Options)
 
 %% @doc Starts an import task, which allows you to import details of your
 %% on-premises environment directly into Amazon Web Services Migration Hub
-%% without having to use the Application Discovery Service (ADS) tools such
-%% as the Discovery Connector or Discovery Agent.
+%% without having to use the Amazon Web Services Application Discovery
+%% Service (Application Discovery Service) tools such as the Amazon Web
+%% Services Application Discovery Service Agentless Collector or Application
+%% Discovery Agent.
 %%
 %% This gives you the option to perform migration assessment and planning
 %% directly from your imported data, including the ability to group your
@@ -462,7 +470,7 @@ stop_continuous_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopContinuousExport">>, Input, Options).
 
-%% @doc Instructs the specified agents or connectors to stop collecting data.
+%% @doc Instructs the specified agents to stop collecting data.
 stop_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_collection_by_agent_ids(Client, Input, []).
