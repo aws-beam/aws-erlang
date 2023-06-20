@@ -749,13 +749,20 @@ create_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArtifact">>, Input, Options).
 
-%% @doc Creates an Autopilot job.
+%% @doc Creates an Autopilot job also referred to as Autopilot experiment or
+%% AutoML job.
 %%
-%% Find the best-performing model after you run an Autopilot job by calling
-%% DescribeAutoMLJob.
+%% Find the best-performing model after you run an AutoML job by calling
+%% DescribeAutoMLJobV2 (recommended) or DescribeAutoMLJob.
 %%
-%% For information about how to use Autopilot, see Automate Model Development
-%% with Amazon SageMaker Autopilot.
+%% `CreateAutoMLJob' only accepts tabular input data. We recommend using
+%% CreateAutoMLJobV2 for all problem types. `CreateAutoMLJobV2' can
+%% process the same tabular data as its previous version
+%% `CreateAutoMLJob', as well as non-tabular data for problem types such
+%% as image or text classification.
+%%
+%% Find guidelines about how to migrate `CreateAutoMLJob' to
+%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
 create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
@@ -763,17 +770,23 @@ create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
 
-%% @doc Creates an Amazon SageMaker AutoML job that uses non-tabular data
-%% such as images or text for Computer Vision or Natural Language Processing
-%% problems.
+%% @doc Creates an Autopilot job also referred to as Autopilot experiment or
+%% AutoML job V2.
 %%
-%% Find the resulting model after you run an AutoML job V2 by calling
-%% DescribeAutoMLJobV2.
+%% We recommend using CreateAutoMLJobV2 for all problem types.
+%% `CreateAutoMLJobV2' can process the same tabular data as its previous
+%% version `CreateAutoMLJob', as well as non-tabular data for problem
+%% types such as image or text classification.
 %%
-%% To create an `AutoMLJob' using tabular data, see CreateAutoMLJob.
+%% Find guidelines about how to migrate `CreateAutoMLJob' to
+%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
 %%
-%% This API action is callable through SageMaker Canvas only. Calling it
-%% directly from the CLI or an SDK results in an error.
+%% For the list of available problem types supported by
+%% `CreateAutoMLJobV2', see AutoMLProblemTypeConfig.
+%%
+%% Find the best-performing model after you run an AutoML job V2 by calling
+%% DescribeAutoMLJobV2. Calling DescribeAutoMLJob on a AutoML job V2 results
+%% in an error.
 create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
@@ -2329,7 +2342,8 @@ describe_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArtifact">>, Input, Options).
 
-%% @doc Returns information about an Amazon SageMaker AutoML job.
+%% @doc Returns information about an AutoML job created by calling
+%% CreateAutoMLJob.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
@@ -2337,10 +2351,8 @@ describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
 
-%% @doc Returns information about an Amazon SageMaker AutoML V2 job.
-%%
-%% This API action is callable through SageMaker Canvas only. Calling it
-%% directly from the CLI or an SDK results in an error.
+%% @doc Returns information about an AutoML job V2 created by calling
+%% CreateAutoMLJobV2.
 describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).

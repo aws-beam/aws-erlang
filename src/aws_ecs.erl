@@ -412,6 +412,14 @@ delete_service(Client, Input, Options)
 %%
 %% A task definition revision will stay in `DELETE_IN_PROGRESS' status
 %% until all the associated tasks and services have been terminated.
+%%
+%% When you delete all `INACTIVE' task definition revisions, the task
+%% definition name is not displayed in the console and not returned in the
+%% API. If a task definition revisions are in the `DELETE_IN_PROGRESS'
+%% state, the task definition name is displayed in the console and returned
+%% in the API. The task definition name is retained by Amazon ECS and the
+%% revision is incremented the next time you create a task definition with
+%% that name.
 delete_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_definitions(Client, Input, []).
