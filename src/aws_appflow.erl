@@ -69,6 +69,8 @@
          list_tags_for_resource/5,
          register_connector/2,
          register_connector/3,
+         reset_connector_metadata_cache/2,
+         reset_connector_metadata_cache/3,
          start_flow/2,
          start_flow/3,
          stop_flow/2,
@@ -514,6 +516,40 @@ register_connector(Client, Input) ->
 register_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/register-connector"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resets metadata about your connector entities that Amazon AppFlow
+%% stored in its cache.
+%%
+%% Use this action when you want Amazon AppFlow to return the latest
+%% information about the data that you have in a source application.
+%%
+%% Amazon AppFlow returns metadata about your entities when you use the
+%% ListConnectorEntities or DescribeConnectorEntities actions. Following
+%% these actions, Amazon AppFlow caches the metadata to reduce the number of
+%% API requests that it must send to the source application. Amazon AppFlow
+%% automatically resets the cache once every hour, but you can use this
+%% action when you want to get the latest metadata right away.
+reset_connector_metadata_cache(Client, Input) ->
+    reset_connector_metadata_cache(Client, Input, []).
+reset_connector_metadata_cache(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reset-connector-metadata-cache"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

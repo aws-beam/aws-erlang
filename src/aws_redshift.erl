@@ -65,6 +65,8 @@
          create_cluster_snapshot/3,
          create_cluster_subnet_group/2,
          create_cluster_subnet_group/3,
+         create_custom_domain_association/2,
+         create_custom_domain_association/3,
          create_endpoint_access/2,
          create_endpoint_access/3,
          create_event_subscription/2,
@@ -97,6 +99,8 @@
          delete_cluster_snapshot/3,
          delete_cluster_subnet_group/2,
          delete_cluster_subnet_group/3,
+         delete_custom_domain_association/2,
+         delete_custom_domain_association/3,
          delete_endpoint_access/2,
          delete_endpoint_access/3,
          delete_event_subscription/2,
@@ -139,6 +143,8 @@
          describe_cluster_versions/3,
          describe_clusters/2,
          describe_clusters/3,
+         describe_custom_domain_associations/2,
+         describe_custom_domain_associations/3,
          describe_data_shares/2,
          describe_data_shares/3,
          describe_data_shares_for_consumer/2,
@@ -229,6 +235,8 @@
          modify_cluster_snapshot_schedule/3,
          modify_cluster_subnet_group/2,
          modify_cluster_subnet_group/3,
+         modify_custom_domain_association/2,
+         modify_custom_domain_association/3,
          modify_endpoint_access/2,
          modify_endpoint_access/3,
          modify_event_subscription/2,
@@ -496,6 +504,17 @@ create_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSubnetGroup">>, Input, Options).
 
+%% @doc Used to create a custom domain name for a cluster.
+%%
+%% Properties include the custom domain name, the cluster the custom domain
+%% is associated with, and the certificate Amazon Resource Name (ARN).
+create_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_custom_domain_association(Client, Input, []).
+create_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
+
 %% @doc Creates a Redshift-managed VPC endpoint.
 create_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -721,6 +740,15 @@ delete_cluster_subnet_group(Client, Input)
 delete_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSubnetGroup">>, Input, Options).
+
+%% @doc Contains information about deleting a custom domain association for a
+%% cluster.
+delete_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_custom_domain_association(Client, Input, []).
+delete_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
 
 %% @doc Deletes a Redshift-managed VPC endpoint.
 delete_endpoint_access(Client, Input)
@@ -1001,6 +1029,14 @@ describe_clusters(Client, Input)
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
+
+%% @doc Contains information for custom domain associations for a cluster.
+describe_custom_domain_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_custom_domain_associations(Client, Input, []).
+describe_custom_domain_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCustomDomainAssociations">>, Input, Options).
 
 %% @doc Shows the status of any inbound or outbound datashares available in
 %% the specified account.
@@ -1600,6 +1636,14 @@ modify_cluster_subnet_group(Client, Input)
 modify_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterSubnetGroup">>, Input, Options).
+
+%% @doc Contains information for changing a custom domain association.
+modify_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_custom_domain_association(Client, Input, []).
+modify_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCustomDomainAssociation">>, Input, Options).
 
 %% @doc Modifies a Redshift-managed VPC endpoint.
 modify_endpoint_access(Client, Input)
