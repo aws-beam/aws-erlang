@@ -10,6 +10,8 @@
          associate_member/3,
          batch_get_account_status/2,
          batch_get_account_status/3,
+         batch_get_code_snippet/2,
+         batch_get_code_snippet/3,
          batch_get_free_trial_info/2,
          batch_get_free_trial_info/3,
          batch_get_member_ec2_deep_inspection_status/2,
@@ -18,10 +20,14 @@
          batch_update_member_ec2_deep_inspection_status/3,
          cancel_findings_report/2,
          cancel_findings_report/3,
+         cancel_sbom_export/2,
+         cancel_sbom_export/3,
          create_filter/2,
          create_filter/3,
          create_findings_report/2,
          create_findings_report/3,
+         create_sbom_export/2,
+         create_sbom_export/3,
          delete_filter/2,
          delete_filter/3,
          describe_organization_configuration/2,
@@ -42,10 +48,15 @@
          get_delegated_admin_account/3,
          get_ec2_deep_inspection_configuration/2,
          get_ec2_deep_inspection_configuration/3,
+         get_encryption_key/3,
+         get_encryption_key/5,
+         get_encryption_key/6,
          get_findings_report_status/2,
          get_findings_report_status/3,
          get_member/2,
          get_member/3,
+         get_sbom_export/2,
+         get_sbom_export/3,
          list_account_permissions/2,
          list_account_permissions/3,
          list_coverage/2,
@@ -67,6 +78,8 @@
          list_tags_for_resource/5,
          list_usage_totals/2,
          list_usage_totals/3,
+         reset_encryption_key/2,
+         reset_encryption_key/3,
          search_vulnerabilities/2,
          search_vulnerabilities/3,
          tag_resource/3,
@@ -77,6 +90,8 @@
          update_configuration/3,
          update_ec2_deep_inspection_configuration/2,
          update_ec2_deep_inspection_configuration/3,
+         update_encryption_key/2,
+         update_encryption_key/3,
          update_filter/2,
          update_filter/3,
          update_org_ec2_deep_inspection_configuration/2,
@@ -126,6 +141,30 @@ batch_get_account_status(Client, Input) ->
 batch_get_account_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/status/batch/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves code snippets from findings that Amazon Inspector detected
+%% code vulnerabilities in.
+batch_get_code_snippet(Client, Input) ->
+    batch_get_code_snippet(Client, Input, []).
+batch_get_code_snippet(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/codesnippet/batchget"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -243,6 +282,29 @@ cancel_findings_report(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Cancels a software bill of materials (SBOM) report.
+cancel_sbom_export(Client, Input) ->
+    cancel_sbom_export(Client, Input, []).
+cancel_sbom_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sbomexport/cancel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a filter resource using specified filter criteria.
 create_filter(Client, Input) ->
     create_filter(Client, Input, []).
@@ -276,6 +338,29 @@ create_findings_report(Client, Input) ->
 create_findings_report(Client, Input0, Options0) ->
     Method = post,
     Path = ["/reporting/create"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a software bill of materials (SBOM) report.
+create_sbom_export(Client, Input) ->
+    create_sbom_export(Client, Input, []).
+create_sbom_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sbomexport/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -534,6 +619,34 @@ get_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets an encryption key.
+get_encryption_key(Client, ResourceType, ScanType)
+  when is_map(Client) ->
+    get_encryption_key(Client, ResourceType, ScanType, #{}, #{}).
+
+get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, []).
+
+get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/encryptionkey/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType},
+        {<<"scanType">>, ScanType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the status of a findings report.
 get_findings_report_status(Client, Input) ->
     get_findings_report_status(Client, Input, []).
@@ -563,6 +676,29 @@ get_member(Client, Input) ->
 get_member(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets details of a software bill of materials (SBOM) report.
+get_sbom_export(Client, Input) ->
+    get_sbom_export(Client, Input, []).
+get_sbom_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sbomexport/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -813,6 +949,32 @@ list_usage_totals(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Resets an encryption key.
+%%
+%% After the key is reset your resources will be encrypted by an Amazon Web
+%% Services owned key.
+reset_encryption_key(Client, Input) ->
+    reset_encryption_key(Client, Input, []).
+reset_encryption_key(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/encryptionkey/reset"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists Amazon Inspector coverage details for a specific vulnerability.
 search_vulnerabilities(Client, Input) ->
     search_vulnerabilities(Client, Input, []).
@@ -917,6 +1079,32 @@ update_ec2_deep_inspection_configuration(Client, Input) ->
 update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ec2deepinspectionconfiguration/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an encryption key.
+%%
+%% A `ResourceNotFoundException' means that an AWS owned key is being
+%% used for encryption.
+update_encryption_key(Client, Input) ->
+    update_encryption_key(Client, Input, []).
+update_encryption_key(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/encryptionkey/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

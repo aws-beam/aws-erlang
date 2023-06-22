@@ -752,17 +752,18 @@ create_artifact(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job.
 %%
-%% Find the best-performing model after you run an AutoML job by calling
-%% DescribeAutoMLJobV2 (recommended) or DescribeAutoMLJob.
+%% We recommend using the new versions CreateAutoMLJobV2 and
+%% DescribeAutoMLJobV2, which offer backward compatibility.
 %%
-%% `CreateAutoMLJob' only accepts tabular input data. We recommend using
-%% CreateAutoMLJobV2 for all problem types. `CreateAutoMLJobV2' can
-%% process the same tabular data as its previous version
-%% `CreateAutoMLJob', as well as non-tabular data for problem types such
-%% as image or text classification.
+%% `CreateAutoMLJobV2' can manage tabular problem types identical to
+%% those of its previous version `CreateAutoMLJob', as well as
+%% non-tabular problem types such as image or text classification.
 %%
-%% Find guidelines about how to migrate `CreateAutoMLJob' to
+%% Find guidelines about how to migrate a `CreateAutoMLJob' to
 %% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
+%%
+%% You can find the best-performing model after you run an AutoML job by
+%% calling DescribeAutoMLJobV2 (recommended) or DescribeAutoMLJob.
 create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
@@ -773,20 +774,21 @@ create_auto_ml_job(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job V2.
 %%
-%% We recommend using CreateAutoMLJobV2 for all problem types.
-%% `CreateAutoMLJobV2' can process the same tabular data as its previous
-%% version `CreateAutoMLJob', as well as non-tabular data for problem
-%% types such as image or text classification.
+%% CreateAutoMLJobV2 and DescribeAutoMLJobV2 are new versions of
+%% CreateAutoMLJob and DescribeAutoMLJob which offer backward compatibility.
 %%
-%% Find guidelines about how to migrate `CreateAutoMLJob' to
+%% `CreateAutoMLJobV2' can manage tabular problem types identical to
+%% those of its previous version `CreateAutoMLJob', as well as
+%% non-tabular problem types such as image or text classification.
+%%
+%% Find guidelines about how to migrate a `CreateAutoMLJob' to
 %% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
 %%
 %% For the list of available problem types supported by
 %% `CreateAutoMLJobV2', see AutoMLProblemTypeConfig.
 %%
-%% Find the best-performing model after you run an AutoML job V2 by calling
-%% DescribeAutoMLJobV2. Calling DescribeAutoMLJob on a AutoML job V2 results
-%% in an error.
+%% You can find the best-performing model after you run an AutoML job V2 by
+%% calling DescribeAutoMLJobV2.
 create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
@@ -2344,6 +2346,9 @@ describe_artifact(Client, Input, Options)
 
 %% @doc Returns information about an AutoML job created by calling
 %% CreateAutoMLJob.
+%%
+%% AutoML jobs created by calling CreateAutoMLJobV2 cannot be described by
+%% `DescribeAutoMLJob'.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
@@ -2351,8 +2356,8 @@ describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
 
-%% @doc Returns information about an AutoML job V2 created by calling
-%% CreateAutoMLJobV2.
+%% @doc Returns information about an AutoML job created by calling
+%% CreateAutoMLJobV2 or CreateAutoMLJob.
 describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).

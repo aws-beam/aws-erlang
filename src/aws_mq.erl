@@ -57,6 +57,8 @@
          list_users/2,
          list_users/4,
          list_users/5,
+         promote/3,
+         promote/4,
          reboot_broker/3,
          reboot_broker/4,
          update_broker/3,
@@ -108,9 +110,9 @@
 %%
 %% </li> <li>ec2:DescribeVpcs
 %%
-%% </li></ul> For more information, see Create an IAM User and Get Your AWS
-%% Credentials and Never Modify or Delete the Amazon MQ Elastic Network
-%% Interface in the Amazon MQ Developer Guide.
+%% </li></ul> For more information, see Create an IAM User and Get Your
+%% Amazon Web Services Credentials and Never Modify or Delete the Amazon MQ
+%% Elastic Network Interface in the Amazon MQ Developer Guide.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 create_broker(Client, Input0, Options0) ->
@@ -182,6 +184,12 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an ActiveMQ user.
+%%
+%% Do not add personally identifiable information (PII) or other confidential
+%% or sensitive information in broker usernames. Broker usernames are
+%% accessible to other Amazon Web Services services, including CloudWatch
+%% Logs. Broker usernames are not intended to be used for private or
+%% sensitive data.
 create_user(Client, BrokerId, Username, Input) ->
     create_user(Client, BrokerId, Username, Input, []).
 create_user(Client, BrokerId, Username, Input0, Options0) ->
@@ -563,6 +571,30 @@ list_users(Client, BrokerId, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Promotes a data replication replica broker to the primary broker
+%% role.
+promote(Client, BrokerId, Input) ->
+    promote(Client, BrokerId, Input, []).
+promote(Client, BrokerId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/promote"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Reboots a broker.
 %%

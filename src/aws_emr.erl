@@ -78,6 +78,8 @@
          list_studio_session_mappings/3,
          list_studios/2,
          list_studios/3,
+         list_supported_instance_types/2,
+         list_supported_instance_types/3,
          modify_cluster/2,
          modify_cluster/3,
          modify_instance_fleet/2,
@@ -522,6 +524,17 @@ list_studios(Client, Input)
 list_studios(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudios">>, Input, Options).
+
+%% @doc A list of the instance types that Amazon EMR supports.
+%%
+%% You can filter the list by Amazon Web Services Region and Amazon EMR
+%% release.
+list_supported_instance_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_supported_instance_types(Client, Input, []).
+list_supported_instance_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSupportedInstanceTypes">>, Input, Options).
 
 %% @doc Modifies the number of steps that can be executed concurrently for
 %% the cluster specified using ClusterID.

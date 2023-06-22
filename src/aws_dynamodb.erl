@@ -553,9 +553,8 @@ describe_contributor_insights(Client, Input, Options)
 
 %% @doc Returns the regional endpoint information.
 %%
-%% This action must be included in your VPC endpoint policies, or access to
-%% the DescribeEndpoints API will be denied. For more information on policy
-%% permissions, please see Internetwork traffic privacy.
+%% For more information on policy permissions, please see Internetwork
+%% traffic privacy.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
