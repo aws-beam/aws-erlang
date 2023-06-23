@@ -108,6 +108,8 @@
          put_principal_mapping/3,
          query/2,
          query/3,
+         retrieve/2,
+         retrieve/3,
          start_data_source_sync_job/2,
          start_data_source_sync_job/3,
          stop_data_source_sync_job/2,
@@ -829,34 +831,65 @@ put_principal_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPrincipalMapping">>, Input, Options).
 
-%% @doc Searches an active index.
+%% @doc Searches an index given an input query.
 %%
-%% Use this API to search your documents using query. The `Query' API
-%% enables to do faceted search and to filter results based on document
-%% attributes.
+%% You can configure boosting or relevance tuning at the query level to
+%% override boosting at the index level, filter based on document
+%% fields/attributes and faceted search, and filter based on the user or
+%% their group access to documents. You can also include certain fields in
+%% the response that might provide useful additional information.
 %%
-%% It also enables you to provide user context that Amazon Kendra uses to
-%% enforce document access control in the search results.
+%% A query response contains three types of results.
 %%
-%% Amazon Kendra searches your index for text content and question and answer
-%% (FAQ) content. By default the response contains three types of results.
+%% <ul> <li> Relevant suggested answers. The answers can be either a text
+%% excerpt or table excerpt. The answer can be highlighted in the excerpt.
 %%
-%% <ul> <li> Relevant passages
+%% </li> <li> Matching FAQs or questions-answer from your FAQ file.
 %%
-%% </li> <li> Matching FAQs
-%%
-%% </li> <li> Relevant documents
+%% </li> <li> Relevant documents. This result type includes an excerpt of the
+%% document with the document title. The searched terms can be highlighted in
+%% the excerpt.
 %%
 %% </li> </ul> You can specify that the query return only one type of result
-%% using the `QueryResultTypeFilter' parameter.
-%%
-%% Each query returns the 100 most relevant results.
+%% using the `QueryResultTypeFilter' parameter. Each query returns the
+%% 100 most relevant results. If you filter result type to only
+%% question-answers, a maximum of four results are returned. If you filter
+%% result type to only answers, a maximum of three results are returned.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
 query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
+
+%% @doc Retrieves relevant passages or text excerpts given an input query.
+%%
+%% This API is similar to the Query API. However, by default, the `Query'
+%% API only returns excerpt passages of up to 100 token words. With the
+%% `Retrieve' API, you can retrieve longer passages of up to 200 token
+%% words and up to 100 semantically relevant passages. This doesn't
+%% include question-answer or FAQ type responses from your index. The
+%% passages are text excerpts that can be semantically extracted from
+%% multiple documents and multiple parts of the same document. If in extreme
+%% cases your documents produce no relevant passages using the `Retrieve'
+%% API, you can alternatively use the `Query' API.
+%%
+%% You can also do the following:
+%%
+%% <ul> <li> Override boosting at the index level
+%%
+%% </li> <li> Filter based on document fields or attributes
+%%
+%% </li> <li> Filter based on the user or their group access to documents
+%%
+%% </li> </ul> You can also include certain fields in the response that might
+%% provide useful additional information.
+retrieve(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retrieve(Client, Input, []).
+retrieve(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"Retrieve">>, Input, Options).
 
 %% @doc Starts a synchronization job for a data source connector.
 %%

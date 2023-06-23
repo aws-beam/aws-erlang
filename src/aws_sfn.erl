@@ -28,10 +28,16 @@
          create_activity/3,
          create_state_machine/2,
          create_state_machine/3,
+         create_state_machine_alias/2,
+         create_state_machine_alias/3,
          delete_activity/2,
          delete_activity/3,
          delete_state_machine/2,
          delete_state_machine/3,
+         delete_state_machine_alias/2,
+         delete_state_machine_alias/3,
+         delete_state_machine_version/2,
+         delete_state_machine_version/3,
          describe_activity/2,
          describe_activity/3,
          describe_execution/2,
@@ -40,6 +46,8 @@
          describe_map_run/3,
          describe_state_machine/2,
          describe_state_machine/3,
+         describe_state_machine_alias/2,
+         describe_state_machine_alias/3,
          describe_state_machine_for_execution/2,
          describe_state_machine_for_execution/3,
          get_activity_task/2,
@@ -52,10 +60,16 @@
          list_executions/3,
          list_map_runs/2,
          list_map_runs/3,
+         list_state_machine_aliases/2,
+         list_state_machine_aliases/3,
+         list_state_machine_versions/2,
+         list_state_machine_versions/3,
          list_state_machines/2,
          list_state_machines/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         publish_state_machine_version/2,
+         publish_state_machine_version/3,
          send_task_failure/2,
          send_task_failure/3,
          send_task_heartbeat/2,
@@ -75,7 +89,9 @@
          update_map_run/2,
          update_map_run/3,
          update_state_machine/2,
-         update_state_machine/3]).
+         update_state_machine/3,
+         update_state_machine_alias/2,
+         update_state_machine_alias/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -118,6 +134,9 @@ create_activity(Client, Input, Options)
 %% structured language. For more information, see Amazon States Language in
 %% the Step Functions User Guide.
 %%
+%% If you set the `publish' parameter of this API action to `true',
+%% it publishes version `1' as the first revision of the state machine.
+%%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
@@ -125,17 +144,63 @@ create_activity(Client, Input, Options)
 %% create a duplicate resource if it was already created.
 %% `CreateStateMachine''s idempotency check is based on the state
 %% machine `name', `definition', `type',
-%% `LoggingConfiguration' and `TracingConfiguration'. If a following
-%% request has a different `roleArn' or `tags', Step Functions will
-%% ignore these differences and treat it as an idempotent request of the
-%% previous. In this case, `roleArn' and `tags' will not be updated,
-%% even if they are different.
+%% `LoggingConfiguration', and `TracingConfiguration'. The check is
+%% also based on the `publish' and `versionDescription' parameters.
+%% If a following request has a different `roleArn' or `tags', Step
+%% Functions will ignore these differences and treat it as an idempotent
+%% request of the previous. In this case, `roleArn' and `tags' will
+%% not be updated, even if they are different.
 create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
 create_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachine">>, Input, Options).
+
+%% @doc Creates an alias for a state machine that points to one or two
+%% versions of the same state machine.
+%%
+%% You can set your application to call `StartExecution' with an alias
+%% and update the version the alias uses without changing the client's
+%% code.
+%%
+%% You can also map an alias to split `StartExecution' requests between
+%% two versions of a state machine. To do this, add a second
+%% `RoutingConfig' object in the `routingConfiguration' parameter.
+%% You must also specify the percentage of execution run requests each
+%% version should receive in both `RoutingConfig' objects. Step Functions
+%% randomly chooses which version runs a given execution based on the
+%% percentage you specify.
+%%
+%% To create an alias that points to a single version, specify a single
+%% `RoutingConfig' object with a `weight' set to 100.
+%%
+%% You can create up to 100 aliases for each state machine. You must delete
+%% unused aliases using the `DeleteStateMachineAlias' API action.
+%%
+%% `CreateStateMachineAlias' is an idempotent API. Step Functions bases
+%% the idempotency check on the `stateMachineArn', `description',
+%% `name', and `routingConfiguration' parameters. Requests that
+%% contain the same values for these parameters return a successful
+%% idempotent response without creating a duplicate resource.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `DescribeStateMachineAlias'
+%%
+%% </li> <li> `ListStateMachineAliases'
+%%
+%% </li> <li> `UpdateStateMachineAlias'
+%%
+%% </li> <li> `DeleteStateMachineAlias'
+%%
+%% </li> </ul>
+create_state_machine_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_state_machine_alias(Client, Input, []).
+create_state_machine_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStateMachineAlias">>, Input, Options).
 
 %% @doc Deletes an activity.
 delete_activity(Client, Input)
@@ -150,17 +215,31 @@ delete_activity(Client, Input, Options)
 %% This is an asynchronous operation: It sets the state machine's status
 %% to `DELETING' and begins the deletion process.
 %%
-%% If the given state machine Amazon Resource Name (ARN) is a qualified state
-%% machine ARN, it will fail with ValidationException.
+%% A qualified state machine ARN can either refer to a Distributed Map state
+%% defined within a state machine, a version ARN, or an alias ARN.
 %%
-%% A qualified state machine ARN refers to a Distributed Map state defined
-%% within a state machine. For example, the qualified state machine ARN
-%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
-%% refers to a Distributed Map state with a label `mapStateLabel' in the
-%% state machine named `stateMachineName'.
+%% The following are some examples of qualified and unqualified state machine
+%% ARNs:
 %%
-%% For `EXPRESS' state machines, the deletion will happen eventually
-%% (usually less than a minute). Running executions may emit logs after
+%% <ul> <li> The following qualified state machine ARN refers to a
+%% Distributed Map state with a label `mapStateLabel' in a state machine
+%% named `myStateMachine'.
+%%
+%% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
+%%
+%% If you provide a qualified state machine ARN that refers to a Distributed
+%% Map state, the request fails with `ValidationException'.
+%%
+%% </li> <li> The following unqualified state machine ARN refers to a state
+%% machine named `myStateMachine'.
+%%
+%% `arn:partition:states:region:account-id:stateMachine:myStateMachine'
+%%
+%% </li> </ul> This API action also deletes all versions and aliases
+%% associated with a state machine.
+%%
+%% For `EXPRESS' state machines, the deletion happens eventually (usually
+%% in less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine' API is called.
 delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -168,6 +247,56 @@ delete_state_machine(Client, Input)
 delete_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachine">>, Input, Options).
+
+%% @doc Deletes a state machine alias.
+%%
+%% After you delete a state machine alias, you can't use it to start
+%% executions. When you delete a state machine alias, Step Functions
+%% doesn't delete the state machine versions that alias references.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `CreateStateMachineAlias'
+%%
+%% </li> <li> `DescribeStateMachineAlias'
+%%
+%% </li> <li> `ListStateMachineAliases'
+%%
+%% </li> <li> `UpdateStateMachineAlias'
+%%
+%% </li> </ul>
+delete_state_machine_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_state_machine_alias(Client, Input, []).
+delete_state_machine_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStateMachineAlias">>, Input, Options).
+
+%% @doc Deletes a state machine version.
+%%
+%% After you delete a version, you can't call `StartExecution' using
+%% that version's ARN or use the version with a state machine alias.
+%%
+%% Deleting a state machine version won't terminate its in-progress
+%% executions.
+%%
+%% You can't delete a state machine version currently referenced by one
+%% or more aliases. Before you delete a version, you must either delete the
+%% aliases or update them to point to another state machine version.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `PublishStateMachineVersion'
+%%
+%% </li> <li> `ListStateMachineVersions'
+%%
+%% </li> </ul>
+delete_state_machine_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_state_machine_version(Client, Input, []).
+delete_state_machine_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStateMachineVersion">>, Input, Options).
 
 %% @doc Describes an activity.
 %%
@@ -180,18 +309,21 @@ describe_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivity">>, Input, Options).
 
-%% @doc Provides all information about a state machine execution, such as the
+%% @doc Provides information about a state machine execution, such as the
 %% state machine associated with the execution, the execution input and
 %% output, and relevant execution metadata.
 %%
-%% Use this API action to return the Map Run ARN if the execution was
-%% dispatched by a Map Run.
+%% Use this API action to return the Map Run Amazon Resource Name (ARN) if
+%% the execution was dispatched by a Map Run.
+%%
+%% If you specify a version or alias ARN when you call the
+%% `StartExecution' API action, `DescribeExecution' returns that ARN.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
-%% This API action is not supported by `EXPRESS' state machine executions
-%% unless they were dispatched by a Map Run.
+%% Executions of an `EXPRESS' state machinearen't supported by
+%% `DescribeExecution' unless a Map Run dispatched them.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
@@ -214,14 +346,37 @@ describe_map_run(Client, Input, Options)
 %% @doc Provides information about a state machine's definition, its IAM
 %% role Amazon Resource Name (ARN), and configuration.
 %%
-%% If the state machine ARN is a qualified state machine ARN, the response
-%% returned includes the `Map' state's label.
+%% A qualified state machine ARN can either refer to a Distributed Map state
+%% defined within a state machine, a version ARN, or an alias ARN.
 %%
-%% A qualified state machine ARN refers to a Distributed Map state defined
-%% within a state machine. For example, the qualified state machine ARN
-%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
-%% refers to a Distributed Map state with a label `mapStateLabel' in the
-%% state machine named `stateMachineName'.
+%% The following are some examples of qualified and unqualified state machine
+%% ARNs:
+%%
+%% <ul> <li> The following qualified state machine ARN refers to a
+%% Distributed Map state with a label `mapStateLabel' in a state machine
+%% named `myStateMachine'.
+%%
+%% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
+%%
+%% If you provide a qualified state machine ARN that refers to a Distributed
+%% Map state, the request fails with `ValidationException'.
+%%
+%% </li> <li> The following qualified state machine ARN refers to an alias
+%% named `PROD'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%%
+%% If you provide a qualified state machine ARN that refers to a version ARN
+%% or an alias ARN, the request starts execution for that version or alias.
+%%
+%% </li> <li> The following unqualified state machine ARN refers to a state
+%% machine named `myStateMachine'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%%
+%% </li> </ul> This API action returns the details for a state machine
+%% version if the `stateMachineArn' you specify is a state machine
+%% version ARN.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -232,12 +387,32 @@ describe_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachine">>, Input, Options).
 
+%% @doc Returns details about a state machine alias.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `CreateStateMachineAlias'
+%%
+%% </li> <li> `ListStateMachineAliases'
+%%
+%% </li> <li> `UpdateStateMachineAlias'
+%%
+%% </li> <li> `DeleteStateMachineAlias'
+%%
+%% </li> </ul>
+describe_state_machine_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_state_machine_alias(Client, Input, []).
+describe_state_machine_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStateMachineAlias">>, Input, Options).
+
 %% @doc Provides information about a state machine's definition, its
 %% execution role ARN, and configuration.
 %%
-%% If an execution was dispatched by a Map Run, the Map Run is returned in
-%% the response. Additionally, the state machine returned will be the state
-%% machine associated with the Map Run.
+%% If a Map Run dispatched the execution, this action returns the Map Run
+%% Amazon Resource Name (ARN) in the response. The state machine returned is
+%% the state machine associated with the Map Run.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -320,6 +495,9 @@ list_activities(Client, Input, Options)
 %% state machine Amazon Resource Name (ARN), or those related to a Map Run by
 %% specifying a Map Run ARN.
 %%
+%% You can also provide a state machine alias ARN or version ARN to list the
+%% executions associated with a specific alias or version.
+%%
 %% Results are sorted by time, with the most recent execution first.
 %%
 %% If `nextToken' is returned, there are more results available. The
@@ -352,6 +530,65 @@ list_map_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMapRuns">>, Input, Options).
 
+%% @doc Lists aliases for a specified state machine ARN.
+%%
+%% Results are sorted by time, with the most recently created aliases listed
+%% first.
+%%
+%% To list aliases that reference a state machine version, you can specify
+%% the version ARN in the `stateMachineArn' parameter.
+%%
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `CreateStateMachineAlias'
+%%
+%% </li> <li> `DescribeStateMachineAlias'
+%%
+%% </li> <li> `UpdateStateMachineAlias'
+%%
+%% </li> <li> `DeleteStateMachineAlias'
+%%
+%% </li> </ul>
+list_state_machine_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_state_machine_aliases(Client, Input, []).
+list_state_machine_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStateMachineAliases">>, Input, Options).
+
+%% @doc Lists versions for the specified state machine Amazon Resource Name
+%% (ARN).
+%%
+%% The results are sorted in descending order of the version creation time.
+%%
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `PublishStateMachineVersion'
+%%
+%% </li> <li> `DeleteStateMachineVersion'
+%%
+%% </li> </ul>
+list_state_machine_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_state_machine_versions(Client, Input, []).
+list_state_machine_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStateMachineVersions">>, Input, Options).
+
 %% @doc Lists the existing state machines.
 %%
 %% If `nextToken' is returned, there are more results available. The
@@ -380,6 +617,39 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Creates a version from the current revision of a state machine.
+%%
+%% Use versions to create immutable snapshots of your state machine. You can
+%% start executions from versions either directly or with an alias. To create
+%% an alias, use `CreateStateMachineAlias'.
+%%
+%% You can publish up to 1000 versions for each state machine. You must
+%% manually delete unused versions using the `DeleteStateMachineVersion'
+%% API action.
+%%
+%% `PublishStateMachineVersion' is an idempotent API. It doesn't
+%% create a duplicate state machine version if it already exists for the
+%% current revision. Step Functions bases
+%% `PublishStateMachineVersion''s idempotency check on the
+%% `stateMachineArn', `name', and `revisionId' parameters.
+%% Requests with the same parameters return a successful idempotent response.
+%% If you don't specify a `revisionId', Step Functions checks for a
+%% previously published version of the state machine's current revision.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `DeleteStateMachineVersion'
+%%
+%% </li> <li> `ListStateMachineVersions'
+%%
+%% </li> </ul>
+publish_state_machine_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    publish_state_machine_version(Client, Input, []).
+publish_state_machine_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PublishStateMachineVersion">>, Input, Options).
 
 %% @doc Used by activity workers and task states using the callback pattern
 %% to report that the task identified by the `taskToken' failed.
@@ -425,23 +695,50 @@ send_task_success(Client, Input, Options)
 
 %% @doc Starts a state machine execution.
 %%
-%% If the given state machine Amazon Resource Name (ARN) is a qualified state
-%% machine ARN, it will fail with ValidationException.
+%% A qualified state machine ARN can either refer to a Distributed Map state
+%% defined within a state machine, a version ARN, or an alias ARN.
 %%
-%% A qualified state machine ARN refers to a Distributed Map state defined
-%% within a state machine. For example, the qualified state machine ARN
-%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
-%% refers to a Distributed Map state with a label `mapStateLabel' in the
-%% state machine named `stateMachineName'.
+%% The following are some examples of qualified and unqualified state machine
+%% ARNs:
+%%
+%% <ul> <li> The following qualified state machine ARN refers to a
+%% Distributed Map state with a label `mapStateLabel' in a state machine
+%% named `myStateMachine'.
+%%
+%% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
+%%
+%% If you provide a qualified state machine ARN that refers to a Distributed
+%% Map state, the request fails with `ValidationException'.
+%%
+%% </li> <li> The following qualified state machine ARN refers to an alias
+%% named `PROD'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%%
+%% If you provide a qualified state machine ARN that refers to a version ARN
+%% or an alias ARN, the request starts execution for that version or alias.
+%%
+%% </li> <li> The following unqualified state machine ARN refers to a state
+%% machine named `myStateMachine'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%%
+%% </li> </ul> If you start an execution with an unqualified state machine
+%% ARN, Step Functions uses the latest revision of the state machine for the
+%% execution.
+%%
+%% To start executions of a state machine version, call `StartExecution'
+%% and provide the version ARN or the ARN of an alias that points to the
+%% version.
 %%
 %% `StartExecution' is idempotent for `STANDARD' workflows. For a
-%% `STANDARD' workflow, if `StartExecution' is called with the same
-%% name and input as a running execution, the call will succeed and return
-%% the same response as the original request. If the execution is closed or
-%% if the input is different, it will return a `400
-%% ExecutionAlreadyExists' error. Names can be reused after 90 days.
+%% `STANDARD' workflow, if you call `StartExecution' with the same
+%% name and input as a running execution, the call succeeds and return the
+%% same response as the original request. If the execution is closed or if
+%% the input is different, it returns a `400 ExecutionAlreadyExists'
+%% error. You can reuse names after 90 days.
 %%
-%% `StartExecution' is not idempotent for `EXPRESS' workflows.
+%% `StartExecution' isn't idempotent for `EXPRESS' workflows.
 start_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_execution(Client, Input, []).
@@ -516,18 +813,51 @@ update_map_run(Client, Input, Options)
 %% `roleArn'. You must include at least one of `definition' or
 %% `roleArn' or you will receive a `MissingRequiredParameter' error.
 %%
-%% If the given state machine Amazon Resource Name (ARN) is a qualified state
-%% machine ARN, it will fail with ValidationException.
-%%
 %% A qualified state machine ARN refers to a Distributed Map state defined
 %% within a state machine. For example, the qualified state machine ARN
 %% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
 %% refers to a Distributed Map state with a label `mapStateLabel' in the
 %% state machine named `stateMachineName'.
 %%
-%% All `StartExecution' calls within a few seconds will use the updated
+%% A qualified state machine ARN can either refer to a Distributed Map state
+%% defined within a state machine, a version ARN, or an alias ARN.
+%%
+%% The following are some examples of qualified and unqualified state machine
+%% ARNs:
+%%
+%% <ul> <li> The following qualified state machine ARN refers to a
+%% Distributed Map state with a label `mapStateLabel' in a state machine
+%% named `myStateMachine'.
+%%
+%% `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel'
+%%
+%% If you provide a qualified state machine ARN that refers to a Distributed
+%% Map state, the request fails with `ValidationException'.
+%%
+%% </li> <li> The following qualified state machine ARN refers to an alias
+%% named `PROD'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine:PROD&gt;'
+%%
+%% If you provide a qualified state machine ARN that refers to a version ARN
+%% or an alias ARN, the request starts execution for that version or alias.
+%%
+%% </li> <li> The following unqualified state machine ARN refers to a state
+%% machine named `myStateMachine'.
+%%
+%% `arn:&lt;partition&gt;:states:&lt;region&gt;:&lt;account-id&gt;:stateMachine:&lt;myStateMachine&gt;'
+%%
+%% </li> </ul> After you update your state machine, you can set the
+%% `publish' parameter to `true' in the same action to publish a new
+%% version. This way, you can opt-in to strict versioning of your state
+%% machine.
+%%
+%% Step Functions assigns monotonically increasing integers for state machine
+%% versions, starting at version number 1.
+%%
+%% All `StartExecution' calls within a few seconds use the updated
 %% `definition' and `roleArn'. Executions started immediately after
-%% calling `UpdateStateMachine' may use the previous state machine
+%% you call `UpdateStateMachine' may use the previous state machine
 %% `definition' and `roleArn'.
 update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -535,6 +865,40 @@ update_state_machine(Client, Input)
 update_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachine">>, Input, Options).
+
+%% @doc Updates the configuration of an existing state machine alias by
+%% modifying its `description' or `routingConfiguration'.
+%%
+%% You must specify at least one of the `description' or
+%% `routingConfiguration' parameters to update a state machine alias.
+%%
+%% `UpdateStateMachineAlias' is an idempotent API. Step Functions bases
+%% the idempotency check on the `stateMachineAliasArn',
+%% `description', and `routingConfiguration' parameters. Requests
+%% with the same parameters return an idempotent response.
+%%
+%% This operation is eventually consistent. All `StartExecution' requests
+%% made within a few seconds use the latest alias configuration. Executions
+%% started immediately after calling `UpdateStateMachineAlias' may use
+%% the previous routing configuration.
+%%
+%% Related operations:
+%%
+%% <ul> <li> `CreateStateMachineAlias'
+%%
+%% </li> <li> `DescribeStateMachineAlias'
+%%
+%% </li> <li> `ListStateMachineAliases'
+%%
+%% </li> <li> `DeleteStateMachineAlias'
+%%
+%% </li> </ul>
+update_state_machine_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_state_machine_alias(Client, Input, []).
+update_state_machine_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStateMachineAlias">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

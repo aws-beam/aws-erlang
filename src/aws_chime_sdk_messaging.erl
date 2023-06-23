@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon Chime SDK Messaging APIs in this section allow software
+%% @doc The Amazon Chime SDK messaging APIs in this section allow software
 %% developers to send and receive messages in custom messaging applications.
 %%
 %% These APIs depend on the frameworks provided by the Amazon Chime SDK
-%% Identity APIs. For more information about the messaging APIs, see Amazon
+%% identity APIs. For more information about the messaging APIs, see Amazon
 %% Chime SDK messaging.
 -module(aws_chime_sdk_messaging).
 
@@ -199,7 +199,8 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Calls back Chime SDK Messaging with a processing response message.
+%% @doc Calls back Amazon Chime SDK messaging with a processing response
+%% message.
 %%
 %% This should be invoked from the processor Lambda. This is a developer API.
 %%
@@ -319,7 +320,7 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %%
 %% </li> </ol> Channel flows don't process Control or System messages.
 %% For more information about the message types provided by Chime SDK
-%% Messaging, refer to Message types in the Amazon Chime developer guide.
+%% messaging, refer to Message types in the Amazon Chime developer guide.
 create_channel_flow(Client, Input) ->
     create_channel_flow(Client, Input, []).
 create_channel_flow(Client, Input0, Options0) ->
@@ -908,8 +909,8 @@ disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) 
 %% @doc Gets the membership preferences of an `AppInstanceUser' or
 %% `AppInstanceBot' for the specified channel.
 %%
-%% A user or a bot must be a member of the channel and own the membership to
-%% be able to retrieve membership preferences. Users or bots in the
+%% A user or a bot must be a member of the channel and own the membership in
+%% order to retrieve membership preferences. Users or bots in the
 %% `AppInstanceAdmin' and channel moderator roles can't retrieve
 %% preferences for other users or bots. Banned users or bots can't
 %% retrieve membership preferences for the channel from which they are
@@ -994,7 +995,7 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
 %%
 %% </dd> <dt>FAILED</dt> <dd> Processing failed
 %%
-%% </dd> <dt>DENIED</dt> <dd> Messasge denied by the processor
+%% </dd> <dt>DENIED</dt> <dd> Message denied by the processor
 %%
 %% </dd> </dl> This API does not return statuses for denied messages, because
 %% we don't store them once the processor denies them.
@@ -1192,7 +1193,7 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all channels that anr `AppInstanceUser' or
+%% @doc Lists all channels that an `AppInstanceUser' or
 %% `AppInstanceBot' is a part of.
 %%
 %% Only an `AppInstanceAdmin' can call the API with a user ARN that is
@@ -1533,13 +1534,13 @@ put_channel_expiration_settings(Client, ChannelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the membership preferences of an `AppInstanceUser' or
-%% `AppIntanceBot' for the specified channel.
+%% `AppInstanceBot' for the specified channel.
 %%
 %% The user or bot must be a member of the channel. Only the user or bot who
 %% owns the membership can set preferences. Users or bots in the
 %% `AppInstanceAdmin' and channel moderator roles can't set
-%% preferences for other users or users. Banned users or bots can't set
-%% membership preferences for the channel from which they are banned.
+%% preferences for other users. Banned users or bots can't set membership
+%% preferences for the channel from which they are banned.
 %%
 %% The x-amz-chime-bearer request header is mandatory. Use the ARN of an
 %% `AppInstanceUser' or `AppInstanceBot' that makes the API call as
@@ -1666,8 +1667,11 @@ search_channels(Client, Input0, Options0) ->
 %% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
 %% as the value in the header.
 %%
-%% Also, `STANDARD' messages can contain 4KB of data and the 1KB of
-%% metadata. `CONTROL' messages can contain 30 bytes of data and no
+%% Also, `STANDARD' messages can be up to 4KB in size and contain
+%% metadata. Metadata is arbitrary, and you can use it in a variety of ways,
+%% such as containing a link to an attachment.
+%%
+%% `CONTROL' messages are limited to 30 bytes and do not contain
 %% metadata.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
