@@ -1286,7 +1286,7 @@ describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
 
-%% @doc Returns information about Amazon Aurora DB clusters and Multi-AZ DB
+%% @doc Describes existing Amazon Aurora DB clusters and Multi-AZ DB
 %% clusters.
 %%
 %% This API supports pagination.
@@ -1330,7 +1330,7 @@ describe_db_instance_automated_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstanceAutomatedBackups">>, Input, Options).
 
-%% @doc Returns information about provisioned RDS instances.
+%% @doc Describes provisioned RDS instances.
 %%
 %% This API supports pagination.
 %%
@@ -1829,7 +1829,7 @@ modify_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCustomDBEngineVersion">>, Input, Options).
 
-%% @doc Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB
+%% @doc Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB
 %% cluster.
 %%
 %% You can change one or more settings by specifying these parameters and the

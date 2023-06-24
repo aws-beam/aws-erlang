@@ -58,14 +58,14 @@
 %% operation. To help you understand the purpose of each, the following
 %% naming convention is used for the structures:
 %%
-%% <ul> <li> Parameters that end in `Detail' are used in `Get'
-%% operations.
+%% <ul> <li> Parameter type structures that end in `Detail' are used in
+%% `Get' operations.
 %%
-%% </li> <li> Parameters that end in `Item' are used in `List'
-%% operations.
+%% </li> <li> Parameter type structures that end in `Item' are used in
+%% `List' operations.
 %%
-%% </li> <li> Parameters that use neither suffix are used in the mutating
-%% (create and update) operations.
+%% </li> <li> Parameter type structures that use neither suffix are used in
+%% the mutating (create and update) operations.
 %%
 %% </li> </ul>
 -module(aws_verifiedpermissions).
@@ -189,6 +189,9 @@ create_policy(Client, Input, Options)
 %% @doc Creates a policy store.
 %%
 %% A policy store is a container for policy resources.
+%%
+%% Although Cedar supports multiple namespaces, Verified Permissions
+%% currently supports only one namespace per policy store.
 create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
