@@ -351,6 +351,8 @@
          search_queues/3,
          search_quick_connects/2,
          search_quick_connects/3,
+         search_resource_tags/2,
+         search_resource_tags/3,
          search_routing_profiles/2,
          search_routing_profiles/3,
          search_security_profiles/2,
@@ -789,6 +791,24 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 %% You can call the SearchAvailablePhoneNumbers API for available phone
 %% numbers that you can claim. Call the DescribePhoneNumber API to verify the
 %% status of a previous ClaimPhoneNumber operation.
+%%
+%% If you plan to claim and release numbers frequently during a 30 day
+%% period, contact us for a service quota exception. Otherwise, it is
+%% possible you will be blocked from claiming and releasing any more numbers
+%% until 30 days past the oldest number released has expired.
+%%
+%% By default you can claim and release up to 200% of your maximum number of
+%% active phone numbers during any 30 day period. If you claim and release
+%% phone numbers using the UI or API during a rolling 30 day cycle that
+%% exceeds 200% of your phone number service level quota, you will be blocked
+%% from claiming any more numbers until 30 days past the oldest number
+%% released has expired.
+%%
+%% For example, if you already have 99 claimed numbers and a service level
+%% quota of 99 phone numbers, and in any 30 day period you release 99, claim
+%% 99, and then release 99, you will have exceeded the 200% limit. At that
+%% point you are blocked from claiming any more numbers until you open an
+%% Amazon Web Services support ticket.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 claim_phone_number(Client, Input0, Options0) ->
@@ -4041,6 +4061,24 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% period of 30 days. It cannot be searched for or claimed again until the
 %% period has ended. If you accidentally release a phone number, contact
 %% Amazon Web Services Support.
+%%
+%% If you plan to claim and release numbers frequently during a 30 day
+%% period, contact us for a service quota exception. Otherwise, it is
+%% possible you will be blocked from claiming and releasing any more numbers
+%% until 30 days past the oldest number released has expired.
+%%
+%% By default you can claim and release up to 200% of your maximum number of
+%% active phone numbers during any 30 day period. If you claim and release
+%% phone numbers using the UI or API during a rolling 30 day cycle that
+%% exceeds 200% of your phone number service level quota, you will be blocked
+%% from claiming any more numbers until 30 days past the oldest number
+%% released has expired.
+%%
+%% For example, if you already have 99 claimed numbers and a service level
+%% quota of 99 phone numbers, and in any 30 day period you release 99, claim
+%% 99, and then release 99, you will have exceeded the 200% limit. At that
+%% point you are blocked from claiming any more numbers until you open an
+%% Amazon Web Services support ticket.
 release_phone_number(Client, PhoneNumberId, Input) ->
     release_phone_number(Client, PhoneNumberId, Input, []).
 release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -4228,6 +4266,30 @@ search_quick_connects(Client, Input) ->
 search_quick_connects(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-quick-connects"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches tags used in an Amazon Connect instance using optional
+%% search criteria.
+search_resource_tags(Client, Input) ->
+    search_resource_tags(Client, Input, []).
+search_resource_tags(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-resource-tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

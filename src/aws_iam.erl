@@ -139,6 +139,8 @@
          get_instance_profile/3,
          get_login_profile/2,
          get_login_profile/3,
+         get_mfa_device/2,
+         get_mfa_device/3,
          get_open_id_connect_provider/2,
          get_open_id_connect_provider/3,
          get_organizations_access_report/2,
@@ -381,7 +383,7 @@ add_user_to_group(Client, Input, Options)
 %% @doc Attaches the specified managed policy to the specified IAM group.
 %%
 %% You use this operation to attach a managed policy to a group. To embed an
-%% inline policy in a group, use `PutGroupPolicy'.
+%% inline policy in a group, use `PutGroupPolicy' .
 %%
 %% As a best practice, you can validate your IAM policies. To learn more, see
 %% Validating IAM policies in the IAM User Guide.
@@ -402,11 +404,11 @@ attach_group_policy(Client, Input, Options)
 %%
 %% You cannot use a managed policy as the role's trust policy. The
 %% role's trust policy is created at the same time as the role, using
-%% `CreateRole'. You can update a role's trust policy using
-%% `UpdateAssumeRolePolicy'.
+%% `CreateRole' . You can update a role's trust policy using
+%% `UpdateAssumerolePolicy' .
 %%
 %% Use this operation to attach a managed policy to a role. To embed an
-%% inline policy in a role, use `PutRolePolicy'. For more information
+%% inline policy in a role, use `PutRolePolicy' . For more information
 %% about policies, see Managed policies and inline policies in the IAM User
 %% Guide.
 %%
@@ -422,7 +424,7 @@ attach_role_policy(Client, Input, Options)
 %% @doc Attaches the specified managed policy to the specified user.
 %%
 %% You use this operation to attach a managed policy to a user. To embed an
-%% inline policy in a user, use `PutUserPolicy'.
+%% inline policy in a user, use `PutUserPolicy' .
 %%
 %% As a best practice, you can validate your IAM policies. To learn more, see
 %% Validating IAM policies in the IAM User Guide.
@@ -1592,6 +1594,14 @@ get_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoginProfile">>, Input, Options).
 
+%% @doc Retrieves information about an MFA device for a specified user.
+get_mfa_device(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mfa_device(Client, Input, []).
+get_mfa_device(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMFADevice">>, Input, Options).
+
 %% @doc Returns information about the specified OpenID Connect (OIDC)
 %% provider resource object in IAM.
 get_open_id_connect_provider(Client, Input)
@@ -2527,8 +2537,8 @@ list_virtual_mfa_devices(Client, Input, Options)
 %% specified IAM group.
 %%
 %% A user can also have managed policies attached to it. To attach a managed
-%% policy to a group, use `AttachGroupPolicy'. To create a new managed
-%% policy, use `CreatePolicy'. For information about policies, see
+%% policy to a group, use `AttachGroupPolicy' . To create a new managed
+%% policy, use `CreatePolicy' . For information about policies, see
 %% Managed policies and inline policies in the IAM User Guide.
 %%
 %% For information about the maximum number of inline policies that you can
@@ -2570,14 +2580,14 @@ put_role_permissions_boundary(Client, Input, Options)
 %%
 %% When you embed an inline policy in a role, the inline policy is used as
 %% part of the role's access (permissions) policy. The role's trust
-%% policy is created at the same time as the role, using `CreateRole'.
+%% policy is created at the same time as the role, using `CreateRole' .
 %% You can update a role's trust policy using
-%% `UpdateAssumeRolePolicy'. For more information about IAM roles, see
+%% `UpdateAssumerolePolicy' . For more information about IAM roles, see
 %% Using roles to delegate permissions and federate identities.
 %%
 %% A role can also have a managed policy attached to it. To attach a managed
-%% policy to a role, use `AttachRolePolicy'. To create a new managed
-%% policy, use `CreatePolicy'. For information about policies, see
+%% policy to a role, use `AttachRolePolicy' . To create a new managed
+%% policy, use `CreatePolicy' . For information about policies, see
 %% Managed policies and inline policies in the IAM User Guide.
 %%
 %% For information about the maximum number of inline policies that you can
@@ -2616,8 +2626,8 @@ put_user_permissions_boundary(Client, Input, Options)
 %% specified IAM user.
 %%
 %% An IAM user can also have a managed policy attached to it. To attach a
-%% managed policy to a user, use `AttachUserPolicy'. To create a new
-%% managed policy, use `CreatePolicy'. For information about policies,
+%% managed policy to a user, use `AttachUserPolicy' . To create a new
+%% managed policy, use `CreatePolicy' . For information about policies,
 %% see Managed policies and inline policies in the IAM User Guide.
 %%
 %% For information about the maximum number of inline policies that you can
