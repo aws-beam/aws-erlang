@@ -601,14 +601,23 @@ ping(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Starts an update of the specified network resource.
+%% @doc Use this action to do the following tasks:
 %%
-%% After you submit a request to replace or return a network resource, the
-%% status of the network resource is `CREATING_SHIPPING_LABEL'. The
-%% shipping label is available when the status of the network resource is
-%% `PENDING_RETURN'. After the network resource is successfully returned,
-%% its status is `DELETED'. For more information, see Return a radio
-%% unit.
+%% <ul> <li> Update the duration and renewal status of the commitment period
+%% for a radio unit.
+%%
+%% The update goes into effect immediately.
+%%
+%% </li> <li> Request a replacement for a network resource.
+%%
+%% </li> <li> Request that you return a network resource.
+%%
+%% </li> </ul> After you submit a request to replace or return a network
+%% resource, the status of the network resource changes to
+%% `CREATING_SHIPPING_LABEL'. The shipping label is available when the
+%% status of the network resource is `PENDING_RETURN'. After the network
+%% resource is successfully returned, its status changes to `DELETED'.
+%% For more information, see Return a radio unit.
 start_network_resource_update(Client, Input) ->
     start_network_resource_update(Client, Input, []).
 start_network_resource_update(Client, Input0, Options0) ->

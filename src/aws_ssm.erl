@@ -483,8 +483,8 @@ create_maintenance_window(Client, Input, Options)
 %% @doc Creates a new OpsItem.
 %%
 %% You must have permission in Identity and Access Management (IAM) to create
-%% a new OpsItem. For more information, see Getting started with OpsCenter in
-%% the Amazon Web Services Systems Manager User Guide.
+%% a new OpsItem. For more information, see Set up OpsCenter in the Amazon
+%% Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
@@ -834,18 +834,21 @@ describe_instance_associations_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceAssociationsStatus">>, Input, Options).
 
-%% @doc Describes one or more of your managed nodes, including information
-%% about the operating system platform, the version of SSM Agent installed on
-%% the managed node, node status, and so on.
+%% @doc Provides information about one or more of your managed nodes,
+%% including the operating system platform, SSM Agent version, association
+%% status, and IP address.
 %%
-%% If you specify one or more managed node IDs, it returns information for
+%% This operation does not return information for nodes that are either
+%% Stopped or Terminated.
+%%
+%% If you specify one or more node IDs, the operation returns information for
 %% those managed nodes. If you don't specify node IDs, it returns
 %% information for all your managed nodes. If you specify a node ID that
 %% isn't valid or a node that you don't own, you receive an error.
 %%
-%% The `IamRole' field for this API operation is the Identity and Access
-%% Management (IAM) role assigned to on-premises managed nodes. This call
-%% doesn't return the IAM role for EC2 instances.
+%% The `IamRole' field returned for this API operation is the Identity
+%% and Access Management (IAM) role assigned to on-premises managed nodes.
+%% This operation does not return the IAM role for EC2 instances.
 describe_instance_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_information(Client, Input, []).
@@ -968,8 +971,8 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 %% @doc Query a set of OpsItems.
 %%
 %% You must have permission in Identity and Access Management (IAM) to query
-%% a list of OpsItems. For more information, see Getting started with
-%% OpsCenter in the Amazon Web Services Systems Manager User Guide.
+%% a list of OpsItems. For more information, see Set up OpsCenter in the
+%% Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
@@ -1276,8 +1279,8 @@ get_maintenance_window_task(Client, Input, Options)
 %% @doc Get information about an OpsItem by using the ID.
 %%
 %% You must have permission in Identity and Access Management (IAM) to view
-%% information about an OpsItem. For more information, see Getting started
-%% with OpsCenter in the Amazon Web Services Systems Manager User Guide.
+%% information about an OpsItem. For more information, see Set up OpsCenter
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
@@ -2116,8 +2119,8 @@ update_managed_instance_role(Client, Input, Options)
 %% @doc Edit or change an OpsItem.
 %%
 %% You must have permission in Identity and Access Management (IAM) to update
-%% an OpsItem. For more information, see Getting started with OpsCenter in
-%% the Amazon Web Services Systems Manager User Guide.
+%% an OpsItem. For more information, see Set up OpsCenter in the Amazon Web
+%% Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues

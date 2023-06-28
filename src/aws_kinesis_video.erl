@@ -8,6 +8,8 @@
          create_signaling_channel/3,
          create_stream/2,
          create_stream/3,
+         delete_edge_configuration/2,
+         delete_edge_configuration/3,
          delete_signaling_channel/2,
          delete_signaling_channel/3,
          delete_stream/2,
@@ -30,6 +32,8 @@
          get_data_endpoint/3,
          get_signaling_channel_endpoint/2,
          get_signaling_channel_endpoint/3,
+         list_edge_agent_configurations/2,
+         list_edge_agent_configurations/3,
          list_signaling_channels/2,
          list_signaling_channels/3,
          list_streams/2,
@@ -125,6 +129,40 @@ create_stream(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc An asynchronous API that deletes a stream’s existing edge
+%% configuration, as well as the corresponding media from the Edge Agent.
+%%
+%% When you invoke this API, the sync status is set to `DELETING'. A
+%% deletion process starts, in which active edge jobs are stopped and all
+%% media is deleted from the edge device. The time to delete varies,
+%% depending on the total amount of stored media. If the deletion process
+%% fails, the sync status changes to `DELETE_FAILED'. You will need to
+%% re-try the deletion.
+%%
+%% When the deletion process has completed successfully, the edge
+%% configuration is no longer accessible.
+delete_edge_configuration(Client, Input) ->
+    delete_edge_configuration(Client, Input, []).
+delete_edge_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/deleteEdgeConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a specified signaling channel.
 %%
 %% `DeleteSignalingChannel' is an asynchronous operation. If you
@@ -188,10 +226,12 @@ delete_stream(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a stream’s edge configuration that was set using the
-%% `StartEdgeConfigurationUpdate' API.
+%% `StartEdgeConfigurationUpdate' API and the latest status of the edge
+%% agent's recorder and uploader jobs.
 %%
-%% Use this API to get the status of the configuration if the configuration
-%% is in sync with the Edge Agent.
+%% Use this API to get the status of the configuration to determine if the
+%% configuration is in sync with the Edge Agent. Use this API to evaluate the
+%% health of the Edge Agent.
 describe_edge_configuration(Client, Input) ->
     describe_edge_configuration(Client, Input, []).
 describe_edge_configuration(Client, Input0, Options0) ->
@@ -240,10 +280,7 @@ describe_image_generation_configuration(Client, Input0, Options0) ->
 
 %% @doc Returns the most current information about the stream.
 %%
-%% Either streamName or streamARN should be provided in the input.
-%%
-%% Returns the most current information about the stream. The
-%% `streamName' or `streamARN' should be provided in the input.
+%% The `streamName' or `streamARN' should be provided in the input.
 describe_mapped_resource_configuration(Client, Input) ->
     describe_mapped_resource_configuration(Client, Input, []).
 describe_mapped_resource_configuration(Client, Input0, Options0) ->
@@ -422,6 +459,32 @@ get_signaling_channel_endpoint(Client, Input) ->
 get_signaling_channel_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getSignalingChannelEndpoint"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns an array of edge configurations associated with the specified
+%% Edge Agent.
+%%
+%% In the request, you must specify the Edge Agent `HubDeviceArn'.
+list_edge_agent_configurations(Client, Input) ->
+    list_edge_agent_configurations(Client, Input, []).
+list_edge_agent_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listEdgeAgentConfigurations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

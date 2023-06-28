@@ -63,10 +63,10 @@ batch_get_record(Client, Input0, Options0) ->
 %% @doc Deletes a `Record' from a `FeatureGroup' in the
 %% `OnlineStore'.
 %%
-%% Feature Store supports both `SOFT_DELETE' and `HARD_DELETE'. For
-%% `SOFT_DELETE' (default), feature columns are set to `null' and the
+%% Feature Store supports both `SoftDelete' and `HardDelete'. For
+%% `SoftDelete' (default), feature columns are set to `null' and the
 %% record is no longer retrievable by `GetRecord' or
-%% `BatchGetRecord'. For` HARD_DELETE', the complete `Record' is
+%% `BatchGetRecord'. For `HardDelete', the complete `Record' is
 %% removed from the `OnlineStore'. In both cases, Feature Store appends
 %% the deleted record marker to the `OfflineStore' with feature values
 %% set to `null', `is_deleted' value set to `True', and
@@ -77,11 +77,11 @@ batch_get_record(Client, Input0, Options0) ->
 %% `OnlineStore' for that `RecordIdentifer'. If it is not, the
 %% deletion does not occur:
 %%
-%% <ul> <li> For `SOFT_DELETE', the existing (undeleted) record remains
-%% in the `OnlineStore', though the delete record marker is still written
-%% to the `OfflineStore'.
+%% <ul> <li> For `SoftDelete', the existing (undeleted) record remains in
+%% the `OnlineStore', though the delete record marker is still written to
+%% the `OfflineStore'.
 %%
-%% </li> <li> `HARD_DELETE' returns `EventTime': `400
+%% </li> <li> `HardDelete' returns `EventTime': `400
 %% ValidationException' to indicate that the delete operation failed. No
 %% delete record marker is written to the `OfflineStore'.
 %%
@@ -137,6 +137,7 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 
     Query0_ =
       [
+        {<<"ExpirationTimeResponse">>, maps:get(<<"ExpirationTimeResponse">>, QueryMap, undefined)},
         {<<"FeatureName">>, maps:get(<<"FeatureName">>, QueryMap, undefined)},
         {<<"RecordIdentifierValueAsString">>, RecordIdentifierValueAsString}
       ],

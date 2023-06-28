@@ -181,7 +181,7 @@
 %% your needs, we recommend batching your data into a single PutMetadata
 %% call.) At most 155 requests per second per account are allowed.
 %%
-%% </li> </ul> PlaybackKeyPair Endpoints
+%% </li> </ul> Private Channel Endpoints
 %%
 %% For more information, see Setting Up Private Channels in the Amazon IVS
 %% User Guide.
@@ -203,6 +203,15 @@
 %% </li> <li> `DeletePlaybackKeyPair' — Deletes a specified authorization
 %% key pair. This invalidates future viewer tokens generated using the key
 %% pair’s `privateKey'.
+%%
+%% </li> <li> `StartViewerSessionRevocation' — Starts the process of
+%% revoking the viewer session associated with a specified channel ARN and
+%% viewer ID. Optionally, you can provide a version to revoke viewer sessions
+%% less than and including that version.
+%%
+%% </li> <li> `BatchStartViewerSessionRevocation' — Performs
+%% `StartViewerSessionRevocation' on multiple channel ARN and viewer ID
+%% pairs simultaneously.
 %%
 %% </li> </ul> RecordingConfiguration Endpoints
 %%
@@ -237,6 +246,8 @@
          batch_get_channel/3,
          batch_get_stream_key/2,
          batch_get_stream_key/3,
+         batch_start_viewer_session_revocation/2,
+         batch_start_viewer_session_revocation/3,
          create_channel/2,
          create_channel/3,
          create_recording_configuration/2,
@@ -282,6 +293,8 @@
          list_tags_for_resource/5,
          put_metadata/2,
          put_metadata/3,
+         start_viewer_session_revocation/2,
+         start_viewer_session_revocation/3,
          stop_stream/2,
          stop_stream/3,
          tag_resource/3,
@@ -326,6 +339,30 @@ batch_get_stream_key(Client, Input) ->
 batch_get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetStreamKey"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Performs `StartViewerSessionRevocation' on multiple channel ARN
+%% and viewer ID pairs simultaneously.
+batch_start_viewer_session_revocation(Client, Input) ->
+    batch_start_viewer_session_revocation(Client, Input, []).
+batch_start_viewer_session_revocation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchStartViewerSessionRevocation"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -905,6 +942,34 @@ put_metadata(Client, Input) ->
 put_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutMetadata"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the process of revoking the viewer session associated with a
+%% specified channel ARN and viewer ID.
+%%
+%% Optionally, you can provide a version to revoke viewer sessions less than
+%% and including that version. For instructions on associating a viewer ID
+%% with a viewer session, see Setting Up Private Channels.
+start_viewer_session_revocation(Client, Input) ->
+    start_viewer_session_revocation(Client, Input, []).
+start_viewer_session_revocation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartViewerSessionRevocation"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
