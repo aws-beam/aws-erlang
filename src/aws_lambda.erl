@@ -651,7 +651,8 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% @doc Deletes a Lambda function.
 %%
 %% To delete a specific function version, use the `Qualifier' parameter.
-%% Otherwise, all versions and aliases are deleted.
+%% Otherwise, all versions and aliases are deleted. This doesn't require
+%% the user to have explicit permissions for `DeleteAlias'.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
 %% `DeleteEventSourceMapping'. For Amazon Web Services and resources that

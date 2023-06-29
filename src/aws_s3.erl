@@ -4607,12 +4607,12 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% You can also use request parameters as selection criteria to return
 %% metadata about a subset of all the object versions.
 %%
-%% To use this operation, you must have permissions to perform the
+%% To use this operation, you must have permission to perform the
 %% `s3:ListBucketVersions' action. Be aware of the name difference.
 %%
-%% A 200 OK response can contain valid or invalid XML. Make sure to design
-%% your application to parse the contents of the response and handle it
-%% appropriately.
+%% A `200 OK' response can contain valid or invalid XML. Make sure to
+%% design your application to parse the contents of the response and handle
+%% it appropriately.
 %%
 %% To use this operation, you must have READ access to the bucket.
 %%
@@ -4649,6 +4649,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
     Headers0 =
       [
         {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-optional-object-attributes">>, maps:get(<<"x-amz-optional-object-attributes">>, HeadersMap, undefined)},
         {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
@@ -4726,6 +4727,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
     Headers0 =
       [
         {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-optional-object-attributes">>, maps:get(<<"x-amz-optional-object-attributes">>, HeadersMap, undefined)},
         {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
@@ -4767,21 +4769,21 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% contents of the response and handle it appropriately. Objects are returned
 %% sorted in an ascending order of the respective key names in the list. For
 %% more information about listing objects, see Listing object keys
-%% programmatically
+%% programmatically in the Amazon S3 User Guide.
 %%
 %% To use this operation, you must have READ access to the bucket.
 %%
 %% To use this action in an Identity and Access Management (IAM) policy, you
-%% must have permissions to perform the `s3:ListBucket' action. The
-%% bucket owner has this permission by default and can grant this permission
-%% to others. For more information about permissions, see Permissions Related
-%% to Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% must have permission to perform the `s3:ListBucket' action. The bucket
+%% owner has this permission by default and can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources in the Amazon S3 User Guide.
 %%
 %% This section describes the latest revision of this action. We recommend
-%% that you use this revised API for application development. For backward
-%% compatibility, Amazon S3 continues to support the prior version of this
-%% API, ListObjects.
+%% that you use this revised API operation for application development. For
+%% backward compatibility, Amazon S3 continues to support the prior version
+%% of this API operation, ListObjects.
 %%
 %% To get a list of your buckets, see ListBuckets.
 %%
@@ -4814,6 +4816,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
     Headers0 =
       [
         {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-optional-object-attributes">>, maps:get(<<"x-amz-optional-object-attributes">>, HeadersMap, undefined)},
         {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
