@@ -27,7 +27,9 @@
 %% </li> </ul>
 -module(aws_appstream).
 
--export([associate_application_fleet/2,
+-export([associate_app_block_builder_app_block/2,
+         associate_app_block_builder_app_block/3,
+         associate_application_fleet/2,
          associate_application_fleet/3,
          associate_application_to_entitlement/2,
          associate_application_to_entitlement/3,
@@ -41,6 +43,10 @@
          copy_image/3,
          create_app_block/2,
          create_app_block/3,
+         create_app_block_builder/2,
+         create_app_block_builder/3,
+         create_app_block_builder_streaming_url/2,
+         create_app_block_builder_streaming_url/3,
          create_application/2,
          create_application/3,
          create_directory_config/2,
@@ -65,6 +71,8 @@
          create_user/3,
          delete_app_block/2,
          delete_app_block/3,
+         delete_app_block_builder/2,
+         delete_app_block_builder/3,
          delete_application/2,
          delete_application/3,
          delete_directory_config/2,
@@ -85,6 +93,10 @@
          delete_usage_report_subscription/3,
          delete_user/2,
          delete_user/3,
+         describe_app_block_builder_app_block_associations/2,
+         describe_app_block_builder_app_block_associations/3,
+         describe_app_block_builders/2,
+         describe_app_block_builders/3,
          describe_app_blocks/2,
          describe_app_blocks/3,
          describe_application_fleet_associations/2,
@@ -115,6 +127,8 @@
          describe_users/3,
          disable_user/2,
          disable_user/3,
+         disassociate_app_block_builder_app_block/2,
+         disassociate_app_block_builder_app_block/3,
          disassociate_application_fleet/2,
          disassociate_application_fleet/3,
          disassociate_application_from_entitlement/2,
@@ -133,10 +147,14 @@
          list_entitled_applications/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         start_app_block_builder/2,
+         start_app_block_builder/3,
          start_fleet/2,
          start_fleet/3,
          start_image_builder/2,
          start_image_builder/3,
+         stop_app_block_builder/2,
+         stop_app_block_builder/3,
          stop_fleet/2,
          stop_fleet/3,
          stop_image_builder/2,
@@ -145,6 +163,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_app_block_builder/2,
+         update_app_block_builder/3,
          update_application/2,
          update_application/3,
          update_directory_config/2,
@@ -163,6 +183,15 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates the specified app block builder with the specified app
+%% block.
+associate_app_block_builder_app_block(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_app_block_builder_app_block(Client, Input, []).
+associate_app_block_builder_app_block(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateAppBlockBuilderAppBlock">>, Input, Options).
 
 %% @doc Associates the specified application with the specified fleet.
 %%
@@ -236,6 +265,22 @@ create_app_block(Client, Input)
 create_app_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAppBlock">>, Input, Options).
+
+%% @doc Creates an app block builder.
+create_app_block_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_app_block_builder(Client, Input, []).
+create_app_block_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAppBlockBuilder">>, Input, Options).
+
+%% @doc Creates a URL to start a create app block builder streaming session.
+create_app_block_builder_streaming_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_app_block_builder_streaming_url(Client, Input, []).
+create_app_block_builder_streaming_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAppBlockBuilderStreamingURL">>, Input, Options).
 
 %% @doc Creates an application.
 %%
@@ -374,6 +419,17 @@ delete_app_block(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppBlock">>, Input, Options).
 
+%% @doc Deletes an app block builder.
+%%
+%% An app block builder can only be deleted when it has no association with
+%% an app block.
+delete_app_block_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_app_block_builder(Client, Input, []).
+delete_app_block_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAppBlockBuilder">>, Input, Options).
+
 %% @doc Deletes an application.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -466,6 +522,23 @@ delete_user(Client, Input)
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
+
+%% @doc Retrieves a list that describes one or more app block builder
+%% associations.
+describe_app_block_builder_app_block_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_app_block_builder_app_block_associations(Client, Input, []).
+describe_app_block_builder_app_block_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAppBlockBuilderAppBlockAssociations">>, Input, Options).
+
+%% @doc Retrieves a list that describes one or more app block builders.
+describe_app_block_builders(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_app_block_builders(Client, Input, []).
+describe_app_block_builders(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAppBlockBuilders">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more app blocks.
 describe_app_blocks(Client, Input)
@@ -631,6 +704,15 @@ disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableUser">>, Input, Options).
 
+%% @doc Disassociates a specified app block builder from a specified app
+%% block.
+disassociate_app_block_builder_app_block(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_app_block_builder_app_block(Client, Input, []).
+disassociate_app_block_builder_app_block(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateAppBlockBuilderAppBlock">>, Input, Options).
+
 %% @doc Disassociates the specified application from the fleet.
 disassociate_application_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -714,6 +796,21 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Starts an app block builder.
+%%
+%% An app block builder can only be started when it's associated with an
+%% app block.
+%%
+%% Starting an app block builder starts a new instance, which is equivalent
+%% to an elastic fleet instance with application builder assistance
+%% functionality.
+start_app_block_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_app_block_builder(Client, Input, []).
+start_app_block_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAppBlockBuilder">>, Input, Options).
+
 %% @doc Starts the specified fleet.
 start_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -729,6 +826,17 @@ start_image_builder(Client, Input)
 start_image_builder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImageBuilder">>, Input, Options).
+
+%% @doc Stops an app block builder.
+%%
+%% Stopping an app block builder terminates the instance, and the instance
+%% state is not persisted.
+stop_app_block_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_app_block_builder(Client, Input, []).
+stop_app_block_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAppBlockBuilder">>, Input, Options).
 
 %% @doc Stops the specified fleet.
 stop_fleet(Client, Input)
@@ -781,6 +889,20 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an app block builder.
+%%
+%% If the app block builder is in the `STARTING' or `STOPPING' state,
+%% you can't update it. If the app block builder is in the `RUNNING'
+%% state, you can only update the DisplayName and Description. If the app
+%% block builder is in the `STOPPED' state, you can update any attribute
+%% except the Name.
+update_app_block_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_app_block_builder(Client, Input, []).
+update_app_block_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAppBlockBuilder">>, Input, Options).
 
 %% @doc Updates the specified application.
 update_application(Client, Input)

@@ -1,16 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the AWS Clean Rooms API Reference.
+%% @doc Welcome to the Clean Rooms API Reference.
 %%
-%% AWS Clean Rooms is an AWS service that helps multiple parties to join
-%% their data together in a secure collaboration workspace. In the
+%% Clean Rooms is an Amazon Web Services service that helps multiple parties
+%% to join their data together in a secure collaboration workspace. In the
 %% collaboration, members who can query and receive results can get insights
 %% into the collective datasets without either party getting access to the
 %% other party's raw data.
 %%
-%% To learn more about AWS Clean Rooms concepts, procedures, and best
-%% practices, see the AWS Clean Rooms User Guide.
+%% To learn more about Clean Rooms concepts, procedures, and best practices,
+%% see the Clean Rooms User Guide.
 -module(aws_cleanrooms).
 
 -export([batch_get_schema/3,
@@ -809,7 +809,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a protected query that is started by AWS Clean Rooms.
+%% @doc Creates a protected query that is started by Clean Rooms .
 start_protected_query(Client, MembershipIdentifier, Input) ->
     start_protected_query(Client, MembershipIdentifier, Input, []).
 start_protected_query(Client, MembershipIdentifier, Input0, Options0) ->

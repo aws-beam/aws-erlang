@@ -326,9 +326,9 @@ accept_match(Client, Input, Options)
 %% a game server ID, although this approach bypasses Amazon GameLift FleetIQ
 %% placement optimization. Optionally, include game data to pass to the game
 %% server at the start of a game session, such as a game map or player
-%% information. Filter options may be included to further restrict how a game
-%% server is chosen, such as only allowing game servers on `ACTIVE'
-%% instances to be claimed.
+%% information. Add filter options to further restrict how a game server is
+%% chosen, such as only allowing game servers on `ACTIVE' instances to be
+%% claimed.
 %%
 %% When a game server is successfully claimed, connection information is
 %% returned. A claimed game server's utilization status remains
@@ -347,8 +347,8 @@ accept_match(Client, Input, Options)
 %% </li> <li> If the game server claim status is `CLAIMED'.
 %%
 %% </li> <li> If the game server is running on an instance in `DRAINING'
-%% status and provided filter option does not allow placing on `DRAINING'
-%% instances.
+%% status and the provided filter option does not allow placing on
+%% `DRAINING' instances.
 %%
 %% </li> </ul> Learn more
 %%
