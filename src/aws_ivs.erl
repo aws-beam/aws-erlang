@@ -538,7 +538,7 @@ delete_recording_configuration(Client, Input) ->
 delete_recording_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRecordingConfiguration"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -942,7 +942,7 @@ put_metadata(Client, Input) ->
 put_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutMetadata"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
