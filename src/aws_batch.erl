@@ -85,6 +85,14 @@
 %% in`RUNNABLE' remains in `RUNNABLE' until it reaches the head of
 %% the job queue. Then the job status is updated to `FAILED'.
 %%
+%% A `PENDING' job is canceled after all dependency jobs are completed.
+%% Therefore, it may take longer than expected to cancel a job in
+%% `PENDING' status.
+%%
+%% When you try to cancel an array parent job in `PENDING', Batch
+%% attempts to cancel all child jobs. The array parent job is canceled when
+%% all child jobs are completed.
+%%
 %% Jobs that progressed to the `STARTING' or `RUNNING' state
 %% aren't canceled. However, the API operation still succeeds, even if no
 %% job is canceled. These jobs must be terminated with the `TerminateJob'
@@ -176,7 +184,9 @@ cancel_job(Client, Input0, Options0) ->
 %% `BEST_FIT_PROGRESSIVE' or `SPOT_CAPACITY_OPTIMIZED'.
 %%
 %% Set the update to latest image version (`updateToLatestImageVersion')
-%% parameter to `true'.
+%% parameter to `true'. The `updateToLatestImageVersion' parameter is
+%% used when you update a compute environment. This parameter is ignored when
+%% you create a compute environment.
 %%
 %% Don't specify an AMI ID in `imageId', `imageIdOverride' (in
 %% `ec2Configuration' ), or in the launch template
