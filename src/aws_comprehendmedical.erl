@@ -1,10 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Comprehend Medical; extracts structured information from unstructured
-%% clinical text.
+%% @doc Amazon Comprehend Medical extracts structured information from
+%% unstructured clinical text.
 %%
-%% Use these actions to gain insight in your documents.
+%% Use these actions to gain insight in your documents. Amazon Comprehend
+%% Medical only detects entities in English language texts. Amazon Comprehend
+%% Medical places limits on the sizes of files allowed for different API
+%% operations. To learn more, see Guidelines and quotas in the Amazon
+%% Comprehend Medical Developer Guide.
 -module(aws_comprehendmedical).
 
 -export([describe_entities_detection_v2_job/2,
@@ -123,7 +127,7 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
 %%
 %% Inspects the clinical text for a variety of medical entities and returns
 %% specific information about them such as entity category, location, and
-%% confidence score on that information .
+%% confidence score on that information.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -217,8 +221,8 @@ list_icd10_cm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListICD10CMInferenceJobs">>, Input, Options).
 
-%% @doc Gets a list of protected health information (PHI) detection jobs that
-%% you have submitted.
+%% @doc Gets a list of protected health information (PHI) detection jobs you
+%% have submitted.
 list_phi_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phi_detection_jobs(Client, Input, []).

@@ -1087,6 +1087,11 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %% distribution group, you must provide a full phone number ARN. If a UUID is
 %% provided in this scenario, you will receive a
 %% `ResourceNotFoundException'.
+%%
+%% Only use the phone number ARN format that doesn't contain
+%% `instance' in the path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
+%% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 create_queue(Client, InstanceId, Input0, Options0) ->
@@ -4233,10 +4238,8 @@ search_prompts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Searches queues in an Amazon Connect instance, with optional filtering.
+%% @doc Searches queues in an Amazon Connect instance, with optional
+%% filtering.
 search_queues(Client, Input) ->
     search_queues(Client, Input, []).
 search_queues(Client, Input0, Options0) ->
@@ -4307,11 +4310,8 @@ search_resource_tags(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Searches routing profiles in an Amazon Connect instance, with optional
-%% filtering.
+%% @doc Searches routing profiles in an Amazon Connect instance, with
+%% optional filtering.
 search_routing_profiles(Client, Input) ->
     search_routing_profiles(Client, Input, []).
 search_routing_profiles(Client, Input0, Options0) ->
@@ -4334,11 +4334,8 @@ search_routing_profiles(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Searches security profiles in an Amazon Connect instance, with optional
-%% filtering.
+%% @doc Searches security profiles in an Amazon Connect instance, with
+%% optional filtering.
 search_security_profiles(Client, Input) ->
     search_security_profiles(Client, Input, []).
 search_security_profiles(Client, Input0, Options0) ->
@@ -5452,6 +5449,11 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% distribution group, you must provide a full phone number ARN. If a UUID is
 %% provided in this scenario, you will receive a
 %% `ResourceNotFoundException'.
+%%
+%% Only use the phone number ARN format that doesn't contain
+%% `instance' in the path, for example,
+%% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
+%% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->

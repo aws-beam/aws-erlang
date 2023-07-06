@@ -2626,9 +2626,8 @@ revoke_grant(Client, Input, Options)
 %% Deleting a KMS key is a destructive and potentially dangerous operation.
 %% When a KMS key is deleted, all data that was encrypted under the KMS key
 %% is unrecoverable. (The only exception is a multi-Region replica key, or an
-%% asymmetric or HMAC KMS key with imported key material[BUGBUG-link to
-%% importing-keys-managing.html#import-delete-key.) To prevent the use of a
-%% KMS key without deleting it, use `DisableKey'.
+%% asymmetric or HMAC KMS key with imported key material.) To prevent the use
+%% of a KMS key without deleting it, use `DisableKey'.
 %%
 %% You can schedule the deletion of a multi-Region primary key and its
 %% replica keys at any time. However, KMS will not delete a multi-Region

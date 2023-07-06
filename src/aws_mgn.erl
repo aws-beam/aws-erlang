@@ -73,6 +73,8 @@
          list_import_errors/3,
          list_imports/2,
          list_imports/3,
+         list_managed_accounts/2,
+         list_managed_accounts/3,
          list_source_server_actions/2,
          list_source_server_actions/3,
          list_tags_for_resource/2,
@@ -84,6 +86,8 @@
          list_waves/3,
          mark_as_archived/2,
          mark_as_archived/3,
+         pause_replication/2,
+         pause_replication/3,
          put_source_server_action/2,
          put_source_server_action/3,
          put_template_action/2,
@@ -92,6 +96,8 @@
          remove_source_server_action/3,
          remove_template_action/2,
          remove_template_action/3,
+         resume_replication/2,
+         resume_replication/3,
          retry_data_replication/2,
          retry_data_replication/3,
          start_cutover/2,
@@ -104,6 +110,8 @@
          start_replication/3,
          start_test/2,
          start_test/3,
+         stop_replication/2,
+         stop_replication/3,
          tag_resource/3,
          tag_resource/4,
          terminate_target_instances/2,
@@ -963,6 +971,29 @@ list_imports(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List Managed Accounts.
+list_managed_accounts(Client, Input) ->
+    list_managed_accounts(Client, Input, []).
+list_managed_accounts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListManagedAccounts"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List source server post migration custom actions.
 list_source_server_actions(Client, Input) ->
     list_source_server_actions(Client, Input, []).
@@ -1083,6 +1114,29 @@ mark_as_archived(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Pause Replication.
+pause_replication(Client, Input) ->
+    pause_replication(Client, Input, []).
+pause_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PauseReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Put source server post migration custom action.
 put_source_server_action(Client, Input) ->
     put_source_server_action(Client, Input, []).
@@ -1159,6 +1213,29 @@ remove_template_action(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RemoveTemplateAction"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resume Replication.
+resume_replication(Client, Input) ->
+    resume_replication(Client, Input, []).
+resume_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ResumeReplication"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -1309,6 +1386,29 @@ start_test(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartTest"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stop Replication.
+stop_replication(Client, Input) ->
+    stop_replication(Client, Input, []).
+stop_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopReplication"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
