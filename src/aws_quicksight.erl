@@ -3898,7 +3898,7 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 %% completed, a download URL that contains the exported assets is returned.
 %% The URL is valid for 5 minutes and can be refreshed with a
 %% `DescribeAssetBundleExportJob' API call. Each Amazon QuickSight
-%% account can run up to 10 export jobs concurrently.
+%% account can run up to 5 export jobs concurrently.
 %%
 %% The API caller must have the necessary permissions in their IAM role to
 %% access each resource before the resources can be exported.
@@ -3931,7 +3931,7 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
 %% prefix and specified configuration overrides. The assets that are
 %% contained in the bundle file that you provide are used to create or update
 %% a new or existing asset in your Amazon QuickSight account. Each Amazon
-%% QuickSight account can run up to 10 import jobs concurrently.
+%% QuickSight account can run up to 5 import jobs concurrently.
 %%
 %% The API caller must have the necessary `&quot;create&quot;',
 %% `&quot;describe&quot;', and `&quot;update&quot;' permissions in

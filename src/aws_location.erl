@@ -410,9 +410,10 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"key">>, <<"Key">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Calculates a route matrix given the following required parameters:
@@ -468,9 +469,10 @@ calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"key">>, <<"Key">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a geofence collection, which manages and stores geofences.
@@ -497,12 +499,10 @@ create_geofence_collection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an API key resource in your Amazon Web Services account,
-%% which lets you grant `geo:GetMap*' actions for Amazon Location Map
-%% resources to the API key bearer.
+%% which lets you grant actions for Amazon Location resources to the API key
+%% bearer.
 %%
-%% The API keys feature is in preview. We may add, change, or remove features
-%% before announcing general availability. For more information, see Using
-%% API keys.
+%% For more information, see Using API keys.
 create_key(Client, Input) ->
     create_key(Client, Input, []).
 create_key(Client, Input0, Options0) ->
@@ -826,10 +826,6 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the API key resource details.
-%%
-%% The API keys feature is in preview. We may add, change, or remove features
-%% before announcing general availability. For more information, see Using
-%% API keys.
 describe_key(Client, KeyName)
   when is_map(Client) ->
     describe_key(Client, KeyName, #{}, #{}).
@@ -1270,6 +1266,7 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},
         {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1346,10 +1343,6 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists API key resources in your Amazon Web Services account.
-%%
-%% The API keys feature is in preview. We may add, change, or remove features
-%% before announcing general availability. For more information, see Using
-%% API keys.
 list_keys(Client, Input) ->
     list_keys(Client, Input, []).
 list_keys(Client, Input0, Options0) ->
@@ -1558,9 +1551,10 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"key">>, <<"Key">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates suggestions for addresses and points of interest based on
@@ -1594,9 +1588,10 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"key">>, <<"Key">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Geocodes free-form text, such as an address, name, city, or region to
@@ -1627,9 +1622,10 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"key">>, <<"Key">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
@@ -1717,10 +1713,6 @@ update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given API key resource.
-%%
-%% The API keys feature is in preview. We may add, change, or remove features
-%% before announcing general availability. For more information, see Using
-%% API keys.
 update_key(Client, KeyName, Input) ->
     update_key(Client, KeyName, Input, []).
 update_key(Client, KeyName, Input0, Options0) ->

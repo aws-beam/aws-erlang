@@ -860,7 +860,7 @@ create_event_subscription(Client, Input, Options)
 %% existing Aurora cluster during the create operation, and this cluster
 %% becomes the primary cluster of the global database.
 %%
-%% This action applies only to Aurora DB clusters.
+%% This operation applies only to Aurora DB clusters.
 create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
