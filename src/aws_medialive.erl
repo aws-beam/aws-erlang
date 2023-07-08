@@ -48,6 +48,9 @@
          delete_schedule/4,
          delete_tags/3,
          delete_tags/4,
+         describe_account_configuration/1,
+         describe_account_configuration/3,
+         describe_account_configuration/4,
          describe_channel/2,
          describe_channel/4,
          describe_channel/5,
@@ -78,6 +81,9 @@
          describe_schedule/2,
          describe_schedule/4,
          describe_schedule/5,
+         describe_thumbnails/4,
+         describe_thumbnails/6,
+         describe_thumbnails/7,
          list_channels/1,
          list_channels/3,
          list_channels/4,
@@ -126,6 +132,8 @@
          stop_multiplex/4,
          transfer_input_device/3,
          transfer_input_device/4,
+         update_account_configuration/2,
+         update_account_configuration/3,
          update_channel/3,
          update_channel/4,
          update_channel_class/3,
@@ -665,6 +673,29 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Get account configuration
+describe_account_configuration(Client)
+  when is_map(Client) ->
+    describe_account_configuration(Client, #{}, #{}).
+
+describe_account_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_configuration(Client, QueryMap, HeadersMap, []).
+
+describe_account_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/accountConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets details about a channel
 describe_channel(Client, ChannelId)
   when is_map(Client) ->
@@ -918,6 +949,34 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describe the latest thumbnails data.
+describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType)
+  when is_map(Client) ->
+    describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, #{}, #{}).
+
+describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap, []).
+
+describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/thumbnails"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"pipelineId">>, PipelineId},
+        {<<"thumbnailType">>, ThumbnailType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1432,6 +1491,29 @@ transfer_input_device(Client, InputDeviceId, Input) ->
 transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/transfer"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update account configuration
+update_account_configuration(Client, Input) ->
+    update_account_configuration(Client, Input, []).
+update_account_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/prod/accountConfiguration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

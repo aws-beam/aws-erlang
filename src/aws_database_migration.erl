@@ -30,6 +30,8 @@
          create_event_subscription/3,
          create_fleet_advisor_collector/2,
          create_fleet_advisor_collector/3,
+         create_replication_config/2,
+         create_replication_config/3,
          create_replication_instance/2,
          create_replication_instance/3,
          create_replication_subnet_group/2,
@@ -48,6 +50,8 @@
          delete_fleet_advisor_collector/3,
          delete_fleet_advisor_databases/2,
          delete_fleet_advisor_databases/3,
+         delete_replication_config/2,
+         delete_replication_config/3,
          delete_replication_instance/2,
          delete_replication_instance/3,
          delete_replication_subnet_group/2,
@@ -96,12 +100,16 @@
          describe_recommendations/3,
          describe_refresh_schemas_status/2,
          describe_refresh_schemas_status/3,
+         describe_replication_configs/2,
+         describe_replication_configs/3,
          describe_replication_instance_task_logs/2,
          describe_replication_instance_task_logs/3,
          describe_replication_instances/2,
          describe_replication_instances/3,
          describe_replication_subnet_groups/2,
          describe_replication_subnet_groups/3,
+         describe_replication_table_statistics/2,
+         describe_replication_table_statistics/3,
          describe_replication_task_assessment_results/2,
          describe_replication_task_assessment_results/3,
          describe_replication_task_assessment_runs/2,
@@ -110,6 +118,8 @@
          describe_replication_task_individual_assessments/3,
          describe_replication_tasks/2,
          describe_replication_tasks/3,
+         describe_replications/2,
+         describe_replications/3,
          describe_schemas/2,
          describe_schemas/3,
          describe_table_statistics/2,
@@ -122,6 +132,8 @@
          modify_endpoint/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
+         modify_replication_config/2,
+         modify_replication_config/3,
          modify_replication_instance/2,
          modify_replication_instance/3,
          modify_replication_subnet_group/2,
@@ -134,6 +146,8 @@
          reboot_replication_instance/3,
          refresh_schemas/2,
          refresh_schemas/3,
+         reload_replication_tables/2,
+         reload_replication_tables/3,
          reload_tables/2,
          reload_tables/3,
          remove_tags_from_resource/2,
@@ -142,12 +156,16 @@
          run_fleet_advisor_lsa_analysis/3,
          start_recommendations/2,
          start_recommendations/3,
+         start_replication/2,
+         start_replication/3,
          start_replication_task/2,
          start_replication_task/3,
          start_replication_task_assessment/2,
          start_replication_task_assessment/3,
          start_replication_task_assessment_run/2,
          start_replication_task_assessment_run/3,
+         stop_replication/2,
+         stop_replication/3,
          stop_replication_task/2,
          stop_replication_task/3,
          test_connection/2,
@@ -258,6 +276,18 @@ create_fleet_advisor_collector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
 
+%% @doc Creates a configuration that you can later provide to configure and
+%% start an DMS Serverless replication.
+%%
+%% You can also provide options to validate the configuration inputs before
+%% you start the replication.
+create_replication_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_replication_config(Client, Input, []).
+create_replication_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateReplicationConfig">>, Input, Options).
+
 %% @doc Creates the replication instance using the specified parameters.
 %%
 %% DMS requires that your account have certain roles with appropriate
@@ -278,6 +308,14 @@ create_replication_instance(Client, Input, Options)
 %% The VPC needs to have at least one subnet in at least two availability
 %% zones in the Amazon Web Services Region, otherwise the service will throw
 %% a `ReplicationSubnetGroupDoesNotCoverEnoughAZs' exception.
+%%
+%% If a replication subnet group exists in your Amazon Web Services account,
+%% the CreateReplicationSubnetGroup action returns the following error
+%% message: The Replication Subnet Group already exists. In this case, delete
+%% the existing replication subnet group. To do so, use the
+%% DeleteReplicationSubnetGroup action. Optionally, choose Subnet groups in
+%% the DMS console, then choose your subnet group. Next, choose Delete from
+%% Actions.
 create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
@@ -344,6 +382,19 @@ delete_fleet_advisor_databases(Client, Input)
 delete_fleet_advisor_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetAdvisorDatabases">>, Input, Options).
+
+%% @doc Deletes an DMS Serverless replication configuration.
+%%
+%% This effectively deprovisions any and all replications that use this
+%% configuration. You can't delete the configuration for an DMS
+%% Serverless replication that is ongoing. You can delete the configuration
+%% when the replication is in a non-RUNNING and non-STARTING state.
+delete_replication_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_replication_config(Client, Input, []).
+delete_replication_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteReplicationConfig">>, Input, Options).
 
 %% @doc Deletes the specified replication instance.
 %%
@@ -602,6 +653,15 @@ describe_refresh_schemas_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRefreshSchemasStatus">>, Input, Options).
 
+%% @doc Returns one or more existing DMS Serverless replication
+%% configurations as a list of structures.
+describe_replication_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replication_configs(Client, Input, []).
+describe_replication_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplicationConfigs">>, Input, Options).
+
 %% @doc Returns information about the task logs for the specified task.
 describe_replication_instance_task_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -626,6 +686,15 @@ describe_replication_subnet_groups(Client, Input)
 describe_replication_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationSubnetGroups">>, Input, Options).
+
+%% @doc Returns table and schema statistics for one or more provisioned
+%% replications that use a given DMS Serverless replication configuration.
+describe_replication_table_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replication_table_statistics(Client, Input, []).
+describe_replication_table_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplicationTableStatistics">>, Input, Options).
 
 %% @doc Returns the task assessment results from the Amazon S3 bucket that
 %% DMS creates in your Amazon Web Services account.
@@ -678,6 +747,15 @@ describe_replication_tasks(Client, Input)
 describe_replication_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationTasks">>, Input, Options).
+
+%% @doc Provides details on replication progress by returning status
+%% information for one or more provisioned DMS Serverless replications.
+describe_replications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replications(Client, Input, []).
+describe_replications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplications">>, Input, Options).
 
 %% @doc Returns information about the schema for the specified endpoint.
 describe_schemas(Client, Input)
@@ -741,6 +819,26 @@ modify_event_subscription(Client, Input)
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
+
+%% @doc Modifies an existing DMS Serverless replication configuration that
+%% you can use to start a replication.
+%%
+%% This command includes input validation and logic to check the state of any
+%% replication that uses this configuration. You can only modify a
+%% replication configuration before any replication that uses it has started.
+%% As soon as you have initially started a replication with a given
+%% configuiration, you can't modify that configuration, even if you stop
+%% it.
+%%
+%% Other run statuses that allow you to run this command include FAILED and
+%% CREATED. A provisioning state that allows you to run this command is
+%% FAILED_PROVISION.
+modify_replication_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_replication_config(Client, Input, []).
+modify_replication_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyReplicationConfig">>, Input, Options).
 
 %% @doc Modifies the replication instance to apply new settings.
 %%
@@ -812,6 +910,19 @@ refresh_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RefreshSchemas">>, Input, Options).
 
+%% @doc Reloads the target database table with the source data for a given
+%% DMS Serverless replication configuration.
+%%
+%% You can only use this operation with a task in the RUNNING state,
+%% otherwise the service will throw an `InvalidResourceStateFault'
+%% exception.
+reload_replication_tables(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reload_replication_tables(Client, Input, []).
+reload_replication_tables(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReloadReplicationTables">>, Input, Options).
+
 %% @doc Reloads the target database table with the source data.
 %%
 %% You can only use this operation with a task in the `RUNNING' state,
@@ -855,6 +966,20 @@ start_recommendations(Client, Input)
 start_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRecommendations">>, Input, Options).
+
+%% @doc For a given DMS Serverless replication configuration, DMS connects to
+%% the source endpoint and collects the metadata to analyze the replication
+%% workload.
+%%
+%% Using this metadata, DMS then computes and provisions the required
+%% capacity and starts replicating to the target endpoint using the server
+%% resources that DMS has provisioned for the DMS Serverless replication.
+start_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_replication(Client, Input, []).
+start_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartReplication">>, Input, Options).
 
 %% @doc Starts the replication task.
 %%
@@ -905,6 +1030,17 @@ start_replication_task_assessment_run(Client, Input)
 start_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplicationTaskAssessmentRun">>, Input, Options).
+
+%% @doc For a given DMS Serverless replication configuration, DMS stops any
+%% and all ongoing DMS Serverless replications.
+%%
+%% This command doesn't deprovision the stopped replications.
+stop_replication(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_replication(Client, Input, []).
+stop_replication(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopReplication">>, Input, Options).
 
 %% @doc Stops the replication task.
 stop_replication_task(Client, Input)
