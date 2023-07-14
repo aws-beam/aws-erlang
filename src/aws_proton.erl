@@ -193,6 +193,8 @@
          create_template_sync_config/3,
          delete_component/2,
          delete_component/3,
+         delete_deployment/2,
+         delete_deployment/3,
          delete_environment/2,
          delete_environment/3,
          delete_environment_account_connection/2,
@@ -217,6 +219,8 @@
          get_account_settings/3,
          get_component/2,
          get_component/3,
+         get_deployment/2,
+         get_deployment/3,
          get_environment/2,
          get_environment/3,
          get_environment_account_connection/2,
@@ -255,6 +259,8 @@
          list_component_provisioned_resources/3,
          list_components/2,
          list_components/3,
+         list_deployments/2,
+         list_deployments/3,
          list_environment_account_connections/2,
          list_environment_account_connections/3,
          list_environment_outputs/2,
@@ -629,6 +635,14 @@ delete_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteComponent">>, Input, Options).
 
+%% @doc Delete the deployment.
+delete_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_deployment(Client, Input, []).
+delete_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDeployment">>, Input, Options).
+
 %% @doc Delete an environment.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -771,6 +785,14 @@ get_component(Client, Input)
 get_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComponent">>, Input, Options).
+
+%% @doc Get detailed data for a deployment.
+get_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_deployment(Client, Input, []).
+get_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeployment">>, Input, Options).
 
 %% @doc Get detailed data for an environment.
 get_environment(Client, Input)
@@ -970,6 +992,17 @@ list_components(Client, Input)
 list_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComponents">>, Input, Options).
+
+%% @doc List deployments.
+%%
+%% You can filter the result list by environment, service, or a single
+%% service instance.
+list_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_deployments(Client, Input, []).
+list_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDeployments">>, Input, Options).
 
 %% @doc View a list of environment account connections.
 %%

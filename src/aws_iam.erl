@@ -363,8 +363,9 @@ add_client_id_to_open_id_connect_provider(Client, Input, Options)
 %% The caller of this operation must be granted the `PassRole' permission
 %% on the IAM role by a permissions policy.
 %%
-%% For more information about roles, see Working with roles. For more
-%% information about instance profiles, see About instance profiles.
+%% For more information about roles, see IAM roles in the IAM User Guide. For
+%% more information about instance profiles, see Using instance profiles in
+%% the IAM User Guide.
 add_role_to_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_instance_profile(Client, Input, []).
@@ -573,12 +574,12 @@ create_login_profile(Client, Input, Options)
 %% use to access Amazon Web Services.
 %%
 %% Amazon Web Services secures communication with some OIDC identity
-%% providers (IdPs) through our library of trusted certificate authorities
-%% (CAs) instead of using a certificate thumbprint to verify your IdP server
-%% certificate. These OIDC IdPs include Google, Auth0, and those that use an
-%% Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
-%% cases, your legacy thumbprint remains in your configuration, but is no
-%% longer used for validation.
+%% providers (IdPs) through our library of trusted root certificate
+%% authorities (CAs) instead of using a certificate thumbprint to verify your
+%% IdP server certificate. These OIDC IdPs include Auth0, GitHub, Google, and
+%% those that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS)
+%% endpoint. In these cases, your legacy thumbprint remains in your
+%% configuration, but is no longer used for validation.
 %%
 %% The trust for the OIDC provider is derived from the IAM provider that this
 %% operation creates. Therefore, it is best to limit access to the
@@ -631,9 +632,9 @@ create_policy_version(Client, Input, Options)
 
 %% @doc Creates a new role for your Amazon Web Services account.
 %%
-%% For more information about roles, see IAM roles. For information about
-%% quotas for role names and the number of roles you can create, see IAM and
-%% STS quotas in the IAM User Guide.
+%% For more information about roles, see IAM roles in the IAM User Guide. For
+%% information about quotas for role names and the number of roles you can
+%% create, see IAM and STS quotas in the IAM User Guide.
 create_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_role(Client, Input, []).
@@ -832,7 +833,8 @@ delete_group_policy(Client, Input, Options)
 %% profile that is associated with a running instance will break any
 %% applications running on the instance.
 %%
-%% For more information about instance profiles, see About instance profiles.
+%% For more information about instance profiles, see Using instance profiles
+%% in the IAM User Guide.
 delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
@@ -1562,7 +1564,7 @@ get_group_policy(Client, Input, Options)
 %% @doc Retrieves information about the specified instance profile, including
 %% the instance profile's path, GUID, ARN, and role.
 %%
-%% For more information about instance profiles, see About instance profiles
+%% For more information about instance profiles, see Using instance profiles
 %% in the IAM User Guide.
 get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1697,7 +1699,7 @@ get_policy_version(Client, Input, Options)
 %% role's path, GUID, ARN, and the role's trust policy that grants
 %% permission to assume the role.
 %%
-%% For more information about roles, see Working with roles.
+%% For more information about roles, see IAM roles in the IAM User Guide.
 %%
 %% Policies returned by this operation are URL-encoded compliant with RFC
 %% 3986. You can use a URL decoding method to convert the policy back to
@@ -1728,8 +1730,7 @@ get_role(Client, Input, Options)
 %% For more information about policies, see Managed policies and inline
 %% policies in the IAM User Guide.
 %%
-%% For more information about roles, see Using roles to delegate permissions
-%% and federate identities.
+%% For more information about roles, see IAM roles in the IAM User Guide.
 get_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role_policy(Client, Input, []).
@@ -2087,7 +2088,8 @@ list_instance_profile_tags(Client, Input, Options)
 %% @doc Lists the instance profiles that have the specified path prefix.
 %%
 %% If there are none, the operation returns an empty list. For more
-%% information about instance profiles, see About instance profiles.
+%% information about instance profiles, see Using instance profiles in the
+%% IAM User Guide.
 %%
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. For example, this operation does not return
@@ -2108,7 +2110,8 @@ list_instance_profiles(Client, Input, Options)
 %% role.
 %%
 %% If there are none, the operation returns an empty list. For more
-%% information about instance profiles, go to About instance profiles.
+%% information about instance profiles, go to Using instance profiles in the
+%% IAM User Guide.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
@@ -2303,7 +2306,7 @@ list_role_tags(Client, Input, Options)
 %% @doc Lists the IAM roles that have the specified path prefix.
 %%
 %% If there are none, the operation returns an empty list. For more
-%% information about roles, see Working with roles.
+%% information about roles, see IAM roles in the IAM User Guide.
 %%
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. This operation does not return the following
@@ -2582,8 +2585,8 @@ put_role_permissions_boundary(Client, Input, Options)
 %% part of the role's access (permissions) policy. The role's trust
 %% policy is created at the same time as the role, using `CreateRole' .
 %% You can update a role's trust policy using
-%% `UpdateAssumerolePolicy' . For more information about IAM roles, see
-%% Using roles to delegate permissions and federate identities.
+%% `UpdateAssumeRolePolicy' . For more information about roles, see IAM
+%% roles in the IAM User Guide.
 %%
 %% A role can also have a managed policy attached to it. To attach a managed
 %% policy to a role, use `AttachRolePolicy' . To create a new managed
@@ -2664,8 +2667,9 @@ remove_client_id_from_open_id_connect_provider(Client, Input, Options)
 %% from an instance profile that is associated with a running instance might
 %% break any applications running on the instance.
 %%
-%% For more information about IAM roles, see Working with roles. For more
-%% information about instance profiles, see About instance profiles.
+%% For more information about roles, see IAM roles in the IAM User Guide. For
+%% more information about instance profiles, see Using instance profiles in
+%% the IAM User Guide.
 remove_role_from_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_instance_profile(Client, Input, []).
@@ -3355,12 +3359,12 @@ update_login_profile(Client, Input, Options)
 %% updated.
 %%
 %% Amazon Web Services secures communication with some OIDC identity
-%% providers (IdPs) through our library of trusted certificate authorities
-%% (CAs) instead of using a certificate thumbprint to verify your IdP server
-%% certificate. These OIDC IdPs include Google, Auth0, and those that use an
-%% Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
-%% cases, your legacy thumbprint remains in your configuration, but is no
-%% longer used for validation.
+%% providers (IdPs) through our library of trusted root certificate
+%% authorities (CAs) instead of using a certificate thumbprint to verify your
+%% IdP server certificate. These OIDC IdPs include Auth0, GitHub, Google, and
+%% those that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS)
+%% endpoint. In these cases, your legacy thumbprint remains in your
+%% configuration, but is no longer used for validation.
 %%
 %% Trust for the OIDC provider is derived from the provider certificate and
 %% is validated by the thumbprint. Therefore, it is best to limit access to

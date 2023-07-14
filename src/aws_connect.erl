@@ -101,8 +101,12 @@
          delete_integration_association/5,
          delete_prompt/4,
          delete_prompt/5,
+         delete_queue/4,
+         delete_queue/5,
          delete_quick_connect/4,
          delete_quick_connect/5,
+         delete_routing_profile/4,
+         delete_routing_profile/5,
          delete_rule/4,
          delete_rule/5,
          delete_security_profile/4,
@@ -1597,12 +1601,58 @@ delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a queue.
+delete_queue(Client, InstanceId, QueueId, Input) ->
+    delete_queue(Client, InstanceId, QueueId, Input, []).
+delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a quick connect.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
     delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = delete,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a routing profile.
+delete_routing_profile(Client, InstanceId, RoutingProfileId, Input) ->
+    delete_routing_profile(Client, InstanceId, RoutingProfileId, Input, []).
+delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

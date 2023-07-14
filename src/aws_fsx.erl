@@ -954,6 +954,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `DataCompressionType'
 %%
+%% </li> <li> `LogConfiguration'
+%%
 %% </li> <li> `LustreRootSquashConfiguration'
 %%
 %% </li> <li> `StorageCapacity'

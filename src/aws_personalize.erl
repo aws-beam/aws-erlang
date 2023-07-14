@@ -133,6 +133,8 @@
          untag_resource/3,
          update_campaign/2,
          update_campaign/3,
+         update_dataset/2,
+         update_dataset/3,
          update_metric_attribution/2,
          update_metric_attribution/3,
          update_recommender/2,
@@ -1259,6 +1261,16 @@ update_campaign(Client, Input)
 update_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCampaign">>, Input, Options).
+
+%% @doc Update a dataset to replace its schema with a new or existing one.
+%%
+%% For more information, see Replacing a dataset's schema.
+update_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_dataset(Client, Input, []).
+update_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDataset">>, Input, Options).
 
 %% @doc Updates a metric attribution.
 update_metric_attribution(Client, Input)

@@ -690,9 +690,11 @@ untag_resource(Client, Input, Options)
 %% Required permissions: `secretsmanager:UpdateSecret'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
 %% and access control in Secrets Manager. If you use a customer managed key,
-%% you must also have `kms:GenerateDataKey' and `kms:Decrypt'
-%% permissions on the key. For more information, see Secret encryption and
-%% decryption.
+%% you must also have `kms:GenerateDataKey', `kms:Encrypt', and
+%% `kms:Decrypt' permissions on the key. If you change the KMS key and
+%% you don't have `kms:Encrypt' permission to the new key, Secrets
+%% Manager does not re-ecrypt existing secret versions with the new key. For
+%% more information, see Secret encryption and decryption.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
