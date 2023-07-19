@@ -137,10 +137,20 @@
          list_exports/3,
          list_imports/2,
          list_imports/3,
+         list_intent_metrics/3,
+         list_intent_metrics/4,
+         list_intent_paths/3,
+         list_intent_paths/4,
+         list_intent_stage_metrics/3,
+         list_intent_stage_metrics/4,
          list_intents/5,
          list_intents/6,
          list_recommended_intents/6,
          list_recommended_intents/7,
+         list_session_analytics_data/3,
+         list_session_analytics_data/4,
+         list_session_metrics/3,
+         list_session_metrics/4,
          list_slot_types/5,
          list_slot_types/6,
          list_slots/6,
@@ -156,6 +166,10 @@
          list_test_set_records/4,
          list_test_sets/2,
          list_test_sets/3,
+         list_utterance_analytics_data/3,
+         list_utterance_analytics_data/4,
+         list_utterance_metrics/3,
+         list_utterance_metrics/4,
          search_associated_transcripts/6,
          search_associated_transcripts/7,
          start_bot_recommendation/5,
@@ -1716,6 +1730,143 @@ list_imports(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves summary metrics for the intents in your bot.
+%%
+%% The following fields are required:
+%%
+%% <ul> <li> `metrics' – A list of AnalyticsIntentMetric objects. In each
+%% object, use the `name' field to specify the metric to calculate, the
+%% `statistic' field to specify whether to calculate the `Sum',
+%% `Average', or `Max' number, and the `order' field to specify
+%% whether to sort the results in `Ascending' or `Descending' order.
+%%
+%% </li> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> </ul> Of the optional fields, you can organize the results in the
+%% following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results, the
+%% `groupBy' field to specify categories by which to group the results,
+%% and the `binBy' field to specify time intervals by which to group the
+%% results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul> Note that an `order' field exists in both `binBy' and
+%% `metrics'. You can specify only one `order' in a given request.
+list_intent_metrics(Client, BotId, Input) ->
+    list_intent_metrics(Client, BotId, Input, []).
+list_intent_metrics(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentmetrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves summary statistics for a path of intents that users take
+%% over sessions with your bot.
+%%
+%% The following fields are required:
+%%
+%% <ul> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> <li> `intentPath' – Define an order of intents for which you
+%% want to retrieve metrics. Separate intents in the path with a forward
+%% slash. For example, populate the `intentPath' field with
+%% `/BookCar/BookHotel' to see details about how many times users invoked
+%% the `BookCar' and `BookHotel' intents in that order.
+%%
+%% </li> </ul> Use the optional `filters' field to filter the results.
+list_intent_paths(Client, BotId, Input) ->
+    list_intent_paths(Client, BotId, Input, []).
+list_intent_paths(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentpaths"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves summary metrics for the intent stages in your bot.
+%%
+%% The following fields are required:
+%%
+%% <ul> <li> `metrics' – A list of AnalyticsIntentStageMetric objects. In
+%% each object, use the `name' field to specify the metric to calculate,
+%% the `statistic' field to specify whether to calculate the `Sum',
+%% `Average', or `Max' number, and the `order' field to specify
+%% whether to sort the results in `Ascending' or `Descending' order.
+%%
+%% </li> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> </ul> Of the optional fields, you can organize the results in the
+%% following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results, the
+%% `groupBy' field to specify categories by which to group the results,
+%% and the `binBy' field to specify time intervals by which to group the
+%% results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul> Note that an `order' field exists in both `binBy' and
+%% `metrics'. You can only specify one `order' in a given request.
+list_intent_stage_metrics(Client, BotId, Input) ->
+    list_intent_stage_metrics(Client, BotId, Input, []).
+list_intent_stage_metrics(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/intentstagemetrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get a list of intents that meet the specified criteria.
 list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
     list_intents(Client, BotId, BotVersion, LocaleId, Input, []).
@@ -1748,6 +1899,95 @@ list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleI
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/intents"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of metadata for individual user sessions with your
+%% bot.
+%%
+%% The `startDateTime' and `endDateTime' fields are required. These
+%% fields define a time range for which you want to retrieve results. Of the
+%% optional fields, you can organize the results in the following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results and the
+%% `sortBy' field to specify the values by which to sort the results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul>
+list_session_analytics_data(Client, BotId, Input) ->
+    list_session_analytics_data(Client, BotId, Input, []).
+list_session_analytics_data(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/sessions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves summary metrics for the user sessions with your bot.
+%%
+%% The following fields are required:
+%%
+%% <ul> <li> `metrics' – A list of AnalyticsSessionMetric objects. In
+%% each object, use the `name' field to specify the metric to calculate,
+%% the `statistic' field to specify whether to calculate the `Sum',
+%% `Average', or `Max' number, and the `order' field to specify
+%% whether to sort the results in `Ascending' or `Descending' order.
+%%
+%% </li> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> </ul> Of the optional fields, you can organize the results in the
+%% following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results, the
+%% `groupBy' field to specify categories by which to group the results,
+%% and the `binBy' field to specify time intervals by which to group the
+%% results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul> Note that an `order' field exists in both `binBy' and
+%% `metrics'. Currently, you can specify it in either field, but not in
+%% both.
+list_session_metrics(Client, BotId, Input) ->
+    list_session_metrics(Client, BotId, Input, []).
+list_session_metrics(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/sessionmetrics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1912,6 +2152,95 @@ list_test_sets(Client, Input) ->
 list_test_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/testsets"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of metadata for individual user utterances to your
+%% bot.
+%%
+%% The `startDateTime' and `endDateTime' fields are required. These
+%% fields define a time range for which you want to retrieve results. Of the
+%% optional fields, you can organize the results in the following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results and the
+%% `sortBy' field to specify the values by which to sort the results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul>
+list_utterance_analytics_data(Client, BotId, Input) ->
+    list_utterance_analytics_data(Client, BotId, Input, []).
+list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/utterances"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves summary metrics for the utterances in your bot.
+%%
+%% The following fields are required:
+%%
+%% <ul> <li> `metrics' – A list of AnalyticsUtteranceMetric objects. In
+%% each object, use the `name' field to specify the metric to calculate,
+%% the `statistic' field to specify whether to calculate the `Sum',
+%% `Average', or `Max' number, and the `order' field to specify
+%% whether to sort the results in `Ascending' or `Descending' order.
+%%
+%% </li> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> </ul> Of the optional fields, you can organize the results in the
+%% following ways:
+%%
+%% <ul> <li> Use the `filters' field to filter the results, the
+%% `groupBy' field to specify categories by which to group the results,
+%% and the `binBy' field to specify time intervals by which to group the
+%% results.
+%%
+%% </li> <li> Use the `maxResults' field to limit the number of results
+%% to return in a single response and the `nextToken' field to return the
+%% next batch of results if the response does not return the full set of
+%% results.
+%%
+%% </li> </ul> Note that an `order' field exists in both `binBy' and
+%% `metrics'. Currently, you can specify it in either field, but not in
+%% both.
+list_utterance_metrics(Client, BotId, Input) ->
+    list_utterance_metrics(Client, BotId, Input, []).
+list_utterance_metrics(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/analytics/utterancemetrics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

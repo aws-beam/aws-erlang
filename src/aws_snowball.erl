@@ -57,6 +57,8 @@
          list_jobs/3,
          list_long_term_pricing/2,
          list_long_term_pricing/3,
+         list_pickup_locations/2,
+         list_pickup_locations/3,
          list_service_versions/2,
          list_service_versions/3,
          update_cluster/2,
@@ -191,7 +193,7 @@ create_cluster(Client, Input, Options)
 %%
 %% </li> <li> Description: Snowball Edge Storage Optimized with EC2 Compute
 %%
-%% </li> </ul>
+%% </li> </ul> This device is replaced with T98.
 %%
 %% </li> <li> Device type: STANDARD
 %%
@@ -215,23 +217,19 @@ create_cluster(Client, Input, Options)
 %%
 %% </li> </ul>
 %%
-%% </li> <li> Device type: V3_5C
+%% </li> <li> Snow Family device type: RACK_5U_C
 %%
-%% <ul> <li> Capacity: T32
+%% <ul> <li> Capacity: T13
 %%
-%% </li> <li> Description: Snowball Edge Compute Optimized without GPU
+%% </li> <li> Description: Snowblade.
 %%
-%% </li> </ul>
-%%
-%% </li> <li> Device type: V3_5S
+%% </li> </ul> </li> <li> Device type: V3_5S
 %%
 %% <ul> <li> Capacity: T240
 %%
 %% </li> <li> Description: Snowball Edge Storage Optimized 210TB
 %%
-%% </li> </ul>
-%%
-%% </li> </ul>
+%% </li> </ul> </li> </ul>
 create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
@@ -406,9 +404,9 @@ list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
 
-%% @doc This action returns a list of the different Amazon EC2 Amazon Machine
-%% Images (AMIs) that are owned by your Amazon Web Services accountthat would
-%% be supported for use on a Snow device.
+%% @doc This action returns a list of the different Amazon EC2-compatible
+%% Amazon Machine Images (AMIs) that are owned by your Amazon Web Services
+%% accountthat would be supported for use on a Snow device.
 %%
 %% Currently, supported AMIs are based on the Amazon Linux-2, Ubuntu 20.04
 %% LTS - Focal, or Ubuntu 22.04 LTS - Jammy images, available on the Amazon
@@ -444,6 +442,15 @@ list_long_term_pricing(Client, Input)
 list_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLongTermPricing">>, Input, Options).
+
+%% @doc A list of locations from which the customer can choose to pickup a
+%% device.
+list_pickup_locations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pickup_locations(Client, Input, []).
+list_pickup_locations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPickupLocations">>, Input, Options).
 
 %% @doc Lists all supported versions for Snow on-device services.
 %%

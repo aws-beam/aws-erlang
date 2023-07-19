@@ -1,12 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This section provides documentation for the Amazon CodeGuru Security
-%% API operations.
+%% @doc Amazon CodeGuru Security is in preview release and is subject to
+%% change.
 %%
-%% CodeGuru Security is a service that uses program analysis and machine
-%% learning to detect security policy violations and vulnerabilities, and
-%% recommends ways to address these security risks.
+%% This section provides documentation for the Amazon CodeGuru Security API
+%% operations. CodeGuru Security is a service that uses program analysis and
+%% machine learning to detect security policy violations and vulnerabilities,
+%% and recommends ways to address these security risks.
 %%
 %% By proactively detecting and providing recommendations for addressing
 %% security risks, CodeGuru Security improves the overall security of your
@@ -267,7 +268,9 @@ list_findings_metrics(Client, EndDate, StartDate, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all the scans in an account.
+%% @doc Returns a list of all the standard scans in an account.
+%%
+%% Does not return express scans.
 list_scans(Client)
   when is_map(Client) ->
     list_scans(Client, #{}, #{}).

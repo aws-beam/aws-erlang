@@ -48,6 +48,9 @@
          get_environment/2,
          get_environment/4,
          get_environment/5,
+         get_signed_bluinsights_url/1,
+         get_signed_bluinsights_url/3,
+         get_signed_bluinsights_url/4,
          list_application_versions/2,
          list_application_versions/4,
          list_application_versions/5,
@@ -450,6 +453,30 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
 get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a single sign-on URL that can be used to connect to AWS Blu
+%% Insights.
+get_signed_bluinsights_url(Client)
+  when is_map(Client) ->
+    get_signed_bluinsights_url(Client, #{}, #{}).
+
+get_signed_bluinsights_url(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_signed_bluinsights_url(Client, QueryMap, HeadersMap, []).
+
+get_signed_bluinsights_url(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/signed-bi-url"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
