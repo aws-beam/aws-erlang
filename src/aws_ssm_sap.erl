@@ -36,6 +36,8 @@
          put_resource_permission/3,
          register_application/2,
          register_application/3,
+         start_application_refresh/2,
+         start_application_refresh/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -375,6 +377,29 @@ register_application(Client, Input) ->
 register_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/register-application"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Refreshes a registered application.
+start_application_refresh(Client, Input) ->
+    start_application_refresh(Client, Input, []).
+start_application_refresh(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-application-refresh"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
