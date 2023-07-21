@@ -470,6 +470,8 @@
          list_processing_jobs/3,
          list_projects/2,
          list_projects/3,
+         list_resource_catalogs/2,
+         list_resource_catalogs/3,
          list_spaces/2,
          list_spaces/3,
          list_stage_devices/2,
@@ -3426,6 +3428,16 @@ list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
 
+%% @doc Lists Amazon SageMaker Catalogs based on given filters and orders.
+%%
+%% The maximum number of `ResourceCatalog's viewable is 1000.
+list_resource_catalogs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_catalogs(Client, Input, []).
+list_resource_catalogs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceCatalogs">>, Input, Options).
+
 %% @doc Lists spaces.
 list_spaces(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -4023,7 +4035,23 @@ update_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperiment">>, Input, Options).
 
-%% @doc Updates the feature group.
+%% @doc Updates the feature group by either adding features or updating the
+%% online store configuration.
+%%
+%% Use one of the following request parameters at a time while using the
+%% `UpdateFeatureGroup' API.
+%%
+%% You can add features for your feature group using the
+%% `FeatureAdditions' request parameter. Features cannot be removed from
+%% a feature group.
+%%
+%% You can update the online store configuration by using the
+%% `OnlineStoreConfig' request parameter. If a `TtlDuration' is
+%% specified, the default `TtlDuration' applies for all records added to
+%% the feature group after the feature group is updated. If a record level
+%% `TtlDuration' exists from using the `PutRecord' API, the record
+%% level `TtlDuration' applies to that record instead of the default
+%% `TtlDuration'.
 update_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_group(Client, Input, []).

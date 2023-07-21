@@ -1817,7 +1817,7 @@ list_intent_paths(Client, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves summary metrics for the intent stages in your bot.
+%% @doc Retrieves summary metrics for the stages within intents in your bot.
 %%
 %% The following fields are required:
 %%
@@ -2169,12 +2169,21 @@ list_test_sets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of metadata for individual user utterances to your
-%% bot.
+%% @doc To use this API operation, your IAM role must have permissions to
+%% perform the ListAggregatedUtterances operation, which provides access to
+%% utterance-related analytics.
 %%
-%% The `startDateTime' and `endDateTime' fields are required. These
-%% fields define a time range for which you want to retrieve results. Of the
-%% optional fields, you can organize the results in the following ways:
+%% See Viewing utterance statistics for the IAM policy to apply to the IAM
+%% role.
+%%
+%% Retrieves a list of metadata for individual user utterances to your bot.
+%% The following fields are required:
+%%
+%% <ul> <li> `startDateTime' and `endDateTime' – Define a time range
+%% for which you want to retrieve results.
+%%
+%% </li> </ul> Of the optional fields, you can organize the results in the
+%% following ways:
 %%
 %% <ul> <li> Use the `filters' field to filter the results and the
 %% `sortBy' field to specify the values by which to sort the results.
@@ -2207,9 +2216,15 @@ list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves summary metrics for the utterances in your bot.
+%% @doc To use this API operation, your IAM role must have permissions to
+%% perform the ListAggregatedUtterances operation, which provides access to
+%% utterance-related analytics.
 %%
-%% The following fields are required:
+%% See Viewing utterance statistics for the IAM policy to apply to the IAM
+%% role.
+%%
+%% Retrieves summary metrics for the utterances in your bot. The following
+%% fields are required:
 %%
 %% <ul> <li> `metrics' – A list of AnalyticsUtteranceMetric objects. In
 %% each object, use the `name' field to specify the metric to calculate,

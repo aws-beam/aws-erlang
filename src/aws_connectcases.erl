@@ -171,6 +171,8 @@ create_case(Client, DomainId, Input0, Options0) ->
 %% use the Amazon Connect CreateIntegrationAssociation API. You need specific
 %% IAM permissions to successfully associate the Cases domain. For more
 %% information, see Onboard to Cases.
+%%
+%% &lt;/important&gt;
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input0, Options0) ->
@@ -313,7 +315,14 @@ create_template(Client, DomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a domain.
+%% @doc Deletes a Cases domain.
+%%
+%% &lt;note&gt; &lt;p&gt;After deleting your domain you must disassociate the
+%% deleted domain from your Amazon Connect instance with another API call
+%% before being able to use Cases again with this Amazon Connect instance.
+%% See &lt;a
+%% href=&quot;https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html&quot;&gt;DeleteIntegrationAssociation&lt;/a&gt;.&lt;/p&gt;
+%% &lt;/note&gt;
 delete_domain(Client, DomainId, Input) ->
     delete_domain(Client, DomainId, Input, []).
 delete_domain(Client, DomainId, Input0, Options0) ->

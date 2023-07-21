@@ -55,6 +55,8 @@
          create_firewall_rule/3,
          create_firewall_rule_group/2,
          create_firewall_rule_group/3,
+         create_outpost_resolver/2,
+         create_outpost_resolver/3,
          create_resolver_endpoint/2,
          create_resolver_endpoint/3,
          create_resolver_query_log_config/2,
@@ -67,6 +69,8 @@
          delete_firewall_rule/3,
          delete_firewall_rule_group/2,
          delete_firewall_rule_group/3,
+         delete_outpost_resolver/2,
+         delete_outpost_resolver/3,
          delete_resolver_endpoint/2,
          delete_resolver_endpoint/3,
          delete_resolver_query_log_config/2,
@@ -91,6 +95,8 @@
          get_firewall_rule_group_association/3,
          get_firewall_rule_group_policy/2,
          get_firewall_rule_group_policy/3,
+         get_outpost_resolver/2,
+         get_outpost_resolver/3,
          get_resolver_config/2,
          get_resolver_config/3,
          get_resolver_dnssec_config/2,
@@ -123,6 +129,8 @@
          list_firewall_rule_groups/3,
          list_firewall_rules/2,
          list_firewall_rules/3,
+         list_outpost_resolvers/2,
+         list_outpost_resolvers/3,
          list_resolver_configs/2,
          list_resolver_configs/3,
          list_resolver_dnssec_configs/2,
@@ -159,6 +167,8 @@
          update_firewall_rule/3,
          update_firewall_rule_group_association/2,
          update_firewall_rule_group_association/3,
+         update_outpost_resolver/2,
+         update_outpost_resolver/3,
          update_resolver_config/2,
          update_resolver_config/3,
          update_resolver_dnssec_config/2,
@@ -264,6 +274,14 @@ create_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallRuleGroup">>, Input, Options).
 
+%% @doc Creates an Route 53 Resolver on an Outpost.
+create_outpost_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_outpost_resolver(Client, Input, []).
+create_outpost_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateOutpostResolver">>, Input, Options).
+
 %% @doc Creates a Resolver endpoint.
 %%
 %% There are two types of Resolver endpoints, inbound and outbound:
@@ -338,6 +356,14 @@ delete_firewall_rule_group(Client, Input)
 delete_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallRuleGroup">>, Input, Options).
+
+%% @doc Deletes a Resolver on the Outpost.
+delete_outpost_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_outpost_resolver(Client, Input, []).
+delete_outpost_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOutpostResolver">>, Input, Options).
 
 %% @doc Deletes a Resolver endpoint.
 %%
@@ -498,6 +524,15 @@ get_firewall_rule_group_policy(Client, Input)
 get_firewall_rule_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallRuleGroupPolicy">>, Input, Options).
+
+%% @doc Gets information about a specified Resolver on the Outpost, such as
+%% its instance count and type, name, and the current status of the Resolver.
+get_outpost_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_outpost_resolver(Client, Input, []).
+get_outpost_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOutpostResolver">>, Input, Options).
 
 %% @doc Retrieves the behavior configuration of Route 53 Resolver behavior
 %% for a single VPC from Amazon Virtual Private Cloud.
@@ -695,6 +730,15 @@ list_firewall_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallRules">>, Input, Options).
 
+%% @doc Lists all the Resolvers on Outposts that were created using the
+%% current Amazon Web Services account.
+list_outpost_resolvers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_outpost_resolvers(Client, Input, []).
+list_outpost_resolvers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOutpostResolvers">>, Input, Options).
+
 %% @doc Retrieves the Resolver configurations that you have defined.
 %%
 %% Route 53 Resolver uses the configurations to manage DNS resolution
@@ -862,6 +906,15 @@ update_firewall_rule_group_association(Client, Input)
 update_firewall_rule_group_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallRuleGroupAssociation">>, Input, Options).
+
+%% @doc You can use `UpdateOutpostResolver' to update the instance count,
+%% type, or name of a Resolver on an Outpost.
+update_outpost_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_outpost_resolver(Client, Input, []).
+update_outpost_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateOutpostResolver">>, Input, Options).
 
 %% @doc Updates the behavior configuration of Route 53 Resolver behavior for
 %% a single VPC from Amazon Virtual Private Cloud.
