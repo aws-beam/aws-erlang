@@ -1166,7 +1166,7 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Returns information about blue/green deployments.
+%% @doc Describes one or more blue/green deployments.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
 %% database updates in the Amazon RDS User Guide and Using Amazon RDS
