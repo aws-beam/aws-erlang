@@ -134,6 +134,12 @@
          describe_dashboard_permissions/3,
          describe_dashboard_permissions/5,
          describe_dashboard_permissions/6,
+         describe_dashboard_snapshot_job/4,
+         describe_dashboard_snapshot_job/6,
+         describe_dashboard_snapshot_job/7,
+         describe_dashboard_snapshot_job_result/4,
+         describe_dashboard_snapshot_job_result/6,
+         describe_dashboard_snapshot_job_result/7,
          describe_data_set/3,
          describe_data_set/5,
          describe_data_set/6,
@@ -334,6 +340,8 @@
          start_asset_bundle_export_job/4,
          start_asset_bundle_import_job/3,
          start_asset_bundle_import_job/4,
+         start_dashboard_snapshot_job/4,
+         start_dashboard_snapshot_job/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -1957,6 +1965,64 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an existing snapshot job.
+%%
+%% Poll job descriptions after a job starts to know the status of the job.
+%% For information on available status codes, see `JobStatus'.
+describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId)
+  when is_map(Client) ->
+    describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
+
+describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
+
+describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the result of an existing snapshot job that has finished
+%% running.
+%%
+%% A finished snapshot job will return a `COMPLETED' or `FAILED'
+%% status when you poll the job with a `DescribeDashboardSnapshotJob' API
+%% call.
+%%
+%% If the job has not finished running, this operation returns a message that
+%% says `Dashboard Snapshot Job with id &lt;SnapshotjobId&gt; has not reached
+%% a terminal state.'.
+describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId)
+  when is_map(Client) ->
+    describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
+
+describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
+
+describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs/", aws_util:encode_uri(SnapshotJobId), "/result"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3942,6 +4008,35 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
 start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous job that generates a dashboard snapshot.
+%%
+%% You can request up to one paginated PDF and up to five CSVs per API call.
+%%
+%% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
+%% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
+%% API to obtain the download URIs that the job generates.
+start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
+    start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
+start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/snapshot-jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

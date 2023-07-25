@@ -57,6 +57,8 @@
          get_reservation_utilization/3,
          get_rightsizing_recommendation/2,
          get_rightsizing_recommendation/3,
+         get_savings_plan_purchase_recommendation_details/2,
+         get_savings_plan_purchase_recommendation_details/3,
          get_savings_plans_coverage/2,
          get_savings_plans_coverage/3,
          get_savings_plans_purchase_recommendation/2,
@@ -378,6 +380,17 @@ get_rightsizing_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRightsizingRecommendation">>, Input, Options).
 
+%% @doc Retrieves the details for a Savings Plan recommendation.
+%%
+%% These details include the hourly data-points that construct the new cost,
+%% coverage, and utilization charts.
+get_savings_plan_purchase_recommendation_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_savings_plan_purchase_recommendation_details(Client, Input, []).
+get_savings_plan_purchase_recommendation_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSavingsPlanPurchaseRecommendationDetails">>, Input, Options).
+
 %% @doc Retrieves the Savings Plans covered for your account.
 %%
 %% This enables you to see how much of your cost is covered by a Savings
@@ -579,7 +592,12 @@ update_anomaly_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomalyMonitor">>, Input, Options).
 
-%% @doc Updates an existing cost anomaly monitor subscription.
+%% @doc Updates an existing cost anomaly subscription.
+%%
+%% Specify the fields that you want to update. Omitted fields are unchanged.
+%%
+%% The JSON below describes the generic construct for each type. See Request
+%% Parameters for possible values as they apply to `AnomalySubscription'.
 update_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_subscription(Client, Input, []).

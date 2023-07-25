@@ -115,6 +115,8 @@
          list_exports/3,
          list_imports/2,
          list_imports/3,
+         list_stack_instance_resource_drifts/2,
+         list_stack_instance_resource_drifts/3,
          list_stack_instances/2,
          list_stack_instances/3,
          list_stack_resources/2,
@@ -896,6 +898,18 @@ list_imports(Client, Input)
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
+
+%% @doc Returns drift information for resources in a stack instance.
+%%
+%% `ListStackInstanceResourceDrifts' returns drift information for the
+%% most recent drift detection operation. If an operation is in progress, it
+%% may only return partial results.
+list_stack_instance_resource_drifts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stack_instance_resource_drifts(Client, Input, []).
+list_stack_instance_resource_drifts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStackInstanceResourceDrifts">>, Input, Options).
 
 %% @doc Returns summary information about stack instances that are associated
 %% with the specified stack set.
