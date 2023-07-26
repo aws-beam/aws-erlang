@@ -114,6 +114,8 @@
          stop_server/3,
          tag_resource/2,
          tag_resource/3,
+         test_connection/2,
+         test_connection/3,
          test_identity_provider/2,
          test_identity_provider/3,
          untag_resource/2,
@@ -174,10 +176,14 @@ create_agreement(Client, Input, Options)
     request(Client, <<"CreateAgreement">>, Input, Options).
 
 %% @doc Creates the connector, which captures the parameters for an outbound
-%% connection for the AS2 protocol.
+%% connection for the AS2 or SFTP protocol.
 %%
-%% The connector is required for sending files to an externally hosted AS2
-%% server. For more details about connectors, see Create AS2 connectors.
+%% The connector is required for sending files to an externally hosted AS2 or
+%% SFTP server. For more details about AS2 connectors, see Create AS2
+%% connectors.
+%%
+%% You must specify exactly one configuration object: either for AS2
+%% (`As2Config') or SFTP (`SftpConfig').
 create_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connector(Client, Input, []).
@@ -263,7 +269,7 @@ delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
 
-%% @doc Deletes the agreement that's specified in the provided
+%% @doc Deletes the connector that's specified in the provided
 %% `ConnectorId'.
 delete_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -615,10 +621,27 @@ send_workflow_step_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendWorkflowStepState">>, Input, Options).
 
-%% @doc Begins an outbound file transfer to a remote AS2 server.
+%% @doc Begins a file transfer between local Amazon Web Services storage and
+%% a remote AS2 or SFTP server.
 %%
-%% You specify the `ConnectorId' and the file paths for where to send the
-%% files.
+%% <ul> <li> For an AS2 connector, you specify the `ConnectorId' and one
+%% or more `SendFilePaths' to identify the files you want to transfer.
+%%
+%% </li> <li> For an SFTP connector, the file transfer can be either outbound
+%% or inbound. In both cases, you specify the `ConnectorId'. Depending on
+%% the direction of the transfer, you also specify the following items:
+%%
+%% <ul> <li> If you are transferring file from a partner's SFTP server to
+%% a Transfer Family server, you specify one or more `RetreiveFilePaths'
+%% to identify the files you want to transfer, and a `LocalDirectoryPath'
+%% to specify the destination folder.
+%%
+%% </li> <li> If you are transferring file to a partner's SFTP server
+%% from Amazon Web Services storage, you specify one or more
+%% `SendFilePaths' to identify the files you want to transfer, and a
+%% `RemoteDirectoryPath' to specify the destination folder.
+%%
+%% </li> </ul> </li> </ul>
 start_file_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_file_transfer(Client, Input, []).
@@ -678,6 +701,18 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Tests whether your SFTP connector is set up successfully.
+%%
+%% We highly recommend that you call this operation to test your ability to
+%% transfer files between a Transfer Family server and a trading
+%% partner's SFTP server.
+test_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_connection(Client, Input, []).
+test_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestConnection">>, Input, Options).
 
 %% @doc If the `IdentityProviderType' of a file transfer protocol-enabled
 %% server is `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether

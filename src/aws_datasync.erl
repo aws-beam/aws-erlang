@@ -18,6 +18,8 @@
          cancel_task_execution/3,
          create_agent/2,
          create_agent/3,
+         create_location_azure_blob/2,
+         create_location_azure_blob/3,
          create_location_efs/2,
          create_location_efs/3,
          create_location_fsx_lustre/2,
@@ -50,6 +52,8 @@
          describe_agent/3,
          describe_discovery_job/2,
          describe_discovery_job/3,
+         describe_location_azure_blob/2,
+         describe_location_azure_blob/3,
          describe_location_efs/2,
          describe_location_efs/3,
          describe_location_fsx_lustre/2,
@@ -112,6 +116,8 @@
          update_agent/3,
          update_discovery_job/2,
          update_discovery_job/3,
+         update_location_azure_blob/2,
+         update_location_azure_blob/3,
          update_location_hdfs/2,
          update_location_hdfs/3,
          update_location_nfs/2,
@@ -182,6 +188,19 @@ create_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgent">>, Input, Options).
 
+%% @doc Creates an endpoint for a Microsoft Azure Blob Storage container that
+%% DataSync can use as a transfer source or destination.
+%%
+%% Before you begin, make sure you know how DataSync accesses Azure Blob
+%% Storage and works with access tiers and blob types. You also need a
+%% DataSync agent that can connect to your container.
+create_location_azure_blob(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_location_azure_blob(Client, Input, []).
+create_location_azure_blob(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocationAzureBlob">>, Input, Options).
+
 %% @doc Creates an endpoint for an Amazon EFS file system that DataSync can
 %% access for a transfer.
 %%
@@ -243,8 +262,8 @@ create_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationHdfs">>, Input, Options).
 
-%% @doc Defines a file system on a Network File System (NFS) server that can
-%% be read from or written to.
+%% @doc Creates an endpoint for an Network File System (NFS) file server that
+%% DataSync can use for a data transfer.
 create_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_nfs(Client, Input, []).
@@ -283,9 +302,10 @@ create_location_s3(Client, Input, Options)
     request(Client, <<"CreateLocationS3">>, Input, Options).
 
 %% @doc Creates an endpoint for a Server Message Block (SMB) file server that
-%% DataSync can access for a transfer.
+%% DataSync can use for a data transfer.
 %%
-%% For more information, see Creating an SMB location.
+%% Before you begin, make sure that you understand how DataSync accesses an
+%% SMB file server.
 create_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_smb(Client, Input, []).
@@ -355,6 +375,15 @@ describe_discovery_job(Client, Input)
 describe_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDiscoveryJob">>, Input, Options).
+
+%% @doc Provides details about how an DataSync transfer location for
+%% Microsoft Azure Blob Storage is configured.
+describe_location_azure_blob(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_location_azure_blob(Client, Input, []).
+describe_location_azure_blob(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLocationAzureBlob">>, Input, Options).
 
 %% @doc Returns metadata about your DataSync location for an Amazon EFS file
 %% system.
@@ -480,7 +509,7 @@ describe_storage_system_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
 
-%% @doc Returns metadata about a task.
+%% @doc Provides information about an DataSync transfer task.
 describe_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task(Client, Input, []).
@@ -488,7 +517,8 @@ describe_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTask">>, Input, Options).
 
-%% @doc Returns detailed metadata about a task that is being executed.
+%% @doc Provides information about an DataSync transfer task that's
+%% running.
 describe_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_execution(Client, Input, []).
@@ -682,6 +712,15 @@ update_discovery_job(Client, Input)
 update_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDiscoveryJob">>, Input, Options).
+
+%% @doc Modifies some configurations of the Microsoft Azure Blob Storage
+%% transfer location that you're using with DataSync.
+update_location_azure_blob(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_azure_blob(Client, Input, []).
+update_location_azure_blob(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationAzureBlob">>, Input, Options).
 
 %% @doc Updates some parameters of a previously created location for a Hadoop
 %% Distributed File System cluster.

@@ -72,6 +72,8 @@
          get_profile_object_type_template/2,
          get_profile_object_type_template/4,
          get_profile_object_type_template/5,
+         get_similar_profiles/3,
+         get_similar_profiles/4,
          get_workflow/3,
          get_workflow/5,
          get_workflow/6,
@@ -106,6 +108,9 @@
          list_profile_object_types/5,
          list_profile_objects/3,
          list_profile_objects/4,
+         list_rule_based_matches/2,
+         list_rule_based_matches/4,
+         list_rule_based_matches/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -838,6 +843,36 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a set of profiles that belong to the same matching group
+%% using the `matchId' or `profileId'.
+%%
+%% You can also specify the type of matching that you want for finding
+%% similar profiles using either `RULE_BASED_MATCHING' or
+%% `ML_BASED_MATCHING'.
+get_similar_profiles(Client, DomainName, Input) ->
+    get_similar_profiles(Client, DomainName, Input, []).
+get_similar_profiles(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get details of specified workflow.
 get_workflow(Client, DomainName, WorkflowId)
   when is_map(Client) ->
@@ -1169,6 +1204,34 @@ list_profile_objects(Client, DomainName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a set of `MatchIds' that belong to the given domain.
+list_rule_based_matches(Client, DomainName)
+  when is_map(Client) ->
+    list_rule_based_matches(Client, DomainName, #{}, #{}).
+
+list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_rule_based_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/ruleBasedMatches"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with an Amazon Connect Customer Profiles
 %% resource.
