@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon HealthLake is a HIPAA eligibile service that allows customers
-%% to store, transform, query, and analyze their FHIR-formatted data in a
+%% @doc AWS HealthLake is a HIPAA eligibile service that allows customers to
+%% store, transform, query, and analyze their FHIR-formatted data in a
 %% consistent fashion in the cloud.
 -module(aws_healthlake).
 
@@ -39,7 +39,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a Data Store that can ingest and export FHIR formatted data.
+%% @doc Creates a data store that can ingest and export FHIR formatted data.
 create_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fhir_datastore(Client, Input, []).
@@ -47,7 +47,7 @@ create_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFHIRDatastore">>, Input, Options).
 
-%% @doc Deletes a Data Store.
+%% @doc Deletes a data store.
 delete_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fhir_datastore(Client, Input, []).
@@ -55,9 +55,10 @@ delete_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFHIRDatastore">>, Input, Options).
 
-%% @doc Gets the properties associated with the FHIR Data Store, including
-%% the Data Store ID, Data Store ARN, Data Store name, Data Store status,
-%% created at, Data Store type version, and Data Store endpoint.
+%% @doc Gets the properties associated with the FHIR data store, including
+%% the data store ID, data store ARN, data store name, data store status,
+%% when the data store was created, data store type version, and the data
+%% store's endpoint.
 describe_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_datastore(Client, Input, []).
@@ -83,8 +84,8 @@ describe_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRImportJob">>, Input, Options).
 
-%% @doc Lists all FHIR Data Stores that are in the user’s account, regardless
-%% of Data Store status.
+%% @doc Lists all FHIR data stores that are in the user’s account, regardless
+%% of data store status.
 list_fhir_datastores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_datastores(Client, Input, []).
@@ -110,7 +111,7 @@ list_fhir_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRImportJobs">>, Input, Options).
 
-%% @doc Returns a list of all existing tags associated with a Data Store.
+%% @doc Returns a list of all existing tags associated with a data store.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -134,7 +135,7 @@ start_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRImportJob">>, Input, Options).
 
-%% @doc Adds a user specified key and value tag to a Data Store.
+%% @doc Adds a user specified key and value tag to a data store.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -142,7 +143,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes tags from a Data Store.
+%% @doc Removes tags from a data store.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

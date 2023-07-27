@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the Amazon Omics API Reference.
+%% @doc This is the AWS HealthOmics API Reference.
 %%
-%% For an introduction to the service, see What is Amazon Omics? in the
-%% Amazon Omics User Guide.
+%% For an introduction to the service, see What is AWS HealthOmics? in the
+%% AWS HealthOmics User Guide.
 -module(aws_omics).
 
 -export([abort_multipart_read_set_upload/4,

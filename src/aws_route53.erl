@@ -408,11 +408,12 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% Change Propagation to Route 53 DNS Servers
 %%
 %% When you submit a `ChangeResourceRecordSets' request, Route 53
-%% propagates your changes to all of the Route 53 authoritative DNS servers.
-%% While your changes are propagating, `GetChange' returns a status of
-%% `PENDING'. When propagation is complete, `GetChange' returns a
-%% status of `INSYNC'. Changes generally propagate to all Route 53 name
-%% servers within 60 seconds. For more information, see GetChange.
+%% propagates your changes to all of the Route 53 authoritative DNS servers
+%% managing the hosted zone. While your changes are propagating,
+%% `GetChange' returns a status of `PENDING'. When propagation is
+%% complete, `GetChange' returns a status of `INSYNC'. Changes
+%% generally propagate to all Route 53 name servers managing the hosted zone
+%% within 60 seconds. For more information, see GetChange.
 %%
 %% Limits on ChangeResourceRecordSets Requests
 %%
@@ -1014,6 +1015,14 @@ create_traffic_policy(Client, Input0, Options0) ->
 %% subdomain name (such as www.example.com). Amazon Route 53 responds to DNS
 %% queries for the domain or subdomain name by using the resource record sets
 %% that `CreateTrafficPolicyInstance' created.
+%%
+%% After you submit an `CreateTrafficPolicyInstance' request, there's
+%% a brief delay while Amazon Route 53 creates the resource record sets that
+%% are specified in the traffic policy definition. Use
+%% `GetTrafficPolicyInstance' with the `id' of new traffic policy
+%% instance to confirm that the `CreateTrafficPolicyInstance' request
+%% completed successfully. For more information, see the `State' response
+%% element.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
 create_traffic_policy_instance(Client, Input0, Options0) ->
@@ -1633,11 +1642,11 @@ get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
 %% The status is one of the following values:
 %%
 %% <ul> <li> `PENDING' indicates that the changes in this request have
-%% not propagated to all Amazon Route 53 DNS servers. This is the initial
-%% status of all change batch requests.
+%% not propagated to all Amazon Route 53 DNS servers managing the hosted
+%% zone. This is the initial status of all change batch requests.
 %%
 %% </li> <li> `INSYNC' indicates that the changes have propagated to all
-%% Route 53 DNS servers.
+%% Route 53 DNS servers managing the hosted zone.
 %%
 %% </li> </ul>
 get_change(Client, Id)
@@ -2043,11 +2052,10 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a specified traffic policy instance.
 %%
-%% After you submit a `CreateTrafficPolicyInstance' or an
-%% `UpdateTrafficPolicyInstance' request, there's a brief delay while
-%% Amazon Route 53 creates the resource record sets that are specified in the
-%% traffic policy definition. For more information, see the `State'
-%% response element.
+%% Use `GetTrafficPolicyInstance' with the `id' of new traffic policy
+%% instance to confirm that the `CreateTrafficPolicyInstance' or an
+%% `UpdateTrafficPolicyInstance' request completed successfully. For more
+%% information, see the `State' response element.
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
@@ -2877,6 +2885,11 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, 
 %% client subnet IP address, and a subnet mask.
 %%
 %% This call only supports querying public hosted zones.
+%%
+%% The `TestDnsAnswer ' returns information similar to what you would
+%% expect from the answer section of the `dig' command. Therefore, if you
+%% query for the name servers of a subdomain that point to the parent name
+%% servers, those will not be returned.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
@@ -2982,7 +2995,16 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the resource record sets in a specified hosted zone that were
+%% @doc After you submit a `UpdateTrafficPolicyInstance' request,
+%% there's a brief delay while Route 53 creates the resource record sets
+%% that are specified in the traffic policy definition.
+%%
+%% Use `GetTrafficPolicyInstance' with the `id' of updated traffic
+%% policy instance confirm that the `UpdateTrafficPolicyInstance' request
+%% completed successfully. For more information, see the `State' response
+%% element.
+%%
+%% Updates the resource record sets in a specified hosted zone that were
 %% created based on the settings in a specified traffic policy version.
 %%
 %% When you update a traffic policy instance, Amazon Route 53 continues to
