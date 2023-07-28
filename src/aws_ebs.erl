@@ -58,6 +58,12 @@
 %%
 %% Completing the snapshot changes the status to `completed'. You cannot
 %% write new blocks to a snapshot after it has been completed.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 complete_snapshot(Client, SnapshotId, Input0, Options0) ->
@@ -87,6 +93,12 @@ complete_snapshot(Client, SnapshotId, Input0, Options0) ->
 
 %% @doc Returns the data in a block in an Amazon Elastic Block Store
 %% snapshot.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
@@ -133,6 +145,12 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 
 %% @doc Returns information about the blocks that are different between two
 %% Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
@@ -164,6 +182,12 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about the blocks in an Amazon Elastic Block Store
 %% snapshot.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
@@ -198,6 +222,12 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 %% The target snapshot must be in the `pending' state.
 %%
 %% Data written to a snapshot must be aligned with 512-KiB sectors.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
@@ -249,6 +279,12 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 %%
 %% After creating the snapshot, use PutSnapshotBlock to write blocks of data
 %% to the snapshot.
+%%
+%% You should always retry requests that receive server (`5xx') error
+%% responses, and `ThrottlingException' and
+%% `RequestThrottledException' client error responses. For more
+%% information see Error retries in the Amazon Elastic Compute Cloud User
+%% Guide.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 start_snapshot(Client, Input0, Options0) ->
