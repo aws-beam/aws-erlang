@@ -20,7 +20,9 @@
 %% It bases this analysis on impactful metrics and log errors.
 -module(aws_application_insights).
 
--export([create_application/2,
+-export([add_workload/2,
+         add_workload/3,
+         create_application/2,
          create_application/3,
          create_component/2,
          create_component/3,
@@ -48,6 +50,8 @@
          describe_problem/3,
          describe_problem_observations/2,
          describe_problem_observations/3,
+         describe_workload/2,
+         describe_workload/3,
          list_applications/2,
          list_applications/3,
          list_components/2,
@@ -62,6 +66,10 @@
          list_problems/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_workloads/2,
+         list_workloads/3,
+         remove_workload/2,
+         remove_workload/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -73,13 +81,27 @@
          update_component_configuration/2,
          update_component_configuration/3,
          update_log_pattern/2,
-         update_log_pattern/3]).
+         update_log_pattern/3,
+         update_problem/2,
+         update_problem/3,
+         update_workload/2,
+         update_workload/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds a workload to a component.
+%%
+%% Each component can have at most five workloads.
+add_workload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_workload(Client, Input, []).
+add_workload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddWorkload">>, Input, Options).
 
 %% @doc Adds an application that is created from a resource group.
 create_application(Client, Input)
@@ -201,6 +223,14 @@ describe_problem_observations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProblemObservations">>, Input, Options).
 
+%% @doc Describes a workload and its configuration.
+describe_workload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workload(Client, Input, []).
+describe_workload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkload">>, Input, Options).
+
 %% @doc Lists the IDs of the applications that you are monitoring.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -278,6 +308,22 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Lists the workloads that are configured on a given component.
+list_workloads(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_workloads(Client, Input, []).
+list_workloads(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWorkloads">>, Input, Options).
+
+%% @doc Remove workload from a component.
+remove_workload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_workload(Client, Input, []).
+remove_workload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveWorkload">>, Input, Options).
+
 %% @doc Add one or more tags (keys and values) to a specified application.
 %%
 %% A tag is a label that you optionally define and associate with an
@@ -340,6 +386,25 @@ update_log_pattern(Client, Input)
 update_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogPattern">>, Input, Options).
+
+%% @doc Updates the visibility of the problem or specifies the problem as
+%% `RESOLVED'.
+update_problem(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_problem(Client, Input, []).
+update_problem(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProblem">>, Input, Options).
+
+%% @doc Adds a workload to a component.
+%%
+%% Each component can have at most five workloads.
+update_workload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_workload(Client, Input, []).
+update_workload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWorkload">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

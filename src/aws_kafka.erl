@@ -30,6 +30,9 @@
          describe_cluster_operation/2,
          describe_cluster_operation/4,
          describe_cluster_operation/5,
+         describe_cluster_operation_v2/2,
+         describe_cluster_operation_v2/4,
+         describe_cluster_operation_v2/5,
          describe_cluster_v2/2,
          describe_cluster_v2/4,
          describe_cluster_v2/5,
@@ -57,6 +60,9 @@
          list_cluster_operations/2,
          list_cluster_operations/4,
          list_cluster_operations/5,
+         list_cluster_operations_v2/2,
+         list_cluster_operations_v2/4,
+         list_cluster_operations_v2/5,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
@@ -404,6 +410,29 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a description of the cluster operation specified by the ARN.
+describe_cluster_operation_v2(Client, ClusterOperationArn)
+  when is_map(Client) ->
+    describe_cluster_operation_v2(Client, ClusterOperationArn, #{}, #{}).
+
+describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap, []).
+
+describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v2/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a description of the MSK cluster of either the provisioned or
 %% the serverless type whose Amazon Resource Name (ARN) is specified in the
 %% request.
@@ -613,6 +642,35 @@ list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap)
 list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the operations that have been performed on the
+%% specified MSK cluster.
+list_cluster_operations_v2(Client, ClusterArn)
+  when is_map(Client) ->
+    list_cluster_operations_v2(Client, ClusterArn, #{}, #{}).
+
+list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v2/clusters/", aws_util:encode_uri(ClusterArn), "/operations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

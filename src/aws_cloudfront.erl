@@ -328,6 +328,16 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %% `UpdateDistribution' to modify the staging distribution's
 %% configuration. Then you can use `CreateContinuousDeploymentPolicy' to
 %% incrementally move traffic to the staging distribution.
+%%
+%% This API operation requires the following IAM permissions:
+%%
+%% <ul> <li> GetDistribution
+%%
+%% </li> <li> CreateDistribution
+%%
+%% </li> <li> CopyDistribution
+%%
+%% </li> </ul>
 copy_distribution(Client, PrimaryDistributionId, Input) ->
     copy_distribution(Client, PrimaryDistributionId, Input, []).
 copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
@@ -570,6 +580,14 @@ create_distribution(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new distribution with tags.
+%%
+%% This API operation requires the following IAM permissions:
+%%
+%% <ul> <li> CreateDistribution
+%%
+%% </li> <li> TagResource
+%%
+%% </li> </ul>
 create_distribution_with_tags(Client, Input) ->
     create_distribution_with_tags(Client, Input, []).
 create_distribution_with_tags(Client, Input0, Options0) ->
@@ -4010,6 +4028,14 @@ update_distribution(Client, Id, Input0, Options0) ->
 %% distribution's configuration to the primary distribution. This action
 %% will disable the continuous deployment policy and move your domain's
 %% traffic back to the primary distribution.
+%%
+%% This API operation requires the following IAM permissions:
+%%
+%% <ul> <li> GetDistribution
+%%
+%% </li> <li> UpdateDistribution
+%%
+%% </li> </ul>
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
 update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
