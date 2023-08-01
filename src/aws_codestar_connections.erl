@@ -3,20 +3,21 @@
 
 %% @doc AWS CodeStar Connections
 %%
-%% This AWS CodeStar Connections API Reference provides descriptions and
-%% usage examples of the operations and data types for the AWS CodeStar
-%% Connections API.
+%% This Amazon Web Services CodeStar Connections API Reference provides
+%% descriptions and usage examples of the operations and data types for the
+%% Amazon Web Services CodeStar Connections API.
 %%
 %% You can use the connections API to work with connections and
 %% installations.
 %%
-%% Connections are configurations that you use to connect AWS resources to
-%% external code repositories. Each connection is a resource that can be
-%% given to services such as CodePipeline to connect to a third-party
-%% repository such as Bitbucket. For example, you can add the connection in
-%% CodePipeline so that it triggers your pipeline when a code change is made
-%% to your third-party code repository. Each connection is named and
-%% associated with a unique ARN that is used to reference the connection.
+%% Connections are configurations that you use to connect Amazon Web Services
+%% resources to external code repositories. Each connection is a resource
+%% that can be given to services such as CodePipeline to connect to a
+%% third-party repository such as Bitbucket. For example, you can add the
+%% connection in CodePipeline so that it triggers your pipeline when a code
+%% change is made to your third-party code repository. Each connection is
+%% named and associated with a unique ARN that is used to reference the
+%% connection.
 %%
 %% When you create a connection, the console initiates a third-party
 %% connection handshake. Installations are the apps that are used to conduct
@@ -53,20 +54,21 @@
 %% </li> <li> `ListHosts', which lists the hosts associated with your
 %% account.
 %%
-%% </li> </ul> You can work with tags in AWS CodeStar Connections by calling
-%% the following:
+%% </li> </ul> You can work with tags in Amazon Web Services CodeStar
+%% Connections by calling the following:
 %%
-%% <ul> <li> `ListTagsForResource', which gets information about AWS tags
-%% for a specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
+%% <ul> <li> `ListTagsForResource', which gets information about Amazon
+%% Web Services tags for a specified Amazon Resource Name (ARN) in Amazon Web
+%% Services CodeStar Connections.
 %%
 %% </li> <li> `TagResource', which adds or updates tags for a resource in
-%% AWS CodeStar Connections.
+%% Amazon Web Services CodeStar Connections.
 %%
-%% </li> <li> `UntagResource', which removes tags for a resource in AWS
-%% CodeStar Connections.
+%% </li> <li> `UntagResource', which removes tags for a resource in
+%% Amazon Web Services CodeStar Connections.
 %%
-%% </li> </ul> For information about how to use AWS CodeStar Connections, see
-%% the Developer Tools User Guide.
+%% </li> </ul> For information about how to use Amazon Web Services CodeStar
+%% Connections, see the Developer Tools User Guide.
 -module(aws_codestar_connections).
 
 -export([create_connection/2,
@@ -100,8 +102,9 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a connection that can then be given to other AWS services
-%% like CodePipeline so that it can access third-party code repositories.
+%% @doc Creates a connection that can then be given to other Amazon Web
+%% Services services like CodePipeline so that it can access third-party code
+%% repositories.
 %%
 %% The connection is in pending status until the third-party connection
 %% handshake is completed from the console.
@@ -204,7 +207,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes tags from an AWS resource.
+%% @doc Removes tags from an Amazon Web Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

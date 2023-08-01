@@ -26,6 +26,8 @@
          delete_label_group/3,
          delete_model/2,
          delete_model/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          describe_data_ingestion_job/2,
          describe_data_ingestion_job/3,
          describe_dataset/2,
@@ -38,6 +40,14 @@
          describe_label_group/3,
          describe_model/2,
          describe_model/3,
+         describe_model_version/2,
+         describe_model_version/3,
+         describe_resource_policy/2,
+         describe_resource_policy/3,
+         import_dataset/2,
+         import_dataset/3,
+         import_model_version/2,
+         import_model_version/3,
          list_data_ingestion_jobs/2,
          list_data_ingestion_jobs/3,
          list_datasets/2,
@@ -52,12 +62,16 @@
          list_label_groups/3,
          list_labels/2,
          list_labels/3,
+         list_model_versions/2,
+         list_model_versions/3,
          list_models/2,
          list_models/3,
          list_sensor_statistics/2,
          list_sensor_statistics/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          start_data_ingestion_job/2,
          start_data_ingestion_job/3,
          start_inference_scheduler/2,
@@ -68,6 +82,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_active_model_version/2,
+         update_active_model_version/3,
          update_inference_scheduler/2,
          update_inference_scheduler/3,
          update_label_group/2,
@@ -83,8 +99,8 @@
 %% analysis.
 %%
 %% The dataset contains the metadata describing where the data is and what
-%% the data actually looks like. In other words, it contains the location of
-%% the data source, the data schema, and other information. A dataset also
+%% the data actually looks like. For example, it contains the location of the
+%% data source, the data schema, and other information. A dataset also
 %% contains any tags associated with the ingested data.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -197,6 +213,14 @@ delete_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModel">>, Input, Options).
 
+%% @doc Deletes the resource policy attached to the resource.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Provides information on a specific data ingestion job such as
 %% creation time, dataset ARN, and status.
 describe_data_ingestion_job(Client, Input)
@@ -249,6 +273,39 @@ describe_model(Client, Input)
 describe_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModel">>, Input, Options).
+
+%% @doc Retrieves information about a specific machine learning model
+%% version.
+describe_model_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_version(Client, Input, []).
+describe_model_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelVersion">>, Input, Options).
+
+%% @doc Provides the details of a resource policy attached to a resource.
+describe_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_resource_policy(Client, Input, []).
+describe_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResourcePolicy">>, Input, Options).
+
+%% @doc Imports a dataset.
+import_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_dataset(Client, Input, []).
+import_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportDataset">>, Input, Options).
+
+%% @doc Imports a model that has been trained successfully.
+import_model_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_model_version(Client, Input, []).
+import_model_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportModelVersion">>, Input, Options).
 
 %% @doc Provides a list of all data ingestion jobs, including dataset name
 %% and ARN, S3 location of the input data, status, and so on.
@@ -311,6 +368,18 @@ list_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabels">>, Input, Options).
 
+%% @doc Generates a list of all model versions for a given model, including
+%% the model version, model version ARN, and status.
+%%
+%% To list a subset of versions, use the `MaxModelVersion' and
+%% `MinModelVersion' fields.
+list_model_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_versions(Client, Input, []).
+list_model_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelVersions">>, Input, Options).
+
 %% @doc Generates a list of all models in the account, including model name
 %% and ARN, dataset, and status.
 list_models(Client, Input)
@@ -339,6 +408,14 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Creates a resource control policy for a given resource.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Starts a data ingestion job.
 %%
@@ -389,6 +466,14 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Sets the active model version for a given machine learning model.
+update_active_model_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_active_model_version(Client, Input, []).
+update_active_model_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateActiveModelVersion">>, Input, Options).
 
 %% @doc Updates an inference scheduler.
 update_inference_scheduler(Client, Input)

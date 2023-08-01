@@ -12,6 +12,8 @@
          batch_get_account_status/3,
          batch_get_code_snippet/2,
          batch_get_code_snippet/3,
+         batch_get_finding_details/2,
+         batch_get_finding_details/3,
          batch_get_free_trial_info/2,
          batch_get_free_trial_info/3,
          batch_get_member_ec2_deep_inspection_status/2,
@@ -165,6 +167,29 @@ batch_get_code_snippet(Client, Input) ->
 batch_get_code_snippet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/codesnippet/batchget"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets vulnerability details for findings.
+batch_get_finding_details(Client, Input) ->
+    batch_get_finding_details(Client, Input, []).
+batch_get_finding_details(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/findings/details/batch/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

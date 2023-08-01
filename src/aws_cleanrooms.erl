@@ -13,8 +13,12 @@
 %% see the Clean Rooms User Guide.
 -module(aws_cleanrooms).
 
--export([batch_get_schema/3,
+-export([batch_get_collaboration_analysis_template/3,
+         batch_get_collaboration_analysis_template/4,
+         batch_get_schema/3,
          batch_get_schema/4,
+         create_analysis_template/3,
+         create_analysis_template/4,
          create_collaboration/2,
          create_collaboration/3,
          create_configured_table/2,
@@ -25,6 +29,8 @@
          create_configured_table_association/4,
          create_membership/2,
          create_membership/3,
+         delete_analysis_template/4,
+         delete_analysis_template/5,
          delete_collaboration/3,
          delete_collaboration/4,
          delete_configured_table/3,
@@ -37,9 +43,15 @@
          delete_member/5,
          delete_membership/3,
          delete_membership/4,
+         get_analysis_template/3,
+         get_analysis_template/5,
+         get_analysis_template/6,
          get_collaboration/2,
          get_collaboration/4,
          get_collaboration/5,
+         get_collaboration_analysis_template/3,
+         get_collaboration_analysis_template/5,
+         get_collaboration_analysis_template/6,
          get_configured_table/2,
          get_configured_table/4,
          get_configured_table/5,
@@ -61,6 +73,12 @@
          get_schema_analysis_rule/4,
          get_schema_analysis_rule/6,
          get_schema_analysis_rule/7,
+         list_analysis_templates/2,
+         list_analysis_templates/4,
+         list_analysis_templates/5,
+         list_collaboration_analysis_templates/2,
+         list_collaboration_analysis_templates/4,
+         list_collaboration_analysis_templates/5,
          list_collaborations/1,
          list_collaborations/3,
          list_collaborations/4,
@@ -91,6 +109,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_analysis_template/4,
+         update_analysis_template/5,
          update_collaboration/3,
          update_collaboration/4,
          update_configured_table/3,
@@ -110,12 +130,59 @@
 %% API
 %%====================================================================
 
+%% @doc Retrieves multiple analysis templates within a collaboration by their
+%% Amazon Resource Names (ARNs).
+batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input) ->
+    batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input, []).
+batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-analysistemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves multiple schemas by their identifiers.
 batch_get_schema(Client, CollaborationIdentifier, Input) ->
     batch_get_schema(Client, CollaborationIdentifier, Input, []).
 batch_get_schema(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/batch-schema"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new analysis template.
+create_analysis_template(Client, MembershipIdentifier, Input) ->
+    create_analysis_template(Client, MembershipIdentifier, Input, []).
+create_analysis_template(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -239,6 +306,29 @@ create_membership(Client, Input0, Options0) ->
     Method = post,
     Path = ["/memberships"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an analysis template.
+delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
+    delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
+delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -401,6 +491,29 @@ delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves an analysis template.
+get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, #{}, #{}).
+
+get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns metadata about a collaboration.
 get_collaboration(Client, CollaborationIdentifier)
   when is_map(Client) ->
@@ -413,6 +526,29 @@ get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap)
 get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves an analysis template within a collaboration.
+get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier)
+  when is_map(Client) ->
+    get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, #{}, #{}).
+
+get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -582,6 +718,62 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists analysis templates that the caller owns.
+list_analysis_templates(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_analysis_templates(Client, MembershipIdentifier, #{}, #{}).
+
+list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists analysis templates within a collaboration.
+list_collaboration_analysis_templates(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_analysis_templates(Client, CollaborationIdentifier, #{}, #{}).
+
+list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/analysistemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -877,6 +1069,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the analysis template metadata.
+update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
+    update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
+update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates collaboration metadata and can only be called by the

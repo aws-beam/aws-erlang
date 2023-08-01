@@ -111,7 +111,7 @@ create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new form for an Amplify.
+%% @doc Creates a new form for an Amplify app.
 create_form(Client, AppId, EnvironmentName, Input) ->
     create_form(Client, AppId, EnvironmentName, Input, []).
 create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
@@ -612,8 +612,8 @@ refresh_token(Client, Provider, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a code generation job for for a specified Amplify app and
-%% backend environment.
+%% @doc Starts a code generation job for a specified Amplify app and backend
+%% environment.
 start_codegen_job(Client, AppId, EnvironmentName, Input) ->
     start_codegen_job(Client, AppId, EnvironmentName, Input, []).
 start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
