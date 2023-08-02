@@ -119,6 +119,8 @@
          delete_custom_db_engine_version/3,
          delete_db_cluster/2,
          delete_db_cluster/3,
+         delete_db_cluster_automated_backup/2,
+         delete_db_cluster_automated_backup/3,
          delete_db_cluster_endpoint/2,
          delete_db_cluster_endpoint/3,
          delete_db_cluster_parameter_group/2,
@@ -155,6 +157,8 @@
          describe_blue_green_deployments/3,
          describe_certificates/2,
          describe_certificates/3,
+         describe_db_cluster_automated_backups/2,
+         describe_db_cluster_automated_backups/3,
          describe_db_cluster_backtracks/2,
          describe_db_cluster_backtracks/3,
          describe_db_cluster_endpoints/2,
@@ -945,6 +949,16 @@ delete_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBCluster">>, Input, Options).
 
+%% @doc Deletes automated backups using the `DbClusterResourceId' value
+%% of the source DB cluster or the Amazon Resource Name (ARN) of the
+%% automated backups.
+delete_db_cluster_automated_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_db_cluster_automated_backup(Client, Input, []).
+delete_db_cluster_automated_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDBClusterAutomatedBackup">>, Input, Options).
+
 %% @doc Deletes a custom endpoint and removes it from an Amazon Aurora DB
 %% cluster.
 %%
@@ -1191,6 +1205,21 @@ describe_certificates(Client, Input)
 describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
+
+%% @doc Displays backups for both current and deleted DB clusters.
+%%
+%% For example, use this operation to find details about automated backups
+%% for previously deleted clusters. Current clusters are returned for both
+%% the `DescribeDBClusterAutomatedBackups' and `DescribeDBClusters'
+%% operations.
+%%
+%% All parameters are optional.
+describe_db_cluster_automated_backups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_cluster_automated_backups(Client, Input, []).
+describe_db_cluster_automated_backups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBClusterAutomatedBackups">>, Input, Options).
 
 %% @doc Returns information about backtracks for a DB cluster.
 %%

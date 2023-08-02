@@ -74,6 +74,8 @@
          describe_endpoint_types/3,
          describe_endpoints/2,
          describe_endpoints/3,
+         describe_engine_versions/2,
+         describe_engine_versions/3,
          describe_event_categories/2,
          describe_event_categories/3,
          describe_event_subscriptions/2,
@@ -526,6 +528,15 @@ describe_endpoints(Client, Input)
 describe_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpoints">>, Input, Options).
+
+%% @doc Returns information about the replication instance versions used in
+%% the project.
+describe_engine_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_engine_versions(Client, Input, []).
+describe_engine_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEngineVersions">>, Input, Options).
 
 %% @doc Lists categories for all event source types, or, if specified, for a
 %% specified source type.
