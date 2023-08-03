@@ -350,6 +350,8 @@
          get_model_package_group_policy/3,
          get_sagemaker_servicecatalog_portfolio_status/2,
          get_sagemaker_servicecatalog_portfolio_status/3,
+         get_scaling_configuration_recommendation/2,
+         get_scaling_configuration_recommendation/3,
          get_search_suggestions/2,
          get_search_suggestions/3,
          import_hub_content/2,
@@ -2904,6 +2906,18 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input)
 get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSagemakerServicecatalogPortfolioStatus">>, Input, Options).
+
+%% @doc Starts an Amazon SageMaker Inference Recommender autoscaling
+%% recommendation job.
+%%
+%% Returns recommendations for autoscaling policies that you can apply to
+%% your SageMaker endpoint.
+get_scaling_configuration_recommendation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scaling_configuration_recommendation(Client, Input, []).
+get_scaling_configuration_recommendation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScalingConfigurationRecommendation">>, Input, Options).
 
 %% @doc An auto-complete API for the search functionality in the SageMaker
 %% console.

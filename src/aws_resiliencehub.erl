@@ -13,6 +13,8 @@
 
 -export([add_draft_app_version_resource_mappings/2,
          add_draft_app_version_resource_mappings/3,
+         batch_update_recommendation_status/2,
+         batch_update_recommendation_status/3,
          create_app/2,
          create_app/3,
          create_app_version_app_component/2,
@@ -59,6 +61,8 @@
          import_resources_to_draft_app_version/3,
          list_alarm_recommendations/2,
          list_alarm_recommendations/3,
+         list_app_assessment_compliance_drifts/2,
+         list_app_assessment_compliance_drifts/3,
          list_app_assessments/1,
          list_app_assessments/3,
          list_app_assessments/4,
@@ -154,15 +158,41 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Enables you to include or exclude one or more operational
+%% recommendations.
+batch_update_recommendation_status(Client, Input) ->
+    batch_update_recommendation_status(Client, Input, []).
+batch_update_recommendation_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/batch-update-recommendation-status"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Resilience Hub application.
 %%
 %% An Resilience Hub application is a collection of Amazon Web Services
 %% resources structured to prevent and recover Amazon Web Services
-%% application disruptions. To describe an Resilience Hub application, you
+%% application disruptions. To describe a Resilience Hub application, you
 %% provide an application name, resources from one or more CloudFormation
 %% stacks, Resource Groups, Terraform state files, AppRegistry applications,
-%% and an appropriate resiliency policy. For more information about the
-%% number of resources supported per application, see Service Quotas.
+%% and an appropriate resiliency policy. In addition, you can also add
+%% resources that are located on Amazon Elastic Kubernetes Service (Amazon
+%% EKS) clusters as optional resources. For more information about the number
+%% of resources supported per application, see Service quotas.
 %%
 %% After you create an Resilience Hub application, you publish it so that you
 %% can run a resiliency assessment on it. You can then use recommendations
@@ -755,6 +785,30 @@ list_alarm_recommendations(Client, Input) ->
 list_alarm_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-alarm-recommendations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List of compliance drifts that were detected while running an
+%% assessment.
+list_app_assessment_compliance_drifts(Client, Input) ->
+    list_app_assessment_compliance_drifts(Client, Input, []).
+list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-app-assessment-compliance-drifts"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
