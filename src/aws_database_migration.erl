@@ -24,12 +24,18 @@
          batch_start_recommendations/3,
          cancel_replication_task_assessment_run/2,
          cancel_replication_task_assessment_run/3,
+         create_data_provider/2,
+         create_data_provider/3,
          create_endpoint/2,
          create_endpoint/3,
          create_event_subscription/2,
          create_event_subscription/3,
          create_fleet_advisor_collector/2,
          create_fleet_advisor_collector/3,
+         create_instance_profile/2,
+         create_instance_profile/3,
+         create_migration_project/2,
+         create_migration_project/3,
          create_replication_config/2,
          create_replication_config/3,
          create_replication_instance/2,
@@ -42,6 +48,8 @@
          delete_certificate/3,
          delete_connection/2,
          delete_connection/3,
+         delete_data_provider/2,
+         delete_data_provider/3,
          delete_endpoint/2,
          delete_endpoint/3,
          delete_event_subscription/2,
@@ -50,6 +58,10 @@
          delete_fleet_advisor_collector/3,
          delete_fleet_advisor_databases/2,
          delete_fleet_advisor_databases/3,
+         delete_instance_profile/2,
+         delete_instance_profile/3,
+         delete_migration_project/2,
+         delete_migration_project/3,
          delete_replication_config/2,
          delete_replication_config/3,
          delete_replication_instance/2,
@@ -68,6 +80,10 @@
          describe_certificates/3,
          describe_connections/2,
          describe_connections/3,
+         describe_conversion_configuration/2,
+         describe_conversion_configuration/3,
+         describe_data_providers/2,
+         describe_data_providers/3,
          describe_endpoint_settings/2,
          describe_endpoint_settings/3,
          describe_endpoint_types/2,
@@ -82,6 +98,8 @@
          describe_event_subscriptions/3,
          describe_events/2,
          describe_events/3,
+         describe_extension_pack_associations/2,
+         describe_extension_pack_associations/3,
          describe_fleet_advisor_collectors/2,
          describe_fleet_advisor_collectors/3,
          describe_fleet_advisor_databases/2,
@@ -92,6 +110,20 @@
          describe_fleet_advisor_schema_object_summary/3,
          describe_fleet_advisor_schemas/2,
          describe_fleet_advisor_schemas/3,
+         describe_instance_profiles/2,
+         describe_instance_profiles/3,
+         describe_metadata_model_assessments/2,
+         describe_metadata_model_assessments/3,
+         describe_metadata_model_conversions/2,
+         describe_metadata_model_conversions/3,
+         describe_metadata_model_exports_as_script/2,
+         describe_metadata_model_exports_as_script/3,
+         describe_metadata_model_exports_to_target/2,
+         describe_metadata_model_exports_to_target/3,
+         describe_metadata_model_imports/2,
+         describe_metadata_model_imports/3,
+         describe_migration_projects/2,
+         describe_migration_projects/3,
          describe_orderable_replication_instances/2,
          describe_orderable_replication_instances/3,
          describe_pending_maintenance_actions/2,
@@ -126,14 +158,24 @@
          describe_schemas/3,
          describe_table_statistics/2,
          describe_table_statistics/3,
+         export_metadata_model_assessment/2,
+         export_metadata_model_assessment/3,
          import_certificate/2,
          import_certificate/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         modify_conversion_configuration/2,
+         modify_conversion_configuration/3,
+         modify_data_provider/2,
+         modify_data_provider/3,
          modify_endpoint/2,
          modify_endpoint/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
+         modify_instance_profile/2,
+         modify_instance_profile/3,
+         modify_migration_project/2,
+         modify_migration_project/3,
          modify_replication_config/2,
          modify_replication_config/3,
          modify_replication_instance/2,
@@ -156,6 +198,18 @@
          remove_tags_from_resource/3,
          run_fleet_advisor_lsa_analysis/2,
          run_fleet_advisor_lsa_analysis/3,
+         start_extension_pack_association/2,
+         start_extension_pack_association/3,
+         start_metadata_model_assessment/2,
+         start_metadata_model_assessment/3,
+         start_metadata_model_conversion/2,
+         start_metadata_model_conversion/3,
+         start_metadata_model_export_as_script/2,
+         start_metadata_model_export_as_script/3,
+         start_metadata_model_export_to_target/2,
+         start_metadata_model_export_to_target/3,
+         start_metadata_model_import/2,
+         start_metadata_model_import/3,
          start_recommendations/2,
          start_recommendations/3,
          start_replication/2,
@@ -231,6 +285,17 @@ cancel_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplicationTaskAssessmentRun">>, Input, Options).
 
+%% @doc Creates a data provider using the provided settings.
+%%
+%% A data provider stores a data store type and location information about
+%% your database.
+create_data_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_provider(Client, Input, []).
+create_data_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataProvider">>, Input, Options).
+
 %% @doc Creates an endpoint using the provided settings.
 %%
 %% For a MySQL source or target endpoint, don't explicitly specify the
@@ -277,6 +342,25 @@ create_fleet_advisor_collector(Client, Input)
 create_fleet_advisor_collector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
+
+%% @doc Creates the instance profile using the specified parameters.
+create_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_instance_profile(Client, Input, []).
+create_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInstanceProfile">>, Input, Options).
+
+%% @doc Creates the migration project using the specified parameters.
+%%
+%% You can run this action only after you create an instance profile and data
+%% providers using CreateInstanceProfile and CreateDataProvider.
+create_migration_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_migration_project(Client, Input, []).
+create_migration_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMigrationProject">>, Input, Options).
 
 %% @doc Creates a configuration that you can later provide to configure and
 %% start an DMS Serverless replication.
@@ -350,6 +434,17 @@ delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
 
+%% @doc Deletes the specified data provider.
+%%
+%% All migration projects associated with the data provider must be deleted
+%% or modified before you can delete the data provider.
+delete_data_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_data_provider(Client, Input, []).
+delete_data_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataProvider">>, Input, Options).
+
 %% @doc Deletes the specified endpoint.
 %%
 %% All tasks associated with the endpoint must be deleted before you can
@@ -384,6 +479,27 @@ delete_fleet_advisor_databases(Client, Input)
 delete_fleet_advisor_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFleetAdvisorDatabases">>, Input, Options).
+
+%% @doc Deletes the specified instance profile.
+%%
+%% All migration projects associated with the instance profile must be
+%% deleted or modified before you can delete the instance profile.
+delete_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_instance_profile(Client, Input, []).
+delete_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInstanceProfile">>, Input, Options).
+
+%% @doc Deletes the specified migration project.
+%%
+%% The migration project must be closed before you can delete it.
+delete_migration_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_migration_project(Client, Input, []).
+delete_migration_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMigrationProject">>, Input, Options).
 
 %% @doc Deletes an DMS Serverless replication configuration.
 %%
@@ -503,6 +619,23 @@ describe_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnections">>, Input, Options).
 
+%% @doc Returns configuration parameters for a schema conversion project.
+describe_conversion_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_conversion_configuration(Client, Input, []).
+describe_conversion_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConversionConfiguration">>, Input, Options).
+
+%% @doc Returns a paginated list of data providers for your account in the
+%% current region.
+describe_data_providers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_providers(Client, Input, []).
+describe_data_providers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataProviders">>, Input, Options).
+
 %% @doc Returns information about the possible endpoint settings available
 %% when you create an endpoint for a specific database engine.
 describe_endpoint_settings(Client, Input)
@@ -578,6 +711,19 @@ describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
 
+%% @doc Returns a paginated list of extension pack associations for the
+%% specified migration project.
+%%
+%% An extension pack is an add-on module that emulates functions present in a
+%% source database that are required when converting objects to the target
+%% database.
+describe_extension_pack_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_extension_pack_associations(Client, Input, []).
+describe_extension_pack_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExtensionPackAssociations">>, Input, Options).
+
 %% @doc Returns a list of the Fleet Advisor collectors in your account.
 describe_fleet_advisor_collectors(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -620,6 +766,66 @@ describe_fleet_advisor_schemas(Client, Input)
 describe_fleet_advisor_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetAdvisorSchemas">>, Input, Options).
+
+%% @doc Returns a paginated list of instance profiles for your account in the
+%% current region.
+describe_instance_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_instance_profiles(Client, Input, []).
+describe_instance_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInstanceProfiles">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model assessments for your
+%% account in the current region.
+describe_metadata_model_assessments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_assessments(Client, Input, []).
+describe_metadata_model_assessments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelAssessments">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model conversions for a
+%% migration project.
+describe_metadata_model_conversions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_conversions(Client, Input, []).
+describe_metadata_model_conversions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelConversions">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model exports.
+describe_metadata_model_exports_as_script(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_exports_as_script(Client, Input, []).
+describe_metadata_model_exports_as_script(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelExportsAsScript">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model exports.
+describe_metadata_model_exports_to_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_exports_to_target(Client, Input, []).
+describe_metadata_model_exports_to_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelExportsToTarget">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model imports.
+describe_metadata_model_imports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_imports(Client, Input, []).
+describe_metadata_model_imports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelImports">>, Input, Options).
+
+%% @doc Returns a paginated list of migration projects for your account in
+%% the current region.
+describe_migration_projects(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_migration_projects(Client, Input, []).
+describe_migration_projects(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMigrationProjects">>, Input, Options).
 
 %% @doc Returns information about the replication instance types that can be
 %% created in the specified region.
@@ -789,6 +995,18 @@ describe_table_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTableStatistics">>, Input, Options).
 
+%% @doc Saves a copy of a database migration assessment report to your Amazon
+%% S3 bucket.
+%%
+%% DMS can save your assessment report as a comma-separated value (CSV) or a
+%% PDF file.
+export_metadata_model_assessment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_metadata_model_assessment(Client, Input, []).
+export_metadata_model_assessment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportMetadataModelAssessment">>, Input, Options).
+
 %% @doc Uploads the specified certificate.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -807,6 +1025,26 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Modifies the specified schema conversion configuration using the
+%% provided parameters.
+modify_conversion_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_conversion_configuration(Client, Input, []).
+modify_conversion_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyConversionConfiguration">>, Input, Options).
+
+%% @doc Modifies the specified data provider using the provided settings.
+%%
+%% You must remove the data provider from all migration projects before you
+%% can modify it.
+modify_data_provider(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_data_provider(Client, Input, []).
+modify_data_provider(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyDataProvider">>, Input, Options).
 
 %% @doc Modifies the specified endpoint.
 %%
@@ -830,6 +1068,29 @@ modify_event_subscription(Client, Input)
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
+
+%% @doc Modifies the specified instance profile using the provided
+%% parameters.
+%%
+%% All migration projects associated with the instance profile must be
+%% deleted or modified before you can modify the instance profile.
+modify_instance_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_instance_profile(Client, Input, []).
+modify_instance_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyInstanceProfile">>, Input, Options).
+
+%% @doc Modifies the specified migration project using the provided
+%% parameters.
+%%
+%% The migration project must be closed before you can modify it.
+modify_migration_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_migration_project(Client, Input, []).
+modify_migration_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyMigrationProject">>, Input, Options).
 
 %% @doc Modifies an existing DMS Serverless replication configuration that
 %% you can use to start a replication.
@@ -965,6 +1226,70 @@ run_fleet_advisor_lsa_analysis(Client, Input)
 run_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunFleetAdvisorLsaAnalysis">>, Input, Options).
+
+%% @doc Applies the extension pack to your target database.
+%%
+%% An extension pack is an add-on module that emulates functions present in a
+%% source database that are required when converting objects to the target
+%% database.
+start_extension_pack_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_extension_pack_association(Client, Input, []).
+start_extension_pack_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartExtensionPackAssociation">>, Input, Options).
+
+%% @doc Creates a database migration assessment report by assessing the
+%% migration complexity for your source database.
+%%
+%% A database migration assessment report summarizes all of the schema
+%% conversion tasks. It also details the action items for database objects
+%% that can't be converted to the database engine of your target database
+%% instance.
+start_metadata_model_assessment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_assessment(Client, Input, []).
+start_metadata_model_assessment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelAssessment">>, Input, Options).
+
+%% @doc Converts your source database objects to a format compatible with the
+%% target database.
+start_metadata_model_conversion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_conversion(Client, Input, []).
+start_metadata_model_conversion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelConversion">>, Input, Options).
+
+%% @doc Saves your converted code to a file as a SQL script, and stores this
+%% file on your Amazon S3 bucket.
+start_metadata_model_export_as_script(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_export_as_script(Client, Input, []).
+start_metadata_model_export_as_script(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelExportAsScript">>, Input, Options).
+
+%% @doc Applies converted database objects to your target database.
+start_metadata_model_export_to_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_export_to_target(Client, Input, []).
+start_metadata_model_export_to_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelExportToTarget">>, Input, Options).
+
+%% @doc Loads the metadata for all the dependent database objects of the
+%% parent object.
+%%
+%% This operation uses your project's Amazon S3 bucket as a metadata
+%% cache to improve performance.
+start_metadata_model_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_import(Client, Input, []).
+start_metadata_model_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelImport">>, Input, Options).
 
 %% @doc Starts the analysis of your source database to provide
 %% recommendations of target engines.
