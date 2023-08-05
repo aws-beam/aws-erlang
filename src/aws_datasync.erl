@@ -262,8 +262,15 @@ create_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationHdfs">>, Input, Options).
 
-%% @doc Creates an endpoint for an Network File System (NFS) file server that
+%% @doc Creates an endpoint for a Network File System (NFS) file server that
 %% DataSync can use for a data transfer.
+%%
+%% For more information, see Configuring transfers to or from an NFS file
+%% server.
+%%
+%% If you're copying data to or from an Snowcone device, you can also use
+%% `CreateLocationNfs' to create your transfer location. For more
+%% information, see Configuring transfers with Snowcone.
 create_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_nfs(Client, Input, []).
@@ -445,8 +452,8 @@ describe_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationHdfs">>, Input, Options).
 
-%% @doc Returns metadata, such as the path information, about an NFS
-%% location.
+%% @doc Provides details about how an DataSync transfer location for a
+%% Network File System (NFS) file server is configured.
 describe_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_nfs(Client, Input, []).
@@ -731,11 +738,11 @@ update_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationHdfs">>, Input, Options).
 
-%% @doc Updates some of the parameters of a previously created location for
-%% Network File System (NFS) access.
+%% @doc Modifies some configurations of the Network File System (NFS)
+%% transfer location that you're using with DataSync.
 %%
-%% For information about creating an NFS location, see Creating a location
-%% for NFS.
+%% For more information, see Configuring transfers to or from an NFS file
+%% server.
 update_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_nfs(Client, Input, []).

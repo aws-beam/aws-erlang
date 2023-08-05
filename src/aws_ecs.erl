@@ -561,6 +561,11 @@ describe_task_sets(Client, Input, Options)
 %%
 %% Currently, stopped tasks appear in the returned results for at least one
 %% hour.
+%%
+%% If you have tasks with tags, and then delete the cluster, the tagged tasks
+%% are returned in the response. If you create a new cluster with the same
+%% name as the deleted cluster, the tagged tasks are not included in the
+%% response.
 describe_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tasks(Client, Input, []).
@@ -717,8 +722,7 @@ list_task_definitions(Client, Input, Options)
 %% instance, launch type, what IAM principal started the task, or by the
 %% desired status of the task.
 %%
-%% Recently stopped tasks might appear in the returned results. Currently,
-%% stopped tasks appear in the returned results for at least one hour.
+%% Recently stopped tasks might appear in the returned results.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
@@ -1231,15 +1235,14 @@ update_container_instances_state(Client, Input, Options)
 %% instances with the largest number of running tasks for this service.
 %%
 %% </li> </ul> You must have a service-linked role when you update any of the
-%% following service properties. If you specified a custom role when you
-%% created the service, Amazon ECS automatically replaces the roleARN
-%% associated with the service with the ARN of your service-linked role. For
-%% more information, see Service-linked roles in the Amazon Elastic Container
-%% Service Developer Guide.
+%% following service properties:
 %%
-%% `loadBalancers,'
+%% `loadBalancers',
 %%
 %% `serviceRegistries'
+%%
+%% For more information about the role see the `CreateService' request
+%% parameter `role' .
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).

@@ -441,6 +441,8 @@
          update_quick_connect_config/5,
          update_quick_connect_name/4,
          update_quick_connect_name/5,
+         update_routing_profile_agent_availability_timer/4,
+         update_routing_profile_agent_availability_timer/5,
          update_routing_profile_concurrency/4,
          update_routing_profile_concurrency/5,
          update_routing_profile_default_outbound_queue/4,
@@ -5584,6 +5586,31 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Whether agents with this routing profile will have their routing
+%% order calculated based on time since their last inbound contact or longest
+%% idle time.
+update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input) ->
+    update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input, []).
+update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
+    Method = post,
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/agent-availability-timer"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
