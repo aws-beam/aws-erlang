@@ -60,7 +60,8 @@
 %% `GetClip.OutgoingBytes' Amazon CloudWatch metric. For information
 %% about using CloudWatch to monitor Kinesis Video Streams, see Monitoring
 %% Kinesis Video Streams. For pricing information, see Amazon Kinesis Video
-%% Streams Pricing and AWS Pricing. Charges for outgoing AWS data apply.
+%% Streams Pricing and Amazon Web Services Pricing. Charges for outgoing
+%% Amazon Web Services data apply.
 %%
 %% '''
 get_clip(Client, Input) ->
@@ -147,8 +148,8 @@ get_clip(Client, Input0, Options0) ->
 %%
 %% Don't share or store this token where an unauthorized entity can
 %% access it. The token provides access to the content of the stream.
-%% Safeguard the token with the same measures that you use with your AWS
-%% credentials.
+%% Safeguard the token with the same measures that you use with your Amazon
+%% Web Services credentials.
 %%
 %% The media that is made available through the manifest consists only of the
 %% requested stream, time range, and format. No other media data (such as
@@ -201,8 +202,8 @@ get_clip(Client, Input0, Options0) ->
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
 %% Streams, see Monitoring Kinesis Video Streams. For pricing information,
-%% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
-%% HLS sessions and outgoing AWS data apply.
+%% see Amazon Kinesis Video Streams Pricing and Amazon Web Services Pricing.
+%% Charges for both HLS sessions and outgoing Amazon Web Services data apply.
 %%
 %% For more information about HLS, see HTTP Live Streaming on the Apple
 %% Developer site.
@@ -214,8 +215,9 @@ get_clip(Client, Input0, Options0) ->
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS,
-%% the support team can better diagnose the problem if given the Request Id.
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to
+%% Amazon Web Services the support team can better diagnose the problem if
+%% given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
 %% programmatic decisions about whether errors are retry-able and under what
@@ -258,10 +260,12 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% An Amazon Kinesis video stream has the following requirements for
 %% providing data through HLS:
 %%
-%% <ul> <li> The media must contain h.264 or h.265 encoded video and,
-%% optionally, AAC encoded audio. Specifically, the codec ID of track 1
-%% should be `V_MPEG/ISO/AVC' (for h.264) or `V_MPEG/ISO/HEVC' (for
-%% h.265). Optionally, the codec ID of track 2 should be `A_AAC'.
+%% <ul> <li> For streaming video, the media must contain H.264 or H.265
+%% encoded video and, optionally, AAC encoded audio. Specifically, the codec
+%% ID of track 1 should be `V_MPEG/ISO/AVC' (for H.264) or
+%% `V_MPEG/ISO/HEVC' (for H.265). Optionally, the codec ID of track 2
+%% should be `A_AAC'. For audio only streaming, the codec ID of track 1
+%% should be `A_AAC'.
 %%
 %% </li> <li> Data retention must be greater than 0.
 %%
@@ -293,7 +297,7 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% Don't share or store this token where an unauthorized entity could
 %% access it. The token provides access to the content of the stream.
 %% Safeguard the token with the same measures that you would use with your
-%% AWS credentials.
+%% Amazon Web Services credentials.
 %%
 %% The media that is made available through the playlist consists only of the
 %% requested stream, time range, and format. No other media data (such as
@@ -346,14 +350,19 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% MP4 atoms and their child atoms, containing the encoded fragment's
 %% media frames and their timestamps.
 %%
-%% After the first media fragment is made available in a streaming session,
-%% any fragments that don't contain the same codec private data cause an
-%% error to be returned when those different media fragments are loaded.
-%% Therefore, the codec private data should not change between fragments in a
-%% session. This also means that the session fails if the fragments in a
-%% stream change from having only video to having both audio and video.
+%% For the HLS streaming session, in-track codec private data (CPD) changes
+%% are supported. After the first media fragment is made available in a
+%% streaming session, fragments can contain CPD changes for each track.
+%% Therefore, the fragments in a session can have a different resolution, bit
+%% rate, or other information in the CPD without interrupting playback.
+%% However, any change made in the track number or track codec format can
+%% return an error when those different media fragments are loaded. For
+%% example, streaming will fail if the fragments in the stream change from
+%% having only video to having both audio and video, or if an AAC audio track
+%% is changed to an ALAW audio track. For each streaming session, only 500
+%% CPD changes are allowed.
 %%
-%% Data retrieved with this action is billable. See Pricing for details.
+%% Data retrieved with this action is billable. For information, see Pricing.
 %%
 %% </li> <li> GetTSFragment: Retrieves MPEG TS fragments containing both
 %% initialization and media data for all tracks in the stream.
@@ -373,8 +382,8 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
 %% Streams, see Monitoring Kinesis Video Streams. For pricing information,
-%% see Amazon Kinesis Video Streams Pricing and AWS Pricing. Charges for both
-%% HLS sessions and outgoing AWS data apply.
+%% see Amazon Kinesis Video Streams Pricing and Amazon Web Services Pricing.
+%% Charges for both HLS sessions and outgoing Amazon Web Services data apply.
 %%
 %% For more information about HLS, see HTTP Live Streaming on the Apple
 %% Developer site.
@@ -386,8 +395,9 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS,
-%% the support team can better diagnose the problem if given the Request Id.
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to
+%% Amazon Web Services, the support team can better diagnose the problem if
+%% given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
 %% programmatic decisions about whether errors are retry-able and under what
@@ -458,8 +468,9 @@ get_images(Client, Input0, Options0) ->
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS,
-%% the support team can better diagnose the problem if given the Request Id.
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to
+%% Amazon Web Services, the support team can better diagnose the problem if
+%% given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
 %% programmatic decisions about whether errors are retry-able and under what
@@ -526,8 +537,9 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS,
-%% the support team can better diagnose the problem if given the Request Id.
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to
+%% Amazon Web Services, the support team can better diagnose the problem if
+%% given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
 %% programmatic decisions about whether errors are retry-able and under what
