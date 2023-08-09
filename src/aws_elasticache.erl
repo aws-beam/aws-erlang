@@ -146,7 +146,9 @@
          start_migration/2,
          start_migration/3,
          test_failover/2,
-         test_failover/3]).
+         test_failover/3,
+         test_migration/2,
+         test_migration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -1127,6 +1129,15 @@ test_failover(Client, Input)
 test_failover(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestFailover">>, Input, Options).
+
+%% @doc Async API to test connection between source and target replication
+%% group.
+test_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_migration(Client, Input, []).
+test_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestMigration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

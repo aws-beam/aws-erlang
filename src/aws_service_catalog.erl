@@ -857,7 +857,7 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% provisioned product.
 %%
 %% Resource import only supports CloudFormation stack ARNs. CloudFormation
-%% StackSets, and non-root nested stacks are not supported.
+%% StackSets, and non-root nested stacks, are not supported.
 %%
 %% The CloudFormation stack must have one of the following statuses to be
 %% imported: `CREATE_COMPLETE', `UPDATE_COMPLETE',
@@ -867,14 +867,18 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% Import of the resource requires that the CloudFormation stack template
 %% matches the associated Service Catalog product provisioning artifact.
 %%
-%% When you import an existing CloudFormation stack into a portfolio,
-%% constraints that are associated with the product aren't applied during
-%% the import process. The constraints are applied after you call
+%% When you import an existing CloudFormation stack into a portfolio, Service
+%% Catalog does not apply the product's associated constraints during the
+%% import process. Service Catalog applies the constraints after you call
 %% `UpdateProvisionedProduct' for the provisioned product.
 %%
 %% The user or role that performs this operation must have the
 %% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks'
 %% IAM policy permissions.
+%%
+%% You can only import one provisioned product at a time. The product's
+%% CloudFormation stack must have the `IMPORT_COMPLETE' status before you
+%% import another.
 import_as_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_as_provisioned_product(Client, Input, []).
@@ -1188,7 +1192,7 @@ update_portfolio(Client, Input, Options)
 %% The portfolio share cannot be updated if the `CreatePortfolioShare'
 %% operation is `IN_PROGRESS', as the share is not available to recipient
 %% entities. In this case, you must wait for the portfolio share to be
-%% COMPLETED.
+%% completed.
 %%
 %% You must provide the `accountId' or organization node in the input,
 %% but not both.

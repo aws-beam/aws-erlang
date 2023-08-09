@@ -22,6 +22,8 @@
          create_framework/3,
          create_legal_hold/2,
          create_legal_hold/3,
+         create_logically_air_gapped_backup_vault/3,
+         create_logically_air_gapped_backup_vault/4,
          create_report_plan/2,
          create_report_plan/3,
          delete_backup_plan/3,
@@ -138,6 +140,9 @@
          list_protected_resources/1,
          list_protected_resources/3,
          list_protected_resources/4,
+         list_protected_resources_by_backup_vault/2,
+         list_protected_resources_by_backup_vault/4,
+         list_protected_resources_by_backup_vault/5,
          list_recovery_points_by_backup_vault/2,
          list_recovery_points_by_backup_vault/4,
          list_recovery_points_by_backup_vault/5,
@@ -348,6 +353,35 @@ create_legal_hold(Client, Input) ->
 create_legal_hold(Client, Input0, Options0) ->
     Method = post,
     Path = ["/legal-holds/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request creates a logical container where backups are stored.
+%%
+%% This request includes a name, optionally one or more resource tags, an
+%% encryption key, and a request ID.
+%%
+%% Do not include sensitive data, such as passport numbers, in the name of a
+%% backup vault.
+create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input) ->
+    create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input, []).
+create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Options0) ->
+    Method = put,
+    Path = ["/logically-air-gapped-backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -673,7 +707,11 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -795,7 +833,11 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1173,7 +1215,11 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1385,6 +1431,8 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"shared">>, maps:get(<<"shared">>, QueryMap, undefined)},
+        {<<"vaultType">>, maps:get(<<"vaultType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -1517,6 +1565,36 @@ list_protected_resources(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This request lists the protected resources corresponding to each
+%% backup vault.
+list_protected_resources_by_backup_vault(Client, BackupVaultName)
+  when is_map(Client) ->
+    list_protected_resources_by_backup_vault(Client, BackupVaultName, #{}, #{}).
+
+list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
+
+list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/resources/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns detailed information about the recovery points stored in a
 %% backup vault.
 list_recovery_points_by_backup_vault(Client, BackupVaultName)
@@ -1539,6 +1617,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 
     Query0_ =
       [
+        {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)},
         {<<"backupPlanId">>, maps:get(<<"backupPlanId">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
