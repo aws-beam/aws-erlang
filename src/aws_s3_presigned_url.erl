@@ -96,4 +96,53 @@ presigned_url_test() ->
     ?assertEqual(<<"Token">>, proplists:get_value(<<"X-Amz-Security-Token">>, ParsedQs)),
     ?assertEqual(<<"host">>, proplists:get_value(<<"X-Amz-SignedHeaders">>, ParsedQs)).
 
+presigned_url_local_with_endpoint_test() ->
+    Client = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>,
+                                              <<"Token">>, <<"local">>),
+    {ok, Url} = aws_s3_presigned_url:make_presigned_v4_url(Client, put, 3600, <<"bucket">>, <<"key">>),
+    HackneyUrl = hackney_url:parse_url(Url),
+    ParsedQs = hackney_url:parse_qs(HackneyUrl#hackney_url.qs),
+    Credential = proplists:get_value(<<"X-Amz-Credential">>, ParsedQs),
+    [AccessKeyId, _ShortDate, Region, Service, Request] = binary:split(Credential, <<"/">>, [global]),
+    ?assertEqual(https, HackneyUrl#hackney_url.scheme),
+    ?assertEqual(443, HackneyUrl#hackney_url.port),
+    ?assertEqual("amazonaws.com", HackneyUrl#hackney_url.host),
+    ?assertEqual(<<"/bucket/key">>, HackneyUrl#hackney_url.path),
+    ?assertEqual(7, length(ParsedQs)),
+    ?assertEqual(<<"AccessKeyID">>, AccessKeyId),
+    ?assertEqual(<<"local">>, Region),
+    ?assertEqual(<<"s3">>, Service),
+    ?assertEqual(<<"aws4_request">>, Request),
+    ?assertEqual(<<"AWS4-HMAC-SHA256">>, proplists:get_value(<<"X-Amz-Algorithm">>, ParsedQs)),
+    ?assertEqual(<<"3600">>, proplists:get_value(<<"X-Amz-Expires">>, ParsedQs)),
+    ?assertEqual(<<"Token">>, proplists:get_value(<<"X-Amz-Security-Token">>, ParsedQs)),
+    ?assertEqual(<<"host">>, proplists:get_value(<<"X-Amz-SignedHeaders">>, ParsedQs)).
+
+presigned_url_local_without_endpoint_test() ->
+    Client0 = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>,
+                                              <<"Token">>, <<"local">>),
+    Client = maps:without([endpoint],Client0),
+    {ok, Url} = aws_s3_presigned_url:make_presigned_v4_url(Client, put, 3600, <<"bucket">>, <<"key">>),
+    HackneyUrl = hackney_url:parse_url(Url),
+    ParsedQs = hackney_url:parse_qs(HackneyUrl#hackney_url.qs),
+    Credential = proplists:get_value(<<"X-Amz-Credential">>, ParsedQs),
+    [AccessKeyId, _ShortDate, Region, Service, Request] = binary:split(Credential, <<"/">>, [global]),
+    ?assertEqual(https, HackneyUrl#hackney_url.scheme),
+    ?assertEqual(443, HackneyUrl#hackney_url.port),
+    ?assertEqual("localhost", HackneyUrl#hackney_url.host),
+    ?assertEqual(<<"/bucket/key">>, HackneyUrl#hackney_url.path),
+    ?assertEqual(7, length(ParsedQs)),
+    ?assertEqual(<<"AccessKeyID">>, AccessKeyId),
+    ?assertEqual(<<"local">>, Region),
+    ?assertEqual(<<"s3">>, Service),
+    ?assertEqual(<<"aws4_request">>, Request),
+    ?assertEqual(<<"AWS4-HMAC-SHA256">>, proplists:get_value(<<"X-Amz-Algorithm">>, ParsedQs)),
+    ?assertEqual(<<"3600">>, proplists:get_value(<<"X-Amz-Expires">>, ParsedQs)),
+    ?assertEqual(<<"Token">>, proplists:get_value(<<"X-Amz-Security-Token">>, ParsedQs)),
+    ?assertEqual(<<"host">>, proplists:get_value(<<"X-Amz-SignedHeaders">>, ParsedQs)).
+
+presigned_url_local_without_without_bucket_does_not_work_test() ->
+    Client = aws_client:make_temporary_client(<<"AccessKeyID">>, <<"SecretAccessKey">>,
+                                              <<"Token">>, <<"local">>),
+    ?assertException (error,function_clause,aws_s3_presigned_url:make_presigned_v4_url(Client, put, 3600, undefined, <<"key">>)).
 -endif.
