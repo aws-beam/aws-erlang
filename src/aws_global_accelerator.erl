@@ -28,8 +28,8 @@
 %% </li> </ul> Global Accelerator is a global service that supports endpoints
 %% in multiple Amazon Web Services Regions but you must specify the US West
 %% (Oregon) Region to create, update, or otherwise work with accelerators.
-%% That is, for example, specify `--region us-west-2' on AWS CLI
-%% commands.
+%% That is, for example, specify `--region us-west-2' on Amazon Web
+%% Services CLI commands.
 %%
 %% By default, Global Accelerator provides you with static IP addresses that
 %% you associate with your accelerator. The static IP addresses are anycast
@@ -204,16 +204,20 @@ add_custom_routing_endpoints(Client, Input, Options)
 %% endpoint group (with the CreateEndpointGroup API) or when you update an
 %% endpoint group (with the UpdateEndpointGroup API).
 %%
-%% There are two advantages to using `AddEndpoints' to add endpoints:
+%% There are two advantages to using `AddEndpoints' to add endpoints in
+%% Global Accelerator:
 %%
 %% <ul> <li> It's faster, because Global Accelerator only has to resolve
-%% the new endpoints that you're adding.
+%% the new endpoints that you're adding, rather than resolving new and
+%% existing endpoints.
 %%
 %% </li> <li> It's more convenient, because you don't need to specify
-%% all of the current endpoints that are already in the endpoint group in
-%% addition to the new endpoints that you want to add.
+%% the current endpoints that are already in the endpoint group, in addition
+%% to the new endpoints that you want to add.
 %%
-%% </li> </ul>
+%% </li> </ul> For information about endpoint types and requirements for
+%% endpoints that you can add to Global Accelerator, see Endpoints for
+%% standard accelerators in the Global Accelerator Developer Guide.
 add_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_endpoints(Client, Input, []).
@@ -267,7 +271,8 @@ allow_custom_routing_traffic(Client, Input, Options)
 %% Global Accelerator is a global service that supports endpoints in multiple
 %% Amazon Web Services Regions but you must specify the US West (Oregon)
 %% Region to create, update, or otherwise work with accelerators. That is,
-%% for example, specify `--region us-west-2' on AWS CLI commands.
+%% for example, specify `--region us-west-2' on Amazon Web Services CLI
+%% commands.
 create_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_accelerator(Client, Input, []).
@@ -289,7 +294,8 @@ create_accelerator(Client, Input, Options)
 %% Global Accelerator is a global service that supports endpoints in multiple
 %% Amazon Web Services Regions but you must specify the US West (Oregon)
 %% Region to create, update, or otherwise work with accelerators. That is,
-%% for example, specify `--region us-west-2' on AWS CLI commands.
+%% for example, specify `--region us-west-2' on Amazon Web Services CLI
+%% commands.
 create_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_accelerator(Client, Input, []).
@@ -326,6 +332,10 @@ create_custom_routing_listener(Client, Input, Options)
 %% An endpoint group is a collection of endpoints in one Amazon Web Services
 %% Region. A resource must be valid and active when you add it as an
 %% endpoint.
+%%
+%% For more information about endpoint types and requirements for endpoints
+%% that you can add to Global Accelerator, see Endpoints for standard
+%% accelerators in the Global Accelerator Developer Guide.
 create_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_group(Client, Input, []).
@@ -715,12 +725,29 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Update an accelerator.
+%% @doc Update an accelerator to make changes, such as the following:
+%%
+%% <ul> <li> Change the name of the accelerator.
+%%
+%% </li> <li> Disable the accelerator so that it no longer accepts or routes
+%% traffic, or so that you can delete it.
+%%
+%% </li> <li> Enable the accelerator, if it is disabled.
+%%
+%% </li> <li> Change the IP address type to dual-stack if it is IPv4, or
+%% change the IP address type to IPv4 if it's dual-stack.
+%%
+%% </li> </ul> Be aware that static IP addresses remain assigned to your
+%% accelerator for as long as it exists, even if you disable the accelerator
+%% and it no longer accepts or routes traffic. However, when you delete the
+%% accelerator, you lose the static IP addresses that are assigned to it, so
+%% you can no longer route traffic by using them.
 %%
 %% Global Accelerator is a global service that supports endpoints in multiple
 %% Amazon Web Services Regions but you must specify the US West (Oregon)
 %% Region to create, update, or otherwise work with accelerators. That is,
-%% for example, specify `--region us-west-2' on AWS CLI commands.
+%% for example, specify `--region us-west-2' on Amazon Web Services CLI
+%% commands.
 update_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator(Client, Input, []).

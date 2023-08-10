@@ -1593,9 +1593,9 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists tags for a resource.
 %%
 %% Tagging is currently supported for detectors, finding filters, IP sets,
-%% threat intel sets, publishing destination, with a limit of 50 tags per
-%% resource. When invoked, this operation returns all assigned tags for a
-%% given resource.
+%% threat intel sets, and publishing destination, with a limit of 50 tags per
+%% each resource. When invoked, this operation returns all assigned tags for
+%% a given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
