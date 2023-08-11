@@ -175,12 +175,13 @@ create_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgreement">>, Input, Options).
 
-%% @doc Creates the connector, which captures the parameters for an outbound
-%% connection for the AS2 or SFTP protocol.
+%% @doc Creates the connector, which captures the parameters for a connection
+%% for the AS2 or SFTP protocol.
 %%
-%% The connector is required for sending files to an externally hosted AS2 or
-%% SFTP server. For more details about AS2 connectors, see Create AS2
-%% connectors.
+%% For AS2, the connector is required for sending files to an externally
+%% hosted AS2 server. For SFTP, the connector is required when sending files
+%% to an SFTP server or receiving files from an SFTP server. For more details
+%% about connectors, see Create AS2 connectors and Create SFTP connectors.
 %%
 %% You must specify exactly one configuration object: either for AS2
 %% (`As2Config') or SFTP (`SftpConfig').
@@ -632,9 +633,9 @@ send_workflow_step_state(Client, Input, Options)
 %% the direction of the transfer, you also specify the following items:
 %%
 %% <ul> <li> If you are transferring file from a partner's SFTP server to
-%% a Transfer Family server, you specify one or more `RetreiveFilePaths'
-%% to identify the files you want to transfer, and a `LocalDirectoryPath'
-%% to specify the destination folder.
+%% Amazon Web Services storage, you specify one or more
+%% `RetreiveFilePaths' to identify the files you want to transfer, and a
+%% `LocalDirectoryPath' to specify the destination folder.
 %%
 %% </li> <li> If you are transferring file to a partner's SFTP server
 %% from Amazon Web Services storage, you specify one or more

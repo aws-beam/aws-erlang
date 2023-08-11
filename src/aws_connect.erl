@@ -41,6 +41,8 @@
          associate_routing_profile_queues/5,
          associate_security_key/3,
          associate_security_key/4,
+         associate_traffic_distribution_group_user/3,
+         associate_traffic_distribution_group_user/4,
          claim_phone_number/2,
          claim_phone_number/3,
          create_agent_status/3,
@@ -207,6 +209,8 @@
          disassociate_routing_profile_queues/5,
          disassociate_security_key/4,
          disassociate_security_key/5,
+         disassociate_traffic_distribution_group_user/3,
+         disassociate_traffic_distribution_group_user/4,
          dismiss_user_contact/4,
          dismiss_user_contact/5,
          get_contact_attributes/3,
@@ -323,6 +327,9 @@
          list_task_templates/2,
          list_task_templates/4,
          list_task_templates/5,
+         list_traffic_distribution_group_users/2,
+         list_traffic_distribution_group_users/4,
+         list_traffic_distribution_group_users/5,
          list_traffic_distribution_groups/1,
          list_traffic_distribution_groups/3,
          list_traffic_distribution_groups/4,
@@ -767,6 +774,29 @@ associate_security_key(Client, InstanceId, Input) ->
 associate_security_key(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an agent with a traffic distribution group.
+associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
+    associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
+associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
+    Method = put,
+    Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2696,6 +2726,31 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates an agent from a traffic distribution group.
+disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
+    disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
+disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"InstanceId">>, <<"InstanceId">>},
+                     {<<"UserId">>, <<"UserId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Dismisses contacts from an agent’s CCP and returns the agent to an
 %% available state, which allows the agent to receive a new routed contact.
 %%
@@ -3541,6 +3596,12 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
+%%
+%% When given an instance ARN, `ListPhoneNumbersV2' returns only the
+%% phone numbers claimed to the instance.
+%%
+%% When given a traffic distribution group ARN `ListPhoneNumbersV2'
+%% returns only the phone numbers claimed to the traffic distribution group.
 list_phone_numbers_v2(Client, Input) ->
     list_phone_numbers_v2(Client, Input, []).
 list_phone_numbers_v2(Client, Input0, Options0) ->
@@ -3927,6 +3988,34 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists traffic distribution group users.
+list_traffic_distribution_group_users(Client, TrafficDistributionGroupId)
+  when is_map(Client) ->
+    list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, #{}, #{}).
+
+list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
+
+list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5805,6 +5894,12 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
+%%
+%% You can change the `SignInConfig' only for a default
+%% `TrafficDistributionGroup'. If you call
+%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
+%% non-default `TrafficDistributionGroup', an
+%% `InvalidRequestException' is returned.
 %%
 %% For more information about updating a traffic distribution group, see
 %% Update telephony traffic distribution across Amazon Web Services Regions

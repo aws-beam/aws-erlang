@@ -280,6 +280,9 @@ delete_target_group(Client, Input, Options)
 %%
 %% After the targets are deregistered, they no longer receive traffic from
 %% the load balancer.
+%%
+%% Note: If the specified target does not exist, the action returns
+%% successfully.
 deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
@@ -566,13 +569,15 @@ set_rule_priorities(Client, Input, Options)
     request(Client, <<"SetRulePriorities">>, Input, Options).
 
 %% @doc Associates the specified security groups with the specified
-%% Application Load Balancer.
+%% Application Load Balancer or Network Load Balancer.
 %%
 %% The specified security groups override the previously associated security
 %% groups.
 %%
-%% You can't specify a security group for a Network Load Balancer or
-%% Gateway Load Balancer.
+%% You can't perform this operation on a Network Load Balancer unless you
+%% specified a security group for the load balancer when you created it.
+%%
+%% You can't associate a security group with a Gateway Load Balancer.
 set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).
