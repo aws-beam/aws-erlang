@@ -4027,11 +4027,16 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Starts an asynchronous job that generates a dashboard snapshot.
 %%
-%% You can request up to one paginated PDF and up to five CSVs per API call.
+%% You can request one of the following format configurations per API call.
 %%
-%% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
-%% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
-%% API to obtain the download URIs that the job generates.
+%% <ul> <li> 1 paginated PDF
+%%
+%% </li> <li> 5 CSVs
+%%
+%% </li> </ul> Poll job descriptions with a
+%% `DescribeDashboardSnapshotJob' API call. Once the job succeeds, use
+%% the `DescribeDashboardSnapshotJobResult' API to obtain the download
+%% URIs that the job generates.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
     start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0) ->

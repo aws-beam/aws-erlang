@@ -11,6 +11,19 @@
 %%
 %% For a list of Amazon SES endpoints to use in service requests, see Regions
 %% and Amazon SES in the Amazon SES Developer Guide.
+%%
+%% This documentation contains reference information related to the
+%% following:
+%%
+%% <ul> <li> Amazon SES API Actions
+%%
+%% </li> <li> Amazon SES API Data Types
+%%
+%% </li> <li> Common Parameters
+%%
+%% </li> <li> Common Errors
+%%
+%% </li> </ul>
 -module(aws_ses).
 
 -export([clone_receipt_rule_set/2,
@@ -198,9 +211,10 @@ create_configuration_set(Client, Input, Options)
 %% only one, destination. The destination can be CloudWatch, Amazon Kinesis
 %% Firehose, or Amazon Simple Notification Service (Amazon SNS).
 %%
-%% An event destination is the AWS service to which Amazon SES publishes the
-%% email sending events associated with a configuration set. For information
-%% about using configuration sets, see the Amazon SES Developer Guide.
+%% An event destination is the Amazon Web Services service to which Amazon
+%% SES publishes the email sending events associated with a configuration
+%% set. For information about using configuration sets, see the Amazon SES
+%% Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_configuration_set_event_destination(Client, Input)
@@ -279,8 +293,8 @@ create_receipt_rule_set(Client, Input, Options)
 %% @doc Creates an email template.
 %%
 %% Email templates enable you to send personalized email to one or more
-%% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide.
+%% destinations in a single operation. For more information, see the Amazon
+%% SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_template(Client, Input)
@@ -326,7 +340,7 @@ delete_configuration_set_event_destination(Client, Input, Options)
 %% your own to handle these events. For information about using custom
 %% domains, see the Amazon SES Developer Guide.
 %%
-%% Deleting this kind of association will result in emails sent using the
+%% Deleting this kind of association results in emails sent using the
 %% specified configuration set to capture open and click events using the
 %% standard, Amazon SES-operated domains.
 delete_configuration_set_tracking_options(Client, Input)
@@ -363,11 +377,11 @@ delete_identity(Client, Input, Options)
 %% @doc Deletes the specified sending authorization policy for the given
 %% identity (an email address or a domain).
 %%
-%% This API returns successfully even if a policy with the specified name
-%% does not exist.
+%% This operation returns successfully even if a policy with the specified
+%% name does not exist.
 %%
-%% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% This operation is for the identity owner only. If you have not verified
+%% the identity, it returns an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
@@ -498,7 +512,7 @@ describe_receipt_rule_set(Client, Input, Options)
     request(Client, <<"DescribeReceiptRuleSet">>, Input, Options).
 
 %% @doc Returns the email sending status of the Amazon SES account for the
-%% current region.
+%% current Region.
 %%
 %% You can execute this operation no more than once per second.
 get_account_sending_enabled(Client, Input)
@@ -586,8 +600,8 @@ get_identity_notification_attributes(Client, Input, Options)
 %% The policies are returned as a map of policy names to policy contents. You
 %% can retrieve a maximum of 20 policies at a time.
 %%
-%% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% This operation is for the identity owner only. If you have not verified
+%% the identity, it returns an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
@@ -610,18 +624,17 @@ get_identity_policies(Client, Input, Options)
 %% Amazon SES sent to that address. If the email address owner clicks the
 %% link within 24 hours, the verification status of the email address changes
 %% to &quot;Success&quot;. If the link is not clicked within 24 hours, the
-%% verification status changes to &quot;Failed.&quot; In that case, if you
-%% still want to verify the email address, you must restart the verification
-%% process from the beginning.
+%% verification status changes to &quot;Failed.&quot; In that case, to verify
+%% the email address, you must restart the verification process from the
+%% beginning.
 %%
 %% For domain identities, the domain's verification status is
 %% &quot;Pending&quot; as Amazon SES searches for the required TXT record in
 %% the DNS settings of the domain. When Amazon SES detects the record, the
 %% domain's verification status changes to &quot;Success&quot;. If Amazon
 %% SES is unable to detect the record within 72 hours, the domain's
-%% verification status changes to &quot;Failed.&quot; In that case, if you
-%% still want to verify the domain, you must restart the verification process
-%% from the beginning.
+%% verification status changes to &quot;Failed.&quot; In that case, to verify
+%% the domain, you must restart the verification process from the beginning.
 %%
 %% This operation is throttled at one request per second and can only get
 %% verification attributes for up to 100 identities at a time.
@@ -642,7 +655,8 @@ get_send_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSendQuota">>, Input, Options).
 
-%% @doc Provides sending statistics for the current AWS Region.
+%% @doc Provides sending statistics for the current Amazon Web Services
+%% Region.
 %%
 %% The result is a list of data points, representing the last two weeks of
 %% sending activity. Each data point in the list contains statistics for a
@@ -668,15 +682,15 @@ get_template(Client, Input, Options)
     request(Client, <<"GetTemplate">>, Input, Options).
 
 %% @doc Provides a list of the configuration sets associated with your Amazon
-%% SES account in the current AWS Region.
+%% SES account in the current Amazon Web Services Region.
 %%
 %% For information about using configuration sets, see Monitoring Your Amazon
 %% SES Sending Activity in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second. This
-%% operation will return up to 1,000 configuration sets each time it is run.
-%% If your Amazon SES account has more than 1,000 configuration sets, this
-%% operation will also return a NextToken element. You can then execute the
+%% operation returns up to 1,000 configuration sets each time it is run. If
+%% your Amazon SES account has more than 1,000 configuration sets, this
+%% operation also returns `NextToken'. You can then execute the
 %% `ListConfigurationSets' operation again, passing the `NextToken'
 %% parameter and the value of the NextToken element to retrieve additional
 %% results.
@@ -688,7 +702,7 @@ list_configuration_sets(Client, Input, Options)
     request(Client, <<"ListConfigurationSets">>, Input, Options).
 
 %% @doc Lists the existing custom verification email templates for your
-%% account in the current AWS Region.
+%% account in the current Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
 %% Custom Verification Email Templates in the Amazon SES Developer Guide.
@@ -702,10 +716,20 @@ list_custom_verification_email_templates(Client, Input, Options)
     request(Client, <<"ListCustomVerificationEmailTemplates">>, Input, Options).
 
 %% @doc Returns a list containing all of the identities (email addresses and
-%% domains) for your AWS account in the current AWS Region, regardless of
-%% verification status.
+%% domains) for your Amazon Web Services account in the current Amazon Web
+%% Services Region, regardless of verification status.
 %%
 %% You can execute this operation no more than once per second.
+%%
+%% It's recommended that for successive pagination calls of this API, you
+%% continue to the use the same parameter/value pairs as used in the original
+%% call, e.g., if you used `IdentityType=Domain' in the the original call
+%% and received a `NextToken' in the response, you should continue
+%% providing the `IdentityType=Domain' parameter for further
+%% `NextToken' calls; however, if you didn't provide the
+%% `IdentityType' parameter in the original call, then continue to not
+%% provide it for successive pagination calls. Using this protocol will
+%% ensure consistent results.
 list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
@@ -716,11 +740,11 @@ list_identities(Client, Input, Options)
 %% @doc Returns a list of sending authorization policies that are attached to
 %% the given identity (an email address or a domain).
 %%
-%% This API returns only a list. If you want the actual policy content, you
-%% can use `GetIdentityPolicies'.
+%% This operation returns only a list. To get the actual policy content, use
+%% `GetIdentityPolicies'.
 %%
-%% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% This operation is for the identity owner only. If you have not verified
+%% the identity, it returns an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
@@ -734,8 +758,8 @@ list_identity_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityPolicies">>, Input, Options).
 
-%% @doc Lists the IP address filters associated with your AWS account in the
-%% current AWS Region.
+%% @doc Lists the IP address filters associated with your Amazon Web Services
+%% account in the current Amazon Web Services Region.
 %%
 %% For information about managing IP address filters, see the Amazon SES
 %% Developer Guide.
@@ -748,11 +772,11 @@ list_receipt_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceiptFilters">>, Input, Options).
 
-%% @doc Lists the receipt rule sets that exist under your AWS account in the
-%% current AWS Region.
+%% @doc Lists the receipt rule sets that exist under your Amazon Web Services
+%% account in the current Amazon Web Services Region.
 %%
-%% If there are additional receipt rule sets to be retrieved, you will
-%% receive a `NextToken' that you can provide to the next call to
+%% If there are additional receipt rule sets to be retrieved, you receive a
+%% `NextToken' that you can provide to the next call to
 %% `ListReceiptRuleSets' to retrieve the additional entries.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
@@ -767,7 +791,7 @@ list_receipt_rule_sets(Client, Input, Options)
     request(Client, <<"ListReceiptRuleSets">>, Input, Options).
 
 %% @doc Lists the email templates present in your Amazon SES account in the
-%% current AWS Region.
+%% current Amazon Web Services Region.
 %%
 %% You can execute this operation no more than once per second.
 list_templates(Client, Input)
@@ -799,8 +823,8 @@ put_configuration_set_delivery_options(Client, Input, Options)
 %% @doc Adds or updates a sending authorization policy for the specified
 %% identity (an email address or a domain).
 %%
-%% This API is for the identity owner only. If you have not verified the
-%% identity, this API will return an error.
+%% This operation is for the identity owner only. If you have not verified
+%% the identity, it returns an error.
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
@@ -817,8 +841,8 @@ put_identity_policy(Client, Input, Options)
 %% @doc Reorders the receipt rules within a receipt rule set.
 %%
 %% All of the rules in the rule set must be represented in this request. That
-%% is, this API will return an error if the reorder request doesn't
-%% explicitly position all of the rules.
+%% is, it is error if the reorder request doesn't explicitly position all
+%% of the rules.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
 %% Developer Guide.
@@ -834,10 +858,11 @@ reorder_receipt_rule_set(Client, Input, Options)
 %% @doc Generates and sends a bounce message to the sender of an email you
 %% received through Amazon SES.
 %%
-%% You can only use this API on an email up to 24 hours after you receive it.
+%% You can only use this operation on an email up to 24 hours after you
+%% receive it.
 %%
-%% You cannot use this API to send generic bounces for mail that was not
-%% received by Amazon SES.
+%% You cannot use this operation to send generic bounces for mail that was
+%% not received by Amazon SES.
 %%
 %% For information about receiving email through Amazon SES, see the Amazon
 %% SES Developer Guide.
@@ -854,17 +879,17 @@ send_bounce(Client, Input, Options)
 %%
 %% The message body is created using an email template.
 %%
-%% In order to send email using the `SendBulkTemplatedEmail' operation,
-%% your call to the API must meet the following requirements:
+%% To send email using this operation, your call must meet the following
+%% requirements:
 %%
 %% <ul> <li> The call must refer to an existing email template. You can
-%% create email templates using the `CreateTemplate' operation.
+%% create email templates using `CreateTemplate'.
 %%
 %% </li> <li> The message must be sent from a verified email address or
 %% domain.
 %%
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
-%% only send to verified addresses or domains, or to email addresses
+%% send only to verified addresses or domains, or to email addresses
 %% associated with the Amazon SES Mailbox Simulator. For more information,
 %% see Verifying Email Addresses and Domains in the Amazon SES Developer
 %% Guide.
@@ -875,7 +900,7 @@ send_bounce(Client, Input, Options)
 %% recipient email address. The recipient address can be a To: address, a CC:
 %% address, or a BCC: address. If a recipient email address is invalid (that
 %% is, it is not in the format UserName@[SubDomain.]Domain.TopLevelDomain),
-%% the entire message will be rejected, even if the message contains other
+%% the entire message is rejected, even if the message contains other
 %% recipients that are valid.
 %%
 %% </li> <li> The message may not include more than 50 recipients, across the
@@ -884,8 +909,8 @@ send_bounce(Client, Input, Options)
 %% and then call the `SendBulkTemplatedEmail' operation several times to
 %% send the message to each group.
 %%
-%% </li> <li> The number of destinations you can contact in a single call to
-%% the API may be limited by your account's maximum sending rate.
+%% </li> <li> The number of destinations you can contact in a single call can
+%% be limited by your account's maximum sending rate.
 %%
 %% </li> </ul>
 send_bulk_templated_email(Client, Input)
@@ -896,7 +921,8 @@ send_bulk_templated_email(Client, Input, Options)
     request(Client, <<"SendBulkTemplatedEmail">>, Input, Options).
 
 %% @doc Adds an email address to the list of identities for your Amazon SES
-%% account in the current AWS Region and attempts to verify it.
+%% account in the current Amazon Web Services Region and attempts to verify
+%% it.
 %%
 %% As a result of executing this operation, a customized verification email
 %% is sent to the specified address.
@@ -916,13 +942,13 @@ send_custom_verification_email(Client, Input, Options)
 
 %% @doc Composes an email message and immediately queues it for sending.
 %%
-%% In order to send email using the `SendEmail' operation, your message
-%% must meet the following requirements:
+%% To send email using this operation, your message must meet the following
+%% requirements:
 %%
 %% <ul> <li> The message must be sent from a verified email address or
 %% domain. If you attempt to send email using a non-verified address or
-%% domain, the operation will result in an &quot;Email address not
-%% verified&quot; error.
+%% domain, the operation results in an &quot;Email address not verified&quot;
+%% error.
 %%
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
 %% only send to verified addresses or domains, or to email addresses
@@ -936,8 +962,7 @@ send_custom_verification_email(Client, Input, Options)
 %% The recipient address can be a To: address, a CC: address, or a BCC:
 %% address. If a recipient email address is invalid (that is, it is not in
 %% the format UserName@[SubDomain.]Domain.TopLevelDomain), the entire message
-%% will be rejected, even if the message contains other recipients that are
-%% valid.
+%% is rejected, even if the message contains other recipients that are valid.
 %%
 %% </li> <li> The message may not include more than 50 recipients, across the
 %% To:, CC: and BCC: fields. If you need to send an email message to a larger
@@ -960,10 +985,10 @@ send_email(Client, Input, Options)
 
 %% @doc Composes an email message and immediately queues it for sending.
 %%
-%% This operation is more flexible than the `SendEmail' API operation.
-%% When you use the `SendRawEmail' operation, you can specify the headers
-%% of the message as well as its content. This flexibility is useful, for
-%% example, when you want to send a multipart MIME email (such a message that
+%% This operation is more flexible than the `SendEmail' operation. When
+%% you use the `SendRawEmail' operation, you can specify the headers of
+%% the message as well as its content. This flexibility is useful, for
+%% example, when you need to send a multipart MIME email (such a message that
 %% contains both a text and an HTML version). You can also use this operation
 %% to send messages that include attachments.
 %%
@@ -1006,17 +1031,17 @@ send_email(Client, Input, Options)
 %% using the `SendRawEmail' operation:
 %%
 %% <ul> <li> Although you can customize the message headers when using the
-%% `SendRawEmail' operation, Amazon SES will automatically apply its own
+%% `SendRawEmail' operation, Amazon SES automatically applies its own
 %% `Message-ID' and `Date' headers; if you passed these headers when
-%% creating the message, they will be overwritten by the values that Amazon
-%% SES provides.
+%% creating the message, they are overwritten by the values that Amazon SES
+%% provides.
 %%
 %% </li> <li> If you are using sending authorization to send on behalf of
 %% another user, `SendRawEmail' enables you to specify the cross-account
 %% identity for the email's Source, From, and Return-Path parameters in
 %% one of two ways: you can pass optional parameters `SourceArn',
-%% `FromArn', and/or `ReturnPathArn' to the API, or you can include
-%% the following X-headers in the header of your raw email:
+%% `FromArn', and/or `ReturnPathArn', or you can include the
+%% following X-headers in the header of your raw email:
 %%
 %% <ul> <li> `X-SES-SOURCE-ARN'
 %%
@@ -1052,8 +1077,8 @@ send_raw_email(Client, Input, Options)
 %% @doc Composes an email message using an email template and immediately
 %% queues it for sending.
 %%
-%% In order to send email using the `SendTemplatedEmail' operation, your
-%% call to the API must meet the following requirements:
+%% To send email using this operation, your call must meet the following
+%% requirements:
 %%
 %% <ul> <li> The call must refer to an existing email template. You can
 %% create email templates using the `CreateTemplate' operation.
@@ -1071,7 +1096,7 @@ send_raw_email(Client, Input, Options)
 %%
 %% </li> <li> Calls to the `SendTemplatedEmail' operation may only
 %% include one `Destination' parameter. A destination is a set of
-%% recipients who will receive the same version of the email. The
+%% recipients that receives the same version of the email. The
 %% `Destination' parameter can include up to 50 recipients, across the
 %% To:, CC: and BCC: fields.
 %%
@@ -1079,7 +1104,7 @@ send_raw_email(Client, Input, Options)
 %% recipient email address. The recipient address can be a To: address, a CC:
 %% address, or a BCC: address. If a recipient email address is invalid (that
 %% is, it is not in the format UserName@[SubDomain.]Domain.TopLevelDomain),
-%% the entire message will be rejected, even if the message contains other
+%% the entire message is rejected, even if the message contains other
 %% recipients that are valid.
 %%
 %% </li> </ul> If your call to the `SendTemplatedEmail' operation
@@ -1103,7 +1128,7 @@ send_templated_email(Client, Input, Options)
 %% @doc Sets the specified receipt rule set as the active receipt rule set.
 %%
 %% To disable your email-receiving through Amazon SES completely, you can
-%% call this API with RuleSetName set to null.
+%% call this operation with `RuleSetName' set to null.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
 %% Developer Guide.
@@ -1181,8 +1206,8 @@ set_identity_headers_in_notifications_enabled(Client, Input, Options)
 %% identity (an email address or a domain).
 %%
 %% To send emails using the specified MAIL FROM domain, you must add an MX
-%% record to your MAIL FROM domain's DNS settings. If you want your
-%% emails to pass Sender Policy Framework (SPF) checks, you must also add or
+%% record to your MAIL FROM domain's DNS settings. To ensure that your
+%% emails pass Sender Policy Framework (SPF) checks, you must also add or
 %% update an SPF record. For more information, see the Amazon SES Developer
 %% Guide.
 %%
@@ -1241,12 +1266,12 @@ test_render_template(Client, Input, Options)
     request(Client, <<"TestRenderTemplate">>, Input, Options).
 
 %% @doc Enables or disables email sending across your entire Amazon SES
-%% account in the current AWS Region.
+%% account in the current Amazon Web Services Region.
 %%
 %% You can use this operation in conjunction with Amazon CloudWatch alarms to
 %% temporarily pause email sending across your Amazon SES account in a given
-%% AWS Region when reputation metrics (such as your bounce or complaint
-%% rates) reach certain thresholds.
+%% Amazon Web Services Region when reputation metrics (such as your bounce or
+%% complaint rates) reach certain thresholds.
 %%
 %% You can execute this operation no more than once per second.
 update_account_sending_enabled(Client, Input)
@@ -1277,7 +1302,8 @@ update_configuration_set_event_destination(Client, Input, Options)
     request(Client, <<"UpdateConfigurationSetEventDestination">>, Input, Options).
 
 %% @doc Enables or disables the publishing of reputation metrics for emails
-%% sent using a specific configuration set in a given AWS Region.
+%% sent using a specific configuration set in a given Amazon Web Services
+%% Region.
 %%
 %% Reputation metrics include bounce and complaint rates. These metrics are
 %% published to Amazon CloudWatch. By using CloudWatch, you can create alarms
@@ -1292,7 +1318,7 @@ update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
     request(Client, <<"UpdateConfigurationSetReputationMetricsEnabled">>, Input, Options).
 
 %% @doc Enables or disables email sending for messages sent using a specific
-%% configuration set in a given AWS Region.
+%% configuration set in a given Amazon Web Services Region.
 %%
 %% You can use this operation in conjunction with Amazon CloudWatch alarms to
 %% temporarily pause email sending for a configuration set when the
@@ -1350,8 +1376,8 @@ update_receipt_rule(Client, Input, Options)
 %% @doc Updates an email template.
 %%
 %% Email templates enable you to send personalized email to one or more
-%% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide.
+%% destinations in a single operation. For more information, see the Amazon
+%% SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_template(Client, Input)
@@ -1401,7 +1427,7 @@ verify_domain_dkim(Client, Input, Options)
     request(Client, <<"VerifyDomainDkim">>, Input, Options).
 
 %% @doc Adds a domain to the list of identities for your Amazon SES account
-%% in the current AWS Region and attempts to verify it.
+%% in the current Amazon Web Services Region and attempts to verify it.
 %%
 %% For more information about verifying domains, see Verifying Email
 %% Addresses and Domains in the Amazon SES Developer Guide.
@@ -1425,7 +1451,8 @@ verify_email_address(Client, Input, Options)
     request(Client, <<"VerifyEmailAddress">>, Input, Options).
 
 %% @doc Adds an email address to the list of identities for your Amazon SES
-%% account in the current AWS region and attempts to verify it.
+%% account in the current Amazon Web Services Region and attempts to verify
+%% it.
 %%
 %% As a result of executing this operation, a verification email is sent to
 %% the specified address.
