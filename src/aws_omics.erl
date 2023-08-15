@@ -9,6 +9,8 @@
 
 -export([abort_multipart_read_set_upload/4,
          abort_multipart_read_set_upload/5,
+         accept_share/3,
+         accept_share/4,
          batch_delete_read_set/3,
          batch_delete_read_set/4,
          cancel_annotation_import_job/3,
@@ -21,6 +23,8 @@
          complete_multipart_read_set_upload/5,
          create_annotation_store/2,
          create_annotation_store/3,
+         create_annotation_store_version/3,
+         create_annotation_store_version/4,
          create_multipart_read_set_upload/3,
          create_multipart_read_set_upload/4,
          create_reference_store/2,
@@ -29,12 +33,16 @@
          create_run_group/3,
          create_sequence_store/2,
          create_sequence_store/3,
+         create_share/2,
+         create_share/3,
          create_variant_store/2,
          create_variant_store/3,
          create_workflow/2,
          create_workflow/3,
          delete_annotation_store/3,
          delete_annotation_store/4,
+         delete_annotation_store_versions/3,
+         delete_annotation_store_versions/4,
          delete_reference/4,
          delete_reference/5,
          delete_reference_store/3,
@@ -45,6 +53,8 @@
          delete_run_group/4,
          delete_sequence_store/3,
          delete_sequence_store/4,
+         delete_share/3,
+         delete_share/4,
          delete_variant_store/3,
          delete_variant_store/4,
          delete_workflow/3,
@@ -55,6 +65,9 @@
          get_annotation_store/2,
          get_annotation_store/4,
          get_annotation_store/5,
+         get_annotation_store_version/3,
+         get_annotation_store_version/5,
+         get_annotation_store_version/6,
          get_read_set/4,
          get_read_set/6,
          get_read_set/7,
@@ -94,6 +107,9 @@
          get_sequence_store/2,
          get_sequence_store/4,
          get_sequence_store/5,
+         get_share/2,
+         get_share/4,
+         get_share/5,
          get_variant_import_job/2,
          get_variant_import_job/4,
          get_variant_import_job/5,
@@ -105,6 +121,8 @@
          get_workflow/5,
          list_annotation_import_jobs/2,
          list_annotation_import_jobs/3,
+         list_annotation_store_versions/3,
+         list_annotation_store_versions/4,
          list_annotation_stores/2,
          list_annotation_stores/3,
          list_multipart_read_set_uploads/3,
@@ -136,6 +154,8 @@
          list_runs/4,
          list_sequence_stores/2,
          list_sequence_stores/3,
+         list_shares/2,
+         list_shares/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -166,6 +186,8 @@
          untag_resource/4,
          update_annotation_store/3,
          update_annotation_store/4,
+         update_annotation_store_version/4,
+         update_annotation_store_version/5,
          update_run_group/3,
          update_run_group/4,
          update_variant_store/3,
@@ -187,6 +209,29 @@ abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input) ->
 abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Options0) ->
     Method = delete,
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload/", aws_util:encode_uri(UploadId), "/abort"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Accepts a share for an analytics store.
+accept_share(Client, ShareId, Input) ->
+    accept_share(Client, ShareId, Input, []).
+accept_share(Client, ShareId, Input0, Options0) ->
+    Method = post,
+    Path = ["/share/", aws_util:encode_uri(ShareId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -343,6 +388,29 @@ create_annotation_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new version of an annotation store.
+create_annotation_store_version(Client, Name, Input) ->
+    create_annotation_store_version(Client, Name, Input, []).
+create_annotation_store_version(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/annotationStore/", aws_util:encode_uri(Name), "/version"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Begins a multipart read set upload.
 create_multipart_read_set_upload(Client, SequenceStoreId, Input) ->
     create_multipart_read_set_upload(Client, SequenceStoreId, Input, []).
@@ -435,6 +503,33 @@ create_sequence_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a share offer that can be accepted outside the account by a
+%% subscriber.
+%%
+%% The share is created by the owner and accepted by the principal
+%% subscriber.
+create_share(Client, Input) ->
+    create_share(Client, Input, []).
+create_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/share"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a variant store.
 create_variant_store(Client, Input) ->
     create_variant_store(Client, Input, []).
@@ -487,6 +582,30 @@ delete_annotation_store(Client, Name, Input) ->
 delete_annotation_store(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/annotationStore/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"force">>, <<"force">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one or multiple versions of an annotation store.
+delete_annotation_store_versions(Client, Name, Input) ->
+    delete_annotation_store_versions(Client, Name, Input, []).
+delete_annotation_store_versions(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/annotationStore/", aws_util:encode_uri(Name), "/versions/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -620,6 +739,29 @@ delete_sequence_store(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a share of an analytics store.
+delete_share(Client, ShareId, Input) ->
+    delete_share(Client, ShareId, Input, []).
+delete_share(Client, ShareId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/share/", aws_util:encode_uri(ShareId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a variant store.
 delete_variant_store(Client, Name, Input) ->
     delete_variant_store(Client, Name, Input, []).
@@ -702,6 +844,29 @@ get_annotation_store(Client, Name, QueryMap, HeadersMap)
 get_annotation_store(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/annotationStore/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the metadata for an annotation store version.
+get_annotation_store_version(Client, Name, VersionName)
+  when is_map(Client) ->
+    get_annotation_store_version(Client, Name, VersionName, #{}, #{}).
+
+get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap, []).
+
+get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/annotationStore/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1030,6 +1195,29 @@ get_sequence_store(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the metadata for a share.
+get_share(Client, ShareId)
+  when is_map(Client) ->
+    get_share(Client, ShareId, #{}, #{}).
+
+get_share(Client, ShareId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_share(Client, ShareId, QueryMap, HeadersMap, []).
+
+get_share(Client, ShareId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/share/", aws_util:encode_uri(ShareId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a variant import job.
 get_variant_import_job(Client, JobId)
   when is_map(Client) ->
@@ -1110,6 +1298,31 @@ list_annotation_import_jobs(Client, Input) ->
 list_annotation_import_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/import/annotations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the versions of an annotation store.
+list_annotation_store_versions(Client, Name, Input) ->
+    list_annotation_store_versions(Client, Name, Input, []).
+list_annotation_store_versions(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/annotationStore/", aws_util:encode_uri(Name), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1494,6 +1707,31 @@ list_sequence_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all shares associated with an account.
+list_shares(Client, Input) ->
+    list_shares(Client, Input, []).
+list_shares(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/shares"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of tags for a resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -1814,6 +2052,29 @@ update_annotation_store(Client, Name, Input) ->
 update_annotation_store(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/annotationStore/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the description of an annotation store version.
+update_annotation_store_version(Client, Name, VersionName, Input) ->
+    update_annotation_store_version(Client, Name, VersionName, Input, []).
+update_annotation_store_version(Client, Name, VersionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/annotationStore/", aws_util:encode_uri(Name), "/version/", aws_util:encode_uri(VersionName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
