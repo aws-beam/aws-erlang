@@ -35,10 +35,16 @@
 %% </li> </ul>
 -module(aws_pi).
 
--export([describe_dimension_keys/2,
+-export([create_performance_analysis_report/2,
+         create_performance_analysis_report/3,
+         delete_performance_analysis_report/2,
+         delete_performance_analysis_report/3,
+         describe_dimension_keys/2,
          describe_dimension_keys/3,
          get_dimension_key_details/2,
          get_dimension_key_details/3,
+         get_performance_analysis_report/2,
+         get_performance_analysis_report/3,
          get_resource_metadata/2,
          get_resource_metadata/3,
          get_resource_metrics/2,
@@ -46,13 +52,38 @@
          list_available_resource_dimensions/2,
          list_available_resource_dimensions/3,
          list_available_resource_metrics/2,
-         list_available_resource_metrics/3]).
+         list_available_resource_metrics/3,
+         list_performance_analysis_reports/2,
+         list_performance_analysis_reports/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a new performance analysis report for a specific time period
+%% for the DB instance.
+create_performance_analysis_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_performance_analysis_report(Client, Input, []).
+create_performance_analysis_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePerformanceAnalysisReport">>, Input, Options).
+
+%% @doc Deletes a performance analysis report.
+delete_performance_analysis_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_performance_analysis_report(Client, Input, []).
+delete_performance_analysis_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePerformanceAnalysisReport">>, Input, Options).
 
 %% @doc For a specific time period, retrieve the top `N' dimension keys
 %% for a metric.
@@ -80,6 +111,19 @@ get_dimension_key_details(Client, Input)
 get_dimension_key_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDimensionKeyDetails">>, Input, Options).
+
+%% @doc Retrieves the report including the report ID, status, time details,
+%% and the insights with recommendations.
+%%
+%% The report status can be `RUNNING', `SUCCEEDED', or `FAILED'.
+%% The insights include the `description' and `recommendation'
+%% fields.
+get_performance_analysis_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_performance_analysis_report(Client, Input, []).
+get_performance_analysis_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPerformanceAnalysisReport">>, Input, Options).
 
 %% @doc Retrieve the metadata for different features.
 %%
@@ -124,6 +168,42 @@ list_available_resource_metrics(Client, Input)
 list_available_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableResourceMetrics">>, Input, Options).
+
+%% @doc Lists all the analysis reports created for the DB instance.
+%%
+%% The reports are sorted based on the start time of each report.
+list_performance_analysis_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_performance_analysis_reports(Client, Input, []).
+list_performance_analysis_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPerformanceAnalysisReports">>, Input, Options).
+
+%% @doc Retrieves all the metadata tags associated with Amazon RDS
+%% Performance Insights resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Adds metadata tags to the Amazon RDS Performance Insights resource.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Deletes the metadata tags from the Amazon RDS Performance Insights
+%% resource.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

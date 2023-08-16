@@ -978,9 +978,6 @@ create_edge_packaging_job(Client, Input, Options)
 %%
 %% Use this API to deploy models using SageMaker hosting services.
 %%
-%% For an example that calls this method when deploying a model to SageMaker
-%% hosting services, see the Create Endpoint example notebook.
-%%
 %% You must not delete an `EndpointConfig' that is in use by an endpoint
 %% that is live or while the `UpdateEndpoint' or `CreateEndpoint'
 %% operations are being performed on the endpoint. To update an endpoint, you
