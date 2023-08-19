@@ -9,7 +9,7 @@
 %% security data from Amazon Web Services accounts, services, and integrated
 %% third-party products and helps you analyze security trends in your
 %% environment to identify the highest priority security issues. For more
-%% information about Security Hub, see the Security HubUser Guide.
+%% information about Security Hub, see the Security Hub User Guide .
 %%
 %% When you use operations in the Security Hub API, the requests are executed
 %% only in the Amazon Web Services Region that is currently active or in the
@@ -928,8 +928,9 @@ delete_invitations(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified member accounts from Security Hub.
 %%
-%% Can be used to delete member accounts that belong to an organization as
-%% well as member accounts that were invited manually.
+%% You can invoke this API only to delete accounts that became members
+%% through invitation. You can't invoke this API to delete accounts that
+%% belong to an Organizations organization.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 delete_members(Client, Input0, Options0) ->
@@ -1178,13 +1179,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disables Security Hub in your account only in the current Region.
+%% @doc Disables Security Hub in your account only in the current Amazon Web
+%% Services Region.
 %%
 %% To disable Security Hub in all Regions, you must submit one request per
 %% Region where you have enabled Security Hub.
 %%
-%% When you disable Security Hub for an administrator account, it doesn't
-%% disable Security Hub for any associated member accounts.
+%% You can't disable Security Hub in an account that is currently the
+%% Security Hub administrator.
 %%
 %% When you disable Security Hub, your existing findings and insights and any
 %% Security Hub configuration settings are deleted after 90 days and cannot

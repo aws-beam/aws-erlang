@@ -1,31 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS CodeCommit
+%% @doc CodeCommit
 %%
-%% This is the AWS CodeCommit API Reference.
+%% This is the CodeCommit API Reference.
 %%
 %% This reference provides descriptions of the operations and data types for
-%% AWS CodeCommit API along with usage examples.
+%% CodeCommit API along with usage examples.
 %%
-%% You can use the AWS CodeCommit API to work with the following objects:
+%% You can use the CodeCommit API to work with the following objects:
 %%
 %% Repositories, by calling the following:
 %%
 %% <ul> <li> `BatchGetRepositories', which returns information about one
-%% or more repositories associated with your AWS account.
+%% or more repositories associated with your Amazon Web Services account.
 %%
-%% </li> <li> `CreateRepository', which creates an AWS CodeCommit
-%% repository.
+%% </li> <li> `CreateRepository', which creates an CodeCommit repository.
 %%
-%% </li> <li> `DeleteRepository', which deletes an AWS CodeCommit
-%% repository.
+%% </li> <li> `DeleteRepository', which deletes an CodeCommit repository.
 %%
 %% </li> <li> `GetRepository', which returns information about a
 %% specified repository.
 %%
-%% </li> <li> `ListRepositories', which lists all AWS CodeCommit
-%% repositories associated with your AWS account.
+%% </li> <li> `ListRepositories', which lists all CodeCommit repositories
+%% associated with your Amazon Web Services account.
 %%
 %% </li> <li> `UpdateRepositoryDescription', which sets or updates the
 %% description of the repository.
@@ -65,6 +63,9 @@
 %%
 %% </li> <li> `GetFolder', which returns the contents of a specified
 %% folder or directory.
+%%
+%% </li> <li> `ListFileCommitHistory', which retrieves a list of commits
+%% and changes to a specified file.
 %%
 %% </li> <li> `PutFile', which adds or modifies a single file in a
 %% specified repository and branch.
@@ -158,7 +159,7 @@
 %% destination branch of a pull request into the specified destination branch
 %% for that pull request using the squash merge option.
 %%
-%% </li> <li> `MergePullRequestByThreeWay'. which merges the source
+%% </li> <li> `MergePullRequestByThreeWay', which merges the source
 %% destination branch of a pull request into the specified destination branch
 %% for that pull request using the three-way merge option.
 %%
@@ -187,13 +188,13 @@
 %%
 %% <ul> <li> `AssociateApprovalRuleTemplateWithRepository', which
 %% associates a template with a specified repository. After the template is
-%% associated with a repository, AWS CodeCommit creates approval rules that
-%% match the template conditions on every pull request created in the
-%% specified repository.
+%% associated with a repository, CodeCommit creates approval rules that match
+%% the template conditions on every pull request created in the specified
+%% repository.
 %%
 %% </li> <li> `BatchAssociateApprovalRuleTemplateWithRepositories', which
 %% associates a template with one or more specified repositories. After the
-%% template is associated with a repository, AWS CodeCommit creates approval
+%% template is associated with a repository, CodeCommit creates approval
 %% rules that match the template conditions on every pull request created in
 %% the specified repositories.
 %%
@@ -205,7 +206,7 @@
 %%
 %% </li> <li> `CreateApprovalRuleTemplate', which creates a template for
 %% approval rules that can then be associated with one or more repositories
-%% in your AWS account.
+%% in your Amazon Web Services account.
 %%
 %% </li> <li> `DeleteApprovalRuleTemplate', which deletes the specified
 %% template. It does not remove approval rules on pull requests already
@@ -220,7 +221,8 @@
 %% an approval rule template.
 %%
 %% </li> <li> `ListApprovalRuleTemplates', which lists all approval rule
-%% templates in the AWS Region in your AWS account.
+%% templates in the Amazon Web Services Region in your Amazon Web Services
+%% account.
 %%
 %% </li> <li> `ListAssociatedApprovalRuleTemplatesForRepository', which
 %% lists all approval rule templates that are associated with a specified
@@ -264,16 +266,16 @@
 %% </li> <li> `UpdateComment', which updates the content of a comment on
 %% a commit in a repository.
 %%
-%% </li> </ul> Tags used to tag resources in AWS CodeCommit (not Git tags),
-%% by calling the following:
+%% </li> </ul> Tags used to tag resources in CodeCommit (not Git tags), by
+%% calling the following:
 %%
-%% <ul> <li> `ListTagsForResource', which gets information about AWS tags
-%% for a specified Amazon Resource Name (ARN) in AWS CodeCommit.
+%% <ul> <li> `ListTagsForResource', which gets information about Amazon
+%% Web Servicestags for a specified Amazon Resource Name (ARN) in CodeCommit.
 %%
 %% </li> <li> `TagResource', which adds or updates tags for a resource in
-%% AWS CodeCommit.
+%% CodeCommit.
 %%
-%% </li> <li> `UntagResource', which removes tags for a resource in AWS
+%% </li> <li> `UntagResource', which removes tags for a resource in
 %% CodeCommit.
 %%
 %% </li> </ul> Triggers, by calling the following:
@@ -287,7 +289,7 @@
 %% </li> <li> `TestRepositoryTriggers', which tests the functionality of
 %% a repository trigger by sending data to the trigger target.
 %%
-%% </li> </ul> For information about how to use AWS CodeCommit, see the AWS
+%% </li> </ul> For information about how to use CodeCommit, see the
 %% CodeCommit User Guide.
 -module(aws_codecommit).
 
@@ -381,6 +383,8 @@
          list_associated_approval_rule_templates_for_repository/3,
          list_branches/2,
          list_branches/3,
+         list_file_commit_history/2,
+         list_file_commit_history/3,
          list_pull_requests/2,
          list_pull_requests/3,
          list_repositories/2,
@@ -522,9 +526,9 @@ batch_get_repositories(Client, Input, Options)
     request(Client, <<"BatchGetRepositories">>, Input, Options).
 
 %% @doc Creates a template for approval rules that can then be associated
-%% with one or more repositories in your AWS account.
+%% with one or more repositories in your Amazon Web Services account.
 %%
-%% When you associate a template with a repository, AWS CodeCommit creates an
+%% When you associate a template with a repository, CodeCommit creates an
 %% approval rule that matches the conditions of the template for all pull
 %% requests that meet the conditions of the template. For more information,
 %% see `AssociateApprovalRuleTemplateWithRepository'.
@@ -904,11 +908,11 @@ get_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryTriggers">>, Input, Options).
 
-%% @doc Lists all approval rule templates in the specified AWS Region in your
-%% AWS account.
+%% @doc Lists all approval rule templates in the specified Amazon Web
+%% Services Region in your Amazon Web Services account.
 %%
-%% If an AWS Region is not specified, the AWS Region where you are signed in
-%% is used.
+%% If an Amazon Web Services Region is not specified, the Amazon Web Services
+%% Region where you are signed in is used.
 list_approval_rule_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_approval_rule_templates(Client, Input, []).
@@ -932,6 +936,14 @@ list_branches(Client, Input)
 list_branches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBranches">>, Input, Options).
+
+%% @doc Retrieves a list of commits and changes to a specified file.
+list_file_commit_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_file_commit_history(Client, Input, []).
+list_file_commit_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFileCommitHistory">>, Input, Options).
 
 %% @doc Returns a list of pull requests for a specified repository.
 %%
@@ -961,11 +973,11 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositoriesForApprovalRuleTemplate">>, Input, Options).
 
-%% @doc Gets information about AWS tags for a specified Amazon Resource Name
-%% (ARN) in AWS CodeCommit.
+%% @doc Gets information about Amazon Web Servicestags for a specified Amazon
+%% Resource Name (ARN) in CodeCommit.
 %%
-%% For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
-%% and Operations in the AWS CodeCommit User Guide.
+%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
+%% Operations in the CodeCommit User Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1079,8 +1091,8 @@ put_comment_reaction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCommentReaction">>, Input, Options).
 
-%% @doc Adds or updates a file in a branch in an AWS CodeCommit repository,
-%% and generates a commit for the addition in the specified branch.
+%% @doc Adds or updates a file in a branch in an CodeCommit repository, and
+%% generates a commit for the addition in the specified branch.
 put_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_file(Client, Input, []).
@@ -1098,10 +1110,10 @@ put_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryTriggers">>, Input, Options).
 
-%% @doc Adds or updates tags for a resource in AWS CodeCommit.
+%% @doc Adds or updates tags for a resource in CodeCommit.
 %%
-%% For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
-%% and Operations in the AWS CodeCommit User Guide.
+%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
+%% Operations in the CodeCommit User Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1121,10 +1133,10 @@ test_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRepositoryTriggers">>, Input, Options).
 
-%% @doc Removes tags for a resource in AWS CodeCommit.
+%% @doc Removes tags for a resource in CodeCommit.
 %%
-%% For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
-%% and Operations in the AWS CodeCommit User Guide.
+%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
+%% Operations in the CodeCommit User Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1242,11 +1254,11 @@ update_repository_description(Client, Input, Options)
 
 %% @doc Renames a repository.
 %%
-%% The repository name must be unique across the calling AWS account.
-%% Repository names are limited to 100 alphanumeric, dash, and underscore
-%% characters, and cannot include certain characters. The suffix .git is
-%% prohibited. For more information about the limits on repository names, see
-%% Limits in the AWS CodeCommit User Guide.
+%% The repository name must be unique across the calling Amazon Web Services
+%% account. Repository names are limited to 100 alphanumeric, dash, and
+%% underscore characters, and cannot include certain characters. The suffix
+%% .git is prohibited. For more information about the limits on repository
+%% names, see Quotas in the CodeCommit User Guide.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).
