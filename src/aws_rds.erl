@@ -337,6 +337,8 @@
          stop_db_instance_automated_backups_replication/3,
          switchover_blue_green_deployment/2,
          switchover_blue_green_deployment/3,
+         switchover_global_cluster/2,
+         switchover_global_cluster/3,
          switchover_read_replica/2,
          switchover_read_replica/3]).
 
@@ -1718,24 +1720,55 @@ failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
 
-%% @doc Initiates the failover process for an Aurora global database
-%% (`GlobalCluster').
+%% @doc Promotes the specified secondary DB cluster to be the primary DB
+%% cluster in the global database cluster to fail over or switch over a
+%% global database.
 %%
-%% A failover for an Aurora global database promotes one of secondary
-%% read-only DB clusters to be the primary DB cluster and demotes the primary
-%% DB cluster to being a secondary (read-only) DB cluster. In other words,
-%% the role of the current primary DB cluster and the selected (target) DB
-%% cluster are switched. The selected secondary DB cluster assumes full
-%% read/write capabilities for the Aurora global database.
+%% Switchover operations were previously called &quot;managed planned
+%% failovers.&quot;
+%%
+%% Although this operation can be used either to fail over or to switch over
+%% a global database cluster, its intended use is for global database
+%% failover. To switch over a global database cluster, we recommend that you
+%% use the `SwitchoverGlobalCluster' operation instead.
+%%
+%% How you use this operation depends on whether you are failing over or
+%% switching over your global database cluster:
+%%
+%% <ul> <li> Failing over - Specify the `AllowDataLoss' parameter and
+%% don't specify the `Switchover' parameter.
+%%
+%% </li> <li> Switching over - Specify the `Switchover' parameter or omit
+%% it, but don't specify the `AllowDataLoss' parameter.
+%%
+%% </li> </ul> About failing over and switching over
+%%
+%% While failing over and switching over a global database cluster both
+%% change the primary DB cluster, you use these operations for different
+%% reasons:
+%%
+%% <ul> <li> Failing over - Use this operation to respond to an unplanned
+%% event, such as a Regional disaster in the primary Region. Failing over can
+%% result in a loss of write transaction data that wasn't replicated to
+%% the chosen secondary before the failover event occurred. However, the
+%% recovery process that promotes a DB instance on the chosen seconday DB
+%% cluster to be the primary writer DB instance guarantees that the data is
+%% in a transactionally consistent state.
 %%
 %% For more information about failing over an Amazon Aurora global database,
-%% see Managed planned failover for Amazon Aurora global databases in the
+%% see Performing managed failovers for Aurora global databases in the Amazon
+%% Aurora User Guide.
+%%
+%% </li> <li> Switching over - Use this operation on a healthy global
+%% database cluster for planned events, such as Regional rotation or to fail
+%% back to the original primary DB cluster after a failover operation. With
+%% this operation, there is no data loss.
+%%
+%% For more information about switching over an Amazon Aurora global
+%% database, see Performing switchovers for Aurora global databases in the
 %% Amazon Aurora User Guide.
 %%
-%% This action applies to `GlobalCluster' (Aurora global databases) only.
-%% Use this action only on healthy Aurora global databases with running
-%% Aurora DB clusters and no Region-wide outages, to test disaster recovery
-%% scenarios or to reconfigure your Aurora global database topology.
+%% </li> </ul>
 failover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_cluster(Client, Input, []).
@@ -2087,7 +2120,7 @@ modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
 
-%% @doc Modifies a setting for an Amazon Aurora global cluster.
+%% @doc Modifies a setting for an Amazon Aurora global database cluster.
 %%
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. For more information
@@ -2633,6 +2666,33 @@ switchover_blue_green_deployment(Client, Input)
 switchover_blue_green_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SwitchoverBlueGreenDeployment">>, Input, Options).
+
+%% @doc Switches over the specified secondary DB cluster to be the new
+%% primary DB cluster in the global database cluster.
+%%
+%% Switchover operations were previously called &quot;managed planned
+%% failovers.&quot;
+%%
+%% Aurora promotes the specified secondary cluster to assume full read/write
+%% capabilities and demotes the current primary cluster to a secondary
+%% (read-only) cluster, maintaining the orginal replication topology. All
+%% secondary clusters are synchronized with the primary at the beginning of
+%% the process so the new primary continues operations for the Aurora global
+%% database without losing any data. Your database is unavailable for a short
+%% time while the primary and selected secondary clusters are assuming their
+%% new roles. For more information about switching over an Aurora global
+%% database, see Performing switchovers for Amazon Aurora global databases in
+%% the Amazon Aurora User Guide.
+%%
+%% This operation is intended for controlled environments, for operations
+%% such as &quot;regional rotation&quot; or to fall back to the original
+%% primary after a global database failover.
+switchover_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_global_cluster(Client, Input, []).
+switchover_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverGlobalCluster">>, Input, Options).
 
 %% @doc Switches over an Oracle standby database in an Oracle Data Guard
 %% environment, making it the new primary database.
