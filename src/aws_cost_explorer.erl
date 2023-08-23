@@ -382,7 +382,7 @@ get_rightsizing_recommendation(Client, Input, Options)
 
 %% @doc Retrieves the details for a Savings Plan recommendation.
 %%
-%% These details include the hourly data-points that construct the new cost,
+%% These details include the hourly data-points that construct the cost,
 %% coverage, and utilization charts.
 get_savings_plan_purchase_recommendation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
