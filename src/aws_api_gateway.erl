@@ -7,7 +7,7 @@
 %% mobile and web application back ends.
 %%
 %% API Gateway allows developers to securely connect mobile and web
-%% applications to APIs that run on AWS Lambda, Amazon EC2, or other publicly
+%% applications to APIs that run on Lambda, Amazon EC2, or other publicly
 %% addressable web services that are hosted outside of AWS.
 -module(aws_api_gateway).
 
