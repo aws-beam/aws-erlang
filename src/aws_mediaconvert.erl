@@ -371,7 +371,7 @@ disassociate_certificate(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieve the JSON for a specific completed transcoding job.
+%% @doc Retrieve the JSON for a specific transcoding job.
 get_job(Client, Id)
   when is_map(Client) ->
     get_job(Client, Id, #{}, #{}).

@@ -2197,7 +2197,13 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2223,7 +2229,13 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4030,6 +4042,8 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% You can request one of the following format configurations per API call.
 %%
 %% <ul> <li> 1 paginated PDF
+%%
+%% </li> <li> 1 Excel workbook
 %%
 %% </li> <li> 5 CSVs
 %%
