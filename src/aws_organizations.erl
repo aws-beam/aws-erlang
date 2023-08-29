@@ -64,7 +64,7 @@
 %% CloudTrail, you can determine which requests the Organizations service
 %% received, who made the request and when, and so on. For more about
 %% Organizations and its support for CloudTrail, see Logging Organizations
-%% Events with CloudTrail in the Organizations User Guide. To learn more
+%% API calls with CloudTrail in the Organizations User Guide. To learn more
 %% about CloudTrail, including how to turn it on and find your log files, see
 %% the CloudTrail User Guide.
 -module(aws_organizations).
@@ -201,7 +201,7 @@
 %% `iam:CreateServiceLinkedRole' permission so that Organizations can
 %% create the required service-linked role named
 %% `AWSServiceRoleForOrganizations'. For more information, see
-%% Organizations and Service-Linked Roles in the Organizations User Guide.
+%% Organizations and service-linked roles in the Organizations User Guide.
 %%
 %% </li> <li> Enable all features final confirmation handshake: only a
 %% principal from the management account.
@@ -236,7 +236,8 @@ accept_handshake(Client, Input, Options)
 %% </li> <li> TAG_POLICY
 %%
 %% </li> </ul> This operation can be called only from the organization's
-%% management account.
+%% management account or by a member account that is a delegated
+%% administrator for an Amazon Web Services service.
 attach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_policy(Client, Input, []).
@@ -286,11 +287,9 @@ cancel_handshake(Client, Input, Options)
 %%
 %% </li> </ul> You can close only 10% of member accounts, between 10 and 200,
 %% within a rolling 30 day period. This quota is not bound by a calendar
-%% month, but starts when you close an account.
-%%
-%% After you reach this limit, you can close additional accounts in the
-%% Billing console. For more information, see Closing an account in the
-%% Amazon Web Services Billing and Cost Management User Guide.
+%% month, but starts when you close an account. After you reach this limit,
+%% you can close additional accounts. For more information, see Closing a
+%% member account in your organization in the Organizations User Guide.
 %%
 %% To reinstate a closed account, contact Amazon Web Services Support within
 %% the 90-day grace period while the account is in SUSPENDED status.
@@ -300,9 +299,6 @@ cancel_handshake(Client, Input, Options)
 %% will close both accounts. To learn important pre-closure details, see
 %% Closing an Amazon Web Services GovCloud (US) account in the Amazon Web
 %% Services GovCloud User Guide.
-%%
-%% For more information about closing accounts, see Closing an Amazon Web
-%% Services account in the Organizations User Guide.
 close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
@@ -332,7 +328,7 @@ close_account(Client, Input, Options)
 %% `organizations:CreateAccount' permission. If you enabled all features
 %% in the organization, Organizations creates the required service-linked
 %% role named `AWSServiceRoleForOrganizations'. For more information, see
-%% Organizations and Service-Linked Roles in the Organizations User Guide.
+%% Organizations and service-linked roles in the Organizations User Guide.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -347,16 +343,17 @@ close_account(Client, Input, Options)
 %% This operation can be called only from the organization's management
 %% account.
 %%
-%% For more information about creating accounts, see Creating an Amazon Web
-%% Services account in Your Organization in the Organizations User Guide.
+%% For more information about creating accounts, see Creating a member
+%% account in your organization in the Organizations User Guide.
 %%
 %% When you create an account in an organization using the Organizations
 %% console, API, or CLI commands, the information required for the account to
 %% operate as a standalone account, such as a payment method and signing the
 %% end user license agreement (EULA) is not automatically collected. If you
 %% must remove an account from your organization later, you can do so only
-%% after you provide the missing information. Follow the steps at To leave an
-%% organization as a member account in the Organizations User Guide.
+%% after you provide the missing information. For more information, see
+%% Considerations before removing an account from an organization in the
+%% Organizations User Guide.
 %%
 %% If you get an exception that indicates that you exceeded your account
 %% limits for the organization, contact Amazon Web Services Support.
@@ -369,7 +366,8 @@ close_account(Client, Input, Options)
 %% recommended. You can only close an account from the Billing and Cost
 %% Management console, and you must be signed in as the root user. For
 %% information on the requirements and process for closing an account, see
-%% Closing an Amazon Web Services account in the Organizations User Guide.
+%% Closing a member account in your organization in the Organizations User
+%% Guide.
 %%
 %% When you create a member account with this operation, you can choose
 %% whether to create the account with the IAM User and Role Access to Billing
@@ -377,7 +375,7 @@ close_account(Client, Input, Options)
 %% have appropriate permissions can view billing information for the account.
 %% If you disable it, only the account root user can access billing
 %% information. For information about how to disable this switch for an
-%% account, see Granting Access to Your Billing Information and Tools.
+%% account, see Granting access to your billing information and tools.
 create_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account(Client, Input, []).
@@ -405,7 +403,7 @@ create_account(Client, Input, Options)
 %%
 %% </li> </ul> Organizations automatically creates the required
 %% service-linked role named `AWSServiceRoleForOrganizations'. For more
-%% information, see Organizations and Service-Linked Roles in the
+%% information, see Organizations and service-linked roles in the
 %% Organizations User Guide.
 %%
 %% Amazon Web Services automatically enables CloudTrail for Amazon Web
@@ -447,9 +445,8 @@ create_account(Client, Input, Options)
 %% operation.
 %%
 %% </li> <li> Check the CloudTrail log for the `CreateAccountResult'
-%% event. For information on using CloudTrail with Organizations, see
-%% Monitoring the Activity in Your Organization in the Organizations User
-%% Guide.
+%% event. For information on using CloudTrail with Organizations, see Logging
+%% and monitoring in Organizations in the Organizations User Guide.
 %%
 %% </li> </ul>
 %%
@@ -470,17 +467,17 @@ create_account(Client, Input, Options)
 %% more information and to view a diagram that explains how account access
 %% works, see Organizations in the Amazon Web Services GovCloud User Guide.
 %%
-%% For more information about creating accounts, see Creating an Amazon Web
-%% Services account in Your Organization in the Organizations User Guide.
+%% For more information about creating accounts, see Creating a member
+%% account in your organization in the Organizations User Guide.
 %%
 %% When you create an account in an organization using the Organizations
 %% console, API, or CLI commands, the information required for the account to
 %% operate as a standalone account is not automatically collected. This
 %% includes a payment method and signing the end user license agreement
 %% (EULA). If you must remove an account from your organization later, you
-%% can do so only after you provide the missing information. Follow the steps
-%% at To leave an organization as a member account in the Organizations User
-%% Guide.
+%% can do so only after you provide the missing information. For more
+%% information, see Considerations before removing an account from an
+%% organization in the Organizations User Guide.
 %%
 %% If you get an exception that indicates that you exceeded your account
 %% limits for the organization, contact Amazon Web Services Support.
@@ -493,7 +490,7 @@ create_account(Client, Input, Options)
 %% isn't recommended. You can only close an account from the Amazon Web
 %% Services Billing and Cost Management console, and you must be signed in as
 %% the root user. For information on the requirements and process for closing
-%% an account, see Closing an Amazon Web Services account in the
+%% an account, see Closing a member account in your organization in the
 %% Organizations User Guide.
 %%
 %% When you create a member account with this operation, you can choose
@@ -502,7 +499,7 @@ create_account(Client, Input, Options)
 %% have appropriate permissions can view billing information for the account.
 %% If you disable it, only the account root user can access billing
 %% information. For information about how to disable this switch for an
-%% account, see Granting Access to Your Billing Information and Tools.
+%% account, see Granting access to your billing information and tools.
 create_gov_cloud_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gov_cloud_account(Client, Input, []).
@@ -524,8 +521,8 @@ create_gov_cloud_account(Client, Input, Options)
 %% control policies automatically enabled in the root. If you instead choose
 %% to create the organization supporting only the consolidated billing
 %% features by setting the `FeatureSet' parameter to
-%% `CONSOLIDATED_BILLING&quot;', no policy types are enabled by default,
-%% and you can't use organization policies
+%% `CONSOLIDATED_BILLING', no policy types are enabled by default and you
+%% can't use organization policies.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -541,8 +538,8 @@ create_organization(Client, Input, Options)
 %% types enabled for that root. For service control policies, the limit is
 %% five.
 %%
-%% For more information about OUs, see Managing Organizational Units in the
-%% Organizations User Guide.
+%% For more information about OUs, see Managing organizational units (OUs) in
+%% the Organizations User Guide.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -560,13 +557,14 @@ create_organizational_unit(Client, Input, Options)
 %% an organizational unit (OU), or an individual Amazon Web Services account.
 %%
 %% For more information about policies and their use, see Managing
-%% Organization Policies.
+%% Organizations policies.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -624,7 +622,8 @@ delete_organizational_unit(Client, Input, Options)
 %% all organizational units (OUs), roots, and accounts.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -702,12 +701,10 @@ describe_create_account_status(Client, Input, Options)
 %% This operation applies only to policy types other than service control
 %% policies (SCPs).
 %%
-%% For more information about policy inheritance, see How Policy Inheritance
-%% Works in the Organizations User Guide.
+%% For more information about policy inheritance, see Understanding
+%% management policy inheritance in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
-%% account or by a member account that is a delegated administrator for an
-%% Amazon Web Services service.
+%% This operation can be called from any account in the organization.
 describe_effective_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_policy(Client, Input, []).
@@ -773,7 +770,7 @@ describe_policy(Client, Input, Options)
 
 %% @doc Retrieves information about a resource policy.
 %%
-%% You can only call this operation from the organization's management
+%% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
 %% Amazon Web Services service.
 describe_resource_policy(Client, Input)
@@ -802,7 +799,8 @@ describe_resource_policy(Client, Input, Options)
 %% the authorization strategy of a &quot;deny list&quot;.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 detach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_policy(Client, Input, []).
@@ -864,9 +862,9 @@ detach_policy(Client, Input, Options)
 %% organization's accounts
 %%
 %% For more information about integrating other services with Organizations,
-%% including the list of services that work with Organizations, see
-%% Integrating Organizations with Other Amazon Web Services Services in the
-%% Organizations User Guide.
+%% including the list of services that work with Organizations, see Using
+%% Organizations with other Amazon Web Services services in the Organizations
+%% User Guide.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -893,7 +891,8 @@ disable_aws_service_access(Client, Input, Options)
 %% and then use this operation.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 %%
 %% To view the status of available policy types in the organization, use
 %% `DescribeOrganization'.
@@ -910,8 +909,8 @@ disable_policy_type(Client, Input, Options)
 %% services and actions that can be called in each account. Until you enable
 %% all features, you have access only to consolidated billing, and you
 %% can't use any of the advanced account administration features that
-%% Organizations supports. For more information, see Enabling All Features in
-%% Your Organization in the Organizations User Guide.
+%% Organizations supports. For more information, see Enabling all features in
+%% your organization in the Organizations User Guide.
 %%
 %% This operation is required only for organizations that were created
 %% explicitly with only the consolidated billing features enabled. Calling
@@ -963,8 +962,8 @@ enable_all_features(Client, Input, Options)
 %% see the documentation for the other Amazon Web Services service.
 %%
 %% For more information about enabling services to integrate with
-%% Organizations, see Integrating Organizations with Other Amazon Web
-%% Services Services in the Organizations User Guide.
+%% Organizations, see Using Organizations with other Amazon Web Services
+%% services in the Organizations User Guide.
 %%
 %% You can only call this operation from the organization's management
 %% account and only if the organization has enabled all features.
@@ -987,7 +986,8 @@ enable_aws_service_access(Client, Input, Options)
 %% and then use this operation.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 %%
 %% You can enable a policy type in a root only if that policy type is
 %% available in the organization. To view the status of available policy
@@ -1012,7 +1012,7 @@ enable_policy_type(Client, Input, Options)
 %% Amazon Web Services seller in India, you can invite only other AISPL
 %% accounts to your organization. You can't combine accounts from AISPL
 %% and Amazon Web Services or from any other Amazon Web Services seller. For
-%% more information, see Consolidated Billing in India.
+%% more information, see Consolidated billing in India.
 %%
 %% If you receive an exception that indicates that you exceeded your account
 %% limits for the organization or that the operation failed because your
@@ -1062,9 +1062,9 @@ invite_account_to_organization(Client, Input, Options)
 %%
 %% Amazon Web Services uses the payment method to charge for any billable
 %% (not free tier) Amazon Web Services activity that occurs while the account
-%% isn't attached to an organization. Follow the steps at To leave an
-%% organization when all required account information has not yet been
-%% provided in the Organizations User Guide.
+%% isn't attached to an organization. For more information, see
+%% Considerations before removing an account from an organization in the
+%% Organizations User Guide.
 %%
 %% The account that you want to leave must not be a delegated administrator
 %% account for any Amazon Web Services service enabled for your organization.
@@ -1073,9 +1073,9 @@ invite_account_to_organization(Client, Input, Options)
 %% the organization.
 %%
 %% You can leave an organization only after you enable IAM user access to
-%% billing in your account. For more information, see Activating Access to
-%% the Billing and Cost Management Console in the Amazon Web Services Billing
-%% and Cost Management User Guide.
+%% billing in your account. For more information, see About IAM access to the
+%% Billing and Cost Management console in the Amazon Web Services Billing and
+%% Cost Management User Guide.
 %%
 %% After the account leaves the organization, all tags that were attached to
 %% the account object in the organization are deleted. Amazon Web Services
@@ -1084,6 +1084,10 @@ invite_account_to_organization(Client, Input, Options)
 %% A newly created account has a waiting period before it can be removed from
 %% its organization. If you get an error that indicates that a wait period is
 %% required, then try again in a few days.
+%%
+%% If you are using an organization principal to call `LeaveOrganization'
+%% across multiple accounts, you can only do this up to 5 accounts per second
+%% in a single organization.
 leave_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     leave_organization(Client, Input, []).
@@ -1145,7 +1149,7 @@ list_accounts_for_parent(Client, Input, Options)
 %%
 %% For more information about integrating other services with Organizations,
 %% including the list of services that currently work with Organizations, see
-%% Integrating Organizations with Other Amazon Web Services Services in the
+%% Using Organizations with other Amazon Web Services services in the
 %% Organizations User Guide.
 %%
 %% This operation can be called only from the organization's management
@@ -1486,16 +1490,9 @@ register_delegated_administrator(Client, Input, Options)
 %% configured with the information required to operate as a standalone
 %% account. When you create an account in an organization using the
 %% Organizations console, API, or CLI commands, the information required of
-%% standalone accounts is not automatically collected. For an account that
-%% you want to make standalone, you must choose a support plan, provide and
-%% verify the required contact information, and provide a current payment
-%% method. Amazon Web Services uses the payment method to charge for any
-%% billable (not free tier) Amazon Web Services activity that occurs while
-%% the account isn't attached to an organization. To remove an account
-%% that doesn't yet have this information, you must sign in as the member
-%% account and follow the steps at To leave an organization when all required
-%% account information has not yet been provided in the Organizations User
-%% Guide.
+%% standalone accounts is not automatically collected. For more information,
+%% see Considerations before removing an account from an organization in the
+%% Organizations User Guide.
 %%
 %% The account that you want to leave must not be a delegated administrator
 %% account for any Amazon Web Services service enabled for your organization.
@@ -1527,7 +1524,8 @@ remove_account_from_organization(Client, Input, Options)
 %% </li> <li> Policy (any type)
 %%
 %% </li> </ul> This operation can be called only from the organization's
-%% management account.
+%% management account or by a member account that is a delegated
+%% administrator for an Amazon Web Services service.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1548,7 +1546,8 @@ tag_resource(Client, Input, Options)
 %% </li> <li> Policy (any type)
 %%
 %% </li> </ul> This operation can be called only from the organization's
-%% management account.
+%% management account or by a member account that is a delegated
+%% administrator for an Amazon Web Services service.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1576,7 +1575,8 @@ update_organizational_unit(Client, Input, Options)
 %% can't change a policy's type.
 %%
 %% This operation can be called only from the organization's management
-%% account.
+%% account or by a member account that is a delegated administrator for an
+%% Amazon Web Services service.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).

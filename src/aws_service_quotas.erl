@@ -2,11 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With Service Quotas, you can view and manage your quotas easily as
-%% your AWS workloads grow.
+%% your Amazon Web Services workloads grow.
 %%
 %% Quotas, also referred to as limits, are the maximum number of resources
-%% that you can create in your AWS account. For more information, see the
-%% Service Quotas User Guide.
+%% that you can create in your Amazon Web Services account. For more
+%% information, see the Service Quotas User Guide.
 -module(aws_service_quotas).
 
 -export([associate_service_quota_template/2,
@@ -56,9 +56,10 @@
 
 %% @doc Associates your quota request template with your organization.
 %%
-%% When a new account is created in your organization, the quota increase
-%% requests in the template are automatically applied to the account. You can
-%% add a quota increase request for any adjustable quota to your template.
+%% When a new Amazon Web Services account is created in your organization,
+%% the quota increase requests in the template are automatically applied to
+%% the account. You can add a quota increase request for any adjustable quota
+%% to your template.
 associate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_quota_template(Client, Input, []).
@@ -78,8 +79,9 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
 %% @doc Disables your quota request template.
 %%
 %% After a template is disabled, the quota increase requests in the template
-%% are not applied to new accounts in your organization. Disabling a quota
-%% request template does not apply its quota increase requests.
+%% are not applied to new Amazon Web Services accounts in your organization.
+%% Disabling a quota request template does not apply its quota increase
+%% requests.
 disassociate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_quota_template(Client, Input, []).
@@ -134,8 +136,8 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceQuotaIncreaseRequestFromTemplate">>, Input, Options).
 
-%% @doc Lists the default values for the quotas for the specified AWS
-%% service.
+%% @doc Lists the default values for the quotas for the specified Amazon Web
+%% Service.
 %%
 %% A default value does not reflect any quota increases.
 list_aws_default_service_quotas(Client, Input)
@@ -145,7 +147,8 @@ list_aws_default_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSDefaultServiceQuotas">>, Input, Options).
 
-%% @doc Retrieves the quota increase requests for the specified service.
+%% @doc Retrieves the quota increase requests for the specified Amazon Web
+%% Service.
 list_requested_service_quota_change_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history(Client, Input, []).
@@ -170,7 +173,7 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotaIncreaseRequestsInTemplate">>, Input, Options).
 
-%% @doc Lists the applied quota values for the specified AWS service.
+%% @doc Lists the applied quota values for the specified Amazon Web Service.
 %%
 %% For some quotas, only the default values are available. If the applied
 %% quota value is not available for a quota, the quota is not retrieved.
@@ -181,8 +184,8 @@ list_service_quotas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceQuotas">>, Input, Options).
 
-%% @doc Lists the names and codes for the services integrated with Service
-%% Quotas.
+%% @doc Lists the names and codes for the Amazon Web Services integrated with
+%% Service Quotas.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).

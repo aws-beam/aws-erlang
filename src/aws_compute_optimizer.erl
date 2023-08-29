@@ -32,6 +32,8 @@
          export_ec2_instance_recommendations/3,
          export_lambda_function_recommendations/2,
          export_lambda_function_recommendations/3,
+         export_license_recommendations/2,
+         export_license_recommendations/3,
          get_auto_scaling_group_recommendations/2,
          get_auto_scaling_group_recommendations/3,
          get_e_c_s_service_recommendation_projected_metrics/2,
@@ -52,6 +54,8 @@
          get_enrollment_statuses_for_organization/3,
          get_lambda_function_recommendations/2,
          get_lambda_function_recommendations/3,
+         get_license_recommendations/2,
+         get_license_recommendations/3,
          get_recommendation_preferences/2,
          get_recommendation_preferences/3,
          get_recommendation_summaries/2,
@@ -176,6 +180,23 @@ export_lambda_function_recommendations(Client, Input)
 export_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportLambdaFunctionRecommendations">>, Input, Options).
+
+%% @doc Export optimization recommendations for your licenses.
+%%
+%% Recommendations are exported in a comma-separated values (CSV) file, and
+%% its metadata in a JavaScript Object Notation (JSON) file, to an existing
+%% Amazon Simple Storage Service (Amazon S3) bucket that you specify. For
+%% more information, see Exporting Recommendations in the Compute Optimizer
+%% User Guide.
+%%
+%% You can have only one license export job in progress per Amazon Web
+%% Services Region.
+export_license_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_license_recommendations(Client, Input, []).
+export_license_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportLicenseRecommendations">>, Input, Options).
 
 %% @doc Returns Auto Scaling group recommendations.
 %%
@@ -307,6 +328,19 @@ get_lambda_function_recommendations(Client, Input)
 get_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLambdaFunctionRecommendations">>, Input, Options).
+
+%% @doc Returns license recommendations for Amazon EC2 instances that run on
+%% a specific license.
+%%
+%% Compute Optimizer generates recommendations for licenses that meet a
+%% specific set of requirements. For more information, see the Supported
+%% resources and requirements in the Compute Optimizer User Guide.
+get_license_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_recommendations(Client, Input, []).
+get_license_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseRecommendations">>, Input, Options).
 
 %% @doc Returns existing recommendation preferences, such as enhanced
 %% infrastructure metrics.
