@@ -1953,7 +1953,15 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a run.
+%% @doc Starts a workflow run.
+%%
+%% To duplicate a run, specify the run's ID and a role ARN. The remaining
+%% parameters are copied from the previous run.
+%%
+%% The total number of runs in your account is subject to a quota per Region.
+%% To avoid needing to delete runs manually, you can set the retention mode
+%% to `REMOVE'. Runs with this setting are deleted automatically when the
+%% run quoata is exceeded.
 start_run(Client, Input) ->
     start_run(Client, Input, []).
 start_run(Client, Input0, Options0) ->

@@ -14,6 +14,8 @@
 
 -export([batch_get_metric_data/2,
          batch_get_metric_data/3,
+         cancel_export_job/3,
+         cancel_export_job/4,
          create_configuration_set/2,
          create_configuration_set/3,
          create_configuration_set_event_destination/3,
@@ -34,6 +36,8 @@
          create_email_identity_policy/5,
          create_email_template/2,
          create_email_template/3,
+         create_export_job/2,
+         create_export_job/3,
          create_import_job/2,
          create_import_job/3,
          delete_configuration_set/3,
@@ -107,9 +111,15 @@
          get_email_template/2,
          get_email_template/4,
          get_email_template/5,
+         get_export_job/2,
+         get_export_job/4,
+         get_export_job/5,
          get_import_job/2,
          get_import_job/4,
          get_import_job/5,
+         get_message_insights/2,
+         get_message_insights/4,
+         get_message_insights/5,
          get_suppressed_destination/2,
          get_suppressed_destination/4,
          get_suppressed_destination/5,
@@ -140,6 +150,8 @@
          list_email_templates/1,
          list_email_templates/3,
          list_email_templates/4,
+         list_export_jobs/2,
+         list_export_jobs/3,
          list_import_jobs/1,
          list_import_jobs/3,
          list_import_jobs/4,
@@ -234,6 +246,29 @@ batch_get_metric_data(Client, Input) ->
 batch_get_metric_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/metrics/batch"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an export job.
+cancel_export_job(Client, JobId, Input) ->
+    cancel_export_job(Client, JobId, Input, []).
+cancel_export_job(Client, JobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -550,6 +585,31 @@ create_email_template(Client, Input) ->
 create_email_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/templates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an export job for a data source and destination.
+%%
+%% You can execute this operation no more than once per second.
+create_export_job(Client, Input) ->
+    create_export_job(Client, Input, []).
+create_export_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/export-jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1324,6 +1384,29 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides information about an export job.
+get_export_job(Client, JobId)
+  when is_map(Client) ->
+    get_export_job(Client, JobId, #{}, #{}).
+
+get_export_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export_job(Client, JobId, QueryMap, HeadersMap, []).
+
+get_export_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/export-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about an import job.
 get_import_job(Client, JobId)
   when is_map(Client) ->
@@ -1336,6 +1419,33 @@ get_import_job(Client, JobId, QueryMap, HeadersMap)
 get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/import-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides information about a specific message, including the from
+%% address, the subject, the recipient address, email tags, as well as events
+%% associated with the message.
+%%
+%% You can execute this operation no more than once per second.
+get_message_insights(Client, MessageId)
+  when is_map(Client) ->
+    get_message_insights(Client, MessageId, #{}, #{}).
+
+get_message_insights(Client, MessageId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_message_insights(Client, MessageId, QueryMap, HeadersMap, []).
+
+get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/insights/", aws_util:encode_uri(MessageId), "/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1655,6 +1765,29 @@ list_email_templates(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the export jobs.
+list_export_jobs(Client, Input) ->
+    list_export_jobs(Client, Input, []).
+list_export_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/list-export-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the import jobs.
 list_import_jobs(Client)

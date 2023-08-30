@@ -240,7 +240,7 @@ create_backup(Client, Input, Options)
 %% A data repository association is a link between a directory on the file
 %% system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data
 %% repository associations on a file system. Data repository associations are
-%% supported on all FSx for Lustre 2.12 and newer file systems, excluding
+%% supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding
 %% `scratch_1' deployment type.
 %%
 %% Each data repository association must have a unique Amazon FSx file system
@@ -272,7 +272,7 @@ create_data_repository_association(Client, Input, Options)
 %% links (symlinks) from your FSx file system to a linked data repository.
 %%
 %% You use release data repository tasks to release data from your file
-%% system for files that are archived to S3. The metadata of released files
+%% system for files that are exported to S3. The metadata of released files
 %% remains on the file system so users or applications can still access
 %% released files by reading the files again, which will restore data from
 %% Amazon S3 to the FSx for Lustre file system.
@@ -489,7 +489,7 @@ delete_backup(Client, Input, Options)
 %% Amazon S3 bucket. When deleting a data repository association, you have
 %% the option of deleting the data in the file system that corresponds to the
 %% data repository association. Data repository associations are supported on
-%% all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1'
+%% all FSx for Lustre 2.12 and 2.15 file systems, excluding `scratch_1'
 %% deployment type.
 delete_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -531,6 +531,20 @@ delete_file_cache(Client, Input, Options)
 %% system, a final backup is created upon deletion. This final backup
 %% isn't subject to the file system's retention policy, and must be
 %% manually deleted.
+%%
+%% To delete an Amazon FSx for Lustre file system, first unmount it from
+%% every connected Amazon EC2 instance, then provide a `FileSystemId'
+%% value to the `DeleFileSystem' operation. By default, Amazon FSx will
+%% not take a final backup when the `DeleteFileSystem' operation is
+%% invoked. On file systems not linked to an Amazon S3 bucket, set
+%% `SkipFinalBackup' to `false' to take a final backup of the file
+%% system you are deleting. Backups cannot be enabled on S3-linked file
+%% systems. To ensure all of your data is written back to S3 before deleting
+%% your file system, you can either monitor for the AgeOfOldestQueuedMessage
+%% metric to be zero (if using automatic export) or you can run an export
+%% data repository task. If you have automatic export enabled and want to use
+%% an export data repository task, you have to disable automatic export
+%% before executing the export data repository task.
 %%
 %% The `DeleteFileSystem' operation returns while the file system has the
 %% `DELETING' status. You can check the file system deletion status by
@@ -632,7 +646,7 @@ describe_backups(Client, Input, Options)
 %% used in the request.
 %%
 %% Data repository associations are supported on Amazon File Cache resources
-%% and all FSx for Lustre 2.12 and newer file systems, excluding
+%% and all FSx for Lustre 2.12 and 2,15 file systems, excluding
 %% `scratch_1' deployment type.
 %%
 %% You can use filters to narrow the response to include just data repository
@@ -913,7 +927,7 @@ untag_resource(Client, Input, Options)
 %% on an Amazon FSx for Lustre file system.
 %%
 %% Data repository associations are supported on all FSx for Lustre 2.12 and
-%% newer file systems, excluding `scratch_1' deployment type.
+%% 2.15 file systems, excluding `scratch_1' deployment type.
 update_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_repository_association(Client, Input, []).
@@ -1000,7 +1014,9 @@ update_file_cache(Client, Input, Options)
 %% </li> </ul> For FSx for OpenZFS file systems, you can update the following
 %% properties:
 %%
-%% <ul> <li> `AutomaticBackupRetentionDays'
+%% <ul> <li> `AddRouteTableIds'
+%%
+%% </li> <li> `AutomaticBackupRetentionDays'
 %%
 %% </li> <li> `CopyTagsToBackups'
 %%
@@ -1009,6 +1025,8 @@ update_file_cache(Client, Input, Options)
 %% </li> <li> `DailyAutomaticBackupStartTime'
 %%
 %% </li> <li> `DiskIopsConfiguration'
+%%
+%% </li> <li> `RemoveRouteTableIds'
 %%
 %% </li> <li> `StorageCapacity'
 %%
