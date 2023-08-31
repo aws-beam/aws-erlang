@@ -320,12 +320,12 @@ create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
 
-%% @doc Configures a task, which defines where and how DataSync transfers
-%% your data.
+%% @doc Configures a transfer task, which defines where and how DataSync
+%% moves your data.
 %%
-%% A task includes a source location, a destination location, and the
-%% preferences for how and when you want to transfer your data (such as
-%% bandwidth limits, scheduling, among other options).
+%% A task includes a source location, destination location, and the options
+%% for how and when you want to transfer your data (such as bandwidth limits,
+%% scheduling, among other options).
 %%
 %% If you're planning to transfer data to or from an Amazon S3 location,
 %% review how DataSync can affect your S3 request charges and the DataSync
@@ -358,7 +358,7 @@ delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
 
-%% @doc Deletes an DataSync task.
+%% @doc Deletes an DataSync transfer task.
 delete_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task(Client, Input, []).
@@ -524,8 +524,10 @@ describe_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTask">>, Input, Options).
 
-%% @doc Provides information about an DataSync transfer task that's
-%% running.
+%% @doc Provides information about an execution of your DataSync task.
+%%
+%% You can use this operation to help monitor the progress of an ongoing
+%% transfer or check the results of the transfer.
 describe_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_execution(Client, Input, []).
@@ -652,7 +654,7 @@ start_discovery_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDiscoveryJob">>, Input, Options).
 
-%% @doc Starts an DataSync task.
+%% @doc Starts an DataSync transfer task.
 %%
 %% For each task, you can only run one task execution at a time.
 %%
@@ -783,7 +785,7 @@ update_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageSystem">>, Input, Options).
 
-%% @doc Updates the metadata associated with a task.
+%% @doc Updates the configuration of a DataSync transfer task.
 update_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task(Client, Input, []).
@@ -791,11 +793,11 @@ update_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTask">>, Input, Options).
 
-%% @doc Modifies a running DataSync task.
+%% @doc Updates the configuration of a running DataSync task execution.
 %%
 %% Currently, the only `Option' that you can modify with
 %% `UpdateTaskExecution' is ` BytesPerSecond ', which throttles
-%% bandwidth for a running or queued task.
+%% bandwidth for a running or queued task execution.
 update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).

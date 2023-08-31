@@ -11,6 +11,9 @@
 %%
 %% To learn more about Clean Rooms concepts, procedures, and best practices,
 %% see the Clean Rooms User Guide.
+%%
+%% To learn more about SQL commands, functions, and conditions supported in
+%% Clean Rooms, see the Clean Rooms SQL Reference.
 -module(aws_cleanrooms).
 
 -export([batch_get_collaboration_analysis_template/3,
@@ -1001,7 +1004,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a protected query that is started by Clean Rooms .
+%% @doc Creates a protected query that is started by Clean Rooms.
 start_protected_query(Client, MembershipIdentifier, Input) ->
     start_protected_query(Client, MembershipIdentifier, Input, []).
 start_protected_query(Client, MembershipIdentifier, Input0, Options0) ->

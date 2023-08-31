@@ -157,9 +157,9 @@ create_auto_scaling_configuration(Client, Input, Options)
 %% services that access private repositories from certain third-party
 %% providers. You can share a connection across multiple services.
 %%
-%% A connection resource is needed to access GitHub repositories. GitHub
-%% requires a user interface approval process through the App Runner console
-%% before you can use the connection.
+%% A connection resource is needed to access GitHub and Bitbucket
+%% repositories. Both require a user interface approval process through the
+%% App Runner console before you can use the connection.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).

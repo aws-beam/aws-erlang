@@ -250,7 +250,7 @@ create_rule_group(Client, Input, Options)
 %% re-encrypt inbound traffic.
 %%
 %% After you create a TLS inspection configuration, you associate it with a
-%% firewall policy.
+%% new firewall policy.
 %%
 %% To update the settings for a TLS inspection configuration, use
 %% `UpdateTLSInspectionConfiguration'.
