@@ -7,7 +7,9 @@
 -export([invoke_endpoint/3,
          invoke_endpoint/4,
          invoke_endpoint_async/3,
-         invoke_endpoint_async/4]).
+         invoke_endpoint_async/4,
+         invoke_endpoint_with_response_stream/3,
+         invoke_endpoint_with_response_stream/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -97,10 +99,9 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% this API will not contain the result of the inference request but contain
 %% information about where you can locate it.
 %%
-%% Amazon SageMaker strips all `POST' headers except those supported by
-%% the API. Amazon SageMaker might add additional headers. You should not
-%% rely on the behavior of headers outside those enumerated in the request
-%% syntax.
+%% Amazon SageMaker strips all POST headers except those supported by the
+%% API. Amazon SageMaker might add additional headers. You should not rely on
+%% the behavior of headers outside those enumerated in the request syntax.
 %%
 %% Calls to `InvokeEndpointAsync' are authenticated by using Amazon Web
 %% Services Signature Version 4. For information, see Authenticating Requests
@@ -139,6 +140,80 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
           [
             {<<"X-Amzn-SageMaker-FailureLocation">>, <<"FailureLocation">>},
             {<<"X-Amzn-SageMaker-OutputLocation">>, <<"OutputLocation">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Invokes a model at the specified endpoint to return the inference
+%% response as a stream.
+%%
+%% The inference stream provides the response payload incrementally as a
+%% series of parts. Before you can get an inference stream, you must have
+%% access to a model that's deployed using Amazon SageMaker hosting
+%% services, and the container for that model must support inference
+%% streaming.
+%%
+%% For more information that can help you use this API, see the following
+%% sections in the Amazon SageMaker Developer Guide:
+%%
+%% <ul> <li> For information about how to add streaming support to a model,
+%% see How Containers Serve Requests.
+%%
+%% </li> <li> For information about how to process the streaming response,
+%% see Invoke real-time endpoints.
+%%
+%% </li> </ul> Amazon SageMaker strips all POST headers except those
+%% supported by the API. Amazon SageMaker might add additional headers. You
+%% should not rely on the behavior of headers outside those enumerated in the
+%% request syntax.
+%%
+%% Calls to `InvokeEndpointWithResponseStream' are authenticated by using
+%% Amazon Web Services Signature Version 4. For information, see
+%% Authenticating Requests (Amazon Web Services Signature Version 4) in the
+%% Amazon S3 API Reference.
+invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
+    invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
+invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
+    Method = post,
+    Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/invocations-response-stream"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
+                       {<<"Content-Type">>, <<"ContentType">>},
+                       {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
+                       {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"X-Amzn-SageMaker-Content-Type">>, <<"ContentType">>},
+            {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+            {<<"x-Amzn-Invoked-Production-Variant">>, <<"InvokedProductionVariant">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of

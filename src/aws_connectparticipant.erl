@@ -21,6 +21,9 @@
          complete_attachment_upload/3,
          create_participant_connection/2,
          create_participant_connection/3,
+         describe_view/3,
+         describe_view/5,
+         describe_view/6,
          disconnect_participant/2,
          disconnect_participant/3,
          get_attachment/2,
@@ -128,6 +131,33 @@ create_participant_connection(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the view for the specified view token.
+describe_view(Client, ViewToken, ConnectionToken)
+  when is_map(Client) ->
+    describe_view(Client, ViewToken, ConnectionToken, #{}, #{}).
+
+describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, []).
+
+describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/participant/views/", aws_util:encode_uri(ViewToken), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"X-Amz-Bearer">>, ConnectionToken}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Disconnects a participant.
 %%

@@ -62,6 +62,8 @@
          describe_affected_entities_for_organization/3,
          describe_entity_aggregates/2,
          describe_entity_aggregates/3,
+         describe_entity_aggregates_for_organization/2,
+         describe_entity_aggregates_for_organization/3,
          describe_event_aggregates/2,
          describe_event_aggregates/3,
          describe_event_details/2,
@@ -167,6 +169,15 @@ describe_entity_aggregates(Client, Input)
 describe_entity_aggregates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEntityAggregates">>, Input, Options).
+
+%% @doc Returns a list of entity aggregates for your Organizations that are
+%% affected by each of the specified events.
+describe_entity_aggregates_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_entity_aggregates_for_organization(Client, Input, []).
+describe_entity_aggregates_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEntityAggregatesForOrganization">>, Input, Options).
 
 %% @doc Returns the number of events of each event type (issue, scheduled
 %% change, and account notification).

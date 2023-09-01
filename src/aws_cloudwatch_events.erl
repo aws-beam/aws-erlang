@@ -762,9 +762,9 @@ put_rule(Client, Input, Options)
 %% </li> <li> Step Functions state machines
 %%
 %% </li> </ul> Creating rules with built-in targets is supported only in the
-%% Management Console. The built-in targets are `EC2 CreateSnapshot API
-%% call', `EC2 RebootInstances API call', `EC2 StopInstances API
-%% call', and `EC2 TerminateInstances API call'.
+%% Amazon Web Services Management Console. The built-in targets are `EC2
+%% CreateSnapshot API call', `EC2 RebootInstances API call', `EC2
+%% StopInstances API call', and `EC2 TerminateInstances API call'.
 %%
 %% For some target types, `PutTargets' provides target-specific
 %% parameters. If the target is a Kinesis data stream, you can optionally
