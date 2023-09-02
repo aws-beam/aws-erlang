@@ -83,6 +83,10 @@
          create_user/4,
          create_user_hierarchy_group/3,
          create_user_hierarchy_group/4,
+         create_view/3,
+         create_view/4,
+         create_view_version/4,
+         create_view_version/5,
          create_vocabulary/3,
          create_vocabulary/4,
          deactivate_evaluation_form/4,
@@ -123,6 +127,10 @@
          delete_user/5,
          delete_user_hierarchy_group/4,
          delete_user_hierarchy_group/5,
+         delete_view/4,
+         delete_view/5,
+         delete_view_version/5,
+         delete_view_version/6,
          delete_vocabulary/4,
          delete_vocabulary/5,
          describe_agent_status/3,
@@ -188,6 +196,9 @@
          describe_user_hierarchy_structure/2,
          describe_user_hierarchy_structure/4,
          describe_user_hierarchy_structure/5,
+         describe_view/3,
+         describe_view/5,
+         describe_view/6,
          describe_vocabulary/3,
          describe_vocabulary/5,
          describe_vocabulary/6,
@@ -342,6 +353,12 @@
          list_users/2,
          list_users/4,
          list_users/5,
+         list_view_versions/3,
+         list_view_versions/5,
+         list_view_versions/6,
+         list_views/2,
+         list_views/4,
+         list_views/5,
          monitor_contact/2,
          monitor_contact/3,
          put_user_status/4,
@@ -479,7 +496,11 @@
          update_user_routing_profile/4,
          update_user_routing_profile/5,
          update_user_security_profiles/4,
-         update_user_security_profiles/5]).
+         update_user_security_profiles/5,
+         update_view_content/4,
+         update_view_content/5,
+         update_view_metadata/4,
+         update_view_metadata/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -1112,22 +1133,24 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %%
 %% Creates a new queue for the specified Amazon Connect instance.
 %%
-%% If the number being used in the input is claimed to a traffic distribution
-%% group, and you are calling this API using an instance in the Amazon Web
-%% Services Region where the traffic distribution group was created, you can
-%% use either a full phone number ARN or UUID value for the
-%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request
-%% body parameter. However, if the number is claimed to a traffic
-%% distribution group and you are calling this API using an instance in the
-%% alternate Amazon Web Services Region associated with the traffic
-%% distribution group, you must provide a full phone number ARN. If a UUID is
-%% provided in this scenario, you will receive a
-%% `ResourceNotFoundException'.
+%% If the phone number is claimed to a traffic distribution group that was
+%% created in the same Region as the Amazon Connect instance where you are
+%% calling this API, then you can use a full phone number ARN or a UUID for
+%% `OutboundCallerIdNumberId'. However, if the phone number is claimed to
+%% a traffic distribution group that is in one Region, and you are calling
+%% this API from an instance in another Amazon Web Services Region that is
+%% associated with the traffic distribution group, you must provide a full
+%% phone number ARN. If a UUID is provided in this scenario, you will receive
+%% a `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
 %% `instance' in the path, for example,
 %% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
 %% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
+%%
+%% If you plan to use IAM policies to allow/deny access to this API for phone
+%% number resources claimed to a traffic distribution group, see Allow or
+%% Deny queue API actions for phone numbers in a replica Region.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 create_queue(Client, InstanceId, Input0, Options0) ->
@@ -1273,6 +1296,13 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a traffic distribution group given an Amazon Connect instance
 %% that has been replicated.
 %%
+%% You can change the `SignInConfig' distribution only for a default
+%% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
+%% TrafficDistributionGroup data type). If you call
+%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
+%% non-default `TrafficDistributionGroup', an
+%% `InvalidRequestException' is returned.
+%%
 %% For more information about creating traffic distribution groups, see Set
 %% up traffic distribution groups in the Amazon Connect Administrator Guide.
 create_traffic_distribution_group(Client, Input) ->
@@ -1352,6 +1382,68 @@ create_user_hierarchy_group(Client, InstanceId, Input) ->
 create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new view with the possible status of `SAVED' or
+%% `PUBLISHED'.
+%%
+%% The views will have a unique name for each connect instance.
+%%
+%% It performs basic content validation if the status is `SAVED' or full
+%% content validation if the status is set to `PUBLISHED'. An error is
+%% returned if validation fails. It associates either the `$SAVED'
+%% qualifier or both of the `$SAVED' and `$LATEST' qualifiers with
+%% the provided view content based on the status. The view is idempotent if
+%% ClientToken is provided.
+create_view(Client, InstanceId, Input) ->
+    create_view(Client, InstanceId, Input, []).
+create_view(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes a new version of the view identifier.
+%%
+%% Versions are immutable and monotonically increasing.
+%%
+%% It returns the highest version if there is no change in content compared
+%% to that version. An error is displayed if the supplied ViewContentSha256
+%% is different from the ViewContentSha256 of the `$LATEST' alias.
+create_view_version(Client, InstanceId, ViewId, Input) ->
+    create_view_version(Client, InstanceId, ViewId, Input, []).
+create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
+    Method = put,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1862,6 +1954,55 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the view entirely.
+%%
+%% It deletes the view and all associated qualifiers (versions and aliases).
+delete_view(Client, InstanceId, ViewId, Input) ->
+    delete_view(Client, InstanceId, ViewId, Input, []).
+delete_view(Client, InstanceId, ViewId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the particular version specified in `ViewVersion'
+%% identifier.
+delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input) ->
+    delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input, []).
+delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input0, Options0) ->
+    Method = delete,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions/", aws_util:encode_uri(ViewVersion), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2443,6 +2584,41 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
 describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the view for the specified Amazon Connect instance and view
+%% identifier.
+%%
+%% The view identifier can be supplied as a ViewId or ARN.
+%%
+%% `$SAVED' needs to be supplied if a view is unpublished.
+%%
+%% The view identifier can contain an optional qualifier, for example,
+%% `&lt;view-id&gt;:$SAVED', which is either an actual version number or
+%% an Amazon Connect managed qualifier `$SAVED | $LATEST'. If it is not
+%% supplied, then `$LATEST' is assumed for customer managed views and an
+%% error is returned if there is no published content available. Version 1 is
+%% assumed for Amazon Web Services managed views.
+describe_view(Client, InstanceId, ViewId)
+  when is_map(Client) ->
+    describe_view(Client, InstanceId, ViewId, #{}, #{}).
+
+describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
+
+describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3553,6 +3729,12 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
 %%
+%% We recommend using ListPhoneNumbersV2 to return phone number types.
+%% ListPhoneNumbers doesn't support number types `UIFN',
+%% `SHARED', `THIRD_PARTY_TF', and `THIRD_PARTY_DID'. While it
+%% returns numbers of those types, it incorrectly lists them as
+%% `TOLL_FREE' or `DID'.
+%%
 %% The phone number `Arn' value that is returned from each of the items
 %% in the PhoneNumberSummaryList cannot be used to tag phone number
 %% resources. It will fail with a `ResourceNotFoundException'. Instead,
@@ -4134,6 +4316,68 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns all the available versions for the specified Amazon Connect
+%% instance and view identifier.
+%%
+%% Results will be sorted from highest to lowest.
+list_view_versions(Client, InstanceId, ViewId)
+  when is_map(Client) ->
+    list_view_versions(Client, InstanceId, ViewId, #{}, #{}).
+
+list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
+
+list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/versions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns views in the given instance.
+%%
+%% Results are sorted primarily by type, and secondarily by name.
+list_views(Client, InstanceId)
+  when is_map(Client) ->
+    list_views(Client, InstanceId, #{}, #{}).
+
+list_views(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_views(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/views/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4763,7 +5007,8 @@ start_task_contact(Client, Input0, Options0) ->
 
 %% @doc Ends the specified contact.
 %%
-%% This call does not work for the following initiation methods:
+%% This call does not work for voice contacts that use the following
+%% initiation methods:
 %%
 %% <ul> <li> DISCONNECT
 %%
@@ -4771,7 +5016,8 @@ start_task_contact(Client, Input0, Options0) ->
 %%
 %% </li> <li> QUEUE_TRANSFER
 %%
-%% </li> </ul>
+%% </li> </ul> Chat and task contacts, however, can be terminated in any
+%% state, regardless of initiation method.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
 stop_contact(Client, Input0, Options0) ->
@@ -5579,22 +5825,24 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% Updates the outbound caller ID name, number, and outbound whisper flow for
 %% a specified queue.
 %%
-%% If the number being used in the input is claimed to a traffic distribution
-%% group, and you are calling this API using an instance in the Amazon Web
-%% Services Region where the traffic distribution group was created, you can
-%% use either a full phone number ARN or UUID value for the
-%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request
-%% body parameter. However, if the number is claimed to a traffic
-%% distribution group and you are calling this API using an instance in the
-%% alternate Amazon Web Services Region associated with the traffic
-%% distribution group, you must provide a full phone number ARN. If a UUID is
-%% provided in this scenario, you will receive a
-%% `ResourceNotFoundException'.
+%% If the phone number is claimed to a traffic distribution group that was
+%% created in the same Region as the Amazon Connect instance where you are
+%% calling this API, then you can use a full phone number ARN or a UUID for
+%% `OutboundCallerIdNumberId'. However, if the phone number is claimed to
+%% a traffic distribution group that is in one Region, and you are calling
+%% this API from an instance in another Amazon Web Services Region that is
+%% associated with the traffic distribution group, you must provide a full
+%% phone number ARN. If a UUID is provided in this scenario, you will receive
+%% a `ResourceNotFoundException'.
 %%
 %% Only use the phone number ARN format that doesn't contain
 %% `instance' in the path, for example,
 %% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
 %% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
+%%
+%% If you plan to use IAM policies to allow/deny access to this API for phone
+%% number resources claimed to a traffic distribution group, see Allow or
+%% Deny queue API actions for phone numbers in a replica Region.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
@@ -5895,8 +6143,9 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
 %%
-%% You can change the `SignInConfig' only for a default
-%% `TrafficDistributionGroup'. If you call
+%% You can change the `SignInConfig' distribution only for a default
+%% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
+%% TrafficDistributionGroup data type). If you call
 %% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
 %% non-default `TrafficDistributionGroup', an
 %% `InvalidRequestException' is returned.
@@ -6079,6 +6328,61 @@ update_user_security_profiles(Client, InstanceId, UserId, Input) ->
 update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the view content of the given view identifier in the
+%% specified Amazon Connect instance.
+%%
+%% It performs content validation if `Status' is set to `SAVED' and
+%% performs full content validation if `Status' is `PUBLISHED'. Note
+%% that the `$SAVED' alias' content will always be updated, but the
+%% `$LATEST' alias' content will only be updated if `Status' is
+%% `PUBLISHED'.
+update_view_content(Client, InstanceId, ViewId, Input) ->
+    update_view_content(Client, InstanceId, ViewId, Input, []).
+update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
+    Method = post,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the view metadata.
+%%
+%% Note that either `Name' or `Description' must be provided.
+update_view_metadata(Client, InstanceId, ViewId, Input) ->
+    update_view_metadata(Client, InstanceId, ViewId, Input, []).
+update_view_metadata(Client, InstanceId, ViewId, Input0, Options0) ->
+    Method = post,
+    Path = ["/views/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ViewId), "/metadata"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

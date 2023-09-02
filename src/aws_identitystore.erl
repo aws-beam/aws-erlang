@@ -1,21 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Identity Store service used by AWS IAM Identity Center (successor
-%% to AWS Single Sign-On) provides a single place to retrieve all of your
-%% identities (users and groups).
+%% @doc The Identity Store service used by IAM Identity Center provides a
+%% single place to retrieve all of your identities (users and groups).
 %%
 %% For more information, see the IAM Identity Center User Guide.
 %%
-%% &lt;note&gt; &lt;p&gt;Although AWS Single Sign-On was renamed, the
-%% &lt;code&gt;sso&lt;/code&gt; and &lt;code&gt;identitystore&lt;/code&gt;
-%% API namespaces will continue to retain their original name for backward
-%% compatibility purposes. For more information, see &lt;a
-%% href=&quot;https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed&quot;&gt;IAM
-%% Identity Center rename&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;This
-%% reference guide describes the identity store operations that you can call
-%% programatically and includes detailed information about data types and
-%% errors.&lt;/p&gt;
+%% This reference guide describes the identity store operations that you can
+%% call programmatically and includes detailed information about data types
+%% and errors.
+%%
+%% IAM Identity Center uses the `sso' and `identitystore' API
+%% namespaces.
 -module(aws_identitystore).
 
 -export([create_group/2,
@@ -116,6 +112,10 @@ delete_user(Client, Input, Options)
 
 %% @doc Retrieves the group metadata and attributes from `GroupId' in an
 %% identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
@@ -125,6 +125,10 @@ describe_group(Client, Input, Options)
 
 %% @doc Retrieves membership metadata and attributes from `MembershipId'
 %% in an identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
@@ -134,6 +138,10 @@ describe_group_membership(Client, Input, Options)
 
 %% @doc Retrieves the user metadata and attributes from the `UserId' in
 %% an identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -142,6 +150,10 @@ describe_user(Client, Input, Options)
     request(Client, <<"DescribeUser">>, Input, Options).
 
 %% @doc Retrieves `GroupId' in an identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 get_group_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_id(Client, Input, []).
@@ -150,6 +162,10 @@ get_group_id(Client, Input, Options)
     request(Client, <<"GetGroupId">>, Input, Options).
 
 %% @doc Retrieves the `MembershipId' in an identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 get_group_membership_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_membership_id(Client, Input, []).
@@ -158,6 +174,10 @@ get_group_membership_id(Client, Input, Options)
     request(Client, <<"GetGroupMembershipId">>, Input, Options).
 
 %% @doc Retrieves the `UserId' in an identity store.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 get_user_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_id(Client, Input, []).
@@ -167,6 +187,10 @@ get_user_id(Client, Input, Options)
 
 %% @doc Checks the user's membership in all requested groups and returns
 %% if the member exists in all queried groups.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
@@ -177,6 +201,10 @@ is_member_in_groups(Client, Input, Options)
 %% @doc For the specified group in the specified identity store, returns the
 %% list of all `GroupMembership' objects and returns results in paginated
 %% form.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 list_group_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships(Client, Input, []).
@@ -187,6 +215,10 @@ list_group_memberships(Client, Input, Options)
 %% @doc For the specified member in the specified identity store, returns the
 %% list of all `GroupMembership' objects and returns results in paginated
 %% form.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 list_group_memberships_for_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships_for_member(Client, Input, []).
@@ -199,6 +231,10 @@ list_group_memberships_for_member(Client, Input, Options)
 %% Returns a paginated list of complete `Group' objects. Filtering for a
 %% `Group' by the `DisplayName' attribute is deprecated. Instead, use
 %% the `GetGroupId' API action.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -211,6 +247,10 @@ list_groups(Client, Input, Options)
 %% Returns a paginated list of complete `User' objects. Filtering for a
 %% `User' by the `UserName' attribute is deprecated. Instead, use the
 %% `GetUserId' API action.
+%%
+%% If you have administrator access to a member account, you can use this API
+%% from the member account. Read about member accounts in the Organizations
+%% User Guide.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).

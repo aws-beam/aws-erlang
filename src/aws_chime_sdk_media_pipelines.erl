@@ -34,6 +34,12 @@
          get_media_pipeline/2,
          get_media_pipeline/4,
          get_media_pipeline/5,
+         get_speaker_search_task/3,
+         get_speaker_search_task/5,
+         get_speaker_search_task/6,
+         get_voice_tone_analysis_task/3,
+         get_voice_tone_analysis_task/5,
+         get_voice_tone_analysis_task/6,
          list_media_capture_pipelines/1,
          list_media_capture_pipelines/3,
          list_media_capture_pipelines/4,
@@ -46,6 +52,14 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_speaker_search_task/3,
+         start_speaker_search_task/4,
+         start_voice_tone_analysis_task/3,
+         start_voice_tone_analysis_task/4,
+         stop_speaker_search_task/4,
+         stop_speaker_search_task/5,
+         stop_voice_tone_analysis_task/4,
+         stop_voice_tone_analysis_task/5,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -316,6 +330,52 @@ get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of the specified speaker search task.
+get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId)
+  when is_map(Client) ->
+    get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, #{}, #{}).
+
+get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, HeadersMap, []).
+
+get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a voice tone analysis task.
+get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId)
+  when is_map(Client) ->
+    get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, #{}, #{}).
+
+get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryMap, HeadersMap, []).
+
+get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of media pipelines.
 list_media_capture_pipelines(Client)
   when is_map(Client) ->
@@ -426,6 +486,111 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts a speaker search task.
+%%
+%% Before starting any speaker search tasks, you must provide all notices and
+%% obtain all consents from the speaker as required under applicable privacy
+%% and biometrics laws, and as required under the AWS service terms for the
+%% Amazon Chime SDK.
+start_speaker_search_task(Client, Identifier, Input) ->
+    start_speaker_search_task(Client, Identifier, Input, []).
+start_speaker_search_task(Client, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/speaker-search-tasks?operation=start"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a voice tone analysis task.
+%%
+%% For more information about voice tone analysis, see Using Amazon Chime SDK
+%% voice analytics in the Amazon Chime SDK Developer Guide.
+%%
+%% Before starting any voice tone analysis tasks, you must provide all
+%% notices and obtain all consents from the speaker as required under
+%% applicable privacy and biometrics laws, and as required under the AWS
+%% service terms for the Amazon Chime SDK.
+start_voice_tone_analysis_task(Client, Identifier, Input) ->
+    start_voice_tone_analysis_task(Client, Identifier, Input, []).
+start_voice_tone_analysis_task(Client, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/voice-tone-analysis-tasks?operation=start"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a speaker search task.
+stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input) ->
+    stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input, []).
+stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), "?operation=stop"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a voice tone analysis task.
+stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input) ->
+    stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input, []).
+stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipelines/", aws_util:encode_uri(Identifier), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), "?operation=stop"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The ARN of the media pipeline that you want to tag.
 %%
