@@ -359,11 +359,10 @@ create_service_network_service_association(Client, Input0, Options0) ->
 %% As a result of this operation, the association gets created in the service
 %% network account and the VPC owner account.
 %%
-%% If you add a security group to the service network and VPC association,
-%% the association must continue to always have at least one security group.
-%% You can add or edit security groups at any time. However, to remove all
-%% security groups, you must first delete the association and recreate it
-%% without security groups.
+%% Once a security group is added to the VPC association it cannot be
+%% removed. You can add or update the security groups being used for the VPC
+%% association once a security group is attached. To remove all security
+%% groups you must reassociate the VPC.
 create_service_network_vpc_association(Client, Input) ->
     create_service_network_vpc_association(Client, Input, []).
 create_service_network_vpc_association(Client, Input0, Options0) ->
@@ -441,11 +440,11 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 
 %% @doc Deletes the specified auth policy.
 %%
-%% If an auth is set to `AWS_IAM' and the auth policy is deleted, all
-%% requests will be denied by default. If you are trying to remove the auth
-%% policy completely, you must set the auth_type to `NONE'. If auth is
-%% enabled on the resource, but no auth policy is set, all requests will be
-%% denied.
+%% If an auth is set to `Amazon Web Services_IAM' and the auth policy is
+%% deleted, all requests will be denied by default. If you are trying to
+%% remove the auth policy completely, you must set the auth_type to
+%% `NONE'. If auth is enabled on the resource, but no auth policy is set,
+%% all requests will be denied.
 delete_auth_policy(Client, ResourceIdentifier, Input) ->
     delete_auth_policy(Client, ResourceIdentifier, Input, []).
 delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
@@ -777,8 +776,8 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 
 %% @doc Retrieves information about the resource policy.
 %%
-%% The resource policy is an IAM policy created on behalf of the resource
-%% owner when they share a resource.
+%% The resource policy is an IAM policy created by AWS RAM on behalf of the
+%% resource owner when they share a resource.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
@@ -1248,8 +1247,6 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the auth policy.
-%%
-%% The policy string in JSON must not contain newlines or blank lines.
 put_auth_policy(Client, ResourceIdentifier, Input) ->
     put_auth_policy(Client, ResourceIdentifier, Input, []).
 put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
@@ -1493,11 +1490,7 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 
 %% @doc Updates the service network and VPC association.
 %%
-%% If you add a security group to the service network and VPC association,
-%% the association must continue to always have at least one security group.
-%% You can add or edit security groups at any time. However, to remove all
-%% security groups, you must first delete the association and recreate it
-%% without security groups.
+%% Once you add a security group, it cannot be removed.
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input0, Options0) ->
