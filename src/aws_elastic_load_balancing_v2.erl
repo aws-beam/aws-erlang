@@ -281,8 +281,22 @@ delete_target_group(Client, Input, Options)
 %% After the targets are deregistered, they no longer receive traffic from
 %% the load balancer.
 %%
-%% Note: If the specified target does not exist, the action returns
-%% successfully.
+%% The load balancer stops sending requests to targets that are
+%% deregistering, but uses connection draining to ensure that in-flight
+%% traffic completes on the existing connections. This deregistration delay
+%% is configured by default but can be updated for each target group.
+%%
+%% For more information, see the following:
+%%
+%% <ul> <li> Deregistration delay in the Application Load Balancers User
+%% Guide
+%%
+%% </li> <li> Deregistration delay in the Network Load Balancers User Guide
+%%
+%% </li> <li> Deregistration delay in the Gateway Load Balancers User Guide
+%%
+%% </li> </ul> Note: If the specified target does not exist, the action
+%% returns successfully.
 deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
