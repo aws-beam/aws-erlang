@@ -122,12 +122,16 @@
          reject_input_device_transfer/4,
          start_channel/3,
          start_channel/4,
+         start_input_device/3,
+         start_input_device/4,
          start_input_device_maintenance_window/3,
          start_input_device_maintenance_window/4,
          start_multiplex/3,
          start_multiplex/4,
          stop_channel/3,
          stop_channel/4,
+         stop_input_device/3,
+         stop_input_device/4,
          stop_multiplex/3,
          stop_multiplex/4,
          transfer_input_device/3,
@@ -1376,6 +1380,32 @@ start_channel(Client, ChannelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Start an input device that is attached to a MediaConnect flow.
+%%
+%% (There is no need to start a device that is attached to a MediaLive input;
+%% MediaLive starts the device when the channel starts.)
+start_input_device(Client, InputDeviceId, Input) ->
+    start_input_device(Client, InputDeviceId, Input, []).
+start_input_device(Client, InputDeviceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Start a maintenance window for the specified input device.
 %%
 %% Starting a maintenance window will give the device up to two hours to
@@ -1440,6 +1470,32 @@ stop_channel(Client, ChannelId, Input) ->
 stop_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/stop"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stop an input device that is attached to a MediaConnect flow.
+%%
+%% (There is no need to stop a device that is attached to a MediaLive input;
+%% MediaLive automatically stops the device when the channel stops.)
+stop_input_device(Client, InputDeviceId, Input) ->
+    stop_input_device(Client, InputDeviceId, Input, []).
+stop_input_device(Client, InputDeviceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
