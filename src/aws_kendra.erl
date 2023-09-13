@@ -176,7 +176,13 @@ associate_personas_to_entities(Client, Input, Options)
 %%
 %% The documents are deleted asynchronously. You can see the progress of the
 %% deletion by using Amazon Web Services CloudWatch. Any error messages
-%% related to the processing of the batch are sent to you CloudWatch log.
+%% related to the processing of the batch are sent to your Amazon Web
+%% Services CloudWatch log. You can also use the `BatchGetDocumentStatus'
+%% API to monitor the progress of deleting your documents.
+%%
+%% Deleting documents from an index using `BatchDeleteDocument' could
+%% take up to an hour or more, depending on the number of documents you want
+%% to delete.
 batch_delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_document(Client, Input, []).
@@ -225,6 +231,8 @@ batch_get_document_status(Client, Input, Options)
 %% The documents are indexed asynchronously. You can see the progress of the
 %% batch using Amazon Web Services CloudWatch. Any error messages related to
 %% processing the batch are sent to your Amazon Web Services CloudWatch log.
+%% You can also use the `BatchGetDocumentStatus' API to monitor the
+%% progress of indexing your documents.
 %%
 %% For an example of ingesting inline documents using Python and Java SDKs,
 %% see Adding files directly to an index.
@@ -355,7 +363,7 @@ create_featured_results_set(Client, Input, Options)
 %% `DescribeIndex'. The `Status' field is set to `ACTIVE' when
 %% the index is ready to use.
 %%
-%% Once the index is active you can index your documents using the
+%% Once the index is active, you can index your documents using the
 %% `BatchPutDocument' API or using one of the supported data sources.
 %%
 %% For an example of creating an index and data source using the Python SDK,
@@ -424,6 +432,10 @@ delete_access_control_configuration(Client, Input, Options)
 %% While the data source is being deleted, the `Status' field returned by
 %% a call to the `DescribeDataSource' API is set to `DELETING'. For
 %% more information, see Deleting Data Sources.
+%%
+%% Deleting an entire data source or re-syncing your index after deleting
+%% specific documents from a data source could take up to an hour or more,
+%% depending on the number of documents you want to delete.
 delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
@@ -871,8 +883,8 @@ query(Client, Input, Options)
 %% include question-answer or FAQ type responses from your index. The
 %% passages are text excerpts that can be semantically extracted from
 %% multiple documents and multiple parts of the same document. If in extreme
-%% cases your documents produce no relevant passages using the `Retrieve'
-%% API, you can alternatively use the `Query' API.
+%% cases your documents produce zero passages using the `Retrieve' API,
+%% you can alternatively use the `Query' API and its types of responses.
 %%
 %% You can also do the following:
 %%
@@ -884,6 +896,11 @@ query(Client, Input, Options)
 %%
 %% </li> </ul> You can also include certain fields in the response that might
 %% provide useful additional information.
+%%
+%% The `Retrieve' API shares the number of query capacity units that you
+%% set for your index. For more information on what's included in a
+%% single capacity unit and the default base capacity for an index, see
+%% Adjusting capacity.
 retrieve(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve(Client, Input, []).
@@ -895,6 +912,10 @@ retrieve(Client, Input, Options)
 %%
 %% If a synchronization job is already in progress, Amazon Kendra returns a
 %% `ResourceInUseException' exception.
+%%
+%% Re-syncing your data source with your index after modifying, adding, or
+%% deleting documents from your data source respository could take up to an
+%% hour or more, depending on the number of documents to sync.
 start_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_source_sync_job(Client, Input, []).
