@@ -757,8 +757,10 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Disables an Amazon Web Services account within the Organization as
-%% the GuardDuty delegated administrator.
+%% @doc Removes the existing GuardDuty delegated administrator of the
+%% organization.
+%%
+%% Only the organization's management account can run this API operation.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
@@ -862,8 +864,8 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
 %% organization set to `ALL', you'll receive an error if you attempt
-%% to disassociate a member account before removing them from your Amazon Web
-%% Services organization.
+%% to disassociate a member account before removing them from your
+%% organization.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->
@@ -886,8 +888,10 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an Amazon Web Services account within the organization as the
-%% GuardDuty delegated administrator.
+%% @doc Designates an Amazon Web Services account within the organization as
+%% your GuardDuty delegated administrator.
+%%
+%% Only the organization's management account can run this API operation.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
@@ -910,8 +914,11 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provides the details for the GuardDuty administrator account
+%% @doc Provides the details of the GuardDuty administrator account
 %% associated with the current GuardDuty member account.
+%%
+%% If the organization's management account or a delegated administrator
+%% runs this API, it will return success (`HTTP 200') but no content.
 get_administrator_account(Client, DetectorId)
   when is_map(Client) ->
     get_administrator_account(Client, DetectorId, #{}, #{}).
@@ -1292,9 +1299,9 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% organization administered by the Amazon Web Services account that invokes
 %% this API.
 %%
-%% If you are using Amazon Web Services Organizations to manager your
-%% GuardDuty environment, this step is not needed. For more information, see
-%% Managing accounts with Amazon Web Services Organizations.
+%% If you are using organizations to manager your GuardDuty environment, this
+%% step is not needed. For more information, see Managing accounts with
+%% organizations.
 %%
 %% To invite Amazon Web Services accounts, the first step is to ensure that
 %% GuardDuty has been enabled in the potential member accounts. You can now
@@ -1534,6 +1541,8 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the accounts configured as GuardDuty delegated administrators.
+%%
+%% Only the organization's management account can run this API operation.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -1594,8 +1603,8 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% Tagging is currently supported for detectors, finding filters, IP sets,
 %% threat intel sets, and publishing destination, with a limit of 50 tags per
-%% each resource. When invoked, this operation returns all assigned tags for
-%% a given resource.
+%% resource. When invoked, this operation returns all assigned tags for a
+%% given resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1955,8 +1964,8 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %% @doc Configures the delegated administrator account with the provided
 %% values.
 %%
-%% You must provide the value for either `autoEnableOrganizationMembers'
-%% or `autoEnable'.
+%% You must provide a value for either `autoEnableOrganizationMembers' or
+%% `autoEnable', but not both.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is

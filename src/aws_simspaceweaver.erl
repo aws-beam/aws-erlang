@@ -1,14 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc SimSpace Weaver (SimSpace Weaver) is a managed service that you can
-%% use to build and operate large-scale spatial simulations in the Amazon Web
-%% Services Cloud.
+%% @doc SimSpace Weaver (SimSpace Weaver) is a service that you can use to
+%% build and run large-scale spatial simulations in the Amazon Web Services
+%% Cloud.
 %%
-%% For example, you can create a digital twin of a city, crowd simulations
-%% with millions of people and objects, and massively multiplayer games with
-%% hundreds of thousands of connected players. For more information about
-%% SimSpace Weaver, see the SimSpace Weaver User Guide .
+%% For example, you can create crowd simulations, large real-world
+%% environments, and immersive and interactive experiences. For more
+%% information about SimSpace Weaver, see the SimSpace Weaver User Guide .
 %%
 %% This API reference describes the API operations and data types that you
 %% can use to communicate directly with SimSpace Weaver.

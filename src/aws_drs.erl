@@ -16,6 +16,8 @@
          create_source_network/3,
          delete_job/2,
          delete_job/3,
+         delete_launch_action/2,
+         delete_launch_action/3,
          delete_launch_configuration_template/2,
          delete_launch_configuration_template/3,
          delete_recovery_instance/2,
@@ -58,12 +60,16 @@
          initialize_service/3,
          list_extensible_source_servers/2,
          list_extensible_source_servers/3,
+         list_launch_actions/2,
+         list_launch_actions/3,
          list_staging_accounts/1,
          list_staging_accounts/3,
          list_staging_accounts/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_launch_action/2,
+         put_launch_action/3,
          retry_data_replication/2,
          retry_data_replication/3,
          reverse_replication/2,
@@ -232,6 +238,29 @@ delete_job(Client, Input) ->
 delete_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteJob"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource launch action.
+delete_launch_action(Client, Input) ->
+    delete_launch_action(Client, Input, []).
+delete_launch_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLaunchAction"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -778,6 +807,29 @@ list_extensible_source_servers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists resource launch actions.
+list_launch_actions(Client, Input) ->
+    list_launch_actions(Client, Input, []).
+list_launch_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLaunchActions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns an array of staging accounts for existing extended source
 %% servers.
 list_staging_accounts(Client)
@@ -829,6 +881,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Puts a resource launch action.
+put_launch_action(Client, Input) ->
+    put_launch_action(Client, Input, []).
+put_launch_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutLaunchAction"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc WARNING: RetryDataReplication is deprecated.
 %%
