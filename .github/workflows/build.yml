@@ -50,6 +50,8 @@ jobs:
       env:
         DYNAMODB_HOST: ddb
         S3MOCK_HOST: s3mock
+    - name: Check app calls
+      run: rebar3 check_app_calls
     - name: Create Cover Reports
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
