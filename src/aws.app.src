@@ -6,6 +6,7 @@
    , [ kernel
      , stdlib
      , xmerl
+     , crypto
      , hackney
      , jsx
      , aws_signature
