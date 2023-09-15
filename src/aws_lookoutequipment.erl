@@ -16,6 +16,8 @@
          create_label_group/3,
          create_model/2,
          create_model/3,
+         create_retraining_scheduler/2,
+         create_retraining_scheduler/3,
          delete_dataset/2,
          delete_dataset/3,
          delete_inference_scheduler/2,
@@ -28,6 +30,8 @@
          delete_model/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
+         delete_retraining_scheduler/2,
+         delete_retraining_scheduler/3,
          describe_data_ingestion_job/2,
          describe_data_ingestion_job/3,
          describe_dataset/2,
@@ -44,6 +48,8 @@
          describe_model_version/3,
          describe_resource_policy/2,
          describe_resource_policy/3,
+         describe_retraining_scheduler/2,
+         describe_retraining_scheduler/3,
          import_dataset/2,
          import_dataset/3,
          import_model_version/2,
@@ -66,6 +72,8 @@
          list_model_versions/3,
          list_models/2,
          list_models/3,
+         list_retraining_schedulers/2,
+         list_retraining_schedulers/3,
          list_sensor_statistics/2,
          list_sensor_statistics/3,
          list_tags_for_resource/2,
@@ -76,8 +84,12 @@
          start_data_ingestion_job/3,
          start_inference_scheduler/2,
          start_inference_scheduler/3,
+         start_retraining_scheduler/2,
+         start_retraining_scheduler/3,
          stop_inference_scheduler/2,
          stop_inference_scheduler/3,
+         stop_retraining_scheduler/2,
+         stop_retraining_scheduler/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -87,7 +99,11 @@
          update_inference_scheduler/2,
          update_inference_scheduler/3,
          update_label_group/2,
-         update_label_group/3]).
+         update_label_group/3,
+         update_model/2,
+         update_model/3,
+         update_retraining_scheduler/2,
+         update_retraining_scheduler/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -140,7 +156,7 @@ create_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelGroup">>, Input, Options).
 
-%% @doc Creates an ML model for data inference.
+%% @doc Creates a machine learning model for data inference.
 %%
 %% A machine-learning (ML) model is a mathematical model that finds patterns
 %% in your data. In Amazon Lookout for Equipment, the model learns the
@@ -160,6 +176,14 @@ create_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModel">>, Input, Options).
 
+%% @doc Creates a retraining scheduler on the specified model.
+create_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_retraining_scheduler(Client, Input, []).
+create_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRetrainingScheduler">>, Input, Options).
+
 %% @doc Deletes a dataset and associated artifacts.
 %%
 %% The operation will check to see if any inference scheduler or data
@@ -177,7 +201,7 @@ delete_dataset(Client, Input, Options)
 
 %% @doc Deletes an inference scheduler that has been set up.
 %%
-%% Already processed output results are not affected.
+%% Prior inference results will not be deleted.
 delete_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_scheduler(Client, Input, []).
@@ -201,8 +225,8 @@ delete_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLabelGroup">>, Input, Options).
 
-%% @doc Deletes an ML model currently available for Amazon Lookout for
-%% Equipment.
+%% @doc Deletes a machine learning model currently available for Amazon
+%% Lookout for Equipment.
 %%
 %% This will prevent it from being used with an inference scheduler, even one
 %% that is already set up.
@@ -220,6 +244,16 @@ delete_resource_policy(Client, Input)
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
+%% @doc Deletes a retraining scheduler from a model.
+%%
+%% The retraining scheduler must be in the `STOPPED' status.
+delete_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_retraining_scheduler(Client, Input, []).
+delete_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRetrainingScheduler">>, Input, Options).
 
 %% @doc Provides information on a specific data ingestion job such as
 %% creation time, dataset ARN, and status.
@@ -265,8 +299,8 @@ describe_label_group(Client, Input, Options)
     request(Client, <<"DescribeLabelGroup">>, Input, Options).
 
 %% @doc Provides a JSON containing the overall information about a specific
-%% ML model, including model name and ARN, dataset, training and evaluation
-%% information, status, and so on.
+%% machine learning model, including model name and ARN, dataset, training
+%% and evaluation information, status, and so on.
 describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
@@ -290,6 +324,15 @@ describe_resource_policy(Client, Input)
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
+
+%% @doc Provides a description of the retraining scheduler, including
+%% information such as the model name and retraining parameters.
+describe_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_retraining_scheduler(Client, Input, []).
+describe_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRetrainingScheduler">>, Input, Options).
 
 %% @doc Imports a dataset.
 import_dataset(Client, Input)
@@ -389,6 +432,15 @@ list_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModels">>, Input, Options).
 
+%% @doc Lists all retraining schedulers in your account, filtering by model
+%% name prefix and status.
+list_retraining_schedulers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_retraining_schedulers(Client, Input, []).
+list_retraining_schedulers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRetrainingSchedulers">>, Input, Options).
+
 %% @doc Lists statistics about the data collected for each of the sensors
 %% that have been successfully ingested in the particular dataset.
 %%
@@ -435,6 +487,14 @@ start_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInferenceScheduler">>, Input, Options).
 
+%% @doc Starts a retraining scheduler.
+start_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_retraining_scheduler(Client, Input, []).
+start_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRetrainingScheduler">>, Input, Options).
+
 %% @doc Stops an inference scheduler.
 stop_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -442,6 +502,14 @@ stop_inference_scheduler(Client, Input)
 stop_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInferenceScheduler">>, Input, Options).
+
+%% @doc Stops a retraining scheduler.
+stop_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_retraining_scheduler(Client, Input, []).
+stop_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopRetrainingScheduler">>, Input, Options).
 
 %% @doc Associates a given tag to a resource in your account.
 %%
@@ -490,6 +558,22 @@ update_label_group(Client, Input)
 update_label_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLabelGroup">>, Input, Options).
+
+%% @doc Updates a model in the account.
+update_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_model(Client, Input, []).
+update_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateModel">>, Input, Options).
+
+%% @doc Updates a retraining scheduler.
+update_retraining_scheduler(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_retraining_scheduler(Client, Input, []).
+update_retraining_scheduler(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRetrainingScheduler">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

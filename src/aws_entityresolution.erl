@@ -1,25 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the AWS Entity Resolution API Reference.
+%% @doc Welcome to the Entity Resolution API Reference.
 %%
-%% AWS Entity Resolution is an AWS service that provides pre-configured
-%% entity resolution capabilities that enable developers and analysts at
-%% advertising and marketing companies to build an accurate and complete view
-%% of their consumers.
+%% Entity Resolution is an Amazon Web Services service that provides
+%% pre-configured entity resolution capabilities that enable developers and
+%% analysts at advertising and marketing companies to build an accurate and
+%% complete view of their consumers.
 %%
-%% With AWS Entity Resolution, you have the ability to match source records
-%% containing consumer identifiers, such as name, email address, and phone
-%% number. This holds true even when these records have incomplete or
-%% conflicting identifiers. For example, AWS Entity Resolution can
-%% effectively match a source record from a customer relationship management
-%% (CRM) system, which includes account information like first name, last
-%% name, postal address, phone number, and email address, with a source
-%% record from a marketing system containing campaign information, such as
-%% username and email address.
+%% With Entity Resolution, you can match source records containing consumer
+%% identifiers, such as name, email address, and phone number. This is true
+%% even when these records have incomplete or conflicting identifiers. For
+%% example, Entity Resolution can effectively match a source record from a
+%% customer relationship management (CRM) system with a source record from a
+%% marketing system containing campaign information.
 %%
-%% To learn more about AWS Entity Resolution concepts, procedures, and best
-%% practices, see the AWS Entity Resolution User Guide.
+%% To learn more about Entity Resolution concepts, procedures, and best
+%% practices, see the Entity Resolution User Guide.
 -module(aws_entityresolution).
 
 -export([create_matching_workflow/2,
@@ -301,7 +298,7 @@ list_matching_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `MatchingWorkflows' that have been
-%% created for an AWS account.
+%% created for an Amazon Web Services account.
 list_matching_workflows(Client)
   when is_map(Client) ->
     list_matching_workflows(Client, #{}, #{}).
@@ -330,7 +327,7 @@ list_matching_workflows(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the `SchemaMappings' that have been created
-%% for an AWS account.
+%% for an Amazon Web Services account.
 list_schema_mappings(Client)
   when is_map(Client) ->
     list_schema_mappings(Client, #{}, #{}).
@@ -358,7 +355,7 @@ list_schema_mappings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays the tags associated with an AWS Entity Resolution resource.
+%% @doc Displays the tags associated with an Entity Resolution resource.
 %%
 %% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
 %% be tagged.
@@ -410,19 +407,20 @@ start_matching_job(Client, WorkflowName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Assigns one or more tags (key-value pairs) to the specified AWS
-%% Entity Resolution resource.
+%% @doc Assigns one or more tags (key-value pairs) to the specified Entity
+%% Resolution resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to scope user permissions by granting a user permission to access or
 %% change only resources with certain tag values. In Entity Resolution,
-%% `SchemaMapping', and `MatchingWorkflow' can be tagged. Tags
-%% don't have any semantic meaning to AWS and are interpreted strictly as
-%% strings of characters. You can use the `TagResource' action with a
-%% resource that already has tags. If you specify a new tag key, this tag is
-%% appended to the list of tags associated with the resource. If you specify
-%% a tag key that is already associated with the resource, the new tag value
-%% that you specify replaces the previous value for that tag.
+%% `SchemaMapping' and `MatchingWorkflow' can be tagged. Tags
+%% don't have any semantic meaning to Amazon Web Services and are
+%% interpreted strictly as strings of characters. You can use the
+%% `TagResource' action with a resource that already has tags. If you
+%% specify a new tag key, this tag is appended to the list of tags associated
+%% with the resource. If you specify a tag key that is already associated
+%% with the resource, the new tag value that you specify replaces the
+%% previous value for that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -445,7 +443,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags from the specified AWS Entity Resolution
+%% @doc Removes one or more tags from the specified Entity Resolution
 %% resource.
 %%
 %% In Entity Resolution, `SchemaMapping', and `MatchingWorkflow' can
