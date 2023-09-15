@@ -6,7 +6,6 @@
    , [ kernel
      , stdlib
      , xmerl
-     , erlware_commons
      , hackney
      , jsx
      , aws_signature
