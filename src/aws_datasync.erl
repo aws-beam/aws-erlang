@@ -544,10 +544,6 @@ describe_task_execution(Client, Input, Options)
 %%
 %% Once generated, you can view your recommendations by using the
 %% DescribeStorageSystemResources operation.
-%%
-%% If your discovery job completes successfully, you don't need to use
-%% this operation. DataSync Discovery generates the recommendations for you
-%% automatically.
 generate_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_recommendations(Client, Input, []).
