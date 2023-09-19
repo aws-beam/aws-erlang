@@ -89,6 +89,8 @@
          deregister_mail_domain/3,
          describe_email_monitoring_configuration/2,
          describe_email_monitoring_configuration/3,
+         describe_entity/2,
+         describe_entity/3,
          describe_group/2,
          describe_group/3,
          describe_inbound_dmarc_settings/2,
@@ -131,6 +133,8 @@
          list_group_members/3,
          list_groups/2,
          list_groups/3,
+         list_groups_for_entity/2,
+         list_groups_for_entity/3,
          list_impersonation_roles/2,
          list_impersonation_roles/3,
          list_mail_domains/2,
@@ -183,6 +187,8 @@
          update_availability_configuration/3,
          update_default_mail_domain/2,
          update_default_mail_domain/3,
+         update_group/2,
+         update_group/3,
          update_impersonation_role/2,
          update_impersonation_role/3,
          update_mailbox_quota/2,
@@ -192,7 +198,9 @@
          update_primary_email_address/2,
          update_primary_email_address/3,
          update_resource/2,
-         update_resource/3]).
+         update_resource/3,
+         update_user/2,
+         update_user/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -498,6 +506,14 @@ describe_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEmailMonitoringConfiguration">>, Input, Options).
 
+%% @doc Returns basic details about an entity in WorkMail.
+describe_entity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_entity(Client, Input, []).
+describe_entity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEntity">>, Input, Options).
+
 %% @doc Returns the data available for the group.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -686,6 +702,14 @@ list_groups(Client, Input)
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
+
+%% @doc Returns all the groups to which an entity belongs.
+list_groups_for_entity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_groups_for_entity(Client, Input, []).
+list_groups_for_entity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGroupsForEntity">>, Input, Options).
 
 %% @doc Lists all the impersonation roles for the given WorkMail
 %% organization.
@@ -951,6 +975,14 @@ update_default_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
 
+%% @doc Updates attibutes in a group.
+update_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_group(Client, Input, []).
+update_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGroup">>, Input, Options).
+
 %% @doc Updates an impersonation role for the given WorkMail organization.
 update_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1000,6 +1032,18 @@ update_resource(Client, Input)
 update_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResource">>, Input, Options).
+
+%% @doc Updates data for the user.
+%%
+%% To have the latest information, it must be preceded by a
+%% `DescribeUser' call. The dataset in the request should be the one
+%% expected when performing another `DescribeUser' call.
+update_user(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_user(Client, Input, []).
+update_user(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateUser">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
