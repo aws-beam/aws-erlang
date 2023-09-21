@@ -30,6 +30,8 @@
          deregister_instance/3,
          discover_instances/2,
          discover_instances/3,
+         discover_instances_revision/2,
+         discover_instances_revision/3,
          get_instance/2,
          get_instance/3,
          get_instances_health_status/2,
@@ -194,14 +196,24 @@ deregister_instance(Client, Input, Options)
 %% @doc Discovers registered instances for a specified namespace and service.
 %%
 %% You can use `DiscoverInstances' to discover instances for any type of
-%% namespace. For public and private DNS namespaces, you can also use DNS
-%% queries to discover instances.
+%% namespace. `DiscoverInstances' returns a randomized list of instances
+%% allowing customers to distribute traffic evenly across instances. For
+%% public and private DNS namespaces, you can also use DNS queries to
+%% discover instances.
 discover_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances(Client, Input, []).
 discover_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInstances">>, Input, Options).
+
+%% @doc Discovers the increasing revision associated with an instance.
+discover_instances_revision(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    discover_instances_revision(Client, Input, []).
+discover_instances_revision(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DiscoverInstancesRevision">>, Input, Options).
 
 %% @doc Gets information about a specified instance.
 get_instance(Client, Input)
@@ -233,7 +245,7 @@ get_namespace(Client, Input, Options)
     request(Client, <<"GetNamespace">>, Input, Options).
 
 %% @doc Gets information about any operation that returns an operation ID in
-%% the response, such as a `CreateService' request.
+%% the response, such as a `CreateHttpNamespace' request.
 %%
 %% To get a list of operations that match specified criteria, see
 %% ListOperations.

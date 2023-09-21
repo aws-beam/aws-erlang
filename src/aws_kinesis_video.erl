@@ -303,9 +303,11 @@ describe_mapped_resource_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the most current information about the channel.
+%% @doc This API is related to WebRTC Ingestion and is only available in the
+%% `us-west-2' region.
 %%
-%% Specify the `ChannelName' or `ChannelARN' in the input.
+%% Returns the most current information about the channel. Specify the
+%% `ChannelName' or `ChannelARN' in the input.
 describe_media_storage_configuration(Client, Input) ->
     describe_media_storage_configuration(Client, Input, []).
 describe_media_storage_configuration(Client, Input0, Options0) ->
@@ -623,6 +625,11 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% stream’s edge configuration and the Edge Agent will be retried for 15
 %% minutes. After 15 minutes, the status will transition into the
 %% `SYNC_FAILED' state.
+%%
+%% To move an edge configuration from one device to another, use
+%% `DeleteEdgeConfiguration' to delete the current edge configuration.
+%% You can then invoke StartEdgeConfigurationUpdate with an updated Hub
+%% Device ARN.
 start_edge_configuration_update(Client, Input) ->
     start_edge_configuration_update(Client, Input, []).
 start_edge_configuration_update(Client, Input0, Options0) ->
@@ -838,9 +845,11 @@ update_image_generation_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a `SignalingChannel' to a stream to store the media.
+%% @doc This API is related to WebRTC Ingestion and is only available in the
+%% `us-west-2' region.
 %%
-%% There are two signaling modes that can specified :
+%% Associates a `SignalingChannel' to a stream to store the media. There
+%% are two signaling modes that can specified :
 %%
 %% <ul> <li> If the `StorageStatus' is disabled, no data will be stored,
 %% and the `StreamARN' parameter will not be needed.

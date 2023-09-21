@@ -628,10 +628,12 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Amazon S3 by using the `StorageClass' parameter. For more information,
 %% see Storage Classes in the Amazon S3 User Guide.
 %%
-%% If the source object's storage class is GLACIER, you must restore a
-%% copy of this object before you can use it as a source object for the copy
-%% operation. For more information, see RestoreObject. For more information,
-%% see Copying Objects.
+%% If the source object's storage class is GLACIER or DEEP_ARCHIVE, or
+%% the object's storage class is INTELLIGENT_TIERING and it's S3
+%% Intelligent-Tiering access tier is Archive Access or Deep Archive Access,
+%% you must restore a copy of this object before you can use it as a source
+%% object for the copy operation. For more information, see RestoreObject.
+%% For more information, see Copying Objects.
 %%
 %% </dd> <dt>Versioning</dt> <dd> By default, `x-amz-copy-source' header
 %% identifies the current version of an object to copy. If the current
@@ -756,11 +758,12 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% If you want to create an Amazon S3 on Outposts bucket, see Create Bucket.
 %%
 %% By default, the bucket is created in the US East (N. Virginia) Region. You
-%% can optionally specify a Region in the request body. You might choose a
-%% Region to optimize latency, minimize costs, or address regulatory
-%% requirements. For example, if you reside in Europe, you will probably find
-%% it advantageous to create buckets in the Europe (Ireland) Region. For more
-%% information, see Accessing a bucket.
+%% can optionally specify a Region in the request body. To constrain the
+%% bucket creation to a specific Region, you can use `LocationConstraint'
+%% condition key. You might choose a Region to optimize latency, minimize
+%% costs, or address regulatory requirements. For example, if you reside in
+%% Europe, you will probably find it advantageous to create buckets in the
+%% Europe (Ireland) Region. For more information, see Accessing a bucket.
 %%
 %% If you send your create bucket request to the `s3.amazonaws.com'
 %% endpoint, the request goes to the `us-east-1' Region. Accordingly, the
@@ -5369,14 +5372,13 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% By default, all buckets have a default encryption configuration that uses
 %% server-side encryption with Amazon S3 managed keys (SSE-S3). You can
 %% optionally configure default encryption for a bucket by using server-side
-%% encryption with Key Management Service (KMS) keys (SSE-KMS), dual-layer
-%% server-side encryption with Amazon Web Services KMS keys (DSSE-KMS), or
-%% server-side encryption with customer-provided keys (SSE-C). If you specify
-%% default encryption by using SSE-KMS, you can also configure Amazon S3
-%% Bucket Keys. For information about bucket default encryption, see Amazon
-%% S3 bucket default encryption in the Amazon S3 User Guide. For more
-%% information about S3 Bucket Keys, see Amazon S3 Bucket Keys in the Amazon
-%% S3 User Guide.
+%% encryption with Key Management Service (KMS) keys (SSE-KMS) or dual-layer
+%% server-side encryption with Amazon Web Services KMS keys (DSSE-KMS). If
+%% you specify default encryption by using SSE-KMS, you can also configure
+%% Amazon S3 Bucket Keys. If you use PutBucketEncryption to set your default
+%% bucket encryption to SSE-KMS, you should verify that your KMS key ID is
+%% correct. Amazon S3 does not validate the KMS key ID provided in
+%% PutBucketEncryption requests.
 %%
 %% This action requires Amazon Web Services Signature Version 4. For more
 %% information, see Authenticating Requests (Amazon Web Services Signature
@@ -6160,7 +6162,8 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% replication configuration, you provide the name of the destination bucket
 %% or buckets where you want Amazon S3 to replicate objects, the IAM role
 %% that Amazon S3 can assume to replicate objects on your behalf, and other
-%% relevant information.
+%% relevant information. You can invoke this request for a specific Amazon
+%% Web Services Region by using the `aws:RequestedRegion' condition key.
 %%
 %% A replication configuration must include at least one rule, and can
 %% contain a maximum of 1,000. Each rule identifies a subset of objects to
@@ -6304,30 +6307,23 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %% about permissions, see Permissions Related to Bucket Subresource
 %% Operations and Managing Access Permissions to Your Amazon S3 Resources.
 %%
-%% `PutBucketTagging' has the following special errors:
+%% `PutBucketTagging' has the following special errors. For more Amazon
+%% S3 errors see, Error Responses.
 %%
-%% <ul> <li> Error code: `InvalidTagError'
+%% <ul> <li> `InvalidTag' - The tag provided was not a valid tag. This
+%% error can occur if the tag did not pass input validation. For more
+%% information, see Using Cost Allocation in Amazon S3 Bucket Tags.
 %%
-%% <ul> <li> Description: The tag provided was not a valid tag. This error
-%% can occur if the tag did not pass input validation. For information about
-%% tag restrictions, see User-Defined Tag Restrictions and Amazon Web
-%% Services-Generated Cost Allocation Tag Restrictions.
+%% </li> <li> `MalformedXML' - The XML provided does not match the
+%% schema.
 %%
-%% </li> </ul> </li> <li> Error code: `MalformedXMLError'
+%% </li> <li> `OperationAborted' - A conflicting conditional action is
+%% currently in progress against this resource. Please try again.
 %%
-%% <ul> <li> Description: The XML provided does not match the schema.
+%% </li> <li> `InternalError' - The service was unable to apply the
+%% provided tag to the bucket.
 %%
-%% </li> </ul> </li> <li> Error code: `OperationAbortedError '
-%%
-%% <ul> <li> Description: A conflicting conditional action is currently in
-%% progress against this resource. Please try again.
-%%
-%% </li> </ul> </li> <li> Error code: `InternalError'
-%%
-%% <ul> <li> Description: The service was unable to apply the provided tag to
-%% the bucket.
-%%
-%% </li> </ul> </li> </ul> The following operations are related to
+%% </li> </ul> The following operations are related to
 %% `PutBucketTagging':
 %%
 %% <ul> <li> GetBucketTagging
@@ -6497,6 +6493,8 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% configuration. If you require more than 50 routing rules, you can use
 %% object redirect. For more information, see Configuring an Object Redirect
 %% in the Amazon S3 User Guide.
+%%
+%% The maximum request length is limited to 128 KB.
 put_bucket_website(Client, Bucket, Input) ->
     put_bucket_website(Client, Bucket, Input, []).
 put_bucket_website(Client, Bucket, Input0, Options0) ->
@@ -7068,10 +7066,11 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% @doc Sets the supplied tag-set to an object that already exists in a
 %% bucket.
 %%
-%% A tag is a key-value pair. You can associate tags with an object by
-%% sending a PUT request against the tagging subresource that is associated
-%% with the object. You can retrieve tags by sending a GET request. For more
-%% information, see GetObjectTagging.
+%% A tag is a key-value pair. For more information, see Object Tagging.
+%%
+%% You can associate tags with an object by sending a PUT request against the
+%% tagging subresource that is associated with the object. You can retrieve
+%% tags by sending a GET request. For more information, see GetObjectTagging.
 %%
 %% For tagging-related restrictions related to characters and encodings, see
 %% Tag Restrictions. Note that Amazon S3 limits the maximum number of tags to
@@ -7084,32 +7083,23 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% To put tags of any other version, use the `versionId' query parameter.
 %% You also need permission for the `s3:PutObjectVersionTagging' action.
 %%
-%% For information about the Amazon S3 object tagging feature, see Object
-%% Tagging.
+%% `PutObjectTagging' has the following special errors. For more Amazon
+%% S3 errors see, Error Responses.
 %%
-%% `PutObjectTagging' has the following special errors:
+%% <ul> <li> `InvalidTag' - The tag provided was not a valid tag. This
+%% error can occur if the tag did not pass input validation. For more
+%% information, see Object Tagging.
 %%
-%% <ul> <li> <ul> <li> Code: InvalidTagError
+%% </li> <li> `MalformedXML' - The XML provided does not match the
+%% schema.
 %%
-%% </li> <li> Cause: The tag provided was not a valid tag. This error can
-%% occur if the tag did not pass input validation. For more information, see
-%% Object Tagging.
+%% </li> <li> `OperationAborted' - A conflicting conditional action is
+%% currently in progress against this resource. Please try again.
 %%
-%% </li> </ul> </li> <li> <ul> <li> Code: MalformedXMLError
+%% </li> <li> `InternalError' - The service was unable to apply the
+%% provided tag to the object.
 %%
-%% </li> <li> Cause: The XML provided does not match the schema.
-%%
-%% </li> </ul> </li> <li> <ul> <li> Code: OperationAbortedError
-%%
-%% </li> <li> Cause: A conflicting conditional action is currently in
-%% progress against this resource. Please try again.
-%%
-%% </li> </ul> </li> <li> <ul> <li> Code: InternalError
-%%
-%% </li> <li> Cause: The service was unable to apply the provided tag to the
-%% object.
-%%
-%% </li> </ul> </li> </ul> The following operations are related to
+%% </li> </ul> The following operations are related to
 %% `PutObjectTagging':
 %%
 %% <ul> <li> GetObjectTagging
@@ -7173,7 +7163,7 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% bucket or an object, it checks the `PublicAccessBlock' configuration
 %% for both the bucket (or the bucket that contains the object) and the
 %% bucket owner's account. If the `PublicAccessBlock' configurations
-%% are different between the bucket and the account, Amazon S3 uses the most
+%% are different between the bucket and the account, S3 uses the most
 %% restrictive combination of the bucket-level and account-level settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object

@@ -308,11 +308,24 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% configuration.
 %%
 %% You can create your own extensions or use the Amazon Web Services authored
-%% extensions provided by AppConfig. For most use cases, to create your own
-%% extension, you must create an Lambda function to perform any computation
-%% and processing defined in the extension. For more information about
-%% extensions, see Working with AppConfig extensions in the AppConfig User
-%% Guide.
+%% extensions provided by AppConfig. For an AppConfig extension that uses
+%% Lambda, you must create a Lambda function to perform any computation and
+%% processing defined in the extension. If you plan to create custom versions
+%% of the Amazon Web Services authored notification extensions, you only need
+%% to specify an Amazon Resource Name (ARN) in the `Uri' field for the
+%% new extension version.
+%%
+%% <ul> <li> For a custom EventBridge notification extension, enter the ARN
+%% of the EventBridge default events in the `Uri' field.
+%%
+%% </li> <li> For a custom Amazon SNS notification extension, enter the ARN
+%% of an Amazon SNS topic in the `Uri' field.
+%%
+%% </li> <li> For a custom Amazon SQS notification extension, enter the ARN
+%% of an Amazon SQS message queue in the `Uri' field.
+%%
+%% </li> </ul> For more information about extensions, see Working with
+%% AppConfig extensions in the AppConfig User Guide.
 create_extension(Client, Input) ->
     create_extension(Client, Input, []).
 create_extension(Client, Input0, Options0) ->

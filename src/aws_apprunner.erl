@@ -79,6 +79,8 @@
          list_operations/3,
          list_services/2,
          list_services/3,
+         list_services_for_auto_scaling_configuration/2,
+         list_services_for_auto_scaling_configuration/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_vpc_connectors/2,
@@ -95,6 +97,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_default_auto_scaling_configuration/2,
+         update_default_auto_scaling_configuration/3,
          update_service/2,
          update_service/3,
          update_vpc_ingress_connection/2,
@@ -232,9 +236,10 @@ create_vpc_ingress_connection(Client, Input, Options)
 
 %% @doc Delete an App Runner automatic scaling configuration resource.
 %%
-%% You can delete a specific revision or the latest active revision. You
-%% can't delete a configuration that's used by one or more App Runner
-%% services.
+%% You can delete a top level auto scaling configuration, a specific revision
+%% of one, or all revisions associated with the top level configuration. You
+%% can't delete the default auto scaling configuration or a configuration
+%% that's used by one or more App Runner services.
 delete_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_scaling_configuration(Client, Input, []).
@@ -443,6 +448,15 @@ list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
 
+%% @doc Returns a list of the associated App Runner services using an auto
+%% scaling configuration.
+list_services_for_auto_scaling_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_services_for_auto_scaling_configuration(Client, Input, []).
+list_services_for_auto_scaling_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServicesForAutoScalingConfiguration">>, Input, Options).
+
 %% @doc List tags that are associated with for an App Runner resource.
 %%
 %% The response contains a list of tag key-value pairs.
@@ -536,6 +550,17 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Update an auto scaling configuration to be the default.
+%%
+%% The existing default auto scaling configuration will be set to non-default
+%% automatically.
+update_default_auto_scaling_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_default_auto_scaling_configuration(Client, Input, []).
+update_default_auto_scaling_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDefaultAutoScalingConfiguration">>, Input, Options).
 
 %% @doc Update an App Runner service.
 %%
