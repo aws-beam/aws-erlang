@@ -1299,9 +1299,9 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% organization administered by the Amazon Web Services account that invokes
 %% this API.
 %%
-%% If you are using organizations to manager your GuardDuty environment, this
-%% step is not needed. For more information, see Managing accounts with
-%% organizations.
+%% If you are using Amazon Web Services Organizations to manage your
+%% GuardDuty environment, this step is not needed. For more information, see
+%% Managing accounts with organizations.
 %%
 %% To invite Amazon Web Services accounts, the first step is to ensure that
 %% GuardDuty has been enabled in the potential member accounts. You can now
@@ -1540,7 +1540,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the accounts configured as GuardDuty delegated administrators.
+%% @doc Lists the accounts designated as GuardDuty delegated administrators.
 %%
 %% Only the organization's management account can run this API operation.
 list_organization_admin_accounts(Client)

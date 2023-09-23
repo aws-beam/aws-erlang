@@ -381,6 +381,10 @@ create_replication_config(Client, Input, Options)
 %% on the required roles, see Creating the IAM Roles to Use With the CLI and
 %% DMS API. For information on the required permissions, see IAM Permissions
 %% Needed to Use DMS.
+%%
+%% If you don't specify a version when creating a replication instance,
+%% DMS will create the instance using the default engine version. For
+%% information about the default engine version, see Release Notes.
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -1399,12 +1403,12 @@ test_connection(Client, Input, Options)
 %% converts them to corresponding Amazon EventBridge rules.
 %%
 %% By default, this operation migrates subscriptions only when all your
-%% replication instance versions are 3.4.6 or higher. If any replication
-%% instances are from versions earlier than 3.4.6, the operation raises an
-%% error and tells you to upgrade these instances to version 3.4.6 or higher.
+%% replication instance versions are 3.4.5 or higher. If any replication
+%% instances are from versions earlier than 3.4.5, the operation raises an
+%% error and tells you to upgrade these instances to version 3.4.5 or higher.
 %% To enable migration regardless of version, set the `Force' option to
 %% true. However, if you don't upgrade instances earlier than version
-%% 3.4.6, some types of events might not be available when you use Amazon
+%% 3.4.5, some types of events might not be available when you use Amazon
 %% EventBridge.
 %%
 %% To call this operation, make sure that you have certain permissions added
