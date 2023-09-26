@@ -228,7 +228,9 @@ delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Exchanges an access code for a token.
+%% @doc This is for internal use.
+%%
+%% Amplify uses this action to exchange an access code for a token.
 exchange_code_for_token(Client, Provider, Input) ->
     exchange_code_for_token(Client, Provider, Input, []).
 exchange_code_for_token(Client, Provider, Input0, Options0) ->
@@ -589,7 +591,10 @@ put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Refreshes a previously issued access token that might have expired.
+%% @doc This is for internal use.
+%%
+%% Amplify uses this action to refresh a previously issued access token that
+%% might have expired.
 refresh_token(Client, Provider, Input) ->
     refresh_token(Client, Provider, Input, []).
 refresh_token(Client, Provider, Input0, Options0) ->

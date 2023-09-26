@@ -86,8 +86,8 @@
 %% API
 %%====================================================================
 
-%% @doc Adds a user account to a permission group to grant permissions for
-%% actions a user can perform in FinSpace.
+%% @doc Adds a user to a permission group to grant permissions for actions a
+%% user can perform in FinSpace.
 associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input) ->
     associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input, []).
 associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
@@ -300,7 +300,7 @@ disable_user(Client, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a user account from a permission group.
+%% @doc Removes a user from a permission group.
 disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input) ->
     disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input, []).
 disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
@@ -474,6 +474,9 @@ get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Request programmatic credentials to use with FinSpace SDK.
+%%
+%% For more information, see Step 2. Access credentials programmatically
+%% using IAM access key id and secret access key.
 get_programmatic_access_credentials(Client, EnvironmentId)
   when is_map(Client) ->
     get_programmatic_access_credentials(Client, EnvironmentId, #{}, #{}).
@@ -661,7 +664,7 @@ list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the permission groups that are associated with a specific
-%% user account.
+%% user.
 list_permission_groups_by_user(Client, UserId, MaxResults)
   when is_map(Client) ->
     list_permission_groups_by_user(Client, UserId, MaxResults, #{}, #{}).
@@ -689,7 +692,7 @@ list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all available user accounts in FinSpace.
+%% @doc Lists all available users in FinSpace.
 list_users(Client, MaxResults)
   when is_map(Client) ->
     list_users(Client, MaxResults, #{}, #{}).
@@ -844,7 +847,7 @@ update_permission_group(Client, PermissionGroupId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Modifies the details of the specified user account.
+%% @doc Modifies the details of the specified user.
 %%
 %% You cannot update the `userId' for a user.
 update_user(Client, UserId, Input) ->

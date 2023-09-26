@@ -19,12 +19,18 @@
          create_media_insights_pipeline_configuration/3,
          create_media_live_connector_pipeline/2,
          create_media_live_connector_pipeline/3,
+         create_media_pipeline_kinesis_video_stream_pool/2,
+         create_media_pipeline_kinesis_video_stream_pool/3,
+         create_media_stream_pipeline/2,
+         create_media_stream_pipeline/3,
          delete_media_capture_pipeline/3,
          delete_media_capture_pipeline/4,
          delete_media_insights_pipeline_configuration/3,
          delete_media_insights_pipeline_configuration/4,
          delete_media_pipeline/3,
          delete_media_pipeline/4,
+         delete_media_pipeline_kinesis_video_stream_pool/3,
+         delete_media_pipeline_kinesis_video_stream_pool/4,
          get_media_capture_pipeline/2,
          get_media_capture_pipeline/4,
          get_media_capture_pipeline/5,
@@ -34,6 +40,9 @@
          get_media_pipeline/2,
          get_media_pipeline/4,
          get_media_pipeline/5,
+         get_media_pipeline_kinesis_video_stream_pool/2,
+         get_media_pipeline_kinesis_video_stream_pool/4,
+         get_media_pipeline_kinesis_video_stream_pool/5,
          get_speaker_search_task/3,
          get_speaker_search_task/5,
          get_speaker_search_task/6,
@@ -46,6 +55,9 @@
          list_media_insights_pipeline_configurations/1,
          list_media_insights_pipeline_configurations/3,
          list_media_insights_pipeline_configurations/4,
+         list_media_pipeline_kinesis_video_stream_pools/1,
+         list_media_pipeline_kinesis_video_stream_pools/3,
+         list_media_pipeline_kinesis_video_stream_pools/4,
          list_media_pipelines/1,
          list_media_pipelines/3,
          list_media_pipelines/4,
@@ -67,7 +79,9 @@
          update_media_insights_pipeline_configuration/3,
          update_media_insights_pipeline_configuration/4,
          update_media_insights_pipeline_status/3,
-         update_media_insights_pipeline_status/4]).
+         update_media_insights_pipeline_status/4,
+         update_media_pipeline_kinesis_video_stream_pool/3,
+         update_media_pipeline_kinesis_video_stream_pool/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -192,6 +206,52 @@ create_media_live_connector_pipeline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Kinesis video stream pool for the media pipeline.
+create_media_pipeline_kinesis_video_stream_pool(Client, Input) ->
+    create_media_pipeline_kinesis_video_stream_pool(Client, Input, []).
+create_media_pipeline_kinesis_video_stream_pool(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-pipeline-kinesis-video-stream-pools"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a streaming media pipeline.
+create_media_stream_pipeline(Client, Input) ->
+    create_media_stream_pipeline(Client, Input, []).
+create_media_stream_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sdk-media-stream-pipelines"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the media pipeline.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
@@ -244,6 +304,29 @@ delete_media_pipeline(Client, MediaPipelineId, Input) ->
 delete_media_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     Method = delete,
     Path = ["/sdk-media-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Kinesis video stream pool.
+delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input) ->
+    delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input, []).
+delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/media-pipeline-kinesis-video-stream-pools/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -319,6 +402,29 @@ get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
 get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sdk-media-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets an Kinesis video stream pool.
+get_media_pipeline_kinesis_video_stream_pool(Client, Identifier)
+  when is_map(Client) ->
+    get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, #{}, #{}).
+
+get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, HeadersMap, []).
+
+get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-pipeline-kinesis-video-stream-pools/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -416,6 +522,34 @@ list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap)
 list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/media-insights-pipeline-configurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the video stream pools in the media pipeline.
+list_media_pipeline_kinesis_video_stream_pools(Client)
+  when is_map(Client) ->
+    list_media_pipeline_kinesis_video_stream_pools(Client, #{}, #{}).
+
+list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap, []).
+
+list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-pipeline-kinesis-video-stream-pools"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -670,6 +804,29 @@ update_media_insights_pipeline_status(Client, Identifier, Input) ->
 update_media_insights_pipeline_status(Client, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/media-insights-pipeline-status/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an Kinesis video stream pool in a media pipeline.
+update_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input) ->
+    update_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input, []).
+update_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/media-pipeline-kinesis-video-stream-pools/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
