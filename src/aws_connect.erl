@@ -326,6 +326,9 @@
          list_security_keys/2,
          list_security_keys/4,
          list_security_keys/5,
+         list_security_profile_applications/3,
+         list_security_profile_applications/5,
+         list_security_profile_applications/6,
          list_security_profile_permissions/3,
          list_security_profile_permissions/5,
          list_security_profile_permissions/6,
@@ -4040,6 +4043,35 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
 list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of third party applications in a specific security
+%% profile.
+list_security_profile_applications(Client, InstanceId, SecurityProfileId)
+  when is_map(Client) ->
+    list_security_profile_applications(Client, InstanceId, SecurityProfileId, #{}, #{}).
+
+list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
+
+list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/security-profiles-applications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

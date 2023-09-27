@@ -10,7 +10,9 @@
 %% Guide.
 -module(aws_appintegrations).
 
--export([create_data_integration/2,
+-export([create_application/2,
+         create_application/3,
+         create_data_integration/2,
          create_data_integration/3,
          create_event_integration/2,
          create_event_integration/3,
@@ -18,12 +20,18 @@
          delete_data_integration/4,
          delete_event_integration/3,
          delete_event_integration/4,
+         get_application/2,
+         get_application/4,
+         get_application/5,
          get_data_integration/2,
          get_data_integration/4,
          get_data_integration/5,
          get_event_integration/2,
          get_event_integration/4,
          get_event_integration/5,
+         list_applications/1,
+         list_applications/3,
+         list_applications/4,
          list_data_integration_associations/2,
          list_data_integration_associations/4,
          list_data_integration_associations/5,
@@ -43,6 +51,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_application/3,
+         update_application/4,
          update_data_integration/3,
          update_data_integration/4,
          update_event_integration/3,
@@ -53,6 +63,31 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc This API is in preview release and subject to change.
+%%
+%% Creates and persists an Application resource.
+create_application(Client, Input) ->
+    create_application(Client, Input, []).
+create_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and persists a DataIntegration resource.
 %%
@@ -166,6 +201,31 @@ delete_event_integration(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release and subject to change.
+%%
+%% Get an Application resource.
+get_application(Client, Arn)
+  when is_map(Client) ->
+    get_application(Client, Arn, #{}, #{}).
+
+get_application(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_application(Client, Arn, QueryMap, HeadersMap, []).
+
+get_application(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about the DataIntegration.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
@@ -213,6 +273,36 @@ get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release and subject to change.
+%%
+%% Lists applications in the account.
+list_applications(Client)
+  when is_map(Client) ->
+    list_applications(Client, #{}, #{}).
+
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -406,6 +496,31 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release and subject to change.
+%%
+%% Updates and persists an Application resource.
+update_application(Client, Arn, Input) ->
+    update_application(Client, Arn, Input, []).
+update_application(Client, Arn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/applications/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the description of a DataIntegration.

@@ -827,9 +827,10 @@ import_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTable">>, Input, Options).
 
-%% @doc List backups associated with an Amazon Web Services account.
+%% @doc List DynamoDB backups that are associated with an Amazon Web Services
+%% account and weren't made with Amazon Web Services Backup.
 %%
-%% To list backups for a given table, specify `TableName'.
+%% To list these backups for a given table, specify `TableName'.
 %% `ListBackups' returns a paginated list of results with at most 1 MB
 %% worth of items in a page. You can also specify a maximum number of entries
 %% to be returned in a page.
@@ -839,6 +840,9 @@ import_table(Client, Input, Options)
 %% requested.
 %%
 %% You can call `ListBackups' a maximum of five times per second.
+%%
+%% If you want to retrieve the complete list of backups made with Amazon Web
+%% Services Backup, use the Amazon Web Services Backup list API.
 list_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_backups(Client, Input, []).

@@ -2620,8 +2620,11 @@ put_events(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more attributes, of the same attribute type, from all
-%% the endpoints that are associated with an application.
+%% @doc Removes one or more custom attributes, of the same attribute type,
+%% from the application.
+%%
+%% Existing endpoints still have the attributes but Amazon Pinpoint will stop
+%% capturing new or changed values for these attributes.
 remove_attributes(Client, ApplicationId, AttributeType, Input) ->
     remove_attributes(Client, ApplicationId, AttributeType, Input, []).
 remove_attributes(Client, ApplicationId, AttributeType, Input0, Options0) ->

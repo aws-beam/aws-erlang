@@ -22,10 +22,14 @@
          create_data_cells_filter/3,
          create_l_f_tag/2,
          create_l_f_tag/3,
+         create_lake_formation_opt_in/2,
+         create_lake_formation_opt_in/3,
          delete_data_cells_filter/2,
          delete_data_cells_filter/3,
          delete_l_f_tag/2,
          delete_l_f_tag/3,
+         delete_lake_formation_opt_in/2,
+         delete_lake_formation_opt_in/3,
          delete_objects_on_cancel/2,
          delete_objects_on_cancel/3,
          deregister_resource/2,
@@ -66,6 +70,8 @@
          list_data_cells_filter/3,
          list_l_f_tags/2,
          list_l_f_tags/3,
+         list_lake_formation_opt_ins/2,
+         list_lake_formation_opt_ins/3,
          list_permissions/2,
          list_permissions/3,
          list_resources/2,
@@ -312,6 +318,30 @@ create_l_f_tag(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Enforce Lake Formation permissions for the given databases, tables,
+%% and principals.
+create_lake_formation_opt_in(Client, Input) ->
+    create_lake_formation_opt_in(Client, Input, []).
+create_lake_formation_opt_in(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateLakeFormationOptIn"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a data cell filter.
 delete_data_cells_filter(Client, Input) ->
     delete_data_cells_filter(Client, Input, []).
@@ -347,6 +377,30 @@ delete_l_f_tag(Client, Input) ->
 delete_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLFTag"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove the Lake Formation permissions enforcement of the given
+%% databases, tables, and principals.
+delete_lake_formation_opt_in(Client, Input) ->
+    delete_lake_formation_opt_in(Client, Input, []).
+delete_lake_formation_opt_in(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLakeFormationOptIn"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -855,6 +909,30 @@ list_l_f_tags(Client, Input) ->
 list_l_f_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLFTags"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve the current list of resources and principals that are opt in
+%% to enforce Lake Formation permissions.
+list_lake_formation_opt_ins(Client, Input) ->
+    list_lake_formation_opt_ins(Client, Input, []).
+list_lake_formation_opt_ins(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLakeFormationOptIns"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

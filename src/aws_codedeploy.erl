@@ -361,6 +361,14 @@ delete_git_hub_account_token(Client, Input, Options)
     request(Client, <<"DeleteGitHubAccountToken">>, Input, Options).
 
 %% @doc Deletes resources linked to an external ID.
+%%
+%% This action only applies if you have configured blue/green deployments
+%% through CloudFormation.
+%%
+%% It is not necessary to call this action directly. CloudFormation calls it
+%% on your behalf when it needs to delete stack resources. This action is
+%% offered publicly in case you need to delete resources to comply with
+%% General Data Protection Regulation (GDPR) requirements.
 delete_resources_by_external_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resources_by_external_id(Client, Input, []).
@@ -453,7 +461,7 @@ list_application_revisions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationRevisions">>, Input, Options).
 
-%% @doc Lists the applications registered with the IAM user or Amazon Web
+%% @doc Lists the applications registered with the user or Amazon Web
 %% Services account.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -462,7 +470,7 @@ list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
 
-%% @doc Lists the deployment configurations with the IAM user or Amazon Web
+%% @doc Lists the deployment configurations with the user or Amazon Web
 %% Services account.
 list_deployment_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -472,7 +480,7 @@ list_deployment_configs(Client, Input, Options)
     request(Client, <<"ListDeploymentConfigs">>, Input, Options).
 
 %% @doc Lists the deployment groups for an application registered with the
-%% IAM user or Amazon Web Services account.
+%% Amazon Web Services user or Amazon Web Services account.
 list_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_groups(Client, Input, []).
@@ -486,8 +494,8 @@ list_deployment_groups(Client, Input, Options)
 %% `ListDeploymentInstances' throws an exception if it is used with a
 %% compute platform other than EC2/On-premises or Lambda.
 %%
-%% Lists the instance for a deployment associated with the IAM user or Amazon
-%% Web Services account.
+%% Lists the instance for a deployment associated with the user or Amazon Web
+%% Services account.
 list_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_instances(Client, Input, []).
@@ -504,7 +512,7 @@ list_deployment_targets(Client, Input, Options)
     request(Client, <<"ListDeploymentTargets">>, Input, Options).
 
 %% @doc Lists the deployments in a deployment group for an application
-%% registered with the IAM user or Amazon Web Services account.
+%% registered with the user or Amazon Web Services account.
 list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
