@@ -1174,9 +1174,9 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% Requires permission to access the CreateCertificateFromCsr action.
 %%
 %% The CSR must include a public key that is either an RSA key with a length
-%% of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384 curves.
-%% For supported certificates, consult Certificate signing algorithms
-%% supported by IoT.
+%% of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST
+%% P-521 curves. For supported certificates, consult Certificate signing
+%% algorithms supported by IoT.
 %%
 %% Reusing the same certificate signing request (CSR) results in a distinct
 %% certificate.
@@ -2425,7 +2425,8 @@ delete_package(Client, PackageName, Input0, Options0) ->
 %% @doc Deletes a specific version from a software package.
 %%
 %% Note: If a package version is designated as default, you must remove the
-%% designation from the package using the `UpdatePackage' action.
+%% designation from the software package using the `UpdatePackage'
+%% action.
 delete_package_version(Client, PackageName, VersionName, Input) ->
     delete_package_version(Client, PackageName, VersionName, Input, []).
 delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
@@ -7435,7 +7436,7 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the supported fields for a specific package.
+%% @doc Updates the supported fields for a specific software package.
 %%
 %% Requires permission to access the UpdatePackage and
 %% GetIndexingConfiguration actions.
@@ -7462,7 +7463,7 @@ update_package(Client, PackageName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the package configuration.
+%% @doc Updates the software package configuration.
 %%
 %% Requires permission to access the UpdatePackageConfiguration and
 %% iam:PassRole actions.
