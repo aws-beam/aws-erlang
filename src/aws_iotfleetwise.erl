@@ -50,6 +50,8 @@
          get_campaign/3,
          get_decoder_manifest/2,
          get_decoder_manifest/3,
+         get_encryption_configuration/2,
+         get_encryption_configuration/3,
          get_fleet/2,
          get_fleet/3,
          get_logging_options/2,
@@ -94,6 +96,8 @@
          list_vehicles/3,
          list_vehicles_in_fleet/2,
          list_vehicles_in_fleet/3,
+         put_encryption_configuration/2,
+         put_encryption_configuration/3,
          put_logging_options/2,
          put_logging_options/3,
          register_account/2,
@@ -350,6 +354,15 @@ get_decoder_manifest(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDecoderManifest">>, Input, Options).
 
+%% @doc Retrieves the encryption configuration for resources and data in
+%% Amazon Web Services IoT FleetWise.
+get_encryption_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_encryption_configuration(Client, Input, []).
+get_encryption_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEncryptionConfiguration">>, Input, Options).
+
 %% @doc Retrieves information about a fleet.
 get_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -582,6 +595,19 @@ list_vehicles_in_fleet(Client, Input)
 list_vehicles_in_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVehiclesInFleet">>, Input, Options).
+
+%% @doc Creates or updates the encryption configuration.
+%%
+%% Amazon Web Services IoT FleetWise can encrypt your data and resources
+%% using an Amazon Web Services managed key. Or, you can use a KMS key that
+%% you own and manage. For more information, see Data encryption in the
+%% Amazon Web Services IoT FleetWise Developer Guide.
+put_encryption_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_encryption_configuration(Client, Input, []).
+put_encryption_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutEncryptionConfiguration">>, Input, Options).
 
 %% @doc Creates or updates the logging option.
 put_logging_options(Client, Input)
