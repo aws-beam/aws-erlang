@@ -7,10 +7,14 @@
 
 -export([create_model_customization_job/2,
          create_model_customization_job/3,
+         create_provisioned_model_throughput/2,
+         create_provisioned_model_throughput/3,
          delete_custom_model/3,
          delete_custom_model/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
+         delete_provisioned_model_throughput/3,
+         delete_provisioned_model_throughput/4,
          get_custom_model/2,
          get_custom_model/4,
          get_custom_model/5,
@@ -23,6 +27,9 @@
          get_model_invocation_logging_configuration/1,
          get_model_invocation_logging_configuration/3,
          get_model_invocation_logging_configuration/4,
+         get_provisioned_model_throughput/2,
+         get_provisioned_model_throughput/4,
+         get_provisioned_model_throughput/5,
          list_custom_models/1,
          list_custom_models/3,
          list_custom_models/4,
@@ -32,6 +39,9 @@
          list_model_customization_jobs/1,
          list_model_customization_jobs/3,
          list_model_customization_jobs/4,
+         list_provisioned_model_throughputs/1,
+         list_provisioned_model_throughputs/3,
+         list_provisioned_model_throughputs/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_model_invocation_logging_configuration/2,
@@ -41,7 +51,9 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_provisioned_model_throughput/3,
+         update_provisioned_model_throughput/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -70,6 +82,33 @@ create_model_customization_job(Client, Input) ->
 create_model_customization_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/model-customization-jobs"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a provisioned throughput with dedicated capacity for a
+%% foundation model or a fine-tuned model.
+%%
+%% For more information, see Provisioned throughput in the Bedrock User
+%% Guide.
+create_provisioned_model_throughput(Client, Input) ->
+    create_provisioned_model_throughput(Client, Input, []).
+create_provisioned_model_throughput(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/provisioned-model-throughput"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -118,6 +157,32 @@ delete_model_invocation_logging_configuration(Client, Input) ->
 delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/logging/modelinvocations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a provisioned throughput.
+%%
+%% For more information, see Provisioned throughput in the Bedrock User
+%% Guide.
+delete_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
+    delete_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
+delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -221,6 +286,32 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap)
 get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging/modelinvocations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details for a provisioned throughput.
+%%
+%% For more information, see Provisioned throughput in the Bedrock User
+%% Guide.
+get_provisioned_model_throughput(Client, ProvisionedModelId)
+  when is_map(Client) ->
+    get_provisioned_model_throughput(Client, ProvisionedModelId, #{}, #{}).
+
+get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, []).
+
+get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -340,6 +431,44 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List the provisioned capacities.
+%%
+%% For more information, see Provisioned throughput in the Bedrock User
+%% Guide.
+list_provisioned_model_throughputs(Client)
+  when is_map(Client) ->
+    list_provisioned_model_throughputs(Client, #{}, #{}).
+
+list_provisioned_model_throughputs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, []).
+
+list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/provisioned-model-throughputs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"creationTimeAfter">>, maps:get(<<"creationTimeAfter">>, QueryMap, undefined)},
+        {<<"creationTimeBefore">>, maps:get(<<"creationTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"modelArnEquals">>, maps:get(<<"modelArnEquals">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List the tags associated with the specified resource.
 %%
 %% For more information, see Tagging resources in the Bedrock User Guide.
@@ -446,6 +575,32 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a provisioned throughput.
+%%
+%% For more information, see Provisioned throughput in the Bedrock User
+%% Guide.
+update_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
+    update_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
+update_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/provisioned-model-throughput/", aws_util:encode_uri(ProvisionedModelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

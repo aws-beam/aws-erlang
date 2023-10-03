@@ -1195,8 +1195,8 @@ describe_blue_green_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBlueGreenDeployments">>, Input, Options).
 
-%% @doc Lists the set of CA certificates provided by Amazon RDS for this
-%% Amazon Web Services account.
+%% @doc Lists the set of certificate authority (CA) certificates provided by
+%% Amazon RDS for this Amazon Web Services account.
 %%
 %% For more information, see Using SSL/TLS to encrypt a connection to a DB
 %% instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
@@ -2467,8 +2467,8 @@ restore_db_instance_from_s3(Client, Input, Options)
 %% @doc Restores a DB instance to an arbitrary point in time.
 %%
 %% You can restore to any point in time before the time identified by the
-%% LatestRestorableTime property. You can restore to a point up to the number
-%% of days specified by the BackupRetentionPeriod property.
+%% `LatestRestorableTime' property. You can restore to a point up to the
+%% number of days specified by the `BackupRetentionPeriod' property.
 %%
 %% The target database is created with most of the original configuration,
 %% but in a system-selected Availability Zone, with the default security
