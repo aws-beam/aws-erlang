@@ -1247,10 +1247,7 @@ create_rule(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Creates a security profile.
+%% @doc Creates a security profile.
 create_security_profile(Client, InstanceId, Input) ->
     create_security_profile(Client, InstanceId, Input, []).
 create_security_profile(Client, InstanceId, Input0, Options0) ->
@@ -1820,10 +1817,7 @@ delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Deletes a security profile.
+%% @doc Deletes a security profile.
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     delete_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
@@ -2475,10 +2469,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Gets basic information about the security profle.
+%% @doc Gets basic information about the security profle.
 describe_security_profile(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     describe_security_profile(Client, InstanceId, SecurityProfileId, #{}, #{}).
@@ -3094,7 +3085,7 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% previous version of this API. It has new metrics, offers filtering at a
 %% metric level, and offers the ability to filter and group data by channels,
 %% queues, routing profiles, agents, and agent hierarchy levels. It can
-%% retrieve historical data for the last 35 days, in 24-hour intervals.
+%% retrieve historical data for the last 3 months, at varying intervals.
 %%
 %% For a description of the historical metrics that are supported by
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
@@ -4088,10 +4079,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Lists the permissions granted to a security profile.
+%% @doc Lists the permissions granted to a security profile.
 list_security_profile_permissions(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     list_security_profile_permissions(Client, InstanceId, SecurityProfileId, #{}, #{}).
@@ -6119,10 +6107,7 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates a security profile.
+%% @doc Updates a security profile.
 update_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     update_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->

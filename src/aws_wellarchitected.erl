@@ -24,6 +24,10 @@
          create_profile/3,
          create_profile_share/3,
          create_profile_share/4,
+         create_review_template/2,
+         create_review_template/3,
+         create_template_share/3,
+         create_template_share/4,
          create_workload/2,
          create_workload/3,
          create_workload_share/3,
@@ -36,6 +40,10 @@
          delete_profile/4,
          delete_profile_share/4,
          delete_profile_share/5,
+         delete_review_template/3,
+         delete_review_template/4,
+         delete_template_share/4,
+         delete_template_share/5,
          delete_workload/3,
          delete_workload/4,
          delete_workload_share/4,
@@ -74,6 +82,15 @@
          get_profile_template/1,
          get_profile_template/3,
          get_profile_template/4,
+         get_review_template/2,
+         get_review_template/4,
+         get_review_template/5,
+         get_review_template_answer/4,
+         get_review_template_answer/6,
+         get_review_template_answer/7,
+         get_review_template_lens_review/3,
+         get_review_template_lens_review/5,
+         get_review_template_lens_review/6,
          get_workload/2,
          get_workload/4,
          get_workload/5,
@@ -111,12 +128,21 @@
          list_profiles/1,
          list_profiles/3,
          list_profiles/4,
+         list_review_template_answers/3,
+         list_review_template_answers/5,
+         list_review_template_answers/6,
+         list_review_templates/1,
+         list_review_templates/3,
+         list_review_templates/4,
          list_share_invitations/1,
          list_share_invitations/3,
          list_share_invitations/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_template_shares/2,
+         list_template_shares/4,
+         list_template_shares/5,
          list_workload_shares/2,
          list_workload_shares/4,
          list_workload_shares/5,
@@ -134,6 +160,12 @@
          update_lens_review/5,
          update_profile/3,
          update_profile/4,
+         update_review_template/3,
+         update_review_template/4,
+         update_review_template_answer/5,
+         update_review_template_answer/6,
+         update_review_template_lens_review/4,
+         update_review_template_lens_review/5,
          update_share_invitation/3,
          update_share_invitation/4,
          update_workload/3,
@@ -143,7 +175,9 @@
          upgrade_lens_review/4,
          upgrade_lens_review/5,
          upgrade_profile_version/4,
-         upgrade_profile_version/5]).
+         upgrade_profile_version/5,
+         upgrade_review_template_lens_review/4,
+         upgrade_review_template_lens_review/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -353,6 +387,78 @@ create_profile_share(Client, ProfileArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a review template.
+%%
+%% Disclaimer
+%%
+%% Do not include or gather personal identifiable information (PII) of end
+%% users or other identifiable individuals in or via your review templates.
+%% If your review template or those shared with you and used in your account
+%% do include or collect PII you are responsible for: ensuring that the
+%% included PII is processed in accordance with applicable law, providing
+%% adequate privacy notices, and obtaining necessary consents for processing
+%% such data.
+create_review_template(Client, Input) ->
+    create_review_template(Client, Input, []).
+create_review_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reviewTemplates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a review template share.
+%%
+%% The owner of a review template can share it with other Amazon Web Services
+%% accounts, users, an organization, and organizational units (OUs) in the
+%% same Amazon Web Services Region.
+%%
+%% Shared access to a review template is not removed until the review
+%% template share invitation is deleted.
+%%
+%% If you share a review template with an organization or OU, all accounts in
+%% the organization or OU are granted access to the review template.
+%%
+%% Disclaimer
+%%
+%% By sharing your review template with other Amazon Web Services accounts,
+%% you acknowledge that Amazon Web Services will make your review template
+%% available to those other accounts.
+create_template_share(Client, TemplateArn, Input) ->
+    create_template_share(Client, TemplateArn, Input, []).
+create_template_share(Client, TemplateArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create a new workload.
 %%
 %% The owner of a workload can share the workload with other Amazon Web
@@ -368,6 +474,19 @@ create_profile_share(Client, ProfileArn, Input0, Options0) ->
 %%
 %% You also must specify `ReviewOwner', even though the parameter is
 %% listed as not being required in the following section.
+%%
+%% When creating a workload using a review template, you must have the
+%% following IAM permissions:
+%%
+%% <ul> <li> `wellarchitected:GetReviewTemplate'
+%%
+%% </li> <li> `wellarchitected:GetReviewTemplateAnswer'
+%%
+%% </li> <li> `wellarchitected:ListReviewTemplateAnswers'
+%%
+%% </li> <li> `wellarchitected:GetReviewTemplateLensReview'
+%%
+%% </li> </ul>
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
 create_workload(Client, Input0, Options0) ->
@@ -537,6 +656,64 @@ delete_profile_share(Client, ProfileArn, ShareId, Input) ->
 delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
     Method = delete,
     Path = ["/profiles/", aws_util:encode_uri(ProfileArn), "/shares/", aws_util:encode_uri(ShareId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a review template.
+%%
+%% Only the owner of a review template can delete it.
+%%
+%% After the review template is deleted, Amazon Web Services accounts, users,
+%% organizations, and organizational units (OUs) that you shared the review
+%% template with will no longer be able to apply it to new workloads.
+delete_review_template(Client, TemplateArn, Input) ->
+    delete_review_template(Client, TemplateArn, Input, []).
+delete_review_template(Client, TemplateArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a review template share.
+%%
+%% After the review template share is deleted, Amazon Web Services accounts,
+%% users, organizations, and organizational units (OUs) that you shared the
+%% review template with will no longer be able to apply it to new workloads.
+delete_template_share(Client, ShareId, TemplateArn, Input) ->
+    delete_template_share(Client, ShareId, TemplateArn, Input, []).
+delete_template_share(Client, ShareId, TemplateArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), "/", aws_util:encode_uri(ShareId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -929,6 +1106,75 @@ get_profile_template(Client, QueryMap, HeadersMap)
 get_profile_template(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profileTemplate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get review template.
+get_review_template(Client, TemplateArn)
+  when is_map(Client) ->
+    get_review_template(Client, TemplateArn, #{}, #{}).
+
+get_review_template(Client, TemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_review_template(Client, TemplateArn, QueryMap, HeadersMap, []).
+
+get_review_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get review template answer.
+get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn)
+  when is_map(Client) ->
+    get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, #{}, #{}).
+
+get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap, HeadersMap, []).
+
+get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get a lens review associated with a review template.
+get_review_template_lens_review(Client, LensAlias, TemplateArn)
+  when is_map(Client) ->
+    get_review_template_lens_review(Client, LensAlias, TemplateArn, #{}, #{}).
+
+get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, []).
+
+get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1343,7 +1589,68 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the workload invitations.
+%% @doc List the answers of a review template.
+list_review_template_answers(Client, LensAlias, TemplateArn)
+  when is_map(Client) ->
+    list_review_template_answers(Client, LensAlias, TemplateArn, #{}, #{}).
+
+list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, []).
+
+list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PillarId">>, maps:get(<<"PillarId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List review templates.
+list_review_templates(Client)
+  when is_map(Client) ->
+    list_review_templates(Client, #{}, #{}).
+
+list_review_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_review_templates(Client, QueryMap, HeadersMap, []).
+
+list_review_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reviewTemplates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the share invitations.
+%%
+%% `WorkloadNamePrefix', `LensNamePrefix', `ProfileNamePrefix',
+%% and `TemplateNamePrefix' are mutually exclusive. Use the parameter
+%% that matches your `ShareResourceType'.
 list_share_invitations(Client)
   when is_map(Client) ->
     list_share_invitations(Client, #{}, #{}).
@@ -1369,6 +1676,7 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
         {<<"ProfileNamePrefix">>, maps:get(<<"ProfileNamePrefix">>, QueryMap, undefined)},
         {<<"ShareResourceType">>, maps:get(<<"ShareResourceType">>, QueryMap, undefined)},
+        {<<"TemplateNamePrefix">>, maps:get(<<"TemplateNamePrefix">>, QueryMap, undefined)},
         {<<"WorkloadNamePrefix">>, maps:get(<<"WorkloadNamePrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1377,8 +1685,8 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the tags for a resource.
 %%
-%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
-%% profile ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
+%% profile ARN, or review template ARN.
 list_tags_for_resource(Client, WorkloadArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, WorkloadArn, #{}, #{}).
@@ -1398,6 +1706,36 @@ list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List review template shares.
+list_template_shares(Client, TemplateArn)
+  when is_map(Client) ->
+    list_template_shares(Client, TemplateArn, #{}, #{}).
+
+list_template_shares(Client, TemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_template_shares(Client, TemplateArn, QueryMap, HeadersMap, []).
+
+list_template_shares(Client, TemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/templates/shares/", aws_util:encode_uri(TemplateArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1456,8 +1794,8 @@ list_workloads(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tags to the specified resource.
 %%
-%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
-%% profile ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
+%% profile ARN, or review template ARN.
 tag_resource(Client, WorkloadArn, Input) ->
     tag_resource(Client, WorkloadArn, Input, []).
 tag_resource(Client, WorkloadArn, Input0, Options0) ->
@@ -1482,8 +1820,8 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
 
 %% @doc Deletes specified tags from a resource.
 %%
-%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
-%% profile ARN.
+%% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
+%% profile ARN, or review template ARN.
 %%
 %% To specify multiple tags, use separate tagKeys parameters, for example:
 %%
@@ -1604,6 +1942,75 @@ update_profile(Client, ProfileArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update a review template.
+update_review_template(Client, TemplateArn, Input) ->
+    update_review_template(Client, TemplateArn, Input, []).
+update_review_template(Client, TemplateArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a review template answer.
+update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input) ->
+    update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input, []).
+update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a lens review associated with a review template.
+update_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
+    update_review_template_lens_review(Client, LensAlias, TemplateArn, Input, []).
+update_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Update a workload or custom lens share invitation.
 %%
 %% This API operation can be called independently of any resource. Previous
@@ -1705,6 +2112,29 @@ upgrade_profile_version(Client, ProfileArn, WorkloadId, Input) ->
 upgrade_profile_version(Client, ProfileArn, WorkloadId, Input0, Options0) ->
     Method = put,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/profiles/", aws_util:encode_uri(ProfileArn), "/upgrade"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Upgrade the lens review of a review template.
+upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
+    upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input, []).
+upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/reviewTemplates/", aws_util:encode_uri(TemplateArn), "/lensReviews/", aws_util:encode_uri(LensAlias), "/upgrade"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

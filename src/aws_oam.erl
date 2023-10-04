@@ -7,19 +7,20 @@
 %%
 %% With CloudWatch cross-account observability, you can monitor and
 %% troubleshoot applications that span multiple accounts within a Region.
-%% Seamlessly search, visualize, and analyze your metrics, logs, and traces
-%% in any of the linked accounts without account boundaries.
+%% Seamlessly search, visualize, and analyze your metrics, logs, traces, and
+%% Application Insights applications in any of the linked accounts without
+%% account boundaries.
 %%
-%% &lt;p&gt;Set up one or more Amazon Web Services accounts as
-%% &lt;i&gt;monitoring accounts&lt;/i&gt; and link them with multiple
-%% &lt;i&gt;source accounts&lt;/i&gt;. A monitoring account is a central
+%% Set up one or more Amazon Web Services accounts as monitoring accounts and
+%% link them with multiple source accounts. A monitoring account is a central
 %% Amazon Web Services account that can view and interact with observability
 %% data generated from source accounts. A source account is an individual
 %% Amazon Web Services account that generates observability data for the
 %% resources that reside in it. Source accounts share their observability
 %% data with the monitoring account. The shared observability data can
-%% include metrics in Amazon CloudWatch, logs in Amazon CloudWatch Logs, and
-%% traces in X-Ray.&lt;/p&gt;
+%% include metrics in Amazon CloudWatch, logs in Amazon CloudWatch Logs,
+%% traces in X-Ray, and applications in Amazon CloudWatch Application
+%% Insights.
 -module(aws_oam).
 
 -export([create_link/2,
@@ -378,6 +379,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% </li> <li> Log groups - Specify with `AWS::Logs::LogGroup'
 %%
 %% </li> <li> Traces - Specify with `AWS::XRay::Trace'
+%%
+%% </li> <li> Application Insights - Applications - Specify with
+%% `AWS::ApplicationInsights::Application'
 %%
 %% </li> </ul> See the examples in this section to see how to specify
 %% permitted source accounts and data types.
