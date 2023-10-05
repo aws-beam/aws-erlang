@@ -16,6 +16,8 @@
          change_server_life_cycle_state/3,
          create_application/2,
          create_application/3,
+         create_connector/2,
+         create_connector/3,
          create_launch_configuration_template/2,
          create_launch_configuration_template/3,
          create_replication_configuration_template/2,
@@ -24,6 +26,8 @@
          create_wave/3,
          delete_application/2,
          delete_application/3,
+         delete_connector/2,
+         delete_connector/3,
          delete_job/2,
          delete_job/3,
          delete_launch_configuration_template/2,
@@ -65,6 +69,8 @@
          initialize_service/3,
          list_applications/2,
          list_applications/3,
+         list_connectors/2,
+         list_connectors/3,
          list_export_errors/2,
          list_export_errors/3,
          list_exports/2,
@@ -124,6 +130,8 @@
          untag_resource/4,
          update_application/2,
          update_application/3,
+         update_connector/2,
+         update_connector/3,
          update_launch_configuration/2,
          update_launch_configuration/3,
          update_launch_configuration_template/2,
@@ -132,6 +140,8 @@
          update_replication_configuration/3,
          update_replication_configuration_template/2,
          update_replication_configuration_template/3,
+         update_source_server/2,
+         update_source_server/3,
          update_source_server_replication_type/2,
          update_source_server_replication_type/3,
          update_wave/2,
@@ -286,6 +296,29 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create Connector.
+create_connector(Client, Input) ->
+    create_connector(Client, Input, []).
+create_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateConnector"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Launch Configuration Template.
 create_launch_configuration_template(Client, Input) ->
     create_launch_configuration_template(Client, Input, []).
@@ -361,6 +394,29 @@ delete_application(Client, Input) ->
 delete_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteApplication"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete Connector.
+delete_connector(Client, Input) ->
+    delete_connector(Client, Input, []).
+delete_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteConnector"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -862,6 +918,29 @@ list_applications(Client, Input) ->
 list_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListApplications"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List Connectors.
+list_connectors(Client, Input) ->
+    list_connectors(Client, Input, []).
+list_connectors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListConnectors"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1574,6 +1653,29 @@ update_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update Connector.
+update_connector(Client, Input) ->
+    update_connector(Client, Input, []).
+update_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateConnector"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates multiple LaunchConfigurations by Source Server ID.
 update_launch_configuration(Client, Input) ->
     update_launch_configuration(Client, Input, []).
@@ -1650,6 +1752,29 @@ update_replication_configuration_template(Client, Input) ->
 update_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateReplicationConfigurationTemplate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update Source Server.
+update_source_server(Client, Input) ->
+    update_source_server(Client, Input, []).
+update_source_server(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateSourceServer"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

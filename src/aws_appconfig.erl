@@ -420,6 +420,7 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
             {<<"Configuration-Profile-Id">>, <<"ConfigurationProfileId">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"Description">>, <<"Description">>},
+            {<<"KmsKeyArn">>, <<"KmsKeyArn">>},
             {<<"VersionLabel">>, <<"VersionLabel">>},
             {<<"Version-Number">>, <<"VersionNumber">>}
           ],
@@ -876,6 +877,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
             {<<"Configuration-Profile-Id">>, <<"ConfigurationProfileId">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"Description">>, <<"Description">>},
+            {<<"KmsKeyArn">>, <<"KmsKeyArn">>},
             {<<"VersionLabel">>, <<"VersionLabel">>},
             {<<"Version-Number">>, <<"VersionNumber">>}
           ],
