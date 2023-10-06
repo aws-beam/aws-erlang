@@ -31,6 +31,8 @@
          associate_connection_alias/3,
          associate_ip_groups/2,
          associate_ip_groups/3,
+         associate_workspace_application/2,
+         associate_workspace_application/3,
          authorize_ip_rules/2,
          authorize_ip_rules/3,
          copy_workspace_image/2,
@@ -67,12 +69,20 @@
          delete_workspace_bundle/3,
          delete_workspace_image/2,
          delete_workspace_image/3,
+         deploy_workspace_applications/2,
+         deploy_workspace_applications/3,
          deregister_workspace_directory/2,
          deregister_workspace_directory/3,
          describe_account/2,
          describe_account/3,
          describe_account_modifications/2,
          describe_account_modifications/3,
+         describe_application_associations/2,
+         describe_application_associations/3,
+         describe_applications/2,
+         describe_applications/3,
+         describe_bundle_associations/2,
+         describe_bundle_associations/3,
          describe_client_branding/2,
          describe_client_branding/3,
          describe_client_properties/2,
@@ -83,10 +93,14 @@
          describe_connection_alias_permissions/3,
          describe_connection_aliases/2,
          describe_connection_aliases/3,
+         describe_image_associations/2,
+         describe_image_associations/3,
          describe_ip_groups/2,
          describe_ip_groups/3,
          describe_tags/2,
          describe_tags/3,
+         describe_workspace_associations/2,
+         describe_workspace_associations/3,
          describe_workspace_bundles/2,
          describe_workspace_bundles/3,
          describe_workspace_directories/2,
@@ -105,6 +119,8 @@
          disassociate_connection_alias/3,
          disassociate_ip_groups/2,
          disassociate_ip_groups/3,
+         disassociate_workspace_application/2,
+         disassociate_workspace_application/3,
          import_client_branding/2,
          import_client_branding/3,
          import_workspace_image/2,
@@ -186,6 +202,14 @@ associate_ip_groups(Client, Input)
 associate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIpGroups">>, Input, Options).
+
+%% @doc Associates the specified application to the specified WorkSpace.
+associate_workspace_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_workspace_application(Client, Input, []).
+associate_workspace_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateWorkspaceApplication">>, Input, Options).
 
 %% @doc Adds one or more rules to the specified IP access control group.
 %%
@@ -428,6 +452,14 @@ delete_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkspaceImage">>, Input, Options).
 
+%% @doc Deploys associated applications to the specified WorkSpace
+deploy_workspace_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deploy_workspace_applications(Client, Input, []).
+deploy_workspace_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeployWorkspaceApplications">>, Input, Options).
+
 %% @doc Deregisters the specified directory.
 %%
 %% This operation is asynchronous and returns before the WorkSpace directory
@@ -467,6 +499,33 @@ describe_account_modifications(Client, Input)
 describe_account_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountModifications">>, Input, Options).
+
+%% @doc Describes the associations between the application and the specified
+%% associated resources.
+describe_application_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_application_associations(Client, Input, []).
+describe_application_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplicationAssociations">>, Input, Options).
+
+%% @doc Describes the specified applications by filtering based on their
+%% compute types, license availability, operating systems, and owners.
+describe_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_applications(Client, Input, []).
+describe_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplications">>, Input, Options).
+
+%% @doc Describes the associations between the applications and the specified
+%% bundle.
+describe_bundle_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_bundle_associations(Client, Input, []).
+describe_bundle_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBundleAssociations">>, Input, Options).
 
 %% @doc Describes the specified client branding.
 %%
@@ -525,6 +584,15 @@ describe_connection_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionAliases">>, Input, Options).
 
+%% @doc Describes the associations between the applications and the specified
+%% image.
+describe_image_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_associations(Client, Input, []).
+describe_image_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageAssociations">>, Input, Options).
+
 %% @doc Describes one or more of your IP access control groups.
 describe_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -540,6 +608,15 @@ describe_tags(Client, Input)
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
+
+%% @doc Describes the associations betweens applications and the specified
+%% WorkSpace.
+describe_workspace_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workspace_associations(Client, Input, []).
+describe_workspace_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkspaceAssociations">>, Input, Options).
 
 %% @doc Retrieves a list that describes the available WorkSpace bundles.
 %%
@@ -630,6 +707,14 @@ disassociate_ip_groups(Client, Input)
 disassociate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIpGroups">>, Input, Options).
+
+%% @doc Disassociates the specified application from a WorkSpace.
+disassociate_workspace_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_workspace_application(Client, Input, []).
+disassociate_workspace_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateWorkspaceApplication">>, Input, Options).
 
 %% @doc Imports client branding.
 %%

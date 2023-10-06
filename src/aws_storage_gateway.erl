@@ -866,8 +866,7 @@ describe_file_system_associations(Client, Input, Options)
     request(Client, <<"DescribeFileSystemAssociations">>, Input, Options).
 
 %% @doc Returns metadata about a gateway such as its name, network
-%% interfaces, configured time zone, and the state (whether the gateway is
-%% running or not).
+%% interfaces, time zone, status, and software version.
 %%
 %% To specify which gateway to describe, use the Amazon Resource Name (ARN)
 %% of the gateway in your request.
@@ -1082,6 +1081,16 @@ disassociate_file_system(Client, Input, Options)
 %%
 %% This operation is only supported for file gateways that support the SMB
 %% file protocol.
+%%
+%% Joining a domain creates an Active Directory computer account in the
+%% default organizational unit, using the gateway's Gateway ID as the
+%% account name (for example, SGW-1234ADE). If your Active Directory
+%% environment requires that you pre-stage accounts to facilitate the join
+%% domain process, you will need to create this account ahead of time.
+%%
+%% To create the gateway's computer account in an organizational unit
+%% other than the default, you must specify the organizational unit when
+%% joining the domain.
 join_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     join_domain(Client, Input, []).
@@ -1103,7 +1112,8 @@ list_automatic_tape_creation_policies(Client, Input, Options)
     request(Client, <<"ListAutomaticTapeCreationPolicies">>, Input, Options).
 
 %% @doc Gets a list of the file shares for a specific S3 File Gateway, or the
-%% list of file shares that belong to the calling user account.
+%% list of file shares that belong to the calling Amazon Web Services
+%% account.
 %%
 %% This operation is only supported for S3 File Gateways.
 list_file_shares(Client, Input)
@@ -1274,8 +1284,8 @@ list_volumes(Client, Input, Options)
 %% notification through event targets such as Amazon SNS or Lambda function.
 %% This operation is only supported for S3 File Gateways.
 %%
-%% For more information, see Getting file upload notification in the Storage
-%% Gateway User Guide.
+%% For more information, see Getting file upload notification in the Amazon
+%% S3 File Gateway User Guide.
 notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
@@ -1313,9 +1323,6 @@ notify_when_uploaded(Client, Input, Options)
 %% in the Storage Gateway User Guide.
 %%
 %% Wait at least 60 seconds between consecutive RefreshCache API requests.
-%%
-%% RefreshCache does not evict cache entries if invoked consecutively within
-%% 60 seconds of a previous RefreshCache request.
 %%
 %% If you invoke the RefreshCache API when two requests are already being
 %% processed, any new request will cause an
@@ -1540,8 +1547,9 @@ update_bandwidth_rate_limit(Client, Input, Options)
 %% By default, gateways do not have bandwidth rate limit schedules, which
 %% means no bandwidth rate limiting is in effect. Use this to initiate or
 %% update a gateway's bandwidth rate limit schedule. This operation is
-%% supported only for volume, tape and S3 file gateways. FSx file gateways do
-%% not support bandwidth rate limits.
+%% supported for volume, tape, and S3 file gateways. S3 file gateways support
+%% bandwidth rate limits for upload only. FSx file gateways do not support
+%% bandwidth rate limits.
 update_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit_schedule(Client, Input, []).

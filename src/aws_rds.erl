@@ -707,9 +707,8 @@ create_db_instance(Client, Input, Options)
 %% Working with read replicas and Migrating from a Multi-AZ DB cluster to a
 %% DB instance using a read replica in the Amazon RDS User Guide.
 %%
-%% Amazon Aurora doesn't support this operation. Call the
-%% `CreateDBInstance' operation to create a DB instance for an Aurora DB
-%% cluster.
+%% Amazon Aurora doesn't support this operation. To create a DB instance
+%% for an Aurora DB cluster, use the `CreateDBInstance' operation.
 %%
 %% All read replica DB instances are created with backups disabled. All other
 %% attributes (including DB security groups and DB parameter groups) are
@@ -1008,17 +1007,16 @@ delete_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
 
-%% @doc The DeleteDBInstance action deletes a previously provisioned DB
-%% instance.
+%% @doc Deletes a previously provisioned DB instance.
 %%
 %% When you delete a DB instance, all automated backups for that instance are
-%% deleted and can't be recovered. Manual DB snapshots of the DB instance
-%% to be deleted by `DeleteDBInstance' are not deleted.
+%% deleted and can't be recovered. However, manual DB snapshots of the DB
+%% instance aren't deleted.
 %%
-%% If you request a final DB snapshot the status of the Amazon RDS DB
-%% instance is `deleting' until the DB snapshot is created. The API
-%% action `DescribeDBInstance' is used to monitor the status of this
-%% operation. The action can't be canceled or reverted once submitted.
+%% If you request a final DB snapshot, the status of the Amazon RDS DB
+%% instance is `deleting' until the DB snapshot is created. This
+%% operation can't be canceled or reverted after it begins. To monitor
+%% the status of this operation, use `DescribeDBInstance'.
 %%
 %% When a DB instance is in a failure state and has a status of `failed',
 %% `incompatible-restore', or `incompatible-network', you can only
@@ -1034,11 +1032,17 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %%
 %% </li> <li> The DB instance is the only instance in the DB cluster.
 %%
-%% </li> </ul> To delete a DB instance in this case, first call the
-%% `PromoteReadReplicaDBCluster' API action to promote the DB cluster so
-%% it's no longer a read replica. After the promotion completes, then
-%% call the `DeleteDBInstance' API action to delete the final instance in
-%% the DB cluster.
+%% </li> </ul> To delete a DB instance in this case, first use the
+%% `PromoteReadReplicaDBCluster' operation to promote the DB cluster so
+%% that it's no longer a read replica. After the promotion completes, use
+%% the `DeleteDBInstance' operation to delete the final instance in the
+%% DB cluster.
+%%
+%% For RDS Custom DB instances, deleting the DB instance permanently deletes
+%% the EC2 instance and the associated EBS volumes. Make sure that you
+%% don't terminate or delete these resources before you delete the DB
+%% instance. Otherwise, deleting the DB instance and creation of the final
+%% snapshot might fail.
 delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
@@ -1337,7 +1341,7 @@ describe_db_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
-%% @doc Returns a list of the available DB engines.
+%% @doc Describes the properties of specific versions of DB engines.
 describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_engine_versions(Client, Input, []).
