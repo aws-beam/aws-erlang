@@ -75,7 +75,7 @@ cancel_change_set(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a resource-based policy on an Entity that is identified by
+%% @doc Deletes a resource-based policy on an entity that is identified by
 %% its resource ARN.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
@@ -156,7 +156,7 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a resource-based policy of an Entity that is identified by its
+%% @doc Gets a resource-based policy of an entity that is identified by its
 %% resource ARN.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
@@ -262,7 +262,7 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches a resource-based policy to an Entity.
+%% @doc Attaches a resource-based policy to an entity.
 %%
 %% Examples of an entity include: `AmiProduct' and
 %% `ContainerProduct'.
@@ -304,10 +304,10 @@ put_resource_policy(Client, Input0, Options0) ->
 %% (`entity-id@1').
 %%
 %% For more information about working with change sets, see Working with
-%% change sets. For information on change types for single-AMI products, see
-%% Working with single-AMI products. Als, for more information on change
-%% types available for container-based products, see Working with container
-%% products.
+%% change sets. For information about change types for single-AMI products,
+%% see Working with single-AMI products. Also, for more information about
+%% change types available for container-based products, see Working with
+%% container products.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options0) ->

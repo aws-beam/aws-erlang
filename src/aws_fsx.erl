@@ -71,6 +71,8 @@
          release_file_system_nfs_v3_locks/3,
          restore_volume_from_snapshot/2,
          restore_volume_from_snapshot/3,
+         start_misconfigured_state_recovery/2,
+         start_misconfigured_state_recovery/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -906,6 +908,16 @@ restore_volume_from_snapshot(Client, Input)
 restore_volume_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreVolumeFromSnapshot">>, Input, Options).
+
+%% @doc After performing steps to repair the Active Directory configuration
+%% of an FSx for Windows File Server file system, use this action to initiate
+%% the process of Amazon FSx attempting to reconnect to the file system.
+start_misconfigured_state_recovery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_misconfigured_state_recovery(Client, Input, []).
+start_misconfigured_state_recovery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMisconfiguredStateRecovery">>, Input, Options).
 
 %% @doc Tags an Amazon FSx resource.
 tag_resource(Client, Input)
