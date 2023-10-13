@@ -29,14 +29,8 @@
 %% in, such as an `AmazonEC2' instance, with a `Provisioned IOPS'
 %% `volumeType'.
 %%
-%% You can use the following endpoints for the Amazon Web Services Price List
-%% API:
-%%
-%% <ul> <li> https://api.pricing.us-east-1.amazonaws.com
-%%
-%% </li> <li> https://api.pricing.ap-south-1.amazonaws.com
-%%
-%% </li> </ul>
+%% For more information, see Using the Amazon Web Services Price List API in
+%% the Billing User Guide.
 -module(aws_pricing).
 
 -export([describe_services/2,
@@ -92,7 +86,7 @@ get_attribute_values(Client, Input, Options)
 %%
 %% This returns the URL that you can retrieve your Price List file from. This
 %% URL is based on the `PriceListArn' and `FileFormat' that you
-%% retrieve from the `ListPriceLists' response.
+%% retrieve from the ListPriceLists response.
 get_price_list_file_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_price_list_file_url(Client, Input, []).
@@ -121,7 +115,7 @@ get_products(Client, Input, Options)
 %% `RegionCode' filter to get the Price List reference that's
 %% specific to a specific Amazon Web Services Region. You can use the
 %% `PriceListArn' from the response to get your preferred Price List
-%% files through the `GetPriceListFileUrl' API.
+%% files through the GetPriceListFileUrl API.
 list_price_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_price_lists(Client, Input, []).

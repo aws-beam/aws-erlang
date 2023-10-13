@@ -4,24 +4,33 @@
 %% @doc These interfaces allow you to apply the AWS library of pre-defined
 %% controls to your organizational units, programmatically.
 %%
-%% In this context, controls are the same as AWS Control Tower guardrails.
+%% In AWS Control Tower, the terms &quot;control&quot; and
+%% &quot;guardrail&quot; are synonyms. .
 %%
 %% To call these APIs, you'll need to know:
 %%
-%% <ul> <li> the `ControlARN' for the control--that is, the
-%% guardrail--you are targeting,
+%% <ul> <li> the `controlIdentifier' for the control--or guardrail--you
+%% are targeting.
 %%
-%% </li> <li> and the ARN associated with the target organizational unit
-%% (OU).
+%% </li> <li> the ARN associated with the target organizational unit (OU),
+%% which we call the `targetIdentifier'.
 %%
-%% </li> </ul> To get the `ControlARN' for your AWS Control Tower
-%% guardrail:
+%% </li> </ul> To get the `controlIdentifier' for your AWS Control Tower
+%% control:
 %%
-%% The `ControlARN' contains the control name which is specified in each
-%% guardrail. For a list of control names for Strongly recommended and
-%% Elective guardrails, see Resource identifiers for APIs and guardrails in
-%% the Automating tasks section of the AWS Control Tower User Guide. Remember
-%% that Mandatory guardrails cannot be added or removed.
+%% The `controlIdentifier' is an ARN that is specified for each control.
+%% You can view the `controlIdentifier' in the console on the Control
+%% details page, as well as in the documentation.
+%%
+%% The `controlIdentifier' is unique in each AWS Region for each control.
+%% You can find the `controlIdentifier' for each Region and control in
+%% the Tables of control metadata in the AWS Control Tower User Guide.
+%%
+%% A quick-reference list of control identifers for the AWS Control Tower
+%% legacy Strongly recommended and Elective controls is given in Resource
+%% identifiers for APIs and guardrails in the Controls reference guide
+%% section of the AWS Control Tower User Guide. Remember that Mandatory
+%% controls cannot be added or removed.
 %%
 %% ARN format: `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
 %%
@@ -29,7 +38,9 @@
 %%
 %% `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED'
 %%
-%% To get the ARN for an OU:
+%% To get the `targetIdentifier':
+%%
+%% The `targetIdentifier' is the ARN for an OU.
 %%
 %% In the AWS Organizations console, you can find the ARN for the OU on the
 %% Organizational unit details page associated with that OU.
@@ -40,11 +51,17 @@
 %%
 %% == Details and examples ==
 %%
-%% <ul> <li> List of resource identifiers for APIs and guardrails
+%% <ul> <li> Control API input and output examples with CLI
 %%
-%% </li> <li> Guardrail API examples (CLI)
+%% </li> <li> Enable controls with CloudFormation
 %%
-%% </li> <li> Enable controls with AWS CloudFormation
+%% </li> <li> Control metadata tables
+%%
+%% </li> <li> List of identifiers for legacy controls
+%%
+%% </li> <li> Controls reference guide
+%%
+%% </li> <li> Controls library groupings
 %%
 %% </li> <li> Creating AWS Control Tower resources with AWS CloudFormation
 %%
@@ -70,6 +87,8 @@
          enable_control/3,
          get_control_operation/2,
          get_control_operation/3,
+         get_enabled_control/2,
+         get_enabled_control/3,
          list_enabled_controls/2,
          list_enabled_controls/3]).
 
@@ -83,7 +102,8 @@
 %%
 %% It starts an asynchronous operation that deletes AWS resources on the
 %% specified organizational unit and the accounts it contains. The resources
-%% will vary according to the control that you specify.
+%% will vary according to the control that you specify. For usage examples,
+%% see the AWS Control Tower User Guide .
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
 disable_control(Client, Input0, Options0) ->
@@ -110,7 +130,8 @@ disable_control(Client, Input0, Options0) ->
 %%
 %% It starts an asynchronous operation that creates AWS resources on the
 %% specified organizational unit and the accounts it contains. The resources
-%% created will vary according to the control that you specify.
+%% created will vary according to the control that you specify. For usage
+%% examples, see the AWS Control Tower User Guide
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
 enable_control(Client, Input0, Options0) ->
@@ -137,7 +158,8 @@ enable_control(Client, Input0, Options0) ->
 %% `DisableControl' operation.
 %%
 %% Displays a message in case of error. Details for an operation are
-%% available for 90 days.
+%% available for 90 days. For usage examples, see the AWS Control Tower User
+%% Guide
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
 get_control_operation(Client, Input0, Options0) ->
@@ -160,8 +182,48 @@ get_control_operation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides details about the enabled control.
+%%
+%% For usage examples, see the AWS Control Tower User Guide .
+%%
+%% == Returned values ==
+%%
+%% <ul> <li> TargetRegions: Shows target AWS Regions where the enabled
+%% control is available to be deployed.
+%%
+%% </li> <li> StatusSummary: Provides a detailed summary of the deployment
+%% status.
+%%
+%% </li> <li> DriftSummary: Provides a detailed summary of the drifted
+%% status.
+%%
+%% </li> </ul>
+get_enabled_control(Client, Input) ->
+    get_enabled_control(Client, Input, []).
+get_enabled_control(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-enabled-control"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the controls enabled by AWS Control Tower on the specified
 %% organizational unit and the accounts it contains.
+%%
+%% For usage examples, see the AWS Control Tower User Guide
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
 list_enabled_controls(Client, Input0, Options0) ->

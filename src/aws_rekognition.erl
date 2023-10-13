@@ -414,12 +414,12 @@ compare_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompareFaces">>, Input, Options).
 
-%% @doc Copies a version of an Amazon Rekognition Custom Labels model from a
-%% source project to a destination project.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% The source and destination projects can be in different AWS accounts but
-%% must be in the same AWS Region. You can't copy a model to another AWS
-%% service.
+%% Copies a version of an Amazon Rekognition Custom Labels model from a
+%% source project to a destination project. The source and destination
+%% projects can be in different AWS accounts but must be in the same AWS
+%% Region. You can't copy a model to another AWS service.
 %%
 %% To copy a model version to a different AWS account, you need to create a
 %% resource-based policy known as a project policy. You attach the project
@@ -433,6 +433,8 @@ compare_faces(Client, Input, Options)
 %%
 %% If you are copying a model version to a project in the same AWS account,
 %% you don't need to create a project policy.
+%%
+%% Copying project versions is supported only for Custom Labels models.
 %%
 %% To copy a model, the destination project, source project, and source model
 %% version must already exist.
@@ -477,10 +479,11 @@ create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
 
-%% @doc Creates a new Amazon Rekognition Custom Labels dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% You can create a dataset by using an Amazon Sagemaker format manifest file
-%% or by copying an existing Amazon Rekognition Custom Labels dataset.
+%% Creates a new Amazon Rekognition Custom Labels dataset. You can create a
+%% dataset by using an Amazon Sagemaker format manifest file or by copying an
+%% existing Amazon Rekognition Custom Labels dataset.
 %%
 %% To create a training dataset for a project, specify `TRAIN' for the
 %% value of `DatasetType'. To create the test dataset for a project,
@@ -534,13 +537,15 @@ create_face_liveness_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaceLivenessSession">>, Input, Options).
 
-%% @doc Creates a new Amazon Rekognition Custom Labels project.
+%% @doc Creates a new Amazon Rekognition project.
 %%
 %% A project is a group of resources (datasets, model versions) that you use
-%% to create and manage Amazon Rekognition Custom Labels models.
-%%
-%% This operation requires permissions to perform the
-%% `rekognition:CreateProject' action.
+%% to create and manage a Amazon Rekognition Custom Labels Model or custom
+%% adapter. You can specify a feature to create the project with, if no
+%% feature is specified then Custom Labels is used by default. For adapters,
+%% you can also choose whether or not to have the project auto update by
+%% using the AutoUpdate argument. This operation requires permissions to
+%% perform the `rekognition:CreateProject' action.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
@@ -548,15 +553,27 @@ create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
 
-%% @doc Creates a new version of a model and begins training.
+%% @doc Creates a new version of Amazon Rekognition project (like a Custom
+%% Labels model or a custom adapter) and begins training.
 %%
-%% Models are managed as part of an Amazon Rekognition Custom Labels project.
-%% The response from `CreateProjectVersion' is an Amazon Resource Name
-%% (ARN) for the version of the model.
+%% Models and adapters are managed as part of a Rekognition project. The
+%% response from `CreateProjectVersion' is an Amazon Resource Name (ARN)
+%% for the project version.
 %%
-%% Training uses the training and test datasets associated with the project.
-%% For more information, see Creating training and test dataset in the Amazon
-%% Rekognition Custom Labels Developer Guide.
+%% The FeatureConfig operation argument allows you to configure specific
+%% model or adapter settings. You can provide a description to the project
+%% version by using the VersionDescription argment. Training can take a while
+%% to complete. You can get the current status by calling
+%% `DescribeProjectVersions'. Training completed successfully if the
+%% value of the `Status' field is `TRAINING_COMPLETED'. Once training
+%% has successfully completed, call `DescribeProjectVersions' to get the
+%% training results and evaluate the model.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:CreateProjectVersion' action.
+%%
+%% The following applies only to projects with Amazon Rekognition Custom
+%% Labels as the chosen feature:
 %%
 %% You can train a model in a project that doesn't have associated
 %% datasets by specifying manifest files in the `TrainingData' and
@@ -570,25 +587,6 @@ create_project(Client, Input, Options)
 %% Instead of training with a project without associated datasets, we
 %% recommend that you use the manifest files to create training and test
 %% datasets for the project.
-%%
-%% Training takes a while to complete. You can get the current status by
-%% calling `DescribeProjectVersions'. Training completed successfully if
-%% the value of the `Status' field is `TRAINING_COMPLETED'.
-%%
-%% If training fails, see Debugging a failed model training in the Amazon
-%% Rekognition Custom Labels developer guide.
-%%
-%% Once training has successfully completed, call
-%% `DescribeProjectVersions' to get the training results and evaluate the
-%% model. For more information, see Improving a trained Amazon Rekognition
-%% Custom Labels model in the Amazon Rekognition Custom Labels developers
-%% guide.
-%%
-%% After evaluating the model, you start the model by calling
-%% `StartProjectVersion'.
-%%
-%% This operation requires permissions to perform the
-%% `rekognition:CreateProjectVersion' action.
 create_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project_version(Client, Input, []).
@@ -674,12 +672,13 @@ delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
 
-%% @doc Deletes an existing Amazon Rekognition Custom Labels dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% Deleting a dataset might take while. Use `DescribeDataset' to check
-%% the current status. The dataset is still deleting if the value of
-%% `Status' is `DELETE_IN_PROGRESS'. If you try to access the dataset
-%% after it is deleted, you get a `ResourceNotFoundException' exception.
+%% Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a
+%% dataset might take while. Use `DescribeDataset' to check the current
+%% status. The dataset is still deleting if the value of `Status' is
+%% `DELETE_IN_PROGRESS'. If you try to access the dataset after it is
+%% deleted, you get a `ResourceNotFoundException' exception.
 %%
 %% You can't delete a dataset while it is creating (`Status' =
 %% `CREATE_IN_PROGRESS') or if the dataset is updating (`Status' =
@@ -708,10 +707,11 @@ delete_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFaces">>, Input, Options).
 
-%% @doc Deletes an Amazon Rekognition Custom Labels project.
+%% @doc Deletes a Amazon Rekognition project.
 %%
-%% To delete a project you must first delete all models associated with the
-%% project. To delete a model, see `DeleteProjectVersion'.
+%% To delete a project you must first delete all models or adapters
+%% associated with the project. To delete a model or adapter, see
+%% `DeleteProjectVersion'.
 %%
 %% `DeleteProject' is an asynchronous operation. To check if the project
 %% is deleted, call `DescribeProjects'. The project is deleted when the
@@ -728,7 +728,9 @@ delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
 
-%% @doc Deletes an existing project policy.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
+%%
+%% Deletes an existing project policy.
 %%
 %% To get a list of project policies attached to a project, call
 %% `ListProjectPolicies'. To attach a project policy to a project, call
@@ -743,13 +745,14 @@ delete_project_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProjectPolicy">>, Input, Options).
 
-%% @doc Deletes an Amazon Rekognition Custom Labels model.
+%% @doc Deletes a Rekognition project model or project version, like a Amazon
+%% Rekognition Custom Labels model or a custom adapter.
 %%
-%% You can't delete a model if it is running or if it is training. To
-%% check the status of a model, use the `Status' field returned from
-%% `DescribeProjectVersions'. To stop a running model call
-%% `StopProjectVersion'. If the model is training, wait until it
-%% finishes.
+%% You can't delete a project version if it is running or if it is
+%% training. To check the status of a project version, use the Status field
+%% returned from `DescribeProjectVersions'. To stop a project version
+%% call `StopProjectVersion'. If the project version is training, wait
+%% until it finishes.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProjectVersion' action.
@@ -802,10 +805,11 @@ describe_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCollection">>, Input, Options).
 
-%% @doc Describes an Amazon Rekognition Custom Labels dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% You can get information such as the current status of a dataset and
-%% statistics about the images and labels in a dataset.
+%% Describes an Amazon Rekognition Custom Labels dataset. You can get
+%% information such as the current status of a dataset and statistics about
+%% the images and labels in a dataset.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeDataset' action.
@@ -816,12 +820,11 @@ describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
 
-%% @doc Lists and describes the versions of a model in an Amazon Rekognition
-%% Custom Labels project.
+%% @doc Lists and describes the versions of an Amazon Rekognition project.
 %%
-%% You can specify up to 10 model versions in `ProjectVersionArns'. If
-%% you don't specify a value, descriptions for all model versions in the
-%% project are returned.
+%% You can specify up to 10 model or adapter versions in
+%% `ProjectVersionArns'. If you don't specify a value, descriptions
+%% for all model/adapter versions in the project are returned.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjectVersions' action.
@@ -832,8 +835,7 @@ describe_project_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProjectVersions">>, Input, Options).
 
-%% @doc Gets information about your Amazon Rekognition Custom Labels
-%% projects.
+%% @doc Gets information about your Rekognition projects.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjects' action.
@@ -857,8 +859,10 @@ describe_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStreamProcessor">>, Input, Options).
 
-%% @doc Detects custom labels in a supplied image by using an Amazon
-%% Rekognition Custom Labels model.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
+%%
+%% Detects custom labels in a supplied image by using an Amazon Rekognition
+%% Custom Labels model.
 %%
 %% You specify which version of a model version to use by using the
 %% `ProjectVersionArn' input parameter.
@@ -1075,6 +1079,9 @@ detect_labels(Client, Input, Options)
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
 %% call Amazon Rekognition operations, passing image bytes is not supported.
 %% The image must be either a PNG or JPEG formatted file.
+%%
+%% You can specify an adapter to use when retrieving label predictions by
+%% providing a `ProjectVersionArn' to the `ProjectVersion' argument.
 detect_moderation_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_moderation_labels(Client, Input, []).
@@ -1193,11 +1200,12 @@ disassociate_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFaces">>, Input, Options).
 
-%% @doc Distributes the entries (images) in a training dataset across the
-%% training dataset and the test dataset for a project.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% `DistributeDatasetEntries' moves 20% of the training dataset images to
-%% the test dataset. An entry is a JSON Line that describes an image.
+%% Distributes the entries (images) in a training dataset across the training
+%% dataset and the test dataset for a project. `DistributeDatasetEntries'
+%% moves 20% of the training dataset images to the test dataset. An entry is
+%% a JSON Line that describes an image.
 %%
 %% You supply the Amazon Resource Names (ARN) of a project's training
 %% dataset and test dataset. The training dataset must contain the images
@@ -1777,11 +1785,12 @@ list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
 
-%% @doc Lists the entries (images) within a dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% An entry is a JSON Line that contains the information for a single image,
-%% including the image location, assigned labels, and object location
-%% bounding boxes. For more information, see Creating a manifest file.
+%% Lists the entries (images) within a dataset. An entry is a JSON Line that
+%% contains the information for a single image, including the image location,
+%% assigned labels, and object location bounding boxes. For more information,
+%% see Creating a manifest file.
 %%
 %% JSON Lines in the response include information about non-terminal errors
 %% found in the dataset. Non terminal errors are reported in `errors'
@@ -1801,10 +1810,10 @@ list_dataset_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetEntries">>, Input, Options).
 
-%% @doc Lists the labels in a dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% Amazon Rekognition Custom Labels uses labels to describe images. For more
-%% information, see Labeling images.
+%% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
+%% labels to describe images. For more information, see Labeling images.
 %%
 %% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
 %% labels to describe images. For more information, see Labeling images in
@@ -1832,7 +1841,9 @@ list_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaces">>, Input, Options).
 
-%% @doc Gets a list of the project policies attached to a project.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
+%%
+%% Gets a list of the project policies attached to a project.
 %%
 %% To attach a project policy to a project, call `PutProjectPolicy'. To
 %% remove a project policy from a project, call `DeleteProjectPolicy'.
@@ -1882,13 +1893,14 @@ list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
 
-%% @doc Attaches a project policy to a Amazon Rekognition Custom Labels
-%% project in a trusting AWS account.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% A project policy specifies that a trusted AWS account can copy a model
-%% version from a trusting AWS account to a project in the trusted AWS
-%% account. To copy a model version you use the `CopyProjectVersion'
-%% operation.
+%% Attaches a project policy to a Amazon Rekognition Custom Labels project in
+%% a trusting AWS account. A project policy specifies that a trusted AWS
+%% account can copy a model version from a trusting AWS account to a project
+%% in the trusted AWS account. To copy a model version you use the
+%% `CopyProjectVersion' operation. Only applies to Custom Labels
+%% projects.
 %%
 %% For more information about the format of a project policy document, see
 %% Attaching a project policy (SDK) in the Amazon Rekognition Custom Labels
@@ -2230,19 +2242,17 @@ start_person_tracking(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPersonTracking">>, Input, Options).
 
-%% @doc Starts the running of the version of a model.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% Starting a model takes a while to complete. To check the current state of
-%% the model, use `DescribeProjectVersions'.
+%% Starts the running of the version of a model. Starting a model takes a
+%% while to complete. To check the current state of the model, use
+%% `DescribeProjectVersions'.
 %%
 %% Once the model is running, you can detect custom labels in new images by
 %% calling `DetectCustomLabels'.
 %%
 %% You are charged for the amount of time that the model is running. To stop
 %% a running model, call `StopProjectVersion'.
-%%
-%% For more information, see Running a trained Amazon Rekognition Custom
-%% Labels model in the Amazon Rekognition Custom Labels Guide.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:StartProjectVersion' action.
@@ -2322,10 +2332,11 @@ start_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTextDetection">>, Input, Options).
 
-%% @doc Stops a running model.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% The operation might take a while to complete. To check the current status,
-%% call `DescribeProjectVersions'.
+%% Stops a running model. The operation might take a while to complete. To
+%% check the current status, call `DescribeProjectVersions'. Only applies
+%% to Custom Labels projects.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:StopProjectVersion' action.
@@ -2371,13 +2382,14 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Adds or updates one or more entries (images) in a dataset.
+%% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
-%% An entry is a JSON Line which contains the information for a single image,
-%% including the image location, assigned labels, and object location
-%% bounding boxes. For more information, see Image-Level labels in manifest
-%% files and Object localization in manifest files in the Amazon Rekognition
-%% Custom Labels Developer Guide.
+%% Adds or updates one or more entries (images) in a dataset. An entry is a
+%% JSON Line which contains the information for a single image, including the
+%% image location, assigned labels, and object location bounding boxes. For
+%% more information, see Image-Level labels in manifest files and Object
+%% localization in manifest files in the Amazon Rekognition Custom Labels
+%% Developer Guide.
 %%
 %% If the `source-ref' field in the JSON line references an existing
 %% image, the existing image in the dataset is updated. If `source-ref'

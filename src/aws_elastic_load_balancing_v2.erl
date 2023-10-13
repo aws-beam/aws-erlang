@@ -600,13 +600,14 @@ set_security_groups(Client, Input, Options)
     request(Client, <<"SetSecurityGroups">>, Input, Options).
 
 %% @doc Enables the Availability Zones for the specified public subnets for
-%% the specified Application Load Balancer or Network Load Balancer.
+%% the specified Application Load Balancer, Network Load Balancer or Gateway
+%% Load Balancer.
 %%
 %% The specified subnets replace the previously enabled subnets.
 %%
-%% When you specify subnets for a Network Load Balancer, you must include all
-%% subnets that were enabled previously, with their existing configurations,
-%% plus any additional subnets.
+%% When you specify subnets for a Network Load Balancer, or Gateway Load
+%% Balancer you must include all subnets that were enabled previously, with
+%% their existing configurations, plus any additional subnets.
 set_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subnets(Client, Input, []).

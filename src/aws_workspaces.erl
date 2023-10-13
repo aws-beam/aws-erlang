@@ -357,6 +357,8 @@ create_workspace_image(Client, Input, Options)
 %% The `MANUAL' running mode value is only supported by Amazon WorkSpaces
 %% Core. Contact your account team to be allow-listed to use this value. For
 %% more information, see Amazon WorkSpaces Core.
+%%
+%% PCoIP is only available for Windows bundles.
 create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).

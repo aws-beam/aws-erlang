@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Inspector is a vulnerability discovery service that automates
-%% continuous scanning for security vulnerabilities within your Amazon EC2
-%% and Amazon ECR environments.
+%% continuous scanning for security vulnerabilities within your Amazon EC2,
+%% Amazon ECR, and Amazon Web Services Lambda environments.
 -module(aws_inspector2).
 
 -export([associate_member/2,
@@ -331,6 +331,9 @@ cancel_sbom_export(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a filter resource using specified filter criteria.
+%%
+%% When the filter action is set to `SUPPRESS' this action creates a
+%% suppression rule.
 create_filter(Client, Input) ->
     create_filter(Client, Input, []).
 create_filter(Client, Input0, Options0) ->

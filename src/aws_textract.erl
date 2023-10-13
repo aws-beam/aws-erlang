@@ -13,8 +13,20 @@
          analyze_expense/3,
          analyze_id/2,
          analyze_id/3,
+         create_adapter/2,
+         create_adapter/3,
+         create_adapter_version/2,
+         create_adapter_version/3,
+         delete_adapter/2,
+         delete_adapter/3,
+         delete_adapter_version/2,
+         delete_adapter_version/3,
          detect_document_text/2,
          detect_document_text/3,
+         get_adapter/2,
+         get_adapter/3,
+         get_adapter_version/2,
+         get_adapter_version/3,
          get_document_analysis/2,
          get_document_analysis/3,
          get_document_text_detection/2,
@@ -25,6 +37,12 @@
          get_lending_analysis/3,
          get_lending_analysis_summary/2,
          get_lending_analysis_summary/3,
+         list_adapter_versions/2,
+         list_adapter_versions/3,
+         list_adapters/2,
+         list_adapters/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          start_document_analysis/2,
          start_document_analysis/3,
          start_document_text_detection/2,
@@ -32,7 +50,13 @@
          start_expense_analysis/2,
          start_expense_analysis/3,
          start_lending_analysis/2,
-         start_lending_analysis/3]).
+         start_lending_analysis/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
+         update_adapter/2,
+         update_adapter/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -126,6 +150,55 @@ analyze_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeID">>, Input, Options).
 
+%% @doc Creates an adapter, which can be fine-tuned for enhanced performance
+%% on user provided documents.
+%%
+%% Takes an AdapterName and FeatureType. Currently the only supported feature
+%% type is `QUERIES'. You can also provide a Description, Tags, and a
+%% ClientRequestToken. You can choose whether or not the adapter should be
+%% AutoUpdated with the AutoUpdate argument. By default, AutoUpdate is set to
+%% DISABLED.
+create_adapter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_adapter(Client, Input, []).
+create_adapter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAdapter">>, Input, Options).
+
+%% @doc Creates a new version of an adapter.
+%%
+%% Operates on a provided AdapterId and a specified dataset provided via the
+%% DatasetConfig argument. Requires that you specify an Amazon S3 bucket with
+%% the OutputConfig argument. You can provide an optional KMSKeyId, an
+%% optional ClientRequestToken, and optional tags.
+create_adapter_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_adapter_version(Client, Input, []).
+create_adapter_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAdapterVersion">>, Input, Options).
+
+%% @doc Deletes an Amazon Textract adapter.
+%%
+%% Takes an AdapterId and deletes the adapter specified by the ID.
+delete_adapter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_adapter(Client, Input, []).
+delete_adapter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAdapter">>, Input, Options).
+
+%% @doc Deletes an Amazon Textract adapter version.
+%%
+%% Requires that you specify both an AdapterId and a AdapterVersion. Deletes
+%% the adapter version specified by the AdapterId and the AdapterVersion.
+delete_adapter_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_adapter_version(Client, Input, []).
+delete_adapter_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAdapterVersion">>, Input, Options).
+
 %% @doc Detects text in the input document.
 %%
 %% Amazon Textract can detect lines of text and the words that make up a line
@@ -149,6 +222,26 @@ detect_document_text(Client, Input)
 detect_document_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectDocumentText">>, Input, Options).
+
+%% @doc Gets configuration information for an adapter specified by an
+%% AdapterId, returning information on AdapterName, Description,
+%% CreationTime, AutoUpdate status, and FeatureTypes.
+get_adapter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_adapter(Client, Input, []).
+get_adapter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAdapter">>, Input, Options).
+
+%% @doc Gets configuration information for the specified adapter version,
+%% including: AdapterId, AdapterVersion, FeatureTypes, Status, StatusMessage,
+%% DatasetConfig, KMSKeyId, OutputConfig, Tags and EvaluationMetrics.
+get_adapter_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_adapter_version(Client, Input, []).
+get_adapter_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAdapterVersion">>, Input, Options).
 
 %% @doc Gets the results for an Amazon Textract asynchronous operation that
 %% analyzes text in a document.
@@ -337,6 +430,31 @@ get_lending_analysis_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLendingAnalysisSummary">>, Input, Options).
 
+%% @doc List all version of an adapter that meet the specified filtration
+%% criteria.
+list_adapter_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_adapter_versions(Client, Input, []).
+list_adapter_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAdapterVersions">>, Input, Options).
+
+%% @doc Lists all adapters that match the specified filtration criteria.
+list_adapters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_adapters(Client, Input, []).
+list_adapters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAdapters">>, Input, Options).
+
+%% @doc Lists all tags for an Amazon Textract resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Starts the asynchronous analysis of an input document for
 %% relationships between detected items such as key-value pairs, tables, and
 %% selection elements.
@@ -456,6 +574,33 @@ start_lending_analysis(Client, Input)
 start_lending_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLendingAnalysis">>, Input, Options).
+
+%% @doc Adds one or more tags to the specified resource.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes any tags with the specified keys from the specified resource.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Update the configuration for an adapter.
+%%
+%% FeatureTypes configurations cannot be updated. At least one new parameter
+%% must be specified as an argument.
+update_adapter(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_adapter(Client, Input, []).
+update_adapter(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAdapter">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

@@ -1133,11 +1133,15 @@ create_experiment(Client, Input, Options)
 %% `FeatureStore' to describe a `Record'.
 %%
 %% The `FeatureGroup' defines the schema and features contained in the
-%% FeatureGroup. A `FeatureGroup' definition is composed of a list of
-%% `Features', a `RecordIdentifierFeatureName', an
+%% `FeatureGroup'. A `FeatureGroup' definition is composed of a list
+%% of `Features', a `RecordIdentifierFeatureName', an
 %% `EventTimeFeatureName' and configurations for its `OnlineStore'
 %% and `OfflineStore'. Check Amazon Web Services service quotas to see
 %% the `FeatureGroup's quota for your Amazon Web Services account.
+%%
+%% Note that it can take approximately 10-15 minutes to provision an
+%% `OnlineStore' `FeatureGroup' with the `InMemory'
+%% `StorageType'.
 %%
 %% You must include at least one of `OnlineStoreConfig' and
 %% `OfflineStoreConfig' to create a `FeatureGroup'.
@@ -1990,6 +1994,10 @@ delete_experiment(Client, Input, Options)
 %% Data written into the `OfflineStore' will not be deleted. The Amazon
 %% Web Services Glue database and tables that are automatically created for
 %% your `OfflineStore' are not deleted.
+%%
+%% Note that it can take approximately 10-15 minutes to delete an
+%% `OnlineStore' `FeatureGroup' with the `InMemory'
+%% `StorageType'.
 delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).

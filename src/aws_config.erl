@@ -1080,10 +1080,13 @@ get_organization_custom_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationCustomRulePolicy">>, Input, Options).
 
-%% @doc Returns a list of `ConfigurationItems' for the specified
-%% resource.
+%% @doc For accurate reporting on the compliance status, you must record the
+%% `AWS::Config::ResourceCompliance' resource type.
 %%
-%% The list contains details about each state of the resource during the
+%% For more information, see Selecting Which Resources Config Records.
+%%
+%% Returns a list of `ConfigurationItems' for the specified resource. The
+%% list contains details about each state of the resource during the
 %% specified time interval. If you specified a retention period to retain
 %% your `ConfigurationItems' between a minimum of 30 days and a maximum
 %% of 7 years (2557 days), Config returns the `ConfigurationItems' for
@@ -1367,7 +1370,11 @@ put_conformance_pack(Client, Input, Options)
     request(Client, <<"PutConformancePack">>, Input, Options).
 
 %% @doc Creates a delivery channel object to deliver configuration
-%% information to an Amazon S3 bucket and Amazon SNS topic.
+%% information and other compliance information to an Amazon S3 bucket and
+%% Amazon SNS topic.
+%%
+%% For more information, see Notifications that Config Sends to an Amazon SNS
+%% topic.
 %%
 %% Before you can create a delivery channel, you must create a configuration
 %% recorder.
