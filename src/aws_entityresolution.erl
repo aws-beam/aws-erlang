@@ -19,14 +19,24 @@
 %% practices, see the Entity Resolution User Guide.
 -module(aws_entityresolution).
 
--export([create_matching_workflow/2,
+-export([create_id_mapping_workflow/2,
+         create_id_mapping_workflow/3,
+         create_matching_workflow/2,
          create_matching_workflow/3,
          create_schema_mapping/2,
          create_schema_mapping/3,
+         delete_id_mapping_workflow/3,
+         delete_id_mapping_workflow/4,
          delete_matching_workflow/3,
          delete_matching_workflow/4,
          delete_schema_mapping/3,
          delete_schema_mapping/4,
+         get_id_mapping_job/3,
+         get_id_mapping_job/5,
+         get_id_mapping_job/6,
+         get_id_mapping_workflow/2,
+         get_id_mapping_workflow/4,
+         get_id_mapping_workflow/5,
          get_match_id/3,
          get_match_id/4,
          get_matching_job/3,
@@ -38,32 +48,74 @@
          get_schema_mapping/2,
          get_schema_mapping/4,
          get_schema_mapping/5,
+         list_id_mapping_jobs/2,
+         list_id_mapping_jobs/4,
+         list_id_mapping_jobs/5,
+         list_id_mapping_workflows/1,
+         list_id_mapping_workflows/3,
+         list_id_mapping_workflows/4,
          list_matching_jobs/2,
          list_matching_jobs/4,
          list_matching_jobs/5,
          list_matching_workflows/1,
          list_matching_workflows/3,
          list_matching_workflows/4,
+         list_provider_services/1,
+         list_provider_services/3,
+         list_provider_services/4,
          list_schema_mappings/1,
          list_schema_mappings/3,
          list_schema_mappings/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_id_mapping_job/3,
+         start_id_mapping_job/4,
          start_matching_job/3,
          start_matching_job/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_id_mapping_workflow/3,
+         update_id_mapping_workflow/4,
          update_matching_workflow/3,
-         update_matching_workflow/4]).
+         update_matching_workflow/4,
+         update_schema_mapping/3,
+         update_schema_mapping/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an `IdMappingWorkflow' object which stores the
+%% configuration of the data processing job to be run.
+%%
+%% Each `IdMappingWorkflow' must have a unique workflow name. To modify
+%% an existing workflow, use the `UpdateIdMappingWorkflow' API.
+create_id_mapping_workflow(Client, Input) ->
+    create_id_mapping_workflow(Client, Input, []).
+create_id_mapping_workflow(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/idmappingworkflows"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `MatchingWorkflow' object which stores the
 %% configuration of the data processing job to be run.
@@ -121,6 +173,32 @@ create_schema_mapping(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the `IdMappingWorkflow' with a given name.
+%%
+%% This operation will succeed even if a workflow with the given name does
+%% not exist.
+delete_id_mapping_workflow(Client, WorkflowName, Input) ->
+    delete_id_mapping_workflow(Client, WorkflowName, Input, []).
+delete_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the `MatchingWorkflow' with a given name.
 %%
 %% This operation will succeed even if a workflow with the given name does
@@ -150,9 +228,9 @@ delete_matching_workflow(Client, WorkflowName, Input0, Options0) ->
 %% @doc Deletes the `SchemaMapping' with a given name.
 %%
 %% This operation will succeed even if a schema with the given name does not
-%% exist. This operation will fail if there is a
-%% `DataIntegrationWorkflow' object that references the
-%% `SchemaMapping' in the workflow's `InputSourceConfig'.
+%% exist. This operation will fail if there is a `MatchingWorkflow'
+%% object that references the `SchemaMapping' in the workflow's
+%% `InputSourceConfig'.
 delete_schema_mapping(Client, SchemaName, Input) ->
     delete_schema_mapping(Client, SchemaName, Input, []).
 delete_schema_mapping(Client, SchemaName, Input0, Options0) ->
@@ -174,6 +252,53 @@ delete_schema_mapping(Client, SchemaName, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the status, metrics, and errors (if there are any) that are
+%% associated with a job.
+get_id_mapping_job(Client, JobId, WorkflowName)
+  when is_map(Client) ->
+    get_id_mapping_job(Client, JobId, WorkflowName, #{}, #{}).
+
+get_id_mapping_job(Client, JobId, WorkflowName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_id_mapping_job(Client, JobId, WorkflowName, QueryMap, HeadersMap, []).
+
+get_id_mapping_job(Client, JobId, WorkflowName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the `IdMappingWorkflow' with a given name, if it exists.
+get_id_mapping_workflow(Client, WorkflowName)
+  when is_map(Client) ->
+    get_id_mapping_workflow(Client, WorkflowName, #{}, #{}).
+
+get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap, []).
+
+get_id_mapping_workflow(Client, WorkflowName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
 %% has been processed.
@@ -269,6 +394,63 @@ get_schema_mapping(Client, SchemaName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all ID mapping jobs for a given workflow.
+list_id_mapping_jobs(Client, WorkflowName)
+  when is_map(Client) ->
+    list_id_mapping_jobs(Client, WorkflowName, #{}, #{}).
+
+list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap, []).
+
+list_id_mapping_jobs(Client, WorkflowName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the `IdMappingWorkflows' that have been
+%% created for an Amazon Web Services account.
+list_id_mapping_workflows(Client)
+  when is_map(Client) ->
+    list_id_mapping_workflows(Client, #{}, #{}).
+
+list_id_mapping_workflows(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_id_mapping_workflows(Client, QueryMap, HeadersMap, []).
+
+list_id_mapping_workflows(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/idmappingworkflows"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all jobs for a given workflow.
 list_matching_jobs(Client, WorkflowName)
   when is_map(Client) ->
@@ -321,6 +503,36 @@ list_matching_workflows(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the `ProviderServices' that are available
+%% in this Amazon Web Services Region.
+list_provider_services(Client)
+  when is_map(Client) ->
+    list_provider_services(Client, #{}, #{}).
+
+list_provider_services(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_provider_services(Client, QueryMap, HeadersMap, []).
+
+list_provider_services(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/providerservices"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"providerName">>, maps:get(<<"providerName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -380,6 +592,32 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts the `IdMappingJob' of a workflow.
+%%
+%% The workflow must have previously been created using the
+%% `CreateIdMappingWorkflow' endpoint.
+start_id_mapping_job(Client, WorkflowName, Input) ->
+    start_id_mapping_job(Client, WorkflowName, Input, []).
+start_id_mapping_job(Client, WorkflowName, Input0, Options0) ->
+    Method = post,
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), "/jobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the `MatchingJob' of a workflow.
 %%
@@ -471,6 +709,33 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing `IdMappingWorkflow'.
+%%
+%% This method is identical to `CreateIdMappingWorkflow', except it uses
+%% an HTTP `PUT' request instead of a `POST' request, and the
+%% `IdMappingWorkflow' must already exist for the method to succeed.
+update_id_mapping_workflow(Client, WorkflowName, Input) ->
+    update_id_mapping_workflow(Client, WorkflowName, Input, []).
+update_id_mapping_workflow(Client, WorkflowName, Input0, Options0) ->
+    Method = put,
+    Path = ["/idmappingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing `MatchingWorkflow'.
 %%
 %% This method is identical to `CreateMatchingWorkflow', except it uses
@@ -481,6 +746,32 @@ update_matching_workflow(Client, WorkflowName, Input) ->
 update_matching_workflow(Client, WorkflowName, Input0, Options0) ->
     Method = put,
     Path = ["/matchingworkflows/", aws_util:encode_uri(WorkflowName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a schema mapping.
+%%
+%% A schema is immutable if it is being used by a workflow. Therefore, you
+%% can't update a schema mapping if it's associated with a workflow.
+update_schema_mapping(Client, SchemaName, Input) ->
+    update_schema_mapping(Client, SchemaName, Input, []).
+update_schema_mapping(Client, SchemaName, Input0, Options0) ->
+    Method = put,
+    Path = ["/schemas/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

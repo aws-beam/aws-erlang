@@ -15,10 +15,14 @@
 
 -export([batch_get_token_balance/2,
          batch_get_token_balance/3,
+         get_asset_contract/2,
+         get_asset_contract/3,
          get_token_balance/2,
          get_token_balance/3,
          get_transaction/2,
          get_transaction/3,
+         list_asset_contracts/2,
+         list_asset_contracts/3,
          list_token_balances/2,
          list_token_balances/3,
          list_transaction_events/2,
@@ -33,7 +37,7 @@
 %%====================================================================
 
 %% @doc Gets the token balance for a batch of tokens by using the
-%% `GetTokenBalance' action for every token in the request.
+%% `BatchGetTokenBalance' action for every token in the request.
 %%
 %% Only the native tokens BTC,ETH, and the ERC-20, ERC-721, and ERC 1155
 %% token standards are supported.
@@ -42,6 +46,35 @@ batch_get_token_balance(Client, Input) ->
 batch_get_token_balance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batch-get-token-balance"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the information about a specific contract deployed on the
+%% blockchain.
+%%
+%% The Bitcoin blockchain networks do not support this operation.
+%%
+%% Metadata is currently only available for some `ERC-20' contracts.
+%% Metadata will be available for additional contracts in the future.
+get_asset_contract(Client, Input) ->
+    get_asset_contract(Client, Input, []).
+get_asset_contract(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-asset-contract"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -109,9 +142,35 @@ get_transaction(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This action returns the following for a given a blockchain network:
+%% @doc Lists all the contracts for a given contract type deployed by an
+%% address (either a contract address or a wallet address).
 %%
-%% <ul> <li> Lists all token balances owned by an address (either a contact
+%% The Bitcoin blockchain networks do not support this operation.
+list_asset_contracts(Client, Input) ->
+    list_asset_contracts(Client, Input, []).
+list_asset_contracts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-asset-contracts"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This action returns the following for a given blockchain network:
+%%
+%% <ul> <li> Lists all token balances owned by an address (either a contract
 %% address or a wallet address).
 %%
 %% </li> <li> Lists all token balances for all tokens created by a contract.

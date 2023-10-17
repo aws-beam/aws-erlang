@@ -1030,7 +1030,7 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Contains information for custom domain associations for a cluster.
+%% @doc Contains information about custom domain associations for a cluster.
 describe_custom_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_domain_associations(Client, Input, []).

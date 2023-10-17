@@ -1482,7 +1482,7 @@ start_service_software_update(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
-%% Service domain.sl
+%% Service domain.
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 update_domain_config(Client, DomainName, Input0, Options0) ->
