@@ -33,6 +33,9 @@
          describe_safety_rule/2,
          describe_safety_rule/4,
          describe_safety_rule/5,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          list_associated_route53_health_checks/2,
          list_associated_route53_health_checks/4,
          list_associated_route53_health_checks/5,
@@ -384,6 +387,29 @@ describe_safety_rule(Client, SafetyRuleArn, QueryMap, HeadersMap)
 describe_safety_rule(Client, SafetyRuleArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/safetyrule/", aws_util:encode_uri(SafetyRuleArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get information about the resource policy for a cluster.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resourcePolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

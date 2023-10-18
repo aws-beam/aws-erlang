@@ -14,6 +14,8 @@
          create_cluster_v2/3,
          create_configuration/2,
          create_configuration/3,
+         create_replicator/2,
+         create_replicator/3,
          create_vpc_connection/2,
          create_vpc_connection/3,
          delete_cluster/3,
@@ -22,6 +24,8 @@
          delete_cluster_policy/4,
          delete_configuration/3,
          delete_configuration/4,
+         delete_replicator/3,
+         delete_replicator/4,
          delete_vpc_connection/3,
          delete_vpc_connection/4,
          describe_cluster/2,
@@ -42,6 +46,9 @@
          describe_configuration_revision/3,
          describe_configuration_revision/5,
          describe_configuration_revision/6,
+         describe_replicator/2,
+         describe_replicator/4,
+         describe_replicator/5,
          describe_vpc_connection/2,
          describe_vpc_connection/4,
          describe_vpc_connection/5,
@@ -81,6 +88,9 @@
          list_nodes/2,
          list_nodes/4,
          list_nodes/5,
+         list_replicators/1,
+         list_replicators/3,
+         list_replicators/4,
          list_scram_secrets/2,
          list_scram_secrets/4,
          list_scram_secrets/5,
@@ -116,6 +126,8 @@
          update_connectivity/4,
          update_monitoring/3,
          update_monitoring/4,
+         update_replication_info/3,
+         update_replication_info/4,
          update_security/3,
          update_security/4,
          update_storage/3,
@@ -243,6 +255,29 @@ create_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new Kafka Replicator.
+create_replicator(Client, Input) ->
+    create_replicator(Client, Input, []).
+create_replicator(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/replication/v1/replicators"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Amazon MSK VPC connection.
 create_vpc_connection(Client, Input) ->
     create_vpc_connection(Client, Input, []).
@@ -338,6 +373,30 @@ delete_configuration(Client, Arn, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a replicator.
+delete_replicator(Client, ReplicatorArn, Input) ->
+    delete_replicator(Client, ReplicatorArn, Input, []).
+delete_replicator(Client, ReplicatorArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"currentVersion">>, <<"CurrentVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon MSK VPC connection specified in your request.
@@ -493,6 +552,30 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap)
 describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), "/revisions/", aws_util:encode_uri(Revision), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a description of the Kafka Replicator whose Amazon Resource
+%% Name (ARN) is specified in the request.
+describe_replicator(Client, ReplicatorArn)
+  when is_map(Client) ->
+    describe_replicator(Client, ReplicatorArn, #{}, #{}).
+
+describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, []).
+
+describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -853,6 +936,35 @@ list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the replicators.
+list_replicators(Client)
+  when is_map(Client) ->
+    list_replicators(Client, #{}, #{}).
+
+list_replicators(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_replicators(Client, QueryMap, HeadersMap, []).
+
+list_replicators(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/replication/v1/replicators"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"replicatorNameFilter">>, maps:get(<<"replicatorNameFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1235,6 +1347,29 @@ update_monitoring(Client, ClusterArn, Input) ->
 update_monitoring(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates replication info of a replicator.
+update_replication_info(Client, ReplicatorArn, Input) ->
+    update_replication_info(Client, ReplicatorArn, Input, []).
+update_replication_info(Client, ReplicatorArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/replication/v1/replicators/", aws_util:encode_uri(ReplicatorArn), "/replication-info"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
