@@ -585,30 +585,13 @@ stop_replication_to_replica(Client, Input, Options)
 %% metadata. They are not associated with specific versions of the secret.
 %% This operation appends tags to the existing list of tags.
 %%
-%% The following restrictions apply to tags:
+%% For tag quotas and naming restrictions, see Service quotas for Tagging in
+%% the Amazon Web Services General Reference guide.
 %%
-%% <ul> <li> Maximum number of tags per secret: 50
-%%
-%% </li> <li> Maximum key length: 127 Unicode characters in UTF-8
-%%
-%% </li> <li> Maximum value length: 255 Unicode characters in UTF-8
-%%
-%% </li> <li> Tag keys and values are case sensitive.
-%%
-%% </li> <li> Do not use the `aws:' prefix in your tag names or values
-%% because Amazon Web Services reserves it for Amazon Web Services use. You
-%% can't edit or delete tag names or values with this prefix. Tags with
-%% this prefix do not count against your tags per secret limit.
-%%
-%% </li> <li> If you use your tagging schema across multiple services and
-%% resources, other services might have restrictions on allowed characters.
-%% Generally allowed characters: letters, spaces, and numbers representable
-%% in UTF-8, plus the following special characters: + - = . _ : / @.
-%%
-%% </li> </ul> If you use tags as part of your security strategy, then adding
-%% or removing a tag can change permissions. If successfully completing this
-%% operation would result in you losing your permissions for this secret,
-%% then the operation is blocked and returns an Access Denied error.
+%% If you use tags as part of your security strategy, then adding or removing
+%% a tag can change permissions. If successfully completing this operation
+%% would result in you losing your permissions for this secret, then the
+%% operation is blocked and returns an Access Denied error.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because

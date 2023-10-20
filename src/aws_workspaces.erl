@@ -358,7 +358,8 @@ create_workspace_image(Client, Input, Options)
 %% Core. Contact your account team to be allow-listed to use this value. For
 %% more information, see Amazon WorkSpaces Core.
 %%
-%% PCoIP is only available for Windows bundles.
+%% You don't need to specify the `PCOIP' protocol for Linux bundles
+%% because `WSP' is the default protocol for those bundles.
 create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).

@@ -86,6 +86,9 @@
          get_compatible_versions/1,
          get_compatible_versions/3,
          get_compatible_versions/4,
+         get_domain_maintenance_status/3,
+         get_domain_maintenance_status/5,
+         get_domain_maintenance_status/6,
          get_package_version_history/2,
          get_package_version_history/4,
          get_package_version_history/5,
@@ -95,6 +98,9 @@
          get_upgrade_status/2,
          get_upgrade_status/4,
          get_upgrade_status/5,
+         list_domain_maintenances/2,
+         list_domain_maintenances/4,
+         list_domain_maintenances/5,
          list_domain_names/1,
          list_domain_names/3,
          list_domain_names/4,
@@ -133,6 +139,8 @@
          remove_tags/3,
          revoke_vpc_endpoint_access/3,
          revoke_vpc_endpoint_access/4,
+         start_domain_maintenance/3,
+         start_domain_maintenance/4,
          start_service_software_update/2,
          start_service_software_update/3,
          update_domain_config/3,
@@ -975,6 +983,33 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the status of the maintenance action.
+get_domain_maintenance_status(Client, DomainName, MaintenanceId)
+  when is_map(Client) ->
+    get_domain_maintenance_status(Client, DomainName, MaintenanceId, #{}, #{}).
+
+get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, []).
+
+get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maintenanceId">>, MaintenanceId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of Amazon OpenSearch Service package versions, along
 %% with their creation time, commit message, and plugin properties (if the
 %% package is a zip plugin package).
@@ -1057,6 +1092,36 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the list of the maintenance action.
+list_domain_maintenances(Client, DomainName)
+  when is_map(Client) ->
+    list_domain_maintenances(Client, DomainName, #{}, #{}).
+
+list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenances"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"action">>, maps:get(<<"action">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1437,6 +1502,31 @@ revoke_vpc_endpoint_access(Client, DomainName, Input) ->
 revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the node maintenance (Node restart, Node reboot,
+%% Opensearch/Elasticsearch process restart, Dashboard/kibana restart) on the
+%% data node.
+start_domain_maintenance(Client, DomainName, Input) ->
+    start_domain_maintenance(Client, DomainName, Input, []).
+start_domain_maintenance(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/domainMaintenance"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

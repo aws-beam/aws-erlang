@@ -222,7 +222,7 @@ associate_budget_with_resource(Client, Input, Options)
 %% parameters are required.
 %%
 %% You can associate a maximum of 10 Principals with a portfolio using
-%% `PrincipalType' as `IAM_PATTERN'
+%% `PrincipalType' as `IAM_PATTERN'.
 %%
 %% When you associate a principal with portfolio, a potential privilege
 %% escalation path may occur when that portfolio is then shared with other

@@ -121,6 +121,11 @@
 %% @doc Cancels a Gremlin query.
 %%
 %% See Gremlin query cancellation for more information.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelQuery IAM action in
+%% that cluster.
 cancel_gremlin_query(Client, QueryId, Input) ->
     cancel_gremlin_query(Client, QueryId, Input, []).
 cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
@@ -145,9 +150,13 @@ cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
 
 %% @doc Cancels a specified load job.
 %%
-%% This is an HTTP `DELETE' request.
+%% This is an HTTP `DELETE' request. See Neptune Loader Get-Status API
+%% for more information.
 %%
-%% See Neptune Loader Get-Status API for more information.
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelLoaderJob IAM action in
+%% that cluster..
 cancel_loader_job(Client, LoadId, Input) ->
     cancel_loader_job(Client, LoadId, Input, []).
 cancel_loader_job(Client, LoadId, Input0, Options0) ->
@@ -173,6 +182,11 @@ cancel_loader_job(Client, LoadId, Input0, Options0) ->
 %% @doc Cancels a Neptune ML data processing job.
 %%
 %% See The `dataprocessing' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLDataProcessingJob IAM
+%% action in that cluster.
 cancel_ml_data_processing_job(Client, Id, Input) ->
     cancel_ml_data_processing_job(Client, Id, Input, []).
 cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
@@ -200,6 +214,11 @@ cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
 %% @doc Cancels a Neptune ML model training job.
 %%
 %% See Model training using the `modeltraining' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLModelTrainingJob IAM
+%% action in that cluster.
 cancel_ml_model_training_job(Client, Id, Input) ->
     cancel_ml_model_training_job(Client, Id, Input, []).
 cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
@@ -227,6 +246,11 @@ cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
 %% @doc Cancels a specified model transform job.
 %%
 %% See Use a trained model to generate new model artifacts.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLModelTransformJob IAM
+%% action in that cluster.
 cancel_ml_model_transform_job(Client, Id, Input) ->
     cancel_ml_model_transform_job(Client, Id, Input, []).
 cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
@@ -254,6 +278,11 @@ cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
 %% @doc Cancels a specified openCypher query.
 %%
 %% See Neptune openCypher status endpoint for more information.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelQuery IAM action in
+%% that cluster.
 cancel_open_cypher_query(Client, QueryId, Input) ->
     cancel_open_cypher_query(Client, QueryId, Input, []).
 cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
@@ -281,6 +310,11 @@ cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
 %% specific model that the model-training process constructed.
 %%
 %% See Managing inference endpoints using the endpoints command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CreateMLEndpoint IAM action
+%% in that cluster.
 create_ml_endpoint(Client, Input) ->
     create_ml_endpoint(Client, Input, []).
 create_ml_endpoint(Client, Input0, Options0) ->
@@ -306,6 +340,11 @@ create_ml_endpoint(Client, Input0, Options0) ->
 %% @doc Cancels the creation of a Neptune ML inference endpoint.
 %%
 %% See Managing inference endpoints using the endpoints command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteMLEndpoint IAM action
+%% in that cluster.
 delete_ml_endpoint(Client, Id, Input) ->
     delete_ml_endpoint(Client, Id, Input, []).
 delete_ml_endpoint(Client, Id, Input0, Options0) ->
@@ -331,6 +370,11 @@ delete_ml_endpoint(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes statistics for Gremlin and openCypher (property graph) data.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteStatistics IAM action
+%% in that cluster.
 delete_propertygraph_statistics(Client, Input) ->
     delete_propertygraph_statistics(Client, Input, []).
 delete_propertygraph_statistics(Client, Input0, Options0) ->
@@ -354,6 +398,11 @@ delete_propertygraph_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes SPARQL statistics
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteStatistics IAM action
+%% in that cluster.
 delete_sparql_statistics(Client, Input) ->
     delete_sparql_statistics(Client, Input, []).
 delete_sparql_statistics(Client, Input0, Options0) ->
@@ -385,6 +434,11 @@ delete_sparql_statistics(Client, Input0, Options0) ->
 %% include when calling `ExecuteFastReset' again with `action' set to
 %% `performDatabaseReset'. See Empty an Amazon Neptune DB cluster using
 %% the fast reset API.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ResetDatabase IAM action in
+%% that cluster.
 execute_fast_reset(Client, Input) ->
     execute_fast_reset(Client, Input, []).
 execute_fast_reset(Client, Input0, Options0) ->
@@ -419,6 +473,22 @@ execute_fast_reset(Client, Input0, Options0) ->
 %% evaluation and execution bottlenecks and to tune your query, as explained
 %% in Tuning Gremlin queries. You can also use query hints to improve query
 %% execution plans.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows one of the following IAM actions in that
+%% cluster, depending on the query:
+%%
+%% <ul> <li> neptune-db:ReadDataViaQuery
+%%
+%% </li> <li> neptune-db:WriteDataViaQuery
+%%
+%% </li> <li> neptune-db:DeleteDataViaQuery
+%%
+%% </li> </ul> Note that the neptune-db:QueryLanguage:Gremlin IAM condition
+%% key can be used in the policy document to restrict the use of Gremlin
+%% queries (see Condition keys available in Neptune IAM data-access policy
+%% statements).
 execute_gremlin_explain_query(Client, Input) ->
     execute_gremlin_explain_query(Client, Input, []).
 execute_gremlin_explain_query(Client, Input0, Options0) ->
@@ -446,6 +516,15 @@ execute_gremlin_explain_query(Client, Input0, Options0) ->
 %% output.
 %%
 %% See Gremlin profile API in Neptune for details.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ReadDataViaQuery IAM action
+%% in that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Gremlin IAM condition key can be
+%% used in the policy document to restrict the use of Gremlin queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 execute_gremlin_profile_query(Client, Input) ->
     execute_gremlin_profile_query(Client, Input, []).
 execute_gremlin_profile_query(Client, Input0, Options0) ->
@@ -474,6 +553,22 @@ execute_gremlin_profile_query(Client, Input0, Options0) ->
 %% can use the Gremlin traversal language to query the graph, as described
 %% under The Graph in the Apache TinkerPop3 documentation. More details can
 %% also be found in Accessing a Neptune graph with Gremlin.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that enables one of the following IAM actions in that
+%% cluster, depending on the query:
+%%
+%% <ul> <li> neptune-db:ReadDataViaQuery
+%%
+%% </li> <li> neptune-db:WriteDataViaQuery
+%%
+%% </li> <li> neptune-db:DeleteDataViaQuery
+%%
+%% </li> </ul> Note that the neptune-db:QueryLanguage:Gremlin IAM condition
+%% key can be used in the policy document to restrict the use of Gremlin
+%% queries (see Condition keys available in Neptune IAM data-access policy
+%% statements).
 execute_gremlin_query(Client, Input) ->
     execute_gremlin_query(Client, Input, []).
 execute_gremlin_query(Client, Input0, Options0) ->
@@ -501,6 +596,15 @@ execute_gremlin_query(Client, Input0, Options0) ->
 %% @doc Executes an openCypher `explain' request.
 %%
 %% See The openCypher explain feature for more information.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ReadDataViaQuery IAM action
+%% in that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% used in the policy document to restrict the use of openCypher queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 execute_open_cypher_explain_query(Client, Input) ->
     execute_open_cypher_explain_query(Client, Input, []).
 execute_open_cypher_explain_query(Client, Input0, Options0) ->
@@ -523,7 +627,12 @@ execute_open_cypher_explain_query(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Check the status of the graph database on the host.
+%% @doc Retrieves the status of the graph database on the host.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetEngineStatus IAM action in
+%% that cluster.
 get_engine_status(Client)
   when is_map(Client) ->
     get_engine_status(Client, #{}, #{}).
@@ -547,6 +656,15 @@ get_engine_status(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the status of a specified Gremlin query.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
+%% that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Gremlin IAM condition key can be
+%% used in the policy document to restrict the use of Gremlin queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 get_gremlin_query_status(Client, QueryId)
   when is_map(Client) ->
     get_gremlin_query_status(Client, QueryId, #{}, #{}).
@@ -572,6 +690,12 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a specified data processing job.
 %%
 %% See The `dataprocessing' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the
+%% neptune-db:neptune-db:GetMLDataProcessingJobStatus IAM action in that
+%% cluster.
 get_ml_data_processing_job(Client, Id)
   when is_map(Client) ->
     get_ml_data_processing_job(Client, Id, #{}, #{}).
@@ -601,6 +725,11 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves details about an inference endpoint.
 %%
 %% See Managing inference endpoints using the endpoints command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLEndpointStatus IAM
+%% action in that cluster.
 get_ml_endpoint(Client, Id)
   when is_map(Client) ->
     get_ml_endpoint(Client, Id, #{}, #{}).
@@ -630,6 +759,11 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a Neptune ML model training job.
 %%
 %% See Model training using the `modeltraining' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLModelTrainingJobStatus
+%% IAM action in that cluster.
 get_ml_model_training_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_training_job(Client, Id, #{}, #{}).
@@ -659,6 +793,11 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified model transform job.
 %%
 %% See Use a trained model to generate new model artifacts.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLModelTransformJobStatus
+%% IAM action in that cluster.
 get_ml_model_transform_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_transform_job(Client, Id, #{}, #{}).
@@ -686,6 +825,15 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status of a specified openCypher query.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
+%% that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% used in the policy document to restrict the use of openCypher queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 get_open_cypher_query_status(Client, QueryId)
   when is_map(Client) ->
     get_open_cypher_query_status(Client, QueryId, #{}, #{}).
@@ -709,6 +857,11 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets property graph statistics (Gremlin and openCypher).
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStatisticsStatus IAM
+%% action in that cluster.
 get_propertygraph_statistics(Client)
   when is_map(Client) ->
     get_propertygraph_statistics(Client, #{}, #{}).
@@ -732,6 +885,11 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a graph summary for a property graph.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetGraphSummary IAM action in
+%% that cluster.
 get_propertygraph_summary(Client)
   when is_map(Client) ->
     get_propertygraph_summary(Client, #{}, #{}).
@@ -759,6 +917,11 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a graph summary for an RDF graph.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetGraphSummary IAM action in
+%% that cluster.
 get_r_d_f_graph_summary(Client)
   when is_map(Client) ->
     get_r_d_f_graph_summary(Client, #{}, #{}).
@@ -820,6 +983,15 @@ get_sparql_statistics(Client, QueryMap, HeadersMap, Options0)
 %% `1'.
 %%
 %% See Capturing graph changes in real time using Neptune streams.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStreamRecords IAM action
+%% in that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Sparql IAM condition key can be
+%% used in the policy document to restrict the use of SPARQL queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 get_sparql_stream(Client)
   when is_map(Client) ->
     get_sparql_stream(Client, #{}, #{}).
@@ -856,6 +1028,15 @@ get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists active Gremlin queries.
 %%
 %% See Gremlin query status API for details about the output.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
+%% that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Gremlin IAM condition key can be
+%% used in the policy document to restrict the use of Gremlin queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 list_gremlin_queries(Client)
   when is_map(Client) ->
     list_gremlin_queries(Client, #{}, #{}).
@@ -883,6 +1064,11 @@ list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the `loadIds' for all active loader jobs.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListLoaderJobs IAM action in
+%% that cluster..
 list_loader_jobs(Client)
   when is_map(Client) ->
     list_loader_jobs(Client, #{}, #{}).
@@ -914,6 +1100,11 @@ list_loader_jobs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% See Listing active data-processing jobs using the Neptune ML
 %% dataprocessing command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLDataProcessingJobs IAM
+%% action in that cluster.
 list_ml_data_processing_jobs(Client)
   when is_map(Client) ->
     list_ml_data_processing_jobs(Client, #{}, #{}).
@@ -944,6 +1135,11 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists existing inference endpoints.
 %%
 %% See Managing inference endpoints using the endpoints command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLEndpoints IAM action in
+%% that cluster.
 list_ml_endpoints(Client)
   when is_map(Client) ->
     list_ml_endpoints(Client, #{}, #{}).
@@ -974,6 +1170,11 @@ list_ml_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists Neptune ML model-training jobs.
 %%
 %% See Model training using the `modeltraining' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the
+%% neptune-db:neptune-db:ListMLModelTrainingJobs IAM action in that cluster.
 list_ml_model_training_jobs(Client)
   when is_map(Client) ->
     list_ml_model_training_jobs(Client, #{}, #{}).
@@ -1004,6 +1205,11 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of model transform job IDs.
 %%
 %% See Use a trained model to generate new model artifacts.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLModelTransformJobs IAM
+%% action in that cluster.
 list_ml_model_transform_jobs(Client)
   when is_map(Client) ->
     list_ml_model_transform_jobs(Client, #{}, #{}).
@@ -1034,6 +1240,15 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists active openCypher queries.
 %%
 %% See Neptune openCypher status endpoint for more information.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
+%% that cluster.
+%%
+%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% used in the policy document to restrict the use of openCypher queries (see
+%% Condition keys available in Neptune IAM data-access policy statements).
 list_open_cypher_queries(Client)
   when is_map(Client) ->
     list_open_cypher_queries(Client, #{}, #{}).
@@ -1061,6 +1276,11 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Manages the generation and use of property graph statistics.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ManageStatistics IAM action
+%% in that cluster.
 manage_propertygraph_statistics(Client, Input) ->
     manage_propertygraph_statistics(Client, Input, []).
 manage_propertygraph_statistics(Client, Input0, Options0) ->
@@ -1084,6 +1304,11 @@ manage_propertygraph_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Manages the generation and use of RDF graph statistics.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ManageStatistics IAM action
+%% in that cluster.
 manage_sparql_statistics(Client, Input) ->
     manage_sparql_statistics(Client, Input, []).
 manage_sparql_statistics(Client, Input0, Options0) ->
@@ -1110,6 +1335,11 @@ manage_sparql_statistics(Client, Input0, Options0) ->
 %% bucket into a Neptune DB instance.
 %%
 %% See Using the Amazon Neptune Bulk Loader to Ingest Data.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartLoaderJob IAM action in
+%% that cluster.
 start_loader_job(Client, Input) ->
     start_loader_job(Client, Input, []).
 start_loader_job(Client, Input0, Options0) ->
@@ -1136,6 +1366,11 @@ start_loader_job(Client, Input0, Options0) ->
 %% data exported from Neptune for training.
 %%
 %% See The `dataprocessing' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartMLModelDataProcessingJob
+%% IAM action in that cluster.
 start_ml_data_processing_job(Client, Input) ->
     start_ml_data_processing_job(Client, Input, []).
 start_ml_data_processing_job(Client, Input0, Options0) ->
@@ -1161,6 +1396,11 @@ start_ml_data_processing_job(Client, Input0, Options0) ->
 %% @doc Creates a new Neptune ML model training job.
 %%
 %% See Model training using the `modeltraining' command.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartMLModelTrainingJob IAM
+%% action in that cluster.
 start_ml_model_training_job(Client, Input) ->
     start_ml_model_training_job(Client, Input, []).
 start_ml_model_training_job(Client, Input0, Options0) ->
@@ -1186,6 +1426,11 @@ start_ml_model_training_job(Client, Input0, Options0) ->
 %% @doc Creates a new model transform job.
 %%
 %% See Use a trained model to generate new model artifacts.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartMLModelTransformJob IAM
+%% action in that cluster.
 start_ml_model_transform_job(Client, Input) ->
     start_ml_model_transform_job(Client, Input, []).
 start_ml_model_transform_job(Client, Input0, Options0) ->
