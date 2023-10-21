@@ -66,6 +66,8 @@
          delete_inventory/3,
          delete_maintenance_window/2,
          delete_maintenance_window/3,
+         delete_ops_item/2,
+         delete_ops_item/3,
          delete_ops_metadata/2,
          delete_ops_metadata/3,
          delete_parameter/2,
@@ -618,6 +620,39 @@ delete_maintenance_window(Client, Input)
 delete_maintenance_window(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMaintenanceWindow">>, Input, Options).
+
+%% @doc Delete an OpsItem.
+%%
+%% You must have permission in Identity and Access Management (IAM) to delete
+%% an OpsItem.
+%%
+%% Note the following important information about this operation.
+%%
+%% Deleting an OpsItem is irreversible. You can't restore a deleted
+%% OpsItem.
+%%
+%% This operation uses an eventual consistency model, which means the system
+%% can take a few minutes to complete this operation. If you delete an
+%% OpsItem and immediately call, for example, `GetOpsItem', the deleted
+%% OpsItem might still appear in the response.
+%%
+%% This operation is idempotent. The system doesn't throw an exception if
+%% you repeatedly call this operation for the same OpsItem. If the first call
+%% is successful, all additional calls return the same successful response as
+%% the first call.
+%%
+%% This operation doesn't support cross-account calls. A delegated
+%% administrator or management account can't delete OpsItems in other
+%% accounts, even if OpsCenter has been set up for cross-account
+%% administration. For more information about cross-account administration,
+%% see Setting up OpsCenter to centrally manage OpsItems across accounts in
+%% the Systems Manager User Guide.
+delete_ops_item(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ops_item(Client, Input, []).
+delete_ops_item(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOpsItem">>, Input, Options).
 
 %% @doc Delete OpsMetadata related to an application.
 delete_ops_metadata(Client, Input)

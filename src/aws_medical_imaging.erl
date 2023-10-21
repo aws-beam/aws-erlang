@@ -3,23 +3,24 @@
 
 %% @doc This is the AWS HealthImaging API Reference.
 %%
-%% AWS HealthImaging is an AWS service for storing, accessing, and analyzing
-%% medical images. For an introduction to the service, see the AWS
-%% HealthImaging Developer Guide .
+%% AWS HealthImaging is a HIPAA-eligible service that helps health care
+%% providers and their medical imaging ISV partners store, transform, and
+%% apply machine learning to medical images. For an introduction to the
+%% service, see the AWS HealthImaging Developer Guide .
 %%
 %% We recommend using one of the AWS Software Development Kits (SDKs) for
 %% your programming language, as they take care of request authentication,
 %% serialization, and connection management. For more information, see Tools
 %% to build on AWS.
 %%
-%% For information about using AWS HealthImaging API actions in one of the
+%% For information about using HealthImaging API actions in one of the
 %% language-specific AWS SDKs, refer to the See Also link at the end of each
 %% section that describes an API action or data type.
 %%
 %% The following sections list AWS HealthImaging API actions categorized
 %% according to functionality. Links are provided to actions within this
 %% Reference, along with links back to corresponding sections in the AWS
-%% HealthImaging Developer Guide so you can view console procedures and
+%% HealthImaging Developer Guide where you can view console procedures and
 %% CLI/SDK code examples.
 %%
 %% == Data store actions ==
@@ -367,8 +368,7 @@ get_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
         Result
     end.
 
-%% @doc List import jobs created by this AWS account for a specific data
-%% store.
+%% @doc List import jobs created for a specific data store.
 list_d_i_c_o_m_import_jobs(Client, DatastoreId)
   when is_map(Client) ->
     list_d_i_c_o_m_import_jobs(Client, DatastoreId, #{}, #{}).
@@ -397,7 +397,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List data stores created by this AWS account.
+%% @doc List data stores.
 list_datastores(Client)
   when is_map(Client) ->
     list_datastores(Client, #{}, #{}).
@@ -475,6 +475,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Search image sets based on defined input attributes.
+%%
+%% `SearchImageSets' accepts a single search query parameter and returns
+%% a paginated response of all image sets that have the matching criteria.
+%% All range queries must be input as `(lowerBound, upperBound)'.
+%%
+%% `SearchImageSets' uses the `updatedAt' field for sorting in
+%% decreasing order from latest to oldest.
 search_image_sets(Client, DatastoreId, Input) ->
     search_image_sets(Client, DatastoreId, Input, []).
 search_image_sets(Client, DatastoreId, Input0, Options0) ->

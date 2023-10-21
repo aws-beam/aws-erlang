@@ -89,6 +89,8 @@
 
 -export([associate_configuration_items_to_application/2,
          associate_configuration_items_to_application/3,
+         batch_delete_agents/2,
+         batch_delete_agents/3,
          batch_delete_import_data/2,
          batch_delete_import_data/3,
          create_application/2,
@@ -101,6 +103,8 @@
          delete_tags/3,
          describe_agents/2,
          describe_agents/3,
+         describe_batch_delete_configuration_task/2,
+         describe_batch_delete_configuration_task/3,
          describe_configurations/2,
          describe_configurations/3,
          describe_continuous_exports/2,
@@ -123,6 +127,8 @@
          list_configurations/3,
          list_server_neighbors/2,
          list_server_neighbors/3,
+         start_batch_delete_configuration_task/2,
+         start_batch_delete_configuration_task/3,
          start_continuous_export/2,
          start_continuous_export/3,
          start_data_collection_by_agent_ids/2,
@@ -151,6 +157,18 @@ associate_configuration_items_to_application(Client, Input)
 associate_configuration_items_to_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateConfigurationItemsToApplication">>, Input, Options).
+
+%% @doc Deletes one or more agents or collectors as specified by ID.
+%%
+%% Deleting an agent or collector does not delete the previously discovered
+%% data. To delete the data collected, use
+%% `StartBatchDeleteConfigurationTask'.
+batch_delete_agents(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_delete_agents(Client, Input, []).
+batch_delete_agents(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDeleteAgents">>, Input, Options).
 
 %% @doc Deletes one or more import tasks, each identified by their import ID.
 %%
@@ -222,6 +240,15 @@ describe_agents(Client, Input)
 describe_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgents">>, Input, Options).
+
+%% @doc Takes a unique deletion task identifier as input and returns metadata
+%% about a configuration deletion task.
+describe_batch_delete_configuration_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_batch_delete_configuration_task(Client, Input, []).
+describe_batch_delete_configuration_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBatchDeleteConfigurationTask">>, Input, Options).
 
 %% @doc Retrieves attributes for a list of configuration item IDs.
 %%
@@ -369,6 +396,17 @@ list_server_neighbors(Client, Input)
 list_server_neighbors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerNeighbors">>, Input, Options).
+
+%% @doc Takes a list of configurationId as input and starts an asynchronous
+%% deletion task to remove the configurationItems.
+%%
+%% Returns a unique deletion task identifier.
+start_batch_delete_configuration_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_batch_delete_configuration_task(Client, Input, []).
+start_batch_delete_configuration_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartBatchDeleteConfigurationTask">>, Input, Options).
 
 %% @doc Start the continuous flow of agent's discovered data into Amazon
 %% Athena.

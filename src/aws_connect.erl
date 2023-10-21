@@ -11,8 +11,8 @@
 %%
 %% There are limits to the number of Amazon Connect resources that you can
 %% create. There are also limits to the number of requests that you can make
-%% per second. For more information, see Amazon Connect Service Quotas in the
-%% Amazon Connect Administrator Guide.
+%% per second. For more information, seeP98941055 Amazon Connect Service
+%% Quotas in the Amazon Connect Administrator Guide.
 %%
 %% You can connect programmatically to an Amazon Web Services service by
 %% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
@@ -452,6 +452,8 @@
          update_participant_role_config/5,
          update_phone_number/3,
          update_phone_number/4,
+         update_phone_number_metadata/3,
+         update_phone_number_metadata/4,
          update_prompt/4,
          update_prompt/5,
          update_queue_hours_of_operation/4,
@@ -1296,7 +1298,7 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a traffic distribution group given an Amazon Connect instance
 %% that has been replicated.
 %%
-%% You can change the `SignInConfig' distribution only for a default
+%% The `SignInConfig' distribution is available only on a default
 %% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
 %% TrafficDistributionGroup data type). If you call
 %% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
@@ -1351,6 +1353,11 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user account for the specified Amazon Connect instance.
+%%
+%% Certain UserIdentityInfo parameters are required in some situations. For
+%% example, `Email' is required if you are using SAML for identity
+%% management. `FirstName' and `LastName' are required if you are
+%% using Amazon Connect or SAML for identity management.
 %%
 %% For information about how to create user accounts using the Amazon Connect
 %% console, see Add Users in the Amazon Connect Administrator Guide.
@@ -3022,7 +3029,15 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a token for federation.
+%% @doc Supports SAML sign-in for Amazon Connect.
+%%
+%% Retrieves a token for federation. The token is for the Amazon Connect user
+%% which corresponds to the IAM credentials that were used to invoke this
+%% action.
+%%
+%% For more information about how SAML sign-in works in Amazon Connect, see
+%% Configure SAML with IAM for Amazon Connect in the Amazon Connect
+%% Administrator Guide.
 %%
 %% This API doesn't support root users. If you try to invoke
 %% GetFederationToken with root credentials, an error message similar to the
@@ -3057,6 +3072,15 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% For a description of each historical metric, see Historical Metrics
 %% Definitions in the Amazon Connect Administrator Guide.
+%%
+%% We recommend using the GetMetricDataV2 API. It provides more flexibility,
+%% features, and the ability to query longer time ranges than
+%% `GetMetricData'. Use it to retrieve historical agent and contact
+%% metrics for the last 3 months, at varying intervals. You can also use it
+%% to build custom dashboards to measure historical queue and agent
+%% performance. For example, you can track the number of incoming contacts
+%% for the last 7 days, with data split by day, to see how contact volume
+%% changed per day of the week.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options0) ->
@@ -5002,7 +5026,48 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a flow to start a new task.
+%% @doc Initiates a flow to start a new task contact.
+%%
+%% For more information about task contacts, see Concepts: Tasks in Amazon
+%% Connect in the Amazon Connect Administrator Guide.
+%%
+%% When using `PreviousContactId' and `RelatedContactId' input
+%% parameters, note the following:
+%%
+%% <ul> <li> `PreviousContactId'
+%%
+%% <ul> <li> Any updates to user-defined task contact attributes on any
+%% contact linked through the same `PreviousContactId' will affect every
+%% contact in the chain.
+%%
+%% </li> <li> There can be a maximum of 12 linked task contacts in a chain.
+%% That is, 12 task contacts can be created that share the same
+%% `PreviousContactId'.
+%%
+%% </li> </ul> </li> <li> `RelatedContactId'
+%%
+%% <ul> <li> Copies contact attributes from the related task contact to the
+%% new contact.
+%%
+%% </li> <li> Any update on attributes in a new task contact does not update
+%% attributes on previous contact.
+%%
+%% </li> <li> There’s no limit on the number of task contacts that can be
+%% created that use the same `RelatedContactId'.
+%%
+%% </li> </ul> </li> </ul> In addition, when calling StartTaskContact include
+%% only one of these parameters: `ContactFlowID', `QuickConnectID',
+%% or `TaskTemplateID'. Only one parameter is required as long as the
+%% task template has a flow configured to run it. If more than one parameter
+%% is specified, or only the `TaskTemplateID' is specified but it does
+%% not have a flow configured, the request returns an error because Amazon
+%% Connect cannot identify the unique flow to run when the task is created.
+%%
+%% A `ServiceQuotaExceededException' occurs when the number of open tasks
+%% exceeds the active tasks quota or there are already 12 tasks referencing
+%% the same `PreviousContactId'. For more information about service
+%% quotas for task contacts, see Amazon Connect service quotas in the Amazon
+%% Connect Administrator Guide.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
@@ -5736,6 +5801,32 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a phone number’s metadata.
+%%
+%% To verify the status of a previous UpdatePhoneNumberMetadata operation,
+%% call the DescribePhoneNumber API.
+update_phone_number_metadata(Client, PhoneNumberId, Input) ->
+    update_phone_number_metadata(Client, PhoneNumberId, Input, []).
+update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
+    Method = put,
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a prompt.
 update_prompt(Client, InstanceId, PromptId, Input) ->
     update_prompt(Client, InstanceId, PromptId, Input, []).
@@ -6160,7 +6251,7 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
 %%
-%% You can change the `SignInConfig' distribution only for a default
+%% The `SignInConfig' distribution is available only on a default
 %% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
 %% TrafficDistributionGroup data type). If you call
 %% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
