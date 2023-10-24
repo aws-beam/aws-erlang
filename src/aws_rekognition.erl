@@ -229,6 +229,8 @@
          get_face_search/3,
          get_label_detection/2,
          get_label_detection/3,
+         get_media_analysis_job/2,
+         get_media_analysis_job/3,
          get_person_tracking/2,
          get_person_tracking/3,
          get_segment_detection/2,
@@ -245,6 +247,8 @@
          list_dataset_labels/3,
          list_faces/2,
          list_faces/3,
+         list_media_analysis_jobs/2,
+         list_media_analysis_jobs/3,
          list_project_policies/2,
          list_project_policies/3,
          list_stream_processors/2,
@@ -275,6 +279,8 @@
          start_face_search/3,
          start_label_detection/2,
          start_label_detection/3,
+         start_media_analysis_job/2,
+         start_media_analysis_job/3,
          start_person_tracking/2,
          start_person_tracking/3,
          start_project_version/2,
@@ -1533,6 +1539,16 @@ get_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLabelDetection">>, Input, Options).
 
+%% @doc Retrieves the results for a given media analysis job.
+%%
+%% Takes a `JobId' returned by StartMediaAnalysisJob.
+get_media_analysis_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_media_analysis_job(Client, Input, []).
+get_media_analysis_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMediaAnalysisJob">>, Input, Options).
+
 %% @doc Gets the path tracking results of a Amazon Rekognition Video analysis
 %% started by `StartPersonTracking'.
 %%
@@ -1840,6 +1856,16 @@ list_faces(Client, Input)
 list_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaces">>, Input, Options).
+
+%% @doc Returns a list of media analysis jobs.
+%%
+%% Results are sorted by `CreationTimestamp' in descending order.
+list_media_analysis_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_media_analysis_jobs(Client, Input, []).
+list_media_analysis_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMediaAnalysisJobs">>, Input, Options).
 
 %% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
@@ -2219,6 +2245,17 @@ start_label_detection(Client, Input)
 start_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLabelDetection">>, Input, Options).
+
+%% @doc Initiates a new media analysis job.
+%%
+%% Accepts a manifest file in an Amazon S3 bucket. The output is a manifest
+%% file and a summary of the manifest stored in the Amazon S3 bucket.
+start_media_analysis_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_media_analysis_job(Client, Input, []).
+start_media_analysis_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMediaAnalysisJob">>, Input, Options).
 
 %% @doc Starts the asynchronous tracking of a person's path in a stored
 %% video.
