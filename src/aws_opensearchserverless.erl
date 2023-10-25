@@ -17,12 +17,18 @@
 
 -export([batch_get_collection/2,
          batch_get_collection/3,
+         batch_get_effective_lifecycle_policy/2,
+         batch_get_effective_lifecycle_policy/3,
+         batch_get_lifecycle_policy/2,
+         batch_get_lifecycle_policy/3,
          batch_get_vpc_endpoint/2,
          batch_get_vpc_endpoint/3,
          create_access_policy/2,
          create_access_policy/3,
          create_collection/2,
          create_collection/3,
+         create_lifecycle_policy/2,
+         create_lifecycle_policy/3,
          create_security_config/2,
          create_security_config/3,
          create_security_policy/2,
@@ -33,6 +39,8 @@
          delete_access_policy/3,
          delete_collection/2,
          delete_collection/3,
+         delete_lifecycle_policy/2,
+         delete_lifecycle_policy/3,
          delete_security_config/2,
          delete_security_config/3,
          delete_security_policy/2,
@@ -53,6 +61,8 @@
          list_access_policies/3,
          list_collections/2,
          list_collections/3,
+         list_lifecycle_policies/2,
+         list_lifecycle_policies/3,
          list_security_configs/2,
          list_security_configs/3,
          list_security_policies/2,
@@ -71,6 +81,8 @@
          update_account_settings/3,
          update_collection/2,
          update_collection/3,
+         update_lifecycle_policy/2,
+         update_lifecycle_policy/3,
          update_security_config/2,
          update_security_config/3,
          update_security_policy/2,
@@ -95,6 +107,28 @@ batch_get_collection(Client, Input)
 batch_get_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCollection">>, Input, Options).
+
+%% @doc Returns a list of successful and failed retrievals for the OpenSearch
+%% Serverless indexes.
+%%
+%% For more information, see Viewing data lifecycle policies.
+batch_get_effective_lifecycle_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_effective_lifecycle_policy(Client, Input, []).
+batch_get_effective_lifecycle_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetEffectiveLifecyclePolicy">>, Input, Options).
+
+%% @doc Returns one or more configured OpenSearch Serverless lifecycle
+%% policies.
+%%
+%% For more information, see Viewing data lifecycle policies.
+batch_get_lifecycle_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_lifecycle_policy(Client, Input, []).
+batch_get_lifecycle_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetLifecyclePolicy">>, Input, Options).
 
 %% @doc Returns attributes for one or more VPC endpoints associated with the
 %% current account.
@@ -131,6 +165,19 @@ create_collection(Client, Input)
 create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
+
+%% @doc Creates a lifecyle policy to be applied to OpenSearch Serverless
+%% indexes.
+%%
+%% Lifecycle policies define the number of days or hours to retain the data
+%% on an OpenSearch Serverless index. For more information, see Creating data
+%% lifecycle policies.
+create_lifecycle_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_lifecycle_policy(Client, Input, []).
+create_lifecycle_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLifecyclePolicy">>, Input, Options).
 
 %% @doc Specifies a security configuration for OpenSearch Serverless.
 %%
@@ -190,6 +237,16 @@ delete_collection(Client, Input)
 delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
+
+%% @doc Deletes an OpenSearch Serverless lifecycle policy.
+%%
+%% For more information, see Deleting data lifecycle policies.
+delete_lifecycle_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_lifecycle_policy(Client, Input, []).
+delete_lifecycle_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
 
 %% @doc Deletes a security configuration for OpenSearch Serverless.
 %%
@@ -296,6 +353,16 @@ list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
 
+%% @doc Returns a list of OpenSearch Serverless lifecycle policies.
+%%
+%% For more information, see Viewing data lifecycle policies.
+list_lifecycle_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_lifecycle_policies(Client, Input, []).
+list_lifecycle_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLifecyclePolicies">>, Input, Options).
+
 %% @doc Returns information about configured OpenSearch Serverless security
 %% configurations.
 %%
@@ -392,6 +459,16 @@ update_collection(Client, Input)
 update_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCollection">>, Input, Options).
+
+%% @doc Updates an OpenSearch Serverless access policy.
+%%
+%% For more information, see Updating data lifecycle policies.
+update_lifecycle_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_lifecycle_policy(Client, Input, []).
+update_lifecycle_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLifecyclePolicy">>, Input, Options).
 
 %% @doc Updates a security configuration for OpenSearch Serverless.
 %%

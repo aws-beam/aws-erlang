@@ -43,6 +43,8 @@
          get_server_strategies/2,
          get_server_strategies/4,
          get_server_strategies/5,
+         list_analyzable_servers/2,
+         list_analyzable_servers/3,
          list_application_components/2,
          list_application_components/3,
          list_collectors/1,
@@ -311,6 +313,30 @@ get_server_strategies(Client, ServerId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of all the servers fetched from customer vCenter
+%% using Strategy Recommendation Collector.
+list_analyzable_servers(Client, Input) ->
+    list_analyzable_servers(Client, Input, []).
+list_analyzable_servers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-analyzable-servers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the application components (processes).
 list_application_components(Client, Input) ->

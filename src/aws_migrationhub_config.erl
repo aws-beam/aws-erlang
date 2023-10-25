@@ -26,6 +26,8 @@
 
 -export([create_home_region_control/2,
          create_home_region_control/3,
+         delete_home_region_control/2,
+         delete_home_region_control/3,
          describe_home_region_controls/2,
          describe_home_region_controls/3,
          get_home_region/2,
@@ -44,6 +46,18 @@ create_home_region_control(Client, Input)
 create_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHomeRegionControl">>, Input, Options).
+
+%% @doc This operation deletes the home region configuration for the calling
+%% account.
+%%
+%% The operation does not delete discovery or migration tracking data in the
+%% home region.
+delete_home_region_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_home_region_control(Client, Input, []).
+delete_home_region_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteHomeRegionControl">>, Input, Options).
 
 %% @doc This API permits filtering on the `ControlId' and
 %% `HomeRegion' fields.
