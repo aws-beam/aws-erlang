@@ -136,10 +136,10 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 %%
 %% &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;customer_id&lt;/code&gt; - You
 %% must provide the full customer profile ARN in this format:
-%% &lt;code&gt;arn:aws:profile:your AWS Region:your AWS account
-%% ID:domains/profiles domain name/profiles/profile ID&lt;/code&gt;
+%% &lt;code&gt;arn:aws:profile:your_AWS_Region:your_AWS_account
+%% ID:domains/your_profiles_domain_name/profiles/profile_ID&lt;/code&gt;
 %% &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;title&lt;/code&gt;
-%% &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/note&gt;
+%% &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
 create_case(Client, DomainId, Input) ->
     create_case(Client, DomainId, Input, []).
 create_case(Client, DomainId, Input0, Options0) ->
@@ -639,7 +639,10 @@ list_templates(Client, DomainId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc API for adding case event publishing configuration
+%% @doc Adds case event publishing configuration.
+%%
+%% For a complete list of fields you can add to the event message, see Create
+%% case fields in the Amazon Connect Administrator Guide
 put_case_event_configuration(Client, DomainId, Input) ->
     put_case_event_configuration(Client, DomainId, Input, []).
 put_case_event_configuration(Client, DomainId, Input0, Options0) ->
