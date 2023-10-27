@@ -111,6 +111,8 @@
          delete_hsm_configuration/3,
          delete_partner/2,
          delete_partner/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_scheduled_action/2,
          delete_scheduled_action/3,
          delete_snapshot_copy_grant/2,
@@ -167,6 +169,8 @@
          describe_hsm_client_certificates/3,
          describe_hsm_configurations/2,
          describe_hsm_configurations/3,
+         describe_inbound_integrations/2,
+         describe_inbound_integrations/3,
          describe_logging_status/2,
          describe_logging_status/3,
          describe_node_configuration_options/2,
@@ -215,6 +219,8 @@
          get_reserved_node_exchange_configuration_options/3,
          get_reserved_node_exchange_offerings/2,
          get_reserved_node_exchange_offerings/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          modify_aqua_configuration/2,
          modify_aqua_configuration/3,
          modify_authentication_profile/2,
@@ -253,6 +259,8 @@
          pause_cluster/3,
          purchase_reserved_node_offering/2,
          purchase_reserved_node_offering/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          reboot_cluster/2,
          reboot_cluster/3,
          reject_data_share/2,
@@ -793,6 +801,14 @@ delete_partner(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartner">>, Input, Options).
 
+%% @doc Deletes the resource policy for a specified resource.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Deletes a scheduled action.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1186,6 +1202,14 @@ describe_hsm_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHsmConfigurations">>, Input, Options).
 
+%% @doc Returns a list of inbound integrations.
+describe_inbound_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inbound_integrations(Client, Input, []).
+describe_inbound_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInboundIntegrations">>, Input, Options).
+
 %% @doc Describes whether information, such as queries and connection
 %% attempts, is being logged for the specified Amazon Redshift cluster.
 describe_logging_status(Client, Input)
@@ -1523,6 +1547,14 @@ get_reserved_node_exchange_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedNodeExchangeOfferings">>, Input, Options).
 
+%% @doc Get the resource policy for a specified resource.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
 %% @doc This operation is retired.
 %%
 %% Calling this operation does not change AQUA configuration. Amazon Redshift
@@ -1730,6 +1762,14 @@ purchase_reserved_node_offering(Client, Input)
 purchase_reserved_node_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedNodeOffering">>, Input, Options).
+
+%% @doc Updates the resource policy for a specified resource.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Reboots a cluster.
 %%

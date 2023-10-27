@@ -983,7 +983,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the status of the maintenance action.
+%% @doc The status of the maintenance action.
 get_domain_maintenance_status(Client, DomainName, MaintenanceId)
   when is_map(Client) ->
     get_domain_maintenance_status(Client, DomainName, MaintenanceId, #{}, #{}).
@@ -1095,7 +1095,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the list of the maintenance action.
+%% @doc A list of maintenance actions for the domain.
 list_domain_maintenances(Client, DomainName)
   when is_map(Client) ->
     list_domain_maintenances(Client, DomainName, #{}, #{}).
@@ -1519,9 +1519,10 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts the node maintenance (Node restart, Node reboot,
-%% Opensearch/Elasticsearch process restart, Dashboard/kibana restart) on the
-%% data node.
+%% @doc Starts the node maintenance process on the data node.
+%%
+%% These processes can include a node reboot, an Opensearch or Elasticsearch
+%% process restart, or a Dashboard or Kibana restart.
 start_domain_maintenance(Client, DomainName, Input) ->
     start_domain_maintenance(Client, DomainName, Input, []).
 start_domain_maintenance(Client, DomainName, Input0, Options0) ->

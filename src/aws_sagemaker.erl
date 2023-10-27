@@ -761,8 +761,8 @@ create_artifact(Client, Input, Options)
 %%
 %% `CreateAutoMLJobV2' can manage tabular problem types identical to
 %% those of its previous version `CreateAutoMLJob', as well as
-%% time-series forecasting, and non-tabular problem types such as image or
-%% text classification.
+%% time-series forecasting, non-tabular problem types such as image or text
+%% classification, and text generation (LLMs fine-tuning).
 %%
 %% Find guidelines about how to migrate a `CreateAutoMLJob' to
 %% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
@@ -784,8 +784,8 @@ create_auto_ml_job(Client, Input, Options)
 %%
 %% `CreateAutoMLJobV2' can manage tabular problem types identical to
 %% those of its previous version `CreateAutoMLJob', as well as
-%% time-series forecasting, and non-tabular problem types such as image or
-%% text classification.
+%% time-series forecasting, non-tabular problem types such as image or text
+%% classification, and text generation (LLMs fine-tuning).
 %%
 %% Find guidelines about how to migrate a `CreateAutoMLJob' to
 %% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.

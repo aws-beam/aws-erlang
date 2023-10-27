@@ -246,11 +246,11 @@ create_rule_group(Client, Input, Options)
 %% @doc Creates an Network Firewall TLS inspection configuration.
 %%
 %% A TLS inspection configuration contains the Certificate Manager
-%% certificate references that Network Firewall uses to decrypt and
-%% re-encrypt inbound traffic.
+%% certificate associations that Network Firewall uses to decrypt and
+%% re-encrypt traffic traveling through your firewall.
 %%
-%% After you create a TLS inspection configuration, you associate it with a
-%% new firewall policy.
+%% After you create a TLS inspection configuration, you can associate it with
+%% a new firewall policy.
 %%
 %% To update the settings for a TLS inspection configuration, use
 %% `UpdateTLSInspectionConfiguration'.
@@ -263,7 +263,7 @@ create_rule_group(Client, Input, Options)
 %% `ListTLSInspectionConfigurations' and
 %% `DescribeTLSInspectionConfiguration'.
 %%
-%% For more information about TLS inspection configurations, see Decrypting
+%% For more information about TLS inspection configurations, see Inspecting
 %% SSL/TLS traffic with TLS inspection configurations in the Network Firewall
 %% Developer Guide.
 create_t_l_s_inspection_configuration(Client, Input)
@@ -647,7 +647,7 @@ update_subnet_change_protection(Client, Input, Options)
 %% @doc Updates the TLS inspection configuration settings for the specified
 %% TLS inspection configuration.
 %%
-%% You use a TLS inspection configuration by reference in one or more
+%% You use a TLS inspection configuration by referencing it in one or more
 %% firewall policies. When you modify a TLS inspection configuration, you
 %% modify all firewall policies that use the TLS inspection configuration.
 %%
