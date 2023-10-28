@@ -199,19 +199,38 @@
 %% Resource Name (ARN) of the web ACL. For information, see
 %% UpdateDistribution in the Amazon CloudFront Developer Guide.
 %%
-%% When you make changes to web ACLs or web ACL components, like rules and
-%% rule groups, WAF propagates the changes everywhere that the web ACL and
-%% its components are stored and used. Your changes are applied within
-%% seconds, but there might be a brief period of inconsistency when the
-%% changes have arrived in some places and not in others. So, for example, if
-%% you change a rule action setting, the action might be the old action in
-%% one area and the new action in another area. Or if you add an IP address
-%% to an IP set used in a blocking rule, the new address might briefly be
-%% blocked in one area while still allowed in another. This temporary
-%% inconsistency can occur when you first associate a web ACL with an Amazon
-%% Web Services resource and when you change a web ACL that is already
-%% associated with a resource. Generally, any inconsistencies of this type
-%% last only a few seconds.
+%% Required permissions for customer-managed IAM policies
+%%
+%% This call requires permissions that are specific to the protected resource
+%% type. For details, see Permissions for AssociateWebACL in the WAF
+%% Developer Guide.
+%%
+%% Temporary inconsistencies during updates
+%%
+%% When you create or change a web ACL or other WAF resources, the changes
+%% take a small amount of time to propagate to all areas where the resources
+%% are stored. The propagation time can be from a few seconds to a number of
+%% minutes.
+%%
+%% The following are examples of the temporary inconsistencies that you might
+%% notice during change propagation:
+%%
+%% <ul> <li> After you create a web ACL, if you try to associate it with a
+%% resource, you might get an exception indicating that the web ACL is
+%% unavailable.
+%%
+%% </li> <li> After you add a rule group to a web ACL, the new rule group
+%% rules might be in effect in one area where the web ACL is used and not in
+%% another.
+%%
+%% </li> <li> After you change a rule action setting, you might see the old
+%% action in some places and the new action in others.
+%%
+%% </li> <li> After you add an IP address to an IP set that is in use in a
+%% blocking rule, the new address might be blocked in one area while still
+%% allowed in another.
+%%
+%% </li> </ul>
 associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
@@ -438,6 +457,12 @@ describe_managed_rule_group(Client, Input, Options)
 %% an empty web ACL ID in the CloudFront call `UpdateDistribution'. For
 %% information, see UpdateDistribution in the Amazon CloudFront API
 %% Reference.
+%%
+%% Required permissions for customer-managed IAM policies
+%%
+%% This call requires permissions that are specific to the protected resource
+%% type. For details, see Permissions for DisassociateWebACL in the WAF
+%% Developer Guide.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -607,6 +632,22 @@ get_web_acl(Client, Input, Options)
     request(Client, <<"GetWebACL">>, Input, Options).
 
 %% @doc Retrieves the `WebACL' for the specified resource.
+%%
+%% This call uses `GetWebACL', to verify that your account has permission
+%% to access the retrieved web ACL. If you get an error that indicates that
+%% your account isn't authorized to perform `wafv2:GetWebACL' on the
+%% resource, that error won't be included in your CloudTrail event
+%% history.
+%%
+%% For Amazon CloudFront, don't use this call. Instead, call the
+%% CloudFront action `GetDistributionConfig'. For information, see
+%% GetDistributionConfig in the Amazon CloudFront API Reference.
+%%
+%% Required permissions for customer-managed IAM policies
+%%
+%% This call requires permissions that are specific to the protected resource
+%% type. For details, see Permissions for GetWebACLForResource in the WAF
+%% Developer Guide.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
@@ -711,8 +752,15 @@ list_regex_pattern_sets(Client, Input, Options)
 %% @doc Retrieves an array of the Amazon Resource Names (ARNs) for the
 %% regional resources that are associated with the specified web ACL.
 %%
-%% If you want the list of Amazon CloudFront resources, use the CloudFront
-%% call `ListDistributionsByWebACLId'.
+%% For Amazon CloudFront, don't use this call. Instead, use the
+%% CloudFront call `ListDistributionsByWebACLId'. For information, see
+%% ListDistributionsByWebACLId in the Amazon CloudFront API Reference.
+%%
+%% Required permissions for customer-managed IAM policies
+%%
+%% This call requires permissions that are specific to the protected resource
+%% type. For details, see Permissions for ListResourcesForWebACL in the WAF
+%% Developer Guide.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
@@ -907,19 +955,32 @@ untag_resource(Client, Input, Options)
 %%
 %% Provide the complete IP set specification to this call
 %%
-%% When you make changes to web ACLs or web ACL components, like rules and
-%% rule groups, WAF propagates the changes everywhere that the web ACL and
-%% its components are stored and used. Your changes are applied within
-%% seconds, but there might be a brief period of inconsistency when the
-%% changes have arrived in some places and not in others. So, for example, if
-%% you change a rule action setting, the action might be the old action in
-%% one area and the new action in another area. Or if you add an IP address
-%% to an IP set used in a blocking rule, the new address might briefly be
-%% blocked in one area while still allowed in another. This temporary
-%% inconsistency can occur when you first associate a web ACL with an Amazon
-%% Web Services resource and when you change a web ACL that is already
-%% associated with a resource. Generally, any inconsistencies of this type
-%% last only a few seconds.
+%% Temporary inconsistencies during updates
+%%
+%% When you create or change a web ACL or other WAF resources, the changes
+%% take a small amount of time to propagate to all areas where the resources
+%% are stored. The propagation time can be from a few seconds to a number of
+%% minutes.
+%%
+%% The following are examples of the temporary inconsistencies that you might
+%% notice during change propagation:
+%%
+%% <ul> <li> After you create a web ACL, if you try to associate it with a
+%% resource, you might get an exception indicating that the web ACL is
+%% unavailable.
+%%
+%% </li> <li> After you add a rule group to a web ACL, the new rule group
+%% rules might be in effect in one area where the web ACL is used and not in
+%% another.
+%%
+%% </li> <li> After you change a rule action setting, you might see the old
+%% action in some places and the new action in others.
+%%
+%% </li> <li> After you add an IP address to an IP set that is in use in a
+%% blocking rule, the new address might be blocked in one area while still
+%% allowed in another.
+%%
+%% </li> </ul>
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
@@ -962,19 +1023,32 @@ update_managed_rule_set_version_expiry_date(Client, Input, Options)
 %%
 %% Provide the complete regex pattern set specification to this call
 %%
-%% When you make changes to web ACLs or web ACL components, like rules and
-%% rule groups, WAF propagates the changes everywhere that the web ACL and
-%% its components are stored and used. Your changes are applied within
-%% seconds, but there might be a brief period of inconsistency when the
-%% changes have arrived in some places and not in others. So, for example, if
-%% you change a rule action setting, the action might be the old action in
-%% one area and the new action in another area. Or if you add an IP address
-%% to an IP set used in a blocking rule, the new address might briefly be
-%% blocked in one area while still allowed in another. This temporary
-%% inconsistency can occur when you first associate a web ACL with an Amazon
-%% Web Services resource and when you change a web ACL that is already
-%% associated with a resource. Generally, any inconsistencies of this type
-%% last only a few seconds.
+%% Temporary inconsistencies during updates
+%%
+%% When you create or change a web ACL or other WAF resources, the changes
+%% take a small amount of time to propagate to all areas where the resources
+%% are stored. The propagation time can be from a few seconds to a number of
+%% minutes.
+%%
+%% The following are examples of the temporary inconsistencies that you might
+%% notice during change propagation:
+%%
+%% <ul> <li> After you create a web ACL, if you try to associate it with a
+%% resource, you might get an exception indicating that the web ACL is
+%% unavailable.
+%%
+%% </li> <li> After you add a rule group to a web ACL, the new rule group
+%% rules might be in effect in one area where the web ACL is used and not in
+%% another.
+%%
+%% </li> <li> After you change a rule action setting, you might see the old
+%% action in some places and the new action in others.
+%%
+%% </li> <li> After you add an IP address to an IP set that is in use in a
+%% blocking rule, the new address might be blocked in one area while still
+%% allowed in another.
+%%
+%% </li> </ul>
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -996,25 +1070,38 @@ update_regex_pattern_set(Client, Input, Options)
 %%
 %% Provide the complete rule group specification to this call
 %%
-%% When you make changes to web ACLs or web ACL components, like rules and
-%% rule groups, WAF propagates the changes everywhere that the web ACL and
-%% its components are stored and used. Your changes are applied within
-%% seconds, but there might be a brief period of inconsistency when the
-%% changes have arrived in some places and not in others. So, for example, if
-%% you change a rule action setting, the action might be the old action in
-%% one area and the new action in another area. Or if you add an IP address
-%% to an IP set used in a blocking rule, the new address might briefly be
-%% blocked in one area while still allowed in another. This temporary
-%% inconsistency can occur when you first associate a web ACL with an Amazon
-%% Web Services resource and when you change a web ACL that is already
-%% associated with a resource. Generally, any inconsistencies of this type
-%% last only a few seconds.
-%%
 %% A rule group defines a collection of rules to inspect and control web
 %% requests that you can use in a `WebACL'. When you create a rule group,
 %% you define an immutable capacity limit. If you update a rule group, you
 %% must stay within the capacity. This allows others to reuse the rule group
 %% with confidence in its capacity requirements.
+%%
+%% Temporary inconsistencies during updates
+%%
+%% When you create or change a web ACL or other WAF resources, the changes
+%% take a small amount of time to propagate to all areas where the resources
+%% are stored. The propagation time can be from a few seconds to a number of
+%% minutes.
+%%
+%% The following are examples of the temporary inconsistencies that you might
+%% notice during change propagation:
+%%
+%% <ul> <li> After you create a web ACL, if you try to associate it with a
+%% resource, you might get an exception indicating that the web ACL is
+%% unavailable.
+%%
+%% </li> <li> After you add a rule group to a web ACL, the new rule group
+%% rules might be in effect in one area where the web ACL is used and not in
+%% another.
+%%
+%% </li> <li> After you change a rule action setting, you might see the old
+%% action in some places and the new action in others.
+%%
+%% </li> <li> After you add an IP address to an IP set that is in use in a
+%% blocking rule, the new address might be blocked in one area while still
+%% allowed in another.
+%%
+%% </li> </ul>
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
@@ -1038,20 +1125,6 @@ update_rule_group(Client, Input, Options)
 %%
 %% Provide the complete web ACL specification to this call
 %%
-%% When you make changes to web ACLs or web ACL components, like rules and
-%% rule groups, WAF propagates the changes everywhere that the web ACL and
-%% its components are stored and used. Your changes are applied within
-%% seconds, but there might be a brief period of inconsistency when the
-%% changes have arrived in some places and not in others. So, for example, if
-%% you change a rule action setting, the action might be the old action in
-%% one area and the new action in another area. Or if you add an IP address
-%% to an IP set used in a blocking rule, the new address might briefly be
-%% blocked in one area while still allowed in another. This temporary
-%% inconsistency can occur when you first associate a web ACL with an Amazon
-%% Web Services resource and when you change a web ACL that is already
-%% associated with a resource. Generally, any inconsistencies of this type
-%% last only a few seconds.
-%%
 %% A web ACL defines a collection of rules to use to inspect and control web
 %% requests. Each rule has a statement that defines what to look for in web
 %% requests and an action that WAF applies to requests that match the
@@ -1063,6 +1136,33 @@ update_rule_group(Client, Input, Options)
 %% CloudFront distribution, an Amazon API Gateway REST API, an Application
 %% Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an App
 %% Runner service, or an Amazon Web Services Verified Access instance.
+%%
+%% Temporary inconsistencies during updates
+%%
+%% When you create or change a web ACL or other WAF resources, the changes
+%% take a small amount of time to propagate to all areas where the resources
+%% are stored. The propagation time can be from a few seconds to a number of
+%% minutes.
+%%
+%% The following are examples of the temporary inconsistencies that you might
+%% notice during change propagation:
+%%
+%% <ul> <li> After you create a web ACL, if you try to associate it with a
+%% resource, you might get an exception indicating that the web ACL is
+%% unavailable.
+%%
+%% </li> <li> After you add a rule group to a web ACL, the new rule group
+%% rules might be in effect in one area where the web ACL is used and not in
+%% another.
+%%
+%% </li> <li> After you change a rule action setting, you might see the old
+%% action in some places and the new action in others.
+%%
+%% </li> <li> After you add an IP address to an IP set that is in use in a
+%% blocking rule, the new address might be blocked in one area while still
+%% allowed in another.
+%%
+%% </li> </ul>
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
