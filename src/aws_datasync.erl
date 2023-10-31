@@ -221,9 +221,10 @@ create_location_fsx_lustre(Client, Input, Options)
     request(Client, <<"CreateLocationFsxLustre">>, Input, Options).
 
 %% @doc Creates an endpoint for an Amazon FSx for NetApp ONTAP file system
-%% that DataSync can access for a transfer.
+%% that DataSync can use for a data transfer.
 %%
-%% For more information, see Creating a location for FSx for ONTAP.
+%% Before you begin, make sure that you understand how DataSync accesses an
+%% FSx for ONTAP file system.
 create_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_ontap(Client, Input, []).
@@ -246,7 +247,10 @@ create_location_fsx_open_zfs(Client, Input, Options)
     request(Client, <<"CreateLocationFsxOpenZfs">>, Input, Options).
 
 %% @doc Creates an endpoint for an Amazon FSx for Windows File Server file
-%% system.
+%% system that DataSync can use for a data transfer.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses an
+%% FSx for Windows File Server.
 create_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_windows(Client, Input, []).
@@ -337,12 +341,14 @@ create_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTask">>, Input, Options).
 
-%% @doc Deletes an agent.
+%% @doc Removes an DataSync agent resource from your Amazon Web Services
+%% account.
 %%
-%% To specify which agent to delete, use the Amazon Resource Name (ARN) of
-%% the agent in your request. The operation disassociates the agent from your
-%% Amazon Web Services account. However, it doesn't delete the agent
-%% virtual machine (VM) from your on-premises environment.
+%% Keep in mind that this operation (which can't be undone) doesn't
+%% remove the agent's virtual machine (VM) or Amazon EC2 instance from
+%% your storage environment. For next steps, you can delete the VM or
+%% instance from your storage environment or reuse it to activate a new
+%% agent.
 delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
@@ -366,8 +372,8 @@ delete_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTask">>, Input, Options).
 
-%% @doc Returns metadata about an DataSync agent, such as its name, endpoint
-%% type, and status.
+%% @doc Returns information about an DataSync agent, such as its name,
+%% service endpoint type, and status.
 describe_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent(Client, Input, []).
@@ -702,7 +708,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates the name of an agent.
+%% @doc Updates the name of an DataSync agent.
 update_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agent(Client, Input, []).
@@ -760,11 +766,8 @@ update_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationObjectStorage">>, Input, Options).
 
-%% @doc Updates some of the parameters of a previously created location for
-%% Server Message Block (SMB) file system access.
-%%
-%% For information about creating an SMB location, see Creating a location
-%% for SMB.
+%% @doc Updates some of the parameters of a Server Message Block (SMB) file
+%% server location that you can use for DataSync transfers.
 update_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_smb(Client, Input, []).

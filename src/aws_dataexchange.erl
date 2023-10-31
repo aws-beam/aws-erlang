@@ -82,6 +82,8 @@
          revoke_revision/5,
          send_api_asset/2,
          send_api_asset/3,
+         send_data_set_notification/3,
+         send_data_set_notification/4,
          start_job/3,
          start_job/4,
          tag_resource/3,
@@ -656,6 +658,29 @@ send_api_asset(Client, Input0, Options0) ->
                      {<<"">>, <<"QueryStringParameters">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The type of event associated with the data set.
+send_data_set_notification(Client, DataSetId, Input) ->
+    send_data_set_notification(Client, DataSetId, Input, []).
+send_data_set_notification(Client, DataSetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/notification"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation starts a job.

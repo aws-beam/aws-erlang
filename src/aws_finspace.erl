@@ -78,6 +78,8 @@
          untag_resource/4,
          update_environment/3,
          update_environment/4,
+         update_kx_cluster_code_configuration/4,
+         update_kx_cluster_code_configuration/5,
          update_kx_cluster_databases/4,
          update_kx_cluster_databases/5,
          update_kx_database/4,
@@ -802,6 +804,34 @@ update_environment(Client, EnvironmentId, Input) ->
 update_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows you to update code configuration on a running cluster.
+%%
+%% By using this API you can update the code, the initialization script path,
+%% and the command line arguments for a specific cluster. The configuration
+%% that you want to update will override any existing configurations on the
+%% cluster.
+update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input) ->
+    update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input, []).
+update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/code"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

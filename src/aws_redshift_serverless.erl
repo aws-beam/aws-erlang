@@ -20,6 +20,8 @@
 
 -export([convert_recovery_point_to_snapshot/2,
          convert_recovery_point_to_snapshot/3,
+         create_custom_domain_association/2,
+         create_custom_domain_association/3,
          create_endpoint_access/2,
          create_endpoint_access/3,
          create_namespace/2,
@@ -30,6 +32,8 @@
          create_usage_limit/3,
          create_workgroup/2,
          create_workgroup/3,
+         delete_custom_domain_association/2,
+         delete_custom_domain_association/3,
          delete_endpoint_access/2,
          delete_endpoint_access/3,
          delete_namespace/2,
@@ -44,6 +48,8 @@
          delete_workgroup/3,
          get_credentials/2,
          get_credentials/3,
+         get_custom_domain_association/2,
+         get_custom_domain_association/3,
          get_endpoint_access/2,
          get_endpoint_access/3,
          get_namespace/2,
@@ -60,6 +66,8 @@
          get_usage_limit/3,
          get_workgroup/2,
          get_workgroup/3,
+         list_custom_domain_associations/2,
+         list_custom_domain_associations/3,
          list_endpoint_access/2,
          list_endpoint_access/3,
          list_namespaces/2,
@@ -88,6 +96,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_custom_domain_association/2,
+         update_custom_domain_association/3,
          update_endpoint_access/2,
          update_endpoint_access/3,
          update_namespace/2,
@@ -115,6 +125,14 @@ convert_recovery_point_to_snapshot(Client, Input)
 convert_recovery_point_to_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConvertRecoveryPointToSnapshot">>, Input, Options).
+
+%% @doc Creates a custom domain association for Amazon Redshift Serverless.
+create_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_custom_domain_association(Client, Input, []).
+create_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Creates an Amazon Redshift Serverless managed VPC endpoint.
 create_endpoint_access(Client, Input)
@@ -161,6 +179,14 @@ create_workgroup(Client, Input)
 create_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkgroup">>, Input, Options).
+
+%% @doc Deletes a custom domain association for Amazon Redshift Serverless.
+delete_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_custom_domain_association(Client, Input, []).
+delete_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
 
 %% @doc Deletes an Amazon Redshift Serverless managed VPC endpoint.
 delete_endpoint_access(Client, Input)
@@ -233,6 +259,14 @@ get_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentials">>, Input, Options).
 
+%% @doc Gets information about a specific custom domain association.
+get_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_custom_domain_association(Client, Input, []).
+get_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomDomainAssociation">>, Input, Options).
+
 %% @doc Returns information, such as the name, about a VPC endpoint.
 get_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -296,6 +330,14 @@ get_workgroup(Client, Input)
 get_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkgroup">>, Input, Options).
+
+%% @doc Lists custom domain associations for Amazon Redshift Serverless.
+list_custom_domain_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_custom_domain_associations(Client, Input, []).
+list_custom_domain_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCustomDomainAssociations">>, Input, Options).
 
 %% @doc Returns an array of `EndpointAccess' objects and relevant
 %% information.
@@ -417,6 +459,15 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an Amazon Redshift Serverless certificate associated with a
+%% custom domain.
+update_custom_domain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_custom_domain_association(Client, Input, []).
+update_custom_domain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Updates an Amazon Redshift Serverless managed endpoint.
 update_endpoint_access(Client, Input)

@@ -132,10 +132,14 @@
 %% API
 %%====================================================================
 
-%% @doc Adds the resource mapping for the draft application version.
+%% @doc Adds the source of resource-maps to the draft version of an
+%% application.
 %%
-%% You can also update an existing resource mapping to a new physical
-%% resource.
+%% During assessment, Resilience Hub will use these resource-maps to resolve
+%% the latest physical ID for each resource in the application template. For
+%% more information about different types of resources suported by Resilience
+%% Hub and how to add them in your application, see Step 2: How is your
+%% application managed? in the Resilience Hub User Guide.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
 add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
@@ -311,6 +315,14 @@ create_recommendation_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a resiliency policy for an application.
+%%
+%% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
+%% and `rpoInSecs' of your resiliency policy. But, while assessing your
+%% application, the lowest possible assessment result is near zero. Hence, if
+%% you provide value zero for `rtoInSecs' and `rpoInSecs', the
+%% estimated workload RTO and estimated workload RPO result will be near zero
+%% and the Compliance status for your application will be set to Policy
+%% breached.
 create_resiliency_policy(Client, Input) ->
     create_resiliency_policy(Client, Input, []).
 create_resiliency_policy(Client, Input0, Options0) ->
@@ -1062,9 +1074,12 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"appArn">>, maps:get(<<"appArn">>, QueryMap, undefined)},
+        {<<"fromLastAssessmentTime">>, maps:get(<<"fromLastAssessmentTime">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"reverseOrder">>, maps:get(<<"reverseOrder">>, QueryMap, undefined)},
+        {<<"toLastAssessmentTime">>, maps:get(<<"toLastAssessmentTime">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1534,6 +1549,14 @@ update_app_version_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a resiliency policy.
+%%
+%% Resilience Hub allows you to provide a value of zero for `rtoInSecs'
+%% and `rpoInSecs' of your resiliency policy. But, while assessing your
+%% application, the lowest possible assessment result is near zero. Hence, if
+%% you provide value zero for `rtoInSecs' and `rpoInSecs', the
+%% estimated workload RTO and estimated workload RPO result will be near zero
+%% and the Compliance status for your application will be set to Policy
+%% breached.
 update_resiliency_policy(Client, Input) ->
     update_resiliency_policy(Client, Input, []).
 update_resiliency_policy(Client, Input0, Options0) ->

@@ -11,8 +11,8 @@
 %%
 %% There are limits to the number of Amazon Connect resources that you can
 %% create. There are also limits to the number of requests that you can make
-%% per second. For more information, seeP98941055 Amazon Connect Service
-%% Quotas in the Amazon Connect Administrator Guide.
+%% per second. For more information, see Amazon Connect Service Quotas in the
+%% Amazon Connect Administrator Guide.
 %%
 %% You can connect programmatically to an Amazon Web Services service by
 %% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
@@ -4074,7 +4074,7 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of third party applications in a specific security
+%% @doc Returns a list of third-party applications in a specific security
 %% profile.
 list_security_profile_applications(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
@@ -4565,8 +4565,12 @@ replicate_instance(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, and the recording has been
-%% suspended using SuspendContactRecording, this API resumes recording the
-%% call or screen.
+%% suspended using SuspendContactRecording, this API resumes recording
+%% whatever recording is selected in the flow configuration: call, screen, or
+%% both.
+%%
+%% If only call recording or only screen recording is enabled, then it would
+%% resume.
 %%
 %% Voice and screen recordings are supported.
 resume_contact_recording(Client, Input) ->
@@ -5215,12 +5219,13 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc When a contact is being recorded, this API suspends recording the
-%% call or screen.
+%% @doc When a contact is being recorded, this API suspends recording
+%% whatever is selected in the flow configuration: call, screen, or both.
 %%
-%% For example, you might suspend the call or screen recording while
+%% If only call recording or only screen recording is enabled, then it would
+%% be suspended. For example, you might suspend the screen recording while
 %% collecting sensitive information, such as a credit card number. Then use
-%% ResumeContactRecording to restart recording.
+%% ResumeContactRecording to restart recording the screen.
 %%
 %% The period of time that the recording is suspended is filled with silence
 %% in the final recording.

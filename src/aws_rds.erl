@@ -111,6 +111,8 @@
          create_event_subscription/3,
          create_global_cluster/2,
          create_global_cluster/3,
+         create_integration/2,
+         create_integration/3,
          create_option_group/2,
          create_option_group/3,
          delete_blue_green_deployment/2,
@@ -147,6 +149,8 @@
          delete_event_subscription/3,
          delete_global_cluster/2,
          delete_global_cluster/3,
+         delete_integration/2,
+         delete_integration/3,
          delete_option_group/2,
          delete_option_group/3,
          deregister_db_proxy_targets/2,
@@ -215,6 +219,8 @@
          describe_export_tasks/3,
          describe_global_clusters/2,
          describe_global_clusters/3,
+         describe_integrations/2,
+         describe_integrations/3,
          describe_option_group_options/2,
          describe_option_group_options/3,
          describe_option_groups/2,
@@ -873,6 +879,17 @@ create_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalCluster">>, Input, Options).
 
+%% @doc Creates a zero-ETL integration with Amazon Redshift.
+%%
+%% For more information, see Working with Amazon Aurora zero-ETL integrations
+%% with Amazon Redshift in the Amazon Aurora User Guide.
+create_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_integration(Client, Input, []).
+create_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIntegration">>, Input, Options).
+
 %% @doc Creates a new option group.
 %%
 %% You can create up to 20 option groups.
@@ -1153,6 +1170,17 @@ delete_global_cluster(Client, Input)
 delete_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
+
+%% @doc Deletes a zero-ETL integration with Amazon Redshift.
+%%
+%% For more information, see Deleting Amazon Aurora zero-ETL integrations
+%% with Amazon Redshift in the Amazon Aurora User Guide
+delete_integration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_integration(Client, Input, []).
+delete_integration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIntegration">>, Input, Options).
 
 %% @doc Deletes an existing option group.
 delete_option_group(Client, Input)
@@ -1598,6 +1626,17 @@ describe_global_clusters(Client, Input)
 describe_global_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
+
+%% @doc Describe one or more zero-ETL integration with Amazon Redshift.
+%%
+%% For more information, see Viewing and monitoring Amazon Aurora zero-ETL
+%% integrations with Amazon Redshift in the Amazon Aurora User Guide
+describe_integrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_integrations(Client, Input, []).
+describe_integrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIntegrations">>, Input, Options).
 
 %% @doc Describes all available options.
 describe_option_group_options(Client, Input)
