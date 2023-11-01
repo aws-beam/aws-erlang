@@ -674,6 +674,7 @@ list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nameFilter">>, maps:get(<<"nameFilter">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)}
       ],

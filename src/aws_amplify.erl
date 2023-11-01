@@ -4,11 +4,11 @@
 %% @doc Amplify enables developers to develop and deploy cloud-powered mobile
 %% and web apps.
 %%
-%% The Amplify Console provides a continuous delivery and hosting service for
-%% web applications. For more information, see the Amplify Console User
-%% Guide. The Amplify Framework is a comprehensive set of SDKs, libraries,
-%% tools, and documentation for client app development. For more information,
-%% see the Amplify Framework.
+%% Amplify Hosting provides a continuous delivery and hosting service for web
+%% applications. For more information, see the Amplify Hosting User Guide.
+%% The Amplify Framework is a comprehensive set of SDKs, libraries, tools,
+%% and documentation for client app development. For more information, see
+%% the Amplify Framework.
 -module(aws_amplify).
 
 -export([create_app/2,
@@ -179,6 +179,11 @@ create_branch(Client, AppId, Input0, Options0) ->
 %% @doc Creates a deployment for a manually deployed Amplify app.
 %%
 %% Manually deployed apps are not connected to a repository.
+%%
+%% The maximum duration between the `CreateDeployment' call and the
+%% `StartDeployment' call cannot exceed 8 hours. If the duration exceeds
+%% 8 hours, the `StartDeployment' call and the associated `Job' will
+%% fail.
 create_deployment(Client, AppId, BranchName, Input) ->
     create_deployment(Client, AppId, BranchName, Input, []).
 create_deployment(Client, AppId, BranchName, Input0, Options0) ->
@@ -411,7 +416,7 @@ generate_access_logs(Client, AppId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns an existing Amplify app by appID.
+%% @doc Returns an existing Amplify app specified by an app ID.
 get_app(Client, AppId)
   when is_map(Client) ->
     get_app(Client, AppId, #{}, #{}).
@@ -796,6 +801,11 @@ list_webhooks(Client, AppId, QueryMap, HeadersMap, Options0)
 %% @doc Starts a deployment for a manually deployed app.
 %%
 %% Manually deployed apps are not connected to a repository.
+%%
+%% The maximum duration between the `CreateDeployment' call and the
+%% `StartDeployment' call cannot exceed 8 hours. If the duration exceeds
+%% 8 hours, the `StartDeployment' call and the associated `Job' will
+%% fail.
 start_deployment(Client, AppId, BranchName, Input) ->
     start_deployment(Client, AppId, BranchName, Input, []).
 start_deployment(Client, AppId, BranchName, Input0, Options0) ->

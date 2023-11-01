@@ -602,7 +602,7 @@ execute_gremlin_query(Client, Input0, Options0) ->
 %% a policy attached that allows the neptune-db:ReadDataViaQuery IAM action
 %% in that cluster.
 %%
-%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% Note that the neptune-db:QueryLanguage:OpenCypher IAM condition key can be
 %% used in the policy document to restrict the use of openCypher queries (see
 %% Condition keys available in Neptune IAM data-access policy statements).
 execute_open_cypher_explain_query(Client, Input) ->
@@ -831,7 +831,7 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
 %% that cluster.
 %%
-%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% Note that the neptune-db:QueryLanguage:OpenCypher IAM condition key can be
 %% used in the policy document to restrict the use of openCypher queries (see
 %% Condition keys available in Neptune IAM data-access policy statements).
 get_open_cypher_query_status(Client, QueryId)
@@ -1246,7 +1246,7 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
 %% a policy attached that allows the neptune-db:GetQueryStatus IAM action in
 %% that cluster.
 %%
-%% Note that the neptune-db:QueryLanguage:Opencypher IAM condition key can be
+%% Note that the neptune-db:QueryLanguage:OpenCypher IAM condition key can be
 %% used in the policy document to restrict the use of openCypher queries (see
 %% Condition keys available in Neptune IAM data-access policy statements).
 list_open_cypher_queries(Client)
