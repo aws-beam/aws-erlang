@@ -39,7 +39,7 @@
 %% static IPv6 addresses. With a standard accelerator for IPv4, instead of
 %% using the addresses that Global Accelerator provides, you can configure
 %% these entry points to be IPv4 addresses from your own IP address ranges
-%% that you bring toGlobal Accelerator (BYOIP).
+%% that you bring to Global Accelerator (BYOIP).
 %%
 %% For a standard accelerator, they distribute incoming application traffic
 %% across multiple endpoint resources in multiple Amazon Web Services Regions
@@ -79,6 +79,8 @@
          allow_custom_routing_traffic/3,
          create_accelerator/2,
          create_accelerator/3,
+         create_cross_account_attachment/2,
+         create_cross_account_attachment/3,
          create_custom_routing_accelerator/2,
          create_custom_routing_accelerator/3,
          create_custom_routing_endpoint_group/2,
@@ -91,6 +93,8 @@
          create_listener/3,
          delete_accelerator/2,
          delete_accelerator/3,
+         delete_cross_account_attachment/2,
+         delete_cross_account_attachment/3,
          delete_custom_routing_accelerator/2,
          delete_custom_routing_accelerator/3,
          delete_custom_routing_endpoint_group/2,
@@ -109,6 +113,8 @@
          describe_accelerator/3,
          describe_accelerator_attributes/2,
          describe_accelerator_attributes/3,
+         describe_cross_account_attachment/2,
+         describe_cross_account_attachment/3,
          describe_custom_routing_accelerator/2,
          describe_custom_routing_accelerator/3,
          describe_custom_routing_accelerator_attributes/2,
@@ -125,6 +131,12 @@
          list_accelerators/3,
          list_byoip_cidrs/2,
          list_byoip_cidrs/3,
+         list_cross_account_attachments/2,
+         list_cross_account_attachments/3,
+         list_cross_account_resource_accounts/2,
+         list_cross_account_resource_accounts/3,
+         list_cross_account_resources/2,
+         list_cross_account_resources/3,
          list_custom_routing_accelerators/2,
          list_custom_routing_accelerators/3,
          list_custom_routing_endpoint_groups/2,
@@ -155,6 +167,8 @@
          update_accelerator/3,
          update_accelerator_attributes/2,
          update_accelerator_attributes/3,
+         update_cross_account_attachment/2,
+         update_cross_account_attachment/3,
          update_custom_routing_accelerator/2,
          update_custom_routing_accelerator/3,
          update_custom_routing_accelerator_attributes/2,
@@ -280,6 +294,27 @@ create_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccelerator">>, Input, Options).
 
+%% @doc Create a cross-account attachment in Global Accelerator.
+%%
+%% You create a cross-account attachment to specify the principals who have
+%% permission to add to accelerators in their own account the resources in
+%% your account that you also list in the attachment.
+%%
+%% A principal can be an Amazon Web Services account number or the Amazon
+%% Resource Name (ARN) for an accelerator. For account numbers that are
+%% listed as principals, to add a resource listed in the attachment to an
+%% accelerator, you must sign in to an account specified as a principal. Then
+%% you can add the resources that are listed to any of your accelerators. If
+%% an accelerator ARN is listed in the cross-account attachment as a
+%% principal, anyone with permission to make updates to the accelerator can
+%% add as endpoints resources that are listed in the attachment.
+create_cross_account_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cross_account_attachment(Client, Input, []).
+create_cross_account_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCrossAccountAttachment">>, Input, Options).
+
 %% @doc Create a custom routing accelerator.
 %%
 %% A custom routing accelerator directs traffic to one of possibly thousands
@@ -381,6 +416,34 @@ delete_accelerator(Client, Input)
 delete_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccelerator">>, Input, Options).
+
+%% @doc Delete a cross-account attachment.
+%%
+%% When you delete an attachment, Global Accelerator revokes the permission
+%% to use the resources in the attachment from all principals in the list of
+%% principals. Global Accelerator revokes the permission for specific
+%% resources by doing the following:
+%%
+%% <ul> <li> If the principal is an account ID, Global Accelerator reviews
+%% every accelerator in the account and removes cross-account endpoints from
+%% all accelerators.
+%%
+%% </li> <li> If the principal is an accelerator, Global Accelerator reviews
+%% just that accelerator and removes cross-account endpoints from it.
+%%
+%% </li> </ul> If there are overlapping permissions provided by multiple
+%% cross-account attachments, Global Accelerator only removes endpoints if
+%% there are no current cross-account attachments that provide access
+%% permission. For example, if you delete a cross-account attachment that
+%% lists an accelerator as a principal, but another cross-account attachment
+%% includes the account ID that owns that accelerator, endpoints will not be
+%% removed from the accelerator.
+delete_cross_account_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cross_account_attachment(Client, Input, []).
+delete_cross_account_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCrossAccountAttachment">>, Input, Options).
 
 %% @doc Delete a custom routing accelerator.
 %%
@@ -492,6 +555,14 @@ describe_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAcceleratorAttributes">>, Input, Options).
 
+%% @doc Gets configuration information about a cross-account attachment.
+describe_cross_account_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cross_account_attachment(Client, Input, []).
+describe_cross_account_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCrossAccountAttachment">>, Input, Options).
+
 %% @doc Describe a custom routing accelerator.
 describe_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -557,6 +628,31 @@ list_byoip_cidrs(Client, Input)
 list_byoip_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByoipCidrs">>, Input, Options).
+
+%% @doc List the cross-account attachments that have been created in Global
+%% Accelerator.
+list_cross_account_attachments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cross_account_attachments(Client, Input, []).
+list_cross_account_attachments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCrossAccountAttachments">>, Input, Options).
+
+%% @doc List the accounts that have cross-account endpoints.
+list_cross_account_resource_accounts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cross_account_resource_accounts(Client, Input, []).
+list_cross_account_resource_accounts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCrossAccountResourceAccounts">>, Input, Options).
+
+%% @doc List the cross-account endpoints available to add to an accelerator.
+list_cross_account_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cross_account_resources(Client, Input, []).
+list_cross_account_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCrossAccountResources">>, Input, Options).
 
 %% @doc List the custom routing accelerators for an Amazon Web Services
 %% account.
@@ -762,6 +858,34 @@ update_accelerator_attributes(Client, Input)
 update_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAcceleratorAttributes">>, Input, Options).
+
+%% @doc Update a cross-account attachment to add or remove principals or
+%% resources.
+%%
+%% When you update an attachment to remove a principal (account ID or
+%% accelerator) or a resource, Global Accelerator revokes the permission for
+%% specific resources by doing the following:
+%%
+%% <ul> <li> If the principal is an account ID, Global Accelerator reviews
+%% every accelerator in the account and removes cross-account endpoints from
+%% all accelerators.
+%%
+%% </li> <li> If the principal is an accelerator, Global Accelerator reviews
+%% just that accelerator and removes cross-account endpoints from it.
+%%
+%% </li> </ul> If there are overlapping permissions provided by multiple
+%% cross-account attachments, Global Accelerator only removes endpoints if
+%% there are no current cross-account attachments that provide access
+%% permission. For example, if you delete a cross-account attachment that
+%% lists an accelerator as a principal, but another cross-account attachment
+%% includes the account ID that owns that accelerator, endpoints will not be
+%% removed from the accelerator.
+update_cross_account_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cross_account_attachment(Client, Input, []).
+update_cross_account_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCrossAccountAttachment">>, Input, Options).
 
 %% @doc Update a custom routing accelerator.
 update_custom_routing_accelerator(Client, Input)

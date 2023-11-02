@@ -43,6 +43,8 @@
          associate_security_key/4,
          associate_traffic_distribution_group_user/3,
          associate_traffic_distribution_group_user/4,
+         batch_get_flow_association/3,
+         batch_get_flow_association/4,
          claim_phone_number/2,
          claim_phone_number/3,
          create_agent_status/3,
@@ -823,6 +825,29 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve the flow associations for the given resources.
+batch_get_flow_association(Client, InstanceId, Input) ->
+    batch_get_flow_association(Client, InstanceId, Input, []).
+batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/flow-associations-batch/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -4537,7 +4562,8 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Replicates an Amazon Connect instance in the specified Amazon Web
-%% Services Region.
+%% Services Region and copies configuration information for Amazon Connect
+%% resources across Amazon Web Services Regions.
 %%
 %% For more information about replicating an Amazon Connect instance, see
 %% Create a replica of your existing Amazon Connect instance in the Amazon

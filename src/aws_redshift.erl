@@ -211,6 +211,8 @@
          enable_logging/3,
          enable_snapshot_copy/2,
          enable_snapshot_copy/3,
+         failover_primary_compute/2,
+         failover_primary_compute/3,
          get_cluster_credentials/2,
          get_cluster_credentials/3,
          get_cluster_credentials_with_iam/2,
@@ -1471,6 +1473,15 @@ enable_snapshot_copy(Client, Input)
 enable_snapshot_copy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableSnapshotCopy">>, Input, Options).
+
+%% @doc Fails over the primary compute unit of the specified Multi-AZ cluster
+%% to another Availability Zone.
+failover_primary_compute(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    failover_primary_compute(Client, Input, []).
+failover_primary_compute(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"FailoverPrimaryCompute">>, Input, Options).
 
 %% @doc Returns a database user name and temporary password with temporary
 %% authorization to log on to an Amazon Redshift database.
