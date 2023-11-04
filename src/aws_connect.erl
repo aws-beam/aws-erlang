@@ -63,6 +63,8 @@
          create_integration_association/4,
          create_participant/2,
          create_participant/3,
+         create_persistent_contact_association/4,
+         create_persistent_contact_association/5,
          create_prompt/3,
          create_prompt/4,
          create_queue/3,
@@ -1114,6 +1116,32 @@ create_participant(Client, Input) ->
 create_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/create-participant"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables rehydration of chats for the lifespan of a contact.
+%%
+%% For more information about chat rehydration, see Enable persistent chat in
+%% the Amazon Connect Administrator Guide.
+create_persistent_contact_association(Client, InitialContactId, InstanceId, Input) ->
+    create_persistent_contact_association(Client, InitialContactId, InstanceId, Input, []).
+create_persistent_contact_association(Client, InitialContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/persistent-contact-association/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
