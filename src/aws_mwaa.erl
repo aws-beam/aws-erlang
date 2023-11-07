@@ -36,16 +36,10 @@
 %%
 %% </li> <li> CreateWebLoginToken
 %%
-%% </li> </ul> </li> <li> `ops.airflow.{region}.amazonaws.com' - This
-%% endpoint is used to push environment metrics that track environment
-%% health.
-%%
-%% <ul> <li> PublishMetrics
-%%
 %% </li> </ul> </li> </ul> Regions
 %%
-%% For a list of regions that Amazon MWAA supports, see Region availability
-%% in the Amazon MWAA User Guide.
+%% For a list of supported regions, see Amazon MWAA endpoints and quotas in
+%% the Amazon Web Services General Reference.
 -module(aws_mwaa).
 
 -export([create_cli_token/3,

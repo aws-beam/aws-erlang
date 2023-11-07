@@ -504,8 +504,7 @@ update_project(Client, Input, Options)
 %% output to the build logs and artifacts. You must be careful about what
 %% information is output to the build logs. Some best practice are:
 %%
-%% Do not store sensitive values, especially Amazon Web Services access key
-%% IDs and secret access keys, in environment variables. We recommend that
+%% Do not store sensitive values in environment variables. We recommend that
 %% you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager
 %% to store sensitive values.
 %%

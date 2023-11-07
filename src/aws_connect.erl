@@ -45,6 +45,8 @@
          associate_traffic_distribution_group_user/4,
          batch_get_flow_association/3,
          batch_get_flow_association/4,
+         batch_put_contact/3,
+         batch_put_contact/4,
          claim_phone_number/2,
          claim_phone_number/3,
          create_agent_status/3,
@@ -850,6 +852,37 @@ batch_get_flow_association(Client, InstanceId, Input) ->
 batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/flow-associations-batch/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Only the Amazon Connect outbound campaigns service principal is
+%% allowed to assume a role in your account and call this API.
+%%
+%% Allows you to create a batch of contacts in Amazon Connect. The outbound
+%% campaigns capability ingests dial requests via the PutDialRequestBatch
+%% API. It then uses BatchPutContact to create contacts corresponding to
+%% those dial requests. If agents are available, the dial requests are dialed
+%% out, which results in a voice call. The resulting voice call uses the same
+%% contactId that was created by BatchPutContact.
+batch_put_contact(Client, InstanceId, Input) ->
+    batch_put_contact(Client, InstanceId, Input, []).
+batch_put_contact(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/batch/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
