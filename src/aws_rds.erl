@@ -115,6 +115,8 @@
          create_integration/3,
          create_option_group/2,
          create_option_group/3,
+         create_tenant_database/2,
+         create_tenant_database/3,
          delete_blue_green_deployment/2,
          delete_blue_green_deployment/3,
          delete_custom_db_engine_version/2,
@@ -153,6 +155,8 @@
          delete_integration/3,
          delete_option_group/2,
          delete_option_group/3,
+         delete_tenant_database/2,
+         delete_tenant_database/3,
          deregister_db_proxy_targets/2,
          deregister_db_proxy_targets/3,
          describe_account_attributes/2,
@@ -201,6 +205,8 @@
          describe_db_security_groups/3,
          describe_db_snapshot_attributes/2,
          describe_db_snapshot_attributes/3,
+         describe_db_snapshot_tenant_databases/2,
+         describe_db_snapshot_tenant_databases/3,
          describe_db_snapshots/2,
          describe_db_snapshots/3,
          describe_db_subnet_groups/2,
@@ -235,6 +241,8 @@
          describe_reserved_db_instances_offerings/3,
          describe_source_regions/2,
          describe_source_regions/3,
+         describe_tenant_databases/2,
+         describe_tenant_databases/3,
          describe_valid_db_instance_modifications/2,
          describe_valid_db_instance_modifications/3,
          download_db_log_file_portion/2,
@@ -283,6 +291,8 @@
          modify_global_cluster/3,
          modify_option_group/2,
          modify_option_group/3,
+         modify_tenant_database/2,
+         modify_tenant_database/3,
          promote_read_replica/2,
          promote_read_replica/3,
          promote_read_replica_db_cluster/2,
@@ -902,6 +912,17 @@ create_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOptionGroup">>, Input, Options).
 
+%% @doc Creates a tenant database in a DB instance that uses the multi-tenant
+%% configuration.
+%%
+%% Only RDS for Oracle container database (CDB) instances are supported.
+create_tenant_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_tenant_database(Client, Input, []).
+create_tenant_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTenantDatabase">>, Input, Options).
+
 %% @doc Deletes a blue/green deployment.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
@@ -1189,6 +1210,20 @@ delete_option_group(Client, Input)
 delete_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOptionGroup">>, Input, Options).
+
+%% @doc Deletes a tenant database from your DB instance.
+%%
+%% This command only applies to RDS for Oracle container database (CDB)
+%% instances.
+%%
+%% You can't delete a tenant database when it is the only tenant in the
+%% DB instance.
+delete_tenant_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_tenant_database(Client, Input, []).
+delete_tenant_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTenantDatabase">>, Input, Options).
 
 %% @doc Remove the association between one or more `DBProxyTarget' data
 %% structures and a `DBProxyTargetGroup'.
@@ -1510,6 +1545,23 @@ describe_db_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshotAttributes">>, Input, Options).
 
+%% @doc Describes the tenant databases that exist in a DB snapshot.
+%%
+%% This command only applies to RDS for Oracle DB instances in the
+%% multi-tenant configuration.
+%%
+%% You can use this command to inspect the tenant databases within a snapshot
+%% before restoring it. You can't directly interact with the tenant
+%% databases in a DB snapshot. If you restore a snapshot that was taken from
+%% DB instance using the multi-tenant configuration, you restore all its
+%% tenant databases.
+describe_db_snapshot_tenant_databases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_snapshot_tenant_databases(Client, Input, []).
+describe_db_snapshot_tenant_databases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBSnapshotTenantDatabases">>, Input, Options).
+
 %% @doc Returns information about DB snapshots.
 %%
 %% This API action supports pagination.
@@ -1706,6 +1758,17 @@ describe_source_regions(Client, Input)
 describe_source_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSourceRegions">>, Input, Options).
+
+%% @doc Describes the tenant databases in a DB instance that uses the
+%% multi-tenant configuration.
+%%
+%% Only RDS for Oracle CDB instances are supported.
+describe_tenant_databases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tenant_databases(Client, Input, []).
+describe_tenant_databases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTenantDatabases">>, Input, Options).
 
 %% @doc You can call `DescribeValidDBInstanceModifications' to learn what
 %% modifications you can make to your DB instance.
@@ -2185,6 +2248,18 @@ modify_option_group(Client, Input)
 modify_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyOptionGroup">>, Input, Options).
+
+%% @doc Modifies an existing tenant database in a DB instance.
+%%
+%% You can change the tenant database name or the master user password. This
+%% operation is supported only for RDS for Oracle CDB instances using the
+%% multi-tenant configuration.
+modify_tenant_database(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_tenant_database(Client, Input, []).
+modify_tenant_database(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTenantDatabase">>, Input, Options).
 
 %% @doc Promotes a read replica DB instance to a standalone DB instance.
 %%

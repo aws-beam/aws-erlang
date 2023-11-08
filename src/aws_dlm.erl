@@ -96,7 +96,7 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
 %% @doc Gets summary information about all or the specified data lifecycle
 %% policies.
 %%
-%% To get complete information about a policy, use `GetLifecyclePolicy'.
+%% To get complete information about a policy, use GetLifecyclePolicy.
 get_lifecycle_policies(Client)
   when is_map(Client) ->
     get_lifecycle_policies(Client, #{}, #{}).
