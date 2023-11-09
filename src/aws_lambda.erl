@@ -1271,8 +1271,11 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% @doc Invokes a Lambda function.
 %%
 %% You can invoke a function synchronously (and wait for the response), or
-%% asynchronously. To invoke a function asynchronously, set
-%% `InvocationType' to `Event'.
+%% asynchronously. By default, Lambda invokes your function synchronously
+%% (i.e. the`InvocationType' is `RequestResponse'). To invoke a
+%% function asynchronously, set `InvocationType' to `Event'. Lambda
+%% passes the `ClientContext' object to your function for synchronous
+%% invocations only.
 %%
 %% For synchronous invocation, details about the function response, including
 %% errors, are included in the response body and headers. For either
@@ -1357,6 +1360,10 @@ invoke(Client, FunctionName, Input0, Options0) ->
 %% @doc For asynchronous function invocation, use `Invoke'.
 %%
 %% Invokes a function asynchronously.
+%%
+%% If you do use the InvokeAsync action, note that it doesn't support the
+%% use of X-Ray active tracing. Trace ID is not propagated to the function,
+%% even if X-Ray active tracing is turned on.
 invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 invoke_async(Client, FunctionName, Input0, Options0) ->

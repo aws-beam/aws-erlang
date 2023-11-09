@@ -262,6 +262,11 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% example, a `contactArn'). All Related Items have their own internal
 %% identifier, the `relatedItemArn'. Examples of related items include
 %% `comments' and `contacts'.
+%%
+%% If you provide a value for `performedBy.userArn' you must also have
+%% DescribeUser permission on the ARN of the user that you provide.
+%%
+%% &lt;/note&gt;
 create_related_item(Client, CaseId, DomainId, Input) ->
     create_related_item(Client, CaseId, DomainId, Input, []).
 create_related_item(Client, CaseId, DomainId, Input0, Options0) ->

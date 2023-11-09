@@ -730,14 +730,13 @@ do_request(Client, Action, Input0, Options) ->
     URL = build_url(Host, Client1),
     Headers = [
         {<<"Host">>, Host},
-        {<<"Content-Type">>, <<"application/x-www-form-urlencoded">>}
+        {<<"Content-Type">>, <<"application/x-amz-json-1.0">>},
+        {<<"X-Amz-Target">>, <<"AmazonSQS.", Action/binary>>}
     ],
 
-    Input = Input0#{ <<"Action">> => Action
-                   , <<"Version">> => <<"2012-11-05">>
-                   },
+    Input = Input0,
 
-    Payload = aws_util:encode_query(Input),
+    Payload = jsx:encode(Input),
     SignedHeaders = aws_request:sign_request(Client1, <<"POST">>, URL, Headers, Payload),
     Response = hackney:request(post, URL, SignedHeaders, Payload, Options),
     handle_response(Response).
@@ -747,12 +746,12 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
         {ok, <<>>} ->
             {ok, undefined, {200, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = aws_util:decode_xml(Body),
+            Result = jsx:decode(Body),
             {ok, Result, {200, ResponseHeaders, Client}}
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
     {ok, Body} = hackney:body(Client),
-    Error = aws_util:decode_xml(Body),
+    Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
