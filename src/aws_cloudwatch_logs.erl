@@ -43,6 +43,8 @@
          associate_kms_key/3,
          cancel_export_task/2,
          cancel_export_task/3,
+         create_delivery/2,
+         create_delivery/3,
          create_export_task/2,
          create_export_task/3,
          create_log_group/2,
@@ -53,6 +55,14 @@
          delete_account_policy/3,
          delete_data_protection_policy/2,
          delete_data_protection_policy/3,
+         delete_delivery/2,
+         delete_delivery/3,
+         delete_delivery_destination/2,
+         delete_delivery_destination/3,
+         delete_delivery_destination_policy/2,
+         delete_delivery_destination_policy/3,
+         delete_delivery_source/2,
+         delete_delivery_source/3,
          delete_destination/2,
          delete_destination/3,
          delete_log_group/2,
@@ -71,6 +81,12 @@
          delete_subscription_filter/3,
          describe_account_policies/2,
          describe_account_policies/3,
+         describe_deliveries/2,
+         describe_deliveries/3,
+         describe_delivery_destinations/2,
+         describe_delivery_destinations/3,
+         describe_delivery_sources/2,
+         describe_delivery_sources/3,
          describe_destinations/2,
          describe_destinations/3,
          describe_export_tasks/2,
@@ -95,6 +111,14 @@
          filter_log_events/3,
          get_data_protection_policy/2,
          get_data_protection_policy/3,
+         get_delivery/2,
+         get_delivery/3,
+         get_delivery_destination/2,
+         get_delivery_destination/3,
+         get_delivery_destination_policy/2,
+         get_delivery_destination_policy/3,
+         get_delivery_source/2,
+         get_delivery_source/3,
          get_log_events/2,
          get_log_events/3,
          get_log_group_fields/2,
@@ -111,6 +135,12 @@
          put_account_policy/3,
          put_data_protection_policy/2,
          put_data_protection_policy/3,
+         put_delivery_destination/2,
+         put_delivery_destination/3,
+         put_delivery_destination_policy/2,
+         put_delivery_destination_policy/3,
+         put_delivery_source/2,
+         put_delivery_source/3,
          put_destination/2,
          put_destination/3,
          put_destination_policy/2,
@@ -217,6 +247,52 @@ cancel_export_task(Client, Input)
 cancel_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelExportTask">>, Input, Options).
+
+%% @doc Creates a delivery.
+%%
+%% A delivery is a connection between a logical delivery source and a logical
+%% delivery destination that you have already created.
+%%
+%% Only some Amazon Web Services services support being configured as a
+%% delivery source using this operation. These services are listed as
+%% Supported [V2 Permissions] in the table at Enabling logging from Amazon
+%% Web Services services.
+%%
+%% A delivery destination can represent a log group in CloudWatch Logs, an
+%% Amazon S3 bucket, or a delivery stream in Kinesis Data Firehose.
+%%
+%% To configure logs delivery between a supported Amazon Web Services service
+%% and a destination, you must do the following:
+%%
+%% <ul> <li> Create a delivery source, which is a logical object that
+%% represents the resource that is actually sending the logs. For more
+%% information, see PutDeliverySource.
+%%
+%% </li> <li> Create a delivery destination, which is a logical object that
+%% represents the actual delivery destination. For more information, see
+%% PutDeliveryDestination.
+%%
+%% </li> <li> If you are delivering logs cross-account, you must use
+%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
+%% policy to the destination. This policy allows delivery to that
+%% destination.
+%%
+%% </li> <li> Use `CreateDelivery' to create a delivery by pairing
+%% exactly one delivery source and one delivery destination.
+%%
+%% </li> </ul> You can configure a single delivery source to send logs to
+%% multiple destinations by creating multiple deliveries. You can also create
+%% multiple deliveries to configure multiple delivery sources to send logs to
+%% the same delivery destination.
+%%
+%% You can't update an existing delivery. You can only create and delete
+%% deliveries.
+create_delivery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_delivery(Client, Input, []).
+create_delivery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDelivery">>, Input, Options).
 
 %% @doc Creates an export task so that you can efficiently export data from a
 %% log group to an Amazon S3 bucket.
@@ -340,6 +416,62 @@ delete_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataProtectionPolicy">>, Input, Options).
 
+%% @doc Deletes s delivery.
+%%
+%% A delivery is a connection between a logical delivery source and a logical
+%% delivery destination. Deleting a delivery only deletes the connection
+%% between the delivery source and delivery destination. It does not delete
+%% the delivery destination or the delivery source.
+delete_delivery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_delivery(Client, Input, []).
+delete_delivery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDelivery">>, Input, Options).
+
+%% @doc Deletes a delivery destination.
+%%
+%% A delivery is a connection between a logical delivery source and a logical
+%% delivery destination.
+%%
+%% You can't delete a delivery destination if any current deliveries are
+%% associated with it. To find whether any deliveries are associated with
+%% this delivery destination, use the DescribeDeliveries operation and check
+%% the `deliveryDestinationArn' field in the results.
+delete_delivery_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_delivery_destination(Client, Input, []).
+delete_delivery_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDeliveryDestination">>, Input, Options).
+
+%% @doc Deletes a delivery destination policy.
+%%
+%% For more information about these policies, see
+%% PutDeliveryDestinationPolicy.
+delete_delivery_destination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_delivery_destination_policy(Client, Input, []).
+delete_delivery_destination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDeliveryDestinationPolicy">>, Input, Options).
+
+%% @doc Deletes a delivery source.
+%%
+%% A delivery is a connection between a logical delivery source and a logical
+%% delivery destination.
+%%
+%% You can't delete a delivery source if any current deliveries are
+%% associated with it. To find whether any deliveries are associated with
+%% this delivery source, use the DescribeDeliveries operation and check the
+%% `deliverySourceName' field in the results.
+delete_delivery_source(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_delivery_source(Client, Input, []).
+delete_delivery_source(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDeliverySource">>, Input, Options).
+
 %% @doc Deletes the specified destination, and eventually disables all the
 %% subscription filters that publish to it.
 %%
@@ -433,6 +565,33 @@ describe_account_policies(Client, Input)
 describe_account_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountPolicies">>, Input, Options).
+
+%% @doc Retrieves a list of the deliveries that have been created in the
+%% account.
+describe_deliveries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_deliveries(Client, Input, []).
+describe_deliveries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDeliveries">>, Input, Options).
+
+%% @doc Retrieves a list of the delivery destinations that have been created
+%% in the account.
+describe_delivery_destinations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_delivery_destinations(Client, Input, []).
+describe_delivery_destinations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDeliveryDestinations">>, Input, Options).
+
+%% @doc Retrieves a list of the delivery sources that have been created in
+%% the account.
+describe_delivery_sources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_delivery_sources(Client, Input, []).
+describe_delivery_sources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDeliverySources">>, Input, Options).
 
 %% @doc Lists all your destinations.
 %%
@@ -629,6 +788,49 @@ get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
 
+%% @doc Returns complete information about one delivery.
+%%
+%% A delivery is a connection between a logical delivery source and a logical
+%% delivery destination
+%%
+%% You need to specify the delivery `id' in this operation. You can find
+%% the IDs of the deliveries in your account with the DescribeDeliveries
+%% operation.
+get_delivery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delivery(Client, Input, []).
+get_delivery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDelivery">>, Input, Options).
+
+%% @doc Retrieves complete information about one delivery destination.
+get_delivery_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delivery_destination(Client, Input, []).
+get_delivery_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeliveryDestination">>, Input, Options).
+
+%% @doc Retrieves the delivery destination policy assigned to the delivery
+%% destination that you specify.
+%%
+%% For more information about delivery destinations and their policies, see
+%% PutDeliveryDestinationPolicy.
+get_delivery_destination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delivery_destination_policy(Client, Input, []).
+get_delivery_destination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeliveryDestinationPolicy">>, Input, Options).
+
+%% @doc Retrieves complete information about one delivery source.
+get_delivery_source(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delivery_source(Client, Input, []).
+get_delivery_source(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeliverySource">>, Input, Options).
+
 %% @doc Lists log events from the specified log stream.
 %%
 %% You can list all of the log events or filter using a time range.
@@ -705,7 +907,8 @@ get_log_record(Client, Input, Options)
 %% record.
 %%
 %% `GetQueryResults' does not start running a query. To run a query, use
-%% StartQuery.
+%% StartQuery. For more information about how long results of previous
+%% queries are available, see CloudWatch Logs quotas.
 %%
 %% If the value of the `Status' field in the output is `Running',
 %% this operation returns only partial results. If you see a value of
@@ -824,6 +1027,136 @@ put_data_protection_policy(Client, Input)
 put_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
+
+%% @doc Creates or updates a logical delivery destination.
+%%
+%% A delivery destination is an Amazon Web Services resource that represents
+%% an Amazon Web Services service that logs can be sent to. CloudWatch Logs,
+%% Amazon S3, and Kinesis Data Firehose are supported as logs delivery
+%% destinations.
+%%
+%% To configure logs delivery between a supported Amazon Web Services service
+%% and a destination, you must do the following:
+%%
+%% <ul> <li> Create a delivery source, which is a logical object that
+%% represents the resource that is actually sending the logs. For more
+%% information, see PutDeliverySource.
+%%
+%% </li> <li> Use `PutDeliveryDestination' to create a delivery
+%% destination, which is a logical object that represents the actual delivery
+%% destination.
+%%
+%% </li> <li> If you are delivering logs cross-account, you must use
+%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
+%% policy to the destination. This policy allows delivery to that
+%% destination.
+%%
+%% </li> <li> Use `CreateDelivery' to create a delivery by pairing
+%% exactly one delivery source and one delivery destination. For more
+%% information, see CreateDelivery.
+%%
+%% </li> </ul> You can configure a single delivery source to send logs to
+%% multiple destinations by creating multiple deliveries. You can also create
+%% multiple deliveries to configure multiple delivery sources to send logs to
+%% the same delivery destination.
+%%
+%% Only some Amazon Web Services services support being configured as a
+%% delivery source. These services are listed as Supported [V2 Permissions]
+%% in the table at Enabling logging from Amazon Web Services services.
+%%
+%% If you use this operation to update an existing delivery destination, all
+%% the current delivery destination parameters are overwritten with the new
+%% parameter values that you specify.
+put_delivery_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_delivery_destination(Client, Input, []).
+put_delivery_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDeliveryDestination">>, Input, Options).
+
+%% @doc Creates and assigns an IAM policy that grants permissions to
+%% CloudWatch Logs to deliver logs cross-account to a specified destination
+%% in this account.
+%%
+%% To configure the delivery of logs from an Amazon Web Services service in
+%% another account to a logs delivery destination in the current account, you
+%% must do the following:
+%%
+%% <ul> <li> Create a delivery source, which is a logical object that
+%% represents the resource that is actually sending the logs. For more
+%% information, see PutDeliverySource.
+%%
+%% </li> <li> Create a delivery destination, which is a logical object that
+%% represents the actual delivery destination. For more information, see
+%% PutDeliveryDestination.
+%%
+%% </li> <li> Use this operation in the destination account to assign an IAM
+%% policy to the destination. This policy allows delivery to that
+%% destination.
+%%
+%% </li> <li> Create a delivery by pairing exactly one delivery source and
+%% one delivery destination. For more information, see CreateDelivery.
+%%
+%% </li> </ul> Only some Amazon Web Services services support being
+%% configured as a delivery source. These services are listed as Supported
+%% [V2 Permissions] in the table at Enabling logging from Amazon Web Services
+%% services.
+%%
+%% The contents of the policy must include two statements. One statement
+%% enables general logs delivery, and the other allows delivery to the chosen
+%% destination. See the examples for the needed policies.
+put_delivery_destination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_delivery_destination_policy(Client, Input, []).
+put_delivery_destination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDeliveryDestinationPolicy">>, Input, Options).
+
+%% @doc Creates or updates a logical delivery source.
+%%
+%% A delivery source represents an Amazon Web Services resource that sends
+%% logs to an logs delivery destination. The destination can be CloudWatch
+%% Logs, Amazon S3, or Kinesis Data Firehose.
+%%
+%% To configure logs delivery between a delivery destination and an Amazon
+%% Web Services service that is supported as a delivery source, you must do
+%% the following:
+%%
+%% <ul> <li> Use `PutDeliverySource' to create a delivery source, which
+%% is a logical object that represents the resource that is actually sending
+%% the logs.
+%%
+%% </li> <li> Use `PutDeliveryDestination' to create a delivery
+%% destination, which is a logical object that represents the actual delivery
+%% destination. For more information, see PutDeliveryDestination.
+%%
+%% </li> <li> If you are delivering logs cross-account, you must use
+%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
+%% policy to the destination. This policy allows delivery to that
+%% destination.
+%%
+%% </li> <li> Use `CreateDelivery' to create a delivery by pairing
+%% exactly one delivery source and one delivery destination. For more
+%% information, see CreateDelivery.
+%%
+%% </li> </ul> You can configure a single delivery source to send logs to
+%% multiple destinations by creating multiple deliveries. You can also create
+%% multiple deliveries to configure multiple delivery sources to send logs to
+%% the same delivery destination.
+%%
+%% Only some Amazon Web Services services support being configured as a
+%% delivery source. These services are listed as Supported [V2 Permissions]
+%% in the table at Enabling logging from Amazon Web Services services.
+%%
+%% If you use this operation to update an existing delivery source, all the
+%% current delivery source parameters are overwritten with the new parameter
+%% values that you specify.
+put_delivery_source(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_delivery_source(Client, Input, []).
+put_delivery_source(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDeliverySource">>, Input, Options).
 
 %% @doc Creates or updates a destination.
 %%

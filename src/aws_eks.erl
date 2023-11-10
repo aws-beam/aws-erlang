@@ -25,6 +25,8 @@
          create_addon/4,
          create_cluster/2,
          create_cluster/3,
+         create_eks_anywhere_subscription/2,
+         create_eks_anywhere_subscription/3,
          create_fargate_profile/3,
          create_fargate_profile/4,
          create_nodegroup/3,
@@ -33,6 +35,8 @@
          delete_addon/5,
          delete_cluster/3,
          delete_cluster/4,
+         delete_eks_anywhere_subscription/3,
+         delete_eks_anywhere_subscription/4,
          delete_fargate_profile/4,
          delete_fargate_profile/5,
          delete_nodegroup/4,
@@ -51,6 +55,9 @@
          describe_cluster/2,
          describe_cluster/4,
          describe_cluster/5,
+         describe_eks_anywhere_subscription/2,
+         describe_eks_anywhere_subscription/4,
+         describe_eks_anywhere_subscription/5,
          describe_fargate_profile/3,
          describe_fargate_profile/5,
          describe_fargate_profile/6,
@@ -70,6 +77,9 @@
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
+         list_eks_anywhere_subscriptions/1,
+         list_eks_anywhere_subscriptions/3,
+         list_eks_anywhere_subscriptions/4,
          list_fargate_profiles/2,
          list_fargate_profiles/4,
          list_fargate_profiles/5,
@@ -97,6 +107,8 @@
          update_cluster_config/4,
          update_cluster_version/3,
          update_cluster_version/4,
+         update_eks_anywhere_subscription/3,
+         update_eks_anywhere_subscription/4,
          update_nodegroup_config/4,
          update_nodegroup_config/5,
          update_nodegroup_version/4,
@@ -241,6 +253,34 @@ create_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an EKS Anywhere subscription.
+%%
+%% When a subscription is created, it is a contract agreement for the length
+%% of the term specified in the request. Licenses that are used to validate
+%% support are provisioned in Amazon Web Services License Manager and the
+%% caller account is granted access to EKS Anywhere Curated Packages.
+create_eks_anywhere_subscription(Client, Input) ->
+    create_eks_anywhere_subscription(Client, Input, []).
+create_eks_anywhere_subscription(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/eks-anywhere-subscriptions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Fargate profile for your Amazon EKS cluster.
 %%
 %% You must have at least one Fargate profile in a cluster to be able to run
@@ -299,11 +339,7 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% @doc Creates a managed node group for an Amazon EKS cluster.
 %%
 %% You can only create a node group for your cluster that is equal to the
-%% current Kubernetes version for the cluster. All node groups are created
-%% with the latest AMI release version for the respective minor Kubernetes
-%% version of the cluster, unless you deploy a custom AMI using a launch
-%% template. For more information about using launch templates, see Launch
-%% template support.
+%% current Kubernetes version for the cluster.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by Amazon Web Services
@@ -379,6 +415,34 @@ delete_cluster(Client, Name, Input) ->
 delete_cluster(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an expired / inactive subscription.
+%%
+%% Deleting inactive subscriptions removes them from the Amazon Web Services
+%% Management Console view and from list/describe API responses.
+%% Subscriptions can only be cancelled within 7 days of creation, and are
+%% cancelled by creating a ticket in the Amazon Web Services Support Center.
+delete_eks_anywhere_subscription(Client, Id, Input) ->
+    delete_eks_anywhere_subscription(Client, Id, Input, []).
+delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -595,6 +659,29 @@ describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns descriptive information about a subscription.
+describe_eks_anywhere_subscription(Client, Id)
+  when is_map(Client) ->
+    describe_eks_anywhere_subscription(Client, Id, #{}, #{}).
+
+describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, []).
+
+describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns descriptive information about an Fargate profile.
 describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
@@ -702,7 +789,7 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
 %%
 %% If you disassociate an identity provider from your cluster, users included
 %% in the provider can no longer access the cluster. However, you can still
-%% access the cluster with Amazon Web Services IAM users.
+%% access the cluster with IAM principals.
 disassociate_identity_provider_config(Client, ClusterName, Input) ->
     disassociate_identity_provider_config(Client, ClusterName, Input, []).
 disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
@@ -725,7 +812,7 @@ disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the available add-ons.
+%% @doc Lists the installed add-ons.
 list_addons(Client, ClusterName)
   when is_map(Client) ->
     list_addons(Client, ClusterName, #{}, #{}).
@@ -776,6 +863,35 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"include">>, maps:get(<<"include">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the full description of the subscription.
+list_eks_anywhere_subscriptions(Client)
+  when is_map(Client) ->
+    list_eks_anywhere_subscriptions(Client, #{}, #{}).
+
+list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, []).
+
+list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/eks-anywhere-subscriptions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeStatus">>, maps:get(<<"includeStatus">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -1116,6 +1232,31 @@ update_cluster_version(Client, Name, Input) ->
 update_cluster_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update an EKS Anywhere Subscription.
+%%
+%% Only auto renewal and tags can be updated after subscription creation.
+update_eks_anywhere_subscription(Client, Id, Input) ->
+    update_eks_anywhere_subscription(Client, Id, Input, []).
+update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/eks-anywhere-subscriptions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

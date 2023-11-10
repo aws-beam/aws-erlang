@@ -622,7 +622,7 @@ describe_stack_set_operation(Client, Input, Options)
 %% @doc Returns the description for the specified stack; if no stack name was
 %% specified, then it returns the description for all the stacks created.
 %%
-%% If the stack doesn't exist, an `ValidationError' is returned.
+%% If the stack doesn't exist, a `ValidationError' is returned.
 describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).

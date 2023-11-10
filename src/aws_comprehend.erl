@@ -91,6 +91,8 @@
          detect_syntax/3,
          detect_targeted_sentiment/2,
          detect_targeted_sentiment/3,
+         detect_toxic_content/2,
+         detect_toxic_content/3,
          import_model/2,
          import_model/3,
          list_datasets/2,
@@ -240,7 +242,8 @@ batch_detect_syntax(Client, Input, Options)
 %% @doc Inspects a batch of documents and returns a sentiment analysis for
 %% each entity identified in the documents.
 %%
-%% For more information about targeted sentiment, see Targeted sentiment.
+%% For more information about targeted sentiment, see Targeted sentiment in
+%% the Amazon Comprehend Developer Guide.
 batch_detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_targeted_sentiment(Client, Input, []).
@@ -248,15 +251,24 @@ batch_detect_targeted_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectTargetedSentiment">>, Input, Options).
 
-%% @doc Creates a new document classification request to analyze a single
-%% document in real-time, using a previously created and trained custom model
-%% and an endpoint.
+%% @doc Creates a classification request to analyze a single document in
+%% real-time.
 %%
-%% You can input plain text or you can upload a single-page input document
-%% (text, PDF, Word, or image).
+%% `ClassifyDocument' supports the following model types:
 %%
-%% If the system detects errors while processing a page in the input
-%% document, the API response includes an entry in `Errors' that
+%% <ul> <li> Custom classifier - a custom model that you have created and
+%% trained. For input, you can provide plain text, a single-page document
+%% (PDF, Word, or image), or Textract API output. For more information, see
+%% Custom classification in the Amazon Comprehend Developer Guide.
+%%
+%% </li> <li> Prompt classifier - Amazon Comprehend provides a model for
+%% classifying prompts. For input, you provide English plain text input. For
+%% prompt classification, the response includes only the `Classes' field.
+%% For more information about prompt classifiers, see Prompt classifiers in
+%% the Amazon Comprehend Developer Guide.
+%%
+%% </li> </ul> If the system detects errors while processing a page in the
+%% input document, the API response includes an entry in `Errors' that
 %% describes the errors.
 %%
 %% If the system detects a document-level error in your input document, the
@@ -662,13 +674,28 @@ detect_syntax(Client, Input, Options)
 %% @doc Inspects the input text and returns a sentiment analysis for each
 %% entity identified in the text.
 %%
-%% For more information about targeted sentiment, see Targeted sentiment.
+%% For more information about targeted sentiment, see Targeted sentiment in
+%% the Amazon Comprehend Developer Guide.
 detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_targeted_sentiment(Client, Input, []).
 detect_targeted_sentiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectTargetedSentiment">>, Input, Options).
+
+%% @doc Performs toxicity analysis on the list of text strings that you
+%% provide as input.
+%%
+%% The analysis uses the order of strings in the list to determine context
+%% when predicting toxicity. The API response contains a results list that
+%% matches the size of the input list. For more information about toxicity
+%% detection, see Toxicity detection in the Amazon Comprehend Developer Guide
+detect_toxic_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detect_toxic_content(Client, Input, []).
+detect_toxic_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetectToxicContent">>, Input, Options).
 
 %% @doc Creates a new custom model that replicates a source custom model that
 %% you import.

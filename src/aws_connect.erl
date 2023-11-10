@@ -3754,6 +3754,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 
     Query0_ =
       [
+        {<<"integrationArn">>, maps:get(<<"integrationArn">>, QueryMap, undefined)},
         {<<"integrationType">>, maps:get(<<"integrationType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}

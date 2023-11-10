@@ -325,16 +325,21 @@ get_import(Client, Input, Options)
     request(Client, <<"GetImport">>, Input, Options).
 
 %% @doc Describes the settings for the Insights event selectors that you
-%% configured for your trail.
+%% configured for your trail or event data store.
 %%
 %% `GetInsightSelectors' shows if CloudTrail Insights event logging is
-%% enabled on the trail, and if it is, which insight types are enabled. If
-%% you run `GetInsightSelectors' on a trail that does not have Insights
-%% events enabled, the operation throws the exception
-%% `InsightNotEnabledException'
+%% enabled on the trail or event data store, and if it is, which Insights
+%% types are enabled. If you run `GetInsightSelectors' on a trail or
+%% event data store that does not have Insights events enabled, the operation
+%% throws the exception `InsightNotEnabledException'
 %%
-%% For more information, see Logging CloudTrail Insights Events for Trails in
-%% the CloudTrail User Guide.
+%% Specify either the `EventDataStore' parameter to get Insights event
+%% selectors for an event data store, or the `TrailName' parameter to the
+%% get Insights event selectors for a trail. You cannot specify these
+%% parameters together.
+%%
+%% For more information, see Logging CloudTrail Insights events in the
+%% CloudTrail User Guide.
 get_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_selectors(Client, Input, []).
@@ -471,6 +476,12 @@ list_trails(Client, Input, Options)
 %% captured by CloudTrail.
 %%
 %% You can look up events that occurred in a Region within the last 90 days.
+%%
+%% `LookupEvents' returns recent Insights events for trails that enable
+%% Insights. To view Insights events for an event data store, you can run
+%% queries on your Insights event data store, and you can also view the Lake
+%% dashboard for Insights.
+%%
 %% Lookup supports the following attributes for management events:
 %%
 %% <ul> <li> Amazon Web Services access key
@@ -569,18 +580,36 @@ put_event_selectors(Client, Input, Options)
     request(Client, <<"PutEventSelectors">>, Input, Options).
 
 %% @doc Lets you enable Insights event logging by specifying the Insights
-%% selectors that you want to enable on an existing trail.
+%% selectors that you want to enable on an existing trail or event data
+%% store.
 %%
 %% You also use `PutInsightSelectors' to turn off Insights event logging,
-%% by passing an empty list of insight types. The valid Insights event types
-%% in this release are `ApiErrorRateInsight' and
-%% `ApiCallRateInsight'.
+%% by passing an empty list of Insights types. The valid Insights event types
+%% are `ApiErrorRateInsight' and `ApiCallRateInsight'.
 %%
-%% To log CloudTrail Insights events on API call volume, the trail must log
-%% `write' management events. To log CloudTrail Insights events on API
-%% error rate, the trail must log `read' or `write' management
-%% events. You can call `GetEventSelectors' on a trail to check whether
-%% the trail logs management events.
+%% To enable Insights on an event data store, you must specify the ARNs (or
+%% ID suffix of the ARNs) for the source event data store
+%% (`EventDataStore') and the destination event data store
+%% (`InsightsDestination'). The source event data store logs management
+%% events and enables Insights. The destination event data store logs
+%% Insights events based upon the management event activity of the source
+%% event data store. The source and destination event data stores must belong
+%% to the same Amazon Web Services account.
+%%
+%% To log Insights events for a trail, you must specify the name
+%% (`TrailName') of the CloudTrail trail for which you want to change or
+%% add Insights selectors.
+%%
+%% To log CloudTrail Insights events on API call volume, the trail or event
+%% data store must log `write' management events. To log CloudTrail
+%% Insights events on API error rate, the trail or event data store must log
+%% `read' or `write' management events. You can call
+%% `GetEventSelectors' on a trail to check whether the trail logs
+%% management events. You can call `GetEventDataStore' on an event data
+%% store to check whether the event data store logs management events.
+%%
+%% For more information, see Logging CloudTrail Insights events in the
+%% CloudTrail User Guide.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -760,8 +789,8 @@ update_channel(Client, Input, Options)
 %% `TerminationProtection' is enabled.
 %%
 %% For event data stores for CloudTrail events, `AdvancedEventSelectors'
-%% includes or excludes management and data events in your event data store.
-%% For more information about `AdvancedEventSelectors', see
+%% includes or excludes management, data, or Insights events in your event
+%% data store. For more information about `AdvancedEventSelectors', see
 %% AdvancedEventSelectors.
 %%
 %% For event data stores for Config configuration items, Audit Manager
