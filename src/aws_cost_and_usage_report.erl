@@ -1,18 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The AWS Cost and Usage Report API enables you to programmatically
-%% create, query, and delete AWS Cost and Usage report definitions.
+%% @doc You can use the Amazon Web Services Cost and Usage Report API to
+%% programmatically create, query, and delete Amazon Web Services Cost and
+%% Usage Report definitions.
 %%
-%% AWS Cost and Usage reports track the monthly AWS costs and usage
-%% associated with your AWS account. The report contains line items for each
-%% unique combination of AWS product, usage type, and operation that your AWS
-%% account uses. You can configure the AWS Cost and Usage report to show only
-%% the data that you want, using the AWS Cost and Usage API.
+%% Amazon Web Services Cost and Usage Report track the monthly Amazon Web
+%% Services costs and usage associated with your Amazon Web Services account.
+%% The report contains line items for each unique combination of Amazon Web
+%% Services product, usage type, and operation that your Amazon Web Services
+%% account uses. You can configure the Amazon Web Services Cost and Usage
+%% Report to show only the data that you want, using the Amazon Web Services
+%% Cost and Usage Report API.
 %%
 %% Service Endpoint
 %%
-%% The AWS Cost and Usage Report API provides the following endpoint:
+%% The Amazon Web Services Cost and Usage Report API provides the following
+%% endpoint:
 %%
 %% <ul> <li> cur.us-east-1.amazonaws.com
 %%
@@ -23,10 +27,16 @@
          delete_report_definition/3,
          describe_report_definitions/2,
          describe_report_definitions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          modify_report_definition/2,
          modify_report_definition/3,
          put_report_definition/2,
-         put_report_definition/3]).
+         put_report_definition/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -35,6 +45,8 @@
 %%====================================================================
 
 %% @doc Deletes the specified report.
+%%
+%% Any tags associated with the report are also deleted.
 delete_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_definition(Client, Input, []).
@@ -42,7 +54,8 @@ delete_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReportDefinition">>, Input, Options).
 
-%% @doc Lists the AWS Cost and Usage reports available to this account.
+%% @doc Lists the Amazon Web Services Cost and Usage Report available to this
+%% account.
 describe_report_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_definitions(Client, Input, []).
@@ -50,7 +63,15 @@ describe_report_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReportDefinitions">>, Input, Options).
 
-%% @doc Allows you to programatically update your report preferences.
+%% @doc Lists the tags associated with the specified report definition.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Allows you to programmatically update your report preferences.
 modify_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_report_definition(Client, Input, []).
@@ -65,6 +86,22 @@ put_report_definition(Client, Input)
 put_report_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutReportDefinition">>, Input, Options).
+
+%% @doc Associates a set of tags with a report definition.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Disassociates a set of tags from a report definition.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

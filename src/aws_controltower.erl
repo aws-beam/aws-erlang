@@ -5,7 +5,7 @@
 %% controls to your organizational units, programmatically.
 %%
 %% In AWS Control Tower, the terms &quot;control&quot; and
-%% &quot;guardrail&quot; are synonyms. .
+%% &quot;guardrail&quot; are synonyms.
 %%
 %% To call these APIs, you'll need to know:
 %%
@@ -14,6 +14,9 @@
 %%
 %% </li> <li> the ARN associated with the target organizational unit (OU),
 %% which we call the `targetIdentifier'.
+%%
+%% </li> <li> the ARN associated with a resource that you wish to tag or
+%% untag.
 %%
 %% </li> </ul> To get the `controlIdentifier' for your AWS Control Tower
 %% control:
@@ -28,9 +31,9 @@
 %%
 %% A quick-reference list of control identifers for the AWS Control Tower
 %% legacy Strongly recommended and Elective controls is given in Resource
-%% identifiers for APIs and guardrails in the Controls reference guide
-%% section of the AWS Control Tower User Guide. Remember that Mandatory
-%% controls cannot be added or removed.
+%% identifiers for APIs and controls in the Controls reference guide section
+%% of the AWS Control Tower User Guide. Remember that Mandatory controls
+%% cannot be added or removed.
 %%
 %% ARN format: `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
 %%
@@ -90,7 +93,14 @@
          get_enabled_control/2,
          get_enabled_control/3,
          list_enabled_controls/2,
-         list_enabled_controls/3]).
+         list_enabled_controls/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -131,7 +141,7 @@ disable_control(Client, Input0, Options0) ->
 %% It starts an asynchronous operation that creates AWS resources on the
 %% specified organizational unit and the accounts it contains. The resources
 %% created will vary according to the control that you specify. For usage
-%% examples, see the AWS Control Tower User Guide
+%% examples, see the AWS Control Tower User Guide .
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
 enable_control(Client, Input0, Options0) ->
@@ -159,7 +169,7 @@ enable_control(Client, Input0, Options0) ->
 %%
 %% Displays a message in case of error. Details for an operation are
 %% available for 90 days. For usage examples, see the AWS Control Tower User
-%% Guide
+%% Guide .
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
 get_control_operation(Client, Input0, Options0) ->
@@ -182,22 +192,9 @@ get_control_operation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Provides details about the enabled control.
+%% @doc Retrieves details about an enabled control.
 %%
 %% For usage examples, see the AWS Control Tower User Guide .
-%%
-%% == Returned values ==
-%%
-%% <ul> <li> TargetRegions: Shows target AWS Regions where the enabled
-%% control is available to be deployed.
-%%
-%% </li> <li> StatusSummary: Provides a detailed summary of the deployment
-%% status.
-%%
-%% </li> <li> DriftSummary: Provides a detailed summary of the drifted
-%% status.
-%%
-%% </li> </ul>
 get_enabled_control(Client, Input) ->
     get_enabled_control(Client, Input, []).
 get_enabled_control(Client, Input0, Options0) ->
@@ -223,7 +220,7 @@ get_enabled_control(Client, Input0, Options0) ->
 %% @doc Lists the controls enabled by AWS Control Tower on the specified
 %% organizational unit and the accounts it contains.
 %%
-%% For usage examples, see the AWS Control Tower User Guide
+%% For usage examples, see the AWS Control Tower User Guide .
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
 list_enabled_controls(Client, Input0, Options0) ->
@@ -244,6 +241,82 @@ list_enabled_controls(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tags associated with the resource.
+%%
+%% For usage examples, see the AWS Control Tower User Guide .
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Applies tags to a resource.
+%%
+%% For usage examples, see the AWS Control Tower User Guide .
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from a resource.
+%%
+%% For usage examples, see the AWS Control Tower User Guide .
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

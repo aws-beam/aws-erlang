@@ -890,9 +890,6 @@ create_global_cluster(Client, Input, Options)
     request(Client, <<"CreateGlobalCluster">>, Input, Options).
 
 %% @doc Creates a zero-ETL integration with Amazon Redshift.
-%%
-%% For more information, see Working with Amazon Aurora zero-ETL integrations
-%% with Amazon Redshift in the Amazon Aurora User Guide.
 create_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_integration(Client, Input, []).
@@ -1193,9 +1190,6 @@ delete_global_cluster(Client, Input, Options)
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
 
 %% @doc Deletes a zero-ETL integration with Amazon Redshift.
-%%
-%% For more information, see Deleting Amazon Aurora zero-ETL integrations
-%% with Amazon Redshift in the Amazon Aurora User Guide
 delete_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_integration(Client, Input, []).
@@ -1679,10 +1673,7 @@ describe_global_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
 
-%% @doc Describe one or more zero-ETL integration with Amazon Redshift.
-%%
-%% For more information, see Viewing and monitoring Amazon Aurora zero-ETL
-%% integrations with Amazon Redshift in the Amazon Aurora User Guide
+%% @doc Describe one or more zero-ETL integrations with Amazon Redshift.
 describe_integrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_integrations(Client, Input, []).
