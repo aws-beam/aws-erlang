@@ -105,6 +105,31 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 %%
 %% The resource can be specified by its ARN or name. The application can be
 %% specified by ARN, ID, or name.
+%%
+%% Minimum permissions
+%%
+%% You must have the following permissions to associate a resource using the
+%% `OPTIONS' parameter set to `APPLY_APPLICATION_TAG'.
+%%
+%% <ul> <li> `tag:GetResources'
+%%
+%% </li> <li> `tag:TagResources'
+%%
+%% </li> </ul> You must also have these additional permissions if you
+%% don't use the `AWSServiceCatalogAppRegistryFullAccess' policy. For
+%% more information, see AWSServiceCatalogAppRegistryFullAccess in the
+%% AppRegistry Administrator Guide.
+%%
+%% <ul> <li> `resource-groups:DisassociateResource'
+%%
+%% </li> <li> `cloudformation:UpdateStack'
+%%
+%% </li> <li> `cloudformation:DescribeStacks'
+%%
+%% </li> </ul> In addition, you must have the tagging permission defined by
+%% the Amazon Web Services service that creates the resource. For more
+%% information, see TagResources in the Resource Groups Tagging API
+%% Reference.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
     associate_resource(Client, Application, Resource, ResourceType, Input, []).
 associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
@@ -261,6 +286,32 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %%
 %% Both the resource and the application can be specified either by ID or
 %% name.
+%%
+%% Minimum permissions
+%%
+%% You must have the following permissions to remove a resource that's
+%% been associated with an application using the `APPLY_APPLICATION_TAG'
+%% option for AssociateResource.
+%%
+%% <ul> <li> `tag:GetResources'
+%%
+%% </li> <li> `tag:UntagResources'
+%%
+%% </li> </ul> You must also have the following permissions if you don't
+%% use the `AWSServiceCatalogAppRegistryFullAccess' policy. For more
+%% information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry
+%% Administrator Guide.
+%%
+%% <ul> <li> `resource-groups:DisassociateResource'
+%%
+%% </li> <li> `cloudformation:UpdateStack'
+%%
+%% </li> <li> `cloudformation:DescribeStacks'
+%%
+%% </li> </ul> In addition, you must have the tagging permission defined by
+%% the Amazon Web Services service that creates the resource. For more
+%% information, see UntagResources in the Resource Groups Tagging API
+%% Reference.
 disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
     disassociate_resource(Client, Application, Resource, ResourceType, Input, []).
 disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
@@ -331,7 +382,13 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceTagStatus">>, maps:get(<<"resourceTagStatus">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

@@ -194,7 +194,8 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 %%
 %% The following parameters are required:
 %%
-%% <ul> <li> `language-code' or `identify-language'
+%% <ul> <li> `language-code' or `identify-language' or
+%% `identify-multiple-language'
 %%
 %% </li> <li> `media-encoding'
 %%
@@ -219,6 +220,7 @@ start_stream_transcription(Client, Input0, Options0) ->
                        {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
                        {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
                        {<<"x-amzn-transcribe-identify-language">>, <<"IdentifyLanguage">>},
+                       {<<"x-amzn-transcribe-identify-multiple-languages">>, <<"IdentifyMultipleLanguages">>},
                        {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
                        {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
                        {<<"x-amzn-transcribe-language-options">>, <<"LanguageOptions">>},
@@ -253,6 +255,7 @@ start_stream_transcription(Client, Input0, Options0) ->
             {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
             {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
             {<<"x-amzn-transcribe-identify-language">>, <<"IdentifyLanguage">>},
+            {<<"x-amzn-transcribe-identify-multiple-languages">>, <<"IdentifyMultipleLanguages">>},
             {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
             {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
             {<<"x-amzn-transcribe-language-options">>, <<"LanguageOptions">>},
