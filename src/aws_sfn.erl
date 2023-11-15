@@ -22,6 +22,12 @@
 %% Web Services. You can access and use Step Functions using the console, the
 %% Amazon Web Services SDKs, or an HTTP API. For more information about Step
 %% Functions, see the Step Functions Developer Guide .
+%%
+%% If you use the Step Functions API actions using Amazon Web Services SDK
+%% integrations, make sure the API actions are in camel case and parameter
+%% names are in Pascal case. For example, you could use Step Functions API
+%% action `startSyncExecution' and specify its parameter as
+%% `StateMachineArn'.
 -module(aws_sfn).
 
 -export([create_activity/2,
@@ -70,6 +76,8 @@
          list_tags_for_resource/3,
          publish_state_machine_version/2,
          publish_state_machine_version/3,
+         redrive_execution/2,
+         redrive_execution/3,
          send_task_failure/2,
          send_task_failure/3,
          send_task_heartbeat/2,
@@ -212,8 +220,10 @@ delete_activity(Client, Input, Options)
 
 %% @doc Deletes a state machine.
 %%
-%% This is an asynchronous operation: It sets the state machine's status
-%% to `DELETING' and begins the deletion process.
+%% This is an asynchronous operation. It sets the state machine's status
+%% to `DELETING' and begins the deletion process. A state machine is
+%% deleted only when all its executions are completed. On the next state
+%% transition, the state machine's executions are terminated.
 %%
 %% A qualified state machine ARN can either refer to a Distributed Map state
 %% defined within a state machine, a version ARN, or an alias ARN.
@@ -313,8 +323,10 @@ describe_activity(Client, Input, Options)
 %% state machine associated with the execution, the execution input and
 %% output, and relevant execution metadata.
 %%
-%% Use this API action to return the Map Run Amazon Resource Name (ARN) if
-%% the execution was dispatched by a Map Run.
+%% If you've redriven an execution, you can use this API action to return
+%% information about the redrives of that execution. In addition, you can use
+%% this API action to return the Map Run Amazon Resource Name (ARN) if the
+%% execution was dispatched by a Map Run.
 %%
 %% If you specify a version or alias ARN when you call the
 %% `StartExecution' API action, `DescribeExecution' returns that ARN.
@@ -322,7 +334,7 @@ describe_activity(Client, Input, Options)
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
-%% Executions of an `EXPRESS' state machinearen't supported by
+%% Executions of an `EXPRESS' state machine aren't supported by
 %% `DescribeExecution' unless a Map Run dispatched them.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -334,8 +346,9 @@ describe_execution(Client, Input, Options)
 %% @doc Provides information about a Map Run's configuration, progress,
 %% and results.
 %%
-%% For more information, see Examining Map Run in the Step Functions
-%% Developer Guide.
+%% If you've redriven a Map Run, this API action also returns information
+%% about the redrives of that Map Run. For more information, see Examining
+%% Map Run in the Step Functions Developer Guide.
 describe_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_map_run(Client, Input, []).
@@ -493,7 +506,8 @@ list_activities(Client, Input, Options)
 %%
 %% You can list all executions related to a state machine by specifying a
 %% state machine Amazon Resource Name (ARN), or those related to a Map Run by
-%% specifying a Map Run ARN.
+%% specifying a Map Run ARN. Using this API action, you can also list all
+%% redriven executions.
 %%
 %% You can also provide a state machine alias ARN or version ARN to list the
 %% executions associated with a specific alias or version.
@@ -651,8 +665,65 @@ publish_state_machine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishStateMachineVersion">>, Input, Options).
 
-%% @doc Used by activity workers and task states using the callback pattern
-%% to report that the task identified by the `taskToken' failed.
+%% @doc Restarts unsuccessful executions of Standard workflows that
+%% didn't complete successfully in the last 14 days.
+%%
+%% These include failed, aborted, or timed out executions. When you redrive
+%% an execution, it continues the failed execution from the unsuccessful step
+%% and uses the same input. Step Functions preserves the results and
+%% execution history of the successful steps, and doesn't rerun these
+%% steps when you redrive an execution. Redriven executions use the same
+%% state machine definition and execution ARN as the original execution
+%% attempt.
+%%
+%% For workflows that include an Inline Map or Parallel state,
+%% `RedriveExecution' API action reschedules and redrives only the
+%% iterations and branches that failed or aborted.
+%%
+%% To redrive a workflow that includes a Distributed Map state with failed
+%% child workflow executions, you must redrive the parent workflow. The
+%% parent workflow redrives all the unsuccessful states, including
+%% Distributed Map.
+%%
+%% This API action is not supported by `EXPRESS' state machines.
+%%
+%% However, you can restart the unsuccessful executions of Express child
+%% workflows in a Distributed Map by redriving its Map Run. When you redrive
+%% a Map Run, the Express child workflows are rerun using the
+%% `StartExecution' API action. For more information, see Redriving Map
+%% Runs.
+%%
+%% You can redrive executions if your original execution meets the following
+%% conditions:
+%%
+%% <ul> <li> The execution status isn't `SUCCEEDED'.
+%%
+%% </li> <li> Your workflow execution has not exceeded the redrivable period
+%% of 14 days. Redrivable period refers to the time during which you can
+%% redrive a given execution. This period starts from the day a state machine
+%% completes its execution.
+%%
+%% </li> <li> The workflow execution has not exceeded the maximum open time
+%% of one year. For more information about state machine quotas, see Quotas
+%% related to state machine executions.
+%%
+%% </li> <li> The execution event history count is less than 24,999. Redriven
+%% executions append their event history to the existing event history. Make
+%% sure your workflow execution contains less than 24,999 events to
+%% accommodate the `ExecutionRedriven' history event and at least one
+%% other history event.
+%%
+%% </li> </ul>
+redrive_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    redrive_execution(Client, Input, []).
+redrive_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RedriveExecution">>, Input, Options).
+
+%% @doc Used by activity workers, Task states using the callback pattern, and
+%% optionally Task states using the job run pattern to report that the task
+%% identified by the `taskToken' failed.
 send_task_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_failure(Client, Input, []).
@@ -660,16 +731,17 @@ send_task_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskFailure">>, Input, Options).
 
-%% @doc Used by activity workers and task states using the callback pattern
-%% to report to Step Functions that the task represented by the specified
-%% `taskToken' is still making progress.
+%% @doc Used by activity workers and Task states using the callback pattern,
+%% and optionally Task states using the job run pattern to report to Step
+%% Functions that the task represented by the specified `taskToken' is
+%% still making progress.
 %%
 %% This action resets the `Heartbeat' clock. The `Heartbeat'
 %% threshold is specified in the state machine's Amazon States Language
 %% definition (`HeartbeatSeconds'). This action does not in itself create
 %% an event in the execution history. However, if the task times out, the
 %% execution history contains an `ActivityTimedOut' entry for activities,
-%% or a `TaskTimedOut' entry for for tasks using the job run or callback
+%% or a `TaskTimedOut' entry for tasks using the job run or callback
 %% pattern.
 %%
 %% The `Timeout' of a task, defined in the state machine's Amazon
@@ -683,9 +755,9 @@ send_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskHeartbeat">>, Input, Options).
 
-%% @doc Used by activity workers and task states using the callback pattern
-%% to report that the task identified by the `taskToken' completed
-%% successfully.
+%% @doc Used by activity workers, Task states using the callback pattern, and
+%% optionally Task states using the job run pattern to report that the task
+%% identified by the `taskToken' completed successfully.
 send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).

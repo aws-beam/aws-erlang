@@ -30,6 +30,8 @@
          batch_get_jobs/3,
          batch_get_partition/2,
          batch_get_partition/3,
+         batch_get_table_optimizer/2,
+         batch_get_table_optimizer/3,
          batch_get_triggers/2,
          batch_get_triggers/3,
          batch_get_workflows/2,
@@ -84,6 +86,8 @@
          create_session/3,
          create_table/2,
          create_table/3,
+         create_table_optimizer/2,
+         create_table_optimizer/3,
          create_trigger/2,
          create_trigger/3,
          create_user_defined_function/2,
@@ -132,6 +136,8 @@
          delete_session/3,
          delete_table/2,
          delete_table/3,
+         delete_table_optimizer/2,
+         delete_table_optimizer/3,
          delete_table_version/2,
          delete_table_version/3,
          delete_trigger/2,
@@ -240,6 +246,8 @@
          get_statement/3,
          get_table/2,
          get_table/3,
+         get_table_optimizer/2,
+         get_table_optimizer/3,
          get_table_version/2,
          get_table_version/3,
          get_table_versions/2,
@@ -304,6 +312,8 @@
          list_sessions/3,
          list_statements/2,
          list_statements/3,
+         list_table_optimizer_runs/2,
+         list_table_optimizer_runs/3,
          list_triggers/2,
          list_triggers/3,
          list_workflows/2,
@@ -404,6 +414,8 @@
          update_source_control_from_job/3,
          update_table/2,
          update_table/3,
+         update_table_optimizer/2,
+         update_table_optimizer/3,
          update_trigger/2,
          update_trigger/3,
          update_user_defined_function/2,
@@ -542,6 +554,14 @@ batch_get_partition(Client, Input)
 batch_get_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetPartition">>, Input, Options).
+
+%% @doc Returns the configuration for the specified table optimizers.
+batch_get_table_optimizer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_table_optimizer(Client, Input, []).
+batch_get_table_optimizer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetTableOptimizer">>, Input, Options).
 
 %% @doc Returns a list of resource metadata for a given list of trigger
 %% names.
@@ -834,6 +854,16 @@ create_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTable">>, Input, Options).
 
+%% @doc Creates a new table optimizer for a specific function.
+%%
+%% `compaction' is the only currently supported optimizer type.
+create_table_optimizer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_table_optimizer(Client, Input, []).
+create_table_optimizer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTableOptimizer">>, Input, Options).
+
 %% @doc Creates a new trigger.
 create_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1096,6 +1126,16 @@ delete_table(Client, Input)
 delete_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTable">>, Input, Options).
+
+%% @doc Deletes an optimizer and all associated metadata for a table.
+%%
+%% The optimization will no longer be performed on the table.
+delete_table_optimizer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_table_optimizer(Client, Input, []).
+delete_table_optimizer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTableOptimizer">>, Input, Options).
 
 %% @doc Deletes a specified version of a table.
 delete_table_version(Client, Input)
@@ -1608,6 +1648,15 @@ get_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTable">>, Input, Options).
 
+%% @doc Returns the configuration of all optimizers associated with a
+%% specified table.
+get_table_optimizer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_table_optimizer(Client, Input, []).
+get_table_optimizer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTableOptimizer">>, Input, Options).
+
 %% @doc Retrieves a specified version of a table.
 get_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1948,6 +1997,14 @@ list_statements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStatements">>, Input, Options).
 
+%% @doc Lists the history of previous optimizer runs for a specific table.
+list_table_optimizer_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_table_optimizer_runs(Client, Input, []).
+list_table_optimizer_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTableOptimizerRuns">>, Input, Options).
+
 %% @doc Retrieves the names of all trigger resources in this Amazon Web
 %% Services account, or the resources with the specified tag.
 %%
@@ -2146,6 +2203,8 @@ start_crawler_schedule(Client, Input, Options)
 %% Glue Data Quality analyzes the data and comes up with recommendations for
 %% a potential ruleset. You can then triage the ruleset and modify the
 %% generated ruleset to your liking.
+%%
+%% Recommendation runs are automatically deleted after 90 days.
 start_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_quality_rule_recommendation_run(Client, Input, []).
@@ -2543,6 +2602,14 @@ update_table(Client, Input)
 update_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTable">>, Input, Options).
+
+%% @doc Updates the configuration for an existing table optimizer.
+update_table_optimizer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_table_optimizer(Client, Input, []).
+update_table_optimizer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTableOptimizer">>, Input, Options).
 
 %% @doc Updates a trigger definition.
 update_trigger(Client, Input)

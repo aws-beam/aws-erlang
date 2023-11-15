@@ -110,6 +110,9 @@
          get_supported_resource_types/1,
          get_supported_resource_types/3,
          get_supported_resource_types/4,
+         list_backup_job_summaries/1,
+         list_backup_job_summaries/3,
+         list_backup_job_summaries/4,
          list_backup_jobs/1,
          list_backup_jobs/3,
          list_backup_jobs/4,
@@ -128,6 +131,9 @@
          list_backup_vaults/1,
          list_backup_vaults/3,
          list_backup_vaults/4,
+         list_copy_job_summaries/1,
+         list_copy_job_summaries/3,
+         list_copy_job_summaries/4,
          list_copy_jobs/1,
          list_copy_jobs/3,
          list_copy_jobs/4,
@@ -158,6 +164,9 @@
          list_report_plans/1,
          list_report_plans/3,
          list_report_plans/4,
+         list_restore_job_summaries/1,
+         list_restore_job_summaries/3,
+         list_restore_job_summaries/4,
          list_restore_jobs/1,
          list_restore_jobs/3,
          list_restore_jobs/4,
@@ -1248,6 +1257,48 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This is a request for a summary of backup jobs created or running
+%% within the most recent 30 days.
+%%
+%% You can include parameters AccountID, State, ResourceType,
+%% MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter
+%% results.
+%%
+%% This request returns a summary that contains Region, Account, State,
+%% ResourceType, MessageCategory, StartTime, EndTime, and Count of included
+%% jobs.
+list_backup_job_summaries(Client)
+  when is_map(Client) ->
+    list_backup_job_summaries(Client, #{}, #{}).
+
+list_backup_job_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_job_summaries(Client, QueryMap, HeadersMap, []).
+
+list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/backup-job-summaries"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)},
+        {<<"AggregationPeriod">>, maps:get(<<"AggregationPeriod">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"MessageCategory">>, maps:get(<<"MessageCategory">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of existing backup jobs for an authenticated account
 %% for the last 30 days.
 %%
@@ -1278,6 +1329,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"messageCategory">>, maps:get(<<"messageCategory">>, QueryMap, undefined)},
         {<<"parentJobId">>, maps:get(<<"parentJobId">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
@@ -1442,6 +1494,48 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This request obtains a list of copy jobs created or running within
+%% the the most recent 30 days.
+%%
+%% You can include parameters AccountID, State, ResourceType,
+%% MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter
+%% results.
+%%
+%% This request returns a summary that contains Region, Account, State,
+%% RestourceType, MessageCategory, StartTime, EndTime, and Count of included
+%% jobs.
+list_copy_job_summaries(Client)
+  when is_map(Client) ->
+    list_copy_job_summaries(Client, #{}, #{}).
+
+list_copy_job_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_copy_job_summaries(Client, QueryMap, HeadersMap, []).
+
+list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/copy-job-summaries"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)},
+        {<<"AggregationPeriod">>, maps:get(<<"AggregationPeriod">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"MessageCategory">>, maps:get(<<"MessageCategory">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns metadata about your copy jobs.
 list_copy_jobs(Client)
   when is_map(Client) ->
@@ -1469,6 +1563,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
         {<<"destinationVaultArn">>, maps:get(<<"destinationVaultArn">>, QueryMap, undefined)},
+        {<<"messageCategory">>, maps:get(<<"messageCategory">>, QueryMap, undefined)},
         {<<"parentJobId">>, maps:get(<<"parentJobId">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
@@ -1752,6 +1847,46 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This request obtains a summary of restore jobs created or running
+%% within the the most recent 30 days.
+%%
+%% You can include parameters AccountID, State, ResourceType,
+%% AggregationPeriod, MaxResults, or NextToken to filter results.
+%%
+%% This request returns a summary that contains Region, Account, State,
+%% RestourceType, MessageCategory, StartTime, EndTime, and Count of included
+%% jobs.
+list_restore_job_summaries(Client)
+  when is_map(Client) ->
+    list_restore_job_summaries(Client, #{}, #{}).
+
+list_restore_job_summaries(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_job_summaries(Client, QueryMap, HeadersMap, []).
+
+list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/restore-job-summaries"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)},
+        {<<"AggregationPeriod">>, maps:get(<<"AggregationPeriod">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

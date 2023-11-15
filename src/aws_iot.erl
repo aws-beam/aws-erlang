@@ -1847,6 +1847,9 @@ create_thing(Client, ThingName, Input0, Options0) ->
 %% This is a control plane operation. See Authorization for information about
 %% authorizing control plane actions.
 %%
+%% If the `ThingGroup' that you create has the exact same attributes as
+%% an existing `ThingGroup', you will get a 200 success response.
+%%
 %% Requires permission to access the CreateThingGroup action.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).

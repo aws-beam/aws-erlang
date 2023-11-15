@@ -48,6 +48,8 @@
          delete_view/3,
          disassociate_default_view/2,
          disassociate_default_view/3,
+         get_account_level_service_configuration/2,
+         get_account_level_service_configuration/3,
          get_default_view/2,
          get_default_view/3,
          get_index/2,
@@ -56,6 +58,8 @@
          get_view/3,
          list_indexes/2,
          list_indexes/3,
+         list_indexes_for_members/2,
+         list_indexes_for_members/3,
          list_supported_resource_types/2,
          list_supported_resource_types/3,
          list_tags_for_resource/2,
@@ -339,6 +343,34 @@ disassociate_default_view(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status of your account's Amazon Web Services
+%% service access, and validates the service linked role required to access
+%% the multi-account search feature.
+%%
+%% Only the management account or a delegated administrator with service
+%% access enabled can invoke this API call.
+get_account_level_service_configuration(Client, Input) ->
+    get_account_level_service_configuration(Client, Input, []).
+get_account_level_service_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetAccountLevelServiceConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the Amazon Resource Name (ARN) of the view that is the
 %% default for the Amazon Web Services Region in which you call this
 %% operation.
@@ -422,6 +454,34 @@ list_indexes(Client, Input) ->
 list_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexes"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of a member's indexes in all Amazon Web Services
+%% Regions that are currently collecting resource information for Amazon Web
+%% Services Resource Explorer.
+%%
+%% Only the management account or a delegated administrator with service
+%% access enabled can invoke this API call.
+list_indexes_for_members(Client, Input) ->
+    list_indexes_for_members(Client, Input, []).
+list_indexes_for_members(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListIndexesForMembers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
