@@ -15,6 +15,8 @@
          create_job/3,
          create_multi_region_access_point/2,
          create_multi_region_access_point/3,
+         create_storage_lens_group/2,
+         create_storage_lens_group/3,
          delete_access_point/3,
          delete_access_point/4,
          delete_access_point_for_object_lambda/3,
@@ -43,6 +45,8 @@
          delete_storage_lens_configuration/4,
          delete_storage_lens_configuration_tagging/3,
          delete_storage_lens_configuration_tagging/4,
+         delete_storage_lens_group/3,
+         delete_storage_lens_group/4,
          describe_job/3,
          describe_job/5,
          describe_job/6,
@@ -112,6 +116,9 @@
          get_storage_lens_configuration_tagging/3,
          get_storage_lens_configuration_tagging/5,
          get_storage_lens_configuration_tagging/6,
+         get_storage_lens_group/3,
+         get_storage_lens_group/5,
+         get_storage_lens_group/6,
          list_access_points/2,
          list_access_points/4,
          list_access_points/5,
@@ -130,6 +137,12 @@
          list_storage_lens_configurations/2,
          list_storage_lens_configurations/4,
          list_storage_lens_configurations/5,
+         list_storage_lens_groups/2,
+         list_storage_lens_groups/4,
+         list_storage_lens_groups/5,
+         list_tags_for_resource/3,
+         list_tags_for_resource/5,
+         list_tags_for_resource/6,
          put_access_point_configuration_for_object_lambda/3,
          put_access_point_configuration_for_object_lambda/4,
          put_access_point_policy/3,
@@ -158,10 +171,16 @@
          put_storage_lens_configuration_tagging/4,
          submit_multi_region_access_point_routes/3,
          submit_multi_region_access_point_routes/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_job_priority/3,
          update_job_priority/4,
          update_job_status/3,
-         update_job_status/4]).
+         update_job_status/4,
+         update_storage_lens_group/3,
+         update_storage_lens_group/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -443,6 +462,48 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new S3 Storage Lens group and associates it with the
+%% specified Amazon Web Services account ID.
+%%
+%% An S3 Storage Lens group is a custom grouping of objects based on prefix,
+%% suffix, object tags, object size, object age, or a combination of these
+%% filters. For each Storage Lens group that you’ve created, you can also
+%% optionally add Amazon Web Services resource tags. For more information
+%% about S3 Storage Lens groups, see Working with S3 Storage Lens groups.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:CreateStorageLensGroup' action. If you’re trying to create a
+%% Storage Lens group with Amazon Web Services resource tags, you must also
+%% have permission to perform the `s3:TagResource' action. For more
+%% information about the required Storage Lens Groups permissions, see
+%% Setting account permissions to use S3 Storage Lens groups.
+%%
+%% For information about Storage Lens groups errors, see List of Amazon S3
+%% Storage Lens error codes.
+create_storage_lens_group(Client, Input) ->
+    create_storage_lens_group(Client, Input, []).
+create_storage_lens_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/storagelensgroup"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -661,10 +722,10 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %% configuration. For more information, see Using Amazon S3 on Outposts in
 %% Amazon S3 User Guide.
 %%
-%% To use this action, you must have permission to perform the
-%% `s3-outposts:DeleteLifecycleConfiguration' action. By default, the
-%% bucket owner has this permission and the Outposts bucket owner can grant
-%% this permission to others.
+%% To use this operation, you must have permission to perform the
+%% `s3-outposts:PutLifecycleConfiguration' action. By default, the bucket
+%% owner has this permission and the Outposts bucket owner can grant this
+%% permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -1067,6 +1128,39 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing S3 Storage Lens group.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:DeleteStorageLensGroup' action. For more information about the
+%% required Storage Lens Groups permissions, see Setting account permissions
+%% to use S3 Storage Lens groups.
+%%
+%% For information about Storage Lens groups errors, see List of Amazon S3
+%% Storage Lens error codes.
+delete_storage_lens_group(Client, Name, Input) ->
+    delete_storage_lens_group(Client, Name, Input, []).
+delete_storage_lens_group(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -2140,6 +2234,41 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the Storage Lens group configuration details.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:GetStorageLensGroup' action. For more information about the
+%% required Storage Lens Groups permissions, see Setting account permissions
+%% to use S3 Storage Lens groups.
+%%
+%% For information about Storage Lens groups errors, see List of Amazon S3
+%% Storage Lens error codes.
+get_storage_lens_group(Client, Name, AccountId)
+  when is_map(Client) ->
+    get_storage_lens_group(Client, Name, AccountId, #{}, #{}).
+
+get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, []).
+
+get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the access points that are owned by the current
 %% account that's associated with the specified bucket.
 %%
@@ -2426,6 +2555,83 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the Storage Lens groups in the specified home Region.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:ListStorageLensGroups' action. For more information about the
+%% required Storage Lens Groups permissions, see Setting account permissions
+%% to use S3 Storage Lens groups.
+%%
+%% For information about Storage Lens groups errors, see List of Amazon S3
+%% Storage Lens error codes.
+list_storage_lens_groups(Client, AccountId)
+  when is_map(Client) ->
+    list_storage_lens_groups(Client, AccountId, #{}, #{}).
+
+list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/storagelensgroup"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation allows you to list all the Amazon Web Services
+%% resource tags for the specified resource.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:ListTagsForResource' action. For more information about the
+%% required Storage Lens Groups permissions, see Setting account permissions
+%% to use S3 Storage Lens groups.
+%%
+%% For information about S3 Tagging errors, see List of Amazon S3 Tagging
+%% error codes.
+%%
+%% This operation is only supported for S3 Storage Lens groups.
+list_tags_for_resource(Client, ResourceArn, AccountId)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, AccountId, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3223,6 +3429,82 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new Amazon Web Services resource tag or updates an existing
+%% resource tag.
+%%
+%% You can add up to 50 Amazon Web Services resource tags for each S3
+%% resource.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:TagResource' action. For more information about the required
+%% Storage Lens Groups permissions, see Setting account permissions to use S3
+%% Storage Lens groups.
+%%
+%% For information about S3 Tagging errors, see List of Amazon S3 Tagging
+%% error codes.
+%%
+%% This operation is only supported for S3 Storage Lens groups.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation removes the specified Amazon Web Services resource
+%% tags from an S3 resource.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:UntagResource' action. For more information about the required
+%% Storage Lens Groups permissions, see Setting account permissions to use S3
+%% Storage Lens groups.
+%%
+%% For information about S3 Tagging errors, see List of Amazon S3 Tagging
+%% error codes.
+%%
+%% This operation is only supported for S3 Storage Lens groups.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing S3 Batch Operations job's priority.
 %%
 %% For more information, see S3 Batch Operations in the Amazon S3 User Guide.
@@ -3304,6 +3586,39 @@ update_job_status(Client, JobId, Input0, Options0) ->
                      {<<"statusUpdateReason">>, <<"StatusUpdateReason">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the existing Storage Lens group.
+%%
+%% To use this operation, you must have the permission to perform the
+%% `s3:UpdateStorageLensGroup' action. For more information about the
+%% required Storage Lens Groups permissions, see Setting account permissions
+%% to use S3 Storage Lens groups.
+%%
+%% For information about Storage Lens groups errors, see List of Amazon S3
+%% Storage Lens error codes.
+update_storage_lens_group(Client, Name, Input) ->
+    update_storage_lens_group(Client, Name, Input, []).
+update_storage_lens_group(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/storagelensgroup/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
