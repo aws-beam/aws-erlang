@@ -162,6 +162,10 @@
          get_column_statistics_for_partition/3,
          get_column_statistics_for_table/2,
          get_column_statistics_for_table/3,
+         get_column_statistics_task_run/2,
+         get_column_statistics_task_run/3,
+         get_column_statistics_task_runs/2,
+         get_column_statistics_task_runs/3,
          get_connection/2,
          get_connection/3,
          get_connections/2,
@@ -282,6 +286,8 @@
          import_catalog_to_glue/3,
          list_blueprints/2,
          list_blueprints/3,
+         list_column_statistics_task_runs/2,
+         list_column_statistics_task_runs/3,
          list_crawlers/2,
          list_crawlers/3,
          list_crawls/2,
@@ -342,6 +348,8 @@
          search_tables/3,
          start_blueprint_run/2,
          start_blueprint_run/3,
+         start_column_statistics_task_run/2,
+         start_column_statistics_task_run/3,
          start_crawler/2,
          start_crawler/3,
          start_crawler_schedule/2,
@@ -364,6 +372,8 @@
          start_trigger/3,
          start_workflow_run/2,
          start_workflow_run/3,
+         stop_column_statistics_task_run/2,
+         stop_column_statistics_task_run/3,
          stop_crawler/2,
          stop_crawler/3,
          stop_crawler_schedule/2,
@@ -1241,6 +1251,24 @@ get_column_statistics_for_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetColumnStatisticsForTable">>, Input, Options).
 
+%% @doc Get the associated metadata/information for a task run, given a task
+%% run ID.
+get_column_statistics_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_column_statistics_task_run(Client, Input, []).
+get_column_statistics_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetColumnStatisticsTaskRun">>, Input, Options).
+
+%% @doc Retrieves information about all runs associated with the specified
+%% table.
+get_column_statistics_task_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_column_statistics_task_runs(Client, Input, []).
+get_column_statistics_task_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetColumnStatisticsTaskRuns">>, Input, Options).
+
 %% @doc Retrieves a connection definition from the Data Catalog.
 get_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1807,6 +1835,14 @@ list_blueprints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBlueprints">>, Input, Options).
 
+%% @doc List all task runs for a particular account.
+list_column_statistics_task_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_column_statistics_task_runs(Client, Input, []).
+list_column_statistics_task_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListColumnStatisticsTaskRuns">>, Input, Options).
+
 %% @doc Retrieves the names of all crawler resources in this Amazon Web
 %% Services account, or the resources with the specified tag.
 %%
@@ -2176,6 +2212,15 @@ start_blueprint_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartBlueprintRun">>, Input, Options).
 
+%% @doc Starts a column statistics task run, for a specified table and
+%% columns.
+start_column_statistics_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_column_statistics_task_run(Client, Input, []).
+start_column_statistics_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartColumnStatisticsTaskRun">>, Input, Options).
+
 %% @doc Starts a crawl using the specified crawler, regardless of what is
 %% scheduled.
 %%
@@ -2346,6 +2391,14 @@ start_workflow_run(Client, Input)
 start_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkflowRun">>, Input, Options).
+
+%% @doc Stops a task run for the specified table.
+stop_column_statistics_task_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_column_statistics_task_run(Client, Input, []).
+stop_column_statistics_task_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopColumnStatisticsTaskRun">>, Input, Options).
 
 %% @doc If the specified crawler is running, stops the crawl.
 stop_crawler(Client, Input)

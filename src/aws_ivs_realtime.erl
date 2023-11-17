@@ -20,8 +20,15 @@
 %% </li> <li> A participant object represents participants (people) in the
 %% stage and contains information about them. When a token is created, it
 %% includes a participant ID; when a participant uses that token to join a
-%% stage, the participant is associated with that participant ID There is a
+%% stage, the participant is associated with that participant ID. There is a
 %% 1:1 mapping between participant tokens and participants.
+%%
+%% </li> <li> Server-side composition: The composition process composites
+%% participants of a stage into a single video and forwards it to a set of
+%% outputs (e.g., IVS channels). Composition endpoints support this process.
+%%
+%% </li> <li> Server-side composition: A composition controls the look of the
+%% outputs, including how participants are positioned in the video.
 %%
 %% </li> </ul> Resources
 %%
@@ -89,6 +96,52 @@
 %%
 %% </li> <li> `UpdateStage' — Updates a stage’s configuration.
 %%
+%% </li> </ul> Composition Endpoints
+%%
+%% <ul> <li> `GetComposition' — Gets information about the specified
+%% Composition resource.
+%%
+%% </li> <li> `ListCompositions' — Gets summary information about all
+%% Compositions in your account, in the AWS region where the API request is
+%% processed.
+%%
+%% </li> <li> `StartComposition' — Starts a Composition from a stage
+%% based on the configuration provided in the request.
+%%
+%% </li> <li> `StopComposition' — Stops and deletes a Composition
+%% resource. Any broadcast from the Composition resource is stopped.
+%%
+%% </li> </ul> EncoderConfiguration Endpoints
+%%
+%% <ul> <li> `CreateEncoderConfiguration' — Creates an
+%% EncoderConfiguration object.
+%%
+%% </li> <li> `DeleteEncoderConfiguration' — Deletes an
+%% EncoderConfiguration resource. Ensures that no Compositions are using this
+%% template; otherwise, returns an error.
+%%
+%% </li> <li> `GetEncoderConfiguration' — Gets information about the
+%% specified EncoderConfiguration resource.
+%%
+%% </li> <li> `ListEncoderConfigurations' — Gets summary information
+%% about all EncoderConfigurations in your account, in the AWS region where
+%% the API request is processed.
+%%
+%% </li> </ul> StorageConfiguration Endpoints
+%%
+%% <ul> <li> `CreateStorageConfiguration' — Creates a new storage
+%% configuration, used to enable recording to Amazon S3.
+%%
+%% </li> <li> `DeleteStorageConfiguration' — Deletes the storage
+%% configuration for the specified ARN.
+%%
+%% </li> <li> `GetStorageConfiguration' — Gets the storage configuration
+%% for the specified ARN.
+%%
+%% </li> <li> `ListStorageConfigurations' — Gets summary information
+%% about all storage configurations in your account, in the AWS region where
+%% the API request is processed.
+%%
 %% </li> </ul> Tags Endpoints
 %%
 %% <ul> <li> `ListTagsForResource' — Gets information about AWS tags for
@@ -103,20 +156,38 @@
 %% </li> </ul>
 -module(aws_ivs_realtime).
 
--export([create_participant_token/2,
+-export([create_encoder_configuration/2,
+         create_encoder_configuration/3,
+         create_participant_token/2,
          create_participant_token/3,
          create_stage/2,
          create_stage/3,
+         create_storage_configuration/2,
+         create_storage_configuration/3,
+         delete_encoder_configuration/2,
+         delete_encoder_configuration/3,
          delete_stage/2,
          delete_stage/3,
+         delete_storage_configuration/2,
+         delete_storage_configuration/3,
          disconnect_participant/2,
          disconnect_participant/3,
+         get_composition/2,
+         get_composition/3,
+         get_encoder_configuration/2,
+         get_encoder_configuration/3,
          get_participant/2,
          get_participant/3,
          get_stage/2,
          get_stage/3,
          get_stage_session/2,
          get_stage_session/3,
+         get_storage_configuration/2,
+         get_storage_configuration/3,
+         list_compositions/2,
+         list_compositions/3,
+         list_encoder_configurations/2,
+         list_encoder_configurations/3,
          list_participant_events/2,
          list_participant_events/3,
          list_participants/2,
@@ -125,9 +196,15 @@
          list_stage_sessions/3,
          list_stages/2,
          list_stages/3,
+         list_storage_configurations/2,
+         list_storage_configurations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_composition/2,
+         start_composition/3,
+         stop_composition/2,
+         stop_composition/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -140,6 +217,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an EncoderConfiguration object.
+create_encoder_configuration(Client, Input) ->
+    create_encoder_configuration(Client, Input, []).
+create_encoder_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateEncoderConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an additional token for a specified stage.
 %%
@@ -193,6 +293,60 @@ create_stage(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new storage configuration, used to enable recording to
+%% Amazon S3.
+%%
+%% When a StorageConfiguration is created, IVS will modify the S3
+%% bucketPolicy of the provided bucket. This will ensure that IVS has
+%% sufficient permissions to write content to the provided bucket.
+create_storage_configuration(Client, Input) ->
+    create_storage_configuration(Client, Input, []).
+create_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateStorageConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an EncoderConfiguration resource.
+%%
+%% Ensures that no Compositions are using this template; otherwise, returns
+%% an error.
+delete_encoder_configuration(Client, Input) ->
+    delete_encoder_configuration(Client, Input, []).
+delete_encoder_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteEncoderConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Shuts down and deletes the specified stage (disconnecting all
 %% participants).
 delete_stage(Client, Input) ->
@@ -217,6 +371,35 @@ delete_stage(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the storage configuration for the specified ARN.
+%%
+%% If you try to delete a storage configuration that is used by a
+%% Composition, you will get an error (409 ConflictException). To avoid this,
+%% for all Compositions that reference the storage configuration, first use
+%% `StopComposition' and wait for it to complete, then use
+%% DeleteStorageConfiguration.
+delete_storage_configuration(Client, Input) ->
+    delete_storage_configuration(Client, Input, []).
+delete_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteStorageConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disconnects a specified participant and revokes the participant
 %% permanently from a specified stage.
 disconnect_participant(Client, Input) ->
@@ -224,6 +407,52 @@ disconnect_participant(Client, Input) ->
 disconnect_participant(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectParticipant"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get information about the specified Composition resource.
+get_composition(Client, Input) ->
+    get_composition(Client, Input, []).
+get_composition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetComposition"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified EncoderConfiguration resource.
+get_encoder_configuration(Client, Input) ->
+    get_encoder_configuration(Client, Input, []).
+get_encoder_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetEncoderConfiguration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -293,6 +522,77 @@ get_stage_session(Client, Input) ->
 get_stage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStageSession"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the storage configuration for the specified ARN.
+get_storage_configuration(Client, Input) ->
+    get_storage_configuration(Client, Input, []).
+get_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetStorageConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all Compositions in your account, in
+%% the AWS region where the API request is processed.
+list_compositions(Client, Input) ->
+    list_compositions(Client, Input, []).
+list_compositions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListCompositions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all EncoderConfigurations in your
+%% account, in the AWS region where the API request is processed.
+list_encoder_configurations(Client, Input) ->
+    list_encoder_configurations(Client, Input, []).
+list_encoder_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListEncoderConfigurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -404,6 +704,30 @@ list_stages(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets summary information about all storage configurations in your
+%% account, in the AWS region where the API request is processed.
+list_storage_configurations(Client, Input) ->
+    list_storage_configurations(Client, Input, []).
+list_storage_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListStorageConfigurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information about AWS tags for the specified ARN.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -426,6 +750,74 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts a Composition from a stage based on the configuration provided
+%% in the request.
+%%
+%% A Composition is an ephemeral resource that exists after this endpoint
+%% returns successfully. Composition stops and the resource is deleted:
+%%
+%% <ul> <li> When `StopComposition' is called.
+%%
+%% </li> <li> After a 1-minute timeout, when all participants are
+%% disconnected from the stage.
+%%
+%% </li> <li> After a 1-minute timeout, if there are no participants in the
+%% stage when StartComposition is called.
+%%
+%% </li> <li> When broadcasting to the IVS channel fails and all retries are
+%% exhausted.
+%%
+%% </li> <li> When broadcasting is disconnected and all attempts to reconnect
+%% are exhausted.
+%%
+%% </li> </ul>
+start_composition(Client, Input) ->
+    start_composition(Client, Input, []).
+start_composition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartComposition"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops and deletes a Composition resource.
+%%
+%% Any broadcast from the Composition resource is stopped.
+stop_composition(Client, Input) ->
+    stop_composition(Client, Input, []).
+stop_composition(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopComposition"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for the AWS resource with the specified ARN.
 tag_resource(Client, ResourceArn, Input) ->

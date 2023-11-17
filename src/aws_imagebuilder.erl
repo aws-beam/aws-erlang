@@ -10,6 +10,8 @@
 
 -export([cancel_image_creation/2,
          cancel_image_creation/3,
+         cancel_lifecycle_execution/2,
+         cancel_lifecycle_execution/3,
          create_component/2,
          create_component/3,
          create_container_recipe/2,
@@ -24,6 +26,8 @@
          create_image_recipe/3,
          create_infrastructure_configuration/2,
          create_infrastructure_configuration/3,
+         create_lifecycle_policy/2,
+         create_lifecycle_policy/3,
          delete_component/2,
          delete_component/3,
          delete_container_recipe/2,
@@ -38,6 +42,8 @@
          delete_image_recipe/3,
          delete_infrastructure_configuration/2,
          delete_infrastructure_configuration/3,
+         delete_lifecycle_policy/2,
+         delete_lifecycle_policy/3,
          get_component/2,
          get_component/4,
          get_component/5,
@@ -71,6 +77,12 @@
          get_infrastructure_configuration/2,
          get_infrastructure_configuration/4,
          get_infrastructure_configuration/5,
+         get_lifecycle_execution/2,
+         get_lifecycle_execution/4,
+         get_lifecycle_execution/5,
+         get_lifecycle_policy/2,
+         get_lifecycle_policy/4,
+         get_lifecycle_policy/5,
          get_workflow_execution/2,
          get_workflow_execution/4,
          get_workflow_execution/5,
@@ -107,6 +119,12 @@
          list_images/3,
          list_infrastructure_configurations/2,
          list_infrastructure_configurations/3,
+         list_lifecycle_execution_resources/2,
+         list_lifecycle_execution_resources/3,
+         list_lifecycle_executions/2,
+         list_lifecycle_executions/3,
+         list_lifecycle_policies/2,
+         list_lifecycle_policies/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -124,6 +142,8 @@
          put_image_recipe_policy/3,
          start_image_pipeline_execution/2,
          start_image_pipeline_execution/3,
+         start_resource_state_update/2,
+         start_resource_state_update/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -133,7 +153,9 @@
          update_image_pipeline/2,
          update_image_pipeline/3,
          update_infrastructure_configuration/2,
-         update_infrastructure_configuration/3]).
+         update_infrastructure_configuration/3,
+         update_lifecycle_policy/2,
+         update_lifecycle_policy/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -149,6 +171,29 @@ cancel_image_creation(Client, Input) ->
 cancel_image_creation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelImageCreation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancel a specific image lifecycle policy runtime instance.
+cancel_lifecycle_execution(Client, Input) ->
+    cancel_lifecycle_execution(Client, Input, []).
+cancel_lifecycle_execution(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/CancelLifecycleExecution"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -356,6 +401,29 @@ create_infrastructure_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a lifecycle policy resource.
+create_lifecycle_policy(Client, Input) ->
+    create_lifecycle_policy(Client, Input, []).
+create_lifecycle_policy(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/CreateLifecyclePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a component build version.
 delete_component(Client, Input) ->
     delete_component(Client, Input, []).
@@ -536,6 +604,30 @@ delete_infrastructure_configuration(Client, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"infrastructureConfigurationArn">>, <<"infrastructureConfigurationArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete the specified lifecycle policy resource.
+delete_lifecycle_policy(Client, Input) ->
+    delete_lifecycle_policy(Client, Input, []).
+delete_lifecycle_policy(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/DeleteLifecyclePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"lifecyclePolicyArn">>, <<"lifecyclePolicyArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -832,6 +924,61 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
     Query0_ =
       [
         {<<"infrastructureConfigurationArn">>, InfrastructureConfigurationArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the runtime information that was logged for a specific runtime
+%% instance of the lifecycle policy.
+get_lifecycle_execution(Client, LifecycleExecutionId)
+  when is_map(Client) ->
+    get_lifecycle_execution(Client, LifecycleExecutionId, #{}, #{}).
+
+get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, []).
+
+get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetLifecycleExecution"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"lifecycleExecutionId">>, LifecycleExecutionId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get details for the specified image lifecycle policy.
+get_lifecycle_policy(Client, LifecyclePolicyArn)
+  when is_map(Client) ->
+    get_lifecycle_policy(Client, LifecyclePolicyArn, #{}, #{}).
+
+get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, []).
+
+get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetLifecyclePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"lifecyclePolicyArn">>, LifecyclePolicyArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1294,6 +1441,76 @@ list_infrastructure_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List resources that the runtime instance of the image lifecycle
+%% identified for lifecycle actions.
+list_lifecycle_execution_resources(Client, Input) ->
+    list_lifecycle_execution_resources(Client, Input, []).
+list_lifecycle_execution_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLifecycleExecutionResources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get the lifecycle runtime history for the specified resource.
+list_lifecycle_executions(Client, Input) ->
+    list_lifecycle_executions(Client, Input, []).
+list_lifecycle_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLifecycleExecutions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get a list of lifecycle policies in your Amazon Web Services account.
+list_lifecycle_policies(Client, Input) ->
+    list_lifecycle_policies(Client, Input, []).
+list_lifecycle_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLifecyclePolicies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the list of tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -1507,6 +1724,30 @@ start_image_pipeline_execution(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Begin asynchronous resource state update for lifecycle changes to the
+%% specified image resources.
+start_resource_state_update(Client, Input) ->
+    start_resource_state_update(Client, Input, []).
+start_resource_state_update(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/StartResourceStateUpdate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a tag to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -1619,6 +1860,29 @@ update_infrastructure_configuration(Client, Input) ->
 update_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateInfrastructureConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the specified lifecycle policy.
+update_lifecycle_policy(Client, Input) ->
+    update_lifecycle_policy(Client, Input, []).
+update_lifecycle_policy(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/UpdateLifecyclePolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

@@ -998,6 +998,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `LustreRootSquashConfiguration'
 %%
+%% </li> <li> `PerUnitStorageThroughput'
+%%
 %% </li> <li> `StorageCapacity'
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'

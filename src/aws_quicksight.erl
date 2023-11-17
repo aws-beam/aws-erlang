@@ -41,6 +41,8 @@
          create_namespace/4,
          create_refresh_schedule/4,
          create_refresh_schedule/5,
+         create_role_membership/6,
+         create_role_membership/7,
          create_template/4,
          create_template/5,
          create_template_alias/5,
@@ -83,6 +85,10 @@
          delete_namespace/5,
          delete_refresh_schedule/5,
          delete_refresh_schedule/6,
+         delete_role_custom_permission/5,
+         delete_role_custom_permission/6,
+         delete_role_membership/6,
+         delete_role_membership/7,
          delete_template/4,
          delete_template/5,
          delete_template_alias/5,
@@ -185,6 +191,9 @@
          describe_refresh_schedule/4,
          describe_refresh_schedule/6,
          describe_refresh_schedule/7,
+         describe_role_custom_permission/4,
+         describe_role_custom_permission/6,
+         describe_role_custom_permission/7,
          describe_template/3,
          describe_template/5,
          describe_template/6,
@@ -282,6 +291,9 @@
          list_refresh_schedules/3,
          list_refresh_schedules/5,
          list_refresh_schedules/6,
+         list_role_memberships/4,
+         list_role_memberships/6,
+         list_role_memberships/7,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -382,6 +394,8 @@
          update_public_sharing_settings/4,
          update_refresh_schedule/4,
          update_refresh_schedule/5,
+         update_role_custom_permission/5,
+         update_role_custom_permission/6,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -851,6 +865,30 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use `CreateRoleMembership' to add an existing Amazon QuickSight
+%% group to an existing role.
+create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
+    create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
+create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1392,6 +1430,52 @@ delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes custom permissions from the role.
+delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
+    delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
+delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a group from a role.
+delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
+    delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
+delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2406,6 +2490,29 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes all custom permissions that are mapped to a role.
+describe_role_custom_permission(Client, AwsAccountId, Namespace, Role)
+  when is_map(Client) ->
+    describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, #{}, #{}).
+
+describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
+
+describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a template's metadata.
 describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
@@ -3402,6 +3509,34 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Op
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all groups that are associated with a role.
+list_role_memberships(Client, AwsAccountId, Namespace, Role)
+  when is_map(Client) ->
+    list_role_memberships(Client, AwsAccountId, Namespace, Role, #{}, #{}).
+
+list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
+
+list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/members"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4583,6 +4718,29 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the custom permissions that are associated with a role.
+update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
+    update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
+update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/roles/", aws_util:encode_uri(Role), "/custom-permission"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

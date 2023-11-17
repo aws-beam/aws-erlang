@@ -40,10 +40,25 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a policy to manage the lifecycle of the specified Amazon Web
-%% Services resources.
+%% @doc Creates an Amazon Data Lifecycle Manager lifecycle policy.
 %%
-%% You can create up to 100 lifecycle policies.
+%% Amazon Data Lifecycle Manager supports the following policy types:
+%%
+%% <ul> <li> Custom EBS snapshot policy
+%%
+%% </li> <li> Custom EBS-backed AMI policy
+%%
+%% </li> <li> Cross-account copy event policy
+%%
+%% </li> <li> Default policy for EBS snapshots
+%%
+%% </li> <li> Default policy for EBS-backed AMIs
+%%
+%% </li> </ul> For more information, see Default policies vs custom policies.
+%%
+%% If you create a default policy, you can specify the request parameters
+%% either in the request body, or in the PolicyDetails request structure, but
+%% not both.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 create_lifecycle_policy(Client, Input0, Options0) ->
@@ -75,7 +90,7 @@ delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
     Method = delete,
-    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -117,6 +132,7 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"defaultPolicyType">>, maps:get(<<"defaultPolicyType">>, QueryMap, undefined)},
         {<<"policyIds">>, maps:get(<<"policyIds">>, QueryMap, undefined)},
         {<<"resourceTypes">>, maps:get(<<"resourceTypes">>, QueryMap, undefined)},
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
@@ -138,7 +154,7 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
 
 get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/policies/", aws_util:encode_uri(PolicyId), "/"],
+    Path = ["/policies/", aws_util:encode_uri(PolicyId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
