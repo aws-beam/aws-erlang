@@ -75,6 +75,8 @@
          create_hsm_client_certificate/3,
          create_hsm_configuration/2,
          create_hsm_configuration/3,
+         create_redshift_idc_application/2,
+         create_redshift_idc_application/3,
          create_scheduled_action/2,
          create_scheduled_action/3,
          create_snapshot_copy_grant/2,
@@ -111,6 +113,8 @@
          delete_hsm_configuration/3,
          delete_partner/2,
          delete_partner/3,
+         delete_redshift_idc_application/2,
+         delete_redshift_idc_application/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_scheduled_action/2,
@@ -179,6 +183,8 @@
          describe_orderable_cluster_options/3,
          describe_partners/2,
          describe_partners/3,
+         describe_redshift_idc_applications/2,
+         describe_redshift_idc_applications/3,
          describe_reserved_node_exchange_status/2,
          describe_reserved_node_exchange_status/3,
          describe_reserved_node_offerings/2,
@@ -249,6 +255,8 @@
          modify_endpoint_access/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
+         modify_redshift_idc_application/2,
+         modify_redshift_idc_application/3,
          modify_scheduled_action/2,
          modify_scheduled_action/3,
          modify_snapshot_copy_retention_period/2,
@@ -599,6 +607,15 @@ create_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsmConfiguration">>, Input, Options).
 
+%% @doc Creates an Amazon Redshift application for use with IAM Identity
+%% Center.
+create_redshift_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_redshift_idc_application(Client, Input, []).
+create_redshift_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRedshiftIdcApplication">>, Input, Options).
+
 %% @doc Creates a scheduled action.
 %%
 %% A scheduled action contains a schedule and an Amazon Redshift API action.
@@ -802,6 +819,14 @@ delete_partner(Client, Input)
 delete_partner(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartner">>, Input, Options).
+
+%% @doc Deletes an Amazon Redshift IAM Identity Center application.
+delete_redshift_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_redshift_idc_application(Client, Input, []).
+delete_redshift_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRedshiftIdcApplication">>, Input, Options).
 
 %% @doc Deletes the resource policy for a specified resource.
 delete_resource_policy(Client, Input)
@@ -1256,6 +1281,14 @@ describe_partners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartners">>, Input, Options).
 
+%% @doc Lists the Amazon Redshift IAM Identity Center applications.
+describe_redshift_idc_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_redshift_idc_applications(Client, Input, []).
+describe_redshift_idc_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRedshiftIdcApplications">>, Input, Options).
+
 %% @doc Returns exchange status details and associated metadata for a
 %% reserved-node exchange.
 %%
@@ -1703,6 +1736,14 @@ modify_event_subscription(Client, Input)
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
+
+%% @doc Changes an existing Amazon Redshift IAM Identity Center application.
+modify_redshift_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_redshift_idc_application(Client, Input, []).
+modify_redshift_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyRedshiftIdcApplication">>, Input, Options).
 
 %% @doc Modifies a scheduled action.
 modify_scheduled_action(Client, Input)

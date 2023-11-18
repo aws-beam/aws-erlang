@@ -70,7 +70,9 @@
 %% </li> </ul>
 -module(aws_verifiedpermissions).
 
--export([create_identity_source/2,
+-export([batch_is_authorized/2,
+         batch_is_authorized/3,
+         create_identity_source/2,
          create_identity_source/3,
          create_policy/2,
          create_policy/3,
@@ -124,6 +126,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Makes a series of decisions about multiple authorization requests for
+%% one principal or resource.
+%%
+%% Each request contains the equivalent content of an `IsAuthorized'
+%% request: principal, action, resource, and context. Either the
+%% `principal' or the `resource' parameter must be identical across
+%% all requests. For example, Verified Permissions won't evaluate a pair
+%% of requests where `bob' views `photo1' and `alice' views
+%% `photo2'. Authorization of `bob' to view `photo1' and
+%% `photo2', or `bob' and `alice' to view `photo1', are valid
+%% batches.
+%%
+%% The request is evaluated against all policies in the specified policy
+%% store that match the entities that you declare. The result of the
+%% decisions is a series of `Allow' or `Deny' responses, along with
+%% the IDs of the policies that produced each decision.
+%%
+%% The `entities' of a `BatchIsAuthorized' API request can contain up
+%% to 100 principals and up to 100 resources. The `requests' of a
+%% `BatchIsAuthorized' API request can contain up to 30 requests.
+batch_is_authorized(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_is_authorized(Client, Input, []).
+batch_is_authorized(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchIsAuthorized">>, Input, Options).
 
 %% @doc Creates a reference to an Amazon Cognito user pool as an external
 %% identity provider (IdP).

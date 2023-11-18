@@ -165,6 +165,11 @@ cancel_replay(Client, Input, Options)
 
 %% @doc Creates an API destination, which is an HTTP invocation endpoint
 %% configured as a target for events.
+%%
+%% API destinations do not support private destinations, such as interface
+%% VPC endpoints.
+%%
+%% For more information, see API destinations in the EventBridge User Guide.
 create_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_destination(Client, Input, []).
@@ -246,13 +251,23 @@ create_event_bus(Client, Input, Options)
 %%
 %% ` partner_name/event_namespace/event_name '
 %%
-%% partner_name is determined during partner registration and identifies the
-%% partner to Amazon Web Services customers. event_namespace is determined by
-%% the partner and is a way for the partner to categorize their events.
-%% event_name is determined by the partner, and should uniquely identify an
-%% event-generating resource within the partner system. The combination of
-%% event_namespace and event_name should help Amazon Web Services customers
-%% decide whether to create an event bus to receive these events.
+%% <ul> <li> partner_name is determined during partner registration, and
+%% identifies the partner to Amazon Web Services customers.
+%%
+%% </li> <li> event_namespace is determined by the partner, and is a way for
+%% the partner to categorize their events.
+%%
+%% </li> <li> event_name is determined by the partner, and should uniquely
+%% identify an event-generating resource within the partner system.
+%%
+%% The event_name must be unique across all Amazon Web Services customers.
+%% This is because the event source is a shared resource between the partner
+%% and customer accounts, and each partner event source unique in the partner
+%% account.
+%%
+%% </li> </ul> The combination of event_namespace and event_name should help
+%% Amazon Web Services customers decide whether to create an event bus to
+%% receive these events.
 create_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partner_event_source(Client, Input, []).
@@ -401,7 +416,7 @@ describe_connection(Client, Input, Options)
 %%
 %% For more information about global endpoints, see Making applications
 %% Regional-fault tolerant with global endpoints and event replication in the
-%% Amazon EventBridge User Guide..
+%% Amazon EventBridge User Guide.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
@@ -539,7 +554,7 @@ list_connections(Client, Input, Options)
 %%
 %% For more information about global endpoints, see Making applications
 %% Regional-fault tolerant with global endpoints and event replication in the
-%% Amazon EventBridge User Guide..
+%% Amazon EventBridge User Guide.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
@@ -605,6 +620,8 @@ list_replays(Client, Input, Options)
 %%
 %% You can see which of the rules in Amazon EventBridge can invoke a specific
 %% target in your account.
+%%
+%% The maximum number of results per page for requests is 100.
 list_rule_names_by_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_names_by_target(Client, Input, []).
@@ -616,6 +633,8 @@ list_rule_names_by_target(Client, Input, Options)
 %%
 %% You can either list all the rules or you can provide a prefix to match to
 %% the rule names.
+%%
+%% The maximum number of results per page for requests is 100.
 %%
 %% ListRules does not list the targets of a rule. To see the targets
 %% associated with a rule, use ListTargetsByRule.
@@ -637,6 +656,8 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the targets assigned to the specified rule.
+%%
+%% The maximum number of results per page for requests is 100.
 list_targets_by_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_by_rule(Client, Input, []).
@@ -646,6 +667,16 @@ list_targets_by_rule(Client, Input, Options)
 
 %% @doc Sends custom events to Amazon EventBridge so that they can be matched
 %% to rules.
+%%
+%% The maximum size for a PutEvents event entry is 256 KB. Entry size is
+%% calculated including the event and any necessary characters and keys of
+%% the JSON representation of the event. To learn more, see Calculating
+%% PutEvents event entry size in the Amazon EventBridge User Guide
+%%
+%% PutEvents accepts the data in JSON format. For the JSON number (integer)
+%% data type, the constraints are: a minimum value of
+%% -9,223,372,036,854,775,808 and a maximum value of
+%% 9,223,372,036,854,775,807.
 %%
 %% PutEvents will only process nested JSON up to 1100 levels deep.
 put_events(Client, Input)
@@ -659,6 +690,9 @@ put_events(Client, Input, Options)
 %% partner event bus.
 %%
 %% Amazon Web Services customers do not use this operation.
+%%
+%% For information on calculating event batch size, see Calculating
+%% EventBridge PutEvents event entry size in the EventBridge User Guide.
 put_partner_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_partner_events(Client, Input, []).
@@ -771,86 +805,42 @@ put_rule(Client, Input, Options)
 %%
 %% Targets are the resources that are invoked when a rule is triggered.
 %%
+%% The maximum number of entries per request is 10.
+%%
 %% Each rule can have up to five (5) targets associated with it at one time.
 %%
-%% You can configure the following as targets for Events:
+%% For a list of services you can configure as targets for events, see
+%% EventBridge targets in the Amazon EventBridge User Guide.
 %%
-%% <ul> <li> API destination
+%% Creating rules with built-in targets is supported only in the Amazon Web
+%% Services Management Console. The built-in targets are:
 %%
-%% </li> <li> API Gateway
+%% <ul> <li> `Amazon EBS CreateSnapshot API call'
 %%
-%% </li> <li> Batch job queue
+%% </li> <li> `Amazon EC2 RebootInstances API call'
 %%
-%% </li> <li> CloudWatch group
+%% </li> <li> `Amazon EC2 StopInstances API call'
 %%
-%% </li> <li> CodeBuild project
+%% </li> <li> `Amazon EC2 TerminateInstances API call'
 %%
-%% </li> <li> CodePipeline
-%%
-%% </li> <li> EC2 `CreateSnapshot' API call
-%%
-%% </li> <li> EC2 Image Builder
-%%
-%% </li> <li> EC2 `RebootInstances' API call
-%%
-%% </li> <li> EC2 `StopInstances' API call
-%%
-%% </li> <li> EC2 `TerminateInstances' API call
-%%
-%% </li> <li> ECS task
-%%
-%% </li> <li> Event bus in a different account or Region
-%%
-%% </li> <li> Event bus in the same account and Region
-%%
-%% </li> <li> Firehose delivery stream
-%%
-%% </li> <li> Glue workflow
-%%
-%% </li> <li> Incident Manager response plan
-%%
-%% </li> <li> Inspector assessment template
-%%
-%% </li> <li> Kinesis stream
-%%
-%% </li> <li> Lambda function
-%%
-%% </li> <li> Redshift cluster
-%%
-%% </li> <li> Redshift Serverless workgroup
-%%
-%% </li> <li> SageMaker Pipeline
-%%
-%% </li> <li> SNS topic
-%%
-%% </li> <li> SQS queue
-%%
-%% </li> <li> Step Functions state machine
-%%
-%% </li> <li> Systems Manager Automation
-%%
-%% </li> <li> Systems Manager OpsItem
-%%
-%% </li> <li> Systems Manager Run Command
-%%
-%% </li> </ul> Creating rules with built-in targets is supported only in the
-%% Amazon Web Services Management Console. The built-in targets are `EC2
-%% CreateSnapshot API call', `EC2 RebootInstances API call', `EC2
-%% StopInstances API call', and `EC2 TerminateInstances API call'.
-%%
-%% For some target types, `PutTargets' provides target-specific
-%% parameters. If the target is a Kinesis data stream, you can optionally
-%% specify which shard the event goes to by using the `KinesisParameters'
-%% argument. To invoke a command on multiple EC2 instances with one rule, you
-%% can use the `RunCommandParameters' field.
+%% </li> </ul> For some target types, `PutTargets' provides
+%% target-specific parameters. If the target is a Kinesis data stream, you
+%% can optionally specify which shard the event goes to by using the
+%% `KinesisParameters' argument. To invoke a command on multiple EC2
+%% instances with one rule, you can use the `RunCommandParameters' field.
 %%
 %% To be able to make API calls against the resources that you own, Amazon
-%% EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
-%% resources, EventBridge relies on resource-based policies. For EC2
-%% instances, Kinesis Data Streams, Step Functions state machines and API
-%% Gateway APIs, EventBridge relies on IAM roles that you specify in the
-%% `RoleARN' argument in `PutTargets'. For more information, see
-%% Authentication and Access Control in the Amazon EventBridge User Guide.
+%% EventBridge needs the appropriate permissions:
+%%
+%% <ul> <li> For Lambda and Amazon SNS resources, EventBridge relies on
+%% resource-based policies.
+%%
+%% </li> <li> For EC2 instances, Kinesis Data Streams, Step Functions state
+%% machines and API Gateway APIs, EventBridge relies on IAM roles that you
+%% specify in the `RoleARN' argument in `PutTargets'.
+%%
+%% </li> </ul> For more information, see Authentication and Access Control in
+%% the Amazon EventBridge User Guide.
 %%
 %% If another Amazon Web Services account is in the same region and has
 %% granted you permission (using `PutPermission'), you can send events to
@@ -872,6 +862,10 @@ put_rule(Client, Input, Options)
 %% `RoleArn' with proper permissions in the `Target' structure. For
 %% more information, see Sending and Receiving Events Between Amazon Web
 %% Services Accounts in the Amazon EventBridge User Guide.
+%%
+%% If you have an IAM role on a cross-account event bus target, a
+%% `PutTargets' call without a role on the same target (same `Id' and
+%% `Arn') will not remove the role.
 %%
 %% For more information about enabling cross-account events, see
 %% PutPermission.
@@ -944,6 +938,8 @@ remove_permission(Client, Input, Options)
 %% time. If that happens, `FailedEntryCount' is non-zero in the response
 %% and each entry in `FailedEntries' provides the ID of the failed target
 %% and the error code.
+%%
+%% The maximum number of entries per request is 10.
 remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
@@ -1048,7 +1044,7 @@ update_connection(Client, Input, Options)
 %%
 %% For more information about global endpoints, see Making applications
 %% Regional-fault tolerant with global endpoints and event replication in the
-%% Amazon EventBridge User Guide..
+%% Amazon EventBridge User Guide.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).

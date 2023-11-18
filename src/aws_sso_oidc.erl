@@ -1,17 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IAM Identity Center (successor to AWS Single Sign-On) OpenID
-%% Connect (OIDC) is a web service that enables a client (such as AWS CLI or
-%% a native application) to register with IAM Identity Center.
+%% @doc IAM Identity Center OpenID Connect (OIDC) is a web service that
+%% enables a client (such as CLI or a native application) to register with
+%% IAM Identity Center.
 %%
 %% The service also enables the client to fetch the user’s access token upon
 %% successful authentication and authorization with IAM Identity Center.
 %%
-%% Although AWS Single Sign-On was renamed, the `sso' and
-%% `identitystore' API namespaces will continue to retain their original
-%% name for backward compatibility purposes. For more information, see IAM
-%% Identity Center rename.
+%% IAM Identity Center uses the `sso' and `identitystore' API
+%% namespaces.
 %%
 %% Considerations for Using This Guide
 %%
@@ -22,22 +20,26 @@
 %% <ul> <li> The IAM Identity Center OIDC service currently implements only
 %% the portions of the OAuth 2.0 Device Authorization Grant standard
 %% ([https://tools.ietf.org/html/rfc8628]) that are necessary to enable
-%% single sign-on authentication with the AWS CLI. Support for other OIDC
-%% flows frequently needed for native applications, such as Authorization
-%% Code Flow (+ PKCE), will be addressed in future releases.
+%% single sign-on authentication with the CLI.
 %%
-%% </li> <li> The service emits only OIDC access tokens, such that obtaining
-%% a new token (For example, token refresh) requires explicit user
-%% re-authentication.
+%% </li> <li> With older versions of the CLI, the service only emits OIDC
+%% access tokens, so to obtain a new token, users must explicitly
+%% re-authenticate. To access the OIDC flow that supports token refresh and
+%% doesn’t require re-authentication, update to the latest CLI version
+%% (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC token
+%% refresh and configurable IAM Identity Center session durations. For more
+%% information, see Configure Amazon Web Services access portal session
+%% duration .
 %%
 %% </li> <li> The access tokens provided by this service grant access to all
-%% AWS account entitlements assigned to an IAM Identity Center user, not just
-%% a particular application.
+%% Amazon Web Services account entitlements assigned to an IAM Identity
+%% Center user, not just a particular application.
 %%
 %% </li> <li> The documentation in this guide does not describe the mechanism
-%% to convert the access token into AWS Auth (“sigv4”) credentials for use
-%% with IAM-protected AWS service endpoints. For more information, see
-%% GetRoleCredentials in the IAM Identity Center Portal API Reference Guide.
+%% to convert the access token into Amazon Web Services Auth (“sigv4”)
+%% credentials for use with IAM-protected Amazon Web Services service
+%% endpoints. For more information, see GetRoleCredentials in the IAM
+%% Identity Center Portal API Reference Guide.
 %%
 %% </li> </ul> For general information about IAM Identity Center, see What is
 %% IAM Identity Center? in the IAM Identity Center User Guide.
@@ -45,6 +47,8 @@
 
 -export([create_token/2,
          create_token/3,
+         create_token_with_iam/2,
+         create_token_with_iam/3,
          register_client/2,
          register_client/3,
          start_device_authorization/2,
@@ -56,15 +60,45 @@
 %% API
 %%====================================================================
 
-%% @doc Creates and returns an access token for the authorized client.
+%% @doc Creates and returns access and refresh tokens for clients that are
+%% authenticated using client secrets.
 %%
-%% The access token issued will be used to fetch short-term credentials for
-%% the assigned roles in the AWS account.
+%% The access token can be used to fetch short-term credentials for the
+%% assigned AWS accounts or to access application APIs using `bearer'
+%% authentication.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
 create_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/token"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates and returns access and refresh tokens for clients and
+%% applications that are authenticated using IAM entities.
+%%
+%% The access token can be used to fetch short-term credentials for the
+%% assigned AWS accounts or to access application APIs using `bearer'
+%% authentication.
+create_token_with_iam(Client, Input) ->
+    create_token_with_iam(Client, Input, []).
+create_token_with_iam(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/token?aws_iam=t"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -149,7 +183,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"awsssooidc">>},
+    Client1 = Client#{service => <<"sso-oauth">>},
     Host = build_host(<<"oidc">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -476,6 +476,10 @@ cancel_export_task(Client, Input, Options)
     request(Client, <<"CancelExportTask">>, Input, Options).
 
 %% @doc Copies the specified DB cluster parameter group.
+%%
+%% You can't copy a default DB cluster parameter group. Instead, create a
+%% new custom DB cluster parameter group, which copies the default parameters
+%% and values for the specified DB cluster parameter group family.
 copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
@@ -533,6 +537,10 @@ copy_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
 
 %% @doc Copies the specified DB parameter group.
+%%
+%% You can't copy a default DB parameter group. Instead, create a new
+%% custom DB parameter group, which copies the default parameters and values
+%% for the specified DB parameter group family.
 copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_parameter_group(Client, Input, []).

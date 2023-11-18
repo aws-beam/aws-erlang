@@ -303,11 +303,9 @@ describe_mapped_resource_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is related to WebRTC Ingestion and is only available in the
-%% `us-west-2' region.
+%% @doc Returns the most current information about the channel.
 %%
-%% Returns the most current information about the channel. Specify the
-%% `ChannelName' or `ChannelARN' in the input.
+%% Specify the `ChannelName' or `ChannelARN' in the input.
 describe_media_storage_configuration(Client, Input) ->
     describe_media_storage_configuration(Client, Input, []).
 describe_media_storage_configuration(Client, Input0, Options0) ->
@@ -779,8 +777,6 @@ untag_stream(Client, Input0, Options0) ->
 %% request, you must specify either the `StreamName' or the
 %% `StreamARN'.
 %%
-%% The retention period that you specify replaces the current value.
-%%
 %% This operation requires permission for the
 %% `KinesisVideo:UpdateDataRetention' action.
 %%
@@ -845,17 +841,16 @@ update_image_generation_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is related to WebRTC Ingestion and is only available in the
-%% `us-west-2' region.
+%% @doc Associates a `SignalingChannel' to a stream to store the media.
 %%
-%% Associates a `SignalingChannel' to a stream to store the media. There
-%% are two signaling modes that can specified :
+%% There are two signaling modes that you can specify :
 %%
-%% <ul> <li> If the `StorageStatus' is disabled, no data will be stored,
-%% and the `StreamARN' parameter will not be needed.
+%% <ul> <li> If `StorageStatus' is enabled, the data will be stored in
+%% the `StreamARN' provided. In order for WebRTC Ingestion to work, the
+%% stream must have data retention enabled.
 %%
-%% </li> <li> If the `StorageStatus' is enabled, the data will be stored
-%% in the `StreamARN' provided.
+%% </li> <li> If `StorageStatus' is disabled, no data will be stored, and
+%% the `StreamARN' parameter will not be needed.
 %%
 %% </li> </ul> If `StorageStatus' is enabled, direct peer-to-peer
 %% (master-viewer) connections no longer occur. Peers connect directly to the

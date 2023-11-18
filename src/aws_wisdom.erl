@@ -18,6 +18,8 @@
          create_content/4,
          create_knowledge_base/2,
          create_knowledge_base/3,
+         create_quick_response/3,
+         create_quick_response/4,
          create_session/3,
          create_session/4,
          delete_assistant/3,
@@ -26,8 +28,12 @@
          delete_assistant_association/5,
          delete_content/4,
          delete_content/5,
+         delete_import_job/4,
+         delete_import_job/5,
          delete_knowledge_base/3,
          delete_knowledge_base/4,
+         delete_quick_response/4,
+         delete_quick_response/5,
          get_assistant/2,
          get_assistant/4,
          get_assistant/5,
@@ -40,9 +46,15 @@
          get_content_summary/3,
          get_content_summary/5,
          get_content_summary/6,
+         get_import_job/3,
+         get_import_job/5,
+         get_import_job/6,
          get_knowledge_base/2,
          get_knowledge_base/4,
          get_knowledge_base/5,
+         get_quick_response/3,
+         get_quick_response/5,
+         get_quick_response/6,
          get_recommendations/3,
          get_recommendations/5,
          get_recommendations/6,
@@ -58,9 +70,15 @@
          list_contents/2,
          list_contents/4,
          list_contents/5,
+         list_import_jobs/2,
+         list_import_jobs/4,
+         list_import_jobs/5,
          list_knowledge_bases/1,
          list_knowledge_bases/3,
          list_knowledge_bases/4,
+         list_quick_responses/2,
+         list_quick_responses/4,
+         list_quick_responses/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -72,10 +90,14 @@
          remove_knowledge_base_template_uri/4,
          search_content/3,
          search_content/4,
+         search_quick_responses/3,
+         search_quick_responses/4,
          search_sessions/3,
          search_sessions/4,
          start_content_upload/3,
          start_content_upload/4,
+         start_import_job/3,
+         start_import_job/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -83,7 +105,9 @@
          update_content/4,
          update_content/5,
          update_knowledge_base_template_uri/3,
-         update_knowledge_base_template_uri/4]).
+         update_knowledge_base_template_uri/4,
+         update_quick_response/4,
+         update_quick_response/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -207,6 +231,29 @@ create_knowledge_base(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a Wisdom quick response.
+create_quick_response(Client, KnowledgeBaseId, Input) ->
+    create_quick_response(Client, KnowledgeBaseId, Input, []).
+create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a session.
 %%
 %% A session is a contextual container used for generating recommendations.
@@ -303,6 +350,29 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the quick response import job.
+delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input) ->
+    delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input, []).
+delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the knowledge base.
 %%
 %% When you use this API to delete an external knowledge base such as
@@ -316,6 +386,29 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a quick response.
+delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
+    delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
+delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -426,6 +519,29 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the started import job.
+get_import_job(Client, ImportJobId, KnowledgeBaseId)
+  when is_map(Client) ->
+    get_import_job(Client, ImportJobId, KnowledgeBaseId, #{}, #{}).
+
+get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs/", aws_util:encode_uri(ImportJobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about the knowledge base.
 get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
@@ -438,6 +554,29 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
 get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the quick response.
+get_quick_response(Client, KnowledgeBaseId, QuickResponseId)
+  when is_map(Client) ->
+    get_quick_response(Client, KnowledgeBaseId, QuickResponseId, #{}, #{}).
+
+get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, []).
+
+get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -590,6 +729,34 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists information about import jobs.
+list_import_jobs(Client, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_import_jobs(Client, KnowledgeBaseId, #{}, #{}).
+
+list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the knowledge bases.
 list_knowledge_bases(Client)
   when is_map(Client) ->
@@ -602,6 +769,34 @@ list_knowledge_bases(Client, QueryMap, HeadersMap)
 list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/knowledgeBases"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists information about quick response.
+list_quick_responses(Client, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_quick_responses(Client, KnowledgeBaseId, #{}, #{}).
+
+list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -744,6 +939,31 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches existing Wisdom quick responses in a Wisdom knowledge base.
+search_quick_responses(Client, KnowledgeBaseId, Input) ->
+    search_quick_responses(Client, KnowledgeBaseId, Input, []).
+search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/search/quickResponses"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for sessions.
 search_sessions(Client, AssistantId, Input) ->
     search_sessions(Client, AssistantId, Input, []).
@@ -781,6 +1001,39 @@ start_content_upload(Client, KnowledgeBaseId, Input) ->
 start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/upload"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start an asynchronous job to import Wisdom resources from an uploaded
+%% source file.
+%%
+%% Before calling this API, use StartContentUpload to upload an asset that
+%% contains the resource data.
+%%
+%% <ul> <li> For importing Wisdom quick responses, you need to upload a csv
+%% file including the quick responses. For information about how to format
+%% the csv file for importing quick responses, see Import quick responses.
+%%
+%% </li> </ul>
+start_import_job(Client, KnowledgeBaseId, Input) ->
+    start_import_job(Client, KnowledgeBaseId, Input, []).
+start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/importJobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -880,6 +1133,29 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/templateUri"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Wisdom quick response.
+update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
+    update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
+update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/quickResponses/", aws_util:encode_uri(QuickResponseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

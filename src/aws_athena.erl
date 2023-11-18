@@ -15,9 +15,6 @@
 %% driver or later with the Amazon Athena API. Earlier version drivers do not
 %% support the API. For more information and to download the driver, see
 %% Accessing Amazon Athena with JDBC.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
 -module(aws_athena).
 
 -export([batch_get_named_query/2,
@@ -249,9 +246,6 @@ create_data_catalog(Client, Input, Options)
 %% @doc Creates a named query in the specified workgroup.
 %%
 %% Requires that you have access to the workgroup.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
 create_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_named_query(Client, Input, []).
@@ -328,9 +322,6 @@ delete_data_catalog(Client, Input, Options)
 
 %% @doc Deletes the named query if you have access to the workgroup in which
 %% the query was saved.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
 delete_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_named_query(Client, Input, []).
@@ -630,9 +621,6 @@ list_executors(Client, Input, Options)
 %%
 %% Requires that you have access to the specified workgroup. If a workgroup
 %% is not specified, lists the saved queries for the primary workgroup.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
 list_named_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_named_queries(Client, Input, []).
@@ -672,12 +660,9 @@ list_prepared_statements(Client, Input, Options)
 %% @doc Provides a list of available query execution IDs for the queries in
 %% the specified workgroup.
 %%
-%% If a workgroup is not specified, returns a list of query execution IDs for
-%% the primary workgroup. Requires you to have access to the workgroup in
-%% which the queries ran.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
+%% Athena keeps a query history for 45 days. If a workgroup is not specified,
+%% returns a list of query execution IDs for the primary workgroup. Requires
+%% you to have access to the workgroup in which the queries ran.
 list_query_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_executions(Client, Input, []).
@@ -736,6 +721,12 @@ put_capacity_assignment_configuration(Client, Input, Options)
 %% @doc Submits calculations for execution within a session.
 %%
 %% You can supply the code to run as an inline code block within the request.
+%%
+%% The request syntax requires the
+%% `StartCalculationExecutionRequest$CodeBlock' parameter or the
+%% `CalculationConfiguration$CodeBlock' parameter, but not both. Because
+%% `CalculationConfiguration$CodeBlock' is deprecated, use the
+%% `StartCalculationExecutionRequest$CodeBlock' parameter instead.
 start_calculation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_calculation_execution(Client, Input, []).
@@ -787,9 +778,6 @@ stop_calculation_execution(Client, Input, Options)
 %% @doc Stops a query execution.
 %%
 %% Requires you to have access to the workgroup in which the query ran.
-%%
-%% For code samples using the Amazon Web Services SDK for Java, see Examples
-%% and Code Samples in the Amazon Athena User Guide.
 stop_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query_execution(Client, Input, []).

@@ -677,7 +677,7 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get account configuration
+%% @doc Describe account configuration
 describe_account_configuration(Client)
   when is_map(Client) ->
     describe_account_configuration(Client, #{}, #{}).

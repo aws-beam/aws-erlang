@@ -45,6 +45,12 @@
          get_monitor/2,
          get_monitor/4,
          get_monitor/5,
+         get_query_results/3,
+         get_query_results/5,
+         get_query_results/6,
+         get_query_status/3,
+         get_query_status/5,
+         get_query_status/6,
          list_health_events/2,
          list_health_events/4,
          list_health_events/5,
@@ -54,6 +60,10 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_query/3,
+         start_query/4,
+         stop_query/4,
+         stop_query/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -194,6 +204,81 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Return the data for a query with the Amazon CloudWatch Internet
+%% Monitor query interface.
+%%
+%% Specify the query that you want to return results for by providing a
+%% `QueryId' and a monitor name.
+%%
+%% For more information about using the query interface, including examples,
+%% see Using the Amazon CloudWatch Internet Monitor query interface in the
+%% Amazon CloudWatch Internet Monitor User Guide.
+get_query_results(Client, MonitorName, QueryId)
+  when is_map(Client) ->
+    get_query_results(Client, MonitorName, QueryId, #{}, #{}).
+
+get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
+
+get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Results"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the current status of a query for the Amazon CloudWatch
+%% Internet Monitor query interface, for a specified query ID and monitor.
+%%
+%% When you run a query, check the status to make sure that the query has
+%% `SUCCEEDED' before you review the results.
+%%
+%% <ul> <li> `QUEUED': The query is scheduled to run.
+%%
+%% </li> <li> `RUNNING': The query is in progress but not complete.
+%%
+%% </li> <li> `SUCCEEDED': The query completed sucessfully.
+%%
+%% </li> <li> `FAILED': The query failed due to an error.
+%%
+%% </li> <li> `CANCELED': The query was canceled.
+%%
+%% </li> </ul>
+get_query_status(Client, MonitorName, QueryId)
+  when is_map(Client) ->
+    get_query_status(Client, MonitorName, QueryId, #{}, #{}).
+
+get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
+
+get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Status"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all health events for a monitor in Amazon CloudWatch Internet
 %% Monitor.
 %%
@@ -288,6 +373,61 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Start a query to return data for a specific query type for the Amazon
+%% CloudWatch Internet Monitor query interface.
+%%
+%% Specify a time period for the data that you want returned by using
+%% `StartTime' and `EndTime'. You filter the query results to return
+%% by providing parameters that you specify with `FilterParameters'.
+%%
+%% For more information about using the query interface, including examples,
+%% see Using the Amazon CloudWatch Internet Monitor query interface in the
+%% Amazon CloudWatch Internet Monitor User Guide.
+start_query(Client, MonitorName, Input) ->
+    start_query(Client, MonitorName, Input, []).
+start_query(Client, MonitorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stop a query that is progress for a specific monitor.
+stop_query(Client, MonitorName, QueryId, Input) ->
+    stop_query(Client, MonitorName, QueryId, Input, []).
+stop_query(Client, MonitorName, QueryId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a resource.
 %%

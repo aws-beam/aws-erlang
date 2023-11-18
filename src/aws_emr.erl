@@ -128,7 +128,7 @@
 %% @doc Adds an instance fleet to a running cluster.
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
-%% 4.8.0 and higher, excluding 5.0.x.
+%% 4.8.0 and later, excluding 5.0.x.
 add_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_fleet(Client, Input, []).
@@ -192,11 +192,11 @@ add_tags(Client, Input, Options)
 
 %% @doc Cancels a pending step or steps in a running cluster.
 %%
-%% Available only in Amazon EMR versions 4.8.0 and higher, excluding version
+%% Available only in Amazon EMR versions 4.8.0 and later, excluding version
 %% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
 %% CancelSteps is idempotent but asynchronous; it does not guarantee that a
 %% step will be canceled, even if the request is successfully submitted. When
-%% you use Amazon EMR releases 5.28.0 and higher, you can cancel steps that
+%% you use Amazon EMR releases 5.28.0 and later, you can cancel steps that
 %% are in a `PENDING' or `RUNNING' state. In earlier versions of
 %% Amazon EMR, you can only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
@@ -426,7 +426,7 @@ list_clusters(Client, Input, Options)
 %% @doc Lists all available details about the instance fleets in a cluster.
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
-%% 4.8.0 and higher, excluding 5.0.x versions.
+%% 4.8.0 and later, excluding 5.0.x versions.
 list_instance_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_fleets(Client, Input, []).
@@ -552,7 +552,7 @@ modify_cluster(Client, Input, Options)
 %% The call either succeeds or fails atomically.
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
-%% 4.8.0 and higher, excluding 5.0.x versions.
+%% 4.8.0 and later, excluding 5.0.x versions.
 modify_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_fleet(Client, Input, []).
@@ -587,7 +587,7 @@ put_auto_scaling_policy(Client, Input, Options)
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
 %% @doc Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0
-%% and higher.
+%% and later.
 %%
 %% For more information, see Using an auto-termination policy.
 %%
@@ -695,7 +695,7 @@ remove_tags(Client, Input, Options)
 %% results.
 %%
 %% The instance fleets configuration is available only in Amazon EMR releases
-%% 4.8.0 and higher, excluding 5.0.x versions. The RunJobFlow request can
+%% 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can
 %% contain InstanceFleets parameters or InstanceGroups parameters, but not
 %% both.
 run_job_flow(Client, Input)

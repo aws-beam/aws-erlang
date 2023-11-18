@@ -98,8 +98,12 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_pull_through_cache_rule/2,
+         update_pull_through_cache_rule/3,
          upload_layer_part/2,
-         upload_layer_part/3]).
+         upload_layer_part/3,
+         validate_pull_through_cache_rule/2,
+         validate_pull_through_cache_rule/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -182,8 +186,10 @@ complete_layer_upload(Client, Input, Options)
 
 %% @doc Creates a pull through cache rule.
 %%
-%% A pull through cache rule provides a way to cache images from an external
-%% public registry in your Amazon ECR private registry.
+%% A pull through cache rule provides a way to cache images from an upstream
+%% registry source in your Amazon ECR private registry. For more information,
+%% see Using pull through cache rules in the Amazon Elastic Container
+%% Registry User Guide.
 create_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_through_cache_rule(Client, Input, []).
@@ -229,8 +235,9 @@ delete_registry_policy(Client, Input, Options)
 
 %% @doc Deletes a repository.
 %%
-%% If the repository contains images, you must either delete all images in
-%% the repository or use the `force' option to delete the repository.
+%% If the repository isn't empty, you must either delete the contents of
+%% the repository or use the `force' option to delete the repository and
+%% have Amazon ECR delete all of its contents on your behalf.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -572,6 +579,14 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an existing pull through cache rule.
+update_pull_through_cache_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_pull_through_cache_rule(Client, Input, []).
+update_pull_through_cache_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePullThroughCacheRule">>, Input, Options).
+
 %% @doc Uploads an image layer part to Amazon ECR.
 %%
 %% When an image is pushed, each new image layer is uploaded in parts. The
@@ -588,6 +603,19 @@ upload_layer_part(Client, Input)
 upload_layer_part(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadLayerPart">>, Input, Options).
+
+%% @doc Validates an existing pull through cache rule for an upstream
+%% registry that requires authentication.
+%%
+%% This will retrieve the contents of the Amazon Web Services Secrets Manager
+%% secret, verify the syntax, and then validate that authentication to the
+%% upstream registry is successful.
+validate_pull_through_cache_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    validate_pull_through_cache_rule(Client, Input, []).
+validate_pull_through_cache_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ValidatePullThroughCacheRule">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
