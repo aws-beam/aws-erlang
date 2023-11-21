@@ -75,42 +75,18 @@
          create_connection/3,
          create_host/2,
          create_host/3,
-         create_repository_link/2,
-         create_repository_link/3,
-         create_sync_configuration/2,
-         create_sync_configuration/3,
          delete_connection/2,
          delete_connection/3,
          delete_host/2,
          delete_host/3,
-         delete_repository_link/2,
-         delete_repository_link/3,
-         delete_sync_configuration/2,
-         delete_sync_configuration/3,
          get_connection/2,
          get_connection/3,
          get_host/2,
          get_host/3,
-         get_repository_link/2,
-         get_repository_link/3,
-         get_repository_sync_status/2,
-         get_repository_sync_status/3,
-         get_resource_sync_status/2,
-         get_resource_sync_status/3,
-         get_sync_blocker_summary/2,
-         get_sync_blocker_summary/3,
-         get_sync_configuration/2,
-         get_sync_configuration/3,
          list_connections/2,
          list_connections/3,
          list_hosts/2,
          list_hosts/3,
-         list_repository_links/2,
-         list_repository_links/3,
-         list_repository_sync_definitions/2,
-         list_repository_sync_definitions/3,
-         list_sync_configurations/2,
-         list_sync_configurations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          tag_resource/2,
@@ -118,13 +94,7 @@
          untag_resource/2,
          untag_resource/3,
          update_host/2,
-         update_host/3,
-         update_repository_link/2,
-         update_repository_link/3,
-         update_sync_blocker/2,
-         update_sync_blocker/3,
-         update_sync_configuration/2,
-         update_sync_configuration/3]).
+         update_host/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -162,29 +132,6 @@ create_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHost">>, Input, Options).
 
-%% @doc Creates a link to a specified external Git repository.
-%%
-%% A repository link allows Git sync to monitor and sync changes to files in
-%% a specified Git repository.
-create_repository_link(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    create_repository_link(Client, Input, []).
-create_repository_link(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"CreateRepositoryLink">>, Input, Options).
-
-%% @doc Creates a sync configuration which allows Amazon Web Services to sync
-%% content from a Git repository to update a specified Amazon Web Services
-%% resource.
-%%
-%% Parameters for the sync configuration are determined by the sync type.
-create_sync_configuration(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    create_sync_configuration(Client, Input, []).
-create_sync_configuration(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"CreateSyncConfiguration">>, Input, Options).
-
 %% @doc The connection to be deleted.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -207,24 +154,6 @@ delete_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHost">>, Input, Options).
 
-%% @doc Deletes the association between your connection and a specified
-%% external Git repository.
-delete_repository_link(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_repository_link(Client, Input, []).
-delete_repository_link(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteRepositoryLink">>, Input, Options).
-
-%% @doc Deletes the sync configuration for a specified repository and
-%% connection.
-delete_sync_configuration(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_sync_configuration(Client, Input, []).
-delete_sync_configuration(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteSyncConfiguration">>, Input, Options).
-
 %% @doc Returns the connection ARN and details such as status, owner, and
 %% provider type.
 get_connection(Client, Input)
@@ -243,58 +172,6 @@ get_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHost">>, Input, Options).
 
-%% @doc Returns details about a repository link.
-%%
-%% A repository link allows Git sync to monitor and sync changes from files
-%% in a specified Git repository.
-get_repository_link(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_repository_link(Client, Input, []).
-get_repository_link(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetRepositoryLink">>, Input, Options).
-
-%% @doc Returns details about the sync status for a repository.
-%%
-%% A repository sync uses Git sync to push and pull changes from your remote
-%% repository.
-get_repository_sync_status(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_repository_sync_status(Client, Input, []).
-get_repository_sync_status(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
-
-%% @doc Returns the status of the sync with the Git repository for a specific
-%% Amazon Web Services resource.
-get_resource_sync_status(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_resource_sync_status(Client, Input, []).
-get_resource_sync_status(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetResourceSyncStatus">>, Input, Options).
-
-%% @doc Returns a list of the most recent sync blockers.
-get_sync_blocker_summary(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_sync_blocker_summary(Client, Input, []).
-get_sync_blocker_summary(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetSyncBlockerSummary">>, Input, Options).
-
-%% @doc Returns details about a sync configuration, including the sync type
-%% and resource name.
-%%
-%% A sync configuration allows the configuration to sync (push and pull)
-%% changes from the remote repository for a specified branch in a Git
-%% repository.
-get_sync_configuration(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_sync_configuration(Client, Input, []).
-get_sync_configuration(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetSyncConfiguration">>, Input, Options).
-
 %% @doc Lists the connections associated with your account.
 list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -310,31 +187,6 @@ list_hosts(Client, Input)
 list_hosts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHosts">>, Input, Options).
-
-%% @doc Lists the repository links created for connections in your account.
-list_repository_links(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_repository_links(Client, Input, []).
-list_repository_links(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListRepositoryLinks">>, Input, Options).
-
-%% @doc Lists the repository sync definitions for repository links in your
-%% account.
-list_repository_sync_definitions(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_repository_sync_definitions(Client, Input, []).
-list_repository_sync_definitions(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
-
-%% @doc Returns a list of sync configurations for a specified repository.
-list_sync_configurations(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    list_sync_configurations(Client, Input, []).
-list_sync_configurations(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ListSyncConfigurations">>, Input, Options).
 
 %% @doc Gets the set of key-value pairs (metadata) that are used to manage
 %% the resource.
@@ -370,36 +222,6 @@ update_host(Client, Input)
 update_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateHost">>, Input, Options).
-
-%% @doc Updates the association between your connection and a specified
-%% external Git repository.
-%%
-%% A repository link allows Git sync to monitor and sync changes to files in
-%% a specified Git repository.
-update_repository_link(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_repository_link(Client, Input, []).
-update_repository_link(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateRepositoryLink">>, Input, Options).
-
-%% @doc Allows you to update the status of a sync blocker, resolving the
-%% blocker and allowing syncing to continue.
-update_sync_blocker(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_sync_blocker(Client, Input, []).
-update_sync_blocker(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateSyncBlocker">>, Input, Options).
-
-%% @doc Updates the sync configuration for your connection and a specified
-%% external Git repository.
-update_sync_configuration(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    update_sync_configuration(Client, Input, []).
-update_sync_configuration(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"UpdateSyncConfiguration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
