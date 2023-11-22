@@ -34,6 +34,8 @@
          create_invalidation/4,
          create_key_group/2,
          create_key_group/3,
+         create_key_value_store/2,
+         create_key_value_store/3,
          create_monitoring_subscription/3,
          create_monitoring_subscription/4,
          create_origin_access_control/2,
@@ -66,6 +68,8 @@
          delete_function/4,
          delete_key_group/3,
          delete_key_group/4,
+         delete_key_value_store/3,
+         delete_key_value_store/4,
          delete_monitoring_subscription/3,
          delete_monitoring_subscription/4,
          delete_origin_access_control/3,
@@ -83,6 +87,9 @@
          describe_function/2,
          describe_function/4,
          describe_function/5,
+         describe_key_value_store/2,
+         describe_key_value_store/4,
+         describe_key_value_store/5,
          get_cache_policy/2,
          get_cache_policy/4,
          get_cache_policy/5,
@@ -213,6 +220,9 @@
          list_key_groups/1,
          list_key_groups/3,
          list_key_groups/4,
+         list_key_value_stores/1,
+         list_key_value_stores/3,
+         list_key_value_stores/4,
          list_origin_access_controls/1,
          list_origin_access_controls/3,
          list_origin_access_controls/4,
@@ -260,6 +270,8 @@
          update_function/4,
          update_key_group/3,
          update_key_group/4,
+         update_key_value_store/3,
+         update_key_value_store/4,
          update_origin_access_control/3,
          update_origin_access_control/4,
          update_origin_request_policy/3,
@@ -816,6 +828,50 @@ create_key_group(Client, Input) ->
 create_key_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-group"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Specifies the Key Value Store resource to add to your account.
+%%
+%% In your account, the Key Value Store names must be unique. You can also
+%% import Key Value Store data in JSON format from an S3 bucket by providing
+%% a valid `ImportSource' that you own.
+create_key_value_store(Client, Input) ->
+    create_key_value_store(Client, Input, []).
+create_key_value_store(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/key-value-store/"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1438,6 +1494,31 @@ delete_key_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Specifies the Key Value Store to delete.
+delete_key_value_store(Client, Name, Input) ->
+    delete_key_value_store(Client, Name, Input, []).
+delete_key_value_store(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disables additional CloudWatch metrics for the specified CloudFront
 %% distribution.
 delete_monitoring_subscription(Client, DistributionId, Input) ->
@@ -1714,6 +1795,45 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
         {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Specifies the Key Value Store and its configuration.
+describe_key_value_store(Client, Name)
+  when is_map(Client) ->
+    describe_key_value_store(Client, Name, #{}, #{}).
+
+describe_key_value_store(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_key_value_store(Client, Name, QueryMap, HeadersMap, []).
+
+describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
@@ -3426,6 +3546,35 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Specifies the Key Value Stores to list.
+list_key_value_stores(Client)
+  when is_map(Client) ->
+    list_key_value_stores(Client, #{}, #{}).
+
+list_key_value_stores(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_key_value_stores(Client, QueryMap, HeadersMap, []).
+
+list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/key-value-store"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the list of CloudFront origin access controls in this Amazon Web
 %% Services account.
 %%
@@ -4228,6 +4377,47 @@ update_key_group(Client, Id, Input) ->
 update_key_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Specifies the Key Value Store to update.
+update_key_value_store(Client, Name, Input) ->
+    update_key_value_store(Client, Name, Input, []).
+update_key_value_store(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/key-value-store/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

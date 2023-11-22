@@ -32,6 +32,8 @@
          create_asset/3,
          create_asset_model/2,
          create_asset_model/3,
+         create_asset_model_composite_model/3,
+         create_asset_model_composite_model/4,
          create_bulk_import_job/2,
          create_bulk_import_job/3,
          create_dashboard/2,
@@ -48,6 +50,8 @@
          delete_asset/4,
          delete_asset_model/3,
          delete_asset_model/4,
+         delete_asset_model_composite_model/4,
+         delete_asset_model_composite_model/5,
          delete_dashboard/3,
          delete_dashboard/4,
          delete_gateway/3,
@@ -61,12 +65,21 @@
          describe_access_policy/2,
          describe_access_policy/4,
          describe_access_policy/5,
+         describe_action/2,
+         describe_action/4,
+         describe_action/5,
          describe_asset/2,
          describe_asset/4,
          describe_asset/5,
+         describe_asset_composite_model/3,
+         describe_asset_composite_model/5,
+         describe_asset_composite_model/6,
          describe_asset_model/2,
          describe_asset_model/4,
          describe_asset_model/5,
+         describe_asset_model_composite_model/3,
+         describe_asset_model_composite_model/5,
+         describe_asset_model_composite_model/6,
          describe_asset_property/3,
          describe_asset_property/5,
          describe_asset_property/6,
@@ -104,6 +117,10 @@
          disassociate_assets/4,
          disassociate_time_series_from_asset_property/2,
          disassociate_time_series_from_asset_property/3,
+         execute_action/2,
+         execute_action/3,
+         execute_query/2,
+         execute_query/3,
          get_asset_property_aggregates/5,
          get_asset_property_aggregates/7,
          get_asset_property_aggregates/8,
@@ -119,6 +136,12 @@
          list_access_policies/1,
          list_access_policies/3,
          list_access_policies/4,
+         list_actions/3,
+         list_actions/5,
+         list_actions/6,
+         list_asset_model_composite_models/2,
+         list_asset_model_composite_models/4,
+         list_asset_model_composite_models/5,
          list_asset_model_properties/2,
          list_asset_model_properties/4,
          list_asset_model_properties/5,
@@ -140,6 +163,9 @@
          list_bulk_import_jobs/1,
          list_bulk_import_jobs/3,
          list_bulk_import_jobs/4,
+         list_composition_relationships/2,
+         list_composition_relationships/4,
+         list_composition_relationships/5,
          list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
@@ -177,6 +203,8 @@
          update_asset/4,
          update_asset_model/3,
          update_asset_model/4,
+         update_asset_model_composite_model/4,
+         update_asset_model_composite_model/5,
          update_asset_property/4,
          update_asset_property/5,
          update_dashboard/3,
@@ -484,6 +512,19 @@ create_asset(Client, Input0, Options0) ->
 %% asset created from a model inherits the asset model's property and
 %% hierarchy definitions. For more information, see Defining asset models in
 %% the IoT SiteWise User Guide.
+%%
+%% You can create two types of asset models, `ASSET_MODEL' or
+%% `COMPONENT_MODEL'.
+%%
+%% <ul> <li> ASSET_MODEL – (default) An asset model that you can use to
+%% create assets. Can't be included as a component in another asset
+%% model.
+%%
+%% </li> <li> COMPONENT_MODEL – A reusable component that you can include in
+%% the composite models of other asset models. You can't create assets
+%% directly from this type of asset model.
+%%
+%% </li> </ul>
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
 create_asset_model(Client, Input0, Options0) ->
@@ -506,14 +547,66 @@ create_asset_model(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a custom composite model from specified property and
+%% hierarchy definitions.
+%%
+%% There are two types of custom composite models, `inline' and
+%% `component-model-based'.
+%%
+%% Use component-model-based custom composite models to define standard,
+%% reusable components. A component-model-based custom composite model
+%% consists of a name, a description, and the ID of the component model it
+%% references. A component-model-based custom composite model has no
+%% properties of its own; its referenced component model provides its
+%% associated properties to any created assets. For more information, see
+%% Custom composite models (Components) in the IoT SiteWise User Guide.
+%%
+%% Use inline custom composite models to organize the properties of an asset
+%% model. The properties of inline custom composite models are local to the
+%% asset model where they are included and can't be used to create
+%% multiple assets.
+%%
+%% To create a component-model-based model, specify the
+%% `composedAssetModelId' of an existing asset model with
+%% `assetModelType' of `COMPONENT_MODEL'.
+%%
+%% To create an inline model, specify the
+%% `assetModelCompositeModelProperties' and don't include an
+%% `composedAssetModelId'.
+create_asset_model_composite_model(Client, AssetModelId, Input) ->
+    create_asset_model_composite_model(Client, AssetModelId, Input, []).
+create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Defines a job to ingest data to IoT SiteWise from Amazon S3.
 %%
 %% For more information, see Create a bulk import job (CLI) in the Amazon
 %% Simple Storage Service User Guide.
 %%
-%% You must enable IoT SiteWise to export data to Amazon S3 before you create
-%% a bulk import job. For more information about how to configure storage
-%% settings, see PutStorageConfiguration.
+%% Before you create a bulk import job, you must enable IoT SiteWise warm
+%% tier or IoT SiteWise cold tier. For more information about how to
+%% configure storage settings, see PutStorageConfiguration.
+%%
+%% Bulk import is designed to store historical data to IoT SiteWise. It does
+%% not trigger computations or notifications on IoT SiteWise warm or cold
+%% tier storage.
 create_bulk_import_job(Client, Input) ->
     create_bulk_import_job(Client, Input, []).
 create_bulk_import_job(Client, Input0, Options0) ->
@@ -731,6 +824,37 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a composite model.
+%%
+%% This action can't be undone. You must delete all assets created from a
+%% composite model before you can delete the model. Also, you can't
+%% delete a composite model if a parent asset model exists that contains a
+%% property formula expression that depends on the asset model that you want
+%% to delete. For more information, see Deleting assets and models in the IoT
+%% SiteWise User Guide.
+delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
+    delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
+delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a dashboard from IoT SiteWise Monitor.
 delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
@@ -898,6 +1022,29 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about an action.
+describe_action(Client, ActionId)
+  when is_map(Client) ->
+    describe_action(Client, ActionId, #{}, #{}).
+
+describe_action(Client, ActionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_action(Client, ActionId, QueryMap, HeadersMap, []).
+
+describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/actions/", aws_util:encode_uri(ActionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about an asset.
 describe_asset(Client, AssetId)
   when is_map(Client) ->
@@ -925,6 +1072,34 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about an asset composite model (also known as
+%% an asset component).
+%%
+%% An `AssetCompositeModel' is an instance of an
+%% `AssetModelCompositeModel'. If you want to see information about the
+%% model this is based on, call DescribeAssetModelCompositeModel.
+describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
+  when is_map(Client) ->
+    describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, #{}, #{}).
+
+describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, []).
+
+describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/composite-models/", aws_util:encode_uri(AssetCompositeModelId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about an asset model.
 describe_asset_model(Client, AssetModelId)
   when is_map(Client) ->
@@ -949,6 +1124,33 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
         {<<"excludeProperties">>, maps:get(<<"excludeProperties">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about an asset model composite model (also
+%% known as an asset model component).
+%%
+%% For more information, see Custom composite models (Components) in the IoT
+%% SiteWise User Guide.
+describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId)
+  when is_map(Client) ->
+    describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, #{}, #{}).
+
+describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, []).
+
+describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1297,6 +1499,53 @@ disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Executes an action on a target resource.
+execute_action(Client, Input) ->
+    execute_action(Client, Input, []).
+execute_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/actions"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Run SQL queries to retrieve metadata and time-series data from asset
+%% models, assets, measurements, metrics, transforms, and aggregates.
+execute_query(Client, Input) ->
+    execute_query(Client, Input, []).
+execute_query(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/queries/execution"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets aggregated values for an asset property.
 %%
 %% For more information, see Querying aggregates in the IoT SiteWise User
@@ -1529,6 +1778,65 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of actions for a specific target resource.
+list_actions(Client, TargetResourceId, TargetResourceType)
+  when is_map(Client) ->
+    list_actions(Client, TargetResourceId, TargetResourceType, #{}, #{}).
+
+list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, []).
+
+list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/actions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetResourceId">>, TargetResourceId},
+        {<<"targetResourceType">>, TargetResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of composite models associated with the
+%% asset model
+list_asset_model_composite_models(Client, AssetModelId)
+  when is_map(Client) ->
+    list_asset_model_composite_models(Client, AssetModelId, #{}, #{}).
+
+list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, []).
+
+list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of properties associated with an asset
 %% model.
 %%
@@ -1583,6 +1891,7 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"assetModelTypes">>, maps:get(<<"assetModelTypes">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -1759,6 +2068,35 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of composition relationships for an asset
+%% model of type `COMPONENT_MODEL'.
+list_composition_relationships(Client, AssetModelId)
+  when is_map(Client) ->
+    list_composition_relationships(Client, AssetModelId, #{}, #{}).
+
+list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, []).
+
+list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composition-relationships"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -2165,6 +2503,48 @@ update_asset_model(Client, AssetModelId, Input) ->
 update_asset_model(Client, AssetModelId, Input0, Options0) ->
     Method = put,
     Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a composite model and all of the assets that were created
+%% from the model.
+%%
+%% Each asset created from the model inherits the updated asset model's
+%% property and hierarchy definitions. For more information, see Updating
+%% assets and models in the IoT SiteWise User Guide.
+%%
+%% If you remove a property from a composite asset model, IoT SiteWise
+%% deletes all previous data for that property. You can’t change the type or
+%% data type of an existing property.
+%%
+%% To replace an existing composite asset model property with a new one with
+%% the same `name', do the following:
+%%
+%% Submit an `UpdateAssetModelCompositeModel' request with the entire
+%% existing property removed.
+%%
+%% Submit a second `UpdateAssetModelCompositeModel' request that includes
+%% the new property. The new asset property will have the same `name' as
+%% the previous one and IoT SiteWise will generate a new unique `id'.
+update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
+    update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
+update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
+    Method = put,
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/composite-models/", aws_util:encode_uri(AssetModelCompositeModelId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

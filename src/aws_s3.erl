@@ -3309,6 +3309,10 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% as if the object was deleted and includes `x-amz-delete-marker: true'
 %% in the response.
 %%
+%% If the specified version is a delete marker, the response returns a 405
+%% (Method Not Allowed) error and the `Last-Modified: timestamp' response
+%% header.
+%%
 %% For more information about versioning, see PutBucketVersioning.
 %%
 %% </dd> <dt>Overriding Response Header Values</dt> <dd> There are times when
@@ -4070,9 +4074,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% A `HEAD' request has the same options as a `GET' action on an
 %% object. The response is identical to the `GET' response except that
 %% there is no response body. Because of this, if the `HEAD' request
-%% generates an error, it returns a generic `400 Bad Request', `403
-%% Forbidden' or `404 Not Found' code. It is not possible to retrieve
-%% the exact exception beyond these error codes.
+%% generates an error, it returns a generic code, such as `400 Bad
+%% Request', `403 Forbidden', `404 Not Found', `405 Method Not
+%% Allowed', `412 Precondition Failed', or `304 Not Modified'.
+%% It's not possible to retrieve the exact exception of these error
+%% codes.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -4136,6 +4142,15 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> <li> If you don’t have the `s3:ListBucket' permission, Amazon S3
 %% returns an HTTP status code 403 error.
+%%
+%% </li> </ul> </dd> <dt>Versioning</dt> <dd> <ul> <li> If the current
+%% version of the object is a delete marker, Amazon S3 behaves as if the
+%% object was deleted and includes `x-amz-delete-marker: true' in the
+%% response.
+%%
+%% </li> <li> If the specified version is a delete marker, the response
+%% returns a 405 (Method Not Allowed) error and the `Last-Modified:
+%% timestamp' response header.
 %%
 %% </li> </ul> </dd> </dl> The following actions are related to
 %% `HeadObject':
@@ -4619,8 +4634,6 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% it appropriately.
 %%
 %% To use this operation, you must have READ access to the bucket.
-%%
-%% This action is not supported by Amazon S3 on Outposts.
 %%
 %% The following operations are related to `ListObjectVersions':
 %%

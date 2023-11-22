@@ -13,10 +13,14 @@
 
 -export([batch_put_property_values/3,
          batch_put_property_values/4,
+         cancel_metadata_transfer_job/3,
+         cancel_metadata_transfer_job/4,
          create_component_type/4,
          create_component_type/5,
          create_entity/3,
          create_entity/4,
+         create_metadata_transfer_job/2,
+         create_metadata_transfer_job/3,
          create_scene/3,
          create_scene/4,
          create_sync_job/4,
@@ -41,6 +45,9 @@
          get_entity/3,
          get_entity/5,
          get_entity/6,
+         get_metadata_transfer_job/2,
+         get_metadata_transfer_job/4,
+         get_metadata_transfer_job/5,
          get_pricing_plan/1,
          get_pricing_plan/3,
          get_pricing_plan/4,
@@ -59,8 +66,14 @@
          get_workspace/5,
          list_component_types/3,
          list_component_types/4,
+         list_components/4,
+         list_components/5,
          list_entities/3,
          list_entities/4,
+         list_metadata_transfer_jobs/2,
+         list_metadata_transfer_jobs/3,
+         list_properties/3,
+         list_properties/4,
          list_scenes/3,
          list_scenes/4,
          list_sync_jobs/3,
@@ -115,6 +128,29 @@ batch_put_property_values(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Cancels the metadata transfer job.
+cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input) ->
+    cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input, []).
+cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/metadata-transfer-jobs/", aws_util:encode_uri(MetadataTransferJobId), "/cancel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a component type.
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     create_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
@@ -144,6 +180,29 @@ create_entity(Client, WorkspaceId, Input) ->
 create_entity(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new metadata transfer job.
+create_metadata_transfer_job(Client, Input) ->
+    create_metadata_transfer_job(Client, Input, []).
+create_metadata_transfer_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata-transfer-jobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -348,6 +407,10 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Run queries to access information from your knowledge graph of
 %% entities within individual workspaces.
+%%
+%% The ExecuteQuery action only works with Amazon Web Services Java SDK2.
+%% ExecuteQuery will not work with any Amazon Web Services Java SDK version
+%% &lt; 2.x.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
 execute_query(Client, Input0, Options0) ->
@@ -405,6 +468,29 @@ get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap)
 get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a nmetadata transfer job.
+get_metadata_transfer_job(Client, MetadataTransferJobId)
+  when is_map(Client) ->
+    get_metadata_transfer_job(Client, MetadataTransferJobId, #{}, #{}).
+
+get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, []).
+
+get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metadata-transfer-jobs/", aws_util:encode_uri(MetadataTransferJobId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -590,12 +676,81 @@ list_component_types(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API lists the components of an entity.
+list_components(Client, EntityId, WorkspaceId, Input) ->
+    list_components(Client, EntityId, WorkspaceId, Input, []).
+list_components(Client, EntityId, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), "/components-list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all entities in a workspace.
 list_entities(Client, WorkspaceId, Input) ->
     list_entities(Client, WorkspaceId, Input, []).
 list_entities(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities-list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the metadata transfer jobs.
+list_metadata_transfer_jobs(Client, Input) ->
+    list_metadata_transfer_jobs(Client, Input, []).
+list_metadata_transfer_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata-transfer-jobs-list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API lists the properties of a component.
+list_properties(Client, WorkspaceId, Input) ->
+    list_properties(Client, WorkspaceId, Input, []).
+list_properties(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/properties-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
