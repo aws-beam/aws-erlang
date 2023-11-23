@@ -13,6 +13,8 @@
          create_stream/3,
          decrease_stream_retention_period/2,
          decrease_stream_retention_period/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_stream/2,
          delete_stream/3,
          deregister_stream_consumer/2,
@@ -31,6 +33,8 @@
          enable_enhanced_monitoring/3,
          get_records/2,
          get_records/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          get_shard_iterator/2,
          get_shard_iterator/3,
          increase_stream_retention_period/2,
@@ -49,6 +53,8 @@
          put_record/3,
          put_records/2,
          put_records/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          register_stream_consumer/2,
          register_stream_consumer/3,
          remove_tags_from_stream/2,
@@ -76,8 +82,9 @@
 %%
 %% You can assign up to 50 tags to a data stream.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% If tags have already been assigned to the stream, `AddTagsToStream'
 %% overwrites any existing tags that correspond to the specified tag keys.
@@ -153,8 +160,9 @@ create_stream(Client, Input, Options)
 %%
 %% The minimum value of a stream's retention period is 24 hours.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% This operation may result in lost data. For example, if the stream's
 %% retention period is 48 hours and is decreased to 24 hours, any data
@@ -166,14 +174,33 @@ decrease_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseStreamRetentionPeriod">>, Input, Options).
 
+%% @doc Delete a policy for the specified data stream or consumer.
+%%
+%% Request patterns can be one of the following:
+%%
+%% <ul> <li> Data stream pattern:
+%% `arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+'
+%%
+%% </li> <li> Consumer pattern:
+%% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% </li> </ul>
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Deletes a Kinesis data stream and all its shards and data.
 %%
 %% You must shut down any applications that are operating on the stream
 %% before you delete the stream. If an application attempts to operate on a
 %% deleted stream, it receives the exception `ResourceNotFoundException'.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% If the stream is in the `ACTIVE' state, you can delete it. After a
 %% `DeleteStream' request, the specified stream is in the `DELETING'
@@ -238,8 +265,9 @@ describe_limits(Client, Input, Options)
 %% specified Kinesis data stream and the `ListShards' API to list the
 %% shards in a specified data stream and obtain information about each shard.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% The information returned includes the stream name, Amazon Resource Name
 %% (ARN), creation time, enhanced metric configuration, and shard map. The
@@ -277,6 +305,9 @@ describe_stream(Client, Input, Options)
 %% given data stream.
 %%
 %% This operation has a limit of 20 transactions per second per stream.
+%%
+%% When making a cross-account call with `DescribeStreamConsumer', make
+%% sure to provide the ARN of the consumer.
 describe_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_consumer(Client, Input, []).
@@ -287,8 +318,9 @@ describe_stream_consumer(Client, Input, Options)
 %% @doc Provides a summarized description of the specified Kinesis data
 %% stream without the shard list.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% The information returned includes the stream name, Amazon Resource Name
 %% (ARN), status, record retention period, approximate creation time,
@@ -305,8 +337,9 @@ describe_stream_summary(Client, Input, Options)
 
 %% @doc Disables enhanced monitoring.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 disable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_enhanced_monitoring(Client, Input, []).
@@ -317,8 +350,9 @@ disable_enhanced_monitoring(Client, Input, Options)
 %% @doc Enables enhanced Kinesis data stream monitoring for shard-level
 %% metrics.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 enable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_enhanced_monitoring(Client, Input, []).
@@ -328,8 +362,9 @@ enable_enhanced_monitoring(Client, Input, Options)
 
 %% @doc Gets data records from a Kinesis data stream's shard.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter in addition to the `ShardIterator' parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% Specify a shard iterator using the `ShardIterator' parameter. The
 %% shard iterator specifies the position in the shard from which you want to
@@ -399,12 +434,31 @@ get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
 
+%% @doc Returns a policy attached to the specified data stream or consumer.
+%%
+%% Request patterns can be one of the following:
+%%
+%% <ul> <li> Data stream pattern:
+%% `arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+'
+%%
+%% </li> <li> Consumer pattern:
+%% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% </li> </ul>
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
 %% @doc Gets an Amazon Kinesis shard iterator.
 %%
 %% A shard iterator expires 5 minutes after it is returned to the requester.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% A shard iterator specifies the shard position from which to start reading
 %% data records sequentially. The position is specified using the sequence
@@ -459,8 +513,9 @@ get_shard_iterator(Client, Input, Options)
 %% The maximum value of a stream's retention period is 8760 hours (365
 %% days).
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% If you choose a longer stream retention period, this operation increases
 %% the time period during which records that have not yet expired are
@@ -482,8 +537,9 @@ increase_stream_retention_period(Client, Input, Options)
 %% This operation has a limit of 1000 transactions per second per data
 %% stream.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% This action does not list expired shards. For information about expired
 %% shards, see Data Routing, Data Persistence, and Shard State after a
@@ -541,8 +597,9 @@ list_streams(Client, Input, Options)
 %%
 %% This operation has a limit of five transactions per second per account.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 list_tags_for_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_stream(Client, Input, []).
@@ -563,8 +620,9 @@ list_tags_for_stream(Client, Input, Options)
 %% 276...454. After the merge, the single child shard receives data for all
 %% hash key values covered by the two parent shards.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% `MergeShards' is called when there is a need to reduce the overall
 %% capacity of a stream because of excess capacity that is not being used.
@@ -611,8 +669,9 @@ merge_shards(Client, Input, Options)
 %% writes up to 1,000 records per second, up to a maximum data write total of
 %% 1 MiB per second.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% You must specify the name of the stream that captures, stores, and
 %% transports the data; a partition key; and the data blob itself.
@@ -669,8 +728,9 @@ put_record(Client, Input, Options)
 %% Use this operation to send data into the stream for data ingestion and
 %% processing.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% Each `PutRecords' request can support up to 500 records. Each record
 %% in the request can be as large as 1 MiB, up to a limit of 5 MiB for the
@@ -746,6 +806,35 @@ put_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecords">>, Input, Options).
 
+%% @doc Attaches a resource-based policy to a data stream or registered
+%% consumer.
+%%
+%% If you are using an identity other than the root user of the Amazon Web
+%% Services account that owns the resource, the calling identity must have
+%% the `PutResourcePolicy' permissions on the specified Kinesis Data
+%% Streams resource and belong to the owner's account in order to use
+%% this operation. If you don't have `PutResourcePolicy' permissions,
+%% Amazon Kinesis Data Streams returns a `403 Access Denied error'. If
+%% you receive a `ResourceNotFoundException', check to see if you passed
+%% a valid stream or consumer resource.
+%%
+%% Request patterns can be one of the following:
+%%
+%% <ul> <li> Data stream pattern:
+%% `arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+'
+%%
+%% </li> <li> Consumer pattern:
+%% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% </li> </ul> For more information, see Controlling Access to Amazon Kinesis
+%% Data Streams Resources Using IAM.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
+
 %% @doc Registers a consumer with a Kinesis data stream.
 %%
 %% When you use this operation, the consumer you register can then call
@@ -777,8 +866,9 @@ register_stream_consumer(Client, Input, Options)
 %% Removed tags are deleted and cannot be recovered after this operation
 %% successfully completes.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% If you specify a tag that does not exist, it is ignored.
 %%
@@ -799,8 +889,9 @@ remove_tags_from_stream(Client, Input, Options)
 %% records being ingested. This API is only supported for the data streams
 %% with the provisioned capacity mode.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% You can also use `SplitShard' when a shard appears to be approaching
 %% its maximum utilization; for example, the producers sending data into the
@@ -856,6 +947,10 @@ split_shard(Client, Input, Options)
 %% @doc Enables or updates server-side encryption using an Amazon Web
 %% Services KMS key for a specified stream.
 %%
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
+%%
 %% Starting encryption is an asynchronous operation. Upon receiving the
 %% request, Kinesis Data Streams returns immediately and sets the status of
 %% the stream to `UPDATING'. After the update is complete, Kinesis Data
@@ -872,9 +967,6 @@ split_shard(Client, Input, Options)
 %% status before all records written to the stream are encrypted. After you
 %% enable encryption, you can verify that encryption is applied by inspecting
 %% the API response from `PutRecord' or `PutRecords'.
-%%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
 start_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_encryption(Client, Input, []).
@@ -884,8 +976,9 @@ start_stream_encryption(Client, Input, Options)
 
 %% @doc Disables server-side encryption for a specified stream.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% Stopping encryption is an asynchronous operation. Upon receiving the
 %% request, Kinesis Data Streams returns immediately and sets the status of
@@ -955,8 +1048,9 @@ subscribe_to_shard(Client, Input, Options)
 %% This API is only supported for the data streams with the provisioned
 %% capacity mode.
 %%
-%% When invoking this API, it is recommended you use the `StreamARN'
-%% input parameter rather than the `StreamName' input parameter.
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
 %%
 %% Updating the shard count is an asynchronous operation. Upon receiving the
 %% request, Kinesis Data Streams returns immediately and sets the status of
@@ -993,6 +1087,9 @@ subscribe_to_shard(Client, Input, Options)
 %% result is less than 10000 shards
 %%
 %% </li> <li> Scale up to more than the shard limit for your account
+%%
+%% </li> <li> Make over 10 TPS. TPS over 10 will trigger the
+%% LimitExceededException
 %%
 %% </li> </ul> For the default limits for an Amazon Web Services account, see
 %% Streams Limits in the Amazon Kinesis Data Streams Developer Guide. To
