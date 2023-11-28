@@ -35,6 +35,8 @@
          delete_call_analytics_job/3,
          delete_language_model/2,
          delete_language_model/3,
+         delete_medical_scribe_job/2,
+         delete_medical_scribe_job/3,
          delete_medical_transcription_job/2,
          delete_medical_transcription_job/3,
          delete_medical_vocabulary/2,
@@ -51,6 +53,8 @@
          get_call_analytics_category/3,
          get_call_analytics_job/2,
          get_call_analytics_job/3,
+         get_medical_scribe_job/2,
+         get_medical_scribe_job/3,
          get_medical_transcription_job/2,
          get_medical_transcription_job/3,
          get_medical_vocabulary/2,
@@ -67,6 +71,8 @@
          list_call_analytics_jobs/3,
          list_language_models/2,
          list_language_models/3,
+         list_medical_scribe_jobs/2,
+         list_medical_scribe_jobs/3,
          list_medical_transcription_jobs/2,
          list_medical_transcription_jobs/3,
          list_medical_vocabularies/2,
@@ -81,6 +87,8 @@
          list_vocabulary_filters/3,
          start_call_analytics_job/2,
          start_call_analytics_job/3,
+         start_medical_scribe_job/2,
+         start_medical_scribe_job/3,
          start_medical_transcription_job/2,
          start_medical_transcription_job/3,
          start_transcription_job/2,
@@ -251,6 +259,17 @@ delete_language_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLanguageModel">>, Input, Options).
 
+%% @doc Deletes a Medical Scribe job.
+%%
+%% To use this operation, specify the name of the job you want to delete
+%% using `MedicalScribeJobName'. Job names are case sensitive.
+delete_medical_scribe_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_medical_scribe_job(Client, Input, []).
+delete_medical_scribe_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMedicalScribeJob">>, Input, Options).
+
 %% @doc Deletes a medical transcription job.
 %%
 %% To use this operation, specify the name of the job you want to delete
@@ -359,6 +378,23 @@ get_call_analytics_job(Client, Input)
 get_call_analytics_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallAnalyticsJob">>, Input, Options).
+
+%% @doc Provides information about the specified Medical Scribe job.
+%%
+%% To view the status of the specified medical transcription job, check the
+%% `MedicalScribeJobStatus' field. If the status is `COMPLETED', the
+%% job is finished. You can find the results at the location specified in
+%% `MedicalScribeOutput'. If the status is `FAILED',
+%% `FailureReason' provides details on why your Medical Scribe job
+%% failed.
+%%
+%% To get a list of your Medical Scribe jobs, use the operation.
+get_medical_scribe_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_medical_scribe_job(Client, Input, []).
+get_medical_scribe_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMedicalScribeJob">>, Input, Options).
 
 %% @doc Provides information about the specified medical transcription job.
 %%
@@ -474,6 +510,20 @@ list_language_models(Client, Input)
 list_language_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLanguageModels">>, Input, Options).
+
+%% @doc Provides a list of Medical Scribe jobs that match the specified
+%% criteria.
+%%
+%% If no criteria are specified, all Medical Scribe jobs are returned.
+%%
+%% To get detailed information about a specific Medical Scribe job, use the
+%% operation.
+list_medical_scribe_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_medical_scribe_jobs(Client, Input, []).
+list_medical_scribe_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMedicalScribeJobs">>, Input, Options).
 
 %% @doc Provides a list of medical transcription jobs that match the
 %% specified criteria.
@@ -612,6 +662,54 @@ start_call_analytics_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCallAnalyticsJob">>, Input, Options).
 
+%% @doc Transcribes patient-clinician conversations and generates clinical
+%% notes.
+%%
+%% Amazon Web Services HealthScribe automatically provides rich conversation
+%% transcripts, identifies speaker roles, classifies dialogues, extracts
+%% medical terms, and generates preliminary clinical notes. To learn more
+%% about these features, refer to Amazon Web Services HealthScribe.
+%%
+%% To make a `StartMedicalScribeJob' request, you must first upload your
+%% media file into an Amazon S3 bucket; you can then specify the Amazon S3
+%% location of the file using the `Media' parameter.
+%%
+%% You must include the following parameters in your
+%% `StartMedicalTranscriptionJob' request:
+%%
+%% <ul> <li> `DataAccessRoleArn': The ARN of an IAM role with the these
+%% minimum permissions: read permission on input file Amazon S3 bucket
+%% specified in `Media', write permission on the Amazon S3 bucket
+%% specified in `OutputBucketName', and full permissions on the KMS key
+%% specified in `OutputEncryptionKMSKeyId' (if set). The role should also
+%% allow `transcribe.amazonaws.com' to assume it.
+%%
+%% </li> <li> `Media' (`MediaFileUri'): The Amazon S3 location of
+%% your media file.
+%%
+%% </li> <li> `MedicalScribeJobName': A custom name you create for your
+%% MedicalScribe job that is unique within your Amazon Web Services account.
+%%
+%% </li> <li> `OutputBucketName': The Amazon S3 bucket where you want
+%% your output files stored.
+%%
+%% </li> <li> `Settings': A `MedicalScribeSettings' obect that must
+%% set exactly one of `ShowSpeakerLabels' or `ChannelIdentification'
+%% to true. If `ShowSpeakerLabels' is true, `MaxSpeakerLabels' must
+%% also be set.
+%%
+%% </li> <li> `ChannelDefinitions': A
+%% `MedicalScribeChannelDefinitions' array should be set if and only if
+%% the `ChannelIdentification' value of `Settings' is set to true.
+%%
+%% </li> </ul>
+start_medical_scribe_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_medical_scribe_job(Client, Input, []).
+start_medical_scribe_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMedicalScribeJob">>, Input, Options).
+
 %% @doc Transcribes the audio from a medical dictation or conversation and
 %% applies any additional Request Parameters you choose to include in your
 %% request.
@@ -624,7 +722,7 @@ start_call_analytics_job(Client, Input, Options)
 %%
 %% To make a `StartMedicalTranscriptionJob' request, you must first
 %% upload your media file into an Amazon S3 bucket; you can then specify the
-%% S3 location of the file using the `Media' parameter.
+%% Amazon S3 location of the file using the `Media' parameter.
 %%
 %% You must include the following parameters in your
 %% `StartMedicalTranscriptionJob' request:
@@ -682,9 +780,9 @@ start_medical_transcription_job(Client, Input, Options)
 %% </li> <li> One of `LanguageCode', `IdentifyLanguage', or
 %% `IdentifyMultipleLanguages': If you know the language of your media
 %% file, specify it using the `LanguageCode' parameter; you can find all
-%% valid language codes in the Supported languages table. If you don't
-%% know the languages spoken in your media, use either `IdentifyLanguage'
-%% or `IdentifyMultipleLanguages' and let Amazon Transcribe identify the
+%% valid language codes in the Supported languages table. If you do not know
+%% the languages spoken in your media, use either `IdentifyLanguage' or
+%% `IdentifyMultipleLanguages' and let Amazon Transcribe identify the
 %% languages for you.
 %%
 %% </li> </ul>

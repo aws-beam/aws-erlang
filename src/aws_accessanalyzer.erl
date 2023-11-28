@@ -1,28 +1,47 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Identity and Access Management Access Analyzer helps identify
-%% potential resource-access risks by enabling you to identify any policies
-%% that grant access to an external principal.
+%% @doc Identity and Access Management Access Analyzer helps you to set,
+%% verify, and refine your IAM policies by providing a suite of capabilities.
 %%
-%% It does this by using logic-based reasoning to analyze resource-based
-%% policies in your Amazon Web Services environment. An external principal
-%% can be another Amazon Web Services account, a root user, an IAM user or
-%% role, a federated user, an Amazon Web Services service, or an anonymous
-%% user. You can also use IAM Access Analyzer to preview and validate public
-%% and cross-account access to your resources before deploying permissions
-%% changes. This guide describes the Identity and Access Management Access
-%% Analyzer operations that you can call programmatically. For general
-%% information about IAM Access Analyzer, see Identity and Access Management
-%% Access Analyzer in the IAM User Guide.
+%% Its features include findings for external and unused access, basic and
+%% custom policy checks for validating policies, and policy generation to
+%% generate fine-grained policies. To start using IAM Access Analyzer to
+%% identify external or unused access, you first need to create an analyzer.
 %%
-%% To start using IAM Access Analyzer, you first need to create an analyzer.
+%% External access analyzers help identify potential risks of accessing
+%% resources by enabling you to identify any resource policies that grant
+%% access to an external principal. It does this by using logic-based
+%% reasoning to analyze resource-based policies in your Amazon Web Services
+%% environment. An external principal can be another Amazon Web Services
+%% account, a root user, an IAM user or role, a federated user, an Amazon Web
+%% Services service, or an anonymous user. You can also use IAM Access
+%% Analyzer to preview public and cross-account access to your resources
+%% before deploying permissions changes.
+%%
+%% Unused access analyzers help identify potential identity access risks by
+%% enabling you to identify unused IAM roles, unused access keys, unused
+%% console passwords, and IAM principals with unused service and action-level
+%% permissions.
+%%
+%% Beyond findings, IAM Access Analyzer provides basic and custom policy
+%% checks to validate IAM policies before deploying permissions changes. You
+%% can use policy generation to refine permissions by attaching a policy
+%% generated using access activity logged in CloudTrail logs.
+%%
+%% This guide describes the IAM Access Analyzer operations that you can call
+%% programmatically. For general information about IAM Access Analyzer, see
+%% Identity and Access Management Access Analyzer in the IAM User Guide.
 -module(aws_accessanalyzer).
 
 -export([apply_archive_rule/2,
          apply_archive_rule/3,
          cancel_policy_generation/3,
          cancel_policy_generation/4,
+         check_access_not_granted/2,
+         check_access_not_granted/3,
+         check_no_new_access/2,
+         check_no_new_access/3,
          create_access_preview/2,
          create_access_preview/3,
          create_analyzer/2,
@@ -48,6 +67,9 @@
          get_finding/3,
          get_finding/5,
          get_finding/6,
+         get_finding_v2/3,
+         get_finding_v2/5,
+         get_finding_v2/6,
          get_generated_policy/2,
          get_generated_policy/4,
          get_generated_policy/5,
@@ -66,6 +88,8 @@
          list_archive_rules/5,
          list_findings/2,
          list_findings/3,
+         list_findings_v2/2,
+         list_findings_v2/3,
          list_policy_generations/1,
          list_policy_generations/3,
          list_policy_generations/4,
@@ -123,6 +147,59 @@ cancel_policy_generation(Client, JobId, Input) ->
 cancel_policy_generation(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Checks whether the specified access isn't allowed by a policy.
+check_access_not_granted(Client, Input) ->
+    check_access_not_granted(Client, Input, []).
+check_access_not_granted(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/check-access-not-granted"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Checks whether new access is allowed for an updated policy when
+%% compared to the existing policy.
+%%
+%% You can find examples for reference policies and learn how to set up and
+%% run a custom policy check for new access in the IAM Access Analyzer custom
+%% policy checks samples repository on GitHub. The reference policies in this
+%% repository are meant to be passed to the `existingPolicyDocument'
+%% request parameter.
+check_no_new_access(Client, Input) ->
+    check_no_new_access(Client, Input, []).
+check_no_new_access(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/check-no-new-access"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -401,6 +478,35 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about the specified finding.
+get_finding_v2(Client, Id, AnalyzerArn)
+  when is_map(Client) ->
+    get_finding_v2(Client, Id, AnalyzerArn, #{}, #{}).
+
+get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
+
+get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findingv2/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"analyzerArn">>, AnalyzerArn},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the policy that was generated using
 %% `StartPolicyGeneration'.
 get_generated_policy(Client, JobId)
@@ -573,6 +679,32 @@ list_findings(Client, Input) ->
 list_findings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/finding"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of findings generated by the specified analyzer.
+%%
+%% To learn about filter keys that you can use to retrieve a list of
+%% findings, see IAM Access Analyzer filter keys in the IAM User Guide.
+list_findings_v2(Client, Input) ->
+    list_findings_v2(Client, Input, []).
+list_findings_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/findingv2"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

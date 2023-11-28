@@ -51,6 +51,10 @@
          describe_query/3,
          describe_trails/2,
          describe_trails/3,
+         disable_federation/2,
+         disable_federation/3,
+         enable_federation/2,
+         enable_federation/3,
          get_channel/2,
          get_channel/3,
          get_event_data_store/2,
@@ -200,8 +204,10 @@ delete_channel(Client, Input, Options)
 %% After you run `DeleteEventDataStore', the event data store enters a
 %% `PENDING_DELETION' state, and is automatically deleted after a wait
 %% period of seven days. `TerminationProtectionEnabled' must be set to
-%% `False' on the event data store; this operation cannot work if
-%% `TerminationProtectionEnabled' is `True'.
+%% `False' on the event data store and the `FederationStatus' must be
+%% `DISABLED'. You cannot delete an event data store if
+%% `TerminationProtectionEnabled' is `True' or the
+%% `FederationStatus' is `ENABLED'.
 %%
 %% After you run `DeleteEventDataStore' on an event data store, you
 %% cannot run `ListQueries', `DescribeQuery', or
@@ -269,6 +275,44 @@ describe_trails(Client, Input)
 describe_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrails">>, Input, Options).
+
+%% @doc Disables Lake query federation on the specified event data store.
+%%
+%% When you disable federation, CloudTrail removes the metadata associated
+%% with the federated event data store in the Glue Data Catalog and removes
+%% registration for the federation role ARN and event data store in Lake
+%% Formation. No CloudTrail Lake data is deleted when you disable federation.
+disable_federation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_federation(Client, Input, []).
+disable_federation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableFederation">>, Input, Options).
+
+%% @doc Enables Lake query federation on the specified event data store.
+%%
+%% Federating an event data store lets you view the metadata associated with
+%% the event data store in the Glue Data Catalog and run SQL queries against
+%% your event data using Amazon Athena. The table metadata stored in the Glue
+%% Data Catalog lets the Athena query engine know how to find, read, and
+%% process the data that you want to query.
+%%
+%% When you enable Lake query federation, CloudTrail creates a federated
+%% database named `aws:cloudtrail' (if the database doesn't already
+%% exist) and a federated table in the Glue Data Catalog. The event data
+%% store ID is used for the table name. CloudTrail registers the role ARN and
+%% event data store in Lake Formation, the service responsible for revoking
+%% or granting permissions to the federated resources in the Glue Data
+%% Catalog.
+%%
+%% For more information about Lake query federation, see Federate an event
+%% data store.
+enable_federation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_federation(Client, Input, []).
+enable_federation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableFederation">>, Input, Options).
 
 %% @doc Returns information about a specific channel.
 get_channel(Client, Input)

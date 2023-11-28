@@ -81,6 +81,8 @@
          delete_group_membership/7,
          delete_iam_policy_assignment/5,
          delete_iam_policy_assignment/6,
+         delete_identity_propagation_config/4,
+         delete_identity_propagation_config/5,
          delete_namespace/4,
          delete_namespace/5,
          delete_refresh_schedule/5,
@@ -282,6 +284,9 @@
          list_iam_policy_assignments_for_user/4,
          list_iam_policy_assignments_for_user/6,
          list_iam_policy_assignments_for_user/7,
+         list_identity_propagation_configs/2,
+         list_identity_propagation_configs/4,
+         list_identity_propagation_configs/5,
          list_ingestions/3,
          list_ingestions/5,
          list_ingestions/6,
@@ -388,6 +393,8 @@
          update_group/6,
          update_iam_policy_assignment/5,
          update_iam_policy_assignment/6,
+         update_identity_propagation_config/4,
+         update_identity_propagation_config/5,
          update_ip_restriction/3,
          update_ip_restriction/4,
          update_public_sharing_settings/3,
@@ -1379,6 +1386,33 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes all access scopes and authorized targets that are associated
+%% with a service from the Amazon QuickSight IAM Identity Center application.
+%%
+%% This operation is only supported for Amazon QuickSight accounts that use
+%% IAM Identity Center.
+delete_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
+    delete_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
+delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -3429,6 +3463,38 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all services and authorized targets that the Amazon QuickSight
+%% IAM Identity Center application can access.
+%%
+%% This operation is only supported for Amazon QuickSight accounts that use
+%% IAM Identity Center.
+list_identity_propagation_configs(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_identity_propagation_configs(Client, AwsAccountId, #{}, #{}).
+
+list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the history of SPICE ingestions for a dataset.
 list_ingestions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
@@ -4636,6 +4702,33 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds or updates services and authorized targets to configure what the
+%% Amazon QuickSight IAM Identity Center application can access.
+%%
+%% This operation is only supported for Amazon QuickSight accounts using IAM
+%% Identity Center
+update_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
+    update_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
+update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/identity-propagation-config/", aws_util:encode_uri(Service), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

@@ -64,6 +64,9 @@
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
+         get_data_source_introspection/2,
+         get_data_source_introspection/4,
+         get_data_source_introspection/5,
          get_domain_name/2,
          get_domain_name/4,
          get_domain_name/5,
@@ -121,6 +124,8 @@
          list_types_by_association/4,
          list_types_by_association/6,
          list_types_by_association/7,
+         start_data_source_introspection/2,
+         start_data_source_introspection/3,
          start_schema_creation/3,
          start_schema_creation/4,
          start_schema_merge/4,
@@ -827,6 +832,39 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the record of an existing introspection.
+%%
+%% If the retrieval is successful, the result of the instrospection will also
+%% be returned. If the retrieval fails the operation, an error message will
+%% be returned instead.
+get_data_source_introspection(Client, IntrospectionId)
+  when is_map(Client) ->
+    get_data_source_introspection(Client, IntrospectionId, #{}, #{}).
+
+get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, []).
+
+get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/datasources/introspections/", aws_util:encode_uri(IntrospectionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeModelsSDL">>, maps:get(<<"includeModelsSDL">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a custom `DomainName' object.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
@@ -1331,6 +1369,32 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates a new introspection.
+%%
+%% Returns the `introspectionId' of the new introspection after its
+%% creation.
+start_data_source_introspection(Client, Input) ->
+    start_data_source_introspection(Client, Input, []).
+start_data_source_introspection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/datasources/introspections"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new schema to your GraphQL API.
 %%

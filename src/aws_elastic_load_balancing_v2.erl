@@ -41,6 +41,8 @@
          add_listener_certificates/3,
          add_tags/2,
          add_tags/3,
+         add_trust_store_revocations/2,
+         add_trust_store_revocations/3,
          create_listener/2,
          create_listener/3,
          create_load_balancer/2,
@@ -49,6 +51,8 @@
          create_rule/3,
          create_target_group/2,
          create_target_group/3,
+         create_trust_store/2,
+         create_trust_store/3,
          delete_listener/2,
          delete_listener/3,
          delete_load_balancer/2,
@@ -57,6 +61,8 @@
          delete_rule/3,
          delete_target_group/2,
          delete_target_group/3,
+         delete_trust_store/2,
+         delete_trust_store/3,
          deregister_targets/2,
          deregister_targets/3,
          describe_account_limits/2,
@@ -81,6 +87,16 @@
          describe_target_groups/3,
          describe_target_health/2,
          describe_target_health/3,
+         describe_trust_store_associations/2,
+         describe_trust_store_associations/3,
+         describe_trust_store_revocations/2,
+         describe_trust_store_revocations/3,
+         describe_trust_stores/2,
+         describe_trust_stores/3,
+         get_trust_store_ca_certificates_bundle/2,
+         get_trust_store_ca_certificates_bundle/3,
+         get_trust_store_revocation_content/2,
+         get_trust_store_revocation_content/3,
          modify_listener/2,
          modify_listener/3,
          modify_load_balancer_attributes/2,
@@ -91,12 +107,16 @@
          modify_target_group/3,
          modify_target_group_attributes/2,
          modify_target_group_attributes/3,
+         modify_trust_store/2,
+         modify_trust_store/3,
          register_targets/2,
          register_targets/3,
          remove_listener_certificates/2,
          remove_listener_certificates/3,
          remove_tags/2,
          remove_tags/3,
+         remove_trust_store_revocations/2,
+         remove_trust_store_revocations/3,
          set_ip_address_type/2,
          set_ip_address_type/3,
          set_rule_priorities/2,
@@ -131,7 +151,7 @@ add_listener_certificates(Client, Input, Options)
 %% resource.
 %%
 %% You can tag your Application Load Balancers, Network Load Balancers,
-%% Gateway Load Balancers, target groups, listeners, and rules.
+%% Gateway Load Balancers, target groups, trust stores, listeners, and rules.
 %%
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key, `AddTags' updates its value.
@@ -141,6 +161,14 @@ add_tags(Client, Input)
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
+
+%% @doc Adds the specified revocation file to the specified trust store.
+add_trust_store_revocations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_trust_store_revocations(Client, Input, []).
+add_trust_store_revocations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddTrustStoreRevocations">>, Input, Options).
 
 %% @doc Creates a listener for the specified Application Load Balancer,
 %% Network Load Balancer, or Gateway Load Balancer.
@@ -221,6 +249,14 @@ create_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTargetGroup">>, Input, Options).
 
+%% @doc Creates a trust store.
+create_trust_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_trust_store(Client, Input, []).
+create_trust_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTrustStore">>, Input, Options).
+
 %% @doc Deletes the specified listener.
 %%
 %% Alternatively, your listener is deleted when you delete the load balancer
@@ -275,6 +311,14 @@ delete_target_group(Client, Input)
 delete_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTargetGroup">>, Input, Options).
+
+%% @doc Deletes a trust store.
+delete_trust_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_trust_store(Client, Input, []).
+delete_trust_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTrustStore">>, Input, Options).
 
 %% @doc Deregisters the specified targets from the specified target group.
 %%
@@ -454,6 +498,52 @@ describe_target_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetHealth">>, Input, Options).
 
+%% @doc Describes all resources associated with the specified trust store.
+describe_trust_store_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_trust_store_associations(Client, Input, []).
+describe_trust_store_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrustStoreAssociations">>, Input, Options).
+
+%% @doc Describes the revocation files in use by the specified trust store
+%% arn, or revocation ID.
+describe_trust_store_revocations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_trust_store_revocations(Client, Input, []).
+describe_trust_store_revocations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrustStoreRevocations">>, Input, Options).
+
+%% @doc Describes all trust stores for a given account by trust store arn’s
+%% or name.
+describe_trust_stores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_trust_stores(Client, Input, []).
+describe_trust_stores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrustStores">>, Input, Options).
+
+%% @doc Retrieves the ca certificate bundle.
+%%
+%% This action returns a pre-signed S3 URI which is active for ten minutes.
+get_trust_store_ca_certificates_bundle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_trust_store_ca_certificates_bundle(Client, Input, []).
+get_trust_store_ca_certificates_bundle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTrustStoreCaCertificatesBundle">>, Input, Options).
+
+%% @doc Retrieves the specified revocation file.
+%%
+%% This action returns a pre-signed S3 URI which is active for ten minutes.
+get_trust_store_revocation_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_trust_store_revocation_content(Client, Input, []).
+get_trust_store_revocation_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTrustStoreRevocationContent">>, Input, Options).
+
 %% @doc Replaces the specified properties of the specified listener.
 %%
 %% Any properties that you do not specify remain unchanged.
@@ -517,6 +607,14 @@ modify_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroupAttributes">>, Input, Options).
 
+%% @doc Update the ca certificate bundle for a given trust store.
+modify_trust_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_trust_store(Client, Input, []).
+modify_trust_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTrustStore">>, Input, Options).
+
 %% @doc Registers the specified targets with the specified target group.
 %%
 %% If the target is an EC2 instance, it must be in the `running' state
@@ -560,6 +658,14 @@ remove_tags(Client, Input)
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
+
+%% @doc Removes the specified revocation file from the specified trust store.
+remove_trust_store_revocations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_trust_store_revocations(Client, Input, []).
+remove_trust_store_revocations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveTrustStoreRevocations">>, Input, Options).
 
 %% @doc Sets the type of IP addresses used by the subnets of the specified
 %% load balancer.

@@ -101,12 +101,18 @@
          disassociate_membership/3,
          enable_organization_admin_account/2,
          enable_organization_admin_account/3,
+         get_investigation/2,
+         get_investigation/3,
          get_members/2,
          get_members/3,
          list_datasource_packages/2,
          list_datasource_packages/3,
          list_graphs/2,
          list_graphs/3,
+         list_indicators/2,
+         list_indicators/3,
+         list_investigations/2,
+         list_investigations/3,
          list_invitations/2,
          list_invitations/3,
          list_members/2,
@@ -118,6 +124,8 @@
          list_tags_for_resource/5,
          reject_invitation/2,
          reject_invitation/3,
+         start_investigation/2,
+         start_investigation/3,
          start_monitoring_member/2,
          start_monitoring_member/3,
          tag_resource/3,
@@ -126,6 +134,8 @@
          untag_resource/4,
          update_datasource_packages/2,
          update_datasource_packages/3,
+         update_investigation_state/2,
+         update_investigation_state/3,
          update_organization_configuration/2,
          update_organization_configuration/3]).
 
@@ -520,6 +530,30 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the investigation results of an investigation for a behavior
+%% graph.
+get_investigation(Client, Input) ->
+    get_investigation(Client, Input, []).
+get_investigation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/investigations/getInvestigation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the membership details for specified member accounts for a
 %% behavior graph.
 get_members(Client, Input) ->
@@ -579,6 +613,52 @@ list_graphs(Client, Input) ->
 list_graphs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get the indicators from an investigation
+list_indicators(Client, Input) ->
+    list_indicators(Client, Input, []).
+list_indicators(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/investigations/listIndicators"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all Investigations.
+list_investigations(Client, Input) ->
+    list_investigations(Client, Input, []).
+list_investigations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/investigations/listInvestigations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -739,6 +819,29 @@ reject_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc initiate an investigation on an entity in a graph
+start_investigation(Client, Input) ->
+    start_investigation(Client, Input, []).
+start_investigation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/investigations/startInvestigation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sends a request to enable data ingest for a member account that has a
 %% status of `ACCEPTED_BUT_DISABLED'.
 %%
@@ -826,6 +929,29 @@ update_datasource_packages(Client, Input) ->
 update_datasource_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/datasources/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the state of an investigation.
+update_investigation_state(Client, Input) ->
+    update_investigation_state(Client, Input, []).
+update_investigation_state(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/investigations/updateInvestigationState"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

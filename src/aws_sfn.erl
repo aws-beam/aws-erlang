@@ -92,6 +92,8 @@
          stop_execution/3,
          tag_resource/2,
          tag_resource/3,
+         test_state/2,
+         test_state/3,
          untag_resource/2,
          untag_resource/3,
          update_map_run/2,
@@ -680,10 +682,11 @@ publish_state_machine_version(Client, Input, Options)
 %% `RedriveExecution' API action reschedules and redrives only the
 %% iterations and branches that failed or aborted.
 %%
-%% To redrive a workflow that includes a Distributed Map state with failed
-%% child workflow executions, you must redrive the parent workflow. The
-%% parent workflow redrives all the unsuccessful states, including
-%% Distributed Map.
+%% To redrive a workflow that includes a Distributed Map state whose Map Run
+%% failed, you must redrive the parent workflow. The parent workflow redrives
+%% all the unsuccessful states, including a failed Map Run. If a Map Run was
+%% not started in the original execution attempt, the redriven parent
+%% workflow starts the Map Run.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
 %%
@@ -860,6 +863,51 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Accepts the definition of a single state and executes it.
+%%
+%% You can test a state without creating a state machine or updating an
+%% existing state machine. Using this API, you can test the following:
+%%
+%% <ul> <li> A state's input and output processing data flow
+%%
+%% </li> <li> An Amazon Web Services service integration request and response
+%%
+%% </li> <li> An HTTP Task request and response
+%%
+%% </li> </ul> You can call this API on only one state at a time. The states
+%% that you can test include the following:
+%%
+%% <ul> <li> All Task types except Activity
+%%
+%% </li> <li> Pass
+%%
+%% </li> <li> Wait
+%%
+%% </li> <li> Choice
+%%
+%% </li> <li> Succeed
+%%
+%% </li> <li> Fail
+%%
+%% </li> </ul> The `TestState' API assumes an IAM role which must contain
+%% the required IAM permissions for the resources your state is accessing.
+%% For information about the permissions a state might need, see IAM
+%% permissions to test a state.
+%%
+%% The `TestState' API can run for up to five minutes. If the execution
+%% of a state exceeds this duration, it fails with the `States.Timeout'
+%% error.
+%%
+%% `TestState' doesn't support Activity tasks, `.sync' or
+%% `.waitForTaskToken' service integration patterns, Parallel, or Map
+%% states.
+test_state(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_state(Client, Input, []).
+test_state(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestState">>, Input, Options).
 
 %% @doc Remove a tag from a Step Functions resource
 untag_resource(Client, Input)

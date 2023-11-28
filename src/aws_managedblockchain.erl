@@ -96,11 +96,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new accessor for use with Managed Blockchain Ethereum
-%% nodes.
+%% @doc Creates a new accessor for use with Amazon Managed Blockchain service
+%% that supports token based access.
 %%
-%% An accessor contains information required for token based access to your
-%% Ethereum nodes.
+%% The accessor contains information required for token based access.
 create_accessor(Client, Input) ->
     create_accessor(Client, Input, []).
 create_accessor(Client, Input0, Options0) ->
@@ -476,6 +475,7 @@ list_accessors(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"networkType">>, maps:get(<<"networkType">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

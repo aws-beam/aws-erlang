@@ -10,6 +10,8 @@
          create_logging_configuration/4,
          create_rule_groups_namespace/3,
          create_rule_groups_namespace/4,
+         create_scraper/2,
+         create_scraper/3,
          create_workspace/2,
          create_workspace/3,
          delete_alert_manager_definition/3,
@@ -18,6 +20,8 @@
          delete_logging_configuration/4,
          delete_rule_groups_namespace/4,
          delete_rule_groups_namespace/5,
+         delete_scraper/3,
+         delete_scraper/4,
          delete_workspace/3,
          delete_workspace/4,
          describe_alert_manager_definition/2,
@@ -29,12 +33,21 @@
          describe_rule_groups_namespace/3,
          describe_rule_groups_namespace/5,
          describe_rule_groups_namespace/6,
+         describe_scraper/2,
+         describe_scraper/4,
+         describe_scraper/5,
          describe_workspace/2,
          describe_workspace/4,
          describe_workspace/5,
+         get_default_scraper_configuration/1,
+         get_default_scraper_configuration/3,
+         get_default_scraper_configuration/4,
          list_rule_groups_namespaces/2,
          list_rule_groups_namespaces/4,
          list_rule_groups_namespaces/5,
+         list_scrapers/1,
+         list_scrapers/3,
+         list_scrapers/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -112,6 +125,29 @@ create_rule_groups_namespace(Client, WorkspaceId, Input) ->
 create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a scraper.
+create_scraper(Client, Input) ->
+    create_scraper(Client, Input, []).
+create_scraper(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/scrapers"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -224,6 +260,30 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a scraper.
+delete_scraper(Client, ScraperId, Input) ->
+    delete_scraper(Client, ScraperId, Input, []).
+delete_scraper(Client, ScraperId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an AMP workspace.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
@@ -317,6 +377,29 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describe an existing scraper.
+describe_scraper(Client, ScraperId)
+  when is_map(Client) ->
+    describe_scraper(Client, ScraperId, #{}, #{}).
+
+describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_scraper(Client, ScraperId, QueryMap, HeadersMap, []).
+
+describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an existing AMP workspace.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
@@ -329,6 +412,29 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a default configuration.
+get_default_scraper_configuration(Client)
+  when is_map(Client) ->
+    get_default_scraper_configuration(Client, #{}, #{}).
+
+get_default_scraper_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_default_scraper_configuration(Client, QueryMap, HeadersMap, []).
+
+get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scraperconfiguration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -363,6 +469,38 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all scrapers in a customer account, including scrapers being
+%% created or deleted.
+%%
+%% You may provide filters to return a more specific list of results.
+list_scrapers(Client)
+  when is_map(Client) ->
+    list_scrapers(Client, #{}, #{}).
+
+list_scrapers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scrapers(Client, QueryMap, HeadersMap, []).
+
+list_scrapers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scrapers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"">>, maps:get(<<"">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

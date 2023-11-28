@@ -31,6 +31,8 @@
          create_fargate_profile/4,
          create_nodegroup/3,
          create_nodegroup/4,
+         create_pod_identity_association/3,
+         create_pod_identity_association/4,
          delete_addon/4,
          delete_addon/5,
          delete_cluster/3,
@@ -41,6 +43,8 @@
          delete_fargate_profile/5,
          delete_nodegroup/4,
          delete_nodegroup/5,
+         delete_pod_identity_association/4,
+         delete_pod_identity_association/5,
          deregister_cluster/3,
          deregister_cluster/4,
          describe_addon/3,
@@ -66,6 +70,9 @@
          describe_nodegroup/3,
          describe_nodegroup/5,
          describe_nodegroup/6,
+         describe_pod_identity_association/3,
+         describe_pod_identity_association/5,
+         describe_pod_identity_association/6,
          describe_update/3,
          describe_update/5,
          describe_update/6,
@@ -89,6 +96,9 @@
          list_nodegroups/2,
          list_nodegroups/4,
          list_nodegroups/5,
+         list_pod_identity_associations/2,
+         list_pod_identity_associations/4,
+         list_pod_identity_associations/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -112,7 +122,9 @@
          update_nodegroup_config/4,
          update_nodegroup_config/5,
          update_nodegroup_version/4,
-         update_nodegroup_version/5]).
+         update_nodegroup_version/5,
+         update_pod_identity_association/4,
+         update_pod_identity_association/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -225,6 +237,22 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% Amazon EKS nodes run in your Amazon Web Services account and connect to
 %% your cluster's control plane over the Kubernetes API server endpoint
 %% and a certificate file that is created for your cluster.
+%%
+%% You can use the `endpointPublicAccess' and `endpointPrivateAccess'
+%% parameters to enable or disable public and private access to your
+%% cluster's Kubernetes API server endpoint. By default, public access is
+%% enabled, and private access is disabled. For more information, see Amazon
+%% EKS Cluster Endpoint Access Control in the Amazon EKS User Guide .
+%%
+%% You can use the `logging' parameter to enable or disable exporting the
+%% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+%% default, cluster control plane logs aren't exported to CloudWatch
+%% Logs. For more information, see Amazon EKS Cluster Control Plane Logs in
+%% the Amazon EKS User Guide .
+%%
+%% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
+%% to exported control plane logs. For more information, see CloudWatch
+%% Pricing.
 %%
 %% In most cases, it takes several minutes to create a cluster. After you
 %% create an Amazon EKS cluster, you must configure your Kubernetes tooling
@@ -370,6 +398,46 @@ create_nodegroup(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an EKS Pod Identity association between a service account in
+%% an Amazon EKS cluster and an IAM role with EKS Pod Identity.
+%%
+%% Use EKS Pod Identity to give temporary IAM credentials to pods and the
+%% credentials are rotated automatically.
+%%
+%% Amazon EKS Pod Identity associations provide the ability to manage
+%% credentials for your applications, similar to the way that 7EC2l instance
+%% profiles provide credentials to Amazon EC2 instances.
+%%
+%% If a pod uses a service account that has an association, Amazon EKS sets
+%% environment variables in the containers of the pod. The environment
+%% variables configure the Amazon Web Services SDKs, including the Command
+%% Line Interface, to use the EKS Pod Identity credentials.
+%%
+%% Pod Identity is a simpler method than IAM roles for service accounts, as
+%% this method doesn't use OIDC identity providers. Additionally, you can
+%% configure a role for Pod Identity once, and reuse it across clusters.
+create_pod_identity_association(Client, ClusterName, Input) ->
+    create_pod_identity_association(Client, ClusterName, Input, []).
+create_pod_identity_association(Client, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an Amazon EKS add-on.
 %%
 %% When you remove the add-on, it will also be deleted from the cluster. You
@@ -432,11 +500,11 @@ delete_cluster(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an expired / inactive subscription.
+%% @doc Deletes an expired or inactive subscription.
 %%
 %% Deleting inactive subscriptions removes them from the Amazon Web Services
 %% Management Console view and from list/describe API responses.
-%% Subscriptions can only be cancelled within 7 days of creation, and are
+%% Subscriptions can only be cancelled within 7 days of creation and are
 %% cancelled by creating a ticket in the Amazon Web Services Support Center.
 delete_eks_anywhere_subscription(Client, Id, Input) ->
     delete_eks_anywhere_subscription(Client, Id, Input, []).
@@ -499,6 +567,34 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a EKS Pod Identity association.
+%%
+%% The temporary Amazon Web Services credentials from the previous IAM role
+%% session might still be valid until the session expiry. If you need to
+%% immediately revoke the temporary session credentials, then go to the role
+%% in the IAM console.
+delete_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
+    delete_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
+delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -752,6 +848,36 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns descriptive information about an EKS Pod Identity
+%% association.
+%%
+%% This action requires the ID of the association. You can get the ID from
+%% the response to the `CreatePodIdentityAssocation' for newly created
+%% associations. Or, you can list the IDs for associations with
+%% `ListPodIdentityAssociations' and filter the list by namespace or
+%% service account.
+describe_pod_identity_association(Client, AssociationId, ClusterName)
+  when is_map(Client) ->
+    describe_pod_identity_association(Client, AssociationId, ClusterName, #{}, #{}).
+
+describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap, []).
+
+describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns descriptive information about an update against your Amazon
 %% EKS cluster or associated managed node group or Amazon EKS add-on.
 %%
@@ -988,6 +1114,39 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List the EKS Pod Identity associations in a cluster.
+%%
+%% You can filter the list by the namespace that the association is in or the
+%% service account that the association uses.
+list_pod_identity_associations(Client, ClusterName)
+  when is_map(Client) ->
+    list_pod_identity_associations(Client, ClusterName, #{}, #{}).
+
+list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceAccount">>, maps:get(<<"serviceAccount">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List the tags for an Amazon EKS resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -1182,8 +1341,14 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% more information, see Amazon EKS cluster endpoint access control in the
 %% Amazon EKS User Guide .
 %%
-%% You can't update the subnets or security group IDs for an existing
-%% cluster.
+%% You can also use this API operation to choose different subnets and
+%% security groups for the cluster. You must specify at least two subnets
+%% that are in different Availability Zones. You can't change which VPC
+%% the subnets are from, the subnets must be in the same VPC as the subnets
+%% that the cluster was created with. For more information about the VPC
+%% requirements, see
+%% [https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html] in
+%% the Amazon EKS User Guide .
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
 %% minutes. During an update, the cluster status moves to `UPDATING'
@@ -1336,6 +1501,34 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-version"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a EKS Pod Identity association.
+%%
+%% Only the IAM role can be changed; an association can't be moved
+%% between clusters, namespaces, or service accounts. If you need to edit the
+%% namespace or service account, you need to remove the association and then
+%% create a new association with your desired settings.
+update_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
+    update_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
+update_pod_identity_association(Client, AssociationId, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/pod-identity-associations/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

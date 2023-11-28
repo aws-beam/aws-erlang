@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc These interfaces allow you to apply the AWS library of pre-defined
-%% controls to your organizational units, programmatically.
+%% @doc These interfaces allow you to apply the Amazon Web Services library
+%% of pre-defined controls to your organizational units, programmatically.
 %%
-%% In AWS Control Tower, the terms &quot;control&quot; and
+%% In Amazon Web Services Control Tower, the terms &quot;control&quot; and
 %% &quot;guardrail&quot; are synonyms.
 %%
 %% To call these APIs, you'll need to know:
@@ -18,22 +18,23 @@
 %% </li> <li> the ARN associated with a resource that you wish to tag or
 %% untag.
 %%
-%% </li> </ul> To get the `controlIdentifier' for your AWS Control Tower
-%% control:
+%% </li> </ul> To get the `controlIdentifier' for your Amazon Web
+%% Services Control Tower control:
 %%
 %% The `controlIdentifier' is an ARN that is specified for each control.
 %% You can view the `controlIdentifier' in the console on the Control
 %% details page, as well as in the documentation.
 %%
-%% The `controlIdentifier' is unique in each AWS Region for each control.
-%% You can find the `controlIdentifier' for each Region and control in
-%% the Tables of control metadata in the AWS Control Tower User Guide.
+%% The `controlIdentifier' is unique in each Amazon Web Services Region
+%% for each control. You can find the `controlIdentifier' for each Region
+%% and control in the Tables of control metadata in the Amazon Web Services
+%% Control Tower User Guide.
 %%
-%% A quick-reference list of control identifers for the AWS Control Tower
-%% legacy Strongly recommended and Elective controls is given in Resource
-%% identifiers for APIs and controls in the Controls reference guide section
-%% of the AWS Control Tower User Guide. Remember that Mandatory controls
-%% cannot be added or removed.
+%% A quick-reference list of control identifers for the Amazon Web Services
+%% Control Tower legacy Strongly recommended and Elective controls is given
+%% in Resource identifiers for APIs and controls in the Controls reference
+%% guide section of the Amazon Web Services Control Tower User Guide.
+%% Remember that Mandatory controls cannot be added or removed.
 %%
 %% ARN format: `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
 %%
@@ -45,8 +46,8 @@
 %%
 %% The `targetIdentifier' is the ARN for an OU.
 %%
-%% In the AWS Organizations console, you can find the ARN for the OU on the
-%% Organizational unit details page associated with that OU.
+%% In the Amazon Web Services Organizations console, you can find the ARN for
+%% the OU on the Organizational unit details page associated with that OU.
 %%
 %% OU ARN format:
 %%
@@ -66,25 +67,30 @@
 %%
 %% </li> <li> Controls library groupings
 %%
-%% </li> <li> Creating AWS Control Tower resources with AWS CloudFormation
+%% </li> <li> Creating Amazon Web Services Control Tower resources with
+%% Amazon Web Services CloudFormation
 %%
 %% </li> </ul> To view the open source resource repository on GitHub, see
 %% aws-cloudformation/aws-cloudformation-resource-providers-controltower
 %%
 %% Recording API Requests
 %%
-%% AWS Control Tower supports AWS CloudTrail, a service that records AWS API
-%% calls for your AWS account and delivers log files to an Amazon S3 bucket.
-%% By using information collected by CloudTrail, you can determine which
-%% requests the AWS Control Tower service received, who made the request and
-%% when, and so on. For more about AWS Control Tower and its support for
-%% CloudTrail, see Logging AWS Control Tower Actions with AWS CloudTrail in
-%% the AWS Control Tower User Guide. To learn more about CloudTrail,
-%% including how to turn it on and find your log files, see the AWS
-%% CloudTrail User Guide.
+%% Amazon Web Services Control Tower supports Amazon Web Services CloudTrail,
+%% a service that records Amazon Web Services API calls for your Amazon Web
+%% Services account and delivers log files to an Amazon S3 bucket. By using
+%% information collected by CloudTrail, you can determine which requests the
+%% Amazon Web Services Control Tower service received, who made the request
+%% and when, and so on. For more about Amazon Web Services Control Tower and
+%% its support for CloudTrail, see Logging Amazon Web Services Control Tower
+%% Actions with Amazon Web Services CloudTrail in the Amazon Web Services
+%% Control Tower User Guide. To learn more about CloudTrail, including how to
+%% turn it on and find your log files, see the Amazon Web Services CloudTrail
+%% User Guide.
 -module(aws_controltower).
 
--export([disable_control/2,
+-export([delete_landing_zone/2,
+         delete_landing_zone/3,
+         disable_control/2,
          disable_control/3,
          enable_control/2,
          enable_control/3,
@@ -92,11 +98,17 @@
          get_control_operation/3,
          get_enabled_control/2,
          get_enabled_control/3,
+         get_landing_zone_operation/2,
+         get_landing_zone_operation/3,
          list_enabled_controls/2,
          list_enabled_controls/3,
+         list_landing_zones/2,
+         list_landing_zones/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         reset_landing_zone/2,
+         reset_landing_zone/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -108,12 +120,40 @@
 %% API
 %%====================================================================
 
+%% @doc Decommissions a landing zone.
+%%
+%% This API call starts an asynchronous operation that deletes Amazon Web
+%% Services Control Tower resources deployed in accounts managed by Amazon
+%% Web Services Control Tower.
+delete_landing_zone(Client, Input) ->
+    delete_landing_zone(Client, Input, []).
+delete_landing_zone(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-landingzone"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API call turns off a control.
 %%
-%% It starts an asynchronous operation that deletes AWS resources on the
-%% specified organizational unit and the accounts it contains. The resources
-%% will vary according to the control that you specify. For usage examples,
-%% see the AWS Control Tower User Guide .
+%% It starts an asynchronous operation that deletes Amazon Web Services
+%% resources on the specified organizational unit and the accounts it
+%% contains. The resources will vary according to the control that you
+%% specify. For usage examples, see the Amazon Web Services Control Tower
+%% User Guide .
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
 disable_control(Client, Input0, Options0) ->
@@ -138,10 +178,11 @@ disable_control(Client, Input0, Options0) ->
 
 %% @doc This API call activates a control.
 %%
-%% It starts an asynchronous operation that creates AWS resources on the
-%% specified organizational unit and the accounts it contains. The resources
-%% created will vary according to the control that you specify. For usage
-%% examples, see the AWS Control Tower User Guide .
+%% It starts an asynchronous operation that creates Amazon Web Services
+%% resources on the specified organizational unit and the accounts it
+%% contains. The resources created will vary according to the control that
+%% you specify. For usage examples, see the Amazon Web Services Control Tower
+%% User Guide .
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
 enable_control(Client, Input0, Options0) ->
@@ -168,8 +209,8 @@ enable_control(Client, Input0, Options0) ->
 %% `DisableControl' operation.
 %%
 %% Displays a message in case of error. Details for an operation are
-%% available for 90 days. For usage examples, see the AWS Control Tower User
-%% Guide .
+%% available for 90 days. For usage examples, see the Amazon Web Services
+%% Control Tower User Guide .
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
 get_control_operation(Client, Input0, Options0) ->
@@ -194,7 +235,7 @@ get_control_operation(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about an enabled control.
 %%
-%% For usage examples, see the AWS Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide .
 get_enabled_control(Client, Input) ->
     get_enabled_control(Client, Input, []).
 get_enabled_control(Client, Input0, Options0) ->
@@ -217,10 +258,35 @@ get_enabled_control(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the controls enabled by AWS Control Tower on the specified
-%% organizational unit and the accounts it contains.
+%% @doc Returns the status of the specified landing zone operation.
 %%
-%% For usage examples, see the AWS Control Tower User Guide .
+%% Details for an operation are available for 60 days.
+get_landing_zone_operation(Client, Input) ->
+    get_landing_zone_operation(Client, Input, []).
+get_landing_zone_operation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-landingzone-operation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the controls enabled by Amazon Web Services Control Tower on
+%% the specified organizational unit and the accounts it contains.
+%%
+%% For usage examples, see the Amazon Web Services Control Tower User Guide .
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
 list_enabled_controls(Client, Input0, Options0) ->
@@ -243,9 +309,38 @@ list_enabled_controls(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the landing zone ARN for the landing zone deployed in your
+%% managed account.
+%%
+%% This API also creates an ARN for existing accounts that do not yet have a
+%% landing zone ARN.
+%%
+%% Returns one landing zone ARN.
+list_landing_zones(Client, Input) ->
+    list_landing_zones(Client, Input, []).
+list_landing_zones(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-landingzones"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of tags associated with the resource.
 %%
-%% For usage examples, see the AWS Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide .
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -268,9 +363,35 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This API call resets a landing zone.
+%%
+%% It starts an asynchronous operation that resets the landing zone to the
+%% parameters specified in its original configuration.
+reset_landing_zone(Client, Input) ->
+    reset_landing_zone(Client, Input, []).
+reset_landing_zone(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reset-landingzone"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Applies tags to a resource.
 %%
-%% For usage examples, see the AWS Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide .
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -295,7 +416,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from a resource.
 %%
-%% For usage examples, see the AWS Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide .
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

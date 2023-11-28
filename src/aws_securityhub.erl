@@ -61,6 +61,8 @@
          batch_enable_standards/3,
          batch_get_automation_rules/2,
          batch_get_automation_rules/3,
+         batch_get_configuration_policy_associations/2,
+         batch_get_configuration_policy_associations/3,
          batch_get_security_controls/2,
          batch_get_security_controls/3,
          batch_get_standards_control_associations/2,
@@ -77,6 +79,8 @@
          create_action_target/3,
          create_automation_rule/2,
          create_automation_rule/3,
+         create_configuration_policy/2,
+         create_configuration_policy/3,
          create_finding_aggregator/2,
          create_finding_aggregator/3,
          create_insight/2,
@@ -87,6 +91,8 @@
          decline_invitations/3,
          delete_action_target/3,
          delete_action_target/4,
+         delete_configuration_policy/3,
+         delete_configuration_policy/4,
          delete_finding_aggregator/3,
          delete_finding_aggregator/4,
          delete_insight/3,
@@ -133,6 +139,11 @@
          get_administrator_account/1,
          get_administrator_account/3,
          get_administrator_account/4,
+         get_configuration_policy/2,
+         get_configuration_policy/4,
+         get_configuration_policy/5,
+         get_configuration_policy_association/2,
+         get_configuration_policy_association/3,
          get_enabled_standards/2,
          get_enabled_standards/3,
          get_finding_aggregator/2,
@@ -155,11 +166,19 @@
          get_master_account/4,
          get_members/2,
          get_members/3,
+         get_security_control_definition/2,
+         get_security_control_definition/4,
+         get_security_control_definition/5,
          invite_members/2,
          invite_members/3,
          list_automation_rules/1,
          list_automation_rules/3,
          list_automation_rules/4,
+         list_configuration_policies/1,
+         list_configuration_policies/3,
+         list_configuration_policies/4,
+         list_configuration_policy_associations/2,
+         list_configuration_policy_associations/3,
          list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
@@ -184,12 +203,18 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_configuration_policy_association/2,
+         start_configuration_policy_association/3,
+         start_configuration_policy_disassociation/2,
+         start_configuration_policy_disassociation/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
          update_action_target/3,
          update_action_target/4,
+         update_configuration_policy/3,
+         update_configuration_policy/4,
          update_finding_aggregator/2,
          update_finding_aggregator/3,
          update_findings/2,
@@ -198,6 +223,8 @@
          update_insight/4,
          update_organization_configuration/2,
          update_organization_configuration/3,
+         update_security_control/2,
+         update_security_control/3,
          update_security_hub_configuration/2,
          update_security_hub_configuration/3,
          update_standards_control/3,
@@ -369,6 +396,34 @@ batch_get_automation_rules(Client, Input) ->
 batch_get_automation_rules(Client, Input0, Options0) ->
     Method = post,
     Path = ["/automationrules/get"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns associations between an Security Hub configuration and a
+%% batch of target accounts, organizational units, or the root.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region. A configuration can refer to a configuration policy
+%% or to a self-managed configuration.
+batch_get_configuration_policy_associations(Client, Input) ->
+    batch_get_configuration_policy_associations(Client, Input, []).
+batch_get_configuration_policy_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicyAssociation/batchget"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -660,6 +715,32 @@ create_automation_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a configuration policy with the defined configuration.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region.
+create_configuration_policy(Client, Input) ->
+    create_configuration_policy(Client, Input, []).
+create_configuration_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicy/create"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Used to enable finding aggregation.
 %%
 %% Must be called from the aggregation Region.
@@ -843,6 +924,35 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a configuration policy.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region. For the deletion to succeed, you must first
+%% disassociate a configuration policy from target accounts, organizational
+%% units, or the root by invoking the
+%% `StartConfigurationPolicyDisassociation' operation.
+delete_configuration_policy(Client, Identifier, Input) ->
+    delete_configuration_policy(Client, Identifier, Input, []).
+delete_configuration_policy(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a finding aggregator.
 %%
 %% When you delete the finding aggregator, you stop finding aggregation.
@@ -1005,10 +1115,10 @@ describe_hub(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about the Organizations configuration for
+%% @doc Returns information about the way your organization is configured in
 %% Security Hub.
 %%
-%% Can only be called from a Security Hub administrator account.
+%% Only the Security Hub administrator account can invoke this operation.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -1441,6 +1551,60 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides information about a configuration policy.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region.
+get_configuration_policy(Client, Identifier)
+  when is_map(Client) ->
+    get_configuration_policy(Client, Identifier, #{}, #{}).
+
+get_configuration_policy(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, []).
+
+get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configurationPolicy/get/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the association between a configuration and a target account,
+%% organizational unit, or the root.
+%%
+%% The configuration can be a configuration policy or self-managed behavior.
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region.
+get_configuration_policy_association(Client, Input) ->
+    get_configuration_policy_association(Client, Input, []).
+get_configuration_policy_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicyAssociation/get"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the standards that are currently enabled.
 get_enabled_standards(Client, Input) ->
     get_enabled_standards(Client, Input, []).
@@ -1681,6 +1845,36 @@ get_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the definition of a security control.
+%%
+%% The definition includes the control title, description, Region
+%% availability, parameter definitions, and other details.
+get_security_control_definition(Client, SecurityControlId)
+  when is_map(Client) ->
+    get_security_control_definition(Client, SecurityControlId, #{}, #{}).
+
+get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, []).
+
+get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/securityControl/definition"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"SecurityControlId">>, SecurityControlId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Invites other Amazon Web Services accounts to become member accounts
 %% for the Security Hub administrator account that the invitation is sent
 %% from.
@@ -1744,6 +1938,65 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the configuration policies that the Security Hub delegated
+%% administrator has created for your organization.
+%%
+%% Only the delegated administrator can invoke this operation from the home
+%% Region.
+list_configuration_policies(Client)
+  when is_map(Client) ->
+    list_configuration_policies(Client, #{}, #{}).
+
+list_configuration_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configuration_policies(Client, QueryMap, HeadersMap, []).
+
+list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configurationPolicy/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides information about the associations for your configuration
+%% policies and self-managed behavior.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region.
+list_configuration_policy_associations(Client, Input) ->
+    list_configuration_policy_associations(Client, Input, []).
+list_configuration_policy_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicyAssociation/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all findings-generating solutions (products) that you are
 %% subscribed to receive findings from in Security Hub.
@@ -1984,6 +2237,65 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Associates a target account, organizational unit, or the root with a
+%% specified configuration.
+%%
+%% The target can be associated with a configuration policy or self-managed
+%% behavior. Only the Security Hub delegated administrator can invoke this
+%% operation from the home Region.
+start_configuration_policy_association(Client, Input) ->
+    start_configuration_policy_association(Client, Input, []).
+start_configuration_policy_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicyAssociation/associate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a target account, organizational unit, or the root from
+%% a specified configuration.
+%%
+%% When you disassociate a configuration from its target, the target inherits
+%% the configuration of the closest parent. If there’s no configuration to
+%% inherit, the target retains its settings but becomes a self-managed
+%% account. A target can be disassociated from a configuration policy or
+%% self-managed behavior. Only the Security Hub delegated administrator can
+%% invoke this operation from the home Region.
+start_configuration_policy_disassociation(Client, Input) ->
+    start_configuration_policy_disassociation(Client, Input, []).
+start_configuration_policy_disassociation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configurationPolicyAssociation/disassociate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds one or more tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -2038,6 +2350,32 @@ update_action_target(Client, ActionTargetArn, Input) ->
 update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = patch,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a configuration policy.
+%%
+%% Only the Security Hub delegated administrator can invoke this operation
+%% from the home Region.
+update_configuration_policy(Client, Identifier, Input) ->
+    update_configuration_policy(Client, Identifier, Input, []).
+update_configuration_policy(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/configurationPolicy/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2138,14 +2476,37 @@ update_insight(Client, InsightArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used to update the configuration related to Organizations.
+%% @doc Updates the configuration of your organization in Security Hub.
 %%
-%% Can only be called from a Security Hub administrator account.
+%% Only the Security Hub administrator account can invoke this operation.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 update_organization_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/organization/configuration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties of a security control.
+update_security_control(Client, Input) ->
+    update_security_control(Client, Input, []).
+update_security_control(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/securityControl/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

@@ -146,11 +146,29 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a batch inference job.
+%% @doc Generates batch recommendations based on a list of items or users
+%% stored in Amazon S3 and exports the recommendations to an Amazon S3
+%% bucket.
 %%
-%% The operation can handle up to 50 million records and the input file must
-%% be in JSON format. For more information, see Creating a batch inference
-%% job.
+%% To generate batch recommendations, specify the ARN of a solution version
+%% and an Amazon S3 URI for the input and output data. For user
+%% personalization, popular items, and personalized ranking solutions, the
+%% batch inference job generates a list of recommended items for each user ID
+%% in the input file. For related items solutions, the job generates a list
+%% of recommended items for each item ID in the input file.
+%%
+%% For more information, see Creating a batch inference job .
+%%
+%% If you use the Similar-Items recipe, Amazon Personalize can add
+%% descriptive themes to batch recommendations. To generate themes, set the
+%% job's mode to `THEME_GENERATION' and specify the name of the field
+%% that contains item names in the input data.
+%%
+%% For more information about generating themes, see Batch recommendations
+%% with themes from Content Generator .
+%%
+%% You can't get batch recommendations with the Trending-Now or
+%% Next-Best-Action recipes.
 create_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_inference_job(Client, Input, []).
@@ -236,17 +254,21 @@ create_campaign(Client, Input, Options)
 %%
 %% Use CreateDatasetImportJob to import your training data to a dataset.
 %%
-%% There are three types of datasets:
+%% There are 5 types of datasets:
 %%
-%% <ul> <li> Interactions
+%% <ul> <li> Item interactions
 %%
 %% </li> <li> Items
 %%
 %% </li> <li> Users
 %%
+%% </li> <li> Action interactions
+%%
+%% </li> <li> Actions
+%%
 %% </li> </ul> Each dataset type has an associated schema with required field
-%% types. Only the `Interactions' dataset is required in order to train a
-%% model (also referred to as creating a solution).
+%% types. Only the `Item interactions' dataset is required in order to
+%% train a model (also referred to as creating a solution).
 %%
 %% A dataset can be in one of the following states:
 %%
@@ -307,11 +329,15 @@ create_dataset_export_job(Client, Input, Options)
 %% A dataset group is a container for Amazon Personalize resources. A dataset
 %% group can contain at most three datasets, one for each type of dataset:
 %%
-%% <ul> <li> Interactions
+%% <ul> <li> Item interactions
 %%
 %% </li> <li> Items
 %%
 %% </li> <li> Users
+%%
+%% </li> <li> Actions
+%%
+%% </li> <li> Action interactions
 %%
 %% </li> </ul> A dataset group can be a Domain dataset group, where you
 %% specify a domain and use pre-configured resources like recommenders, or a
@@ -374,6 +400,11 @@ create_dataset_group(Client, Input, Options)
 %% For information on granting access to your Amazon S3 bucket, see Giving
 %% Amazon Personalize Access to Amazon S3 Resources.
 %%
+%% If you already created a recommender or deployed a custom solution version
+%% with a campaign, how new bulk records influence recommendations depends on
+%% the domain use case or recipe that you use. For more information, see How
+%% new data influences real-time recommendations.
+%%
 %% By default, a dataset import job replaces any existing data in the dataset
 %% that you imported in bulk. To add new records without replacing existing
 %% data, specify INCREMENTAL for the import mode in the
@@ -418,8 +449,8 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% When you create an event tracker, the response includes a tracking ID,
 %% which you pass as a parameter when you use the PutEvents operation. Amazon
-%% Personalize then appends the event data to the Interactions dataset of the
-%% dataset group you specify in your event tracker.
+%% Personalize then appends the event data to the Item interactions dataset
+%% of the dataset group you specify in your event tracker.
 %%
 %% The event tracker can be in one of the following states:
 %%
@@ -725,8 +756,8 @@ delete_dataset_group(Client, Input, Options)
 
 %% @doc Deletes the event tracker.
 %%
-%% Does not delete the event-interactions dataset from the associated dataset
-%% group. For more information on event trackers, see CreateEventTracker.
+%% Does not delete the dataset from the dataset group. For more information
+%% on event trackers, see CreateEventTracker.
 delete_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_tracker(Client, Input, []).
@@ -1243,8 +1274,10 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates a campaign by either deploying a new solution or changing the
-%% value of the campaign's `minProvisionedTPS' parameter.
+%% @doc Updates a campaign to deploy a retrained solution version with an
+%% existing campaign, change your campaign's `minProvisionedTPS', or
+%% modify your campaign's configuration, such as the exploration
+%% configuration.
 %%
 %% To update a campaign, the campaign status must be ACTIVE or CREATE FAILED.
 %% Check the campaign status using the DescribeCampaign operation.
@@ -1254,7 +1287,9 @@ untag_resource(Client, Input, Options)
 %% configuration to generate recommendations until the latest campaign update
 %% status is `Active'.
 %%
-%% For more information on campaigns, see CreateCampaign.
+%% For more information about updating a campaign, including code samples,
+%% see Updating a campaign. For more information about campaigns, see
+%% Creating a campaign.
 update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).

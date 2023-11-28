@@ -1,15 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
+%% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
+%% are only used by the EKS Pod Identity Agent.
+-module(aws_eks_auth).
 
--module(aws_personalize_runtime).
-
--export([get_action_recommendations/2,
-         get_action_recommendations/3,
-         get_personalized_ranking/2,
-         get_personalized_ranking/3,
-         get_recommendations/2,
-         get_recommendations/3]).
+-export([assume_role_for_pod_identity/3,
+         assume_role_for_pod_identity/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -17,91 +14,19 @@
 %% API
 %%====================================================================
 
-%% @doc Returns a list of recommended actions in sorted in descending order
-%% by prediction score.
+%% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
+%% are only used by the EKS Pod Identity Agent.
 %%
-%% Use the `GetActionRecommendations' API if you have a custom campaign
-%% that deploys a solution version trained with a PERSONALIZED_ACTIONS
-%% recipe.
-%%
-%% For more information about PERSONALIZED_ACTIONS recipes, see
-%% PERSONALIZED_ACTIONS recipes. For more information about getting action
-%% recommendations, see Getting action recommendations.
-get_action_recommendations(Client, Input) ->
-    get_action_recommendations(Client, Input, []).
-get_action_recommendations(Client, Input0, Options0) ->
+%% We recommend that applications use the Amazon Web Services SDKs to connect
+%% to Amazon Web Services services; if credentials from an EKS Pod Identity
+%% association are available in the pod, the latest versions of the SDKs use
+%% them automatically.
+assume_role_for_pod_identity(Client, ClusterName, Input) ->
+    assume_role_for_pod_identity(Client, ClusterName, Input, []).
+assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
     Method = post,
-    Path = ["/action-recommendations"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Re-ranks a list of recommended items for the given user.
-%%
-%% The first item in the list is deemed the most likely item to be of
-%% interest to the user.
-%%
-%% The solution backing the campaign must have been created using a recipe of
-%% type PERSONALIZED_RANKING.
-get_personalized_ranking(Client, Input) ->
-    get_personalized_ranking(Client, Input, []).
-get_personalized_ranking(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/personalize-ranking"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Returns a list of recommended items.
-%%
-%% For campaigns, the campaign's Amazon Resource Name (ARN) is required
-%% and the required user and item input depends on the recipe type used to
-%% create the solution backing the campaign as follows:
-%%
-%% <ul> <li> USER_PERSONALIZATION - `userId' required, `itemId' not
-%% used
-%%
-%% </li> <li> RELATED_ITEMS - `itemId' required, `userId' not used
-%%
-%% </li> </ul> Campaigns that are backed by a solution created using a recipe
-%% of type PERSONALIZED_RANKING use the API.
-%%
-%% For recommenders, the recommender's ARN is required and the required
-%% item and user input depends on the use case (domain-based recipe) backing
-%% the recommender. For information on use case requirements see Choosing
-%% recommender use cases.
-get_recommendations(Client, Input) ->
-    get_recommendations(Client, Input, []).
-get_recommendations(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/recommendations"],
-    SuccessStatusCode = undefined,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/assume-role-for-pod-identity"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -135,8 +60,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"personalize">>},
-    Host = build_host(<<"personalize-runtime">>, Client1),
+    Client1 = Client#{service => <<"eks-auth">>},
+    Host = build_host(<<"eks-auth">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}

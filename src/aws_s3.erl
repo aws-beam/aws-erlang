@@ -6975,8 +6975,8 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% but you must select one. You cannot specify `Days' and `Years' at
 %% the same time.
 %%
-%% You can only enable Object Lock for new buckets. If you want to turn on
-%% Object Lock for an existing bucket, contact Amazon Web Services Support.
+%% You can enable Object Lock for new or existing buckets. For more
+%% information, see Configuring Object Lock.
 put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
 put_object_lock_configuration(Client, Bucket, Input0, Options0) ->

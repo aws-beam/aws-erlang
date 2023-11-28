@@ -76,6 +76,9 @@
          describe_bot_recommendation/5,
          describe_bot_recommendation/7,
          describe_bot_recommendation/8,
+         describe_bot_resource_generation/5,
+         describe_bot_resource_generation/7,
+         describe_bot_resource_generation/8,
          describe_bot_version/3,
          describe_bot_version/5,
          describe_bot_version/6,
@@ -112,6 +115,8 @@
          describe_test_set_generation/2,
          describe_test_set_generation/4,
          describe_test_set_generation/5,
+         generate_bot_element/5,
+         generate_bot_element/6,
          get_test_execution_artifacts_url/2,
          get_test_execution_artifacts_url/4,
          get_test_execution_artifacts_url/5,
@@ -123,6 +128,8 @@
          list_bot_locales/5,
          list_bot_recommendations/5,
          list_bot_recommendations/6,
+         list_bot_resource_generations/5,
+         list_bot_resource_generations/6,
          list_bot_versions/3,
          list_bot_versions/4,
          list_bots/2,
@@ -174,6 +181,8 @@
          search_associated_transcripts/7,
          start_bot_recommendation/5,
          start_bot_recommendation/6,
+         start_bot_resource_generation/5,
+         start_bot_resource_generation/6,
          start_import/2,
          start_import/3,
          start_test_execution/3,
@@ -391,14 +400,13 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of the bot based on the `DRAFT' version.
+%% @doc Creates an immutable version of the bot.
 %%
-%% If the `DRAFT' version of this resource hasn't changed since you
-%% created the last version, Amazon Lex doesn't create a new version, it
-%% returns the last created version.
-%%
-%% When you create the first version of a bot, Amazon Lex sets the version to
-%% 1. Subsequent versions increment by 1.
+%% When you create the first version of a bot, Amazon Lex sets the version
+%% number to 1. Subsequent bot versions increase in an increment of 1. The
+%% version number will always represent the total number of versions created
+%% of the bot, not the current number of versions. If a bot version is
+%% deleted, that bot version number will not be reused.
 create_bot_version(Client, BotId, Input) ->
     create_bot_version(Client, BotId, Input, []).
 create_bot_version(Client, BotId, Input0, Options0) ->
@@ -1135,6 +1143,34 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a request to generate a bot through natural
+%% language description, made through the `StartBotResource' API.
+%%
+%% Use the `generatedBotLocaleUrl' to retrieve the Amazon S3 object
+%% containing the bot locale configuration. You can then modify and import
+%% this configuration.
+describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId)
+  when is_map(Client) ->
+    describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, #{}, #{}).
+
+describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap, []).
+
+describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generations/", aws_util:encode_uri(GenerationId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides metadata about a version of a bot.
 describe_bot_version(Client, BotId, BotVersion)
   when is_map(Client) ->
@@ -1411,6 +1447,29 @@ describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Generates sample utterances for an intent.
+generate_bot_element(Client, BotId, BotVersion, LocaleId, Input) ->
+    generate_bot_element(Client, BotId, BotVersion, LocaleId, Input, []).
+generate_bot_element(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generate"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc The pre-signed Amazon S3 URL to download the test execution result
 %% artifacts.
 get_test_execution_artifacts_url(Client, TestExecutionId)
@@ -1533,6 +1592,29 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input) ->
 list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the generation requests made for a bot locale.
+list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input) ->
+    list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input, []).
+list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2303,6 +2385,36 @@ start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input) ->
 start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a request for the descriptive bot builder to generate a bot
+%% locale configuration based on the prompt you provide it.
+%%
+%% After you make this call, use the `DescribeBotResourceGeneration'
+%% operation to check on the status of the generation and for the
+%% `generatedBotLocaleUrl' when the generation is complete. Use that
+%% value to retrieve the Amazon S3 object containing the bot locale
+%% configuration. You can then modify and import this configuration.
+start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input) ->
+    start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input, []).
+start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/startgeneration"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

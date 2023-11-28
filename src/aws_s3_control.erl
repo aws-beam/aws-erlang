@@ -5,7 +5,15 @@
 %% plane actions.
 -module(aws_s3_control).
 
--export([create_access_point/3,
+-export([associate_access_grants_identity_center/2,
+         associate_access_grants_identity_center/3,
+         create_access_grant/2,
+         create_access_grant/3,
+         create_access_grants_instance/2,
+         create_access_grants_instance/3,
+         create_access_grants_location/2,
+         create_access_grants_location/3,
+         create_access_point/3,
          create_access_point/4,
          create_access_point_for_object_lambda/3,
          create_access_point_for_object_lambda/4,
@@ -17,6 +25,14 @@
          create_multi_region_access_point/3,
          create_storage_lens_group/2,
          create_storage_lens_group/3,
+         delete_access_grant/3,
+         delete_access_grant/4,
+         delete_access_grants_instance/2,
+         delete_access_grants_instance/3,
+         delete_access_grants_instance_resource_policy/2,
+         delete_access_grants_instance_resource_policy/3,
+         delete_access_grants_location/3,
+         delete_access_grants_location/4,
          delete_access_point/3,
          delete_access_point/4,
          delete_access_point_for_object_lambda/3,
@@ -53,6 +69,23 @@
          describe_multi_region_access_point_operation/3,
          describe_multi_region_access_point_operation/5,
          describe_multi_region_access_point_operation/6,
+         dissociate_access_grants_identity_center/2,
+         dissociate_access_grants_identity_center/3,
+         get_access_grant/3,
+         get_access_grant/5,
+         get_access_grant/6,
+         get_access_grants_instance/2,
+         get_access_grants_instance/4,
+         get_access_grants_instance/5,
+         get_access_grants_instance_for_prefix/3,
+         get_access_grants_instance_for_prefix/5,
+         get_access_grants_instance_for_prefix/6,
+         get_access_grants_instance_resource_policy/2,
+         get_access_grants_instance_resource_policy/4,
+         get_access_grants_instance_resource_policy/5,
+         get_access_grants_location/3,
+         get_access_grants_location/5,
+         get_access_grants_location/6,
          get_access_point/3,
          get_access_point/5,
          get_access_point/6,
@@ -92,6 +125,9 @@
          get_bucket_versioning/3,
          get_bucket_versioning/5,
          get_bucket_versioning/6,
+         get_data_access/4,
+         get_data_access/6,
+         get_data_access/7,
          get_job_tagging/3,
          get_job_tagging/5,
          get_job_tagging/6,
@@ -119,6 +155,15 @@
          get_storage_lens_group/3,
          get_storage_lens_group/5,
          get_storage_lens_group/6,
+         list_access_grants/2,
+         list_access_grants/4,
+         list_access_grants/5,
+         list_access_grants_instances/2,
+         list_access_grants_instances/4,
+         list_access_grants_instances/5,
+         list_access_grants_locations/2,
+         list_access_grants_locations/4,
+         list_access_grants_locations/5,
          list_access_points/2,
          list_access_points/4,
          list_access_points/5,
@@ -143,6 +188,8 @@
          list_tags_for_resource/3,
          list_tags_for_resource/5,
          list_tags_for_resource/6,
+         put_access_grants_instance_resource_policy/2,
+         put_access_grants_instance_resource_policy/3,
          put_access_point_configuration_for_object_lambda/3,
          put_access_point_configuration_for_object_lambda/4,
          put_access_point_policy/3,
@@ -175,6 +222,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_access_grants_location/3,
+         update_access_grants_location/4,
          update_job_priority/3,
          update_job_priority/4,
          update_job_status/3,
@@ -187,6 +236,182 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associate your S3 Access Grants instance with an Amazon Web Services
+%% IAM Identity Center instance.
+%%
+%% Use this action if you want to create access grants for users or groups
+%% from your corporate identity directory. First, you must add your corporate
+%% identity directory to Amazon Web Services IAM Identity Center. Then, you
+%% can associate this IAM Identity Center instance with your S3 Access Grants
+%% instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:AssociateAccessGrantsIdentityCenter' permission to use this
+%% operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
+%% following permissions: `sso:CreateApplication',
+%% `sso:PutApplicationGrant', and
+%% `sso:PutApplicationAuthenticationMethod'.
+%%
+%% </dd> </dl>
+associate_access_grants_identity_center(Client, Input) ->
+    associate_access_grants_identity_center(Client, Input, []).
+associate_access_grants_identity_center(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/accessgrantsinstance/identitycenter"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an access grant that gives a grantee access to your S3 data.
+%%
+%% The grantee can be an IAM user or role or a directory user, or group.
+%% Before you can create a grant, you must have an S3 Access Grants instance
+%% in the same Region as the S3 data. You can create an S3 Access Grants
+%% instance using the CreateAccessGrantsInstance. You must also have
+%% registered at least one S3 data location in your S3 Access Grants instance
+%% using CreateAccessGrantsLocation.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:CreateAccessGrant' permission to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> For any directory identity -
+%% `sso:DescribeInstance' and `sso:DescribeApplication'
+%%
+%% For directory users - `identitystore:DescribeUser'
+%%
+%% For directory groups - `identitystore:DescribeGroup'
+%%
+%% </dd> </dl>
+create_access_grant(Client, Input) ->
+    create_access_grant(Client, Input, []).
+create_access_grant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/accessgrantsinstance/grant"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an S3 Access Grants instance, which serves as a logical
+%% grouping for access grants.
+%%
+%% You can create one S3 Access Grants instance per Region per account.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:CreateAccessGrantsInstance' permission to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> To associate an IAM Identity
+%% Center instance with your S3 Access Grants instance, you must also have
+%% the `sso:DescribeInstance', `sso:CreateApplication',
+%% `sso:PutApplicationGrant', and
+%% `sso:PutApplicationAuthenticationMethod' permissions.
+%%
+%% </dd> </dl>
+create_access_grants_instance(Client, Input) ->
+    create_access_grants_instance(Client, Input, []).
+create_access_grants_instance(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/accessgrantsinstance"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The S3 data location that you would like to register in your S3
+%% Access Grants instance.
+%%
+%% Your S3 data must be in the same Region as your S3 Access Grants instance.
+%% The location can be one of the following:
+%%
+%% <ul> <li> The default S3 location `s3://'
+%%
+%% </li> <li> A bucket - `S3://&lt;bucket-name&gt;'
+%%
+%% </li> <li> A bucket and prefix -
+%% `S3://&lt;bucket-name&gt;/&lt;prefix&gt;'
+%%
+%% </li> </ul> When you register a location, you must include the IAM role
+%% that has permission to manage the S3 location that you are registering.
+%% Give S3 Access Grants permission to assume this role using a policy. S3
+%% Access Grants assumes this role to manage access to the location and to
+%% vend temporary credentials to grantees or client applications.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:CreateAccessGrantsLocation' permission to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
+%% following permission for the specified IAM role: `iam:PassRole'
+%%
+%% </dd> </dl>
+create_access_grants_location(Client, Input) ->
+    create_access_grants_location(Client, Input, []).
+create_access_grants_location(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v20180820/accessgrantsinstance/location"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an access point and associates it with the specified bucket.
 %%
@@ -486,6 +711,149 @@ create_storage_lens_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20180820/storagelensgroup"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the access grant from the S3 Access Grants instance.
+%%
+%% You cannot undo an access grant deletion and the grantee will no longer
+%% have access to the S3 data.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:DeleteAccessGrant' permission to use this operation.
+%%
+%% </dd> </dl>
+delete_access_grant(Client, AccessGrantId, Input) ->
+    delete_access_grant(Client, AccessGrantId, Input, []).
+delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes your S3 Access Grants instance.
+%%
+%% You must first delete the access grants and locations before S3 Access
+%% Grants can delete the instance. See DeleteAccessGrant and
+%% DeleteAccessGrantsLocation. If you have associated an IAM Identity Center
+%% instance with your S3 Access Grants instance, you must first dissassociate
+%% the Identity Center instance from the S3 Access Grants instance before you
+%% can delete the S3 Access Grants instance. See
+%% AssociateAccessGrantsIdentityCenter and
+%% DissociateAccessGrantsIdentityCenter.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:DeleteAccessGrantsInstance' permission to use this operation.
+%%
+%% </dd> </dl>
+delete_access_grants_instance(Client, Input) ->
+    delete_access_grants_instance(Client, Input, []).
+delete_access_grants_instance(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accessgrantsinstance"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the resource policy of the S3 Access Grants instance.
+%%
+%% The resource policy is used to manage cross-account access to your S3
+%% Access Grants instance. By deleting the resource policy, you delete any
+%% cross-account permissions to your S3 Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:DeleteAccessGrantsInstanceResourcePolicy' permission to use this
+%% operation.
+%%
+%% </dd> </dl>
+delete_access_grants_instance_resource_policy(Client, Input) ->
+    delete_access_grants_instance_resource_policy(Client, Input, []).
+delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters a location from your S3 Access Grants instance.
+%%
+%% You can only delete a location registration from an S3 Access Grants
+%% instance if there are no grants associated with this location. See Delete
+%% a grant for information on how to delete grants. You need to have at least
+%% one registered location in your S3 Access Grants instance in order to
+%% create access grants.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:DeleteAccessGrantsLocation' permission to use this operation.
+%%
+%% </dd> </dl>
+delete_access_grants_location(Client, AccessGrantsLocationId, Input) ->
+    delete_access_grants_location(Client, AccessGrantsLocationId, Input, []).
+delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
+    SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -1265,6 +1633,214 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Dissociates the Amazon Web Services IAM Identity Center instance from
+%% the S3 Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:DissociateAccessGrantsIdentityCenter' permission to use this
+%% operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> You must have the
+%% `sso:DeleteApplication' permission to use this operation.
+%%
+%% </dd> </dl>
+dissociate_access_grants_identity_center(Client, Input) ->
+    dissociate_access_grants_identity_center(Client, Input, []).
+dissociate_access_grants_identity_center(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/accessgrantsinstance/identitycenter"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get the details of an access grant from your S3 Access Grants
+%% instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:GetAccessGrant'
+%% permission to use this operation.
+%%
+%% </dd> </dl>
+get_access_grant(Client, AccessGrantId, AccountId)
+  when is_map(Client) ->
+    get_access_grant(Client, AccessGrantId, AccountId, #{}, #{}).
+
+get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, []).
+
+get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/grant/", aws_util:encode_uri(AccessGrantId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the S3 Access Grants instance for a Region in your account.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:GetAccessGrantsInstance' permission to use this operation.
+%%
+%% </dd> </dl>
+get_access_grants_instance(Client, AccountId)
+  when is_map(Client) ->
+    get_access_grants_instance(Client, AccountId, #{}, #{}).
+
+get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the S3 Access Grants instance that contains a particular
+%% prefix.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:GetAccessGrantsInstanceForPrefix' permission for the caller
+%% account to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> The prefix owner account must
+%% grant you the following permissions to their S3 Access Grants instance:
+%% `s3:GetAccessGrantsInstanceForPrefix'.
+%%
+%% </dd> </dl>
+get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId)
+  when is_map(Client) ->
+    get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, #{}, #{}).
+
+get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, []).
+
+get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/prefix"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"s3prefix">>, S3Prefix}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the resource policy of the S3 Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:GetAccessGrantsInstanceResourcePolicy' permission to use this
+%% operation.
+%%
+%% </dd> </dl>
+get_access_grants_instance_resource_policy(Client, AccountId)
+  when is_map(Client) ->
+    get_access_grants_instance_resource_policy(Client, AccountId, #{}, #{}).
+
+get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, []).
+
+get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a particular location registered in your S3
+%% Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:GetAccessGrantsLocation' permission to use this operation.
+%%
+%% </dd> </dl>
+get_access_grants_location(Client, AccessGrantsLocationId, AccountId)
+  when is_map(Client) ->
+    get_access_grants_location(Client, AccessGrantsLocationId, AccountId, #{}, #{}).
+
+get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, []).
+
+get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns configuration information about the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
@@ -1907,6 +2483,56 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a temporary access credential from S3 Access Grants to the
+%% grantee or client application.
+%%
+%% The temporary credential is an Amazon Web Services STS token that grants
+%% them access to the S3 data.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:GetDataAccess'
+%% permission to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> The IAM role that S3 Access
+%% Grants assumes must have the following permissions specified in the trust
+%% policy when registering the location: `sts:AssumeRole', for directory
+%% users or groups `sts:SetContext', and for IAM users or roles
+%% `sts:SourceIdentity'.
+%%
+%% </dd> </dl>
+get_data_access(Client, Permission, Target, AccountId)
+  when is_map(Client) ->
+    get_data_access(Client, Permission, Target, AccountId, #{}, #{}).
+
+get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, []).
+
+get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/dataaccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"durationSeconds">>, maps:get(<<"durationSeconds">>, QueryMap, undefined)},
+        {<<"permission">>, Permission},
+        {<<"privilege">>, maps:get(<<"privilege">>, QueryMap, undefined)},
+        {<<"target">>, Target},
+        {<<"targetType">>, maps:get(<<"targetType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the tags on an S3 Batch Operations job.
 %%
 %% To use the `GetJobTagging' operation, you must have permission to
@@ -2269,6 +2895,128 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the list of access grants in your S3 Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:ListAccessGrants'
+%% permission to use this operation.
+%%
+%% </dd> </dl>
+list_access_grants(Client, AccountId)
+  when is_map(Client) ->
+    list_access_grants(Client, AccountId, #{}, #{}).
+
+list_access_grants(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_grants(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/grants"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"application_arn">>, maps:get(<<"application_arn">>, QueryMap, undefined)},
+        {<<"grantscope">>, maps:get(<<"grantscope">>, QueryMap, undefined)},
+        {<<"granteeidentifier">>, maps:get(<<"granteeidentifier">>, QueryMap, undefined)},
+        {<<"granteetype">>, maps:get(<<"granteetype">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"permission">>, maps:get(<<"permission">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of S3 Access Grants instances.
+%%
+%% An S3 Access Grants instance serves as a logical grouping for your
+%% individual access grants. You can only have one S3 Access Grants instance
+%% per Region per account.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:ListAccessGrantsInstances' permission to use this operation.
+%%
+%% </dd> </dl>
+list_access_grants_instances(Client, AccountId)
+  when is_map(Client) ->
+    list_access_grants_instances(Client, AccountId, #{}, #{}).
+
+list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstances"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the locations registered in your S3 Access Grants
+%% instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:ListAccessGrantsLocations' permission to use this operation.
+%%
+%% </dd> </dl>
+list_access_grants_locations(Client, AccountId)
+  when is_map(Client) ->
+    list_access_grants_locations(Client, AccountId, #{}, #{}).
+
+list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, []).
+
+list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/accessgrantsinstance/locations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"locationscope">>, maps:get(<<"locationscope">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the access points that are owned by the current
 %% account that's associated with the specified bucket.
 %%
@@ -2598,17 +3346,23 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation allows you to list all the Amazon Web Services
-%% resource tags for the specified resource.
+%% resource tags for a specified resource.
 %%
-%% To use this operation, you must have the permission to perform the
-%% `s3:ListTagsForResource' action. For more information about the
-%% required Storage Lens Groups permissions, see Setting account permissions
-%% to use S3 Storage Lens groups.
+%% Each tag is a label consisting of a user-defined key and value. Tags can
+%% help you manage, identify, organize, search for, and filter resources.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:ListTagsForResource' permission to use this operation.
+%%
+%% </dd> </dl> This operation is only supported for S3 Storage Lens groups
+%% and for S3 Access Grants. The tagged resource can be an S3 Storage Lens
+%% group or S3 Access Grants instance, registered location, or grant.
+%%
+%% For more information about the required Storage Lens Groups permissions,
+%% see Setting account permissions to use S3 Storage Lens groups.
 %%
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes.
-%%
-%% This operation is only supported for S3 Storage Lens groups.
 list_tags_for_resource(Client, ResourceArn, AccountId)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, AccountId, #{}, #{}).
@@ -2634,6 +3388,37 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Opt
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Updates the resource policy of the S3 Access Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:PutAccessGrantsInstanceResourcePolicy' permission to use this
+%% operation.
+%%
+%% </dd> </dl>
+put_access_grants_instance_resource_policy(Client, Input) ->
+    put_access_grants_instance_resource_policy(Client, Input, []).
+put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/accessgrantsinstance/resourcepolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Replaces configuration for an Object Lambda Access Point.
 %%
@@ -3432,18 +4217,23 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% @doc Creates a new Amazon Web Services resource tag or updates an existing
 %% resource tag.
 %%
-%% You can add up to 50 Amazon Web Services resource tags for each S3
-%% resource.
+%% Each tag is a label consisting of a user-defined key and value. Tags can
+%% help you manage, identify, organize, search for, and filter resources. You
+%% can add up to 50 Amazon Web Services resource tags for each S3 resource.
 %%
-%% To use this operation, you must have the permission to perform the
-%% `s3:TagResource' action. For more information about the required
-%% Storage Lens Groups permissions, see Setting account permissions to use S3
-%% Storage Lens groups.
+%% This operation is only supported for S3 Storage Lens groups and for S3
+%% Access Grants. The tagged resource can be an S3 Storage Lens group or S3
+%% Access Grants instance, registered location, or grant.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:TagResource'
+%% permission to use this operation.
+%%
+%% </dd> </dl> For more information about the required Storage Lens Groups
+%% permissions, see Setting account permissions to use S3 Storage Lens
+%% groups.
 %%
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes.
-%%
-%% This operation is only supported for S3 Storage Lens groups.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -3471,15 +4261,22 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc This operation removes the specified Amazon Web Services resource
 %% tags from an S3 resource.
 %%
-%% To use this operation, you must have the permission to perform the
-%% `s3:UntagResource' action. For more information about the required
-%% Storage Lens Groups permissions, see Setting account permissions to use S3
-%% Storage Lens groups.
+%% Each tag is a label consisting of a user-defined key and value. Tags can
+%% help you manage, identify, organize, search for, and filter resources.
+%%
+%% This operation is only supported for S3 Storage Lens groups and for S3
+%% Access Grants. The tagged resource can be an S3 Storage Lens group or S3
+%% Access Grants instance, registered location, or grant.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the `s3:UntagResource'
+%% permission to use this operation.
+%%
+%% </dd> </dl> For more information about the required Storage Lens Groups
+%% permissions, see Setting account permissions to use S3 Storage Lens
+%% groups.
 %%
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes.
-%%
-%% This operation is only supported for S3 Storage Lens groups.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -3503,6 +4300,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the IAM role of a registered location in your S3 Access
+%% Grants instance.
+%%
+%% <dl> <dt>Permissions</dt> <dd> You must have the
+%% `s3:UpdateAccessGrantsLocation' permission to use this operation.
+%%
+%% </dd> <dt>Additional Permissions</dt> <dd> You must also have the
+%% following permission: `iam:PassRole'
+%%
+%% </dd> </dl>
+update_access_grants_location(Client, AccessGrantsLocationId, Input) ->
+    update_access_grants_location(Client, AccessGrantsLocationId, Input, []).
+update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/accessgrantsinstance/location/", aws_util:encode_uri(AccessGrantsLocationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing S3 Batch Operations job's priority.

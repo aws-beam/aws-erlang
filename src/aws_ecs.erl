@@ -779,6 +779,12 @@ list_tasks(Client, Input, Options)
 %% a Fargate task. For information about the Fargate tasks maintenance, see
 %% Amazon Web Services Fargate task maintenance in the Amazon ECS Developer
 %% Guide.
+%%
+%% The `guardDutyActivate' parameter is read-only in Amazon ECS and
+%% indicates whether Amazon ECS Runtime Monitoring is enabled or disabled by
+%% your security administrator in your Amazon ECS account. Amazon GuardDuty
+%% controls this account setting on your behalf. For more information, see
+%% Protecting Amazon ECS workloads with Amazon ECS Runtime Monitoring.
 put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).

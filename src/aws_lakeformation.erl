@@ -22,18 +22,24 @@
          create_data_cells_filter/3,
          create_l_f_tag/2,
          create_l_f_tag/3,
+         create_lake_formation_identity_center_configuration/2,
+         create_lake_formation_identity_center_configuration/3,
          create_lake_formation_opt_in/2,
          create_lake_formation_opt_in/3,
          delete_data_cells_filter/2,
          delete_data_cells_filter/3,
          delete_l_f_tag/2,
          delete_l_f_tag/3,
+         delete_lake_formation_identity_center_configuration/2,
+         delete_lake_formation_identity_center_configuration/3,
          delete_lake_formation_opt_in/2,
          delete_lake_formation_opt_in/3,
          delete_objects_on_cancel/2,
          delete_objects_on_cancel/3,
          deregister_resource/2,
          deregister_resource/3,
+         describe_lake_formation_identity_center_configuration/2,
+         describe_lake_formation_identity_center_configuration/3,
          describe_resource/2,
          describe_resource/3,
          describe_transaction/2,
@@ -100,6 +106,8 @@
          update_data_cells_filter/3,
          update_l_f_tag/2,
          update_l_f_tag/3,
+         update_lake_formation_identity_center_configuration/2,
+         update_lake_formation_identity_center_configuration/3,
          update_resource/2,
          update_resource/3,
          update_table_objects/2,
@@ -318,6 +326,31 @@ create_l_f_tag(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an IAM Identity Center connection with Lake Formation to
+%% allow IAM Identity Center users and groups to access Data Catalog
+%% resources.
+create_lake_formation_identity_center_configuration(Client, Input) ->
+    create_lake_formation_identity_center_configuration(Client, Input, []).
+create_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateLakeFormationIdentityCenterConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Enforce Lake Formation permissions for the given databases, tables,
 %% and principals.
 create_lake_formation_opt_in(Client, Input) ->
@@ -377,6 +410,29 @@ delete_l_f_tag(Client, Input) ->
 delete_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLFTag"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an IAM Identity Center connection with Lake Formation.
+delete_lake_formation_identity_center_configuration(Client, Input) ->
+    delete_lake_formation_identity_center_configuration(Client, Input, []).
+delete_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLakeFormationIdentityCenterConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -459,6 +515,29 @@ deregister_resource(Client, Input) ->
 deregister_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeregisterResource"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the instance ARN and application ARN for the connection.
+describe_lake_formation_identity_center_configuration(Client, Input) ->
+    describe_lake_formation_identity_center_configuration(Client, Input, []).
+describe_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DescribeLakeFormationIdentityCenterConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1332,6 +1411,29 @@ update_l_f_tag(Client, Input) ->
 update_l_f_tag(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLFTag"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the IAM Identity Center connection parameters.
+update_lake_formation_identity_center_configuration(Client, Input) ->
+    update_lake_formation_identity_center_configuration(Client, Input, []).
+update_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateLakeFormationIdentityCenterConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

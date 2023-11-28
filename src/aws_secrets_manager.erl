@@ -41,7 +41,9 @@
 %% your log files, see the Amazon Web Services CloudTrail User Guide.
 -module(aws_secrets_manager).
 
--export([cancel_rotate_secret/2,
+-export([batch_get_secret_value/2,
+         batch_get_secret_value/3,
+         cancel_rotate_secret/2,
          cancel_rotate_secret/3,
          create_secret/2,
          create_secret/3,
@@ -91,6 +93,36 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Retrieves the contents of the encrypted fields `SecretString' or
+%% `SecretBinary' for up to 20 secrets.
+%%
+%% To retrieve a single secret, call `GetSecretValue'.
+%%
+%% To choose which secrets to retrieve, you can specify a list of secrets by
+%% name or ARN, or you can use filters. If Secrets Manager encounters errors
+%% such as `AccessDeniedException' while attempting to retrieve any of
+%% the secrets, you can see the errors in `Errors' in the response.
+%%
+%% Secrets Manager generates CloudTrail `GetSecretValue' log entries for
+%% each secret you request when you call this action. Do not include
+%% sensitive information in request parameters because it might be logged.
+%% For more information, see Logging Secrets Manager events with CloudTrail.
+%%
+%% Required permissions: `secretsmanager:BatchGetSecretValue', and you
+%% must have `secretsmanager:GetSecretValue' for each secret. If you use
+%% filters, you must also have `secretsmanager:ListSecrets'. If the
+%% secrets are encrypted using customer-managed keys instead of the Amazon
+%% Web Services managed key `aws/secretsmanager', then you also need
+%% `kms:Decrypt' permissions for the keys. For more information, see IAM
+%% policy actions for Secrets Manager and Authentication and access control
+%% in Secrets Manager.
+batch_get_secret_value(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_secret_value(Client, Input, []).
+batch_get_secret_value(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetSecretValue">>, Input, Options).
 
 %% @doc Turns off automatic rotation, and if a rotation is currently in
 %% progress, cancels the rotation.
@@ -316,6 +348,9 @@ get_resource_policy(Client, Input, Options)
 %% `SecretBinary' from the specified version of a secret, whichever
 %% contains content.
 %%
+%% To retrieve the values for a group of secrets, call
+%% `BatchGetSecretValue'.
+%%
 %% We recommend that you cache your secret values by using client-side
 %% caching. Caching secrets improves speed and reduces your costs. For more
 %% information, see Cache secrets for your applications.
@@ -375,8 +410,8 @@ list_secret_version_ids(Client, Input, Options)
 %%
 %% To list the versions of a secret, use `ListSecretVersionIds'.
 %%
-%% To get the secret value from `SecretString' or `SecretBinary',
-%% call `GetSecretValue'.
+%% To retrieve the values for the secrets, call `BatchGetSecretValue' or
+%% `GetSecretValue'.
 %%
 %% For information about finding secrets in the console, see Find secrets in
 %% Secrets Manager.

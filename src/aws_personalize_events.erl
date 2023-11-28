@@ -5,10 +5,14 @@
 %% stream or click data, and use it for model training either alone or
 %% combined with historical data.
 %%
-%% For more information see Recording Events.
+%% For more information see Recording item interaction events.
 -module(aws_personalize_events).
 
--export([put_events/2,
+-export([put_action_interactions/2,
+         put_action_interactions/3,
+         put_actions/2,
+         put_actions/3,
+         put_events/2,
          put_events/3,
          put_items/2,
          put_items/3,
@@ -21,9 +25,65 @@
 %% API
 %%====================================================================
 
-%% @doc Records user interaction event data.
+%% @doc Records action interaction event data.
 %%
-%% For more information see Recording Events.
+%% An action interaction event is an interaction between a user and an
+%% action. For example, a user taking an action, such a enrolling in a
+%% membership program or downloading your app.
+%%
+%% For more information about recording action interactions, see Recording
+%% action interaction events. For more information about actions in an
+%% Actions dataset, see Actions dataset.
+put_action_interactions(Client, Input) ->
+    put_action_interactions(Client, Input, []).
+put_action_interactions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/action-interactions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds one or more actions to an Actions dataset.
+%%
+%% For more information see Importing actions individually.
+put_actions(Client, Input) ->
+    put_actions(Client, Input, []).
+put_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/actions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Records item interaction event data.
+%%
+%% For more information see Recording item interaction events.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options0) ->
@@ -48,7 +108,7 @@ put_events(Client, Input0, Options0) ->
 
 %% @doc Adds one or more items to an Items dataset.
 %%
-%% For more information see Importing Items Incrementally.
+%% For more information see Importing items individually.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 put_items(Client, Input0, Options0) ->
@@ -73,7 +133,7 @@ put_items(Client, Input0, Options0) ->
 
 %% @doc Adds one or more users to a Users dataset.
 %%
-%% For more information see Importing Users Incrementally.
+%% For more information see Importing users individually.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 put_users(Client, Input0, Options0) ->

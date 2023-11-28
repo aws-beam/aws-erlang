@@ -26,6 +26,10 @@
          create_logically_air_gapped_backup_vault/4,
          create_report_plan/2,
          create_report_plan/3,
+         create_restore_testing_plan/2,
+         create_restore_testing_plan/3,
+         create_restore_testing_selection/3,
+         create_restore_testing_selection/4,
          delete_backup_plan/3,
          delete_backup_plan/4,
          delete_backup_selection/4,
@@ -44,6 +48,10 @@
          delete_recovery_point/5,
          delete_report_plan/3,
          delete_report_plan/4,
+         delete_restore_testing_plan/3,
+         delete_restore_testing_plan/4,
+         delete_restore_testing_selection/4,
+         delete_restore_testing_selection/5,
          describe_backup_job/2,
          describe_backup_job/4,
          describe_backup_job/5,
@@ -107,6 +115,18 @@
          get_recovery_point_restore_metadata/3,
          get_recovery_point_restore_metadata/5,
          get_recovery_point_restore_metadata/6,
+         get_restore_job_metadata/2,
+         get_restore_job_metadata/4,
+         get_restore_job_metadata/5,
+         get_restore_testing_inferred_metadata/3,
+         get_restore_testing_inferred_metadata/5,
+         get_restore_testing_inferred_metadata/6,
+         get_restore_testing_plan/2,
+         get_restore_testing_plan/4,
+         get_restore_testing_plan/5,
+         get_restore_testing_selection/3,
+         get_restore_testing_selection/5,
+         get_restore_testing_selection/6,
          get_supported_resource_types/1,
          get_supported_resource_types/3,
          get_supported_resource_types/4,
@@ -170,6 +190,15 @@
          list_restore_jobs/1,
          list_restore_jobs/3,
          list_restore_jobs/4,
+         list_restore_jobs_by_protected_resource/2,
+         list_restore_jobs_by_protected_resource/4,
+         list_restore_jobs_by_protected_resource/5,
+         list_restore_testing_plans/1,
+         list_restore_testing_plans/3,
+         list_restore_testing_plans/4,
+         list_restore_testing_selections/2,
+         list_restore_testing_selections/4,
+         list_restore_testing_selections/5,
          list_tags/2,
          list_tags/4,
          list_tags/5,
@@ -179,6 +208,8 @@
          put_backup_vault_lock_configuration/4,
          put_backup_vault_notifications/3,
          put_backup_vault_notifications/4,
+         put_restore_validation_result/3,
+         put_restore_validation_result/4,
          start_backup_job/2,
          start_backup_job/3,
          start_copy_job/2,
@@ -204,7 +235,11 @@
          update_region_settings/2,
          update_region_settings/3,
          update_report_plan/3,
-         update_report_plan/4]).
+         update_report_plan/4,
+         update_restore_testing_plan/3,
+         update_restore_testing_plan/4,
+         update_restore_testing_selection/4,
+         update_restore_testing_selection/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -423,6 +458,78 @@ create_report_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/report-plans"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This is the first of two steps to create a restore testing plan; once
+%% this request is successful, finish the procedure with request
+%% CreateRestoreTestingSelection.
+%%
+%% You must include the parameter RestoreTestingPlan. You may optionally
+%% include CreatorRequestId and Tags.
+create_restore_testing_plan(Client, Input) ->
+    create_restore_testing_plan(Client, Input, []).
+create_restore_testing_plan(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-testing/plans"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request can be sent after CreateRestoreTestingPlan request
+%% returns successfully.
+%%
+%% This is the second part of creating a resource testing plan, and it must
+%% be completed sequentially.
+%%
+%% This consists of `RestoreTestingSelectionName',
+%% `ProtectedResourceType', and one of the following:
+%%
+%% <ul> <li> `ProtectedResourceArns'
+%%
+%% </li> <li> `ProtectedResourceConditions'
+%%
+%% </li> </ul> Each protected resource type can have one single value.
+%%
+%% A restore testing selection can include a wildcard value (&quot;*&quot;)
+%% for `ProtectedResourceArns' along with
+%% `ProtectedResourceConditions'. Alternatively, you can include up to 30
+%% specific protected resource ARNs in `ProtectedResourceArns'.
+%%
+%% Cannot select by both protected resource types AND specific ARNs. Request
+%% will fail if both are included.
+create_restore_testing_selection(Client, RestoreTestingPlanName, Input) ->
+    create_restore_testing_selection(Client, RestoreTestingPlanName, Input, []).
+create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
+    SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -660,6 +767,59 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = delete,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request deletes the specified restore testing plan.
+%%
+%% Deletion can only successfully occur if all associated restore testing
+%% selections are deleted first.
+delete_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
+    delete_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
+delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Input the Restore Testing Plan name and Restore Testing Selection
+%% name.
+%%
+%% All testing selections associated with a restore testing plan must be
+%% deleted before the restore testing plan can be deleted.
+delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
+    delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
+delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -1231,6 +1391,113 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
         {<<"backupVaultAccountId">>, maps:get(<<"backupVaultAccountId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This request returns the metadata for the specified restore job.
+get_restore_job_metadata(Client, RestoreJobId)
+  when is_map(Client) ->
+    get_restore_job_metadata(Client, RestoreJobId, #{}, #{}).
+
+get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, []).
+
+get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This request returns the minimal required set of metadata needed to
+%% start a restore job with secure default settings.
+%%
+%% `BackupVaultName' and `RecoveryPointArn' are required parameters.
+%% `BackupVaultAccountId' is an optional parameter.
+get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
+  when is_map(Client) ->
+    get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
+
+get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
+
+get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-testing/inferred-metadata"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"BackupVaultAccountId">>, maps:get(<<"BackupVaultAccountId">>, QueryMap, undefined)},
+        {<<"BackupVaultName">>, BackupVaultName},
+        {<<"RecoveryPointArn">>, RecoveryPointArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns `RestoreTestingPlan' details for the specified
+%% `RestoreTestingPlanName'.
+%%
+%% The details are the body of a restore testing plan in JSON format, in
+%% addition to plan metadata.
+get_restore_testing_plan(Client, RestoreTestingPlanName)
+  when is_map(Client) ->
+    get_restore_testing_plan(Client, RestoreTestingPlanName, #{}, #{}).
+
+get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
+
+get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns RestoreTestingSelection, which displays resources and
+%% elements of the restore testing plan.
+get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName)
+  when is_map(Client) ->
+    get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, #{}, #{}).
+
+get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, []).
+
+get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1919,9 +2186,105 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"restoreTestingPlanArn">>, maps:get(<<"restoreTestingPlanArn">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This returns restore jobs that contain the specified protected
+%% resource.
+%%
+%% You must include `ResourceArn'. You can optionally include
+%% `NextToken', `ByStatus', `MaxResults',
+%% `ByRecoveryPointCreationDateAfter' , and
+%% `ByRecoveryPointCreationDateBefore'.
+list_restore_jobs_by_protected_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_restore_jobs_by_protected_resource(Client, ResourceArn, #{}, #{}).
+
+list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/restore-jobs/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"recoveryPointCreationDateAfter">>, maps:get(<<"recoveryPointCreationDateAfter">>, QueryMap, undefined)},
+        {<<"recoveryPointCreationDateBefore">>, maps:get(<<"recoveryPointCreationDateBefore">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of restore testing plans.
+list_restore_testing_plans(Client)
+  when is_map(Client) ->
+    list_restore_testing_plans(Client, #{}, #{}).
+
+list_restore_testing_plans(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_testing_plans(Client, QueryMap, HeadersMap, []).
+
+list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-testing/plans"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of restore testing selections.
+%%
+%% Can be filtered by `MaxResults' and `RestoreTestingPlanName'.
+list_restore_testing_selections(Client, RestoreTestingPlanName)
+  when is_map(Client) ->
+    list_restore_testing_selections(Client, RestoreTestingPlanName, #{}, #{}).
+
+list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
+
+list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2030,6 +2393,33 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request allows you to send your independent self-run restore
+%% test validation results.
+%%
+%% `RestoreJobId' and `ValidationStatus' are required. Optionally,
+%% you can input a `ValidationStatusMessage'.
+put_restore_validation_result(Client, RestoreJobId, Input) ->
+    put_restore_validation_result(Client, RestoreJobId, Input, []).
+put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-jobs/", aws_util:encode_uri(RestoreJobId), "/validations"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -2373,6 +2763,75 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Method = put,
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This request will send changes to your specified restore testing
+%% plan.
+%%
+%% `RestoreTestingPlanName' cannot be updated after it is created.
+%%
+%% `RecoveryPointSelection' can contain:
+%%
+%% <ul> <li> `Algorithm'
+%%
+%% </li> <li> `ExcludeVaults'
+%%
+%% </li> <li> `IncludeVaults'
+%%
+%% </li> <li> `RecoveryPointTypes'
+%%
+%% </li> <li> `SelectionWindowDays'
+%%
+%% </li> </ul>
+update_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
+    update_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
+update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Most elements except the `RestoreTestingSelectionName' can be
+%% updated with this request.
+%%
+%% `RestoreTestingSelection' can use either protected resource ARNs or
+%% conditions, but not both. That is, if your selection has
+%% `ProtectedResourceArns', requesting an update with the parameter
+%% `ProtectedResourceConditions' will be unsuccessful.
+update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
+    update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
+update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/restore-testing/plans/", aws_util:encode_uri(RestoreTestingPlanName), "/selections/", aws_util:encode_uri(RestoreTestingSelectionName), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}

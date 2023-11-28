@@ -9,23 +9,39 @@
 
 -export([create_experiment_template/2,
          create_experiment_template/3,
+         create_target_account_configuration/4,
+         create_target_account_configuration/5,
          delete_experiment_template/3,
          delete_experiment_template/4,
+         delete_target_account_configuration/4,
+         delete_target_account_configuration/5,
          get_action/2,
          get_action/4,
          get_action/5,
          get_experiment/2,
          get_experiment/4,
          get_experiment/5,
+         get_experiment_target_account_configuration/3,
+         get_experiment_target_account_configuration/5,
+         get_experiment_target_account_configuration/6,
          get_experiment_template/2,
          get_experiment_template/4,
          get_experiment_template/5,
+         get_target_account_configuration/3,
+         get_target_account_configuration/5,
+         get_target_account_configuration/6,
          get_target_resource_type/2,
          get_target_resource_type/4,
          get_target_resource_type/5,
          list_actions/1,
          list_actions/3,
          list_actions/4,
+         list_experiment_resolved_targets/2,
+         list_experiment_resolved_targets/4,
+         list_experiment_resolved_targets/5,
+         list_experiment_target_account_configurations/2,
+         list_experiment_target_account_configurations/4,
+         list_experiment_target_account_configurations/5,
          list_experiment_templates/1,
          list_experiment_templates/3,
          list_experiment_templates/4,
@@ -35,6 +51,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_target_account_configurations/2,
+         list_target_account_configurations/4,
+         list_target_account_configurations/5,
          list_target_resource_types/1,
          list_target_resource_types/3,
          list_target_resource_types/4,
@@ -47,7 +66,9 @@
          untag_resource/3,
          untag_resource/4,
          update_experiment_template/3,
-         update_experiment_template/4]).
+         update_experiment_template/4,
+         update_target_account_configuration/4,
+         update_target_account_configuration/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -71,7 +92,7 @@
 %% experiment is running, the experiment is automatically stopped. You can
 %% define a stop condition as a CloudWatch alarm.
 %%
-%% </li> </ul> For more information, see Experiment templates in the Fault
+%% </li> </ul> For more information, see experiment templates in the Fault
 %% Injection Simulator User Guide.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
@@ -95,12 +116,64 @@ create_experiment_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a target account configuration for the experiment template.
+%%
+%% A target account configuration is required when `accountTargeting' of
+%% `experimentOptions' is set to `multi-account'. For more
+%% information, see experiment options in the Fault Injection Simulator User
+%% Guide.
+create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
+    create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
+create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified experiment template.
 delete_experiment_template(Client, Id, Input) ->
     delete_experiment_template(Client, Id, Input, []).
 delete_experiment_template(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified target account configuration of the experiment
+%% template.
+delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
+    delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
+delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -164,6 +237,30 @@ get_experiment(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified target account configuration of
+%% the experiment.
+get_experiment_target_account_configuration(Client, AccountId, ExperimentId)
+  when is_map(Client) ->
+    get_experiment_target_account_configuration(Client, AccountId, ExperimentId, #{}, #{}).
+
+get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap, []).
+
+get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the specified experiment template.
 get_experiment_template(Client, Id)
   when is_map(Client) ->
@@ -176,6 +273,30 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap)
 get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified target account configuration of
+%% the experiment template.
+get_target_account_configuration(Client, AccountId, ExperimentTemplateId)
+  when is_map(Client) ->
+    get_target_account_configuration(Client, AccountId, ExperimentTemplateId, #{}, #{}).
+
+get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap, []).
+
+get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -232,6 +353,62 @@ list_actions(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the resolved targets information of the specified experiment.
+list_experiment_resolved_targets(Client, ExperimentId)
+  when is_map(Client) ->
+    list_experiment_resolved_targets(Client, ExperimentId, #{}, #{}).
+
+list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, []).
+
+list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/resolvedTargets"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetName">>, maps:get(<<"targetName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the target account configurations of the specified experiment.
+list_experiment_target_account_configurations(Client, ExperimentId)
+  when is_map(Client) ->
+    list_experiment_target_account_configurations(Client, ExperimentId, #{}, #{}).
+
+list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap, []).
+
+list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experiments/", aws_util:encode_uri(ExperimentId), "/targetAccountConfigurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -314,6 +491,35 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the target account configurations of the specified experiment
+%% template.
+list_target_account_configurations(Client, ExperimentTemplateId)
+  when is_map(Client) ->
+    list_target_account_configurations(Client, ExperimentTemplateId, #{}, #{}).
+
+list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap, []).
+
+list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -444,6 +650,30 @@ update_experiment_template(Client, Id, Input) ->
 update_experiment_template(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/experimentTemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the target account configuration for the specified experiment
+%% template.
+update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
+    update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
+update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/experimentTemplates/", aws_util:encode_uri(ExperimentTemplateId), "/targetAccountConfigurations/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

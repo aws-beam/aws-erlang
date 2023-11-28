@@ -47,6 +47,8 @@
          create_delivery/3,
          create_export_task/2,
          create_export_task/3,
+         create_log_anomaly_detector/2,
+         create_log_anomaly_detector/3,
          create_log_group/2,
          create_log_group/3,
          create_log_stream/2,
@@ -65,6 +67,8 @@
          delete_delivery_source/3,
          delete_destination/2,
          delete_destination/3,
+         delete_log_anomaly_detector/2,
+         delete_log_anomaly_detector/3,
          delete_log_group/2,
          delete_log_group/3,
          delete_log_stream/2,
@@ -119,6 +123,8 @@
          get_delivery_destination_policy/3,
          get_delivery_source/2,
          get_delivery_source/3,
+         get_log_anomaly_detector/2,
+         get_log_anomaly_detector/3,
          get_log_events/2,
          get_log_events/3,
          get_log_group_fields/2,
@@ -127,6 +133,10 @@
          get_log_record/3,
          get_query_results/2,
          get_query_results/3,
+         list_anomalies/2,
+         list_anomalies/3,
+         list_log_anomaly_detectors/2,
+         list_log_anomaly_detectors/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_tags_log_group/2,
@@ -170,7 +180,11 @@
          untag_log_group/2,
          untag_log_group/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_anomaly/2,
+         update_anomaly/3,
+         update_log_anomaly_detector/2,
+         update_log_anomaly_detector/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -328,6 +342,43 @@ create_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExportTask">>, Input, Options).
 
+%% @doc Creates an anomaly detector that regularly scans one or more log
+%% groups and look for patterns and anomalies in the logs.
+%%
+%% An anomaly detector can help surface issues by automatically discovering
+%% anomalies in your log event traffic. An anomaly detector uses machine
+%% learning algorithms to scan log events and find patterns. A pattern is a
+%% shared text structure that recurs among your log fields. Patterns provide
+%% a useful tool for analyzing large sets of logs because a large number of
+%% log events can often be compressed into a few patterns.
+%%
+%% The anomaly detector uses pattern recognition to find `anomalies',
+%% which are unusual log events. It uses the `evaluationFrequency' to
+%% compare current log events and patterns with trained baselines.
+%%
+%% Fields within a pattern are called tokens. Fields that vary within a
+%% pattern, such as a request ID or timestamp, are referred to as dynamic
+%% tokens and represented by `&lt;*&gt;'.
+%%
+%% The following is an example of a pattern:
+%%
+%% `[INFO] Request time: &lt;*&gt; ms'
+%%
+%% This pattern represents log events like `[INFO] Request time: 327 ms'
+%% and other similar log events that differ only by the number, in this csse
+%% 327. When the pattern is displayed, the different numbers are replaced by
+%% `&lt;*&gt;'
+%%
+%% Any parts of log events that are masked as sensitive data are not scanned
+%% for anomalies. For more information about masking sensitive data, see Help
+%% protect sensitive log data with masking.
+create_log_anomaly_detector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_log_anomaly_detector(Client, Input, []).
+create_log_anomaly_detector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLogAnomalyDetector">>, Input, Options).
+
 %% @doc Creates a log group with the specified name.
 %%
 %% You can create up to 1,000,000 log groups per Region per account.
@@ -483,6 +534,14 @@ delete_destination(Client, Input)
 delete_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDestination">>, Input, Options).
+
+%% @doc Deletes the specified CloudWatch Logs anomaly detector.
+delete_log_anomaly_detector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_log_anomaly_detector(Client, Input, []).
+delete_log_anomaly_detector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLogAnomalyDetector">>, Input, Options).
 
 %% @doc Deletes the specified log group and permanently deletes all the
 %% archived log events associated with the log group.
@@ -831,6 +890,15 @@ get_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliverySource">>, Input, Options).
 
+%% @doc Retrieves information about the log anomaly detector that you
+%% specify.
+get_log_anomaly_detector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_log_anomaly_detector(Client, Input, []).
+get_log_anomaly_detector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLogAnomalyDetector">>, Input, Options).
+
 %% @doc Lists log events from the specified log stream.
 %%
 %% You can list all of the log events or filter using a time range.
@@ -925,6 +993,25 @@ get_query_results(Client, Input)
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
+
+%% @doc Returns a list of anomalies that log anomaly detectors have found.
+%%
+%% For details about the structure format of each anomaly object that is
+%% returned, see the example in this section.
+list_anomalies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_anomalies(Client, Input, []).
+list_anomalies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAnomalies">>, Input, Options).
+
+%% @doc Retrieves a list of the log anomaly detectors in the account.
+list_log_anomaly_detectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_log_anomaly_detectors(Client, Input, []).
+list_log_anomaly_detectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLogAnomalyDetectors">>, Input, Options).
 
 %% @doc Displays the tags associated with a CloudWatch Logs resource.
 %%
@@ -1515,6 +1602,37 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Use this operation to suppress anomaly detection for a specified
+%% anomaly or pattern.
+%%
+%% If you suppress an anomaly, CloudWatch Logs won’t report new occurrences
+%% of that anomaly and won't update that anomaly with new data. If you
+%% suppress a pattern, CloudWatch Logs won’t report any anomalies related to
+%% that pattern.
+%%
+%% You must specify either `anomalyId' or `patternId', but you
+%% can't specify both parameters in the same operation.
+%%
+%% If you have previously used this operation to suppress detection of a
+%% pattern or anomaly, you can use it again to cause CloudWatch Logs to end
+%% the suppression. To do this, use this operation and specify the anomaly or
+%% pattern to stop suppressing, and omit the `suppressionType' and
+%% `suppressionPeriod' parameters.
+update_anomaly(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_anomaly(Client, Input, []).
+update_anomaly(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAnomaly">>, Input, Options).
+
+%% @doc Updates an existing log anomaly detector.
+update_log_anomaly_detector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_log_anomaly_detector(Client, Input, []).
+update_log_anomaly_detector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

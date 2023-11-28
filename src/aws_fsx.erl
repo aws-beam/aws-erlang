@@ -11,6 +11,8 @@
          cancel_data_repository_task/3,
          copy_backup/2,
          copy_backup/3,
+         copy_snapshot_and_update_volume/2,
+         copy_snapshot_and_update_volume/3,
          create_backup/2,
          create_backup/3,
          create_data_repository_association/2,
@@ -57,6 +59,8 @@
          describe_file_system_aliases/3,
          describe_file_systems/2,
          describe_file_systems/3,
+         describe_shared_vpc_configuration/2,
+         describe_shared_vpc_configuration/3,
          describe_snapshots/2,
          describe_snapshots/3,
          describe_storage_virtual_machines/2,
@@ -83,6 +87,8 @@
          update_file_cache/3,
          update_file_system/2,
          update_file_system/3,
+         update_shared_vpc_configuration/2,
+         update_shared_vpc_configuration/3,
          update_snapshot/2,
          update_snapshot/3,
          update_storage_virtual_machine/2,
@@ -177,6 +183,18 @@ copy_backup(Client, Input)
 copy_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyBackup">>, Input, Options).
+
+%% @doc Updates an existing volume by using a snapshot from another Amazon
+%% FSx for OpenZFS file system.
+%%
+%% For more information, see on-demand data replication in the Amazon FSx for
+%% OpenZFS User Guide.
+copy_snapshot_and_update_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_snapshot_and_update_volume(Client, Input, []).
+copy_snapshot_and_update_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopySnapshotAndUpdateVolume">>, Input, Options).
 
 %% @doc Creates a backup of an existing Amazon FSx for Windows File Server
 %% file system, Amazon FSx for Lustre file system, Amazon FSx for NetApp
@@ -786,6 +804,18 @@ describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
 
+%% @doc Indicates whether participant accounts in your organization can
+%% create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that
+%% are shared by a virtual private cloud (VPC) owner.
+%%
+%% For more information, see the Amazon FSx for NetApp ONTAP User Guide.
+describe_shared_vpc_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_shared_vpc_configuration(Client, Input, []).
+describe_shared_vpc_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSharedVpcConfiguration">>, Input, Options).
+
 %% @doc Returns the description of specific Amazon FSx for OpenZFS snapshots,
 %% if a `SnapshotIds' value is provided.
 %%
@@ -846,8 +876,8 @@ describe_volumes(Client, Input, Options)
 %% system.
 %%
 %% If you attempt to disassociate a DNS alias that is not associated with the
-%% file system, Amazon FSx responds with a 400 Bad Request. For more
-%% information, see Working with DNS Aliases.
+%% file system, Amazon FSx responds with an HTTP status code 400 (Bad
+%% Request). For more information, see Working with DNS Aliases.
 %%
 %% The system generated response showing the DNS aliases that Amazon FSx is
 %% attempting to disassociate from the file system. Use the API operation to
@@ -1017,11 +1047,15 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `FsxAdminPassword'
 %%
+%% </li> <li> `HAPairs'
+%%
 %% </li> <li> `RemoveRouteTableIds'
 %%
 %% </li> <li> `StorageCapacity'
 %%
 %% </li> <li> `ThroughputCapacity'
+%%
+%% </li> <li> `ThroughputCapacityPerHAPair'
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'
 %%
@@ -1055,6 +1089,25 @@ update_file_system(Client, Input)
 update_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystem">>, Input, Options).
+
+%% @doc Configures whether participant accounts in your organization can
+%% create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that
+%% are shared by a virtual private cloud (VPC) owner.
+%%
+%% For more information, see the Amazon FSx for NetApp ONTAP User Guide.
+%%
+%% We strongly recommend that participant-created Multi-AZ file systems in
+%% the shared VPC are deleted before you disable this feature. Once the
+%% feature is disabled, these file systems will enter a `MISCONFIGURED'
+%% state and behave like Single-AZ file systems. For more information, see
+%% Important considerations before disabling shared VPC support for Multi-AZ
+%% file systems.
+update_shared_vpc_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_shared_vpc_configuration(Client, Input, []).
+update_shared_vpc_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSharedVpcConfiguration">>, Input, Options).
 
 %% @doc Updates the name of an Amazon FSx for OpenZFS snapshot.
 update_snapshot(Client, Input)

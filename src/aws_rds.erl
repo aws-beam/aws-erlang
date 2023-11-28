@@ -13,7 +13,7 @@
 %% businesses unique.
 %%
 %% Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
-%% PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
+%% PostgreSQL, Microsoft SQL Server, Oracle, Db2, or Amazon Aurora database
 %% server. These capabilities mean that the code, applications, and tools you
 %% already use today with your existing databases work with Amazon RDS
 %% without modification. Amazon RDS automatically backs up your database and
@@ -725,11 +725,12 @@ create_db_instance(Client, Input, Options)
 %% @doc Creates a new DB instance that acts as a read replica for an existing
 %% source DB instance or Multi-AZ DB cluster.
 %%
-%% You can create a read replica for a DB instance running MySQL, MariaDB,
-%% Oracle, PostgreSQL, or SQL Server. You can create a read replica for a
-%% Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see
-%% Working with read replicas and Migrating from a Multi-AZ DB cluster to a
-%% DB instance using a read replica in the Amazon RDS User Guide.
+%% You can create a read replica for a DB instance running Db2, MariaDB,
+%% MySQL, Oracle, PostgreSQL, or SQL Server. You can create a read replica
+%% for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more
+%% information, see Working with read replicas and Migrating from a Multi-AZ
+%% DB cluster to a DB instance using a read replica in the Amazon RDS User
+%% Guide.
 %%
 %% Amazon Aurora doesn't support this operation. To create a DB instance
 %% for an Aurora DB cluster, use the `CreateDBInstance' operation.
@@ -1689,7 +1690,7 @@ describe_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIntegrations">>, Input, Options).
 
-%% @doc Describes all available options.
+%% @doc Describes all available options for the specified engine.
 describe_option_group_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_option_group_options(Client, Input, []).
@@ -1705,8 +1706,8 @@ describe_option_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOptionGroups">>, Input, Options).
 
-%% @doc Returns a list of orderable DB instance options for the specified DB
-%% engine, DB engine version, and DB instance class.
+%% @doc Describes the orderable DB instance options for a specified DB
+%% engine.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
@@ -1967,7 +1968,7 @@ modify_certificates(Client, Input, Options)
 %% scaling points, see Autoscaling for Aurora Serverless v1 in the Amazon
 %% Aurora User Guide.
 %%
-%% This action only applies to Aurora Serverless v1 DB clusters.
+%% This operation only applies to Aurora Serverless v1 DB clusters.
 modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_current_db_cluster_capacity(Client, Input, []).
@@ -2017,7 +2018,7 @@ modify_db_cluster(Client, Input, Options)
 %% @doc Modifies the properties of an endpoint in an Amazon Aurora DB
 %% cluster.
 %%
-%% This action only applies to Aurora DB clusters.
+%% This operation only applies to Aurora DB clusters.
 modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_endpoint(Client, Input, []).
@@ -2034,10 +2035,10 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% After you create a DB cluster parameter group, you should wait at least 5
 %% minutes before creating your first DB cluster that uses that DB cluster
 %% parameter group as the default parameter group. This allows Amazon RDS to
-%% fully complete the create action before the parameter group is used as the
-%% default for a new DB cluster. This is especially important for parameters
-%% that are critical when creating the default database for a DB cluster,
-%% such as the character set for the default database defined by the
+%% fully complete the create operation before the parameter group is used as
+%% the default for a new DB cluster. This is especially important for
+%% parameters that are critical when creating the default database for a DB
+%% cluster, such as the character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
 %% option of the Amazon RDS console or the `DescribeDBClusterParameters'
 %% operation to verify that your DB cluster parameter group has been created
@@ -2116,8 +2117,8 @@ modify_db_instance(Client, Input, Options)
 %% After you modify a DB parameter group, you should wait at least 5 minutes
 %% before creating your first DB instance that uses that DB parameter group
 %% as the default parameter group. This allows Amazon RDS to fully complete
-%% the modify action before the parameter group is used as the default for a
-%% new DB instance. This is especially important for parameters that are
+%% the modify operation before the parameter group is used as the default for
+%% a new DB instance. This is especially important for parameters that are
 %% critical when creating the default database for a DB instance, such as the
 %% character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
@@ -2159,7 +2160,7 @@ modify_db_proxy_target_group(Client, Input, Options)
 %% The snapshot can be encrypted or unencrypted, but not shared or public.
 %%
 %% Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
-%% Oracle. This command doesn't apply to RDS Custom.
+%% Oracle. This operation doesn't apply to RDS Custom or RDS for Db2.
 modify_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot(Client, Input, []).
@@ -2359,7 +2360,7 @@ register_db_proxy_targets(Client, Input, Options)
 %% instead of being read-only and receiving data from a primary cluster in a
 %% different Region.
 %%
-%% This action only applies to Aurora DB clusters.
+%% This operation only applies to Aurora DB clusters.
 remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
@@ -2462,18 +2463,18 @@ reset_db_parameter_group(Client, Input, Options)
 %% Migrating Data from MySQL by Using an Amazon S3 Bucket in the Amazon
 %% Aurora User Guide.
 %%
-%% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance' action to create DB
-%% instances for the restored DB cluster, specifying the identifier of the
+%% This operation only restores the DB cluster, not the DB instances for that
+%% DB cluster. You must invoke the `CreateDBInstance' operation to create
+%% DB instances for the restored DB cluster, specifying the identifier of the
 %% restored DB cluster in `DBClusterIdentifier'. You can create DB
-%% instances only after the `RestoreDBClusterFromS3' action has completed
-%% and the DB cluster is available.
+%% instances only after the `RestoreDBClusterFromS3' operation has
+%% completed and the DB cluster is available.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters. The source DB engine must
-%% be MySQL.
+%% This operation only applies to Aurora DB clusters. The source DB engine
+%% must be MySQL.
 restore_db_cluster_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_s3(Client, Input, []).
@@ -2487,11 +2488,11 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% configuration. If you don't specify a security group, the new DB
 %% cluster is associated with the default security group.
 %%
-%% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance' action to create DB
-%% instances for the restored DB cluster, specifying the identifier of the
+%% This operation only restores the DB cluster, not the DB instances for that
+%% DB cluster. You must invoke the `CreateDBInstance' operation to create
+%% DB instances for the restored DB cluster, specifying the identifier of the
 %% restored DB cluster in `DBClusterIdentifier'. You can create DB
-%% instances only after the `RestoreDBClusterFromSnapshot' action has
+%% instances only after the `RestoreDBClusterFromSnapshot' operation has
 %% completed and the DB cluster is available.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
@@ -2514,12 +2515,13 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% original DB cluster, except that the new DB cluster is created with the
 %% default DB security group.
 %%
-%% For Aurora, this action only restores the DB cluster, not the DB instances
-%% for that DB cluster. You must invoke the `CreateDBInstance' action to
-%% create DB instances for the restored DB cluster, specifying the identifier
-%% of the restored DB cluster in `DBClusterIdentifier'. You can create DB
-%% instances only after the `RestoreDBClusterToPointInTime' action has
-%% completed and the DB cluster is available.
+%% For Aurora, this operation only restores the DB cluster, not the DB
+%% instances for that DB cluster. You must invoke the `CreateDBInstance'
+%% operation to create DB instances for the restored DB cluster, specifying
+%% the identifier of the restored DB cluster in `DBClusterIdentifier'.
+%% You can create DB instances only after the
+%% `RestoreDBClusterToPointInTime' operation has completed and the DB
+%% cluster is available.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
@@ -2545,12 +2547,13 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% If you want to replace your original DB instance with the new, restored DB
 %% instance, then rename your original DB instance before you call the
-%% RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
-%% instances with the same name. After you have renamed your original DB
+%% `RestoreDBInstanceFromDBSnapshot' operation. RDS doesn't allow two
+%% DB instances with the same name. After you have renamed your original DB
 %% instance with a different identifier, then you can pass the original name
-%% of the DB instance as the DBInstanceIdentifier in the call to the
-%% RestoreDBInstanceFromDBSnapshot action. The result is that you replace the
-%% original DB instance with the DB instance created from the snapshot.
+%% of the DB instance as the `DBInstanceIdentifier' in the call to the
+%% `RestoreDBInstanceFromDBSnapshot' operation. The result is that you
+%% replace the original DB instance with the DB instance created from the
+%% snapshot.
 %%
 %% If you are restoring from a shared manual DB snapshot, the
 %% `DBSnapshotIdentifier' must be the ARN of the shared DB snapshot.
@@ -2573,7 +2576,7 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% Importing Data into an Amazon RDS MySQL DB Instance in the Amazon RDS User
 %% Guide.
 %%
-%% This command doesn't apply to RDS Custom.
+%% This operation doesn't apply to RDS Custom.
 restore_db_instance_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_s3(Client, Input, []).
@@ -2595,8 +2598,8 @@ restore_db_instance_from_s3(Client, Input, Options)
 %% is associated with mirroring; in this case, the instance becomes a
 %% mirrored deployment and not a single-AZ deployment.
 %%
-%% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora, use `RestoreDBClusterToPointInTime'.
+%% This operation doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+%% For Aurora, use `RestoreDBClusterToPointInTime'.
 restore_db_instance_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_to_point_in_time(Client, Input, []).
@@ -2639,12 +2642,12 @@ start_activity_stream(Client, Input, Options)
 
 %% @doc Starts an Amazon Aurora DB cluster that was stopped using the Amazon
 %% Web Services console, the stop-db-cluster CLI command, or the
-%% StopDBCluster action.
+%% `StopDBCluster' operation.
 %%
 %% For more information, see Stopping and Starting an Aurora Cluster in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% This operation only applies to Aurora DB clusters.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
@@ -2654,7 +2657,7 @@ start_db_cluster(Client, Input, Options)
 
 %% @doc Starts an Amazon RDS DB instance that was stopped using the Amazon
 %% Web Services console, the stop-db-instance CLI command, or the
-%% StopDBInstance action.
+%% `StopDBInstance' operation.
 %%
 %% For more information, see Starting an Amazon RDS DB instance That Was
 %% Previously Stopped in the Amazon RDS User Guide.
@@ -2686,7 +2689,7 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %%
 %% The provided IAM role must have access to the S3 bucket.
 %%
-%% You can't export snapshot data from RDS Custom DB instances.
+%% You can't export snapshot data from Db2 or RDS Custom DB instances.
 %%
 %% You can't export cluster data from Multi-AZ DB clusters.
 %%
@@ -2705,7 +2708,7 @@ start_export_task(Client, Input, Options)
 
 %% @doc Stops a database activity stream that was started using the Amazon
 %% Web Services console, the `start-activity-stream' CLI command, or the
-%% `StartActivityStream' action.
+%% `StartActivityStream' operation.
 %%
 %% For more information, see Monitoring Amazon Aurora with Database Activity
 %% Streams in the Amazon Aurora User Guide or Monitoring Amazon RDS with
@@ -2726,7 +2729,7 @@ stop_activity_stream(Client, Input, Options)
 %% For more information, see Stopping and Starting an Aurora Cluster in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% This operation only applies to Aurora DB clusters.
 stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
