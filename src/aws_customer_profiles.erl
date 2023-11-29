@@ -44,6 +44,8 @@
          delete_profile_object_type/5,
          delete_workflow/4,
          delete_workflow/5,
+         detect_profile_object_type/3,
+         detect_profile_object_type/4,
          get_auto_merging_preview/3,
          get_auto_merging_preview/4,
          get_calculated_attribute_definition/3,
@@ -525,6 +527,30 @@ delete_workflow(Client, DomainName, WorkflowId, Input) ->
 delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
     Method = delete,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The process of detecting profile object type mapping by using given
+%% objects.
+detect_profile_object_type(Client, DomainName, Input) ->
+    detect_profile_object_type(Client, DomainName, Input, []).
+detect_profile_object_type(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/detect/object-types"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

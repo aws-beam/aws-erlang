@@ -21,12 +21,16 @@
 
 -export([activate_evaluation_form/4,
          activate_evaluation_form/5,
+         associate_analytics_data_set/3,
+         associate_analytics_data_set/4,
          associate_approved_origin/3,
          associate_approved_origin/4,
          associate_bot/3,
          associate_bot/4,
          associate_default_vocabulary/4,
          associate_default_vocabulary/5,
+         associate_flow/3,
+         associate_flow/4,
          associate_instance_storage_config/3,
          associate_instance_storage_config/4,
          associate_lambda_function/3,
@@ -43,6 +47,10 @@
          associate_security_key/4,
          associate_traffic_distribution_group_user/3,
          associate_traffic_distribution_group_user/4,
+         batch_associate_analytics_data_set/3,
+         batch_associate_analytics_data_set/4,
+         batch_disassociate_analytics_data_set/3,
+         batch_disassociate_analytics_data_set/4,
          batch_get_flow_association/3,
          batch_get_flow_association/4,
          batch_put_contact/3,
@@ -208,10 +216,14 @@
          describe_vocabulary/3,
          describe_vocabulary/5,
          describe_vocabulary/6,
+         disassociate_analytics_data_set/3,
+         disassociate_analytics_data_set/4,
          disassociate_approved_origin/3,
          disassociate_approved_origin/4,
          disassociate_bot/3,
          disassociate_bot/4,
+         disassociate_flow/5,
+         disassociate_flow/6,
          disassociate_instance_storage_config/4,
          disassociate_instance_storage_config/5,
          disassociate_lambda_function/3,
@@ -240,6 +252,9 @@
          get_federation_token/2,
          get_federation_token/4,
          get_federation_token/5,
+         get_flow_association/4,
+         get_flow_association/6,
+         get_flow_association/7,
          get_metric_data/3,
          get_metric_data/4,
          get_metric_data_v2/2,
@@ -253,9 +268,14 @@
          get_traffic_distribution/2,
          get_traffic_distribution/4,
          get_traffic_distribution/5,
+         import_phone_number/2,
+         import_phone_number/3,
          list_agent_statuses/2,
          list_agent_statuses/4,
          list_agent_statuses/5,
+         list_analytics_data_associations/2,
+         list_analytics_data_associations/4,
+         list_analytics_data_associations/5,
          list_approved_origins/2,
          list_approved_origins/4,
          list_approved_origins/5,
@@ -282,6 +302,9 @@
          list_evaluation_forms/2,
          list_evaluation_forms/4,
          list_evaluation_forms/5,
+         list_flow_associations/2,
+         list_flow_associations/4,
+         list_flow_associations/5,
          list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
@@ -320,6 +343,8 @@
          list_quick_connects/2,
          list_quick_connects/4,
          list_quick_connects/5,
+         list_realtime_contact_analysis_segments_v2/4,
+         list_realtime_contact_analysis_segments_v2/5,
          list_routing_profile_queues/3,
          list_routing_profile_queues/5,
          list_routing_profile_queues/6,
@@ -398,6 +423,8 @@
          search_users/3,
          search_vocabularies/3,
          search_vocabularies/4,
+         send_chat_integration_event/2,
+         send_chat_integration_event/3,
          start_chat_contact/2,
          start_chat_contact/3,
          start_contact_evaluation/3,
@@ -410,6 +437,8 @@
          start_outbound_voice_contact/3,
          start_task_contact/2,
          start_task_contact/3,
+         start_web_r_t_c_contact/2,
+         start_web_r_t_c_contact/3,
          stop_contact/2,
          stop_contact/3,
          stop_contact_recording/2,
@@ -549,6 +578,33 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
+%% Associates the specified dataset for a Amazon Connect instance with the
+%% target account. You can associate only one dataset in a single call.
+associate_analytics_data_set(Client, InstanceId, Input) ->
+    associate_analytics_data_set(Client, InstanceId, Input, []).
+associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
 %% Associates an approved origin to an Amazon Connect instance.
 associate_approved_origin(Client, InstanceId, Input) ->
     associate_approved_origin(Client, InstanceId, Input, []).
@@ -608,6 +664,29 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0) ->
     Method = put,
     Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a connect resource to a flow.
+associate_flow(Client, InstanceId, Input) ->
+    associate_flow(Client, InstanceId, Input, []).
+associate_flow(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -829,6 +908,61 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Associates a list of analytics datasets for a given Amazon Connect
+%% instance to a target account. You can associate multiple datasets in a
+%% single call.
+batch_associate_analytics_data_set(Client, InstanceId, Input) ->
+    batch_associate_analytics_data_set(Client, InstanceId, Input, []).
+batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Removes a list of analytics datasets associated with a given Amazon
+%% Connect instance. You can disassociate multiple datasets in a single call.
+batch_disassociate_analytics_data_set(Client, InstanceId, Input) ->
+    batch_disassociate_analytics_data_set(Client, InstanceId, Input, []).
+batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1445,8 +1579,8 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %% management. `FirstName' and `LastName' are required if you are
 %% using Amazon Connect or SAML for identity management.
 %%
-%% For information about how to create user accounts using the Amazon Connect
-%% console, see Add Users in the Amazon Connect Administrator Guide.
+%% For information about how to create users using the Amazon Connect admin
+%% website, see Add Users in the Amazon Connect Administrator Guide.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 create_user(Client, InstanceId, Input0, Options0) ->
@@ -2608,7 +2742,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the specified user account.
+%% @doc Describes the specified user.
 %%
 %% You can find the instance ID in the Amazon Connect console (it’s the final
 %% part of the ARN). The console does not display the user IDs. Instead, list
@@ -2743,6 +2877,32 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Opti
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
+%% Removes the dataset ID associated with a given Amazon Connect instance.
+disassociate_analytics_data_set(Client, InstanceId, Input) ->
+    disassociate_analytics_data_set(Client, InstanceId, Input, []).
+disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
 %% Revokes access to integrated applications from Amazon Connect.
 disassociate_approved_origin(Client, InstanceId, Input) ->
     disassociate_approved_origin(Client, InstanceId, Input, []).
@@ -2777,6 +2937,29 @@ disassociate_bot(Client, InstanceId, Input) ->
 disassociate_bot(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a connect resource from a flow.
+disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input) ->
+    disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input, []).
+disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0) ->
+    Method = delete,
+    Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -3153,6 +3336,29 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the flow associated for a given resource.
+get_flow_association(Client, InstanceId, ResourceId, ResourceType)
+  when is_map(Client) ->
+    get_flow_association(Client, InstanceId, ResourceId, ResourceType, #{}, #{}).
+
+get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, []).
+
+get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flow-associations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ResourceId), "/", aws_util:encode_uri(ResourceType), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets historical metric data from the specified Amazon Connect
 %% instance.
 %%
@@ -3297,6 +3503,33 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Imports a claimed phone number from an external service, such as
+%% Amazon Pinpoint, into an Amazon Connect instance.
+%%
+%% You can call this API only in the same Amazon Web Services Region where
+%% the Amazon Connect instance was created.
+import_phone_number(Client, Input) ->
+    import_phone_number(Client, Input, []).
+import_phone_number(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/phone-number/import"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -3322,6 +3555,39 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"AgentStatusTypes">>, maps:get(<<"AgentStatusTypes">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Lists the association status of requested dataset ID for a given Amazon
+%% Connect instance.
+list_analytics_data_associations(Client, InstanceId)
+  when is_map(Client) ->
+    list_analytics_data_associations(Client, InstanceId, #{}, #{}).
+
+list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/analytics-data/instance/", aws_util:encode_uri(InstanceId), "/association"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"DataSetId">>, maps:get(<<"DataSetId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -3597,6 +3863,35 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the flow association based on the filters.
+list_flow_associations(Client, InstanceId)
+  when is_map(Client) ->
+    list_flow_associations(Client, InstanceId, #{}, #{}).
+
+list_flow_associations(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/flow-associations-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"ResourceType">>, maps:get(<<"ResourceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4038,6 +4333,30 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a list of analysis segments for a real-time analysis
+%% session.
+list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input) ->
+    list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input, []).
+list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/list-real-time-analysis-segments-v2/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the queues associated with a routing profile.
 list_routing_profile_queues(Client, InstanceId, RoutingProfileId)
@@ -4576,7 +4895,7 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% number was claimed.
 %%
 %% To release phone numbers from a traffic distribution group, use the
-%% `ReleasePhoneNumber' API, not the Amazon Connect console.
+%% `ReleasePhoneNumber' API, not the Amazon Connect admin website.
 %%
 %% After releasing a phone number, the phone number enters into a cooldown
 %% period of 30 days. It cannot be searched for or claimed again until the
@@ -4929,6 +5248,45 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Processes chat integration events from Amazon Web Services or
+%% external integrations to Amazon Connect.
+%%
+%% A chat integration event includes:
+%%
+%% <ul> <li> SourceId, DestinationId, and Subtype: a set of identifiers,
+%% uniquely representing a chat
+%%
+%% </li> <li> ChatEvent: details of the chat action to perform such as
+%% sending a message, event, or disconnecting from a chat
+%%
+%% </li> </ul> When a chat integration event is sent with chat identifiers
+%% that do not map to an active chat contact, a new chat contact is also
+%% created before handling chat action.
+%%
+%% Access to this API is currently restricted to Amazon Pinpoint for
+%% supporting SMS integration.
+send_chat_integration_event(Client, Input) ->
+    send_chat_integration_event(Client, Input, []).
+send_chat_integration_event(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/chat-integration-event"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a flow to start a new chat for the customer.
 %%
 %% Response of this API provides a token required to obtain credentials from
@@ -5165,6 +5523,33 @@ start_task_contact(Client, Input) ->
 start_task_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/task"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Places an inbound in-app, web, or video call to a contact, and then
+%% initiates the flow.
+%%
+%% It performs the actions in the flow that are specified (in ContactFlowId)
+%% and present in the Amazon Connect instance (specified as InstanceId).
+start_web_r_t_c_contact(Client, Input) ->
+    start_web_r_t_c_contact(Client, Input, []).
+start_web_r_t_c_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/webrtc"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Describes the API operations for creating and managing Bedrock
+%% @doc Describes the API operations for creating and managing Amazon Bedrock
 %% models.
 -module(aws_bedrock).
 
@@ -67,9 +67,9 @@
 %% data. After the model-customization job completes successfully, your
 %% custom model resource will be ready to use. Training data contains input
 %% and output text for each record in a JSONL format. Optionally, you can
-%% specify validation data in the same format as the training data. Bedrock
-%% returns validation loss metrics and output generations after the job
-%% completes.
+%% specify validation data in the same format as the training data. Amazon
+%% Bedrock returns validation loss metrics and output generations after the
+%% job completes.
 %%
 %% Model-customization jobs are asynchronous and the completion time depends
 %% on the base model and the training/validation data size. To monitor a job,
@@ -200,9 +200,9 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the properties associated with a Bedrock custom model that you
-%% have created.For more information, see Custom models in the Bedrock User
-%% Guide.
+%% @doc Get the properties associated with a Amazon Bedrock custom model that
+%% you have created.For more information, see Custom models in the Bedrock
+%% User Guide.
 get_custom_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_custom_model(Client, ModelIdentifier, #{}, #{}).
@@ -225,7 +225,7 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get details about a Bedrock foundation model.
+%% @doc Get details about a Amazon Bedrock foundation model.
 get_foundation_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_foundation_model(Client, ModelIdentifier, #{}, #{}).
@@ -361,7 +361,7 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List of Bedrock foundation models that you can use.
+%% @doc List of Amazon Bedrock foundation models that you can use.
 %%
 %% For more information, see Foundation models in the Bedrock User Guide.
 list_foundation_models(Client)

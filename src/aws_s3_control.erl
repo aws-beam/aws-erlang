@@ -413,10 +413,11 @@ create_access_grants_location(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an access point and associates it with the specified bucket.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Managing Data Access with Amazon S3 Access
-%% Points in the Amazon S3 User Guide.
+%% Creates an access point and associates it with the specified bucket. For
+%% more information, see Managing Data Access with Amazon S3 Access Points in
+%% the Amazon S3 User Guide.
 %%
 %% S3 on Outposts only supports VPC-style access points.
 %%
@@ -464,10 +465,11 @@ create_access_point(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Transforming objects with Object Lambda Access
-%% Points in the Amazon S3 User Guide.
+%% Creates an Object Lambda Access Point. For more information, see
+%% Transforming objects with Object Lambda Access Points in the Amazon S3
+%% User Guide.
 %%
 %% The following actions are related to
 %% `CreateAccessPointForObjectLambda':
@@ -590,14 +592,18 @@ create_bucket(Client, Bucket, Input0, Options0) ->
         Result
     end.
 
-%% @doc You can use S3 Batch Operations to perform large-scale batch actions
-%% on Amazon S3 objects.
+%% @doc This operation creates an S3 Batch Operations job.
 %%
-%% Batch Operations can run a single action on lists of Amazon S3 objects
-%% that you specify. For more information, see S3 Batch Operations in the
-%% Amazon S3 User Guide.
+%% You can use S3 Batch Operations to perform large-scale batch actions on
+%% Amazon S3 objects. Batch Operations can run a single action on lists of
+%% Amazon S3 objects that you specify. For more information, see S3 Batch
+%% Operations in the Amazon S3 User Guide.
 %%
-%% This action creates a S3 Batch Operations job.
+%% <dl> <dt>Permissions</dt> <dd> For information about permissions required
+%% to use the Batch Operations, see Granting permissions for S3 Batch
+%% Operations in the Amazon S3 User Guide.
+%%
+%% </dd> </dl>
 %%
 %% Related actions include:
 %%
@@ -636,11 +642,11 @@ create_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Multi-Region Access Point and associates it with the
-%% specified buckets.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about creating Multi-Region Access Points, see
-%% Creating Multi-Region Access Points in the Amazon S3 User Guide.
+%% Creates a Multi-Region Access Point and associates it with the specified
+%% buckets. For more information about creating Multi-Region Access Points,
+%% see Creating Multi-Region Access Points in the Amazon S3 User Guide.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -872,7 +878,9 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified access point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Deletes the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -915,7 +923,9 @@ delete_access_point(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Deletes the specified Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `DeleteAccessPointForObjectLambda':
@@ -951,7 +961,9 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the access point policy for the specified access point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Deletes the access point policy for the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -992,7 +1004,9 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the resource policy for an Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Removes the resource policy for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `DeleteAccessPointPolicyForObjectLambda':
@@ -1322,12 +1336,12 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% @doc Removes the entire tag set from the specified S3 Batch Operations
 %% job.
 %%
-%% To use the `DeleteJobTagging' operation, you must have permission to
-%% perform the `s3:DeleteJobTagging' action. For more information, see
-%% Controlling access and labeling jobs using tags in the Amazon S3 User
-%% Guide.
+%% <dl> <dt>Permissions</dt> <dd> To use the `DeleteJobTagging'
+%% operation, you must have permission to perform the
+%% `s3:DeleteJobTagging' action. For more information, see Controlling
+%% access and labeling jobs using tags in the Amazon S3 User Guide.
 %%
-%% Related actions include:
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -1360,10 +1374,11 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Multi-Region Access Point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% This action does not delete the buckets associated with the Multi-Region
-%% Access Point, only the Multi-Region Access Point itself.
+%% Deletes a Multi-Region Access Point. This action does not delete the
+%% buckets associated with the Multi-Region Access Point, only the
+%% Multi-Region Access Point itself.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -1410,10 +1425,11 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the `PublicAccessBlock' configuration for an Amazon Web
-%% Services account.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Using Amazon S3 block public access.
+%% Removes the `PublicAccessBlock' configuration for an Amazon Web
+%% Services account. For more information, see Using Amazon S3 block public
+%% access.
 %%
 %% Related actions include:
 %%
@@ -1446,11 +1462,11 @@ delete_public_access_block(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon S3 Storage Lens configuration.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about S3 Storage Lens, see Assessing your storage
-%% activity and usage with Amazon S3 Storage Lens in the Amazon S3 User
-%% Guide.
+%% Deletes the Amazon S3 Storage Lens configuration. For more information
+%% about S3 Storage Lens, see Assessing your storage activity and usage with
+%% Amazon S3 Storage Lens in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfiguration' action. For more information, see
@@ -1480,11 +1496,11 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon S3 Storage Lens configuration tags.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about S3 Storage Lens, see Assessing your storage
-%% activity and usage with Amazon S3 Storage Lens in the Amazon S3 User
-%% Guide.
+%% Deletes the Amazon S3 Storage Lens configuration tags. For more
+%% information about S3 Storage Lens, see Assessing your storage activity and
+%% usage with Amazon S3 Storage Lens in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:DeleteStorageLensConfigurationTagging' action. For more
@@ -1552,7 +1568,10 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 %%
 %% For more information, see S3 Batch Operations in the Amazon S3 User Guide.
 %%
-%% Related actions include:
+%% <dl> <dt>Permissions</dt> <dd> To use the `DescribeJob' operation, you
+%% must have permission to perform the `s3:DescribeJob' action.
+%%
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -1589,12 +1608,12 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the status of an asynchronous request to manage a
-%% Multi-Region Access Point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about managing Multi-Region Access Points and how
-%% asynchronous requests work, see Managing Multi-Region Access Points in the
-%% Amazon S3 User Guide.
+%% Retrieves the status of an asynchronous request to manage a Multi-Region
+%% Access Point. For more information about managing Multi-Region Access
+%% Points and how asynchronous requests work, see Managing Multi-Region
+%% Access Points in the Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
 %%
@@ -1841,7 +1860,9 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns configuration information about the specified access point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns configuration information about the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -1886,7 +1907,9 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns configuration for an Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns configuration for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `GetAccessPointConfigurationForObjectLambda':
@@ -1920,8 +1943,10 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns configuration information about the specified Object Lambda
-%% Access Point
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns configuration information about the specified Object Lambda Access
+%% Point
 %%
 %% The following actions are related to `GetAccessPointForObjectLambda':
 %%
@@ -1958,7 +1983,9 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the access point policy associated with the specified access
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns the access point policy associated with the specified access
 %% point.
 %%
 %% The following actions are related to `GetAccessPointPolicy':
@@ -1994,7 +2021,9 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the resource policy for an Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns the resource policy for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `GetAccessPointPolicyForObjectLambda':
@@ -2030,12 +2059,12 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Indicates whether the specified access point currently has a policy
-%% that allows public access.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about public access through access points, see
-%% Managing Data Access with Amazon S3 access points in the Amazon S3 User
-%% Guide.
+%% Indicates whether the specified access point currently has a policy that
+%% allows public access. For more information about public access through
+%% access points, see Managing Data Access with Amazon S3 access points in
+%% the Amazon S3 User Guide.
 get_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
@@ -2062,8 +2091,10 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the status of the resource policy associated with an Object
-%% Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns the status of the resource policy associated with an Object Lambda
+%% Access Point.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, #{}, #{}).
@@ -2535,12 +2566,12 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 
 %% @doc Returns the tags on an S3 Batch Operations job.
 %%
-%% To use the `GetJobTagging' operation, you must have permission to
-%% perform the `s3:GetJobTagging' action. For more information, see
-%% Controlling access and labeling jobs using tags in the Amazon S3 User
-%% Guide.
+%% <dl> <dt>Permissions</dt> <dd> To use the `GetJobTagging' operation,
+%% you must have permission to perform the `s3:GetJobTagging' action. For
+%% more information, see Controlling access and labeling jobs using tags in
+%% the Amazon S3 User Guide.
 %%
-%% Related actions include:
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -2575,8 +2606,10 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns configuration information about the specified Multi-Region
-%% Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns configuration information about the specified Multi-Region Access
+%% Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -2620,8 +2653,10 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the access control policy of the specified Multi-Region
-%% Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns the access control policy of the specified Multi-Region Access
+%% Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -2662,8 +2697,10 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Indicates whether the specified Multi-Region Access Point has an
-%% access control policy that allows public access.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Indicates whether the specified Multi-Region Access Point has an access
+%% control policy that allows public access.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -2704,7 +2741,9 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the routing configuration for a Multi-Region Access Point,
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Returns the routing configuration for a Multi-Region Access Point,
 %% indicating which Regions are active or passive.
 %%
 %% To obtain routing control changes and failover requests, use the Amazon S3
@@ -2749,10 +2788,11 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the `PublicAccessBlock' configuration for an Amazon Web
-%% Services account.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Using Amazon S3 block public access.
+%% Retrieves the `PublicAccessBlock' configuration for an Amazon Web
+%% Services account. For more information, see Using Amazon S3 block public
+%% access.
 %%
 %% Related actions include:
 %%
@@ -2787,12 +2827,12 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the Amazon S3 Storage Lens configuration.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Assessing your storage activity and usage with
-%% Amazon S3 Storage Lens in the Amazon S3 User Guide. For a complete list of
-%% S3 Storage Lens metrics, see S3 Storage Lens metrics glossary in the
-%% Amazon S3 User Guide.
+%% Gets the Amazon S3 Storage Lens configuration. For more information, see
+%% Assessing your storage activity and usage with Amazon S3 Storage Lens in
+%% the Amazon S3 User Guide. For a complete list of S3 Storage Lens metrics,
+%% see S3 Storage Lens metrics glossary in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfiguration' action. For more information, see
@@ -2824,11 +2864,11 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the tags of Amazon S3 Storage Lens configuration.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about S3 Storage Lens, see Assessing your storage
-%% activity and usage with Amazon S3 Storage Lens in the Amazon S3 User
-%% Guide.
+%% Gets the tags of Amazon S3 Storage Lens configuration. For more
+%% information about S3 Storage Lens, see Assessing your storage activity and
+%% usage with Amazon S3 Storage Lens in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfigurationTagging' action. For more information,
@@ -3017,13 +3057,14 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the access points that are owned by the current
-%% account that's associated with the specified bucket.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% You can retrieve up to 1000 access points per call. If the specified
-%% bucket has more than 1,000 access points (or the number specified in
-%% `maxResults', whichever is less), the response will include a
-%% continuation token that you can use to list the additional access points.
+%% Returns a list of the access points that are owned by the current account
+%% that's associated with the specified bucket. You can retrieve up to
+%% 1000 access points per call. If the specified bucket has more than 1,000
+%% access points (or the number specified in `maxResults', whichever is
+%% less), the response will include a continuation token that you can use to
+%% list the additional access points.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3074,12 +3115,12 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns some or all (up to 1,000) access points associated with the
-%% Object Lambda Access Point per call.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% If there are more access points than what can be returned in one call, the
-%% response will include a continuation token that you can use to list the
-%% additional access points.
+%% Returns some or all (up to 1,000) access points associated with the Object
+%% Lambda Access Point per call. If there are more access points than what
+%% can be returned in one call, the response will include a continuation
+%% token that you can use to list the additional access points.
 %%
 %% The following actions are related to
 %% `ListAccessPointsForObjectLambda':
@@ -3122,13 +3163,16 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists current S3 Batch Operations jobs and jobs that have ended
-%% within the last 30 days for the Amazon Web Services account making the
-%% request.
+%% @doc Lists current S3 Batch Operations jobs as well as the jobs that have
+%% ended within the last 30 days for the Amazon Web Services account making
+%% the request.
 %%
 %% For more information, see S3 Batch Operations in the Amazon S3 User Guide.
 %%
-%% Related actions include:
+%% <dl> <dt>Permissions</dt> <dd> To use the `ListJobs' operation, you
+%% must have permission to perform the `s3:ListJobs' action.
+%%
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -3171,12 +3215,12 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the Multi-Region Access Points currently associated
-%% with the specified Amazon Web Services account.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% Each call can return up to 100 Multi-Region Access Points, the maximum
-%% number of Multi-Region Access Points that can be associated with a single
-%% account.
+%% Returns a list of the Multi-Region Access Points currently associated with
+%% the specified Amazon Web Services account. Each call can return up to 100
+%% Multi-Region Access Points, the maximum number of Multi-Region Access
+%% Points that can be associated with a single account.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -3225,11 +3269,11 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all Outposts buckets in an Outpost that are owned
-%% by the authenticated sender of the request.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information, see Using Amazon S3 on Outposts in the Amazon S3
-%% User Guide.
+%% Returns a list of all Outposts buckets in an Outpost that are owned by the
+%% authenticated sender of the request. For more information, see Using
+%% Amazon S3 on Outposts in the Amazon S3 User Guide.
 %%
 %% For an example of the request syntax for Amazon S3 on Outposts that uses
 %% the S3 on Outposts endpoint hostname prefix and `x-amz-outpost-id' in
@@ -3266,11 +3310,11 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of Amazon S3 Storage Lens configurations.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about S3 Storage Lens, see Assessing your storage
-%% activity and usage with Amazon S3 Storage Lens in the Amazon S3 User
-%% Guide.
+%% Gets a list of Amazon S3 Storage Lens configurations. For more information
+%% about S3 Storage Lens, see Assessing your storage activity and usage with
+%% Amazon S3 Storage Lens in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:ListStorageLensConfigurations' action. For more information, see
@@ -3420,7 +3464,9 @@ put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Replaces configuration for an Object Lambda Access Point.
+%% @doc This operation is not supported by directory buckets.
+%%
+%% Replaces configuration for an Object Lambda Access Point.
 %%
 %% The following actions are related to
 %% `PutAccessPointConfigurationForObjectLambda':
@@ -3452,10 +3498,11 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates an access policy with the specified access point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% Each access point can have only one policy, so a request made to this API
-%% replaces any existing policy associated with the specified access point.
+%% Associates an access policy with the specified access point. Each access
+%% point can have only one policy, so a request made to this API replaces any
+%% existing policy associated with the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -3496,11 +3543,11 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or replaces resource policy for an Object Lambda Access
-%% Point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For an example policy, see Creating Object Lambda Access Points in the
-%% Amazon S3 User Guide.
+%% Creates or replaces resource policy for an Object Lambda Access Point. For
+%% an example policy, see Creating Object Lambda Access Points in the Amazon
+%% S3 User Guide.
 %%
 %% The following actions are related to
 %% `PutAccessPointPolicyForObjectLambda':
@@ -3936,41 +3983,39 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% associated with the job. To modify the existing tag set, you can either
 %% replace the existing tag set entirely, or make changes within the existing
 %% tag set by retrieving the existing tag set using GetJobTagging, modify
-%% that tag set, and use this action to replace the tag set with the one you
-%% modified. For more information, see Controlling access and labeling jobs
-%% using tags in the Amazon S3 User Guide.
+%% that tag set, and use this operation to replace the tag set with the one
+%% you modified. For more information, see Controlling access and labeling
+%% jobs using tags in the Amazon S3 User Guide.
 %%
-%% <ul> <li> If you send this request with an empty tag set, Amazon S3
-%% deletes the existing tag set on the Batch Operations job. If you use this
-%% method, you are charged for a Tier 1 Request (PUT). For more information,
-%% see Amazon S3 pricing.
+%% If you send this request with an empty tag set, Amazon S3 deletes the
+%% existing tag set on the Batch Operations job. If you use this method, you
+%% are charged for a Tier 1 Request (PUT). For more information, see Amazon
+%% S3 pricing.
 %%
-%% </li> <li> For deleting existing tags for your Batch Operations job, a
+%% For deleting existing tags for your Batch Operations job, a
 %% DeleteJobTagging request is preferred because it achieves the same result
 %% without incurring charges.
 %%
-%% </li> <li> A few things to consider about using tags:
+%% A few things to consider about using tags:
 %%
-%% <ul> <li> Amazon S3 limits the maximum number of tags to 50 tags per job.
+%% Amazon S3 limits the maximum number of tags to 50 tags per job.
 %%
-%% </li> <li> You can associate up to 50 tags with a job as long as they have
-%% unique tag keys.
+%% You can associate up to 50 tags with a job as long as they have unique tag
+%% keys.
 %%
-%% </li> <li> A tag key can be up to 128 Unicode characters in length, and
-%% tag values can be up to 256 Unicode characters in length.
+%% A tag key can be up to 128 Unicode characters in length, and tag values
+%% can be up to 256 Unicode characters in length.
 %%
-%% </li> <li> The key and values are case sensitive.
+%% The key and values are case sensitive.
 %%
-%% </li> <li> For tagging-related restrictions related to characters and
-%% encodings, see User-Defined Tag Restrictions in the Billing and Cost
-%% Management User Guide.
+%% For tagging-related restrictions related to characters and encodings, see
+%% User-Defined Tag Restrictions in the Billing and Cost Management User
+%% Guide.
 %%
-%% </li> </ul> </li> </ul>
+%% <dl> <dt>Permissions</dt> <dd> To use the `PutJobTagging' operation,
+%% you must have permission to perform the `s3:PutJobTagging' action.
 %%
-%% To use the `PutJobTagging' operation, you must have permission to
-%% perform the `s3:PutJobTagging' action.
-%%
-%% Related actions include:
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -4003,12 +4048,12 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates an access control policy with the specified Multi-Region
-%% Access Point.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% Each Multi-Region Access Point can have only one policy, so a request made
-%% to this action replaces any existing policy that is associated with the
-%% specified Multi-Region Access Point.
+%% Associates an access control policy with the specified Multi-Region Access
+%% Point. Each Multi-Region Access Point can have only one policy, so a
+%% request made to this action replaces any existing policy that is
+%% associated with the specified Multi-Region Access Point.
 %%
 %% This action will always be routed to the US West (Oregon) Region. For more
 %% information about the restrictions around managing Multi-Region Access
@@ -4047,10 +4092,10 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or modifies the `PublicAccessBlock' configuration for an
-%% Amazon Web Services account.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For this operation, users must have the
+%% Creates or modifies the `PublicAccessBlock' configuration for an
+%% Amazon Web Services account. For this operation, users must have the
 %% `s3:PutAccountPublicAccessBlock' permission. For more information, see
 %% Using Amazon S3 block public access.
 %%
@@ -4085,12 +4130,12 @@ put_public_access_block(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Puts an Amazon S3 Storage Lens configuration.
+%% @doc This operation is not supported by directory buckets.
 %%
-%% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon S3 User Guide. For a complete list of S3
-%% Storage Lens metrics, see S3 Storage Lens metrics glossary in the Amazon
-%% S3 User Guide.
+%% Puts an Amazon S3 Storage Lens configuration. For more information about
+%% S3 Storage Lens, see Working with Amazon S3 Storage Lens in the Amazon S3
+%% User Guide. For a complete list of S3 Storage Lens metrics, see S3 Storage
+%% Lens metrics glossary in the Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:PutStorageLensConfiguration' action. For more information, see
@@ -4120,9 +4165,9 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Put or replace tags on an existing Amazon S3 Storage Lens
-%% configuration.
+%% @doc This operation is not supported by directory buckets.
 %%
+%% Put or replace tags on an existing Amazon S3 Storage Lens configuration.
 %% For more information about S3 Storage Lens, see Assessing your storage
 %% activity and usage with Amazon S3 Storage Lens in the Amazon S3 User
 %% Guide.
@@ -4155,9 +4200,9 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Submits an updated route configuration for a Multi-Region Access
-%% Point.
+%% @doc This operation is not supported by directory buckets.
 %%
+%% Submits an updated route configuration for a Multi-Region Access Point.
 %% This API operation updates the routing status for the specified Regions
 %% from active to passive, or from passive to active. A value of `0'
 %% indicates a passive status, which means that traffic won't be routed
@@ -4340,7 +4385,11 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% For more information, see S3 Batch Operations in the Amazon S3 User Guide.
 %%
-%% Related actions include:
+%% <dl> <dt>Permissions</dt> <dd> To use the `UpdateJobPriority'
+%% operation, you must have permission to perform the
+%% `s3:UpdateJobPriority' action.
+%%
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%
@@ -4378,11 +4427,14 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 
 %% @doc Updates the status for the specified job.
 %%
-%% Use this action to confirm that you want to run a job or to cancel an
+%% Use this operation to confirm that you want to run a job or to cancel an
 %% existing job. For more information, see S3 Batch Operations in the Amazon
 %% S3 User Guide.
 %%
-%% Related actions include:
+%% <dl> <dt>Permissions</dt> <dd> To use the `UpdateJobStatus' operation,
+%% you must have permission to perform the `s3:UpdateJobStatus' action.
+%%
+%% </dd> </dl> Related actions include:
 %%
 %% <ul> <li> CreateJob
 %%

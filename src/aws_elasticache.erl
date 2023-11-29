@@ -27,6 +27,8 @@
          batch_stop_update_action/3,
          complete_migration/2,
          complete_migration/3,
+         copy_serverless_cache_snapshot/2,
+         copy_serverless_cache_snapshot/3,
          copy_snapshot/2,
          copy_snapshot/3,
          create_cache_cluster/2,
@@ -41,6 +43,10 @@
          create_global_replication_group/3,
          create_replication_group/2,
          create_replication_group/3,
+         create_serverless_cache/2,
+         create_serverless_cache/3,
+         create_serverless_cache_snapshot/2,
+         create_serverless_cache_snapshot/3,
          create_snapshot/2,
          create_snapshot/3,
          create_user/2,
@@ -63,6 +69,10 @@
          delete_global_replication_group/3,
          delete_replication_group/2,
          delete_replication_group/3,
+         delete_serverless_cache/2,
+         delete_serverless_cache/3,
+         delete_serverless_cache_snapshot/2,
+         delete_serverless_cache_snapshot/3,
          delete_snapshot/2,
          delete_snapshot/3,
          delete_user/2,
@@ -93,6 +103,10 @@
          describe_reserved_cache_nodes/3,
          describe_reserved_cache_nodes_offerings/2,
          describe_reserved_cache_nodes_offerings/3,
+         describe_serverless_cache_snapshots/2,
+         describe_serverless_cache_snapshots/3,
+         describe_serverless_caches/2,
+         describe_serverless_caches/3,
          describe_service_updates/2,
          describe_service_updates/3,
          describe_snapshots/2,
@@ -105,6 +119,8 @@
          describe_users/3,
          disassociate_global_replication_group/2,
          disassociate_global_replication_group/3,
+         export_serverless_cache_snapshot/2,
+         export_serverless_cache_snapshot/3,
          failover_global_replication_group/2,
          failover_global_replication_group/3,
          increase_node_groups_in_global_replication_group/2,
@@ -127,6 +143,8 @@
          modify_replication_group/3,
          modify_replication_group_shard_configuration/2,
          modify_replication_group_shard_configuration/3,
+         modify_serverless_cache/2,
+         modify_serverless_cache/3,
          modify_user/2,
          modify_user/3,
          modify_user_group/2,
@@ -223,6 +241,16 @@ complete_migration(Client, Input)
 complete_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteMigration">>, Input, Options).
+
+%% @doc Creates a copy of an existing serverless cache’s snapshot.
+%%
+%% Available for Redis only.
+copy_serverless_cache_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_serverless_cache_snapshot(Client, Input, []).
+copy_serverless_cache_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopyServerlessCacheSnapshot">>, Input, Options).
 
 %% @doc Makes a copy of an existing snapshot.
 %%
@@ -429,6 +457,25 @@ create_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReplicationGroup">>, Input, Options).
 
+%% @doc Creates a serverless cache.
+create_serverless_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_serverless_cache(Client, Input, []).
+create_serverless_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateServerlessCache">>, Input, Options).
+
+%% @doc This API creates a copy of an entire ServerlessCache at a specific
+%% moment in time.
+%%
+%% Available for Redis only.
+create_serverless_cache_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_serverless_cache_snapshot(Client, Input, []).
+create_serverless_cache_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateServerlessCacheSnapshot">>, Input, Options).
+
 %% @doc Creates a copy of an entire cluster or replication group at a
 %% specific moment in time.
 %%
@@ -590,6 +637,24 @@ delete_replication_group(Client, Input)
 delete_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationGroup">>, Input, Options).
+
+%% @doc Deletes a specified existing serverless cache.
+delete_serverless_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_serverless_cache(Client, Input, []).
+delete_serverless_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteServerlessCache">>, Input, Options).
+
+%% @doc Deletes an existing serverless cache snapshot.
+%%
+%% Available for Redis only.
+delete_serverless_cache_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_serverless_cache_snapshot(Client, Input, []).
+delete_serverless_cache_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteServerlessCacheSnapshot">>, Input, Options).
 
 %% @doc Deletes an existing snapshot.
 %%
@@ -776,6 +841,30 @@ describe_reserved_cache_nodes_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedCacheNodesOfferings">>, Input, Options).
 
+%% @doc Returns information about serverless cache snapshots.
+%%
+%% By default, this API lists all of the customer’s serverless cache
+%% snapshots. It can also describe a single serverless cache snapshot, or the
+%% snapshots associated with a particular serverless cache. Available for
+%% Redis only.
+describe_serverless_cache_snapshots(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_serverless_cache_snapshots(Client, Input, []).
+describe_serverless_cache_snapshots(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServerlessCacheSnapshots">>, Input, Options).
+
+%% @doc Returns information about a specific serverless cache.
+%%
+%% If no identifier is specified, then the API returns information on all the
+%% serverless caches belonging to this Amazon Web Services account.
+describe_serverless_caches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_serverless_caches(Client, Input, []).
+describe_serverless_caches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServerlessCaches">>, Input, Options).
+
 %% @doc Returns details of the service updates
 describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -833,6 +922,17 @@ disassociate_global_replication_group(Client, Input)
 disassociate_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGlobalReplicationGroup">>, Input, Options).
+
+%% @doc Provides the functionality to export the serverless cache snapshot
+%% data to Amazon S3.
+%%
+%% Available for Redis only.
+export_serverless_cache_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_serverless_cache_snapshot(Client, Input, []).
+export_serverless_cache_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportServerlessCacheSnapshot">>, Input, Options).
 
 %% @doc Used to failover the primary region to a secondary region.
 %%
@@ -936,6 +1036,8 @@ modify_global_replication_group(Client, Input, Options)
 
 %% @doc Modifies the settings for a replication group.
 %%
+%% This is limited to Redis 7 and newer.
+%%
 %% <ul> <li> Scaling for Amazon ElastiCache for Redis (cluster mode enabled)
 %% in the ElastiCache User Guide
 %%
@@ -959,6 +1061,14 @@ modify_replication_group_shard_configuration(Client, Input)
 modify_replication_group_shard_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationGroupShardConfiguration">>, Input, Options).
+
+%% @doc This API modifies the attributes of a serverless cache.
+modify_serverless_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_serverless_cache(Client, Input, []).
+modify_serverless_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyServerlessCache">>, Input, Options).
 
 %% @doc Changes user password(s) and/or access string.
 modify_user(Client, Input)
