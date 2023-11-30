@@ -15,6 +15,8 @@
 
 -export([accept_inbound_connection/3,
          accept_inbound_connection/4,
+         add_data_source/3,
+         add_data_source/4,
          add_tags/2,
          add_tags/3,
          associate_package/4,
@@ -31,6 +33,8 @@
          create_package/3,
          create_vpc_endpoint/2,
          create_vpc_endpoint/3,
+         delete_data_source/4,
+         delete_data_source/5,
          delete_domain/3,
          delete_domain/4,
          delete_inbound_connection/3,
@@ -86,6 +90,9 @@
          get_compatible_versions/1,
          get_compatible_versions/3,
          get_compatible_versions/4,
+         get_data_source/3,
+         get_data_source/5,
+         get_data_source/6,
          get_domain_maintenance_status/3,
          get_domain_maintenance_status/5,
          get_domain_maintenance_status/6,
@@ -98,6 +105,9 @@
          get_upgrade_status/2,
          get_upgrade_status/4,
          get_upgrade_status/5,
+         list_data_sources/2,
+         list_data_sources/4,
+         list_data_sources/5,
          list_domain_maintenances/2,
          list_domain_maintenances/4,
          list_domain_maintenances/5,
@@ -143,6 +153,8 @@
          start_domain_maintenance/4,
          start_service_software_update/2,
          start_service_software_update/3,
+         update_data_source/4,
+         update_data_source/5,
          update_domain_config/3,
          update_domain_config/4,
          update_package/2,
@@ -170,6 +182,29 @@ accept_inbound_connection(Client, ConnectionId, Input) ->
 accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Method = put,
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/accept"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds the data source on the domain.
+add_data_source(Client, DomainName, Input) ->
+    add_data_source(Client, DomainName, Input, []).
+add_data_source(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -376,6 +411,29 @@ create_vpc_endpoint(Client, Input) ->
 create_vpc_endpoint(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the data source.
+delete_data_source(Client, DomainName, Name, Input) ->
+    delete_data_source(Client, DomainName, Name, Input, []).
+delete_data_source(Client, DomainName, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -983,6 +1041,29 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes the data source details.
+get_data_source(Client, DomainName, Name)
+  when is_map(Client) ->
+    get_data_source(Client, DomainName, Name, #{}, #{}).
+
+get_data_source(Client, DomainName, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, []).
+
+get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc The status of the maintenance action.
 get_domain_maintenance_status(Client, DomainName, MaintenanceId)
   when is_map(Client) ->
@@ -1084,6 +1165,29 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
 get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain/", aws_util:encode_uri(DomainName), "/status"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc A list of the data source details of the domain.
+list_data_sources(Client, DomainName)
+  when is_map(Client) ->
+    list_data_sources(Client, DomainName, #{}, #{}).
+
+list_data_sources(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_sources(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1555,6 +1659,29 @@ start_service_software_update(Client, Input) ->
 start_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the data source on the domain.
+update_data_source(Client, DomainName, Name, Input) ->
+    update_data_source(Client, DomainName, Name, Input, []).
+update_data_source(Client, DomainName, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dataSource/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

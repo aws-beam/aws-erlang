@@ -26,8 +26,12 @@
          create_endpoint_access/3,
          create_namespace/2,
          create_namespace/3,
+         create_scheduled_action/2,
+         create_scheduled_action/3,
          create_snapshot/2,
          create_snapshot/3,
+         create_snapshot_copy_configuration/2,
+         create_snapshot_copy_configuration/3,
          create_usage_limit/2,
          create_usage_limit/3,
          create_workgroup/2,
@@ -40,8 +44,12 @@
          delete_namespace/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
+         delete_scheduled_action/2,
+         delete_scheduled_action/3,
          delete_snapshot/2,
          delete_snapshot/3,
+         delete_snapshot_copy_configuration/2,
+         delete_snapshot_copy_configuration/3,
          delete_usage_limit/2,
          delete_usage_limit/3,
          delete_workgroup/2,
@@ -58,6 +66,8 @@
          get_recovery_point/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         get_scheduled_action/2,
+         get_scheduled_action/3,
          get_snapshot/2,
          get_snapshot/3,
          get_table_restore_status/2,
@@ -74,6 +84,10 @@
          list_namespaces/3,
          list_recovery_points/2,
          list_recovery_points/3,
+         list_scheduled_actions/2,
+         list_scheduled_actions/3,
+         list_snapshot_copy_configurations/2,
+         list_snapshot_copy_configurations/3,
          list_snapshots/2,
          list_snapshots/3,
          list_table_restore_status/2,
@@ -90,6 +104,8 @@
          restore_from_recovery_point/3,
          restore_from_snapshot/2,
          restore_from_snapshot/3,
+         restore_table_from_recovery_point/2,
+         restore_table_from_recovery_point/3,
          restore_table_from_snapshot/2,
          restore_table_from_snapshot/3,
          tag_resource/2,
@@ -102,8 +118,12 @@
          update_endpoint_access/3,
          update_namespace/2,
          update_namespace/3,
+         update_scheduled_action/2,
+         update_scheduled_action/3,
          update_snapshot/2,
          update_snapshot/3,
+         update_snapshot_copy_configuration/2,
+         update_snapshot_copy_configuration/3,
          update_usage_limit/2,
          update_usage_limit/3,
          update_workgroup/2,
@@ -150,6 +170,18 @@ create_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamespace">>, Input, Options).
 
+%% @doc Creates a scheduled action.
+%%
+%% A scheduled action contains a schedule and an Amazon Redshift API action.
+%% For example, you can create a schedule of when to run the
+%% `CreateSnapshot' API operation.
+create_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_scheduled_action(Client, Input, []).
+create_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateScheduledAction">>, Input, Options).
+
 %% @doc Creates a snapshot of all databases in a namespace.
 %%
 %% For more information about snapshots, see Working with snapshots and
@@ -160,6 +192,15 @@ create_snapshot(Client, Input)
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
+
+%% @doc Creates a snapshot copy configuration that lets you copy snapshots to
+%% another Amazon Web Services Region.
+create_snapshot_copy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapshot_copy_configuration(Client, Input, []).
+create_snapshot_copy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapshotCopyConfiguration">>, Input, Options).
 
 %% @doc Creates a usage limit for a specified Amazon Redshift Serverless
 %% usage type.
@@ -215,6 +256,14 @@ delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
+%% @doc Deletes a scheduled action.
+delete_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_scheduled_action(Client, Input, []).
+delete_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteScheduledAction">>, Input, Options).
+
 %% @doc Deletes a snapshot from Amazon Redshift Serverless.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -222,6 +271,14 @@ delete_snapshot(Client, Input)
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
+
+%% @doc Deletes a snapshot copy configuration
+delete_snapshot_copy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapshot_copy_configuration(Client, Input, []).
+delete_snapshot_copy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapshotCopyConfiguration">>, Input, Options).
 
 %% @doc Deletes a usage limit from Amazon Redshift Serverless.
 delete_usage_limit(Client, Input)
@@ -299,6 +356,14 @@ get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
+%% @doc Returns information about a scheduled action.
+get_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scheduled_action(Client, Input, []).
+get_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScheduledAction">>, Input, Options).
+
 %% @doc Returns information about a specific snapshot.
 get_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -363,6 +428,24 @@ list_recovery_points(Client, Input)
 list_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecoveryPoints">>, Input, Options).
+
+%% @doc Returns a list of scheduled actions.
+%%
+%% You can use the flags to filter the list of returned scheduled actions.
+list_scheduled_actions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_scheduled_actions(Client, Input, []).
+list_scheduled_actions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListScheduledActions">>, Input, Options).
+
+%% @doc Returns a list of snapshot copy configurations.
+list_snapshot_copy_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_snapshot_copy_configurations(Client, Input, []).
+list_snapshot_copy_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSnapshotCopyConfigurations">>, Input, Options).
 
 %% @doc Returns a list of snapshots.
 list_snapshots(Client, Input)
@@ -432,6 +515,18 @@ restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
 
+%% @doc Restores a table from a recovery point to your Amazon Redshift
+%% Serverless instance.
+%%
+%% You can't use this operation to restore tables with interleaved sort
+%% keys.
+restore_table_from_recovery_point(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_table_from_recovery_point(Client, Input, []).
+restore_table_from_recovery_point(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreTableFromRecoveryPoint">>, Input, Options).
+
 %% @doc Restores a table from a snapshot to your Amazon Redshift Serverless
 %% instance.
 %%
@@ -490,6 +585,14 @@ update_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNamespace">>, Input, Options).
 
+%% @doc Updates a scheduled action.
+update_scheduled_action(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_scheduled_action(Client, Input, []).
+update_scheduled_action(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateScheduledAction">>, Input, Options).
+
 %% @doc Updates a snapshot.
 update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -497,6 +600,14 @@ update_snapshot(Client, Input)
 update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
+
+%% @doc Updates a snapshot copy configuration.
+update_snapshot_copy_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_snapshot_copy_configuration(Client, Input, []).
+update_snapshot_copy_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSnapshotCopyConfiguration">>, Input, Options).
 
 %% @doc Update a usage limit in Amazon Redshift Serverless.
 %%

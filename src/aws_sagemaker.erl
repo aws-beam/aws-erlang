@@ -34,6 +34,8 @@
          create_auto_ml_job/3,
          create_auto_ml_job_v2/2,
          create_auto_ml_job_v2/3,
+         create_cluster/2,
+         create_cluster/3,
          create_code_repository/2,
          create_code_repository/3,
          create_compilation_job/2,
@@ -72,6 +74,8 @@
          create_image/3,
          create_image_version/2,
          create_image_version/3,
+         create_inference_component/2,
+         create_inference_component/3,
          create_inference_experiment/2,
          create_inference_experiment/3,
          create_inference_recommendations_job/2,
@@ -140,6 +144,8 @@
          delete_artifact/3,
          delete_association/2,
          delete_association/3,
+         delete_cluster/2,
+         delete_cluster/3,
          delete_code_repository/2,
          delete_code_repository/3,
          delete_context/2,
@@ -174,6 +180,8 @@
          delete_image/3,
          delete_image_version/2,
          delete_image_version/3,
+         delete_inference_component/2,
+         delete_inference_component/3,
          delete_inference_experiment/2,
          delete_inference_experiment/3,
          delete_model/2,
@@ -234,6 +242,10 @@
          describe_auto_ml_job/3,
          describe_auto_ml_job_v2/2,
          describe_auto_ml_job_v2/3,
+         describe_cluster/2,
+         describe_cluster/3,
+         describe_cluster_node/2,
+         describe_cluster_node/3,
          describe_code_repository/2,
          describe_code_repository/3,
          describe_compilation_job/2,
@@ -276,6 +288,8 @@
          describe_image/3,
          describe_image_version/2,
          describe_image_version/3,
+         describe_inference_component/2,
+         describe_inference_component/3,
          describe_inference_experiment/2,
          describe_inference_experiment/3,
          describe_inference_recommendations_job/2,
@@ -374,6 +388,10 @@
          list_auto_ml_jobs/3,
          list_candidates_for_auto_ml_job/2,
          list_candidates_for_auto_ml_job/3,
+         list_cluster_nodes/2,
+         list_cluster_nodes/3,
+         list_clusters/2,
+         list_clusters/3,
          list_code_repositories/2,
          list_code_repositories/3,
          list_compilation_jobs/2,
@@ -416,6 +434,8 @@
          list_image_versions/3,
          list_images/2,
          list_images/3,
+         list_inference_components/2,
+         list_inference_components/3,
          list_inference_experiments/2,
          list_inference_experiments/3,
          list_inference_recommendations_job_steps/2,
@@ -560,6 +580,8 @@
          update_app_image_config/3,
          update_artifact/2,
          update_artifact/3,
+         update_cluster/2,
+         update_cluster/3,
          update_code_repository/2,
          update_code_repository/3,
          update_context/2,
@@ -586,6 +608,10 @@
          update_image/3,
          update_image_version/2,
          update_image_version/3,
+         update_inference_component/2,
+         update_inference_component/3,
+         update_inference_component_runtime_config/2,
+         update_inference_component_runtime_config/3,
          update_inference_experiment/2,
          update_inference_experiment/3,
          update_model_card/2,
@@ -660,14 +686,14 @@ add_association(Client, Input, Options)
 %% add the tags when you first create the tuning job by specifying them in
 %% the `Tags' parameter of CreateHyperParameterTuningJob
 %%
-%% Tags that you add to a SageMaker Studio Domain or User Profile by calling
-%% this API are also added to any Apps that the Domain or User Profile
-%% launches after you call this API, but not to Apps that the Domain or User
-%% Profile launched before you called this API. To make sure that the tags
-%% associated with a Domain or User Profile are also added to all Apps that
-%% the Domain or User Profile launches, add the tags when you first create
-%% the Domain or User Profile by specifying them in the `Tags' parameter
-%% of CreateDomain or CreateUserProfile.
+%% Tags that you add to a SageMaker Domain or User Profile by calling this
+%% API are also added to any Apps that the Domain or User Profile launches
+%% after you call this API, but not to Apps that the Domain or User Profile
+%% launched before you called this API. To make sure that the tags associated
+%% with a Domain or User Profile are also added to all Apps that the Domain
+%% or User Profile launches, add the tags when you first create the Domain or
+%% User Profile by specifying them in the `Tags' parameter of
+%% CreateDomain or CreateUserProfile.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -718,9 +744,9 @@ create_algorithm(Client, Input, Options)
 
 %% @doc Creates a running app for the specified UserProfile.
 %%
-%% This operation is automatically invoked by Amazon SageMaker Studio upon
-%% access to the associated Domain, and when new kernel configurations are
-%% selected by the user. A user may have multiple Apps active simultaneously.
+%% This operation is automatically invoked by Amazon SageMaker upon access to
+%% the associated Domain, and when new kernel configurations are selected by
+%% the user. A user may have multiple Apps active simultaneously.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
@@ -801,6 +827,19 @@ create_auto_ml_job_v2(Client, Input)
 create_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJobV2">>, Input, Options).
+
+%% @doc Creates a SageMaker HyperPod cluster.
+%%
+%% SageMaker HyperPod is a capability of SageMaker for creating and managing
+%% persistent clusters for developing large machine learning models, such as
+%% large language models (LLMs) and diffusion models. To learn more, see
+%% Amazon SageMaker HyperPod in the Amazon SageMaker Developer Guide.
+create_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cluster(Client, Input, []).
+create_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCluster">>, Input, Options).
 
 %% @doc Creates a Git repository as a resource in your SageMaker account.
 %%
@@ -888,7 +927,7 @@ create_device_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeviceFleet">>, Input, Options).
 
-%% @doc Creates a `Domain' used by Amazon SageMaker Studio.
+%% @doc Creates a `Domain'.
 %%
 %% A domain consists of an associated Amazon Elastic File System (EFS)
 %% volume, a list of authorized users, and a variety of security,
@@ -910,31 +949,31 @@ create_device_fleet(Client, Input, Options)
 %%
 %% VPC configuration
 %%
-%% All SageMaker Studio traffic between the domain and the EFS volume is
-%% through the specified VPC and subnets. For other Studio traffic, you can
-%% specify the `AppNetworkAccessType' parameter.
-%% `AppNetworkAccessType' corresponds to the network access type that you
-%% choose when you onboard to Studio. The following options are available:
+%% All traffic between the domain and the EFS volume is through the specified
+%% VPC and subnets. For other traffic, you can specify the
+%% `AppNetworkAccessType' parameter. `AppNetworkAccessType'
+%% corresponds to the network access type that you choose when you onboard to
+%% the domain. The following options are available:
 %%
 %% <ul> <li> `PublicInternetOnly' - Non-EFS traffic goes through a VPC
 %% managed by Amazon SageMaker, which allows internet access. This is the
 %% default value.
 %%
-%% </li> <li> `VpcOnly' - All Studio traffic is through the specified VPC
-%% and subnets. Internet access is disabled by default. To allow internet
-%% access, you must specify a NAT gateway.
+%% </li> <li> `VpcOnly' - All traffic is through the specified VPC and
+%% subnets. Internet access is disabled by default. To allow internet access,
+%% you must specify a NAT gateway.
 %%
-%% When internet access is disabled, you won't be able to run a Studio
-%% notebook or to train or host models unless your VPC has an interface
-%% endpoint to the SageMaker API and runtime or a NAT gateway and your
-%% security groups allow outbound connections.
+%% When internet access is disabled, you won't be able to run a Amazon
+%% SageMaker Studio notebook or to train or host models unless your VPC has
+%% an interface endpoint to the SageMaker API and runtime or a NAT gateway
+%% and your security groups allow outbound connections.
 %%
 %% </li> </ul> NFS traffic over TCP on port 2049 needs to be allowed in both
-%% inbound and outbound rules in order to launch a SageMaker Studio app
-%% successfully.
+%% inbound and outbound rules in order to launch a Amazon SageMaker Studio
+%% app successfully.
 %%
-%% For more information, see Connect SageMaker Studio Notebooks to Resources
-%% in a VPC.
+%% For more information, see Connect Amazon SageMaker Studio Notebooks to
+%% Resources in a VPC.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -1230,6 +1269,24 @@ create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
 
+%% @doc Creates an inference component, which is a SageMaker hosting object
+%% that you can use to deploy a model to an endpoint.
+%%
+%% In the inference component settings, you specify the model, the endpoint,
+%% and how the model utilizes the resources that the endpoint hosts. You can
+%% optimize resource utilization by tailoring how the required CPU cores,
+%% accelerators, and memory are allocated. You can deploy multiple inference
+%% components to an endpoint, where each inference component contains one
+%% model and the resource utilization needs for that individual model. After
+%% you deploy an inference component, you can directly invoke the associated
+%% model when you use the InvokeEndpoint API action.
+create_inference_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_inference_component(Client, Input, []).
+create_inference_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInferenceComponent">>, Input, Options).
+
 %% @doc Creates an inference experiment using the configurations specified in
 %% the request.
 %%
@@ -1523,10 +1580,9 @@ create_pipeline(Client, Input, Options)
 %% @doc Creates a URL for a specified UserProfile in a Domain.
 %%
 %% When accessed in a web browser, the user will be automatically signed in
-%% to Amazon SageMaker Studio, and granted access to all of the Apps and
-%% files associated with the Domain's Amazon Elastic File System (EFS)
-%% volume. This operation can only be called when the authentication mode
-%% equals IAM.
+%% to the domain, and granted access to all of the Apps and files associated
+%% with the Domain's Amazon Elastic File System (EFS) volume. This
+%% operation can only be called when the authentication mode equals IAM.
 %%
 %% The IAM role or user passed to this API defines the permissions to access
 %% the app. Once the presigned URL is created, no additional permission is
@@ -1536,8 +1592,8 @@ create_pipeline(Client, Input, Options)
 %%
 %% You can restrict access to this API and to the URL that it returns to a
 %% list of IP addresses, Amazon VPCs or Amazon VPC Endpoints that you
-%% specify. For more information, see Connect to SageMaker Studio Through an
-%% Interface VPC Endpoint .
+%% specify. For more information, see Connect to Amazon SageMaker Studio
+%% Through an Interface VPC Endpoint .
 %%
 %% The URL that you get from a call to `CreatePresignedDomainUrl' has a
 %% default timeout of 5 minutes. You can configure this value using
@@ -1608,7 +1664,7 @@ create_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSpace">>, Input, Options).
 
-%% @doc Creates a new Studio Lifecycle Configuration.
+%% @doc Creates a new Amazon SageMaker Studio Lifecycle Configuration.
 create_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_lifecycle_config(Client, Input, []).
@@ -1768,11 +1824,11 @@ create_trial_component(Client, Input, Options)
 %% A user profile represents a single user within a domain, and is the main
 %% way to reference a &quot;person&quot; for the purposes of sharing,
 %% reporting, and other user-oriented features. This entity is created when a
-%% user onboards to Amazon SageMaker Studio. If an administrator invites a
-%% person by email or imports them from IAM Identity Center, a user profile
-%% is automatically created. A user profile is the primary holder of settings
-%% for an individual user and has a reference to the user's private
-%% Amazon Elastic File System (EFS) home directory.
+%% user onboards to a domain. If an administrator invites a person by email
+%% or imports them from IAM Identity Center, a user profile is automatically
+%% created. A user profile is the primary holder of settings for an
+%% individual user and has a reference to the user's private Amazon
+%% Elastic File System (EFS) home directory.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -1871,6 +1927,14 @@ delete_association(Client, Input)
 delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
+
+%% @doc Delete a SageMaker HyperPod cluster.
+delete_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cluster(Client, Input, []).
+delete_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCluster">>, Input, Options).
 
 %% @doc Deletes the specified Git repository from your account.
 delete_code_repository(Client, Input)
@@ -2066,6 +2130,14 @@ delete_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImageVersion">>, Input, Options).
 
+%% @doc Deletes an inference component.
+delete_inference_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_inference_component(Client, Input, []).
+delete_inference_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInferenceComponent">>, Input, Options).
+
 %% @doc Deletes an inference experiment.
 %%
 %% This operation does not delete your endpoint, variants, or any underlying
@@ -2212,7 +2284,7 @@ delete_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpace">>, Input, Options).
 
-%% @doc Deletes the Studio Lifecycle Configuration.
+%% @doc Deletes the Amazon SageMaker Studio Lifecycle Configuration.
 %%
 %% In order to delete the Lifecycle Configuration, there must be no running
 %% apps using the Lifecycle Configuration. You must also remove the Lifecycle
@@ -2232,10 +2304,9 @@ delete_studio_lifecycle_config(Client, Input, Options)
 %% the deleted tags are not removed from training jobs that the
 %% hyperparameter tuning job launched before you called this API.
 %%
-%% When you call this API to delete tags from a SageMaker Studio Domain or
-%% User Profile, the deleted tags are not removed from Apps that the
-%% SageMaker Studio Domain or User Profile launched before you called this
-%% API.
+%% When you call this API to delete tags from a SageMaker Domain or User
+%% Profile, the deleted tags are not removed from Apps that the SageMaker
+%% Domain or User Profile launched before you called this API.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -2375,6 +2446,23 @@ describe_auto_ml_job_v2(Client, Input)
 describe_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
+
+%% @doc Retrieves information of a SageMaker HyperPod cluster.
+describe_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster(Client, Input, []).
+describe_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCluster">>, Input, Options).
+
+%% @doc Retrieves information of an instance (also called a node
+%% interchangeably) of a SageMaker HyperPod cluster.
+describe_cluster_node(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_node(Client, Input, []).
+describe_cluster_node(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterNode">>, Input, Options).
 
 %% @doc Gets details about the specified Git repository.
 describe_code_repository(Client, Input)
@@ -2561,6 +2649,14 @@ describe_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageVersion">>, Input, Options).
 
+%% @doc Returns information about an inference component.
+describe_inference_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inference_component(Client, Input, []).
+describe_inference_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInferenceComponent">>, Input, Options).
+
 %% @doc Returns details about an inference experiment.
 describe_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2743,7 +2839,7 @@ describe_space(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpace">>, Input, Options).
 
-%% @doc Describes the Studio Lifecycle Configuration.
+%% @doc Describes the Amazon SageMaker Studio Lifecycle Configuration.
 describe_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio_lifecycle_config(Client, Input, []).
@@ -3024,6 +3120,23 @@ list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
 
+%% @doc Retrieves the list of instances (also called nodes interchangeably)
+%% in a SageMaker HyperPod cluster.
+list_cluster_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_nodes(Client, Input, []).
+list_cluster_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterNodes">>, Input, Options).
+
+%% @doc Retrieves the list of SageMaker HyperPod clusters.
+list_clusters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_clusters(Client, Input, []).
+list_clusters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusters">>, Input, Options).
+
 %% @doc Gets a list of the Git repositories in your account.
 list_code_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3212,6 +3325,14 @@ list_images(Client, Input)
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
+
+%% @doc Lists the inference components in your account and their properties.
+list_inference_components(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_components(Client, Input, []).
+list_inference_components(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceComponents">>, Input, Options).
 
 %% @doc Returns the list of all inference experiments.
 list_inference_experiments(Client, Input)
@@ -3476,8 +3597,8 @@ list_stage_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStageDevices">>, Input, Options).
 
-%% @doc Lists the Studio Lifecycle Configurations in your Amazon Web Services
-%% Account.
+%% @doc Lists the Amazon SageMaker Studio Lifecycle Configurations in your
+%% Amazon Web Services Account.
 list_studio_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_lifecycle_configs(Client, Input, []).
@@ -3965,6 +4086,14 @@ update_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArtifact">>, Input, Options).
 
+%% @doc Update a SageMaker HyperPod cluster.
+update_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster(Client, Input, []).
+update_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCluster">>, Input, Options).
+
 %% @doc Updates the specified Git repository with the specified values.
 update_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -4115,6 +4244,23 @@ update_image_version(Client, Input)
 update_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImageVersion">>, Input, Options).
+
+%% @doc Updates an inference component.
+update_inference_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_inference_component(Client, Input, []).
+update_inference_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInferenceComponent">>, Input, Options).
+
+%% @doc Runtime settings for a model that is deployed with an inference
+%% component.
+update_inference_component_runtime_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_inference_component_runtime_config(Client, Input, []).
+update_inference_component_runtime_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInferenceComponentRuntimeConfig">>, Input, Options).
 
 %% @doc Updates an inference experiment that you created.
 %%

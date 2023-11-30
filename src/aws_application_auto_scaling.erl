@@ -32,6 +32,8 @@
 %%
 %% </li> <li> Amazon SageMaker Serverless endpoint provisioned concurrency
 %%
+%% </li> <li> Amazon SageMaker inference components
+%%
 %% </li> <li> Spot Fleets (Amazon EC2)
 %%
 %% </li> <li> Custom resources provided by your own applications or services

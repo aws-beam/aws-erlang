@@ -24,6 +24,8 @@
          create_analysis_template/4,
          create_collaboration/2,
          create_collaboration/3,
+         create_configured_audience_model_association/3,
+         create_configured_audience_model_association/4,
          create_configured_table/2,
          create_configured_table/3,
          create_configured_table_analysis_rule/3,
@@ -32,10 +34,14 @@
          create_configured_table_association/4,
          create_membership/2,
          create_membership/3,
+         create_privacy_budget_template/3,
+         create_privacy_budget_template/4,
          delete_analysis_template/4,
          delete_analysis_template/5,
          delete_collaboration/3,
          delete_collaboration/4,
+         delete_configured_audience_model_association/4,
+         delete_configured_audience_model_association/5,
          delete_configured_table/3,
          delete_configured_table/4,
          delete_configured_table_analysis_rule/4,
@@ -46,6 +52,8 @@
          delete_member/5,
          delete_membership/3,
          delete_membership/4,
+         delete_privacy_budget_template/4,
+         delete_privacy_budget_template/5,
          get_analysis_template/3,
          get_analysis_template/5,
          get_analysis_template/6,
@@ -55,6 +63,15 @@
          get_collaboration_analysis_template/3,
          get_collaboration_analysis_template/5,
          get_collaboration_analysis_template/6,
+         get_collaboration_configured_audience_model_association/3,
+         get_collaboration_configured_audience_model_association/5,
+         get_collaboration_configured_audience_model_association/6,
+         get_collaboration_privacy_budget_template/3,
+         get_collaboration_privacy_budget_template/5,
+         get_collaboration_privacy_budget_template/6,
+         get_configured_audience_model_association/3,
+         get_configured_audience_model_association/5,
+         get_configured_audience_model_association/6,
          get_configured_table/2,
          get_configured_table/4,
          get_configured_table/5,
@@ -67,6 +84,9 @@
          get_membership/2,
          get_membership/4,
          get_membership/5,
+         get_privacy_budget_template/3,
+         get_privacy_budget_template/5,
+         get_privacy_budget_template/6,
          get_protected_query/3,
          get_protected_query/5,
          get_protected_query/6,
@@ -82,9 +102,21 @@
          list_collaboration_analysis_templates/2,
          list_collaboration_analysis_templates/4,
          list_collaboration_analysis_templates/5,
+         list_collaboration_configured_audience_model_associations/2,
+         list_collaboration_configured_audience_model_associations/4,
+         list_collaboration_configured_audience_model_associations/5,
+         list_collaboration_privacy_budget_templates/2,
+         list_collaboration_privacy_budget_templates/4,
+         list_collaboration_privacy_budget_templates/5,
+         list_collaboration_privacy_budgets/3,
+         list_collaboration_privacy_budgets/5,
+         list_collaboration_privacy_budgets/6,
          list_collaborations/1,
          list_collaborations/3,
          list_collaborations/4,
+         list_configured_audience_model_associations/2,
+         list_configured_audience_model_associations/4,
+         list_configured_audience_model_associations/5,
          list_configured_table_associations/2,
          list_configured_table_associations/4,
          list_configured_table_associations/5,
@@ -97,6 +129,12 @@
          list_memberships/1,
          list_memberships/3,
          list_memberships/4,
+         list_privacy_budget_templates/2,
+         list_privacy_budget_templates/4,
+         list_privacy_budget_templates/5,
+         list_privacy_budgets/3,
+         list_privacy_budgets/5,
+         list_privacy_budgets/6,
          list_protected_queries/2,
          list_protected_queries/4,
          list_protected_queries/5,
@@ -106,6 +144,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         preview_privacy_impact/3,
+         preview_privacy_impact/4,
          start_protected_query/3,
          start_protected_query/4,
          tag_resource/3,
@@ -116,6 +156,8 @@
          update_analysis_template/5,
          update_collaboration/3,
          update_collaboration/4,
+         update_configured_audience_model_association/4,
+         update_configured_audience_model_association/5,
          update_configured_table/3,
          update_configured_table/4,
          update_configured_table_analysis_rule/4,
@@ -124,6 +166,8 @@
          update_configured_table_association/5,
          update_membership/3,
          update_membership/4,
+         update_privacy_budget_template/4,
+         update_privacy_budget_template/5,
          update_protected_query/4,
          update_protected_query/5]).
 
@@ -209,6 +253,30 @@ create_collaboration(Client, Input) ->
 create_collaboration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the details necessary to create a configured audience model
+%% association.
+create_configured_audience_model_association(Client, MembershipIdentifier, Input) ->
+    create_configured_audience_model_association(Client, MembershipIdentifier, Input, []).
+create_configured_audience_model_association(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -325,6 +393,33 @@ create_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a privacy budget template for a specified membership.
+%%
+%% Each membership can have only one privacy budget template, but it can be
+%% deleted and recreated. If you need to change the privacy budget template
+%% for a membership, use the `UpdatePrivacyBudgetTemplate' operation.
+create_privacy_budget_template(Client, MembershipIdentifier, Input) ->
+    create_privacy_budget_template(Client, MembershipIdentifier, Input, []).
+create_privacy_budget_template(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an analysis template.
 delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
     delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
@@ -356,6 +451,30 @@ delete_collaboration(Client, CollaborationIdentifier, Input) ->
 delete_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the information necessary to delete a configured audience
+%% model association.
+delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
+    delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
+delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -494,6 +613,29 @@ delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a privacy budget template for a specified membership.
+delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
+    delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
+delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves an analysis template.
 get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier)
   when is_map(Client) ->
@@ -552,6 +694,76 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/analysistemplates/", aws_util:encode_uri(AnalysisTemplateArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a configured audience model association within a
+%% collaboration.
+get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier)
+  when is_map(Client) ->
+    get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, #{}, #{}).
+
+get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap, []).
+
+get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns details about a specified privacy budget template.
+get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier)
+  when is_map(Client) ->
+    get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
+
+get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
+
+get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a configured audience model association.
+get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, #{}, #{}).
+
+get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -644,6 +856,29 @@ get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap)
 get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns details for a specified privacy budget template.
+get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier)
+  when is_map(Client) ->
+    get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
+
+get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
+
+get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -780,6 +1015,96 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists configured audience model associations within a collaboration.
+list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, #{}, #{}).
+
+list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/configuredaudiencemodelassociations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an array that summarizes each privacy budget template in a
+%% specified collaboration.
+list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, #{}, #{}).
+
+list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgettemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an array that summarizes each privacy budget in a specified
+%% collaboration.
+%%
+%% The summary includes the collaboration ARN, creation time, creating
+%% account, and privacy budget details.
+list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType)
+  when is_map(Client) ->
+    list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, #{}, #{}).
+
+list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
+
+list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/privacybudgets"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"privacyBudgetType">>, PrivacyBudgetType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists collaborations the caller owns, is active in, or has been
 %% invited to.
 list_collaborations(Client)
@@ -804,6 +1129,35 @@ list_collaborations(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"memberStatus">>, maps:get(<<"memberStatus">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists information about requested configured audience model
+%% associations.
+list_configured_audience_model_associations(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_configured_audience_model_associations(Client, MembershipIdentifier, #{}, #{}).
+
+list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -923,6 +1277,65 @@ list_memberships(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns detailed information about the privacy budget templates in a
+%% specified membership.
+list_privacy_budget_templates(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_privacy_budget_templates(Client, MembershipIdentifier, #{}, #{}).
+
+list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns detailed information about the privacy budgets in a specified
+%% membership.
+list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType)
+  when is_map(Client) ->
+    list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, #{}, #{}).
+
+list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
+
+list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgets"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"privacyBudgetType">>, PrivacyBudgetType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists protected queries, sorted by the most recent query.
 list_protected_queries(Client, MembershipIdentifier)
   when is_map(Client) ->
@@ -1003,6 +1416,30 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc An estimate of the number of aggregation functions that the member
+%% who can query can run given epsilon and noise parameters.
+preview_privacy_impact(Client, MembershipIdentifier, Input) ->
+    preview_privacy_impact(Client, MembershipIdentifier, Input, []).
+preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/previewprivacyimpact"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a protected query that is started by Clean Rooms.
 start_protected_query(Client, MembershipIdentifier, Input) ->
@@ -1121,6 +1558,30 @@ update_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides the details necessary to update a configured audience model
+%% association.
+update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
+    update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
+update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/configuredaudiencemodelassociations/", aws_util:encode_uri(ConfiguredAudienceModelAssociationIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a configured table.
 update_configured_table(Client, ConfiguredTableIdentifier, Input) ->
     update_configured_table(Client, ConfiguredTableIdentifier, Input, []).
@@ -1196,6 +1657,29 @@ update_membership(Client, MembershipIdentifier, Input) ->
 update_membership(Client, MembershipIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the privacy budget template for the specified membership.
+update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
+    update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
+update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/privacybudgettemplates/", aws_util:encode_uri(PrivacyBudgetTemplateIdentifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

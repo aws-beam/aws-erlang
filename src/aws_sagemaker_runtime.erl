@@ -56,6 +56,7 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
                        {<<"X-Amzn-SageMaker-Enable-Explanations">>, <<"EnableExplanations">>},
+                       {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Model">>, <<"TargetModel">>},
@@ -171,10 +172,15 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %% </li> <li> For information about how to process the streaming response,
 %% see Invoke real-time endpoints.
 %%
-%% </li> </ul> Amazon SageMaker strips all POST headers except those
-%% supported by the API. Amazon SageMaker might add additional headers. You
-%% should not rely on the behavior of headers outside those enumerated in the
-%% request syntax.
+%% </li> </ul> Before you can use this operation, your IAM permissions must
+%% allow the `sagemaker:InvokeEndpoint' action. For more information
+%% about Amazon SageMaker actions for IAM policies, see Actions, resources,
+%% and condition keys for Amazon SageMaker in the IAM Service Authorization
+%% Reference.
+%%
+%% Amazon SageMaker strips all POST headers except those supported by the
+%% API. Amazon SageMaker might add additional headers. You should not rely on
+%% the behavior of headers outside those enumerated in the request syntax.
 %%
 %% Calls to `InvokeEndpointWithResponseStream' are authenticated by using
 %% Amazon Web Services Signature Version 4. For information, see
@@ -195,6 +201,7 @@ invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}
