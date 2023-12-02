@@ -1,11 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Q in Connect is a generative AI customer service assistant.
+%% @doc Powered by Amazon Bedrock: Amazon Web Services implements automated
+%% abuse detection.
 %%
-%% It is an LLM-enhanced evolution of Amazon Connect Wisdom that delivers
-%% real-time recommendations to help contact center agents resolve customer
-%% issues quickly and accurately.
+%% Because Amazon Q in Connect is built on Amazon Bedrock, users can take
+%% full advantage of the controls implemented in Amazon Bedrock to enforce
+%% safety, security, and the responsible use of artificial intelligence (AI).
+%%
+%% Amazon Q in Connect is a generative AI customer service assistant. It is
+%% an LLM-enhanced evolution of Amazon Connect Wisdom that delivers real-time
+%% recommendations to help contact center agents resolve customer issues
+%% quickly and accurately.
 %%
 %% Amazon Q automatically detects customer intent during calls and chats
 %% using conversational analytics and natural language understanding (NLU).
@@ -96,6 +102,8 @@
          list_tags_for_resource/5,
          notify_recommendations_received/4,
          notify_recommendations_received/5,
+         put_feedback/3,
+         put_feedback/4,
          query_assistant/3,
          query_assistant/4,
          remove_knowledge_base_template_uri/3,
@@ -243,7 +251,7 @@ create_knowledge_base(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Amazon Q quick response.
+%% @doc Creates an Amazon Q quick response.
 create_quick_response(Client, KnowledgeBaseId, Input) ->
     create_quick_response(Client, KnowledgeBaseId, Input, []).
 create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -876,6 +884,32 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides feedback against the specified assistant for the specified
+%% target.
+%%
+%% This API only supports generative targets.
+put_feedback(Client, AssistantId, Input) ->
+    put_feedback(Client, AssistantId, Input, []).
+put_feedback(Client, AssistantId, Input0, Options0) ->
+    Method = put,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/feedback"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Performs a manual search against the specified assistant.
 %%
 %% To retrieve recommendations for an assistant, use GetRecommendations.
@@ -951,7 +985,7 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches existing Amazon Q quick responses in a Amazon Q knowledge
+%% @doc Searches existing Amazon Q quick responses in an Amazon Q knowledge
 %% base.
 search_quick_responses(Client, KnowledgeBaseId, Input) ->
     search_quick_responses(Client, KnowledgeBaseId, Input, []).
