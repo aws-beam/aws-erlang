@@ -120,7 +120,7 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 %% more information, see AWSServiceCatalogAppRegistryFullAccess in the
 %% AppRegistry Administrator Guide.
 %%
-%% <ul> <li> `resource-groups:DisassociateResource'
+%% <ul> <li> `resource-groups:AssociateResource'
 %%
 %% </li> <li> `cloudformation:UpdateStack'
 %%
