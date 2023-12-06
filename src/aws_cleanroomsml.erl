@@ -1,7 +1,21 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc API Reference for Amazon Web Services Clean Rooms ML.
+%% @doc Welcome to the Amazon Web Services Clean Rooms ML API Reference.
+%%
+%% Amazon Web Services Clean Rooms ML provides a privacy-enhancing method for
+%% two parties to identify similar users in their data without the need to
+%% share their data with each other. The first party brings the training data
+%% to Clean Rooms so that they can create and configure an audience model
+%% (lookalike model) and associate it with a collaboration. The second party
+%% then brings their seed data to Clean Rooms and generates an audience
+%% (lookalike segment) that resembles the training data.
+%%
+%% To learn more about Amazon Web Services Clean Rooms ML concepts,
+%% procedures, and best practices, see the Clean Rooms User Guide.
+%%
+%% To learn more about SQL commands, functions, and conditions supported in
+%% Clean Rooms, see the Clean Rooms SQL Reference.
 -module(aws_cleanroomsml).
 
 -export([create_audience_model/2,
