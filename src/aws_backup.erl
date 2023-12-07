@@ -2186,6 +2186,7 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
         {<<"restoreTestingPlanArn">>, maps:get(<<"restoreTestingPlanArn">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
@@ -2727,12 +2728,8 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
 %% @doc Updates the current service opt-in settings for the Region.
 %%
-%% If service-opt-in is enabled for a service, Backup tries to protect that
-%% service's resources in this Region, when the resource is included in
-%% an on-demand backup or scheduled backup plan. Otherwise, Backup does not
-%% try to protect that service's resources in this Region. Use the
-%% `DescribeRegionSettings' API to determine the resource types that are
-%% supported.
+%% Use the `DescribeRegionSettings' API to determine the resource types
+%% that are supported.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 update_region_settings(Client, Input0, Options0) ->
