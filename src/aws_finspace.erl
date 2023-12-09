@@ -13,20 +13,32 @@
          create_kx_cluster/4,
          create_kx_database/3,
          create_kx_database/4,
+         create_kx_dataview/4,
+         create_kx_dataview/5,
          create_kx_environment/2,
          create_kx_environment/3,
+         create_kx_scaling_group/3,
+         create_kx_scaling_group/4,
          create_kx_user/3,
          create_kx_user/4,
+         create_kx_volume/3,
+         create_kx_volume/4,
          delete_environment/3,
          delete_environment/4,
          delete_kx_cluster/4,
          delete_kx_cluster/5,
          delete_kx_database/4,
          delete_kx_database/5,
+         delete_kx_dataview/5,
+         delete_kx_dataview/6,
          delete_kx_environment/3,
          delete_kx_environment/4,
+         delete_kx_scaling_group/4,
+         delete_kx_scaling_group/5,
          delete_kx_user/4,
          delete_kx_user/5,
+         delete_kx_volume/4,
+         delete_kx_volume/5,
          get_environment/2,
          get_environment/4,
          get_environment/5,
@@ -42,12 +54,21 @@
          get_kx_database/3,
          get_kx_database/5,
          get_kx_database/6,
+         get_kx_dataview/4,
+         get_kx_dataview/6,
+         get_kx_dataview/7,
          get_kx_environment/2,
          get_kx_environment/4,
          get_kx_environment/5,
+         get_kx_scaling_group/3,
+         get_kx_scaling_group/5,
+         get_kx_scaling_group/6,
          get_kx_user/3,
          get_kx_user/5,
          get_kx_user/6,
+         get_kx_volume/3,
+         get_kx_volume/5,
+         get_kx_volume/6,
          list_environments/1,
          list_environments/3,
          list_environments/4,
@@ -63,12 +84,21 @@
          list_kx_databases/2,
          list_kx_databases/4,
          list_kx_databases/5,
+         list_kx_dataviews/3,
+         list_kx_dataviews/5,
+         list_kx_dataviews/6,
          list_kx_environments/1,
          list_kx_environments/3,
          list_kx_environments/4,
+         list_kx_scaling_groups/2,
+         list_kx_scaling_groups/4,
+         list_kx_scaling_groups/5,
          list_kx_users/2,
          list_kx_users/4,
          list_kx_users/5,
+         list_kx_volumes/2,
+         list_kx_volumes/4,
+         list_kx_volumes/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -84,12 +114,16 @@
          update_kx_cluster_databases/5,
          update_kx_database/4,
          update_kx_database/5,
+         update_kx_dataview/5,
+         update_kx_dataview/6,
          update_kx_environment/3,
          update_kx_environment/4,
          update_kx_environment_network/3,
          update_kx_environment_network/4,
          update_kx_user/4,
-         update_kx_user/5]).
+         update_kx_user/5,
+         update_kx_volume/4,
+         update_kx_volume/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -192,12 +226,62 @@ create_kx_database(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a snapshot of kdb database with tiered storage capabilities
+%% and a pre-warmed cache, ready for mounting on kdb clusters.
+%%
+%% Dataviews are only available for clusters running on a scaling group. They
+%% are not supported on dedicated clusters.
+create_kx_dataview(Client, DatabaseName, EnvironmentId, Input) ->
+    create_kx_dataview(Client, DatabaseName, EnvironmentId, Input, []).
+create_kx_dataview(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a managed kdb environment for the account.
 create_kx_environment(Client, Input) ->
     create_kx_environment(Client, Input, []).
 create_kx_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new scaling group.
+create_kx_scaling_group(Client, EnvironmentId, Input) ->
+    create_kx_scaling_group(Client, EnvironmentId, Input, []).
+create_kx_scaling_group(Client, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -222,6 +306,30 @@ create_kx_user(Client, EnvironmentId, Input) ->
 create_kx_user(Client, EnvironmentId, Input0, Options0) ->
     Method = post,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new volume with a specific amount of throughput and storage
+%% capacity.
+create_kx_volume(Client, EnvironmentId, Input) ->
+    create_kx_volume(Client, EnvironmentId, Input, []).
+create_kx_volume(Client, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -313,6 +421,33 @@ delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified dataview.
+%%
+%% Before deleting a dataview, make sure that it is not in use by any
+%% cluster.
+delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
+    delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
+delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the kdb environment.
 %%
 %% This action is irreversible. Deleting a kdb environment will remove all
@@ -334,9 +469,37 @@ delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified scaling group.
+%%
+%% This action is irreversible. You cannot delete a scaling group until all
+%% the clusters running on it have been deleted.
+delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input) ->
+    delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input, []).
+delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user in the specified kdb environment.
@@ -357,9 +520,38 @@ delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a volume.
+%%
+%% You can only delete a volume if it's not attached to a cluster or a
+%% dataview. When a volume is deleted, any data on the volume is lost. This
+%% action is irreversible.
+delete_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
+    delete_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
+delete_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the FinSpace environment object.
@@ -485,6 +677,29 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves details of the dataview.
+get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId)
+  when is_map(Client) ->
+    get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, #{}, #{}).
+
+get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves all the information for the specified kdb environment.
 get_kx_environment(Client, EnvironmentId)
   when is_map(Client) ->
@@ -508,6 +723,29 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves details of a scaling group.
+get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName)
+  when is_map(Client) ->
+    get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, #{}, #{}).
+
+get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, []).
+
+get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups/", aws_util:encode_uri(ScalingGroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about the specified kdb user.
 get_kx_user(Client, EnvironmentId, UserName)
   when is_map(Client) ->
@@ -520,6 +758,29 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
 get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the information about the volume.
+get_kx_volume(Client, EnvironmentId, VolumeName)
+  when is_map(Client) ->
+    get_kx_volume(Client, EnvironmentId, VolumeName, #{}, #{}).
+
+get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, []).
+
+get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -672,6 +933,34 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of all the dataviews in the database.
+list_kx_dataviews(Client, DatabaseName, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_dataviews(Client, DatabaseName, EnvironmentId, #{}, #{}).
+
+list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of kdb environments created in an account.
 list_kx_environments(Client)
   when is_map(Client) ->
@@ -684,6 +973,34 @@ list_kx_environments(Client, QueryMap, HeadersMap)
 list_kx_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/kx/environments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of scaling groups in a kdb environment.
+list_kx_scaling_groups(Client, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_scaling_groups(Client, EnvironmentId, #{}, #{}).
+
+list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/scalingGroups"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -723,6 +1040,35 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the volumes in a kdb environment.
+list_kx_volumes(Client, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_volumes(Client, EnvironmentId, #{}, #{}).
+
+list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"volumeType">>, maps:get(<<"volumeType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -902,6 +1248,33 @@ update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the specified dataview.
+%%
+%% The dataviews get automatically updated when any new changesets are
+%% ingested. Each update of the dataview creates a new version, including
+%% changeset details and cache configurations
+update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
+    update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
+update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/dataviews/", aws_util:encode_uri(DataviewName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates information for the given kdb environment.
 update_kx_environment(Client, EnvironmentId, Input) ->
     update_kx_environment(Client, EnvironmentId, Input, []).
@@ -965,6 +1338,32 @@ update_kx_user(Client, EnvironmentId, UserName, Input) ->
 update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the throughput or capacity of a volume.
+%%
+%% During the update process, the filesystem might be unavailable for a few
+%% minutes. You can retry any operations after the update is complete.
+update_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
+    update_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
+update_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/kxvolumes/", aws_util:encode_uri(VolumeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
