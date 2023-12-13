@@ -167,6 +167,8 @@
          put_retention_policy/3,
          put_subscription_filter/2,
          put_subscription_filter/3,
+         start_live_tail/2,
+         start_live_tail/3,
          start_query/2,
          start_query/3,
          stop_query/2,
@@ -745,6 +747,9 @@ describe_queries(Client, Input, Options)
 
 %% @doc This operation returns a paginated list of your saved CloudWatch Logs
 %% Insights query definitions.
+%%
+%% You can retrieve query definitions from the current account or from a
+%% source account that is linked to the current account.
 %%
 %% You can use the `queryDefinitionNamePrefix' parameter to limit the
 %% results to only the query definitions that have names that start with a
@@ -1466,6 +1471,52 @@ put_subscription_filter(Client, Input)
 put_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSubscriptionFilter">>, Input, Options).
+
+%% @doc Starts a Live Tail streaming session for one or more log groups.
+%%
+%% A Live Tail session returns a stream of log events that have been recently
+%% ingested in the log groups. For more information, see Use Live Tail to
+%% view logs in near real time.
+%%
+%% The response to this operation is a response stream, over which the server
+%% sends live log events and the client receives them.
+%%
+%% The following objects are sent over the stream:
+%%
+%% <ul> <li> A single LiveTailSessionStart object is sent at the start of the
+%% session.
+%%
+%% </li> <li> Every second, a LiveTailSessionUpdate object is sent. Each of
+%% these objects contains an array of the actual log events.
+%%
+%% If no new log events were ingested in the past second, the
+%% `LiveTailSessionUpdate' object will contain an empty array.
+%%
+%% The array of log events contained in a `LiveTailSessionUpdate' can
+%% include as many as 500 log events. If the number of log events matching
+%% the request exceeds 500 per second, the log events are sampled down to 500
+%% log events to be included in each `LiveTailSessionUpdate' object.
+%%
+%% If your client consumes the log events slower than the server produces
+%% them, CloudWatch Logs buffers up to 10 `LiveTailSessionUpdate' events
+%% or 5000 log events, after which it starts dropping the oldest events.
+%%
+%% </li> <li> A SessionStreamingException object is returned if an unknown
+%% error occurs on the server side.
+%%
+%% </li> <li> A SessionTimeoutException object is returned when the session
+%% times out, after it has been kept open for three hours.
+%%
+%% </li> </ul> You can end a session before it times out by closing the
+%% session stream or by closing the client that is receiving the stream. The
+%% session also ends if the established connection between the client and the
+%% server breaks.
+start_live_tail(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_live_tail(Client, Input, []).
+start_live_tail(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartLiveTail">>, Input, Options).
 
 %% @doc Schedules a query of a log group using CloudWatch Logs Insights.
 %%

@@ -28,6 +28,8 @@
          create_infrastructure_configuration/3,
          create_lifecycle_policy/2,
          create_lifecycle_policy/3,
+         create_workflow/2,
+         create_workflow/3,
          delete_component/2,
          delete_component/3,
          delete_container_recipe/2,
@@ -44,6 +46,8 @@
          delete_infrastructure_configuration/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
+         delete_workflow/2,
+         delete_workflow/3,
          get_component/2,
          get_component/4,
          get_component/5,
@@ -83,6 +87,9 @@
          get_lifecycle_policy/2,
          get_lifecycle_policy/4,
          get_lifecycle_policy/5,
+         get_workflow/2,
+         get_workflow/4,
+         get_workflow/5,
          get_workflow_execution/2,
          get_workflow_execution/4,
          get_workflow_execution/5,
@@ -128,10 +135,16 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_waiting_workflow_steps/2,
+         list_waiting_workflow_steps/3,
+         list_workflow_build_versions/2,
+         list_workflow_build_versions/3,
          list_workflow_executions/2,
          list_workflow_executions/3,
          list_workflow_step_executions/2,
          list_workflow_step_executions/3,
+         list_workflows/2,
+         list_workflows/3,
          put_component_policy/2,
          put_component_policy/3,
          put_container_recipe_policy/2,
@@ -140,6 +153,8 @@
          put_image_policy/3,
          put_image_recipe_policy/2,
          put_image_recipe_policy/3,
+         send_workflow_step_action/2,
+         send_workflow_step_action/3,
          start_image_pipeline_execution/2,
          start_image_pipeline_execution/3,
          start_resource_state_update/2,
@@ -424,6 +439,29 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a new workflow or a new version of an existing workflow.
+create_workflow(Client, Input) ->
+    create_workflow(Client, Input, []).
+create_workflow(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/CreateWorkflow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a component build version.
 delete_component(Client, Input) ->
     delete_component(Client, Input, []).
@@ -628,6 +666,30 @@ delete_lifecycle_policy(Client, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"lifecyclePolicyArn">>, <<"lifecyclePolicyArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a specific workflow resource.
+delete_workflow(Client, Input) ->
+    delete_workflow(Client, Input, []).
+delete_workflow(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/DeleteWorkflow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"workflowBuildVersionArn">>, <<"workflowBuildVersionArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -979,6 +1041,33 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"lifecyclePolicyArn">>, LifecyclePolicyArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get a workflow resource object.
+get_workflow(Client, WorkflowBuildVersionArn)
+  when is_map(Client) ->
+    get_workflow(Client, WorkflowBuildVersionArn, #{}, #{}).
+
+get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, []).
+
+get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetWorkflow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"workflowBuildVersionArn">>, WorkflowBuildVersionArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1534,6 +1623,53 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get a list of workflow steps that are waiting for action for
+%% workflows in your Amazon Web Services account.
+list_waiting_workflow_steps(Client, Input) ->
+    list_waiting_workflow_steps(Client, Input, []).
+list_waiting_workflow_steps(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWaitingWorkflowSteps"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of build versions for a specific workflow resource.
+list_workflow_build_versions(Client, Input) ->
+    list_workflow_build_versions(Client, Input, []).
+list_workflow_build_versions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWorkflowBuildVersions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of workflow runtime instance metadata objects for a
 %% specific image build version.
 list_workflow_executions(Client, Input) ->
@@ -1558,13 +1694,36 @@ list_workflow_executions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Shows runtime data for each step in a runtime instance of the
+%% @doc Returns runtime data for each step in a runtime instance of the
 %% workflow that you specify in the request.
 list_workflow_step_executions(Client, Input) ->
     list_workflow_step_executions(Client, Input, []).
 list_workflow_step_executions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListWorkflowStepExecutions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists workflow build versions based on filtering parameters.
+list_workflows(Client, Input) ->
+    list_workflows(Client, Input, []).
+list_workflows(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWorkflows"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1684,6 +1843,30 @@ put_image_recipe_policy(Client, Input) ->
 put_image_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImageRecipePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Pauses or resumes image creation when the associated workflow runs a
+%% `WaitForAction' step.
+send_workflow_step_action(Client, Input) ->
+    send_workflow_step_action(Client, Input, []).
+send_workflow_step_action(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/SendWorkflowStepAction"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1824,7 +2007,8 @@ update_distribution_configuration(Client, Input0, Options0) ->
 %% @doc Updates an image pipeline.
 %%
 %% Image pipelines enable you to automate the creation and distribution of
-%% images.
+%% images. You must specify exactly one recipe for your image, using either a
+%% `containerRecipeArn' or an `imageRecipeArn'.
 %%
 %% UpdateImagePipeline does not support selective updates for the pipeline.
 %% You must specify all of the required properties in the update request, not
