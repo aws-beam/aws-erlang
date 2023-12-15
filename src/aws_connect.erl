@@ -449,10 +449,14 @@
          submit_contact_evaluation/5,
          suspend_contact_recording/2,
          suspend_contact_recording/3,
+         tag_contact/2,
+         tag_contact/3,
          tag_resource/3,
          tag_resource/4,
          transfer_contact/2,
          transfer_contact/3,
+         untag_contact/4,
+         untag_contact/5,
          untag_resource/3,
          untag_resource/4,
          update_agent_status/4,
@@ -5726,6 +5730,32 @@ suspend_contact_recording(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Adds the specified tags to the contact resource.
+%%
+%% For more information about this API is used, see Set up granular billing
+%% for a detailed view of your Amazon Connect usage.
+tag_contact(Client, Input) ->
+    tag_contact(Client, Input, []).
+tag_contact(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/tags"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% Some of the supported resource types are agents, routing profiles, queues,
@@ -5801,6 +5831,33 @@ transfer_contact(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified tags from the contact resource.
+%%
+%% For more information about this API is used, see Set up granular billing
+%% for a detailed view of your Amazon Connect usage.
+untag_contact(Client, ContactId, InstanceId, Input) ->
+    untag_contact(Client, ContactId, InstanceId, Input, []).
+untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact/tags/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"TagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.

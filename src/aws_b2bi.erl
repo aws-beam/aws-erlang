@@ -82,8 +82,8 @@
 
 %% @doc Instantiates a capability based on the specified parameters.
 %%
-%% Capabilities contain the information necessary to process incoming EDI
-%% (electronic data interchange) documents.
+%% A trading capability contains the information required to transform
+%% incoming EDI documents into JSON or XML outputs.
 create_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capability(Client, Input, []).
@@ -94,10 +94,8 @@ create_capability(Client, Input, Options)
 %% @doc Creates a partnership between a customer and a trading partner, based
 %% on the supplied parameters.
 %%
-%% Partnerships link trading partners with your profile and a specific
-%% transformer, so that the EDI (electronic data interchange) documents that
-%% they upload to Amazon S3 can be processed according to their
-%% specifications.
+%% A partnership represents the connection between you and your trading
+%% partner. It ties together a profile and one or more trading capabilities.
 create_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partnership(Client, Input, []).
@@ -108,8 +106,8 @@ create_partnership(Client, Input, Options)
 %% @doc Creates a customer profile.
 %%
 %% You can have up to five customer profiles, each representing a distinct
-%% private network. Profiles contain basic information about you and your
-%% business.
+%% private network. A profile is the mechanism used to create the concept of
+%% a private network.
 create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
@@ -119,8 +117,8 @@ create_profile(Client, Input, Options)
 
 %% @doc Creates a transformer.
 %%
-%% Transformers describe how to process the incoming EDI (electronic data
-%% interchange) documents, and extract the necessary information.
+%% A transformer describes how to process the incoming EDI documents and
+%% extract the necessary information to the output file.
 create_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transformer(Client, Input, []).
@@ -130,8 +128,8 @@ create_transformer(Client, Input, Options)
 
 %% @doc Deletes the specified capability.
 %%
-%% Capabilities contain the information necessary to process incoming EDI
-%% (electronic data interchange) documents.
+%% A trading capability contains the information required to transform
+%% incoming EDI documents into JSON or XML outputs.
 delete_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capability(Client, Input, []).
@@ -141,10 +139,8 @@ delete_capability(Client, Input, Options)
 
 %% @doc Deletes the specified partnership.
 %%
-%% Partnerships link trading partners with your profile and a specific
-%% transformer, so that the EDI (electronic data interchange) documents that
-%% they upload to Amazon S3 can be processed according to their
-%% specifications.
+%% A partnership represents the connection between you and your trading
+%% partner. It ties together a profile and one or more trading capabilities.
 delete_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partnership(Client, Input, []).
@@ -154,7 +150,8 @@ delete_partnership(Client, Input, Options)
 
 %% @doc Deletes the specified profile.
 %%
-%% Profiles contain basic information about you and your business.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
@@ -164,8 +161,8 @@ delete_profile(Client, Input, Options)
 
 %% @doc Deletes the specified transformer.
 %%
-%% Transformers describe how to process the incoming EDI (electronic data
-%% interchange) documents, and extract the necessary information.
+%% A transformer describes how to process the incoming EDI documents and
+%% extract the necessary information to the output file.
 delete_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transformer(Client, Input, []).
@@ -175,8 +172,8 @@ delete_transformer(Client, Input, Options)
 
 %% @doc Retrieves the details for the specified capability.
 %%
-%% Capabilities contain the information necessary to process incoming EDI
-%% (electronic data interchange) documents.
+%% A trading capability contains the information required to transform
+%% incoming EDI documents into JSON or XML outputs.
 get_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capability(Client, Input, []).
@@ -187,10 +184,8 @@ get_capability(Client, Input, Options)
 %% @doc Retrieves the details for a partnership, based on the partner and
 %% profile IDs specified.
 %%
-%% Partnerships link trading partners with your profile and a specific
-%% transformer, so that the EDI (electronic data interchange) documents that
-%% they upload to Amazon S3 can be processed according to their
-%% specifications.
+%% A partnership represents the connection between you and your trading
+%% partner. It ties together a profile and one or more trading capabilities.
 get_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partnership(Client, Input, []).
@@ -200,7 +195,8 @@ get_partnership(Client, Input, Options)
 
 %% @doc Retrieves the details for the profile specified by the profile ID.
 %%
-%% Profiles contain basic information about you and your business.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 get_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_profile(Client, Input, []).
@@ -211,8 +207,8 @@ get_profile(Client, Input, Options)
 %% @doc Retrieves the details for the transformer specified by the
 %% transformer ID.
 %%
-%% Transformers describe how to process the incoming EDI (electronic data
-%% interchange) documents, and extract the necessary information.
+%% A transformer describes how to process the incoming EDI documents and
+%% extract the necessary information to the output file.
 get_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transformer(Client, Input, []).
@@ -232,8 +228,8 @@ get_transformer_job(Client, Input, Options)
 %% @doc Lists the capabilities associated with your Amazon Web Services
 %% account for your current or specified region.
 %%
-%% Capabilities contain the information necessary to process incoming EDI
-%% (electronic data interchange) documents.
+%% A trading capability contains the information required to transform
+%% incoming EDI documents into JSON or XML outputs.
 list_capabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_capabilities(Client, Input, []).
@@ -244,10 +240,8 @@ list_capabilities(Client, Input, Options)
 %% @doc Lists the partnerships associated with your Amazon Web Services
 %% account for your current or specified region.
 %%
-%% Partnerships link trading partners with your profile and a specific
-%% transformer, so that the EDI (electronic data interchange) documents that
-%% they upload to Amazon S3 can be processed according to their
-%% specifications.
+%% A partnership represents the connection between you and your trading
+%% partner. It ties together a profile and one or more trading capabilities.
 list_partnerships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partnerships(Client, Input, []).
@@ -258,7 +252,8 @@ list_partnerships(Client, Input, Options)
 %% @doc Lists the profiles associated with your Amazon Web Services account
 %% for your current or specified region.
 %%
-%% Profiles contain basic information about you and your business.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
@@ -279,8 +274,8 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Lists the available transformers.
 %%
-%% Transformers describe how to process the incoming EDI (electronic data
-%% interchange) documents, and extract the necessary information.
+%% A transformer describes how to process the incoming EDI documents and
+%% extract the necessary information to the output file.
 list_transformers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transformers(Client, Input, []).
@@ -291,6 +286,11 @@ list_transformers(Client, Input, Options)
 %% @doc Runs a job, using a transformer, to parse input EDI (electronic data
 %% interchange) file into the output structures used by Amazon Web Services
 %% B2BI Data Interchange.
+%%
+%% If you only want to transform EDI (electronic data interchange) documents,
+%% you don't need to create profiles, partnerships or capabilities. Just
+%% create and configure a transformer, and then run the
+%% `StartTransformerJob' API to process your files.
 start_transformer_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_transformer_job(Client, Input, []).
@@ -313,6 +313,10 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Maps the input file according to the provided template file.
+%%
+%% The API call downloads the file contents from the Amazon S3 location, and
+%% passes the contents in as a string, to the `inputFileContent'
+%% parameter.
 test_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_mapping(Client, Input, []).
@@ -343,8 +347,8 @@ untag_resource(Client, Input, Options)
 %% @doc Updates some of the parameters for a capability, based on the
 %% specified parameters.
 %%
-%% Capabilities contain the information necessary to process incoming EDI
-%% (electronic data interchange) documents.
+%% A trading capability contains the information required to transform
+%% incoming EDI documents into JSON or XML outputs.
 update_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capability(Client, Input, []).
@@ -355,10 +359,8 @@ update_capability(Client, Input, Options)
 %% @doc Updates some of the parameters for a partnership between a customer
 %% and trading partner.
 %%
-%% Partnerships link trading partners with your profile and a specific
-%% transformer, so that the EDI (electronic data interchange) documents that
-%% they upload to Amazon S3 can be processed according to their
-%% specifications.
+%% A partnership represents the connection between you and your trading
+%% partner. It ties together a profile and one or more trading capabilities.
 update_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partnership(Client, Input, []).
@@ -368,7 +370,8 @@ update_partnership(Client, Input, Options)
 
 %% @doc Updates the specified parameters for a profile.
 %%
-%% Profiles contain basic information about you and your business.
+%% A profile is the mechanism used to create the concept of a private
+%% network.
 update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
@@ -378,8 +381,8 @@ update_profile(Client, Input, Options)
 
 %% @doc Updates the specified parameters for a transformer.
 %%
-%% Transformers describe how to process the incoming EDI (electronic data
-%% interchange) documents, and extract the necessary information.
+%% A transformer describes how to process the incoming EDI documents and
+%% extract the necessary information to the output file.
 update_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_transformer(Client, Input, []).

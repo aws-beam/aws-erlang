@@ -360,6 +360,11 @@ create_workspace_image(Client, Input, Options)
 %%
 %% You don't need to specify the `PCOIP' protocol for Linux bundles
 %% because `WSP' is the default protocol for those bundles.
+%%
+%% Ensure you review your running mode to ensure you are using a running mode
+%% that is optimal for your needs and budget. For more information on
+%% switching running modes, see Can I switch between hourly and monthly
+%% billing?
 create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).

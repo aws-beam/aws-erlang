@@ -373,6 +373,8 @@
          update_analysis_permissions/5,
          update_dashboard/4,
          update_dashboard/5,
+         update_dashboard_links/4,
+         update_dashboard_links/5,
          update_dashboard_permissions/4,
          update_dashboard_permissions/5,
          update_dashboard_published_version/5,
@@ -506,9 +508,7 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% QuickSight Q.
 %%
 %% The Amazon Web Services Region for the account is derived from what is
-%% configured in the CLI or SDK. This operation isn't supported in the US
-%% East (Ohio) Region, South America (Sao Paulo) Region, or Asia Pacific
-%% (Singapore) Region.
+%% configured in the CLI or SDK.
 %%
 %% Before you use this operation, make sure that you can connect to an
 %% existing Amazon Web Services account. If you don't have an Amazon Web
@@ -4462,6 +4462,29 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the linked analyses on a dashboard.
+update_dashboard_links(Client, AwsAccountId, DashboardId, Input) ->
+    update_dashboard_links(Client, AwsAccountId, DashboardId, Input, []).
+update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/linked-entities"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

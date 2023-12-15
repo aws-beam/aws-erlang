@@ -2518,13 +2518,11 @@ resume_game_server_group(Client, Input, Options)
 %% @doc Retrieves all active game sessions that match a set of search
 %% criteria and sorts them into a specified order.
 %%
-%% This operation is not designed to be continually called to track game
-%% session status. This practice can cause you to exceed your API limit,
-%% which results in errors. Instead, you must configure configure an Amazon
-%% Simple Notification Service (SNS) topic to receive notifications from
-%% FlexMatch or queues. Continuously polling game session status with
-%% `DescribeGameSessions' should only be used for games in development
-%% with low game session usage.
+%% This operation is not designed to continually track game session status
+%% because that practice can cause you to exceed your API limit and generate
+%% errors. Instead, configure an Amazon Simple Notification Service (Amazon
+%% SNS) topic to receive notifications from a matchmaker or game session
+%% placement queue.
 %%
 %% When searching for game sessions, you specify exactly where you want to
 %% search and provide a search filter expression, a sort expression, or both.
@@ -2551,7 +2549,9 @@ resume_game_server_group(Client, Input, Options)
 %% `ACTIVE' status only. To retrieve information on game sessions in
 %% other statuses, use DescribeGameSessions .
 %%
-%% You can search or sort by the following game session attributes:
+%% To set search and sort criteria, create a filter expression using the
+%% following game session attributes. For game session search examples, see
+%% the Examples section of this topic.
 %%
 %% <ul> <li> gameSessionId -- A unique identifier for the game session. You
 %% can use either a `GameSessionId' or `GameSessionArn' value.
@@ -2559,14 +2559,18 @@ resume_game_server_group(Client, Input, Options)
 %% </li> <li> gameSessionName -- Name assigned to a game session. Game
 %% session names do not need to be unique to a game session.
 %%
-%% </li> <li> gameSessionProperties -- Custom data defined in a game
-%% session's `GameProperty' parameter. `GameProperty' values are
-%% stored as key:value pairs; the filter expression must indicate the key and
-%% a string to search the data values for. For example, to search for game
-%% sessions with custom data containing the key:value pair
-%% &quot;gameMode:brawl&quot;, specify the following:
-%% `gameSessionProperties.gameMode = &quot;brawl&quot;'. All custom data
-%% values are searched as strings.
+%% </li> <li> gameSessionProperties -- A set of key-value pairs that can
+%% store custom data in a game session. For example: `{&quot;Key&quot;:
+%% &quot;difficulty&quot;, &quot;Value&quot;: &quot;novice&quot;}'. The
+%% filter expression must specify the `GameProperty' -- a `Key' and a
+%% string `Value' to search for the game sessions.
+%%
+%% For example, to search for the above key-value pair, specify the following
+%% search filter: `gameSessionProperties.difficulty =
+%% &quot;novice&quot;'. All game property values are searched as strings.
+%%
+%% For examples of searching game sessions, see the ones below, and also see
+%% Search game sessions by game property.
 %%
 %% </li> <li> maximumSessions -- Maximum number of player sessions allowed
 %% for a game session.

@@ -2,7 +2,7 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Web Services Billing Conductor is a fully managed service that
-%% you can use to customize a pro forma version of your billing data each
+%% you can use to customize a proforma version of your billing data each
 %% month, to accurately show or chargeback your end customers.
 %%
 %% Amazon Web Services Billing Conductor doesn't change the way
@@ -50,6 +50,8 @@
          disassociate_accounts/3,
          disassociate_pricing_rules/2,
          disassociate_pricing_rules/3,
+         get_billing_group_cost_report/2,
+         get_billing_group_cost_report/3,
          list_account_associations/2,
          list_account_associations/3,
          list_billing_group_cost_reports/2,
@@ -429,6 +431,31 @@ disassociate_pricing_rules(Client, Input) ->
 disassociate_pricing_rules(Client, Input0, Options0) ->
     Method = put,
     Path = ["/disassociate-pricing-rules"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the margin summary report, which includes the Amazon Web
+%% Services cost and charged amount (pro forma cost) by Amazon Web Service
+%% for a specific billing group.
+get_billing_group_cost_report(Client, Input) ->
+    get_billing_group_cost_report(Client, Input, []).
+get_billing_group_cost_report(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-billing-group-cost-report"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

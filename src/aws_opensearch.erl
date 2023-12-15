@@ -199,7 +199,10 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds the data source on the domain.
+%% @doc Creates a new direct-query data source to the specified domain.
+%%
+%% For more information, see Creating Amazon OpenSearch Service data source
+%% integrations with Amazon S3.
 add_data_source(Client, DomainName, Input) ->
     add_data_source(Client, DomainName, Input, []).
 add_data_source(Client, DomainName, Input0, Options0) ->
@@ -428,7 +431,10 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the data source.
+%% @doc Deletes a direct-query data source.
+%%
+%% For more information, see Deleting an Amazon OpenSearch Service data
+%% source with Amazon S3.
 delete_data_source(Client, DomainName, Name, Input) ->
     delete_data_source(Client, DomainName, Name, Input, []).
 delete_data_source(Client, DomainName, Name, Input0, Options0) ->
@@ -1041,7 +1047,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the data source details.
+%% @doc Retrieves information about a direct query data source.
 get_data_source(Client, DomainName, Name)
   when is_map(Client) ->
     get_data_source(Client, DomainName, Name, #{}, #{}).
@@ -1176,7 +1182,10 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc A list of the data source details of the domain.
+%% @doc Lists direct-query data sources for a specific domain.
+%%
+%% For more information, see For more information, see Working with Amazon
+%% OpenSearch Service direct queries with Amazon S3.
 list_data_sources(Client, DomainName)
   when is_map(Client) ->
     list_data_sources(Client, DomainName, #{}, #{}).
@@ -1676,7 +1685,10 @@ start_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the data source on the domain.
+%% @doc Updates a direct-query data source.
+%%
+%% For more information, see Working with Amazon OpenSearch Service data
+%% source integrations with Amazon S3.
 update_data_source(Client, DomainName, Name, Input) ->
     update_data_source(Client, DomainName, Name, Input, []).
 update_data_source(Client, DomainName, Name, Input0, Options0) ->

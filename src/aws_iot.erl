@@ -67,6 +67,8 @@
          create_billing_group/4,
          create_certificate_from_csr/2,
          create_certificate_from_csr/3,
+         create_certificate_provider/3,
+         create_certificate_provider/4,
          create_custom_metric/3,
          create_custom_metric/4,
          create_dimension/3,
@@ -131,6 +133,8 @@
          delete_ca_certificate/4,
          delete_certificate/3,
          delete_certificate/4,
+         delete_certificate_provider/3,
+         delete_certificate_provider/4,
          delete_custom_metric/3,
          delete_custom_metric/4,
          delete_dimension/3,
@@ -213,6 +217,9 @@
          describe_certificate/2,
          describe_certificate/4,
          describe_certificate/5,
+         describe_certificate_provider/2,
+         describe_certificate_provider/4,
+         describe_certificate_provider/5,
          describe_custom_metric/2,
          describe_custom_metric/4,
          describe_custom_metric/5,
@@ -376,6 +383,9 @@
          list_ca_certificates/1,
          list_ca_certificates/3,
          list_ca_certificates/4,
+         list_certificate_providers/1,
+         list_certificate_providers/3,
+         list_certificate_providers/4,
          list_certificates/1,
          list_certificates/3,
          list_certificates/4,
@@ -584,6 +594,8 @@
          update_ca_certificate/4,
          update_certificate/3,
          update_certificate/4,
+         update_certificate_provider/3,
+         update_certificate_provider/4,
          update_custom_metric/3,
          update_custom_metric/4,
          update_dimension/3,
@@ -1237,6 +1249,44 @@ create_certificate_from_csr(Client, Input0, Options0) ->
                      {<<"setAsActive">>, <<"setAsActive">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Web Services IoT Core certificate provider.
+%%
+%% You can use Amazon Web Services IoT Core certificate provider to customize
+%% how to sign a certificate signing request (CSR) in IoT fleet provisioning.
+%% For more information, see Customizing certificate signing using Amazon Web
+%% Services IoT Core certificate provider from Amazon Web Services IoT Core
+%% Developer Guide.
+%%
+%% Requires permission to access the CreateCertificateProvider action.
+%%
+%% After you create a certificate provider, the behavior of
+%% `CreateCertificateFromCsr' API for fleet provisioning will change and
+%% all API calls to `CreateCertificateFromCsr' will invoke the
+%% certificate provider to create the certificates. It can take up to a few
+%% minutes for this behavior to change after a certificate provider is
+%% created.
+create_certificate_provider(Client, CertificateProviderName, Input) ->
+    create_certificate_provider(Client, CertificateProviderName, Input, []).
+create_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
+    Method = post,
+    Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this API to define a Custom Metric published by your devices to
@@ -2117,6 +2167,35 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
                      {<<"forceDelete">>, <<"forceDelete">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a certificate provider.
+%%
+%% Requires permission to access the DeleteCertificateProvider action.
+%%
+%% If you delete the certificate provider resource, the behavior of
+%% `CreateCertificateFromCsr' will resume, and IoT will create
+%% certificates signed by IoT from a certificate signing request (CSR).
+delete_certificate_provider(Client, CertificateProviderName, Input) ->
+    delete_certificate_provider(Client, CertificateProviderName, Input, []).
+delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Device Defender detect custom metric.
@@ -3113,6 +3192,31 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
 describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a certificate provider.
+%%
+%% Requires permission to access the DescribeCertificateProvider action.
+describe_certificate_provider(Client, CertificateProviderName)
+  when is_map(Client) ->
+    describe_certificate_provider(Client, CertificateProviderName, #{}, #{}).
+
+describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, []).
+
+describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4730,6 +4834,37 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
         {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
         {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)},
         {<<"templateName">>, maps:get(<<"templateName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all your certificate providers in your Amazon Web Services
+%% account.
+%%
+%% Requires permission to access the ListCertificateProviders action.
+list_certificate_providers(Client)
+  when is_map(Client) ->
+    list_certificate_providers(Client, #{}, #{}).
+
+list_certificate_providers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_certificate_providers(Client, QueryMap, HeadersMap, []).
+
+list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/certificate-providers/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7206,6 +7341,31 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
                      {<<"newStatus">>, <<"newStatus">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a certificate provider.
+%%
+%% Requires permission to access the UpdateCertificateProvider action.
+update_certificate_provider(Client, CertificateProviderName, Input) ->
+    update_certificate_provider(Client, CertificateProviderName, Input, []).
+update_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
+    Method = put,
+    Path = ["/certificate-providers/", aws_util:encode_uri(CertificateProviderName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Device Defender detect custom metric.
