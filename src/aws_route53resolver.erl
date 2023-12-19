@@ -274,7 +274,7 @@ create_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallRuleGroup">>, Input, Options).
 
-%% @doc Creates an Route 53 Resolver on an Outpost.
+%% @doc Creates a Route 53 Resolver on an Outpost.
 create_outpost_resolver(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_outpost_resolver(Client, Input, []).
@@ -935,7 +935,7 @@ update_resolver_dnssec_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverDnssecConfig">>, Input, Options).
 
-%% @doc Updates the name, or enpoint type for an inbound or an outbound
+%% @doc Updates the name, or endpoint type for an inbound or an outbound
 %% Resolver endpoint.
 %%
 %% You can only update between IPV4 and DUALSTACK, IPV6 endpoint type

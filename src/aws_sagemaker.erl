@@ -148,6 +148,8 @@
          delete_cluster/3,
          delete_code_repository/2,
          delete_code_repository/3,
+         delete_compilation_job/2,
+         delete_compilation_job/3,
          delete_context/2,
          delete_context/3,
          delete_data_quality_job_definition/2,
@@ -1943,6 +1945,24 @@ delete_code_repository(Client, Input)
 delete_code_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCodeRepository">>, Input, Options).
+
+%% @doc Deletes the specified compilation job.
+%%
+%% This action deletes only the compilation job resource in Amazon SageMaker.
+%% It doesn't delete other resources that are related to that job, such
+%% as the model artifacts that the job creates, the compilation logs in
+%% CloudWatch, the compiled model, or the IAM role.
+%%
+%% You can delete a compilation job only if its current status is
+%% `COMPLETED', `FAILED', or `STOPPED'. If the job status is
+%% `STARTING' or `INPROGRESS', stop the job, and then delete it after
+%% its status becomes `STOPPED'.
+delete_compilation_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_compilation_job(Client, Input, []).
+delete_compilation_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCompilationJob">>, Input, Options).
 
 %% @doc Deletes an context.
 delete_context(Client, Input)

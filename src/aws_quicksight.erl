@@ -715,7 +715,8 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% QuickSight.
 %%
 %% You can create up to 10,000 groups in a namespace. If you want to create
-%% more than 10,000 groups in a namespace, contact AWS Support.
+%% more than 10,000 groups in a namespace, contact Amazon Web Services
+%% Support.
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:&lt;your-region&gt;:&lt;relevant-aws-account-id&gt;:group/default/&lt;group-name&gt;

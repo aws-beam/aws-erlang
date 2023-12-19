@@ -219,6 +219,9 @@
 %% Required permissions: kms:CancelKeyDeletion (key policy)
 %%
 %% Related operations: `ScheduleKeyDeletion'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 cancel_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_key_deletion(Client, Input, []).
@@ -316,7 +319,8 @@ cancel_key_deletion(Client, Input, Options)
 %%
 %% </li> <li> `UpdateCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 connect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_custom_key_store(Client, Input, []).
@@ -374,7 +378,8 @@ connect_custom_key_store(Client, Input, Options)
 %%
 %% </li> <li> `UpdateAlias'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -463,7 +468,8 @@ create_alias(Client, Input, Options)
 %%
 %% </li> <li> `UpdateCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 create_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_key_store(Client, Input, []).
@@ -525,7 +531,8 @@ create_custom_key_store(Client, Input, Options)
 %%
 %% </li> <li> `RevokeGrant'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -707,7 +714,8 @@ create_grant(Client, Input, Options)
 %%
 %% </li> <li> `ScheduleKeyDeletion'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
@@ -773,10 +781,10 @@ create_key(Client, Input, Options)
 %% parameter to provide the attestation document for the enclave. Instead of
 %% the plaintext data, the response includes the plaintext data encrypted
 %% with the public key from the attestation document
-%% (`CiphertextForRecipient').For information about the interaction
+%% (`CiphertextForRecipient'). For information about the interaction
 %% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
 %% Services Nitro Enclaves uses KMS in the Key Management Service Developer
-%% Guide..
+%% Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -798,7 +806,8 @@ create_key(Client, Input, Options)
 %%
 %% </li> <li> `ReEncrypt'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 decrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrypt(Client, Input, []).
@@ -842,7 +851,8 @@ decrypt(Client, Input, Options)
 %%
 %% </li> <li> `UpdateAlias'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -904,7 +914,8 @@ delete_alias(Client, Input, Options)
 %%
 %% </li> <li> `UpdateCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 delete_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_key_store(Client, Input, []).
@@ -938,7 +949,8 @@ delete_custom_key_store(Client, Input, Options)
 %%
 %% </li> <li> `ImportKeyMaterial'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 delete_imported_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_imported_key_material(Client, Input, []).
@@ -998,7 +1010,8 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% </li> <li> `UpdateCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 describe_custom_key_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_key_stores(Client, Input, []).
@@ -1068,7 +1081,8 @@ describe_custom_key_stores(Client, Input, Options)
 %%
 %% </li> <li> `ListRetirableGrants'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 describe_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key(Client, Input, []).
@@ -1094,6 +1108,9 @@ describe_key(Client, Input, Options)
 %% Required permissions: kms:DisableKey (key policy)
 %%
 %% Related operations: `EnableKey'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 disable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key(Client, Input, []).
@@ -1135,7 +1152,8 @@ disable_key(Client, Input, Options)
 %%
 %% </li> <li> `GetKeyRotationStatus'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 disable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key_rotation(Client, Input, []).
@@ -1186,7 +1204,8 @@ disable_key_rotation(Client, Input, Options)
 %%
 %% </li> <li> `UpdateCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 disconnect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     disconnect_custom_key_store(Client, Input, []).
@@ -1208,6 +1227,9 @@ disconnect_custom_key_store(Client, Input, Options)
 %% Required permissions: kms:EnableKey (key policy)
 %%
 %% Related operations: `DisableKey'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 enable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key(Client, Input, []).
@@ -1218,7 +1240,7 @@ enable_key(Client, Input, Options)
 %% @doc Enables automatic rotation of the key material of the specified
 %% symmetric encryption KMS key.
 %%
-%% When you enable automatic rotation of acustomer managed KMS key, KMS
+%% When you enable automatic rotation of a customer managed KMS key, KMS
 %% rotates the key material of the KMS key one year (approximately 365 days)
 %% from the enable date and every year thereafter. You can monitor rotation
 %% of the key material for your KMS keys in CloudTrail and Amazon CloudWatch.
@@ -1261,7 +1283,8 @@ enable_key(Client, Input, Options)
 %%
 %% </li> <li> `GetKeyRotationStatus'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 enable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key_rotation(Client, Input, []).
@@ -1349,7 +1372,8 @@ enable_key_rotation(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyPair'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     encrypt(Client, Input, []).
@@ -1455,7 +1479,8 @@ encrypt(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyWithoutPlaintext'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 generate_data_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key(Client, Input, []).
@@ -1469,8 +1494,8 @@ generate_data_key(Client, Input, Options)
 %% and a copy of the private key that is encrypted under the symmetric
 %% encryption KMS key you specify. You can use the data key pair to perform
 %% asymmetric cryptography and implement digital signatures outside of KMS.
-%% The bytes in the keys are random; they not related to the caller or to the
-%% KMS key that is used to encrypt the private key.
+%% The bytes in the keys are random; they are not related to the caller or to
+%% the KMS key that is used to encrypt the private key.
 %%
 %% You can use the public key that `GenerateDataKeyPair' returns to
 %% encrypt data or verify a signature outside of KMS. Then, store the
@@ -1550,7 +1575,8 @@ generate_data_key(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyWithoutPlaintext'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 generate_data_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair(Client, Input, []).
@@ -1619,7 +1645,8 @@ generate_data_key_pair(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyWithoutPlaintext'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 generate_data_key_pair_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair_without_plaintext(Client, Input, []).
@@ -1699,7 +1726,8 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyPairWithoutPlaintext'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 generate_data_key_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_without_plaintext(Client, Input, []).
@@ -1740,6 +1768,9 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %% Required permissions: kms:GenerateMac (key policy)
 %%
 %% Related operations: `VerifyMac'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 generate_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mac(Client, Input, []).
@@ -1775,6 +1806,9 @@ generate_mac(Client, Input, Options)
 %% account-specific resources, such as KMS keys.
 %%
 %% Required permissions: kms:GenerateRandom (IAM policy)
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 generate_random(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_random(Client, Input, []).
@@ -1789,7 +1823,10 @@ generate_random(Client, Input, Options)
 %%
 %% Required permissions: kms:GetKeyPolicy (key policy)
 %%
-%% Related operations: `PutKeyPolicy'
+%% Related operations: PutKeyPolicy
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 get_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_policy(Client, Input, []).
@@ -1851,7 +1888,8 @@ get_key_policy(Client, Input, Options)
 %%
 %% </li> <li> `EnableKeyRotation'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 get_key_rotation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_rotation_status(Client, Input, []).
@@ -1928,7 +1966,8 @@ get_key_rotation_status(Client, Input, Options)
 %%
 %% </li> <li> `DeleteImportedKeyMaterial'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
@@ -1989,6 +2028,9 @@ get_parameters_for_import(Client, Input, Options)
 %% Required permissions: kms:GetPublicKey (key policy)
 %%
 %% Related operations: `CreateKey'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 get_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key(Client, Input, []).
@@ -2103,7 +2145,8 @@ get_public_key(Client, Input, Options)
 %%
 %% </li> <li> `GetParametersForImport'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 import_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_material(Client, Input, []).
@@ -2149,7 +2192,8 @@ import_key_material(Client, Input, Options)
 %%
 %% </li> <li> `UpdateAlias'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -2189,7 +2233,8 @@ list_aliases(Client, Input, Options)
 %%
 %% </li> <li> `RevokeGrant'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_grants(Client, Input, []).
@@ -2212,9 +2257,10 @@ list_grants(Client, Input, Options)
 %%
 %% <ul> <li> `GetKeyPolicy'
 %%
-%% </li> <li> `PutKeyPolicy'
+%% </li> <li> PutKeyPolicy
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_key_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_policies(Client, Input, []).
@@ -2240,7 +2286,8 @@ list_key_policies(Client, Input, Options)
 %%
 %% </li> <li> `ListResourceTags'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
@@ -2269,7 +2316,8 @@ list_keys(Client, Input, Options)
 %%
 %% </li> <li> `UntagResource'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_resource_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_tags(Client, Input, []).
@@ -2292,13 +2340,22 @@ list_resource_tags(Client, Input, Options)
 %% grants.
 %%
 %% Cross-account use: You must specify a principal in your Amazon Web
-%% Services account. However, this operation can return grants in any Amazon
-%% Web Services account. You do not need `kms:ListRetirableGrants'
-%% permission (or any other additional permission) in any Amazon Web Services
-%% account other than your own.
+%% Services account. This operation returns a list of grants where the
+%% retiring principal specified in the `ListRetirableGrants' request is
+%% the same retiring principal on the grant. This can include grants on KMS
+%% keys owned by other Amazon Web Services accounts, but you do not need
+%% `kms:ListRetirableGrants' permission (or any other additional
+%% permission) in any Amazon Web Services account other than your own.
 %%
 %% Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon
 %% Web Services account.
+%%
+%% KMS authorizes `ListRetirableGrants' requests by evaluating the caller
+%% account's kms:ListRetirableGrants permissions. The authorized resource
+%% in `ListRetirableGrants' calls is the retiring principal specified in
+%% the request. KMS does not evaluate the caller's permissions to verify
+%% their access to any KMS keys or grants that might be returned by the
+%% `ListRetirableGrants' call.
 %%
 %% Related operations:
 %%
@@ -2310,7 +2367,8 @@ list_resource_tags(Client, Input, Options)
 %%
 %% </li> <li> `RevokeGrant'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 list_retirable_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retirable_grants(Client, Input, []).
@@ -2333,6 +2391,9 @@ list_retirable_grants(Client, Input, Options)
 %% Required permissions: kms:PutKeyPolicy (key policy)
 %%
 %% Related operations: `GetKeyPolicy'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_key_policy(Client, Input, []).
@@ -2428,7 +2489,8 @@ put_key_policy(Client, Input, Options)
 %%
 %% </li> <li> `GenerateDataKeyPair'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 re_encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     re_encrypt(Client, Input, []).
@@ -2519,7 +2581,8 @@ re_encrypt(Client, Input, Options)
 %%
 %% </li> <li> `UpdatePrimaryRegion'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 replicate_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_key(Client, Input, []).
@@ -2549,7 +2612,7 @@ replicate_key(Client, Input, Options)
 %% Cross-account use: Yes. You can retire a grant on a KMS key in a different
 %% Amazon Web Services account.
 %%
-%% Required permissions::Permission to retire a grant is determined primarily
+%% Required permissions: Permission to retire a grant is determined primarily
 %% by the grant. For details, see Retiring and revoking grants in the Key
 %% Management Service Developer Guide.
 %%
@@ -2563,7 +2626,8 @@ replicate_key(Client, Input, Options)
 %%
 %% </li> <li> `RevokeGrant'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 retire_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     retire_grant(Client, Input, []).
@@ -2603,7 +2667,8 @@ retire_grant(Client, Input, Options)
 %%
 %% </li> <li> `RetireGrant'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 revoke_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_grant(Client, Input, []).
@@ -2669,7 +2734,8 @@ revoke_grant(Client, Input, Options)
 %%
 %% </li> <li> `DisableKey'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 schedule_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_key_deletion(Client, Input, []).
@@ -2734,6 +2800,9 @@ schedule_key_deletion(Client, Input, Options)
 %% Required permissions: kms:Sign (key policy)
 %%
 %% Related operations: `Verify'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 sign(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign(Client, Input, []).
@@ -2783,7 +2852,8 @@ sign(Client, Input, Options)
 %%
 %% </li> <li> `UntagResource'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2828,7 +2898,8 @@ tag_resource(Client, Input, Options)
 %%
 %% </li> <li> `TagResource'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2888,7 +2959,8 @@ untag_resource(Client, Input, Options)
 %%
 %% </li> <li> `ListAliases'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -2986,7 +3058,8 @@ update_alias(Client, Input, Options)
 %%
 %% </li> <li> `DisconnectCustomKeyStore'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 update_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_key_store(Client, Input, []).
@@ -3013,7 +3086,8 @@ update_custom_key_store(Client, Input, Options)
 %%
 %% </li> <li> `DescribeKey'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 update_key_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_key_description(Client, Input, []).
@@ -3091,7 +3165,8 @@ update_key_description(Client, Input, Options)
 %%
 %% </li> <li> `ReplicateKey'
 %%
-%% </li> </ul>
+%% </li> </ul> Eventual consistency: The KMS API follows an eventual
+%% consistency model. For more information, see KMS eventual consistency.
 update_primary_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_region(Client, Input, []).
@@ -3146,6 +3221,9 @@ update_primary_region(Client, Input, Options)
 %% Required permissions: kms:Verify (key policy)
 %%
 %% Related operations: `Sign'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 verify(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify(Client, Input, []).
@@ -3180,6 +3258,9 @@ verify(Client, Input, Options)
 %% Required permissions: kms:VerifyMac (key policy)
 %%
 %% Related operations: `GenerateMac'
+%%
+%% Eventual consistency: The KMS API follows an eventual consistency model.
+%% For more information, see KMS eventual consistency.
 verify_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_mac(Client, Input, []).

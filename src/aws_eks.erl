@@ -3,7 +3,7 @@
 
 %% @doc Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service
 %% that makes it easy for you to run Kubernetes on Amazon Web Services
-%% without needing to stand up or maintain your own Kubernetes control plane.
+%% without needing to setup or maintain your own Kubernetes control plane.
 %%
 %% Kubernetes is an open-source system for automating the deployment,
 %% scaling, and management of containerized applications.
@@ -17,10 +17,14 @@
 %% to Amazon EKS without any code modification required.
 -module(aws_eks).
 
--export([associate_encryption_config/3,
+-export([associate_access_policy/4,
+         associate_access_policy/5,
+         associate_encryption_config/3,
          associate_encryption_config/4,
          associate_identity_provider_config/3,
          associate_identity_provider_config/4,
+         create_access_entry/3,
+         create_access_entry/4,
          create_addon/3,
          create_addon/4,
          create_cluster/2,
@@ -33,6 +37,8 @@
          create_nodegroup/4,
          create_pod_identity_association/3,
          create_pod_identity_association/4,
+         delete_access_entry/4,
+         delete_access_entry/5,
          delete_addon/4,
          delete_addon/5,
          delete_cluster/3,
@@ -47,6 +53,9 @@
          delete_pod_identity_association/5,
          deregister_cluster/3,
          deregister_cluster/4,
+         describe_access_entry/3,
+         describe_access_entry/5,
+         describe_access_entry/6,
          describe_addon/3,
          describe_addon/5,
          describe_addon/6,
@@ -76,11 +85,22 @@
          describe_update/3,
          describe_update/5,
          describe_update/6,
+         disassociate_access_policy/5,
+         disassociate_access_policy/6,
          disassociate_identity_provider_config/3,
          disassociate_identity_provider_config/4,
+         list_access_entries/2,
+         list_access_entries/4,
+         list_access_entries/5,
+         list_access_policies/1,
+         list_access_policies/3,
+         list_access_policies/4,
          list_addons/2,
          list_addons/4,
          list_addons/5,
+         list_associated_access_policies/3,
+         list_associated_access_policies/5,
+         list_associated_access_policies/6,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
@@ -111,6 +131,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_access_entry/4,
+         update_access_entry/5,
          update_addon/4,
          update_addon/5,
          update_cluster_config/3,
@@ -132,10 +154,37 @@
 %% API
 %%====================================================================
 
-%% @doc Associate encryption configuration to an existing cluster.
+%% @doc Associates an access policy and its scope to an access entry.
 %%
-%% You can use this API to enable encryption on existing clusters which do
-%% not have encryption already enabled. This allows you to implement a
+%% For more information about associating access policies, see Associating
+%% and disassociating access policies to and from access entries in the
+%% Amazon EKS User Guide.
+associate_access_policy(Client, ClusterName, PrincipalArn, Input) ->
+    associate_access_policy(Client, ClusterName, PrincipalArn, Input, []).
+associate_access_policy(Client, ClusterName, PrincipalArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an encryption configuration to an existing cluster.
+%%
+%% Use this API to enable encryption on existing clusters that don't
+%% already have encryption enabled. This allows you to implement a
 %% defense-in-depth security strategy without migrating applications to new
 %% Amazon EKS clusters.
 associate_encryption_config(Client, ClusterName, Input) ->
@@ -160,20 +209,58 @@ associate_encryption_config(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associate an identity provider configuration to a cluster.
+%% @doc Associates an identity provider configuration to a cluster.
 %%
 %% If you want to authenticate identities using an identity provider, you can
 %% create an identity provider configuration and associate it to your
 %% cluster. After configuring authentication to your cluster you can create
-%% Kubernetes `roles' and `clusterroles' to assign permissions to the
-%% roles, and then bind the roles to the identities using Kubernetes
-%% `rolebindings' and `clusterrolebindings'. For more information see
-%% Using RBAC Authorization in the Kubernetes documentation.
+%% Kubernetes `Role' and `ClusterRole' objects, assign permissions to
+%% them, and then bind them to the identities using Kubernetes
+%% `RoleBinding' and `ClusterRoleBinding' objects. For more
+%% information see Using RBAC Authorization in the Kubernetes documentation.
 associate_identity_provider_config(Client, ClusterName, Input) ->
     associate_identity_provider_config(Client, ClusterName, Input, []).
 associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/associate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an access entry.
+%%
+%% An access entry allows an IAM principal to access your cluster. Access
+%% entries can replace the need to maintain entries in the `aws-auth'
+%% `ConfigMap' for authentication. You have the following options for
+%% authorizing an IAM principal to access Kubernetes objects on your cluster:
+%% Kubernetes role-based access control (RBAC), Amazon EKS, or both.
+%% Kubernetes RBAC authorization requires you to create and manage Kubernetes
+%% `Role', `ClusterRole', `RoleBinding', and
+%% `ClusterRoleBinding' objects, in addition to managing access entries.
+%% If you use Amazon EKS authorization exclusively, you don't need to
+%% create and manage Kubernetes `Role', `ClusterRole',
+%% `RoleBinding', and `ClusterRoleBinding' objects.
+%%
+%% For more information about access entries, see Access entries in the
+%% Amazon EKS User Guide.
+create_access_entry(Client, ClusterName, Input) ->
+    create_access_entry(Client, ClusterName, Input, []).
+create_access_entry(Client, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -341,7 +428,7 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %% must wait for that Fargate profile to finish deleting before you can
 %% create any other profiles in that cluster.
 %%
-%% For more information, see Fargate Profile in the Amazon EKS User Guide.
+%% For more information, see Fargate profile in the Amazon EKS User Guide.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 create_fargate_profile(Client, ClusterName, Input0, Options0) ->
@@ -367,15 +454,19 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% @doc Creates a managed node group for an Amazon EKS cluster.
 %%
 %% You can only create a node group for your cluster that is equal to the
-%% current Kubernetes version for the cluster.
+%% current Kubernetes version for the cluster. All node groups are created
+%% with the latest AMI release version for the respective minor Kubernetes
+%% version of the cluster, unless you deploy a custom AMI using a launch
+%% template. For more information about using launch templates, see Launch
+%% template support.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by Amazon Web Services
 %% for an Amazon EKS cluster. For more information, see Managed node groups
 %% in the Amazon EKS User Guide.
 %%
-%% Windows AMI types are only supported for commercial Regions that support
-%% Windows Amazon EKS.
+%% Windows AMI types are only supported for commercial Amazon Web Services
+%% Regions that support Windows on Amazon EKS.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 create_nodegroup(Client, ClusterName, Input0, Options0) ->
@@ -405,8 +496,8 @@ create_nodegroup(Client, ClusterName, Input0, Options0) ->
 %% credentials are rotated automatically.
 %%
 %% Amazon EKS Pod Identity associations provide the ability to manage
-%% credentials for your applications, similar to the way that 7EC2l instance
-%% profiles provide credentials to Amazon EC2 instances.
+%% credentials for your applications, similar to the way that Amazon EC2
+%% instance profiles provide credentials to Amazon EC2 instances.
 %%
 %% If a pod uses a service account that has an association, Amazon EKS sets
 %% environment variables in the containers of the pod. The environment
@@ -438,11 +529,37 @@ create_pod_identity_association(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an Amazon EKS add-on.
+%% @doc Deletes an access entry.
 %%
-%% When you remove the add-on, it will also be deleted from the cluster. You
-%% can always manually start an add-on on the cluster using the Kubernetes
-%% API.
+%% Deleting an access entry of a type other than `Standard' can cause
+%% your cluster to function improperly. If you delete an access entry in
+%% error, you can recreate it.
+delete_access_entry(Client, ClusterName, PrincipalArn, Input) ->
+    delete_access_entry(Client, ClusterName, PrincipalArn, Input, []).
+delete_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon EKS add-on.
+%%
+%% When you remove an add-on, it's deleted from the cluster. You can
+%% always manually start an add-on on the cluster using the Kubernetes API.
 delete_addon(Client, AddonName, ClusterName, Input) ->
     delete_addon(Client, AddonName, ClusterName, Input, []).
 delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
@@ -466,18 +583,18 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon EKS cluster control plane.
+%% @doc Deletes an Amazon EKS cluster control plane.
 %%
 %% If you have active services in your cluster that are associated with a
 %% load balancer, you must delete those services before deleting the cluster
 %% so that the load balancers are deleted properly. Otherwise, you can have
 %% orphaned resources in your VPC that prevent you from being able to delete
-%% the VPC. For more information, see Deleting a Cluster in the Amazon EKS
+%% the VPC. For more information, see Deleting a cluster in the Amazon EKS
 %% User Guide.
 %%
 %% If you have managed node groups or Fargate profiles attached to the
 %% cluster, you must delete them first. For more information, see
-%% `DeleteNodegroup' and `DeleteFargateProfile'.
+%% `DeleteNodgroup' and `DeleteFargateProfile'.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 delete_cluster(Client, Name, Input0, Options0) ->
@@ -530,11 +647,11 @@ delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes an Fargate profile.
 %%
-%% When you delete a Fargate profile, any pods running on Fargate that were
-%% created with the profile are deleted. If those pods match another Fargate
-%% profile, then they are scheduled on Fargate with that profile. If they no
-%% longer match any Fargate profiles, then they are not scheduled on Fargate
-%% and they may remain in a pending state.
+%% When you delete a Fargate profile, any `Pod' running on Fargate that
+%% was created with the profile is deleted. If the `Pod' matches another
+%% Fargate profile, then it is scheduled on Fargate with that profile. If it
+%% no longer matches any Fargate profiles, then it's not scheduled on
+%% Fargate and may remain in a pending state.
 %%
 %% Only one Fargate profile in a cluster can be in the `DELETING' status
 %% at a time. You must wait for a Fargate profile to finish deleting before
@@ -561,7 +678,7 @@ delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon EKS node group for a cluster.
+%% @doc Deletes a managed node group.
 delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
@@ -614,6 +731,9 @@ delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Opti
 
 %% @doc Deregisters a connected cluster to remove it from the Amazon EKS
 %% control plane.
+%%
+%% A connected cluster is a Kubernetes cluster that you've connected to
+%% your control plane using the Amazon EKS Connector.
 deregister_cluster(Client, Name, Input) ->
     deregister_cluster(Client, Name, Input, []).
 deregister_cluster(Client, Name, Input0, Options0) ->
@@ -635,6 +755,29 @@ deregister_cluster(Client, Name, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes an access entry.
+describe_access_entry(Client, ClusterName, PrincipalArn)
+  when is_map(Client) ->
+    describe_access_entry(Client, ClusterName, PrincipalArn, #{}, #{}).
+
+describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
+
+describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an Amazon EKS add-on.
 describe_addon(Client, AddonName, ClusterName)
@@ -724,12 +867,12 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an Amazon EKS cluster.
+%% @doc Describes an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data returned by this
 %% operation are required for `kubelet' and `kubectl' to communicate
-%% with your Kubernetes API server. For more information, see Create a
-%% kubeconfig for Amazon EKS.
+%% with your Kubernetes API server. For more information, see Creating or
+%% updating a `kubeconfig' file for an Amazon EKS cluster.
 %%
 %% The API server endpoint and certificate authority data aren't
 %% available until the cluster reaches the `ACTIVE' state.
@@ -778,7 +921,7 @@ describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an Fargate profile.
+%% @doc Describes an Fargate profile.
 describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, #{}, #{}).
@@ -801,8 +944,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an identity provider
-%% configuration.
+%% @doc Describes an identity provider configuration.
 describe_identity_provider_config(Client, ClusterName, Input) ->
     describe_identity_provider_config(Client, ClusterName, Input, []).
 describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
@@ -825,7 +967,7 @@ describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an Amazon EKS node group.
+%% @doc Describes a managed node group.
 describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, #{}, #{}).
@@ -878,8 +1020,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an update against your Amazon
-%% EKS cluster or associated managed node group or Amazon EKS add-on.
+%% @doc Describes an update to an Amazon EKS resource.
 %%
 %% When the status of the update is `Succeeded', the update is complete.
 %% If an update fails, the status is `Failed', and an error detail
@@ -911,6 +1052,29 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Disassociates an access policy from an access entry.
+disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input) ->
+    disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input, []).
+disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies/", aws_util:encode_uri(PolicyArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates an identity provider configuration from a cluster.
 %%
 %% If you disassociate an identity provider from your cluster, users included
@@ -937,6 +1101,63 @@ disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the access entries for your cluster.
+list_access_entries(Client, ClusterName)
+  when is_map(Client) ->
+    list_access_entries(Client, ClusterName, #{}, #{}).
+
+list_access_entries(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_entries(Client, ClusterName, QueryMap, HeadersMap, []).
+
+list_access_entries(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"associatedPolicyArn">>, maps:get(<<"associatedPolicyArn">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the available access policies.
+list_access_policies(Client)
+  when is_map(Client) ->
+    list_access_policies(Client, #{}, #{}).
+
+list_access_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_policies(Client, QueryMap, HeadersMap, []).
+
+list_access_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/access-policies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the installed add-ons.
 list_addons(Client, ClusterName)
@@ -966,8 +1187,36 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the access policies associated with an access entry.
+list_associated_access_policies(Client, ClusterName, PrincipalArn)
+  when is_map(Client) ->
+    list_associated_access_policies(Client, ClusterName, PrincipalArn, #{}, #{}).
+
+list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
+
+list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), "/access-policies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the Amazon EKS clusters in your Amazon Web Services account in
-%% the specified Region.
+%% the specified Amazon Web Services Region.
 list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
@@ -1026,7 +1275,8 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Fargate profiles associated with the specified cluster in
-%% your Amazon Web Services account in the specified Region.
+%% your Amazon Web Services account in the specified Amazon Web Services
+%% Region.
 list_fargate_profiles(Client, ClusterName)
   when is_map(Client) ->
     list_fargate_profiles(Client, ClusterName, #{}, #{}).
@@ -1054,7 +1304,7 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc A list of identity provider configurations.
+%% @doc Lists the identity provider configurations for your cluster.
 list_identity_provider_configs(Client, ClusterName)
   when is_map(Client) ->
     list_identity_provider_configs(Client, ClusterName, #{}, #{}).
@@ -1082,11 +1332,11 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon EKS managed node groups associated with the
-%% specified cluster in your Amazon Web Services account in the specified
+%% @doc Lists the managed node groups associated with the specified cluster
+%% in your Amazon Web Services account in the specified Amazon Web Services
 %% Region.
 %%
-%% Self-managed node groups are not listed.
+%% Self-managed node groups aren't listed.
 list_nodegroups(Client, ClusterName)
   when is_map(Client) ->
     list_nodegroups(Client, ClusterName, #{}, #{}).
@@ -1170,8 +1420,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the updates associated with an Amazon EKS cluster or managed
-%% node group in your Amazon Web Services account, in the specified Region.
+%% @doc Lists the updates associated with an Amazon EKS resource in your
+%% Amazon Web Services account, in the specified Amazon Web Services Region.
 list_updates(Client, Name)
   when is_map(Client) ->
     list_updates(Client, Name, #{}, #{}).
@@ -1214,10 +1464,10 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% `activationCode' must be applied to the Kubernetes cluster through
 %% it's native provider to provide visibility.
 %%
-%% After the Manifest is updated and applied, then the connected cluster is
-%% visible to the Amazon EKS control plane. If the Manifest is not applied
-%% within three days, then the connected cluster will no longer be visible
-%% and must be deregistered. See `DeregisterCluster'.
+%% After the manifest is updated and applied, the connected cluster is
+%% visible to the Amazon EKS control plane. If the manifest isn't applied
+%% within three days, the connected cluster will no longer be visible and
+%% must be deregistered using `DeregisterCluster'.
 register_cluster(Client, Input) ->
     register_cluster(Client, Input, []).
 register_cluster(Client, Input0, Options0) ->
@@ -1240,16 +1490,16 @@ register_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates the specified tags to a resource with the specified
-%% `resourceArn'.
+%% @doc Associates the specified tags to an Amazon EKS resource with the
+%% specified `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
-%% associated with that resource are deleted as well. Tags that you create
-%% for Amazon EKS resources do not propagate to any other resources
-%% associated with the cluster. For example, if you tag a cluster with this
-%% operation, that tag does not automatically propagate to the subnets and
-%% nodes associated with the cluster.
+%% parameters, they aren't changed. When a resource is deleted, the tags
+%% associated with that resource are also deleted. Tags that you create for
+%% Amazon EKS resources don't propagate to any other resources associated
+%% with the cluster. For example, if you tag a cluster with this operation,
+%% that tag doesn't automatically propagate to the subnets and nodes
+%% associated with the cluster.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1272,7 +1522,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes specified tags from a resource.
+%% @doc Deletes specified tags from an Amazon EKS resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1294,6 +1544,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an access entry.
+update_access_entry(Client, ClusterName, PrincipalArn, Input) ->
+    update_access_entry(Client, ClusterName, PrincipalArn, Input, []).
+update_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/access-entries/", aws_util:encode_uri(PrincipalArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon EKS add-on.
@@ -1323,12 +1596,12 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %%
 %% Your cluster continues to function during the update. The response output
 %% includes an update ID that you can use to track the status of your cluster
-%% update with the `DescribeUpdate' API operation.
+%% update with `DescribeUpdate'&quot;/&gt;.
 %%
 %% You can use this API operation to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 %% default, cluster control plane logs aren't exported to CloudWatch
-%% Logs. For more information, see Amazon EKS Cluster Control Plane Logs in
+%% Logs. For more information, see Amazon EKS Cluster control plane logs in
 %% the Amazon EKS User Guide .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
@@ -1492,10 +1765,10 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% version.
 %%
 %% When a node in a managed node group is terminated due to a scaling action
-%% or update, the pods in that node are drained first. Amazon EKS attempts to
-%% drain the nodes gracefully and will fail if it is unable to do so. You can
-%% `force' the update if Amazon EKS is unable to drain the nodes as a
-%% result of a pod disruption budget issue.
+%% or update, every `Pod' on that node is drained first. Amazon EKS
+%% attempts to drain the nodes gracefully and will fail if it is unable to do
+%% so. You can `force' the update if Amazon EKS is unable to drain the
+%% nodes as a result of a `Pod' disruption budget issue.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) ->
@@ -1522,7 +1795,7 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) -
 %%
 %% Only the IAM role can be changed; an association can't be moved
 %% between clusters, namespaces, or service accounts. If you need to edit the
-%% namespace or service account, you need to remove the association and then
+%% namespace or service account, you need to delete the association and then
 %% create a new association with your desired settings.
 update_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
     update_pod_identity_association(Client, AssociationId, ClusterName, Input, []).

@@ -395,12 +395,16 @@
          list_views/5,
          monitor_contact/2,
          monitor_contact/3,
+         pause_contact/2,
+         pause_contact/3,
          put_user_status/4,
          put_user_status/5,
          release_phone_number/3,
          release_phone_number/4,
          replicate_instance/3,
          replicate_instance/4,
+         resume_contact/2,
+         resume_contact/3,
          resume_contact_recording/2,
          resume_contact_recording/3,
          search_available_phone_numbers/2,
@@ -3316,7 +3320,7 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 %% GetFederationToken with root credentials, an error message similar to the
 %% following one appears:
 %%
-%% `Provided identity: Principal: .... User: .... cannot be used for
+%% `Provided identity: Principal: (...). User: (...). cannot be used for
 %% federation with Amazon Connect'
 get_federation_token(Client, InstanceId)
   when is_map(Client) ->
@@ -4863,6 +4867,29 @@ monitor_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Allows pausing an ongoing task contact.
+pause_contact(Client, Input) ->
+    pause_contact(Client, Input, []).
+pause_contact(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/pause"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Changes the current status of a user or agent in Amazon Connect.
 %%
 %% If the agent is currently handling a contact, this sets the agent's
@@ -4958,6 +4985,29 @@ replicate_instance(Client, InstanceId, Input) ->
 replicate_instance(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/replicate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows resuming a task contact in a paused state.
+resume_contact(Client, Input) ->
+    resume_contact(Client, Input, []).
+resume_contact(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/resume"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

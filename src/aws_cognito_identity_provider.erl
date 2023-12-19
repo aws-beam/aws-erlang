@@ -1,27 +1,42 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc With the Amazon Cognito user pools API, you can set up user pools and
-%% app clients, and authenticate users.
+%% @doc With the Amazon Cognito user pools API, you can configure user pools
+%% and authenticate users.
 %%
 %% To authenticate users from third-party identity providers (IdPs) in this
 %% API, you can link IdP users to native user profiles. Learn more about the
-%% authentication and authorization of federated users in the Using the
-%% Amazon Cognito user pools API and user pool endpoints.
+%% authentication and authorization of federated users at Adding user pool
+%% sign-in through a third party and in the User pool federation endpoints
+%% and hosted UI reference.
 %%
 %% This API reference provides detailed information about API operations and
-%% object types in Amazon Cognito. At the bottom of the page for each API
-%% operation and object, under See Also, you can learn how to use it in an
-%% Amazon Web Services SDK in the language of your choice.
+%% object types in Amazon Cognito.
 %%
 %% Along with resource management operations, the Amazon Cognito user pools
 %% API includes classes of operations and authorization models for
-%% client-side and server-side user operations. For more information, see
-%% Using the Amazon Cognito native and OIDC APIs in the Amazon Cognito
-%% Developer Guide.
+%% client-side and server-side authentication of users. You can interact with
+%% operations in the Amazon Cognito user pools API as any of the following
+%% subjects.
 %%
-%% You can also start reading about the `CognitoIdentityProvider' client
-%% in the following SDK guides.
+%% <ol> <li> An administrator who wants to configure user pools, app clients,
+%% users, groups, or other user pool functions.
+%%
+%% </li> <li> A server-side app, like a web application, that wants to use
+%% its Amazon Web Services privileges to manage, authenticate, or authorize a
+%% user.
+%%
+%% </li> <li> A client-side app, like a mobile app, that wants to make
+%% unauthenticated requests to manage, authenticate, or authorize a user.
+%%
+%% </li> </ol> For more information, see Using the Amazon Cognito user pools
+%% API and user pool endpoints in the Amazon Cognito Developer Guide.
+%%
+%% With your Amazon Web Services SDK, you can build the logic to support
+%% operational flows in every use case for this API. You can also make direct
+%% REST API requests to Amazon Cognito user pools service endpoints. The
+%% following links can get you started with the `CognitoIdentityProvider'
+%% client in other supported Amazon Web Services SDKs.
 %%
 %% <ul> <li> Amazon Web Services Command Line Interface
 %%
@@ -279,7 +294,11 @@ add_custom_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomAttributes">>, Input, Options).
 
-%% @doc Adds the specified user to the specified group.
+%% @doc Adds a user to a group.
+%%
+%% A user who is in a group can present a preferred-role claim to an identity
+%% pool, and populates a `cognito:groups' claim to their access and
+%% identity tokens.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -298,10 +317,19 @@ admin_add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminAddUserToGroup">>, Input, Options).
 
-%% @doc Confirms user registration as an admin without using a confirmation
-%% code.
+%% @doc This IAM-authenticated API operation provides a code that Amazon
+%% Cognito sent to your user when they signed up in your user pool.
 %%
-%% Works on any user.
+%% After your user enters their code, they confirm ownership of the email
+%% address or phone number that they provided, and their user account becomes
+%% active. Depending on your user pool configuration, your users will receive
+%% their confirmation code in an email or SMS message.
+%%
+%% Local users who signed up in your user pool are the only type of user who
+%% can confirm sign-up with a code. Users who federate through an external
+%% identity provider (IdP) have already been confirmed by their IdP.
+%% Administrator-created users confirm their accounts when they respond to
+%% their invitation email message and choose a password.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -657,7 +685,7 @@ admin_list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListDevices">>, Input, Options).
 
-%% @doc Lists the groups that the user belongs to.
+%% @doc Lists the groups that a user belongs to.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -762,7 +790,17 @@ admin_reset_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminResetUserPassword">>, Input, Options).
 
-%% @doc Responds to an authentication challenge, as an administrator.
+%% @doc Some API operations in a user pool generate a challenge, like a
+%% prompt for an MFA code, for device authentication that bypasses MFA, or
+%% for a custom authentication challenge.
+%%
+%% An `AdminRespondToAuthChallenge' API request provides the answer to
+%% that challenge, like a code or a secure remote password (SRP). The
+%% parameters of a response to an authentication challenge vary with the type
+%% of challenge.
+%%
+%% For more information about custom authentication challenges, see Custom
+%% authentication challenge Lambda triggers.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -977,17 +1015,31 @@ admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
 
-%% @doc Signs out a user from all devices.
+%% @doc Invalidates the identity, access, and refresh tokens that Amazon
+%% Cognito issued to a user.
 %%
-%% `AdminUserGlobalSignOut' invalidates all identity, access and refresh
-%% tokens that Amazon Cognito has issued to a user. A user can still use a
-%% hosted UI cookie to retrieve new tokens for the duration of the 1-hour
-%% cookie validity period.
+%% Call this operation with your administrative credentials when your user
+%% signs out of your app. This results in the following behavior.
 %%
-%% Your app isn't aware that a user's access token is revoked unless
-%% it attempts to authorize a user pools API request with an access token
-%% that contains the scope `aws.cognito.signin.user.admin'. Your app
-%% might otherwise accept access tokens until they expire.
+%% <ul> <li> Amazon Cognito no longer accepts token-authorized user
+%% operations that you authorize with a signed-out user's access tokens.
+%% For more information, see Using the Amazon Cognito user pools API and user
+%% pool endpoints.
+%%
+%% Amazon Cognito returns an `Access Token has been revoked' error when
+%% your app attempts to authorize a user pools API request with a revoked
+%% access token that contains the scope `aws.cognito.signin.user.admin'.
+%%
+%% </li> <li> Amazon Cognito no longer accepts a signed-out user's ID
+%% token in a GetId request to an identity pool with
+%% `ServerSideTokenCheck' enabled for its user pool IdP configuration in
+%% CognitoIdentityProvider.
+%%
+%% </li> <li> Amazon Cognito no longer accepts a signed-out user's
+%% refresh tokens in refresh requests.
+%%
+%% </li> </ul> Other requests might be valid until your user's token
+%% expires.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -1088,7 +1140,22 @@ confirm_forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
 
-%% @doc Confirms registration of a new user.
+%% @doc This public API operation provides a code that Amazon Cognito sent to
+%% your user when they signed up in your user pool via the SignUp API
+%% operation.
+%%
+%% After your user enters their code, they confirm ownership of the email
+%% address or phone number that they provided, and their user account becomes
+%% active. Depending on your user pool configuration, your users will receive
+%% their confirmation code in an email or SMS message.
+%%
+%% Local users who signed up in your user pool are the only type of user who
+%% can confirm sign-up with a code. Users who federate through an external
+%% identity provider (IdP) have already been confirmed by their IdP.
+%% Administrator-created users, users created with the AdminCreateUser API
+%% operation, confirm their accounts when they respond to their invitation
+%% email message and choose a password. They do not receive a confirmation
+%% code. Instead, they receive a temporary password.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
@@ -1622,17 +1689,31 @@ get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
 
-%% @doc Signs out a user from all devices.
+%% @doc Invalidates the identity, access, and refresh tokens that Amazon
+%% Cognito issued to a user.
 %%
-%% `GlobalSignOut' invalidates all identity, access and refresh tokens
-%% that Amazon Cognito has issued to a user. A user can still use a hosted UI
-%% cookie to retrieve new tokens for the duration of the 1-hour cookie
-%% validity period.
+%% Call this operation when your user signs out of your app. This results in
+%% the following behavior.
 %%
-%% Your app isn't aware that a user's access token is revoked unless
-%% it attempts to authorize a user pools API request with an access token
-%% that contains the scope `aws.cognito.signin.user.admin'. Your app
-%% might otherwise accept access tokens until they expire.
+%% <ul> <li> Amazon Cognito no longer accepts token-authorized user
+%% operations that you authorize with a signed-out user's access tokens.
+%% For more information, see Using the Amazon Cognito user pools API and user
+%% pool endpoints.
+%%
+%% Amazon Cognito returns an `Access Token has been revoked' error when
+%% your app attempts to authorize a user pools API request with a revoked
+%% access token that contains the scope `aws.cognito.signin.user.admin'.
+%%
+%% </li> <li> Amazon Cognito no longer accepts a signed-out user's ID
+%% token in a GetId request to an identity pool with
+%% `ServerSideTokenCheck' enabled for its user pool IdP configuration in
+%% CognitoIdentityProvider.
+%%
+%% </li> <li> Amazon Cognito no longer accepts a signed-out user's
+%% refresh tokens in refresh requests.
+%%
+%% </li> </ul> Other requests might be valid until your user's token
+%% expires.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
@@ -1895,7 +1976,17 @@ resend_confirmation_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendConfirmationCode">>, Input, Options).
 
-%% @doc Responds to the authentication challenge.
+%% @doc Some API operations in a user pool generate a challenge, like a
+%% prompt for an MFA code, for device authentication that bypasses MFA, or
+%% for a custom authentication challenge.
+%%
+%% A `RespondToAuthChallenge' API request provides the answer to that
+%% challenge, like a code or a secure remote password (SRP). The parameters
+%% of a response to an authentication challenge vary with the type of
+%% challenge.
+%%
+%% For more information about custom authentication challenges, see Custom
+%% authentication challenge Lambda triggers.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
@@ -2239,7 +2330,13 @@ update_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceServer">>, Input, Options).
 
-%% @doc Allows a user to update a specific attribute (one at a time).
+%% @doc With this operation, your users can update one or more of their
+%% attributes with their own credentials.
+%%
+%% You authorize this API request with the user's access token. To delete
+%% an attribute from your user, submit the attribute in your API request with
+%% a blank value. Custom attribute values in this request must include the
+%% `custom:' prefix.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
