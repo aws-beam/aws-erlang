@@ -85,7 +85,7 @@ jobs:
           ERLANG_OUTPUT_PATH: ../../src
         run: |
           # Remove any previously generated files
-          find src -type f -name "*.erl" -exec grep -l "DO NOT EDIT, AUTO-GENERATED CODE" {} \; | xargs rm -f
+          find $ERLANG_OUTPUT_PATH -type f -name "*.erl" -exec grep -l "DO NOT EDIT, AUTO-GENERATED CODE" {} \; | xargs rm -f
 
           # Jump to the codegen
           cd tmp/aws-codegen
