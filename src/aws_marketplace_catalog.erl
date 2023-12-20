@@ -12,7 +12,9 @@
 %% the Catalog API to manage your products on AWS Marketplace.
 -module(aws_marketplace_catalog).
 
--export([cancel_change_set/2,
+-export([batch_describe_entities/2,
+         batch_describe_entities/3,
+         cancel_change_set/2,
          cancel_change_set/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
@@ -45,6 +47,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Returns metadata and content for multiple entities.
+batch_describe_entities(Client, Input) ->
+    batch_describe_entities(Client, Input, []).
+batch_describe_entities(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchDescribeEntities"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to cancel an open change request.
 %%

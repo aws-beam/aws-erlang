@@ -201,6 +201,8 @@
          describe_db_proxy_target_groups/3,
          describe_db_proxy_targets/2,
          describe_db_proxy_targets/3,
+         describe_db_recommendations/2,
+         describe_db_recommendations/3,
          describe_db_security_groups/2,
          describe_db_security_groups/3,
          describe_db_snapshot_attributes/2,
@@ -279,6 +281,8 @@
          modify_db_proxy_endpoint/3,
          modify_db_proxy_target_group/2,
          modify_db_proxy_target_group/3,
+         modify_db_recommendation/2,
+         modify_db_recommendation/3,
          modify_db_snapshot/2,
          modify_db_snapshot/3,
          modify_db_snapshot_attribute/2,
@@ -1509,6 +1513,15 @@ describe_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargets">>, Input, Options).
 
+%% @doc Describes the recommendations to resolve the issues for your DB
+%% instances, DB clusters, and DB parameter groups.
+describe_db_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_recommendations(Client, Input, []).
+describe_db_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBRecommendations">>, Input, Options).
+
 %% @doc Returns a list of `DBSecurityGroup' descriptions.
 %%
 %% If a `DBSecurityGroupName' is specified, the list will contain only
@@ -2154,6 +2167,15 @@ modify_db_proxy_target_group(Client, Input)
 modify_db_proxy_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxyTargetGroup">>, Input, Options).
+
+%% @doc Updates the recommendation status and recommended action status for
+%% the specified recommendation.
+modify_db_recommendation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_db_recommendation(Client, Input, []).
+modify_db_recommendation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyDBRecommendation">>, Input, Options).
 
 %% @doc Updates a manual DB snapshot with a new engine version.
 %%
