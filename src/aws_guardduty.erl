@@ -113,6 +113,9 @@
          get_member_detectors/4,
          get_members/3,
          get_members/4,
+         get_organization_statistics/1,
+         get_organization_statistics/3,
+         get_organization_statistics/4,
          get_remaining_free_trial_days/3,
          get_remaining_free_trial_days/4,
          get_threat_intel_set/3,
@@ -363,6 +366,12 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% GuardDuty in the added member accounts, with the exception of the
 %% organization delegated administrator account. A delegated administrator
 %% must enable GuardDuty prior to being added as a member.
+%%
+%% When you use CreateMembers as an Organizations delegated administrator,
+%% GuardDuty applies your organization's auto-enable settings to the
+%% member accounts in this request, irrespective of the accounts being new or
+%% existing members. For more information about the existing auto-enable
+%% settings for your organization, see DescribeOrganizationConfiguration.
 %%
 %% If you are adding accounts by invitation, before using InviteMembers, use
 %% `CreateMembers' after GuardDuty has been enabled in potential member
@@ -947,8 +956,8 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% If you are a GuardDuty administrator, you can retrieve the statistics for
 %% all the resources associated with the active member accounts in your
-%% organization who have enabled EKS Runtime Monitoring and have the
-%% GuardDuty agent running on their EKS nodes.
+%% organization who have enabled Runtime Monitoring and have the GuardDuty
+%% security agent running on their resources.
 get_coverage_statistics(Client, DetectorId, Input) ->
     get_coverage_statistics(Client, DetectorId, Input, []).
 get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
@@ -1219,6 +1228,36 @@ get_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves how many active member accounts in your Amazon Web Services
+%% organization have each feature enabled within GuardDuty.
+%%
+%% Only a delegated GuardDuty administrator of an organization can run this
+%% API.
+%%
+%% When you create a new Amazon Web Services organization, it might take up
+%% to 24 hours to generate the statistics for the entire organization.
+get_organization_statistics(Client)
+  when is_map(Client) ->
+    get_organization_statistics(Client, #{}, #{}).
+
+get_organization_statistics(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_organization_statistics(Client, QueryMap, HeadersMap, []).
+
+get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/organization/statistics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides the number of days left for each data source used in the
 %% free trial period.
 get_remaining_free_trial_days(Client, DetectorId, Input) ->
@@ -1347,8 +1386,8 @@ invite_members(Client, DetectorId, Input0, Options0) ->
 %% If you're a GuardDuty administrator, you can retrieve all resources
 %% associated with the active member accounts in your organization.
 %%
-%% Make sure the accounts have EKS Runtime Monitoring enabled and GuardDuty
-%% agent running on their EKS nodes.
+%% Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent
+%% running on their resources.
 list_coverage(Client, DetectorId, Input) ->
     list_coverage(Client, DetectorId, Input, []).
 list_coverage(Client, DetectorId, Input0, Options0) ->

@@ -76,6 +76,9 @@
          describe_fargate_profile/6,
          describe_identity_provider_config/3,
          describe_identity_provider_config/4,
+         describe_insight/3,
+         describe_insight/5,
+         describe_insight/6,
          describe_nodegroup/3,
          describe_nodegroup/5,
          describe_nodegroup/6,
@@ -113,6 +116,8 @@
          list_identity_provider_configs/2,
          list_identity_provider_configs/4,
          list_identity_provider_configs/5,
+         list_insights/3,
+         list_insights/4,
          list_nodegroups/2,
          list_nodegroups/4,
          list_nodegroups/5,
@@ -967,6 +972,29 @@ describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns details about an insight that you specify using its ID.
+describe_insight(Client, ClusterName, Id)
+  when is_map(Client) ->
+    describe_insight(Client, ClusterName, Id, #{}, #{}).
+
+describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, []).
+
+describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a managed node group.
 describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
@@ -1331,6 +1359,33 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all insights checked for against the specified
+%% cluster.
+%%
+%% You can filter which insights are returned by category, associated
+%% Kubernetes version, and status.
+list_insights(Client, ClusterName, Input) ->
+    list_insights(Client, ClusterName, Input, []).
+list_insights(Client, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the managed node groups associated with the specified cluster
 %% in your Amazon Web Services account in the specified Amazon Web Services
