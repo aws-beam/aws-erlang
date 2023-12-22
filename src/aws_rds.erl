@@ -247,8 +247,12 @@
          describe_tenant_databases/3,
          describe_valid_db_instance_modifications/2,
          describe_valid_db_instance_modifications/3,
+         disable_http_endpoint/2,
+         disable_http_endpoint/3,
          download_db_log_file_portion/2,
          download_db_log_file_portion/3,
+         enable_http_endpoint/2,
+         enable_http_endpoint/3,
          failover_db_cluster/2,
          failover_db_cluster/3,
          failover_global_cluster/2,
@@ -1796,6 +1800,24 @@ describe_valid_db_instance_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeValidDBInstanceModifications">>, Input, Options).
 
+%% @doc Disables the HTTP endpoint for the specified DB cluster.
+%%
+%% Disabling this endpoint disables RDS Data API.
+%%
+%% For more information, see Using RDS Data API in the Amazon Aurora User
+%% Guide.
+%%
+%% This operation applies only to Aurora PostgreSQL Serverless v2 and
+%% provisioned DB clusters. To disable the HTTP endpoint for Aurora
+%% Serverless v1 DB clusters, use the `EnableHttpEndpoint' parameter of
+%% the `ModifyDBCluster' operation.
+disable_http_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_http_endpoint(Client, Input, []).
+disable_http_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableHttpEndpoint">>, Input, Options).
+
 %% @doc Downloads all or a portion of the specified log file, up to 1 MB in
 %% size.
 %%
@@ -1806,6 +1828,28 @@ download_db_log_file_portion(Client, Input)
 download_db_log_file_portion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DownloadDBLogFilePortion">>, Input, Options).
+
+%% @doc Enables the HTTP endpoint for the DB cluster.
+%%
+%% By default, the HTTP endpoint isn't enabled.
+%%
+%% When enabled, this endpoint provides a connectionless web service API (RDS
+%% Data API) for running SQL queries on the Aurora DB cluster. You can also
+%% query your database from inside the RDS console with the RDS query editor.
+%%
+%% For more information, see Using RDS Data API in the Amazon Aurora User
+%% Guide.
+%%
+%% This operation applies only to Aurora PostgreSQL Serverless v2 and
+%% provisioned DB clusters. To enable the HTTP endpoint for Aurora Serverless
+%% v1 DB clusters, use the `EnableHttpEndpoint' parameter of the
+%% `ModifyDBCluster' operation.
+enable_http_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_http_endpoint(Client, Input, []).
+enable_http_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableHttpEndpoint">>, Input, Options).
 
 %% @doc Forces a failover for a DB cluster.
 %%

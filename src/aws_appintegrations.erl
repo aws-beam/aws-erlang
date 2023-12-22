@@ -16,6 +16,8 @@
          create_data_integration/3,
          create_event_integration/2,
          create_event_integration/3,
+         delete_application/3,
+         delete_application/4,
          delete_data_integration/3,
          delete_data_integration/4,
          delete_event_integration/3,
@@ -29,6 +31,9 @@
          get_event_integration/2,
          get_event_integration/4,
          get_event_integration/5,
+         list_application_associations/2,
+         list_application_associations/4,
+         list_application_associations/5,
          list_applications/1,
          list_applications/3,
          list_applications/4,
@@ -127,6 +132,32 @@ create_event_integration(Client, Input) ->
 create_event_integration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/eventIntegrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the Application.
+%%
+%% Only Applications that don't have any Application Associations can be
+%% deleted.
+delete_application(Client, Arn, Input) ->
+    delete_application(Client, Arn, Input, []).
+delete_application(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/applications/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -273,6 +304,35 @@ get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of application associations for an
+%% application.
+list_application_associations(Client, ApplicationId)
+  when is_map(Client) ->
+    list_application_associations(Client, ApplicationId, #{}, #{}).
+
+list_application_associations(Client, ApplicationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, []).
+
+list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

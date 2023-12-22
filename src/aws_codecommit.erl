@@ -28,6 +28,10 @@
 %% </li> <li> `UpdateRepositoryDescription', which sets or updates the
 %% description of the repository.
 %%
+%% </li> <li> `UpdateRepositoryEncryptionKey', which updates the Key
+%% Management Service encryption key used to encrypt and decrypt a
+%% repository.
+%%
 %% </li> <li> `UpdateRepositoryName', which changes the name of the
 %% repository. If you change the name of a repository, no other users of that
 %% repository can access it until you send them the new HTTPS or SSH URL to
@@ -447,6 +451,8 @@
          update_pull_request_title/3,
          update_repository_description/2,
          update_repository_description/3,
+         update_repository_encryption_key/2,
+         update_repository_encryption_key/3,
          update_repository_name/2,
          update_repository_name/3]).
 
@@ -1251,6 +1257,15 @@ update_repository_description(Client, Input)
 update_repository_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryDescription">>, Input, Options).
+
+%% @doc Updates the Key Management Service encryption key used to encrypt and
+%% decrypt a CodeCommit repository.
+update_repository_encryption_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_repository_encryption_key(Client, Input, []).
+update_repository_encryption_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRepositoryEncryptionKey">>, Input, Options).
 
 %% @doc Renames a repository.
 %%

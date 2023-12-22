@@ -47,6 +47,8 @@
          associate_security_key/4,
          associate_traffic_distribution_group_user/3,
          associate_traffic_distribution_group_user/4,
+         associate_user_proficiencies/4,
+         associate_user_proficiencies/5,
          batch_associate_analytics_data_set/3,
          batch_associate_analytics_data_set/4,
          batch_disassociate_analytics_data_set/3,
@@ -75,6 +77,8 @@
          create_participant/3,
          create_persistent_contact_association/4,
          create_persistent_contact_association/5,
+         create_predefined_attribute/3,
+         create_predefined_attribute/4,
          create_prompt/3,
          create_prompt/4,
          create_queue/3,
@@ -119,6 +123,8 @@
          delete_instance/4,
          delete_integration_association/4,
          delete_integration_association/5,
+         delete_predefined_attribute/4,
+         delete_predefined_attribute/5,
          delete_prompt/4,
          delete_prompt/5,
          delete_queue/4,
@@ -180,6 +186,9 @@
          describe_phone_number/2,
          describe_phone_number/4,
          describe_phone_number/5,
+         describe_predefined_attribute/3,
+         describe_predefined_attribute/5,
+         describe_predefined_attribute/6,
          describe_prompt/3,
          describe_prompt/5,
          describe_prompt/6,
@@ -240,6 +249,8 @@
          disassociate_security_key/5,
          disassociate_traffic_distribution_group_user/3,
          disassociate_traffic_distribution_group_user/4,
+         disassociate_user_proficiencies/4,
+         disassociate_user_proficiencies/5,
          dismiss_user_contact/4,
          dismiss_user_contact/5,
          get_contact_attributes/3,
@@ -331,6 +342,9 @@
          list_phone_numbers/5,
          list_phone_numbers_v2/2,
          list_phone_numbers_v2/3,
+         list_predefined_attributes/2,
+         list_predefined_attributes/4,
+         list_predefined_attributes/5,
          list_prompts/2,
          list_prompts/4,
          list_prompts/5,
@@ -384,6 +398,9 @@
          list_user_hierarchy_groups/2,
          list_user_hierarchy_groups/4,
          list_user_hierarchy_groups/5,
+         list_user_proficiencies/3,
+         list_user_proficiencies/5,
+         list_user_proficiencies/6,
          list_users/2,
          list_users/4,
          list_users/5,
@@ -409,8 +426,12 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_contacts/2,
+         search_contacts/3,
          search_hours_of_operations/2,
          search_hours_of_operations/3,
+         search_predefined_attributes/2,
+         search_predefined_attributes/3,
          search_prompts/2,
          search_prompts/3,
          search_queues/2,
@@ -481,6 +502,8 @@
          update_contact_flow_module_metadata/5,
          update_contact_flow_name/4,
          update_contact_flow_name/5,
+         update_contact_routing_data/4,
+         update_contact_routing_data/5,
          update_contact_schedule/2,
          update_contact_schedule/3,
          update_evaluation_form/4,
@@ -497,6 +520,8 @@
          update_phone_number/4,
          update_phone_number_metadata/3,
          update_phone_number_metadata/4,
+         update_predefined_attribute/4,
+         update_predefined_attribute/5,
          update_prompt/4,
          update_prompt/5,
          update_queue_hours_of_operation/4,
@@ -541,6 +566,8 @@
          update_user_identity_info/5,
          update_user_phone_config/4,
          update_user_phone_config/5,
+         update_user_proficiencies/4,
+         update_user_proficiencies/5,
          update_user_routing_profile/4,
          update_user_routing_profile/5,
          update_user_security_profiles/4,
@@ -916,6 +943,29 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), "/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc &gt;Associates a set of proficiencies with a user.
+associate_user_proficiencies(Client, InstanceId, UserId, Input) ->
+    associate_user_proficiencies(Client, InstanceId, UserId, Input, []).
+associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/associate-proficiencies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1317,6 +1367,30 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact/persistent-contact-association/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new predefined attribute for the specified Amazon Connect
+%% instance.
+create_predefined_attribute(Client, InstanceId, Input) ->
+    create_predefined_attribute(Client, InstanceId, Input, []).
+create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1920,6 +1994,30 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a predefined attribute from the specified Amazon Connect
+%% instance.
+delete_predefined_attribute(Client, InstanceId, Name, Input) ->
+    delete_predefined_attribute(Client, InstanceId, Name, Input, []).
+delete_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2586,6 +2684,30 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a predefined attribute for the specified Amazon Connect
+%% instance.
+describe_predefined_attribute(Client, InstanceId, Name)
+  when is_map(Client) ->
+    describe_predefined_attribute(Client, InstanceId, Name, #{}, #{}).
+
+describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, []).
+
+describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes the prompt.
 describe_prompt(Client, InstanceId, PromptId)
   when is_map(Client) ->
@@ -3203,6 +3325,29 @@ disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId,
                      {<<"UserId">>, <<"UserId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a set of proficiencies from a user.
+disassociate_user_proficiencies(Client, InstanceId, UserId, Input) ->
+    disassociate_user_proficiencies(Client, InstanceId, UserId, Input, []).
+disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/disassociate-proficiencies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Dismisses contacts from an agent’s CCP and returns the agent to an
@@ -4214,6 +4359,35 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists predefined attributes for the specified Amazon Connect
+%% instance.
+list_predefined_attributes(Client, InstanceId)
+  when is_map(Client) ->
+    list_predefined_attributes(Client, InstanceId, #{}, #{}).
+
+list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the prompts for the specified Amazon
 %% Connect instance.
 list_prompts(Client, InstanceId)
@@ -4750,6 +4924,34 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists proficiencies associated with a user.
+list_user_proficiencies(Client, InstanceId, UserId)
+  when is_map(Client) ->
+    list_user_proficiencies(Client, InstanceId, UserId, #{}, #{}).
+
+list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
+
+list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides summary information about the users for the specified Amazon
 %% Connect instance.
 list_users(Client, InstanceId)
@@ -5084,6 +5286,29 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches contacts in an Amazon Connect instance.
+search_contacts(Client, Input) ->
+    search_contacts(Client, Input, []).
+search_contacts(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-contacts"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches the hours of operation in an Amazon Connect instance, with
 %% optional filtering.
 search_hours_of_operations(Client, Input) ->
@@ -5091,6 +5316,29 @@ search_hours_of_operations(Client, Input) ->
 search_hours_of_operations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-hours-of-operations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Predefined attributes that meet certain criteria.
+search_predefined_attributes(Client, Input) ->
+    search_predefined_attributes(Client, Input, []).
+search_predefined_attributes(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-predefined-attributes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -6180,6 +6428,42 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates routing priority and age on the contact (QueuePriority and
+%% QueueTimeAdjustmentInSeconds). These properties can be used to change a
+%% customer's position in the queue. For example, you can move a contact
+%% to the back of the queue by setting a lower routing priority relative to
+%% other contacts in queue; or you can move a contact to the front of the
+%% queue by increasing the routing age which will make the contact look
+%% artificially older and therefore higher up in the first-in-first-out
+%% routing order. Note that adjusting the routing age of a contact affects
+%% only its position in queue, and not its actual queue wait time as reported
+%% through metrics. These properties can also be updated by using the Set
+%% routing priority / age flow block.
+update_contact_routing_data(Client, ContactId, InstanceId, Input) ->
+    update_contact_routing_data(Client, ContactId, InstanceId, Input, []).
+update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), "/routing-data"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the scheduled time of a task contact that is already
 %% scheduled.
 update_contact_schedule(Client, Input) ->
@@ -6395,6 +6679,30 @@ update_phone_number_metadata(Client, PhoneNumberId, Input) ->
 update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a predefined attribute for the specified Amazon Connect
+%% instance.
+update_predefined_attribute(Client, InstanceId, Name, Input) ->
+    update_predefined_attribute(Client, InstanceId, Name, Input, []).
+update_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/predefined-attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -6975,6 +7283,29 @@ update_user_phone_config(Client, InstanceId, UserId, Input) ->
 update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties associated with the proficiencies of a user.
+update_user_proficiencies(Client, InstanceId, UserId, Input) ->
+    update_user_proficiencies(Client, InstanceId, UserId, Input, []).
+update_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/proficiencies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
