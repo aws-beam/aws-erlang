@@ -690,6 +690,9 @@ create_classifier(Client, Input, Options)
     request(Client, <<"CreateClassifier">>, Input, Options).
 
 %% @doc Creates a connection definition in the Data Catalog.
+%%
+%% Connections used for creating federated resources require the IAM
+%% `glue:PassConnection' permission.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).

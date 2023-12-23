@@ -1367,7 +1367,10 @@ list_annotation_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all multipart read set uploads and their statuses.
+%% @doc Lists multipart read set uploads and for in progress uploads.
+%%
+%% Once the upload is completed, a read set is created and the upload will no
+%% longer be returned in the respone.
 list_multipart_read_set_uploads(Client, SequenceStoreId, Input) ->
     list_multipart_read_set_uploads(Client, SequenceStoreId, Input, []).
 list_multipart_read_set_uploads(Client, SequenceStoreId, Input0, Options0) ->

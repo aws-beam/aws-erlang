@@ -36,6 +36,9 @@
          describe_flow/2,
          describe_flow/4,
          describe_flow/5,
+         describe_flow_source_metadata/2,
+         describe_flow_source_metadata/4,
+         describe_flow_source_metadata/5,
          describe_gateway/2,
          describe_gateway/4,
          describe_gateway/5,
@@ -486,6 +489,32 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap)
 describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays details of the flow's source stream.
+%%
+%% The response contains information about the contents of the stream and its
+%% programs.
+describe_flow_source_metadata(Client, FlowArn)
+  when is_map(Client) ->
+    describe_flow_source_metadata(Client, FlowArn, #{}, #{}).
+
+describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, []).
+
+describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source-metadata"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
