@@ -104,6 +104,8 @@
          remove_tags/3,
          run_job_flow/2,
          run_job_flow/3,
+         set_keep_job_flow_alive_when_no_steps/2,
+         set_keep_job_flow_alive_when_no_steps/3,
          set_termination_protection/2,
          set_termination_protection/3,
          set_visible_to_all_users/2,
@@ -704,6 +706,24 @@ run_job_flow(Client, Input)
 run_job_flow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunJobFlow">>, Input, Options).
+
+%% @doc You can use the `SetKeepJobFlowAliveWhenNoSteps' to configure a
+%% cluster (job flow) to terminate after the step execution, i.e., all your
+%% steps are executed.
+%%
+%% If you want a transient cluster that shuts down after the last of the
+%% current executing steps are completed, you can configure
+%% `SetKeepJobFlowAliveWhenNoSteps' to false. If you want a long running
+%% cluster, configure `SetKeepJobFlowAliveWhenNoSteps' to true.
+%%
+%% For more information, see Managing Cluster Termination in the Amazon EMR
+%% Management Guide.
+set_keep_job_flow_alive_when_no_steps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_keep_job_flow_alive_when_no_steps(Client, Input, []).
+set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetKeepJobFlowAliveWhenNoSteps">>, Input, Options).
 
 %% @doc SetTerminationProtection locks a cluster (job flow) so the Amazon EC2
 %% instances in the cluster cannot be terminated by user intervention, an API
