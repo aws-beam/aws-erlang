@@ -428,7 +428,7 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of Images corresponding to each timestamp for a
+%% @doc Retrieves a list of images corresponding to each timestamp for a
 %% given time range, sampling interval, and image format configuration.
 get_images(Client, Input) ->
     get_images(Client, Input, []).
