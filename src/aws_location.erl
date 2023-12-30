@@ -693,9 +693,10 @@ delete_key(Client, KeyName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"forceDelete">>, <<"ForceDelete">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a map resource from your Amazon Web Services account.
