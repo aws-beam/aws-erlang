@@ -270,6 +270,8 @@
          get_relational_database_snapshots/3,
          get_relational_databases/2,
          get_relational_databases/3,
+         get_setup_history/2,
+         get_setup_history/3,
          get_static_ip/2,
          get_static_ip/3,
          get_static_ips/2,
@@ -302,6 +304,8 @@
          set_ip_address_type/3,
          set_resource_access_for_bucket/2,
          set_resource_access_for_bucket/3,
+         setup_instance_https/2,
+         setup_instance_https/3,
          start_g_ui_session/2,
          start_g_ui_session/3,
          start_instance/2,
@@ -627,7 +631,7 @@ create_container_service_registry_login(Client, Input, Options)
     request(Client, <<"CreateContainerServiceRegistryLogin">>, Input, Options).
 
 %% @doc Creates a block storage disk that can be attached to an Amazon
-%% Lightsail instance in the same Availability Zone (e.g., `us-east-2a').
+%% Lightsail instance in the same Availability Zone (`us-east-2a').
 %%
 %% The `create disk' operation supports tag-based access control via
 %% request tags. For more information, see the Amazon Lightsail Developer
@@ -643,7 +647,7 @@ create_disk(Client, Input, Options)
 %% disk.
 %%
 %% The resulting disk can be attached to an Amazon Lightsail instance in the
-%% same Availability Zone (e.g., `us-east-2a').
+%% same Availability Zone (`us-east-2a').
 %%
 %% The `create disk from snapshot' operation supports tag-based access
 %% control via request tags and resource tags applied to the resource
@@ -706,8 +710,7 @@ create_distribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDistribution">>, Input, Options).
 
-%% @doc Creates a domain resource for the specified domain (e.g.,
-%% example.com).
+%% @doc Creates a domain resource for the specified domain (example.com).
 %%
 %% The `create domain' operation supports tag-based access control via
 %% request tags. For more information, see the Amazon Lightsail Developer
@@ -1826,8 +1829,7 @@ get_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperations">>, Input, Options).
 
-%% @doc Gets operations for a specific resource (e.g., an instance or a
-%% static IP).
+%% @doc Gets operations for a specific resource (an instance or a static IP).
 get_operations_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations_for_resource(Client, Input, []).
@@ -1970,6 +1972,15 @@ get_relational_databases(Client, Input)
 get_relational_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationalDatabases">>, Input, Options).
+
+%% @doc Returns detailed information for five of the most recent
+%% `SetupInstanceHttps' requests that were ran on the target instance.
+get_setup_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_setup_history(Client, Input, []).
+get_setup_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSetupHistory">>, Input, Options).
 
 %% @doc Returns information about an Amazon Lightsail static IP.
 get_static_ip(Client, Input)
@@ -2179,6 +2190,20 @@ set_resource_access_for_bucket(Client, Input)
 set_resource_access_for_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetResourceAccessForBucket">>, Input, Options).
+
+%% @doc Creates an SSL/TLS certificate that secures traffic for your website.
+%%
+%% After the certificate is created, it is installed on the specified
+%% Lightsail instance.
+%%
+%% If you provide more than one domain name in the request, at least one name
+%% must be less than or equal to 63 characters in length.
+setup_instance_https(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    setup_instance_https(Client, Input, []).
+setup_instance_https(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetupInstanceHttps">>, Input, Options).
 
 %% @doc Initiates a graphical user interface (GUI) session that’s used to
 %% access a virtual computer’s operating system and application.
