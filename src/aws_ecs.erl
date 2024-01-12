@@ -202,6 +202,12 @@ create_cluster(Client, Input, Options)
 %% with the service. For more information, see Service load balancing in the
 %% Amazon Elastic Container Service Developer Guide.
 %%
+%% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+%% volume when creating or updating a service. `volumeConfigurations' is
+%% only supported for REPLICA service and not DAEMON service. For more
+%% infomation, see Amazon EBS volumes in the Amazon Elastic Container Service
+%% Developer Guide.
+%%
 %% Tasks for services that don't use a load balancer are considered
 %% healthy if they're in the `RUNNING' state. Tasks for services that
 %% use a load balancer are considered healthy if they're in the
@@ -904,6 +910,11 @@ register_task_definition(Client, Input, Options)
 %% once during the past 30-day period are considered current customers and
 %% will be able to continue using the service.
 %%
+%% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+%% volume when creating or updating a service. For more infomation, see
+%% Amazon EBS volumes in the Amazon Elastic Container Service Developer
+%% Guide.
+%%
 %% The Amazon ECS API follows an eventual consistency model. This is because
 %% of the distributed nature of the system supporting the API. This means
 %% that the result of an API command you run that affects your Amazon ECS
@@ -948,6 +959,11 @@ run_task(Client, Input, Options)
 %% Alternatively, you can use `RunTask' to place tasks for you. For more
 %% information, see Scheduling Tasks in the Amazon Elastic Container Service
 %% Developer Guide.
+%%
+%% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+%% volume when creating or updating a service. For more infomation, see
+%% Amazon EBS volumes in the Amazon Elastic Container Service Developer
+%% Guide.
 start_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task(Client, Input, []).
@@ -1153,6 +1169,16 @@ update_container_instances_state(Client, Input, Options)
 %% definition. When you update any of these parameters, Amazon ECS starts new
 %% tasks with the new configuration.
 %%
+%% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+%% volume when starting or running a task, or when creating or updating a
+%% service. For more infomation, see Amazon EBS volumes in the Amazon Elastic
+%% Container Service Developer Guide. You can update your volume
+%% configurations and trigger a new deployment. `volumeConfigurations' is
+%% only supported for REPLICA service and not DAEMON service. If you leave
+%% `volumeConfigurations' `null', it doesn't trigger a new
+%% deployment. For more infomation on volumes, see Amazon EBS volumes in the
+%% Amazon Elastic Container Service Developer Guide.
+%%
 %% For services using the blue/green (`CODE_DEPLOY') deployment
 %% controller, only the desired count, deployment configuration, health check
 %% grace period, task placement constraints and strategies, enable ECS
@@ -1172,11 +1198,16 @@ update_container_instances_state(Client, Input, Options)
 %% definition in a service by specifying the cluster that the service is
 %% running in and a new `desiredCount' parameter.
 %%
-%% If you have updated the Docker image of your application, you can create a
-%% new task definition with that image and deploy it to your service. The
-%% service scheduler uses the minimum healthy percent and maximum percent
-%% parameters (in the service's deployment configuration) to determine
-%% the deployment strategy.
+%% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+%% volume when starting or running a task, or when creating or updating a
+%% service. For more infomation, see Amazon EBS volumes in the Amazon Elastic
+%% Container Service Developer Guide.
+%%
+%% If you have updated the container image of your application, you can
+%% create a new task definition with that image and deploy it to your
+%% service. The service scheduler uses the minimum healthy percent and
+%% maximum percent parameters (in the service's deployment configuration)
+%% to determine the deployment strategy.
 %%
 %% If your updated Docker image uses the same tag as what is in the existing
 %% task definition for your service (for example, `my_image:latest'), you
