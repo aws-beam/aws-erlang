@@ -40,9 +40,13 @@
 %%
 %% </li> <li> GetCelebrityInfo
 %%
+%% </li> <li> GetMediaAnalysisJob
+%%
 %% </li> <li> IndexFaces
 %%
 %% </li> <li> ListCollections
+%%
+%% </li> <li> ListMediaAnalysisJob
 %%
 %% </li> <li> ListFaces
 %%
@@ -57,6 +61,8 @@
 %% </li> <li> SearchUsers
 %%
 %% </li> <li> SearchUsersByImage
+%%
+%% </li> <li> StartMediaAnalysisJob
 %%
 %% </li> </ul> Amazon Rekognition Custom Labels
 %%
@@ -883,7 +889,9 @@ describe_stream_processor(Client, Input, Options)
 %% Each `CustomLabel' object provides the label name (`Name'), the
 %% level of confidence that the image contains the object (`Confidence'),
 %% and object location information, if it exists, for the label on the image
-%% (`Geometry').
+%% (`Geometry'). Note that for the `DetectCustomLabelsLabels'
+%% operation, `Polygons' are not returned in the `Geometry' section
+%% of the response.
 %%
 %% To filter labels that are returned, specify a value for
 %% `MinConfidence'. `DetectCustomLabelsLabels' only returns labels
