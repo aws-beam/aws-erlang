@@ -42,6 +42,8 @@
          get_keyspace/3,
          get_table/2,
          get_table/3,
+         get_table_auto_scaling_settings/2,
+         get_table_auto_scaling_settings/3,
          list_keyspaces/2,
          list_keyspaces/3,
          list_tables/2,
@@ -151,6 +153,25 @@ get_table(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTable">>, Input, Options).
 
+%% @doc Returns auto scaling related settings of the specified table in JSON
+%% format.
+%%
+%% If the table is a multi-Region table, the Amazon Web Services Region
+%% specific auto scaling settings of the table are included.
+%%
+%% Amazon Keyspaces auto scaling helps you provision throughput capacity for
+%% variable workloads efficiently by increasing and decreasing your
+%% table's read and write capacity automatically in response to
+%% application traffic. For more information, see Managing throughput
+%% capacity automatically with Amazon Keyspaces auto scaling in the Amazon
+%% Keyspaces Developer Guide.
+get_table_auto_scaling_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_table_auto_scaling_settings(Client, Input, []).
+get_table_auto_scaling_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTableAutoScalingSettings">>, Input, Options).
+
 %% @doc Returns a list of keyspaces.
 list_keyspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -176,8 +197,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Restores the specified table to the specified point in time within
-%% the `earliest_restorable_timestamp' and the current time.
+%% @doc Restores the table to the specified point in time within the
+%% `earliest_restorable_timestamp' and the current time.
 %%
 %% For more information about restore points, see Time window for PITR
 %% continuous backups in the Amazon Keyspaces Developer Guide.
@@ -192,17 +213,20 @@ list_tags_for_resource(Client, Input, Options)
 %% timestamp.
 %%
 %% In addition to the table's schema, data, and TTL settings,
-%% `RestoreTable' restores the capacity mode, encryption, and
-%% point-in-time recovery settings from the source table. Unlike the
-%% table's schema data and TTL settings, which are restored based on the
-%% selected timestamp, these settings are always restored based on the
-%% table's settings as of the current time or when the table was deleted.
+%% `RestoreTable' restores the capacity mode, auto scaling settings,
+%% encryption settings, and point-in-time recovery settings from the source
+%% table. Unlike the table's schema data and TTL settings, which are
+%% restored based on the selected timestamp, these settings are always
+%% restored based on the table's settings as of the current time or when
+%% the table was deleted.
 %%
 %% You can also overwrite these settings during restore:
 %%
 %% <ul> <li> Read/write capacity mode
 %%
-%% </li> <li> Provisioned throughput capacity settings
+%% </li> <li> Provisioned throughput capacity units
+%%
+%% </li> <li> Auto scaling settings
 %%
 %% </li> <li> Point-in-time (PITR) settings
 %%
@@ -214,10 +238,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Note that the following settings are not restored, and you must configure
 %% them manually for the new table:
 %%
-%% <ul> <li> Automatic scaling policies (for tables that use provisioned
-%% capacity mode)
-%%
-%% </li> <li> Identity and Access Management (IAM) policies
+%% <ul> <li> Identity and Access Management (IAM) policies
 %%
 %% </li> <li> Amazon CloudWatch metrics and alarms
 %%
@@ -255,8 +276,8 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Adds new columns to the table or updates one of the table's
-%% settings, for example capacity mode, encryption, point-in-time recovery,
-%% or ttl settings.
+%% settings, for example capacity mode, auto scaling, encryption,
+%% point-in-time recovery, or ttl settings.
 %%
 %% Note that you can only update one specific table setting per update
 %% operation.
