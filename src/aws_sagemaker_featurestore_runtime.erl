@@ -68,24 +68,32 @@ batch_get_record(Client, Input0, Options0) ->
 %% record is no longer retrievable by `GetRecord' or
 %% `BatchGetRecord'. For `HardDelete', the complete `Record' is
 %% removed from the `OnlineStore'. In both cases, Feature Store appends
-%% the deleted record marker to the `OfflineStore' with feature values
-%% set to `null', `is_deleted' value set to `True', and
-%% `EventTime' set to the delete input `EventTime'.
+%% the deleted record marker to the `OfflineStore'. The deleted record
+%% marker is a record with the same `RecordIdentifer' as the original,
+%% but with `is_deleted' value set to `True', `EventTime' set to
+%% the delete input `EventTime', and other feature values set to
+%% `null'.
 %%
 %% Note that the `EventTime' specified in `DeleteRecord' should be
 %% set later than the `EventTime' of the existing record in the
 %% `OnlineStore' for that `RecordIdentifer'. If it is not, the
 %% deletion does not occur:
 %%
-%% <ul> <li> For `SoftDelete', the existing (undeleted) record remains in
-%% the `OnlineStore', though the delete record marker is still written to
-%% the `OfflineStore'.
+%% <ul> <li> For `SoftDelete', the existing (not deleted) record remains
+%% in the `OnlineStore', though the delete record marker is still written
+%% to the `OfflineStore'.
 %%
 %% </li> <li> `HardDelete' returns `EventTime': `400
 %% ValidationException' to indicate that the delete operation failed. No
 %% delete record marker is written to the `OfflineStore'.
 %%
-%% </li> </ul>
+%% </li> </ul> When a record is deleted from the `OnlineStore', the
+%% deleted record marker is appended to the `OfflineStore'. If you have
+%% the Iceberg table format enabled for your `OfflineStore', you can
+%% remove all history of a record from the `OfflineStore' using Amazon
+%% Athena or Apache Spark. For information on how to hard delete a record
+%% from the `OfflineStore' with the Iceberg table format enabled, see
+%% Delete records from the offline store.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->

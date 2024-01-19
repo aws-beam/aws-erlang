@@ -81,6 +81,8 @@
          list_import_failures/3,
          list_imports/2,
          list_imports/3,
+         list_insights_metric_data/2,
+         list_insights_metric_data/3,
          list_public_keys/2,
          list_public_keys/3,
          list_queries/2,
@@ -278,10 +280,12 @@ describe_trails(Client, Input, Options)
 
 %% @doc Disables Lake query federation on the specified event data store.
 %%
-%% When you disable federation, CloudTrail removes the metadata associated
-%% with the federated event data store in the Glue Data Catalog and removes
-%% registration for the federation role ARN and event data store in Lake
-%% Formation. No CloudTrail Lake data is deleted when you disable federation.
+%% When you disable federation, CloudTrail disables the integration with
+%% Glue, Lake Formation, and Amazon Athena. After disabling Lake query
+%% federation, you can no longer query your event data in Amazon Athena.
+%%
+%% No CloudTrail Lake data is deleted when you disable federation and you can
+%% continue to run queries in CloudTrail Lake.
 disable_federation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_federation(Client, Input, []).
@@ -297,13 +301,13 @@ disable_federation(Client, Input, Options)
 %% Data Catalog lets the Athena query engine know how to find, read, and
 %% process the data that you want to query.
 %%
-%% When you enable Lake query federation, CloudTrail creates a federated
+%% When you enable Lake query federation, CloudTrail creates a managed
 %% database named `aws:cloudtrail' (if the database doesn't already
-%% exist) and a federated table in the Glue Data Catalog. The event data
-%% store ID is used for the table name. CloudTrail registers the role ARN and
-%% event data store in Lake Formation, the service responsible for revoking
-%% or granting permissions to the federated resources in the Glue Data
-%% Catalog.
+%% exist) and a managed federated table in the Glue Data Catalog. The event
+%% data store ID is used for the table name. CloudTrail registers the role
+%% ARN and event data store in Lake Formation, the service responsible for
+%% allowing fine-grained access control of the federated resources in the
+%% Glue Data Catalog.
 %%
 %% For more information about Lake query federation, see Federate an event
 %% data store.
@@ -466,6 +470,37 @@ list_imports(Client, Input)
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
+
+%% @doc Returns Insights metrics data for trails that have enabled Insights.
+%%
+%% The request must include the `EventSource', `EventName', and
+%% `InsightType' parameters.
+%%
+%% If the `InsightType' is set to `ApiErrorRateInsight', the request
+%% must also include the `ErrorCode' parameter.
+%%
+%% The following are the available time periods for
+%% `ListInsightsMetricData'. Each cutoff is inclusive.
+%%
+%% <ul> <li> Data points with a period of 60 seconds (1-minute) are available
+%% for 15 days.
+%%
+%% </li> <li> Data points with a period of 300 seconds (5-minute) are
+%% available for 63 days.
+%%
+%% </li> <li> Data points with a period of 3600 seconds (1 hour) are
+%% available for 90 days.
+%%
+%% </li> </ul> Access to the `ListInsightsMetricData' API operation is
+%% linked to the `cloudtrail:LookupEvents' action. To use this operation,
+%% you must have permissions to perform the `cloudtrail:LookupEvents'
+%% action.
+list_insights_metric_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_insights_metric_data(Client, Input, []).
+list_insights_metric_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInsightsMetricData">>, Input, Options).
 
 %% @doc Returns all public keys whose private keys were used to sign the
 %% digest files within the specified time range.
@@ -835,13 +870,14 @@ update_channel(Client, Input, Options)
 %% By default, `TerminationProtection' is enabled.
 %%
 %% For event data stores for CloudTrail events, `AdvancedEventSelectors'
-%% includes or excludes management, data, or Insights events in your event
-%% data store. For more information about `AdvancedEventSelectors', see
+%% includes or excludes management or data events in your event data store.
+%% For more information about `AdvancedEventSelectors', see
 %% AdvancedEventSelectors.
 %%
-%% For event data stores for Config configuration items, Audit Manager
-%% evidence, or non-Amazon Web Services events, `AdvancedEventSelectors'
-%% includes events of that type in your event data store.
+%% For event data stores for CloudTrail Insights events, Config configuration
+%% items, Audit Manager evidence, or non-Amazon Web Services events,
+%% `AdvancedEventSelectors' includes events of that type in your event
+%% data store.
 update_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_data_store(Client, Input, []).

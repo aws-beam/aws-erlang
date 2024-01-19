@@ -325,6 +325,8 @@ test_mapping(Client, Input, Options)
     request(Client, <<"TestMapping">>, Input, Options).
 
 %% @doc Parses the input EDI (electronic data interchange) file.
+%%
+%% The input file has a file size limit of 250 KB.
 test_parsing(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_parsing(Client, Input, []).
