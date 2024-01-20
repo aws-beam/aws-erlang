@@ -539,9 +539,11 @@ get_work_group(Client, Input, Options)
 
 %% @doc Imports a single `ipynb' file to a Spark enabled workgroup.
 %%
-%% The maximum file size that can be imported is 10 megabytes. If an
-%% `ipynb' file with the same name already exists in the workgroup,
-%% throws an error.
+%% To import the notebook, the request must specify a value for either
+%% `Payload' or `NoteBookS3LocationUri'. If neither is specified or
+%% both are specified, an `InvalidRequestException' occurs. The maximum
+%% file size that can be imported is 10 megabytes. If an `ipynb' file
+%% with the same name already exists in the workgroup, throws an error.
 import_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_notebook(Client, Input, []).

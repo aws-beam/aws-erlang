@@ -22,12 +22,16 @@
          batch_get_build_batches/3,
          batch_get_builds/2,
          batch_get_builds/3,
+         batch_get_fleets/2,
+         batch_get_fleets/3,
          batch_get_projects/2,
          batch_get_projects/3,
          batch_get_report_groups/2,
          batch_get_report_groups/3,
          batch_get_reports/2,
          batch_get_reports/3,
+         create_fleet/2,
+         create_fleet/3,
          create_project/2,
          create_project/3,
          create_report_group/2,
@@ -36,6 +40,8 @@
          create_webhook/3,
          delete_build_batch/2,
          delete_build_batch/3,
+         delete_fleet/2,
+         delete_fleet/3,
          delete_project/2,
          delete_project/3,
          delete_report/2,
@@ -70,6 +76,8 @@
          list_builds_for_project/3,
          list_curated_environment_images/2,
          list_curated_environment_images/3,
+         list_fleets/2,
+         list_fleets/3,
          list_projects/2,
          list_projects/3,
          list_report_groups/2,
@@ -98,6 +106,8 @@
          stop_build/3,
          stop_build_batch/2,
          stop_build_batch/3,
+         update_fleet/2,
+         update_fleet/3,
          update_project/2,
          update_project/3,
          update_project_visibility/2,
@@ -137,6 +147,14 @@ batch_get_builds(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetBuilds">>, Input, Options).
 
+%% @doc Gets information about one or more compute fleets.
+batch_get_fleets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_fleets(Client, Input, []).
+batch_get_fleets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetFleets">>, Input, Options).
+
 %% @doc Gets information about one or more build projects.
 batch_get_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -160,6 +178,14 @@ batch_get_reports(Client, Input)
 batch_get_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetReports">>, Input, Options).
+
+%% @doc Creates a compute fleet.
+create_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_fleet(Client, Input, []).
+create_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFleet">>, Input, Options).
 
 %% @doc Creates a build project.
 create_project(Client, Input)
@@ -206,6 +232,16 @@ delete_build_batch(Client, Input)
 delete_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBuildBatch">>, Input, Options).
+
+%% @doc Deletes a compute fleet.
+%%
+%% When you delete a compute fleet, its builds are not deleted.
+delete_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_fleet(Client, Input, []).
+delete_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFleet">>, Input, Options).
 
 %% @doc Deletes a build project.
 %%
@@ -358,6 +394,15 @@ list_curated_environment_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCuratedEnvironmentImages">>, Input, Options).
 
+%% @doc Gets a list of compute fleet names with each compute fleet name
+%% representing a single compute fleet.
+list_fleets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_fleets(Client, Input, []).
+list_fleets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFleets">>, Input, Options).
+
 %% @doc Gets a list of build project names, with each build project name
 %% representing a single build project.
 list_projects(Client, Input)
@@ -478,6 +523,14 @@ stop_build_batch(Client, Input)
 stop_build_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopBuildBatch">>, Input, Options).
+
+%% @doc Updates a compute fleet.
+update_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_fleet(Client, Input, []).
+update_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFleet">>, Input, Options).
 
 %% @doc Changes the settings of a build project.
 update_project(Client, Input)

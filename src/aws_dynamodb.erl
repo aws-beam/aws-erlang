@@ -125,6 +125,8 @@
          update_global_table_settings/3,
          update_item/2,
          update_item/3,
+         update_kinesis_streaming_destination/2,
+         update_kinesis_streaming_destination/3,
          update_table/2,
          update_table/3,
          update_table_replica_auto_scaling/2,
@@ -1392,6 +1394,14 @@ update_item(Client, Input)
 update_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateItem">>, Input, Options).
+
+%% @doc The command to update the Kinesis stream destination.
+update_kinesis_streaming_destination(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_kinesis_streaming_destination(Client, Input, []).
+update_kinesis_streaming_destination(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateKinesisStreamingDestination">>, Input, Options).
 
 %% @doc Modifies the provisioned throughput settings, global secondary
 %% indexes, or DynamoDB Streams settings for a given table.
