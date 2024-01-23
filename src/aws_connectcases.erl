@@ -31,6 +31,8 @@
          delete_domain/4,
          get_case/4,
          get_case/5,
+         get_case_audit_events/4,
+         get_case_audit_events/5,
          get_case_event_configuration/3,
          get_case_event_configuration/4,
          get_domain/3,
@@ -127,15 +129,17 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a case in the specified Cases domain.
+%% @doc If you provide a value for `PerformedBy.UserArn' you must also
+%% have connect:DescribeUser permission on the User ARN resource that you
+%% provide
+%%
+%% &lt;p&gt;Creates a case in the specified Cases domain.
 %%
 %% Case system and custom fields are taken as an array id/value pairs with a
-%% declared data types.
-%%
-%% The following fields are required when creating a case:
-%%
-%% &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;customer_id&lt;/code&gt; - You
-%% must provide the full customer profile ARN in this format:
+%% declared data types.&lt;/p&gt; &lt;p&gt;The following fields are required
+%% when creating a case:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;
+%% &lt;code&gt;customer_id&lt;/code&gt; - You must provide the full customer
+%% profile ARN in this format:
 %% &lt;code&gt;arn:aws:profile:your_AWS_Region:your_AWS_account
 %% ID:domains/your_profiles_domain_name/profiles/profile_ID&lt;/code&gt;
 %% &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;title&lt;/code&gt;
@@ -356,6 +360,29 @@ get_case(Client, CaseId, DomainId, Input) ->
 get_case(Client, CaseId, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the audit history about a specific case if it exists.
+get_case_audit_events(Client, CaseId, DomainId, Input) ->
+    get_case_audit_events(Client, CaseId, DomainId, Input, []).
+get_case_audit_events(Client, CaseId, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/audit-history"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -773,13 +800,16 @@ untag_resource(Client, Arn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the values of fields on a case.
+%% @doc If you provide a value for `PerformedBy.UserArn' you must also
+%% have connect:DescribeUser permission on the User ARN resource that you
+%% provide
+%%
+%% &lt;p&gt;Updates the values of fields on a case.
 %%
 %% Fields to be updated are received as an array of id/value pairs identical
-%% to the `CreateCase' input .
-%%
-%% If the action is successful, the service sends back an HTTP 200 response
-%% with an empty HTTP body.
+%% to the &lt;code&gt;CreateCase&lt;/code&gt; input .&lt;/p&gt; &lt;p&gt;If
+%% the action is successful, the service sends back an HTTP 200 response with
+%% an empty HTTP body.&lt;/p&gt;
 update_case(Client, CaseId, DomainId, Input) ->
     update_case(Client, CaseId, DomainId, Input, []).
 update_case(Client, CaseId, DomainId, Input0, Options0) ->

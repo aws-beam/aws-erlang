@@ -4823,9 +4823,12 @@ describe_egress_only_internet_gateways(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEgressOnlyInternetGateways">>, Input, Options).
 
-%% @doc Describes the Elastic Graphics accelerator associated with your
-%% instances.
+%% @doc Amazon Elastic Graphics reached end of life on January 8, 2024.
 %%
+%% For workloads that require graphics acceleration, we recommend that you
+%% use Amazon EC2 G4ad, G4dn, or G5 instances.
+%%
+%% Describes the Elastic Graphics accelerator associated with your instances.
 %% For more information about Elastic Graphics, see Amazon Elastic Graphics.
 describe_elastic_gpus(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -7548,9 +7551,9 @@ get_ipam_resource_cidrs(Client, Input, Options)
 %% This action calls on other describe actions to get instance information.
 %% Depending on your instance configuration, you may need to allow the
 %% following actions in your IAM policy: `DescribeSpotInstanceRequests',
-%% `DescribeInstanceCreditSpecifications', `DescribeVolumes',
-%% `DescribeInstanceAttribute', and `DescribeElasticGpus'. Or, you
-%% can allow `describe*' depending on your instance requirements.
+%% `DescribeInstanceCreditSpecifications', `DescribeVolumes', and
+%% `DescribeInstanceAttribute'. Or, you can allow `describe*'
+%% depending on your instance requirements.
 get_launch_template_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_launch_template_data(Client, Input, []).
@@ -9901,7 +9904,7 @@ send_diagnostic_interrupt(Client, Input, Options)
 %% its root device returns an error.
 %%
 %% If you attempt to start a T3 instance with `host' tenancy and the
-%% `unlimted' CPU credit option, the request fails. The `unlimited'
+%% `unlimited' CPU credit option, the request fails. The `unlimited'
 %% CPU credit option is not supported on Dedicated Hosts. Before you start
 %% the instance, either change its CPU credit option to `standard', or
 %% change its tenancy to `default' or `dedicated'.
