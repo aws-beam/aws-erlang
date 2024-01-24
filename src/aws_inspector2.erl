@@ -24,12 +24,16 @@
          cancel_findings_report/3,
          cancel_sbom_export/2,
          cancel_sbom_export/3,
+         create_cis_scan_configuration/2,
+         create_cis_scan_configuration/3,
          create_filter/2,
          create_filter/3,
          create_findings_report/2,
          create_findings_report/3,
          create_sbom_export/2,
          create_sbom_export/3,
+         delete_cis_scan_configuration/2,
+         delete_cis_scan_configuration/3,
          delete_filter/2,
          delete_filter/3,
          describe_organization_configuration/2,
@@ -44,6 +48,10 @@
          enable/3,
          enable_delegated_admin_account/2,
          enable_delegated_admin_account/3,
+         get_cis_scan_report/2,
+         get_cis_scan_report/3,
+         get_cis_scan_result_details/2,
+         get_cis_scan_result_details/3,
          get_configuration/2,
          get_configuration/3,
          get_delegated_admin_account/2,
@@ -61,6 +69,14 @@
          get_sbom_export/3,
          list_account_permissions/2,
          list_account_permissions/3,
+         list_cis_scan_configurations/2,
+         list_cis_scan_configurations/3,
+         list_cis_scan_results_aggregated_by_checks/2,
+         list_cis_scan_results_aggregated_by_checks/3,
+         list_cis_scan_results_aggregated_by_target_resource/2,
+         list_cis_scan_results_aggregated_by_target_resource/3,
+         list_cis_scans/2,
+         list_cis_scans/3,
          list_coverage/2,
          list_coverage/3,
          list_coverage_statistics/2,
@@ -84,10 +100,20 @@
          reset_encryption_key/3,
          search_vulnerabilities/2,
          search_vulnerabilities/3,
+         send_cis_session_health/2,
+         send_cis_session_health/3,
+         send_cis_session_telemetry/2,
+         send_cis_session_telemetry/3,
+         start_cis_session/2,
+         start_cis_session/3,
+         stop_cis_session/2,
+         stop_cis_session/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_cis_scan_configuration/2,
+         update_cis_scan_configuration/3,
          update_configuration/2,
          update_configuration/3,
          update_ec2_deep_inspection_configuration/2,
@@ -330,6 +356,29 @@ cancel_sbom_export(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a CIS scan configuration.
+create_cis_scan_configuration(Client, Input) ->
+    create_cis_scan_configuration(Client, Input, []).
+create_cis_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-configuration/create"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a filter resource using specified filter criteria.
 %%
 %% When the filter action is set to `SUPPRESS' this action creates a
@@ -389,6 +438,29 @@ create_sbom_export(Client, Input) ->
 create_sbom_export(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sbomexport/create"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a CIS scan configuration.
+delete_cis_scan_configuration(Client, Input) ->
+    delete_cis_scan_configuration(Client, Input, []).
+delete_cis_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-configuration/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -559,6 +631,52 @@ enable_delegated_admin_account(Client, Input) ->
 enable_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/enable"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a CIS scan report.
+get_cis_scan_report(Client, Input) ->
+    get_cis_scan_report(Client, Input, []).
+get_cis_scan_report(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan/report/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves CIS scan result details.
+get_cis_scan_result_details(Client, Input) ->
+    get_cis_scan_result_details(Client, Input, []).
+get_cis_scan_result_details(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-result/details/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -750,6 +868,98 @@ list_account_permissions(Client, Input) ->
 list_account_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accountpermissions/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists CIS scan configurations.
+list_cis_scan_configurations(Client, Input) ->
+    list_cis_scan_configurations(Client, Input, []).
+list_cis_scan_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-configuration/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists scan results aggregated by checks.
+list_cis_scan_results_aggregated_by_checks(Client, Input) ->
+    list_cis_scan_results_aggregated_by_checks(Client, Input, []).
+list_cis_scan_results_aggregated_by_checks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-result/check/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists scan results aggregated by a target resource.
+list_cis_scan_results_aggregated_by_target_resource(Client, Input) ->
+    list_cis_scan_results_aggregated_by_target_resource(Client, Input, []).
+list_cis_scan_results_aggregated_by_target_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-result/resource/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a CIS scan list.
+list_cis_scans(Client, Input) ->
+    list_cis_scans(Client, Input, []).
+list_cis_scans(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1026,6 +1236,114 @@ search_vulnerabilities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sends a CIS session health.
+%%
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
+send_cis_session_health(Client, Input) ->
+    send_cis_session_health(Client, Input, []).
+send_cis_session_health(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cissession/health/send"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends a CIS session telemetry.
+%%
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
+send_cis_session_telemetry(Client, Input) ->
+    send_cis_session_telemetry(Client, Input, []).
+send_cis_session_telemetry(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cissession/telemetry/send"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a CIS session.
+%%
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
+start_cis_session(Client, Input) ->
+    start_cis_session(Client, Input, []).
+start_cis_session(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cissession/start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a CIS session.
+%%
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
+stop_cis_session(Client, Input) ->
+    stop_cis_session(Client, Input, []).
+stop_cis_session(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cissession/stop"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -1071,6 +1389,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a CIS scan configuration.
+update_cis_scan_configuration(Client, Input) ->
+    update_cis_scan_configuration(Client, Input, []).
+update_cis_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cis/scan-configuration/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates setting configurations for your Amazon Inspector account.
