@@ -975,12 +975,19 @@ describe_tape_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTapeRecoveryPoints">>, Input, Options).
 
-%% @doc Returns a description of the specified Amazon Resource Name (ARN) of
-%% virtual tapes.
+%% @doc Returns a description of virtual tapes that correspond to the
+%% specified Amazon Resource Names (ARNs).
 %%
-%% If a `TapeARN' is not specified, returns a description of all virtual
+%% If `TapeARN' is not specified, returns a description of the virtual
 %% tapes associated with the specified gateway. This operation is only
-%% supported in the tape gateway type.
+%% supported for the tape gateway type.
+%%
+%% The operation supports pagination. By default, the operation returns a
+%% maximum of up to 100 tapes. You can optionally specify the `Limit'
+%% field in the body to limit the number of tapes in the response. If the
+%% number of tapes returned in the response is truncated, the response
+%% includes a `Marker' field. You can use this `Marker' value in your
+%% subsequent request to retrieve the next set of tapes.
 describe_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tapes(Client, Input, []).
@@ -1271,9 +1278,7 @@ list_volumes(Client, Input, Options)
     request(Client, <<"ListVolumes">>, Input, Options).
 
 %% @doc Sends you notification through CloudWatch Events when all files
-%% written to your file share have been uploaded to S3.
-%%
-%% Amazon S3.
+%% written to your file share have been uploaded to Amazon S3.
 %%
 %% Storage Gateway can send a notification through Amazon CloudWatch Events
 %% when all files written to your file share up to that point in time have
@@ -1305,8 +1310,8 @@ notify_when_uploaded(Client, Input, Options)
 %%
 %% You can subscribe to be notified through an Amazon CloudWatch event when
 %% your `RefreshCache' operation completes. For more information, see
-%% Getting notified about file operations in the Storage Gateway User Guide.
-%% This operation is Only supported for S3 File Gateways.
+%% Getting notified about file operations in the Amazon S3 File Gateway User
+%% Guide. This operation is Only supported for S3 File Gateways.
 %%
 %% When this API is called, it only initiates the refresh operation. When the
 %% API call completes and returns a success code, it doesn't necessarily
@@ -1320,7 +1325,7 @@ notify_when_uploaded(Client, Input, Options)
 %% more than two refreshes at any time. We recommend using the
 %% refresh-complete CloudWatch event notification before issuing additional
 %% requests. For more information, see Getting notified about file operations
-%% in the Storage Gateway User Guide.
+%% in the Amazon S3 File Gateway User Guide.
 %%
 %% Wait at least 60 seconds between consecutive RefreshCache API requests.
 %%
@@ -1333,7 +1338,7 @@ notify_when_uploaded(Client, Input, Options)
 %% folders in the FolderList parameter.
 %%
 %% For more information, see Getting notified about file operations in the
-%% Storage Gateway User Guide.
+%% Amazon S3 File Gateway User Guide.
 refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
@@ -1434,10 +1439,13 @@ set_smb_guest_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSMBGuestPassword">>, Input, Options).
 
-%% @doc Shuts down a gateway.
+%% @doc Shuts down a Tape Gateway or Volume Gateway.
 %%
 %% To specify which gateway to shut down, use the Amazon Resource Name (ARN)
 %% of the gateway in the body of your request.
+%%
+%% This API action cannot be used to shut down S3 File Gateway or FSx File
+%% Gateway.
 %%
 %% The operation shuts down the gateway service component running in the
 %% gateway's virtual machine (VM) and not the host VM.

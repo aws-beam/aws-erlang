@@ -103,6 +103,8 @@
          create_db_proxy_endpoint/3,
          create_db_security_group/2,
          create_db_security_group/3,
+         create_db_shard_group/2,
+         create_db_shard_group/3,
          create_db_snapshot/2,
          create_db_snapshot/3,
          create_db_subnet_group/2,
@@ -143,6 +145,8 @@
          delete_db_proxy_endpoint/3,
          delete_db_security_group/2,
          delete_db_security_group/3,
+         delete_db_shard_group/2,
+         delete_db_shard_group/3,
          delete_db_snapshot/2,
          delete_db_snapshot/3,
          delete_db_subnet_group/2,
@@ -205,6 +209,8 @@
          describe_db_recommendations/3,
          describe_db_security_groups/2,
          describe_db_security_groups/3,
+         describe_db_shard_groups/2,
+         describe_db_shard_groups/3,
          describe_db_snapshot_attributes/2,
          describe_db_snapshot_attributes/3,
          describe_db_snapshot_tenant_databases/2,
@@ -287,6 +293,8 @@
          modify_db_proxy_target_group/3,
          modify_db_recommendation/2,
          modify_db_recommendation/3,
+         modify_db_shard_group/2,
+         modify_db_shard_group/3,
          modify_db_snapshot/2,
          modify_db_snapshot/3,
          modify_db_snapshot_attribute/2,
@@ -311,6 +319,8 @@
          reboot_db_cluster/3,
          reboot_db_instance/2,
          reboot_db_instance/3,
+         reboot_db_shard_group/2,
+         reboot_db_shard_group/3,
          register_db_proxy_targets/2,
          register_db_proxy_targets/3,
          remove_from_global_cluster/2,
@@ -826,6 +836,18 @@ create_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSecurityGroup">>, Input, Options).
 
+%% @doc Creates a new DB shard group for Aurora Limitless Database.
+%%
+%% You must enable Aurora Limitless Database to create a DB shard group.
+%%
+%% Valid for: Aurora DB clusters only
+create_db_shard_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_db_shard_group(Client, Input, []).
+create_db_shard_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDBShardGroup">>, Input, Options).
+
 %% @doc Creates a snapshot of a DB instance.
 %%
 %% The source DB instance must be in the `available' or
@@ -1161,6 +1183,14 @@ delete_db_security_group(Client, Input)
 delete_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSecurityGroup">>, Input, Options).
+
+%% @doc Deletes an Aurora Limitless Database DB shard group.
+delete_db_shard_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_db_shard_group(Client, Input, []).
+delete_db_shard_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDBShardGroup">>, Input, Options).
 
 %% @doc Deletes a DB snapshot.
 %%
@@ -1544,6 +1574,14 @@ describe_db_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSecurityGroups">>, Input, Options).
 
+%% @doc Describes existing Aurora Limitless Database DB shard groups.
+describe_db_shard_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_shard_groups(Client, Input, []).
+describe_db_shard_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBShardGroups">>, Input, Options).
+
 %% @doc Returns a list of DB snapshot attribute names and values for a manual
 %% DB snapshot.
 %%
@@ -1857,9 +1895,11 @@ enable_http_endpoint(Client, Input, Options)
 %% Aurora Replicas (read-only instances) in the DB cluster to be the primary
 %% DB instance (the cluster writer).
 %%
-%% For a Multi-AZ DB cluster, failover for a DB cluster promotes one of the
-%% readable standby DB instances (read-only instances) in the DB cluster to
-%% be the primary DB instance (the cluster writer).
+%% For a Multi-AZ DB cluster, after RDS terminates the primary DB instance,
+%% the internal monitoring system detects that the primary DB instance is
+%% unhealthy and promotes a readable standby (read-only instances) in the DB
+%% cluster to be the primary DB instance (the cluster writer). Failover times
+%% are typically less than 35 seconds.
 %%
 %% An Amazon Aurora DB cluster automatically fails over to an Aurora Replica,
 %% if one exists, when the primary DB instance fails. A Multi-AZ DB cluster
@@ -2221,6 +2261,17 @@ modify_db_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBRecommendation">>, Input, Options).
 
+%% @doc Modifies the settings of an Aurora Limitless Database DB shard group.
+%%
+%% You can change one or more settings by specifying these parameters and the
+%% new values in the request.
+modify_db_shard_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_db_shard_group(Client, Input, []).
+modify_db_shard_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyDBShardGroup">>, Input, Options).
+
 %% @doc Updates a manual DB snapshot with a new engine version.
 %%
 %% The snapshot can be encrypted or unencrypted, but not shared or public.
@@ -2409,6 +2460,20 @@ reboot_db_instance(Client, Input)
 reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
+
+%% @doc You might need to reboot your DB shard group, usually for maintenance
+%% reasons.
+%%
+%% For example, if you make certain modifications, reboot the DB shard group
+%% for the changes to take effect.
+%%
+%% This operation applies only to Aurora Limitless Database DBb shard groups.
+reboot_db_shard_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_db_shard_group(Client, Input, []).
+reboot_db_shard_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootDBShardGroup">>, Input, Options).
 
 %% @doc Associate one or more `DBProxyTarget' data structures with a
 %% `DBProxyTargetGroup'.

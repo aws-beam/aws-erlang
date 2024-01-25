@@ -304,7 +304,9 @@ create_service(Client, Input, Options)
 %% type. For more information, see Amazon ECS deployment types in the Amazon
 %% Elastic Container Service Developer Guide.
 %%
-%% You can create a maximum of 5 tasks sets for a deployment.
+%% For information about the maximum number of task sets and otther quotas,
+%% see Amazon ECS service quotas in the Amazon Elastic Container Service
+%% Developer Guide.
 create_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task_set(Client, Input, []).
