@@ -1467,8 +1467,8 @@ update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates an encryption key.
 %%
-%% A `ResourceNotFoundException' means that an AWS owned key is being
-%% used for encryption.
+%% A `ResourceNotFoundException' means that an Amazon Web Services owned
+%% key is being used for encryption.
 update_encryption_key(Client, Input) ->
     update_encryption_key(Client, Input, []).
 update_encryption_key(Client, Input0, Options0) ->
