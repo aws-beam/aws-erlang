@@ -586,7 +586,7 @@ describe_auto_scaling_notification_types(Client, Input, Options)
     request(Client, <<"DescribeAutoScalingNotificationTypes">>, Input, Options).
 
 %% @doc Gets information about the instance refreshes for the specified Auto
-%% Scaling group.
+%% Scaling group from the previous six weeks.
 %%
 %% This operation is part of the instance refresh feature in Amazon EC2 Auto
 %% Scaling, which helps you update instances in your Auto Scaling group after
