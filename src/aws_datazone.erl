@@ -827,7 +827,8 @@ delete_domain(Client, Identifier, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"clientToken">>, <<"clientToken">>}
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"skipDeletionCheck">>, <<"skipDeletionCheck">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -1011,9 +1012,10 @@ delete_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"skipDeletionCheck">>, <<"skipDeletionCheck">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes project membership in Amazon DataZone.
