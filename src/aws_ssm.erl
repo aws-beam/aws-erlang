@@ -813,6 +813,9 @@ describe_automation_step_executions(Client, Input, Options)
     request(Client, <<"DescribeAutomationStepExecutions">>, Input, Options).
 
 %% @doc Lists all patches eligible to be included in a patch baseline.
+%%
+%% Currently, `DescribeAvailablePatches' supports only the Amazon Linux
+%% 1, Amazon Linux 2, and Windows Server operating systems.
 describe_available_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_available_patches(Client, Input, []).

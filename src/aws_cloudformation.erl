@@ -39,6 +39,8 @@
          continue_update_rollback/3,
          create_change_set/2,
          create_change_set/3,
+         create_generated_template/2,
+         create_generated_template/3,
          create_stack/2,
          create_stack/3,
          create_stack_instances/2,
@@ -51,6 +53,8 @@
          deactivate_type/3,
          delete_change_set/2,
          delete_change_set/3,
+         delete_generated_template/2,
+         delete_generated_template/3,
          delete_stack/2,
          delete_stack/3,
          delete_stack_instances/2,
@@ -65,10 +69,14 @@
          describe_change_set/3,
          describe_change_set_hooks/2,
          describe_change_set_hooks/3,
+         describe_generated_template/2,
+         describe_generated_template/3,
          describe_organizations_access/2,
          describe_organizations_access/3,
          describe_publisher/2,
          describe_publisher/3,
+         describe_resource_scan/2,
+         describe_resource_scan/3,
          describe_stack_drift_detection_status/2,
          describe_stack_drift_detection_status/3,
          describe_stack_events/2,
@@ -101,6 +109,8 @@
          estimate_template_cost/3,
          execute_change_set/2,
          execute_change_set/3,
+         get_generated_template/2,
+         get_generated_template/3,
          get_stack_policy/2,
          get_stack_policy/3,
          get_template/2,
@@ -113,8 +123,16 @@
          list_change_sets/3,
          list_exports/2,
          list_exports/3,
+         list_generated_templates/2,
+         list_generated_templates/3,
          list_imports/2,
          list_imports/3,
+         list_resource_scan_related_resources/2,
+         list_resource_scan_related_resources/3,
+         list_resource_scan_resources/2,
+         list_resource_scan_resources/3,
+         list_resource_scans/2,
+         list_resource_scans/3,
          list_stack_instance_resource_drifts/2,
          list_stack_instance_resource_drifts/3,
          list_stack_instances/2,
@@ -153,10 +171,14 @@
          set_type_default_version/3,
          signal_resource/2,
          signal_resource/3,
+         start_resource_scan/2,
+         start_resource_scan/3,
          stop_stack_set_operation/2,
          stop_stack_set_operation/3,
          test_type/2,
          test_type/3,
+         update_generated_template/2,
+         update_generated_template/3,
          update_stack/2,
          update_stack/3,
          update_stack_instances/2,
@@ -286,6 +308,18 @@ create_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateChangeSet">>, Input, Options).
 
+%% @doc Creates a template from existing resources that are not already
+%% managed with CloudFormation.
+%%
+%% You can check the status of the template generation using the
+%% `DescribeGeneratedTemplate' API action.
+create_generated_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_generated_template(Client, Input, []).
+create_generated_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGeneratedTemplate">>, Input, Options).
+
 %% @doc Creates a stack as specified in the template.
 %%
 %% After the call completes successfully, the stack creation starts. You can
@@ -363,6 +397,14 @@ delete_change_set(Client, Input)
 delete_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChangeSet">>, Input, Options).
+
+%% @doc Deleted a generated template.
+delete_generated_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_generated_template(Client, Input, []).
+delete_generated_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGeneratedTemplate">>, Input, Options).
 
 %% @doc Deletes a specified stack.
 %%
@@ -455,6 +497,19 @@ describe_change_set_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSetHooks">>, Input, Options).
 
+%% @doc Describes a generated template.
+%%
+%% The output includes details about the progress of the creation of a
+%% generated template started by a `CreateGeneratedTemplate' API action
+%% or the update of a generated template started with an
+%% `UpdateGeneratedTemplate' API action.
+describe_generated_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_generated_template(Client, Input, []).
+describe_generated_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGeneratedTemplate">>, Input, Options).
+
 %% @doc Retrieves information about the account's
 %% `OrganizationAccess' status.
 %%
@@ -488,6 +543,14 @@ describe_publisher(Client, Input)
 describe_publisher(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePublisher">>, Input, Options).
+
+%% @doc Describes details of a resource scan.
+describe_resource_scan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_resource_scan(Client, Input, []).
+describe_resource_scan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResourceScan">>, Input, Options).
 
 %% @doc Returns information about a stack drift detection operation.
 %%
@@ -801,6 +864,19 @@ execute_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteChangeSet">>, Input, Options).
 
+%% @doc Retrieves a generated template.
+%%
+%% If the template is in an `InProgress' or `Pending' status then the
+%% template returned will be the template when the template was last in a
+%% `Complete' status. If the template has not yet been in a
+%% `Complete' status then an empty template will be returned.
+get_generated_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_generated_template(Client, Input, []).
+get_generated_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGeneratedTemplate">>, Input, Options).
+
 %% @doc Returns the stack policy for a specified stack.
 %%
 %% If a stack doesn't have a policy, a null value is returned.
@@ -884,6 +960,14 @@ list_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExports">>, Input, Options).
 
+%% @doc Lists your generated templates in this Region.
+list_generated_templates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_generated_templates(Client, Input, []).
+list_generated_templates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGeneratedTemplates">>, Input, Options).
+
 %% @doc Lists all stacks that are importing an exported output value.
 %%
 %% To modify or remove an exported output value, first use this action to see
@@ -898,6 +982,41 @@ list_imports(Client, Input)
 list_imports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImports">>, Input, Options).
+
+%% @doc Lists the related resources for a list of resources from a resource
+%% scan.
+%%
+%% The response indicates whether each returned resource is already managed
+%% by CloudFormation.
+list_resource_scan_related_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_scan_related_resources(Client, Input, []).
+list_resource_scan_related_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceScanRelatedResources">>, Input, Options).
+
+%% @doc Lists the resources from a resource scan.
+%%
+%% The results can be filtered by resource identifier, resource type prefix,
+%% tag key, and tag value. Only resources that match all specified filters
+%% are returned. The response indicates whether each returned resource is
+%% already managed by CloudFormation.
+list_resource_scan_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_scan_resources(Client, Input, []).
+list_resource_scan_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceScanResources">>, Input, Options).
+
+%% @doc List the resource scans from newest to oldest.
+%%
+%% By default it will return up to 10 resource scans.
+list_resource_scans(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_scans(Client, Input, []).
+list_resource_scans(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceScans">>, Input, Options).
 
 %% @doc Returns drift information for resources in a stack instance.
 %%
@@ -1181,6 +1300,16 @@ signal_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignalResource">>, Input, Options).
 
+%% @doc Starts a scan of the resources in this account in this Region.
+%%
+%% You can the status of a scan using the `ListResourceScans' API action.
+start_resource_scan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_resource_scan(Client, Input, []).
+start_resource_scan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartResourceScan">>, Input, Options).
+
 %% @doc Stops an in-progress operation on a stack set and its associated
 %% stack instances.
 %%
@@ -1225,6 +1354,20 @@ test_type(Client, Input)
 test_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestType">>, Input, Options).
+
+%% @doc Updates a generated template.
+%%
+%% This can be used to change the name, add and remove resources, refresh
+%% resources, and change the `DeletionPolicy' and
+%% `UpdateReplacePolicy' settings. You can check the status of the update
+%% to the generated template using the `DescribeGeneratedTemplate' API
+%% action.
+update_generated_template(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_generated_template(Client, Input, []).
+update_generated_template(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGeneratedTemplate">>, Input, Options).
 
 %% @doc Updates a stack as specified in the template.
 %%
