@@ -39,7 +39,7 @@
 %% @doc Gets the token balance for a batch of tokens by using the
 %% `BatchGetTokenBalance' action for every token in the request.
 %%
-%% Only the native tokens BTC,ETH, and the ERC-20, ERC-721, and ERC 1155
+%% Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155
 %% token standards are supported.
 batch_get_token_balance(Client, Input) ->
     batch_get_token_balance(Client, Input, []).
@@ -95,7 +95,7 @@ get_asset_contract(Client, Input0, Options0) ->
 %% @doc Gets the balance of a specific token, including native tokens, for a
 %% given address (wallet or contract) on the blockchain.
 %%
-%% Only the native tokens BTC,ETH, and the ERC-20, ERC-721, and ERC 1155
+%% Only the native tokens BTC and ETH, and the ERC-20, ERC-721, and ERC 1155
 %% token standards are supported.
 get_token_balance(Client, Input) ->
     get_token_balance(Client, Input, []).
@@ -119,7 +119,10 @@ get_token_balance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the details of a transaction.
+%% @doc Gets the details of a transaction.
+%%
+%% This action will return transaction details for all transactions that are
+%% confirmed on the blockchain, even if they have not reached finality.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
 get_transaction(Client, Input0, Options0) ->
@@ -204,6 +207,9 @@ list_token_balances(Client, Input0, Options0) ->
 %% @doc An array of `TransactionEvent' objects.
 %%
 %% Each object contains details about the transaction event.
+%%
+%% This action will return transaction details for all transactions that are
+%% confirmed on the blockchain, even if they have not reached finality.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
 list_transaction_events(Client, Input0, Options0) ->

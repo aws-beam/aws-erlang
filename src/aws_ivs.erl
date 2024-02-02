@@ -51,6 +51,10 @@
 %% channels can reference the same recording configuration. See the Recording
 %% Configuration endpoints for more information.
 %%
+%% </li> <li> Playback restriction policy — Restricts playback by countries
+%% and/or origin sites. See the Playback Restriction Policy endpoints for
+%% more information.
+%%
 %% </li> </ul> Tagging
 %%
 %% A tag is a metadata label that you assign to an Amazon Web Services
@@ -139,47 +143,22 @@
 %%
 %% </li> <li> `DeleteChannel' — Deletes the specified channel.
 %%
-%% </li> </ul> StreamKey Endpoints
+%% </li> </ul> Playback Restriction Policy Endpoints
 %%
-%% <ul> <li> `CreateStreamKey' — Creates a stream key, used to initiate a
-%% stream, for the specified channel ARN.
+%% <ul> <li> `CreatePlaybackRestrictionPolicy' — Creates a new playback
+%% restriction policy, for constraining playback by countries and/or origins.
 %%
-%% </li> <li> `GetStreamKey' — Gets stream key information for the
-%% specified ARN.
+%% </li> <li> `DeletePlaybackRestrictionPolicy' — Deletes the specified
+%% playback restriction policy
 %%
-%% </li> <li> `BatchGetStreamKey' — Performs `GetStreamKey' on
-%% multiple ARNs simultaneously.
+%% </li> <li> `GetPlaybackRestrictionPolicy' — Gets the specified
+%% playback restriction policy.
 %%
-%% </li> <li> `ListStreamKeys' — Gets summary information about stream
-%% keys for the specified channel.
+%% </li> <li> `ListPlaybackRestrictionPolicies' — Gets summary
+%% information about playback restriction policies.
 %%
-%% </li> <li> `DeleteStreamKey' — Deletes the stream key for the
-%% specified ARN, so it can no longer be used to stream.
-%%
-%% </li> </ul> Stream Endpoints
-%%
-%% <ul> <li> `GetStream' — Gets information about the active (live)
-%% stream on a specified channel.
-%%
-%% </li> <li> `GetStreamSession' — Gets metadata on a specified stream.
-%%
-%% </li> <li> `ListStreams' — Gets summary information about live streams
-%% in your account, in the Amazon Web Services region where the API request
-%% is processed.
-%%
-%% </li> <li> `ListStreamSessions' — Gets a summary of current and
-%% previous streams for a specified channel in your account, in the AWS
-%% region where the API request is processed.
-%%
-%% </li> <li> `StopStream' — Disconnects the incoming RTMPS stream for
-%% the specified channel. Can be used in conjunction with
-%% `DeleteStreamKey' to prevent further streaming to a channel.
-%%
-%% </li> <li> `PutMetadata' — Inserts metadata into the active stream of
-%% the specified channel. At most 5 requests per second per channel are
-%% allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for
-%% your needs, we recommend batching your data into a single PutMetadata
-%% call.) At most 155 requests per second per account are allowed.
+%% </li> <li> `UpdatePlaybackRestrictionPolicy' — Updates a specified
+%% playback restriction policy.
 %%
 %% </li> </ul> Private Channel Endpoints
 %%
@@ -228,6 +207,48 @@
 %% </li> <li> `DeleteRecordingConfiguration' — Deletes the recording
 %% configuration for the specified ARN.
 %%
+%% </li> </ul> Stream Endpoints
+%%
+%% <ul> <li> `GetStream' — Gets information about the active (live)
+%% stream on a specified channel.
+%%
+%% </li> <li> `GetStreamSession' — Gets metadata on a specified stream.
+%%
+%% </li> <li> `ListStreams' — Gets summary information about live streams
+%% in your account, in the Amazon Web Services region where the API request
+%% is processed.
+%%
+%% </li> <li> `ListStreamSessions' — Gets a summary of current and
+%% previous streams for a specified channel in your account, in the AWS
+%% region where the API request is processed.
+%%
+%% </li> <li> `StopStream' — Disconnects the incoming RTMPS stream for
+%% the specified channel. Can be used in conjunction with
+%% `DeleteStreamKey' to prevent further streaming to a channel.
+%%
+%% </li> <li> `PutMetadata' — Inserts metadata into the active stream of
+%% the specified channel. At most 5 requests per second per channel are
+%% allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for
+%% your needs, we recommend batching your data into a single PutMetadata
+%% call.) At most 155 requests per second per account are allowed.
+%%
+%% </li> </ul> StreamKey Endpoints
+%%
+%% <ul> <li> `CreateStreamKey' — Creates a stream key, used to initiate a
+%% stream, for the specified channel ARN.
+%%
+%% </li> <li> `GetStreamKey' — Gets stream key information for the
+%% specified ARN.
+%%
+%% </li> <li> `BatchGetStreamKey' — Performs `GetStreamKey' on
+%% multiple ARNs simultaneously.
+%%
+%% </li> <li> `ListStreamKeys' — Gets summary information about stream
+%% keys for the specified channel.
+%%
+%% </li> <li> `DeleteStreamKey' — Deletes the stream key for the
+%% specified ARN, so it can no longer be used to stream.
+%%
 %% </li> </ul> Amazon Web Services Tags Endpoints
 %%
 %% <ul> <li> `TagResource' — Adds or updates tags for the Amazon Web
@@ -250,6 +271,8 @@
          batch_start_viewer_session_revocation/3,
          create_channel/2,
          create_channel/3,
+         create_playback_restriction_policy/2,
+         create_playback_restriction_policy/3,
          create_recording_configuration/2,
          create_recording_configuration/3,
          create_stream_key/2,
@@ -258,6 +281,8 @@
          delete_channel/3,
          delete_playback_key_pair/2,
          delete_playback_key_pair/3,
+         delete_playback_restriction_policy/2,
+         delete_playback_restriction_policy/3,
          delete_recording_configuration/2,
          delete_recording_configuration/3,
          delete_stream_key/2,
@@ -266,6 +291,8 @@
          get_channel/3,
          get_playback_key_pair/2,
          get_playback_key_pair/3,
+         get_playback_restriction_policy/2,
+         get_playback_restriction_policy/3,
          get_recording_configuration/2,
          get_recording_configuration/3,
          get_stream/2,
@@ -280,6 +307,8 @@
          list_channels/3,
          list_playback_key_pairs/2,
          list_playback_key_pairs/3,
+         list_playback_restriction_policies/2,
+         list_playback_restriction_policies/3,
          list_recording_configurations/2,
          list_recording_configurations/3,
          list_stream_keys/2,
@@ -302,7 +331,9 @@
          untag_resource/3,
          untag_resource/4,
          update_channel/2,
-         update_channel/3]).
+         update_channel/3,
+         update_playback_restriction_policy/2,
+         update_playback_restriction_policy/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -387,6 +418,30 @@ create_channel(Client, Input) ->
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateChannel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new playback restriction policy, for constraining playback
+%% by countries and/or origins.
+create_playback_restriction_policy(Client, Input) ->
+    create_playback_restriction_policy(Client, Input, []).
+create_playback_restriction_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreatePlaybackRestrictionPolicy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -526,6 +581,29 @@ delete_playback_key_pair(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified playback restriction policy.
+delete_playback_restriction_policy(Client, Input) ->
+    delete_playback_restriction_policy(Client, Input, []).
+delete_playback_restriction_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeletePlaybackRestrictionPolicy"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the recording configuration for the specified ARN.
 %%
 %% If you try to delete a recording configuration that is associated with a
@@ -616,6 +694,29 @@ get_playback_key_pair(Client, Input) ->
 get_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetPlaybackKeyPair"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the specified playback restriction policy.
+get_playback_restriction_policy(Client, Input) ->
+    get_playback_restriction_policy(Client, Input, []).
+get_playback_restriction_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetPlaybackRestrictionPolicy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -792,6 +893,29 @@ list_playback_key_pairs(Client, Input) ->
 list_playback_key_pairs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPlaybackKeyPairs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about playback restriction policies.
+list_playback_restriction_policies(Client, Input) ->
+    list_playback_restriction_policies(Client, Input, []).
+list_playback_restriction_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListPlaybackRestrictionPolicies"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1074,6 +1198,29 @@ update_channel(Client, Input) ->
 update_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateChannel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified playback restriction policy.
+update_playback_restriction_policy(Client, Input) ->
+    update_playback_restriction_policy(Client, Input, []).
+update_playback_restriction_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdatePlaybackRestrictionPolicy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
