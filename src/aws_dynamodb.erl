@@ -1052,7 +1052,7 @@ restore_table_from_backup(Client, Input, Options)
 %% `EarliestRestorableDateTime' and `LatestRestorableDateTime'.
 %%
 %% You can restore your table to any point in time during the last 35 days.
-%% Any number of users can execute up to 4 concurrent restores (any type of
+%% Any number of users can execute up to 50 concurrent restores (any type of
 %% restore) in a given account.
 %%
 %% When you restore using point in time recovery, DynamoDB restores your

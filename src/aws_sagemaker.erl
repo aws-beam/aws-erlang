@@ -761,8 +761,8 @@ create_app(Client, Input, Options)
 %% @doc Creates a configuration for running a SageMaker image as a
 %% KernelGateway app.
 %%
-%% The configuration specifies the Amazon Elastic File System (EFS) storage
-%% volume on the image, and a list of the kernels in the image.
+%% The configuration specifies the Amazon Elastic File System storage volume
+%% on the image, and a list of the kernels in the image.
 create_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_image_config(Client, Input, []).
@@ -1251,8 +1251,8 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 %% @doc Creates a custom SageMaker image.
 %%
 %% A SageMaker image is a set of image versions. Each image version
-%% represents a container image stored in Amazon Elastic Container Registry
-%% (ECR). For more information, see Bring your own SageMaker image.
+%% represents a container image stored in Amazon ECR. For more information,
+%% see Bring your own SageMaker image.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -1263,8 +1263,8 @@ create_image(Client, Input, Options)
 %% @doc Creates a version of the SageMaker image specified by
 %% `ImageName'.
 %%
-%% The version represents the Amazon Elastic Container Registry (ECR)
-%% container image specified by `BaseImage'.
+%% The version represents the Amazon ECR container image specified by
+%% `BaseImage'.
 create_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_version(Client, Input, []).
@@ -1555,8 +1555,8 @@ create_notebook_instance(Client, Input, Options)
 %% The value of the `$PATH' environment variable that is available to
 %% both scripts is `/sbin:bin:/usr/sbin:/usr/bin'.
 %%
-%% View CloudWatch Logs for notebook instance lifecycle configurations in log
-%% group `/aws/sagemaker/NotebookInstances' in log stream
+%% View Amazon CloudWatch Logs for notebook instance lifecycle configurations
+%% in log group `/aws/sagemaker/NotebookInstances' in log stream
 %% `[notebook-instance-name]/[LifecycleConfigHook]'.
 %%
 %% Lifecycle configuration scripts cannot run for longer than 5 minutes. If a
@@ -1584,8 +1584,8 @@ create_pipeline(Client, Input, Options)
 %%
 %% When accessed in a web browser, the user will be automatically signed in
 %% to the domain, and granted access to all of the Apps and files associated
-%% with the Domain's Amazon Elastic File System (EFS) volume. This
-%% operation can only be called when the authentication mode equals IAM.
+%% with the Domain's Amazon Elastic File System volume. This operation
+%% can only be called when the authentication mode equals IAM.
 %%
 %% The IAM role or user passed to this API defines the permissions to access
 %% the app. Once the presigned URL is created, no additional permission is
@@ -1659,7 +1659,7 @@ create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
 
-%% @doc Creates a space used for real time collaboration in a Domain.
+%% @doc Creates a space used for real time collaboration in a domain.
 create_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_space(Client, Input, []).
@@ -1831,7 +1831,7 @@ create_trial_component(Client, Input, Options)
 %% or imports them from IAM Identity Center, a user profile is automatically
 %% created. A user profile is the primary holder of settings for an
 %% individual user and has a reference to the user's private Amazon
-%% Elastic File System (EFS) home directory.
+%% Elastic File System home directory.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
