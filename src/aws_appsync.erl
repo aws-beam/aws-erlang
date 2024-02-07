@@ -76,6 +76,9 @@
          get_graphql_api/2,
          get_graphql_api/4,
          get_graphql_api/5,
+         get_graphql_api_environment_variables/2,
+         get_graphql_api_environment_variables/4,
+         get_graphql_api_environment_variables/5,
          get_introspection_schema/3,
          get_introspection_schema/5,
          get_introspection_schema/6,
@@ -124,6 +127,8 @@
          list_types_by_association/4,
          list_types_by_association/6,
          list_types_by_association/7,
+         put_graphql_api_environment_variables/3,
+         put_graphql_api_environment_variables/4,
          start_data_source_introspection/2,
          start_data_source_introspection/3,
          start_schema_creation/3,
@@ -934,6 +939,30 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the list of environmental variable key-value pairs
+%% associated with an API by its ID value.
+get_graphql_api_environment_variables(Client, ApiId)
+  when is_map(Client) ->
+    get_graphql_api_environment_variables(Client, ApiId, #{}, #{}).
+
+get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, []).
+
+get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the introspection schema for a GraphQL API.
 get_introspection_schema(Client, ApiId, Format)
   when is_map(Client) ->
@@ -1369,6 +1398,70 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates a list of environmental variables in an API by its ID value.
+%%
+%% When creating an environmental variable, it must follow the constraints
+%% below:
+%%
+%% <ul> <li> Both JavaScript and VTL templates support environmental
+%% variables.
+%%
+%% </li> <li> Environmental variables are not evaluated before function
+%% invocation.
+%%
+%% </li> <li> Environmental variables only support string values.
+%%
+%% </li> <li> Any defined value in an environmental variable is considered a
+%% string literal and not expanded.
+%%
+%% </li> <li> Variable evaluations should ideally be performed in the
+%% function code.
+%%
+%% </li> </ul> When creating an environmental variable key-value pair, it
+%% must follow the additional constraints below:
+%%
+%% <ul> <li> Keys must begin with a letter.
+%%
+%% </li> <li> Keys must be at least two characters long.
+%%
+%% </li> <li> Keys can only contain letters, numbers, and the underscore
+%% character (_).
+%%
+%% </li> <li> Values can be up to 512 characters long.
+%%
+%% </li> <li> You can configure up to 50 key-value pairs in a GraphQL API.
+%%
+%% </li> </ul> You can create a list of environmental variables by adding it
+%% to the `environmentVariables' payload as a list in the format
+%% `{&quot;key1&quot;:&quot;value1&quot;,&quot;key2&quot;:&quot;value2&quot;,
+%% …}'. Note that each call of the
+%% `PutGraphqlApiEnvironmentVariables' action will result in the
+%% overwriting of the existing environmental variable list of that API. This
+%% means the existing environmental variables will be lost. To avoid this,
+%% you must include all existing and new environmental variables in the list
+%% each time you call this action.
+put_graphql_api_environment_variables(Client, ApiId, Input) ->
+    put_graphql_api_environment_variables(Client, ApiId, Input, []).
+put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/environmentVariables"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new introspection.
 %%

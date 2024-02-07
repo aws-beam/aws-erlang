@@ -86,6 +86,8 @@
          create_rule_group/3,
          create_web_acl/2,
          create_web_acl/3,
+         delete_api_key/2,
+         delete_api_key/3,
          delete_firewall_manager_rule_groups/2,
          delete_firewall_manager_rule_groups/3,
          delete_ip_set/2,
@@ -332,6 +334,17 @@ create_web_acl(Client, Input)
 create_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWebACL">>, Input, Options).
+
+%% @doc Deletes the specified API key.
+%%
+%% After you delete a key, it can take up to 24 hours for WAF to disallow use
+%% of the key in all regions.
+delete_api_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_api_key(Client, Input, []).
+delete_api_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAPIKey">>, Input, Options).
 
 %% @doc Deletes all rule groups that are managed by Firewall Manager for the
 %% specified web ACL.

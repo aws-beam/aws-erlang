@@ -396,6 +396,8 @@ create_log_anomaly_detector(Client, Input, Options)
 %% 0-9, '_' (underscore), '-' (hyphen), '/' (forward
 %% slash), '.' (period), and '#' (number sign)
 %%
+%% </li> <li> Log group names can't start with the string `aws/'
+%%
 %% </li> </ul> When you create a log group, by default the log events in the
 %% log group do not expire. To set a retention policy so that events expire
 %% and are deleted after a specified time, use PutRetentionPolicy.
@@ -641,6 +643,15 @@ describe_account_policies(Client, Input, Options)
 
 %% @doc Retrieves a list of the deliveries that have been created in the
 %% account.
+%%
+%% A delivery is a connection between a delivery source and a delivery
+%% destination .
+%%
+%% A delivery source represents an Amazon Web Services resource that sends
+%% logs to an logs delivery destination. The destination can be CloudWatch
+%% Logs, Amazon S3, or Kinesis Data Firehose. Only some Amazon Web Services
+%% services support being configured as a delivery source. These services are
+%% listed in Enable logging from Amazon Web Services services.
 describe_deliveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deliveries(Client, Input, []).
@@ -864,10 +875,16 @@ get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
 
-%% @doc Returns complete information about one delivery.
+%% @doc Returns complete information about one logical delivery.
 %%
-%% A delivery is a connection between a logical delivery source and a logical
-%% delivery destination
+%% A delivery is a connection between a delivery source and a delivery
+%% destination .
+%%
+%% A delivery source represents an Amazon Web Services resource that sends
+%% logs to an logs delivery destination. The destination can be CloudWatch
+%% Logs, Amazon S3, or Kinesis Data Firehose. Only some Amazon Web Services
+%% services support being configured as a delivery source. These services are
+%% listed in Enable logging from Amazon Web Services services.
 %%
 %% You need to specify the delivery `id' in this operation. You can find
 %% the IDs of the deliveries in your account with the DescribeDeliveries

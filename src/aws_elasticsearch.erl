@@ -24,6 +24,8 @@
          associate_package/5,
          authorize_vpc_endpoint_access/3,
          authorize_vpc_endpoint_access/4,
+         cancel_domain_config_change/3,
+         cancel_domain_config_change/4,
          cancel_elasticsearch_service_software_update/2,
          cancel_elasticsearch_service_software_update/3,
          create_elasticsearch_domain/2,
@@ -224,6 +226,30 @@ authorize_vpc_endpoint_access(Client, DomainName, Input) ->
 authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a pending configuration change on an Amazon OpenSearch
+%% Service domain.
+cancel_domain_config_change(Client, DomainName, Input) ->
+    cancel_domain_config_change(Client, DomainName, Input, []).
+cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/config/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
