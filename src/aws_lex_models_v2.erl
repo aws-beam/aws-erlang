@@ -18,6 +18,8 @@
          create_bot_alias/4,
          create_bot_locale/4,
          create_bot_locale/5,
+         create_bot_replica/3,
+         create_bot_replica/4,
          create_bot_version/3,
          create_bot_version/4,
          create_export/2,
@@ -42,6 +44,8 @@
          delete_bot_alias/5,
          delete_bot_locale/5,
          delete_bot_locale/6,
+         delete_bot_replica/4,
+         delete_bot_replica/5,
          delete_bot_version/4,
          delete_bot_version/5,
          delete_custom_vocabulary/5,
@@ -76,6 +80,9 @@
          describe_bot_recommendation/5,
          describe_bot_recommendation/7,
          describe_bot_recommendation/8,
+         describe_bot_replica/3,
+         describe_bot_replica/5,
+         describe_bot_replica/6,
          describe_bot_resource_generation/5,
          describe_bot_resource_generation/7,
          describe_bot_resource_generation/8,
@@ -122,14 +129,20 @@
          get_test_execution_artifacts_url/5,
          list_aggregated_utterances/3,
          list_aggregated_utterances/4,
+         list_bot_alias_replicas/4,
+         list_bot_alias_replicas/5,
          list_bot_aliases/3,
          list_bot_aliases/4,
          list_bot_locales/4,
          list_bot_locales/5,
          list_bot_recommendations/5,
          list_bot_recommendations/6,
+         list_bot_replicas/3,
+         list_bot_replicas/4,
          list_bot_resource_generations/5,
          list_bot_resource_generations/6,
+         list_bot_version_replicas/4,
+         list_bot_version_replicas/5,
          list_bot_versions/3,
          list_bot_versions/4,
          list_bots/2,
@@ -383,6 +396,30 @@ create_bot_locale(Client, BotId, BotVersion, Input) ->
 create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Action to create a replication of the source bot in the secondary
+%% region.
+create_bot_replica(Client, BotId, Input) ->
+    create_bot_replica(Client, BotId, Input, []).
+create_bot_replica(Client, BotId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -740,6 +777,29 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
 delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The action to delete the replicated bot in the secondary region.
+delete_bot_replica(Client, BotId, ReplicaRegion, Input) ->
+    delete_bot_replica(Client, BotId, ReplicaRegion, Input, []).
+delete_bot_replica(Client, BotId, ReplicaRegion, Input0, Options0) ->
+    Method = delete,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1132,6 +1192,29 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
 describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Monitors the bot replication status through the UI console.
+describe_bot_replica(Client, BotId, ReplicaRegion)
+  when is_map(Client) ->
+    describe_bot_replica(Client, BotId, ReplicaRegion, #{}, #{}).
+
+describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, []).
+
+describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1540,6 +1623,30 @@ list_aggregated_utterances(Client, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The action to list the replicated bots created from the source bot
+%% alias.
+list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input) ->
+    list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input, []).
+list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/botaliases/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a list of aliases for the specified bot.
 list_bot_aliases(Client, BotId, Input) ->
     list_bot_aliases(Client, BotId, Input, []).
@@ -1609,12 +1716,59 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The action to list the replicated bots.
+list_bot_replicas(Client, BotId, Input) ->
+    list_bot_replicas(Client, BotId, Input, []).
+list_bot_replicas(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the generation requests made for a bot locale.
 list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input) ->
     list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input, []).
 list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/generations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Contains information about all the versions replication statuses
+%% applicable for Global Resiliency.
+list_bot_version_replicas(Client, BotId, ReplicaRegion, Input) ->
+    list_bot_version_replicas(Client, BotId, ReplicaRegion, Input, []).
+list_bot_version_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/replicas/", aws_util:encode_uri(ReplicaRegion), "/botversions/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

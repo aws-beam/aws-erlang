@@ -229,6 +229,8 @@
          get_reserved_node_exchange_offerings/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         list_recommendations/2,
+         list_recommendations/3,
          modify_aqua_configuration/2,
          modify_aqua_configuration/3,
          modify_authentication_profile/2,
@@ -1598,6 +1600,15 @@ get_resource_policy(Client, Input)
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc List the Amazon Redshift Advisor recommendations for one or multiple
+%% Amazon Redshift clusters in an Amazon Web Services account.
+list_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_recommendations(Client, Input, []).
+list_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRecommendations">>, Input, Options).
 
 %% @doc This operation is retired.
 %%

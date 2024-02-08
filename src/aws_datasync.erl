@@ -188,8 +188,10 @@ create_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgent">>, Input, Options).
 
-%% @doc Creates an endpoint for a Microsoft Azure Blob Storage container that
-%% DataSync can use as a transfer source or destination.
+%% @doc Creates a transfer location for a Microsoft Azure Blob Storage
+%% container.
+%%
+%% DataSync can use this location as a transfer source or destination.
 %%
 %% Before you begin, make sure you know how DataSync accesses Azure Blob
 %% Storage and works with access tiers and blob types. You also need a
@@ -201,10 +203,13 @@ create_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationAzureBlob">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon EFS file system that DataSync can
-%% access for a transfer.
+%% @doc Creates a transfer location for an Amazon EFS file system.
 %%
-%% For more information, see Creating a location for Amazon EFS.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses
+%% Amazon EFS file systems.
 create_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_efs(Client, Input, []).
@@ -212,7 +217,13 @@ create_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationEfs">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for Lustre file system.
+%% @doc Creates a transfer location for an Amazon FSx for Lustre file system.
+%%
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses FSx
+%% for Lustre file systems.
 create_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_lustre(Client, Input, []).
@@ -220,11 +231,14 @@ create_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxLustre">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for NetApp ONTAP file system
-%% that DataSync can use for a data transfer.
+%% @doc Creates a transfer location for an Amazon FSx for NetApp ONTAP file
+%% system.
 %%
-%% Before you begin, make sure that you understand how DataSync accesses an
-%% FSx for ONTAP file system.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses FSx
+%% for ONTAP file systems.
 create_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_ontap(Client, Input, []).
@@ -232,10 +246,14 @@ create_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxOntap">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for OpenZFS file system that
-%% DataSync can access for a transfer.
+%% @doc Creates a transfer location for an Amazon FSx for OpenZFS file
+%% system.
 %%
-%% For more information, see Creating a location for FSx for OpenZFS.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses FSx
+%% for OpenZFS file systems.
 %%
 %% Request parameters related to `SMB' aren't supported with the
 %% `CreateLocationFsxOpenZfs' operation.
@@ -246,11 +264,14 @@ create_location_fsx_open_zfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxOpenZfs">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for Windows File Server file
-%% system that DataSync can use for a data transfer.
+%% @doc Creates a transfer location for an Amazon FSx for Windows File Server
+%% file system.
 %%
-%% Before you begin, make sure that you understand how DataSync accesses an
-%% FSx for Windows File Server.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses FSx
+%% for Windows File Server file systems.
 create_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_windows(Client, Input, []).
@@ -258,7 +279,14 @@ create_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxWindows">>, Input, Options).
 
-%% @doc Creates an endpoint for a Hadoop Distributed File System (HDFS).
+%% @doc Creates a transfer location for a Hadoop Distributed File System
+%% (HDFS).
+%%
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses HDFS
+%% clusters.
 create_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_hdfs(Client, Input, []).
@@ -266,11 +294,14 @@ create_location_hdfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationHdfs">>, Input, Options).
 
-%% @doc Creates an endpoint for a Network File System (NFS) file server that
-%% DataSync can use for a data transfer.
-%%
-%% For more information, see Configuring transfers to or from an NFS file
+%% @doc Creates a transfer location for a Network File System (NFS) file
 %% server.
+%%
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses NFS
+%% file servers.
 %%
 %% If you're copying data to or from an Snowcone device, you can also use
 %% `CreateLocationNfs' to create your transfer location. For more
@@ -282,10 +313,13 @@ create_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationNfs">>, Input, Options).
 
-%% @doc Creates an endpoint for an object storage system that DataSync can
-%% access for a transfer.
+%% @doc Creates a transfer location for an object storage system.
 %%
-%% For more information, see Creating a location for object storage.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand the prerequisites for
+%% DataSync to work with object storage systems.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -293,18 +327,18 @@ create_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationObjectStorage">>, Input, Options).
 
-%% @doc A location is an endpoint for an Amazon S3 bucket.
+%% @doc Creates a transfer location for an Amazon S3 bucket.
 %%
-%% DataSync can use the location as a source or destination for copying data.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
 %%
-%% Before you create your location, make sure that you read the following
-%% sections:
+%% Before you begin, make sure that you read the following topics:
 %%
 %% Storage class considerations with Amazon S3 locations
 %%
 %% Evaluating S3 request costs when using DataSync
 %%
-%% For more information, see Creating an Amazon S3 location.
+%% For more information, see Configuring transfers with Amazon S3.
 create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
@@ -312,11 +346,14 @@ create_location_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationS3">>, Input, Options).
 
-%% @doc Creates an endpoint for a Server Message Block (SMB) file server that
-%% DataSync can use for a data transfer.
+%% @doc Creates a transfer location for a Server Message Block (SMB) file
+%% server.
 %%
-%% Before you begin, make sure that you understand how DataSync accesses an
-%% SMB file server.
+%% DataSync can use this location as a source or destination for transferring
+%% data.
+%%
+%% Before you begin, make sure that you understand how DataSync accesses SMB
+%% file servers.
 create_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_smb(Client, Input, []).
@@ -356,7 +393,7 @@ delete_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAgent">>, Input, Options).
 
-%% @doc Deletes the configuration of a location used by DataSync.
+%% @doc Deletes a transfer location resource from DataSync.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
@@ -364,7 +401,7 @@ delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
 
-%% @doc Deletes an DataSync transfer task.
+%% @doc Deletes a transfer task resource from DataSync.
 delete_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task(Client, Input, []).
@@ -398,8 +435,8 @@ describe_location_azure_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationAzureBlob">>, Input, Options).
 
-%% @doc Returns metadata about your DataSync location for an Amazon EFS file
-%% system.
+%% @doc Provides details about how an DataSync transfer location for an
+%% Amazon EFS file system is configured.
 describe_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_efs(Client, Input, []).
@@ -407,8 +444,8 @@ describe_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationEfs">>, Input, Options).
 
-%% @doc Provides details about how an DataSync location for an Amazon FSx for
-%% Lustre file system is configured.
+%% @doc Provides details about how an DataSync transfer location for an
+%% Amazon FSx for Lustre file system is configured.
 describe_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_lustre(Client, Input, []).
@@ -416,8 +453,8 @@ describe_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxLustre">>, Input, Options).
 
-%% @doc Provides details about how an DataSync location for an Amazon FSx for
-%% NetApp ONTAP file system is configured.
+%% @doc Provides details about how an DataSync transfer location for an
+%% Amazon FSx for NetApp ONTAP file system is configured.
 %%
 %% If your location uses SMB, the `DescribeLocationFsxOntap' operation
 %% doesn't actually return a `Password'.
@@ -428,8 +465,8 @@ describe_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxOntap">>, Input, Options).
 
-%% @doc Provides details about how an DataSync location for an Amazon FSx for
-%% OpenZFS file system is configured.
+%% @doc Provides details about how an DataSync transfer location for an
+%% Amazon FSx for OpenZFS file system is configured.
 %%
 %% Response elements related to `SMB' aren't supported with the
 %% `DescribeLocationFsxOpenZfs' operation.
@@ -440,8 +477,8 @@ describe_location_fsx_open_zfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxOpenZfs">>, Input, Options).
 
-%% @doc Returns metadata about an Amazon FSx for Windows File Server
-%% location, such as information about its path.
+%% @doc Provides details about how an DataSync transfer location for an
+%% Amazon FSx for Windows File Server file system is configured.
 describe_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_windows(Client, Input, []).
@@ -449,8 +486,8 @@ describe_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxWindows">>, Input, Options).
 
-%% @doc Returns metadata, such as the authentication information about the
-%% Hadoop Distributed File System (HDFS) location.
+%% @doc Provides details about how an DataSync transfer location for a Hadoop
+%% Distributed File System (HDFS) is configured.
 describe_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_hdfs(Client, Input, []).
@@ -467,8 +504,8 @@ describe_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationNfs">>, Input, Options).
 
-%% @doc Returns metadata about your DataSync location for an object storage
-%% system.
+%% @doc Provides details about how an DataSync transfer location for an
+%% object storage system is configured.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
@@ -476,8 +513,8 @@ describe_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationObjectStorage">>, Input, Options).
 
-%% @doc Returns metadata, such as bucket name, about an Amazon S3 bucket
-%% location.
+%% @doc Provides details about how an DataSync transfer location for an S3
+%% bucket is configured.
 describe_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_s3(Client, Input, []).
@@ -485,8 +522,8 @@ describe_location_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationS3">>, Input, Options).
 
-%% @doc Returns metadata, such as the path and user information about an SMB
-%% location.
+%% @doc Provides details about how an DataSync transfer location for a Server
+%% Message Block (SMB) file server is configured.
 describe_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_smb(Client, Input, []).
@@ -619,7 +656,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Returns a list of executed tasks.
+%% @doc Returns a list of executions for an DataSync transfer task.
 list_task_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_executions(Client, Input, []).
@@ -784,7 +821,7 @@ update_storage_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageSystem">>, Input, Options).
 
-%% @doc Updates the configuration of a DataSync transfer task.
+%% @doc Updates the configuration of an DataSync transfer task.
 update_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task(Client, Input, []).
