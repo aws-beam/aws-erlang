@@ -3355,8 +3355,11 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a unique endpoint specific to the Amazon Web Services account
-%% making the call.
+%% @doc Returns or creates a unique endpoint specific to the Amazon Web
+%% Services account making the call.
+%%
+%% The first time `DescribeEndpoint' is called, an endpoint is created.
+%% All subsequent calls to `DescribeEndpoint' return the same endpoint.
 %%
 %% Requires permission to access the DescribeEndpoint action.
 describe_endpoint(Client)
@@ -4390,6 +4393,11 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a registration code used to register a CA certificate with IoT.
+%%
+%% IoT will create a registration code as part of this API call if the
+%% registration code doesn't exist or has been deleted. If you already
+%% have a registration code, this API call will return the same registration
+%% code.
 %%
 %% Requires permission to access the GetRegistrationCode action.
 get_registration_code(Client)

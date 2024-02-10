@@ -1,7 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Managed Service for Prometheus
+%% @doc Amazon Managed Service for Prometheus is a serverless,
+%% Prometheus-compatible monitoring service for container metrics that makes
+%% it easier to securely monitor container environments at scale.
+%%
+%% With Amazon Managed Service for Prometheus, you can use the same
+%% open-source Prometheus data model and query language that you use today to
+%% monitor the performance of your containerized workloads, and also enjoy
+%% improved scalability, availability, and security without having to manage
+%% the underlying infrastructure.
+%%
+%% For more information about Amazon Managed Service for Prometheus, see the
+%% Amazon Managed Service for Prometheus User Guide.
+%%
+%% Amazon Managed Service for Prometheus includes two APIs.
+%%
+%% <ul> <li> Use the Amazon Web Services API described in this guide to
+%% manage Amazon Managed Service for Prometheus resources, such as
+%% workspaces, rule groups, and alert managers.
+%%
+%% </li> <li> Use the Prometheus-compatible API to work within your
+%% Prometheus workspace.
+%%
+%% </li> </ul>
 -module(aws_amp).
 
 -export([create_alert_manager_definition/3,
@@ -73,7 +95,11 @@
 %% API
 %%====================================================================
 
-%% @doc Create an alert manager definition.
+%% @doc The `CreateAlertManagerDefinition' operation creates the alert
+%% manager definition in a workspace.
+%%
+%% If a workspace already has an alert manager definition, don't use this
+%% operation to update it. Instead, use `PutAlertManagerDefinition'.
 create_alert_manager_definition(Client, WorkspaceId, Input) ->
     create_alert_manager_definition(Client, WorkspaceId, Input, []).
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
@@ -96,7 +122,11 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create logging configuration.
+%% @doc The `CreateLoggingConfiguration' operation creates a logging
+%% configuration for the workspace.
+%%
+%% Use this operation to set the CloudWatch log group to which the logs will
+%% be published to.
 create_logging_configuration(Client, WorkspaceId, Input) ->
     create_logging_configuration(Client, WorkspaceId, Input, []).
 create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
@@ -119,7 +149,14 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a rule group namespace.
+%% @doc The `CreateRuleGroupsNamespace' operation creates a rule groups
+%% namespace within a workspace.
+%%
+%% A rule groups namespace is associated with exactly one rules file. A
+%% workspace can have multiple rule groups namespaces.
+%%
+%% Use this operation only to create new rule groups namespaces. To update an
+%% existing rule groups namespace, use `PutRuleGroupsNamespace'.
 create_rule_groups_namespace(Client, WorkspaceId, Input) ->
     create_rule_groups_namespace(Client, WorkspaceId, Input, []).
 create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
@@ -142,7 +179,30 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a scraper.
+%% @doc The `CreateScraper' operation creates a scraper to collect
+%% metrics.
+%%
+%% A scraper pulls metrics from Prometheus-compatible sources within an
+%% Amazon EKS cluster, and sends them to your Amazon Managed Service for
+%% Prometheus workspace. You can configure the scraper to control what
+%% metrics are collected, and what transformations are applied prior to
+%% sending them to your workspace.
+%%
+%% If needed, an IAM role will be created for you that gives Amazon Managed
+%% Service for Prometheus access to the metrics in your cluster. For more
+%% information, see Using roles for scraping metrics from EKS in the Amazon
+%% Managed Service for Prometheus User Guide.
+%%
+%% You cannot update a scraper. If you want to change the configuration of
+%% the scraper, create a new scraper and delete the old one.
+%%
+%% The `scrapeConfiguration' parameter contains the base64-encoded
+%% version of the YAML configuration file.
+%%
+%% For more information about collectors, including what metrics are
+%% collected, and how to configure the scraper, see Amazon Web Services
+%% managed collectors in the Amazon Managed Service for Prometheus User
+%% Guide.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
 create_scraper(Client, Input0, Options0) ->
@@ -165,7 +225,11 @@ create_scraper(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new AMP workspace.
+%% @doc Creates a Prometheus workspace.
+%%
+%% A workspace is a logical space dedicated to the storage and querying of
+%% Prometheus metrics. You can have one or more workspaces in each Region in
+%% your account.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 create_workspace(Client, Input0, Options0) ->
@@ -188,7 +252,7 @@ create_workspace(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an alert manager definition.
+%% @doc Deletes the alert manager definition from a workspace.
 delete_alert_manager_definition(Client, WorkspaceId, Input) ->
     delete_alert_manager_definition(Client, WorkspaceId, Input, []).
 delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
@@ -212,7 +276,7 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete logging configuration.
+%% @doc Deletes the logging configuration for a workspace.
 delete_logging_configuration(Client, WorkspaceId, Input) ->
     delete_logging_configuration(Client, WorkspaceId, Input, []).
 delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
@@ -236,7 +300,8 @@ delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a rule groups namespace.
+%% @doc Deletes one rule groups namespace and its associated rule groups
+%% definition.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
@@ -260,7 +325,8 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a scraper.
+%% @doc The `DeleteScraper' operation deletes one scraper, and stops any
+%% metrics collection that the scraper performs.
 delete_scraper(Client, ScraperId, Input) ->
     delete_scraper(Client, ScraperId, Input, []).
 delete_scraper(Client, ScraperId, Input0, Options0) ->
@@ -284,7 +350,10 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an AMP workspace.
+%% @doc Deletes an existing workspace.
+%%
+%% When you delete a workspace, the data that has been ingested into it is
+%% not immediately deleted. It will be permanently deleted within one month.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
@@ -308,7 +377,8 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes an alert manager definition.
+%% @doc Retrieves the full information about the alert manager definition for
+%% a workspace.
 describe_alert_manager_definition(Client, WorkspaceId)
   when is_map(Client) ->
     describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
@@ -331,7 +401,8 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes logging configuration.
+%% @doc Returns complete information about the current logging configuration
+%% of the workspace.
 describe_logging_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
@@ -354,7 +425,10 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe a rule groups namespace.
+%% @doc Returns complete information about one rule groups namespace.
+%%
+%% To retrieve a list of rule groups namespaces, use
+%% `ListRuleGroupsNamespaces'.
 describe_rule_groups_namespace(Client, Name, WorkspaceId)
   when is_map(Client) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
@@ -377,7 +451,8 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describe an existing scraper.
+%% @doc The `DescribeScraper' operation displays information about an
+%% existing scraper.
 describe_scraper(Client, ScraperId)
   when is_map(Client) ->
     describe_scraper(Client, ScraperId, #{}, #{}).
@@ -400,7 +475,7 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an existing AMP workspace.
+%% @doc Returns information about an existing workspace.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
@@ -423,7 +498,9 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a default configuration.
+%% @doc The `GetDefaultScraperConfiguration' operation returns the
+%% default scraper configuration used when Amazon EKS creates a scraper for
+%% you.
 get_default_scraper_configuration(Client)
   when is_map(Client) ->
     get_default_scraper_configuration(Client, #{}, #{}).
@@ -446,7 +523,7 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists rule groups namespaces.
+%% @doc Returns a list of rule groups namespaces in a workspace.
 list_rule_groups_namespaces(Client, WorkspaceId)
   when is_map(Client) ->
     list_rule_groups_namespaces(Client, WorkspaceId, #{}, #{}).
@@ -475,10 +552,11 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all scrapers in a customer account, including scrapers being
-%% created or deleted.
+%% @doc The `ListScrapers' operation lists all of the scrapers in your
+%% account.
 %%
-%% You may provide filters to return a more specific list of results.
+%% This includes scrapers being created or deleted. You can optionally filter
+%% the returned list.
 list_scrapers(Client)
   when is_map(Client) ->
     list_scrapers(Client, #{}, #{}).
@@ -507,7 +585,11 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags you have assigned to the resource.
+%% @doc The `ListTagsForResource' operation returns the tags that are
+%% associated with an Amazon Managed Service for Prometheus resource.
+%%
+%% Currently, the only resources that can be tagged are workspaces and rule
+%% groups namespaces.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -530,8 +612,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all AMP workspaces, including workspaces being created or
-%% deleted.
+%% @doc Lists all of the Amazon Managed Service for Prometheus workspaces in
+%% your account.
+%%
+%% This includes workspaces being created or deleted.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
@@ -560,7 +644,11 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Update an alert manager definition.
+%% @doc Updates an existing alert manager definition in a workspace.
+%%
+%% If the workspace does not already have an alert manager definition,
+%% don't use this operation to create it. Instead, use
+%% `CreateAlertManagerDefinition'.
 put_alert_manager_definition(Client, WorkspaceId, Input) ->
     put_alert_manager_definition(Client, WorkspaceId, Input, []).
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
@@ -583,7 +671,16 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a rule groups namespace.
+%% @doc Updates an existing rule groups namespace within a workspace.
+%%
+%% A rule groups namespace is associated with exactly one rules file. A
+%% workspace can have multiple rule groups namespaces.
+%%
+%% Use this operation only to update existing rule groups namespaces. To
+%% create a new rule groups namespace, use `CreateRuleGroupsNamespace'.
+%%
+%% You can't use this operation to add tags to an existing rule groups
+%% namespace. Instead, use `TagResource'.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
@@ -606,7 +703,16 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates tags for the specified resource.
+%% @doc The `TagResource' operation associates tags with an Amazon
+%% Managed Service for Prometheus resource.
+%%
+%% The only resources that can be tagged are workspaces and rule groups
+%% namespaces.
+%%
+%% If you specify a new tag key for the resource, this tag is appended to the
+%% list of tags associated with the resource. If you specify a tag key that
+%% is already associated with the resource, the new tag value that you
+%% specify replaces the previous value for that tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -629,7 +735,11 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes tags from the specified resource.
+%% @doc Removes the specified tags from an Amazon Managed Service for
+%% Prometheus resource.
+%%
+%% The only resources that can be tagged are workspaces and rule groups
+%% namespaces.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -653,7 +763,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update logging configuration.
+%% @doc Updates the log group ARN or the workspace ID of the current logging
+%% configuration.
 update_logging_configuration(Client, WorkspaceId, Input) ->
     update_logging_configuration(Client, WorkspaceId, Input, []).
 update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
@@ -676,7 +787,7 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an AMP workspace alias.
+%% @doc Updates the alias of an existing workspace.
 update_workspace_alias(Client, WorkspaceId, Input) ->
     update_workspace_alias(Client, WorkspaceId, Input, []).
 update_workspace_alias(Client, WorkspaceId, Input0, Options0) ->
