@@ -494,13 +494,19 @@ retrieve_domain_auth_code(Client, Input, Options)
 %% domain registrar, see Transferring a Domain from Amazon Route 53 to
 %% Another Registrar in the Amazon Route 53 Developer Guide.
 %%
-%% </li> </ul> If the registrar for your domain is also the DNS service
-%% provider for the domain, we highly recommend that you transfer your DNS
-%% service to Route 53 or to another DNS service provider before you transfer
-%% your registration. Some registrars provide free DNS service when you
-%% purchase a domain registration. When you transfer the registration, the
-%% previous registrar will not renew your domain registration and could end
-%% your DNS service at any time.
+%% </li> </ul> During the transfer of any country code top-level domains
+%% (ccTLDs) to Route 53, except for .cc and .tv, updates to the owner contact
+%% are ignored and the owner contact data from the registry is used. You can
+%% update the owner contact after the transfer is complete. For more
+%% information, see UpdateDomainContact.
+%%
+%% If the registrar for your domain is also the DNS service provider for the
+%% domain, we highly recommend that you transfer your DNS service to Route 53
+%% or to another DNS service provider before you transfer your registration.
+%% Some registrars provide free DNS service when you purchase a domain
+%% registration. When you transfer the registration, the previous registrar
+%% will not renew your domain registration and could end your DNS service at
+%% any time.
 %%
 %% If the registrar for your domain is also the DNS service provider for the
 %% domain and you don't transfer DNS service to another provider, your
