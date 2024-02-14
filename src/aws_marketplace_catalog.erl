@@ -49,6 +49,9 @@
 %%====================================================================
 
 %% @doc Returns metadata and content for multiple entities.
+%%
+%% This is the Batch version of the `DescribeEntity' API and uses the
+%% same IAM permission action as `DescribeEntity' API.
 batch_describe_entities(Client, Input) ->
     batch_describe_entities(Client, Input, []).
 batch_describe_entities(Client, Input0, Options0) ->
