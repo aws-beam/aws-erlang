@@ -1,7 +1,50 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc Amazon Q is in preview release and is subject to change.
+%%
+%% This is the Amazon Q (for business use) API Reference. Amazon Q is a fully
+%% managed, generative-AI powered enterprise chat assistant that you can
+%% deploy within your organization. Amazon Q enhances employee productivity
+%% by supporting key tasks such as question-answering, knowledge discovery,
+%% writing email messages, summarizing text, drafting document outlines, and
+%% brainstorming ideas. Users ask questions of Amazon Q and get answers that
+%% are presented in a conversational manner. For an introduction to the
+%% service, see the Amazon Q (for business use) Developer Guide .
+%%
+%% For an overview of the Amazon Q APIs, see Overview of Amazon Q API
+%% operations.
+%%
+%% For information about the IAM access control permissions you need to use
+%% this API, see IAM roles for Amazon Q in the Amazon Q (for business use)
+%% Developer Guide.
+%%
+%% You can use the following AWS SDKs to access Amazon Q APIs:
+%%
+%% <ul> <li> AWS SDK for C++
+%%
+%% </li> <li> AWS SDK for Go
+%%
+%% </li> <li> AWS SDK for Java
+%%
+%% </li> <li> AWS SDK for JavaScript
+%%
+%% </li> <li> AWS SDK for .NET
+%%
+%% </li> <li> AWS SDK for Python (Boto3)
+%%
+%% </li> <li> AWS SDK for Ruby
+%%
+%% </li> </ul> The following resources provide additional information about
+%% using the Amazon Q API:
+%%
+%% <ul> <li> Setting up for Amazon Q
+%%
+%% </li> <li> Amazon Q CLI Reference
+%%
+%% </li> <li> Amazon Web Services General Reference
+%%
+%% </li> </ul>
 -module(aws_qbusiness).
 
 -export([batch_delete_document/4,

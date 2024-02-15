@@ -90,16 +90,30 @@
 
 -export([delete_landing_zone/2,
          delete_landing_zone/3,
+         disable_baseline/2,
+         disable_baseline/3,
          disable_control/2,
          disable_control/3,
+         enable_baseline/2,
+         enable_baseline/3,
          enable_control/2,
          enable_control/3,
+         get_baseline/2,
+         get_baseline/3,
+         get_baseline_operation/2,
+         get_baseline_operation/3,
          get_control_operation/2,
          get_control_operation/3,
+         get_enabled_baseline/2,
+         get_enabled_baseline/3,
          get_enabled_control/2,
          get_enabled_control/3,
          get_landing_zone_operation/2,
          get_landing_zone_operation/3,
+         list_baselines/2,
+         list_baselines/3,
+         list_enabled_baselines/2,
+         list_enabled_baselines/3,
          list_enabled_controls/2,
          list_enabled_controls/3,
          list_landing_zones/2,
@@ -107,12 +121,16 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         reset_enabled_baseline/2,
+         reset_enabled_baseline/3,
          reset_landing_zone/2,
          reset_landing_zone/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_enabled_baseline/2,
+         update_enabled_baseline/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -147,18 +165,70 @@ delete_landing_zone(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disable an `EnabledBaseline' resource on the specified Target.
+%%
+%% This API starts an asynchronous operation to remove all resources deployed
+%% as part of the baseline enablement. The resource will vary depending on
+%% the enabled baseline.
+disable_baseline(Client, Input) ->
+    disable_baseline(Client, Input, []).
+disable_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/disable-baseline"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API call turns off a control.
 %%
-%% It starts an asynchronous operation that deletes Amazon Web Services
-%% resources on the specified organizational unit and the accounts it
-%% contains. The resources will vary according to the control that you
-%% specify. For usage examples, see the Amazon Web Services Control Tower
-%% User Guide .
+%% It starts an asynchronous operation that deletes AWS resources on the
+%% specified organizational unit and the accounts it contains. The resources
+%% will vary according to the control that you specify. For usage examples,
+%% see the Amazon Web Services Control Tower User Guide .
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
 disable_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disable-control"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enable (apply) a `Baseline' to a Target.
+%%
+%% This API starts an asynchronous operation to deploy resources specified by
+%% the `Baseline' to the specified Target.
+enable_baseline(Client, Input) ->
+    enable_baseline(Client, Input, []).
+enable_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/enable-baseline"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -205,6 +275,58 @@ enable_control(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieve details about an existing `Baseline' resource by
+%% specifying its identifier.
+get_baseline(Client, Input) ->
+    get_baseline(Client, Input, []).
+get_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-baseline"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the details of an asynchronous baseline operation, as
+%% initiated by any of these APIs: `EnableBaseline',
+%% `DisableBaseline', `UpdateEnabledBaseline',
+%% `ResetEnabledBaseline'.
+%%
+%% A status message is displayed in case of operation failure.
+get_baseline_operation(Client, Input) ->
+    get_baseline_operation(Client, Input, []).
+get_baseline_operation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-baseline-operation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the status of a particular `EnableControl' or
 %% `DisableControl' operation.
 %%
@@ -216,6 +338,30 @@ get_control_operation(Client, Input) ->
 get_control_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-control-operation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieve details of an `EnabledBaseline' resource by specifying
+%% its identifier.
+get_enabled_baseline(Client, Input) ->
+    get_enabled_baseline(Client, Input, []).
+get_enabled_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-enabled-baseline"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -266,6 +412,56 @@ get_landing_zone_operation(Client, Input) ->
 get_landing_zone_operation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-landingzone-operation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a summary list of all available baselines.
+list_baselines(Client, Input) ->
+    list_baselines(Client, Input, []).
+list_baselines(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-baselines"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of summaries describing `EnabledBaseline'
+%% resources.
+%%
+%% You can filter the list by the corresponding `Baseline' or
+%% `Target' of the `EnabledBaseline' resources.
+list_enabled_baselines(Client, Input) ->
+    list_enabled_baselines(Client, Input, []).
+list_enabled_baselines(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-enabled-baselines"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -363,6 +559,32 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Re-enables an `EnabledBaseline' resource.
+%%
+%% For example, this API can re-apply the existing `Baseline' after a new
+%% member account is moved to the target OU.
+reset_enabled_baseline(Client, Input) ->
+    reset_enabled_baseline(Client, Input, []).
+reset_enabled_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/reset-enabled-baseline"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API call resets a landing zone.
 %%
 %% It starts an asynchronous operation that resets the landing zone to the
@@ -438,6 +660,30 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an `EnabledBaseline' resource's applied parameters or
+%% version.
+update_enabled_baseline(Client, Input) ->
+    update_enabled_baseline(Client, Input, []).
+update_enabled_baseline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-enabled-baseline"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
