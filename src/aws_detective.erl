@@ -74,7 +74,7 @@
 %% Detective API Calls with CloudTrail.
 %%
 %% We replaced the term &quot;master account&quot; with the term
-%% &quot;administrator account.&quot; An administrator account is used to
+%% &quot;administrator account&quot;. An administrator account is used to
 %% centrally manage multiple accounts. In the case of Detective, the
 %% administrator account manages the accounts in their behavior graph.
 -module(aws_detective).
@@ -225,13 +225,6 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
 %% account as the administrator account.
 %%
 %% This operation is called by the account that is enabling Detective.
-%%
-%% Before you try to enable Detective, make sure that your account has been
-%% enrolled in Amazon GuardDuty for at least 48 hours. If you do not meet
-%% this requirement, you cannot enable Detective. If you do meet the
-%% GuardDuty prerequisite, then when you make the request to enable
-%% Detective, it checks whether your data volume is within the Detective
-%% quota. If it exceeds the quota, then you cannot enable Detective.
 %%
 %% The operation also enables Detective for the calling account in the
 %% currently selected Region. It returns the ARN of the new behavior graph.
@@ -530,7 +523,13 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the investigation results of an investigation for a behavior
+%% @doc Detective investigations lets you investigate IAM users and IAM roles
+%% using indicators of compromise.
+%%
+%% An indicator of compromise (IOC) is an artifact observed in or on a
+%% network, system, or environment that can (with a high level of confidence)
+%% identify malicious activity or a security incident. `GetInvestigation'
+%% returns the investigation results of an investigation for a behavior
 %% graph.
 get_investigation(Client, Input) ->
     get_investigation(Client, Input, []).
@@ -630,7 +629,11 @@ list_graphs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the indicators from an investigation
+%% @doc Gets the indicators from an investigation.
+%%
+%% You can use the information from the indicators to determine if an IAM
+%% user and/or IAM role is involved in an unusual activity that could
+%% indicate malicious behavior and its impact.
 list_indicators(Client, Input) ->
     list_indicators(Client, Input, []).
 list_indicators(Client, Input0, Options0) ->
@@ -653,7 +656,13 @@ list_indicators(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List all Investigations.
+%% @doc Detective investigations lets you investigate IAM users and IAM roles
+%% using indicators of compromise.
+%%
+%% An indicator of compromise (IOC) is an artifact observed in or on a
+%% network, system, or environment that can (with a high level of confidence)
+%% identify malicious activity or a security incident.
+%% `ListInvestigations' lists all active Detective investigations.
 list_investigations(Client, Input) ->
     list_investigations(Client, Input, []).
 list_investigations(Client, Input0, Options0) ->
@@ -819,7 +828,14 @@ reject_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc initiate an investigation on an entity in a graph
+%% @doc Detective investigations lets you investigate IAM users and IAM roles
+%% using indicators of compromise.
+%%
+%% An indicator of compromise (IOC) is an artifact observed in or on a
+%% network, system, or environment that can (with a high level of confidence)
+%% identify malicious activity or a security incident.
+%% `StartInvestigation' initiates an investigation on an entity in a
+%% behavior graph.
 start_investigation(Client, Input) ->
     start_investigation(Client, Input, []).
 start_investigation(Client, Input0, Options0) ->
@@ -946,7 +962,7 @@ update_datasource_packages(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the state of an investigation.
+%% @doc Updates the state of an investigation.
 update_investigation_state(Client, Input) ->
     update_investigation_state(Client, Input, []).
 update_investigation_state(Client, Input0, Options0) ->

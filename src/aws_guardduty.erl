@@ -1055,6 +1055,10 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Lists Amazon GuardDuty findings statistics for the specified detector
 %% ID.
+%%
+%% There might be regional differences because some flags might not be
+%% available in all the Regions where GuardDuty is currently supported. For
+%% more information, see Regions and endpoints.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 get_findings_statistics(Client, DetectorId, Input0, Options0) ->
@@ -1467,7 +1471,11 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists Amazon GuardDuty findings for the specified detector ID.
+%% @doc Lists GuardDuty findings for the specified detector ID.
+%%
+%% There might be regional differences because some flags might not be
+%% available in all the Regions where GuardDuty is currently supported. For
+%% more information, see Regions and endpoints.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 list_findings(Client, DetectorId, Input0, Options0) ->
@@ -1852,7 +1860,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Amazon GuardDuty detector specified by the detectorId.
+%% @doc Updates the GuardDuty detector specified by the detectorId.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is

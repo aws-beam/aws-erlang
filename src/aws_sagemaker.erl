@@ -586,6 +586,8 @@
          update_artifact/3,
          update_cluster/2,
          update_cluster/3,
+         update_cluster_software/2,
+         update_cluster_software/3,
          update_code_repository/2,
          update_code_repository/3,
          update_context/2,
@@ -4120,13 +4122,25 @@ update_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArtifact">>, Input, Options).
 
-%% @doc Update a SageMaker HyperPod cluster.
+%% @doc Updates a SageMaker HyperPod cluster.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
+
+%% @doc Updates the platform software of a SageMaker HyperPod cluster for
+%% security patching.
+%%
+%% To learn how to use this API, see Update the SageMaker HyperPod platform
+%% software of a cluster.
+update_cluster_software(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster_software(Client, Input, []).
+update_cluster_software(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClusterSoftware">>, Input, Options).
 
 %% @doc Updates the specified Git repository with the specified values.
 update_code_repository(Client, Input)
