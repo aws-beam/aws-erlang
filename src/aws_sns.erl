@@ -179,8 +179,16 @@ confirm_subscription(Client, Input, Options)
 %% `PlatformPrincipal' is `signing key ID' and
 %% `PlatformCredential' is `signing key'.
 %%
-%% </li> <li> For `GCM' (Firebase Cloud Messaging), there is no
-%% `PlatformPrincipal' and the `PlatformCredential' is `API key'.
+%% </li> <li> For GCM (Firebase Cloud Messaging) using key credentials, there
+%% is no `PlatformPrincipal'. The `PlatformCredential' is `API
+%% key'.
+%%
+%% </li> <li> For GCM (Firebase Cloud Messaging) using token credentials,
+%% there is no `PlatformPrincipal'. The `PlatformCredential' is a
+%% JSON formatted private key file. When using the Amazon Web Services CLI,
+%% the file must be in string format and special characters must be ignored.
+%% To format the file correctly, Amazon SNS recommends using the following
+%% command: `SERVICE_JSON=`jq @json &lt;&lt;&lt; cat service.json`'.
 %%
 %% </li> <li> For `MPNS', `PlatformPrincipal' is `TLS
 %% certificate' and `PlatformCredential' is `private key'.

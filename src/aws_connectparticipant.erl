@@ -46,6 +46,9 @@
 %% @doc Allows you to confirm that the attachment has been uploaded using the
 %% pre-signed URL provided in StartAttachmentUpload API.
 %%
+%% A conflict exception is thrown when an attachment with that identifier is
+%% already being uploaded.
+%%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
@@ -229,7 +232,23 @@ get_attachment(Client, Input0, Options0) ->
 %% For information about accessing past chat contact transcripts for a
 %% persistent chat, see Enable persistent chat.
 %%
-%% `ConnectionToken' is used for invoking this API instead of
+%% If you have a process that consumes events in the transcript of an chat
+%% that has ended, note that chat transcripts contain the following event
+%% content types if the event has occurred during the chat session:
+%%
+%% <ul> <li> `application/vnd.amazonaws.connect.event.participant.left'
+%%
+%% </li> <li>
+%% `application/vnd.amazonaws.connect.event.participant.joined'
+%%
+%% </li> <li> `application/vnd.amazonaws.connect.event.chat.ended'
+%%
+%% </li> <li>
+%% `application/vnd.amazonaws.connect.event.transfer.succeeded'
+%%
+%% </li> <li> `application/vnd.amazonaws.connect.event.transfer.failed'
+%%
+%% </li> </ul> `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
@@ -258,7 +277,17 @@ get_transcript(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends an event.
+%% @doc The
+%% `application/vnd.amazonaws.connect.event.connection.acknowledged'
+%% ContentType will no longer be supported starting December 31, 2024.
+%%
+%% This event has been migrated to the CreateParticipantConnection API using
+%% the `ConnectParticipant' field.
+%%
+%% Sends an event. Message receipts are not supported when there are more
+%% than two active participants in the chat. Using the SendEvent API for
+%% message receipts when a supervisor is barged-in will result in a conflict
+%% exception.
 %%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.

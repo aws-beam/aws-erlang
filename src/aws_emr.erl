@@ -108,6 +108,8 @@
          set_keep_job_flow_alive_when_no_steps/3,
          set_termination_protection/2,
          set_termination_protection/3,
+         set_unhealthy_node_replacement/2,
+         set_unhealthy_node_replacement/3,
          set_visible_to_all_users/2,
          set_visible_to_all_users/3,
          start_notebook_execution/2,
@@ -744,7 +746,7 @@ set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
 %% job flow by a subsequent call to `SetTerminationProtection' in which
 %% you set the value to `false'.
 %%
-%% For more information, seeManaging Cluster Termination in the Amazon EMR
+%% For more information, see Managing Cluster Termination in the Amazon EMR
 %% Management Guide.
 set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -752,6 +754,30 @@ set_termination_protection(Client, Input)
 set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
+
+%% @doc Specify whether to enable unhealthy node replacement, which lets
+%% Amazon EMR gracefully replace core nodes on a cluster if any nodes become
+%% unhealthy.
+%%
+%% For example, a node becomes unhealthy if disk usage is above 90%. If
+%% unhealthy node replacement is on and `TerminationProtected' are off,
+%% Amazon EMR immediately terminates the unhealthy core nodes. To use
+%% unhealthy node replacement and retain unhealthy core nodes, use to turn on
+%% termination protection. In such cases, Amazon EMR adds the unhealthy nodes
+%% to a denylist, reducing job interruptions and failures.
+%%
+%% If unhealthy node replacement is on, Amazon EMR notifies YARN and other
+%% applications on the cluster to stop scheduling tasks with these nodes,
+%% moves the data, and then terminates the nodes.
+%%
+%% For more information, see graceful node replacement in the Amazon EMR
+%% Management Guide.
+set_unhealthy_node_replacement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_unhealthy_node_replacement(Client, Input, []).
+set_unhealthy_node_replacement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetUnhealthyNodeReplacement">>, Input, Options).
 
 %% @doc The SetVisibleToAllUsers parameter is no longer supported.
 %%
