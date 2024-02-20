@@ -165,6 +165,19 @@ get_table(Client, Input, Options)
 %% application traffic. For more information, see Managing throughput
 %% capacity automatically with Amazon Keyspaces auto scaling in the Amazon
 %% Keyspaces Developer Guide.
+%%
+%% `GetTableAutoScalingSettings' can't be used as an action in an IAM
+%% policy.
+%%
+%% To define permissions for `GetTableAutoScalingSettings', you must
+%% allow the following two actions in the IAM policy statement's
+%% `Action' element:
+%%
+%% <ul> <li> `application-autoscaling:DescribeScalableTargets'
+%%
+%% </li> <li> `application-autoscaling:DescribeScalingPolicies'
+%%
+%% </li> </ul>
 get_table_auto_scaling_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_auto_scaling_settings(Client, Input, []).
