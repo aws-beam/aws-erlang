@@ -1419,11 +1419,12 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% index begins backfilling, you can use `UpdateTable' to perform other
 %% operations.
 %%
-%% </li> </ul> `UpdateTable' is an asynchronous operation; while it is
+%% </li> </ul> `UpdateTable' is an asynchronous operation; while it's
 %% executing, the table status changes from `ACTIVE' to `UPDATING'.
-%% While it is `UPDATING', you cannot issue another `UpdateTable'
-%% request. When the table returns to the `ACTIVE' state, the
-%% `UpdateTable' operation is complete.
+%% While it's `UPDATING', you can't issue another
+%% `UpdateTable' request on the base table nor any replicas. When the
+%% table returns to the `ACTIVE' state, the `UpdateTable' operation
+%% is complete.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).

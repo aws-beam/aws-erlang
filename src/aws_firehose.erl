@@ -15,8 +15,6 @@
          delete_delivery_stream/3,
          describe_delivery_stream/2,
          describe_delivery_stream/3,
-         get_kinesis_stream/2,
-         get_kinesis_stream/3,
          list_delivery_streams/2,
          list_delivery_streams/3,
          list_tags_for_delivery_stream/2,
@@ -34,9 +32,7 @@
          untag_delivery_stream/2,
          untag_delivery_stream/3,
          update_destination/2,
-         update_destination/3,
-         verify_resources_exist_for_tagris/2,
-         verify_resources_exist_for_tagris/3]).
+         update_destination/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -175,14 +171,6 @@ describe_delivery_stream(Client, Input)
 describe_delivery_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryStream">>, Input, Options).
-
-
-get_kinesis_stream(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    get_kinesis_stream(Client, Input, []).
-get_kinesis_stream(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"GetKinesisStream">>, Input, Options).
 
 %% @doc Lists your delivery streams in alphabetical order of their names.
 %%
@@ -517,14 +505,6 @@ update_destination(Client, Input)
 update_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDestination">>, Input, Options).
-
-
-verify_resources_exist_for_tagris(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    verify_resources_exist_for_tagris(Client, Input, []).
-verify_resources_exist_for_tagris(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"VerifyResourcesExistForTagris">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
