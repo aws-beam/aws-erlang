@@ -120,6 +120,8 @@
          reboot_input_device/4,
          reject_input_device_transfer/3,
          reject_input_device_transfer/4,
+         restart_channel_pipelines/3,
+         restart_channel_pipelines/4,
          start_channel/3,
          start_channel/4,
          start_input_device/3,
@@ -1340,6 +1342,29 @@ reject_input_device_transfer(Client, InputDeviceId, Input) ->
 reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reject"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Restart pipelines in one channel that is currently running.
+restart_channel_pipelines(Client, ChannelId, Input) ->
+    restart_channel_pipelines(Client, ChannelId, Input, []).
+restart_channel_pipelines(Client, ChannelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/restartChannelPipelines"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
