@@ -3098,6 +3098,8 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a model.
+%%
+%% The maximum size of the model is 400 KB.
 update_model(Client, ModelName, RestApiId, Input) ->
     update_model(Client, ModelName, RestApiId, Input, []).
 update_model(Client, ModelName, RestApiId, Input0, Options0) ->

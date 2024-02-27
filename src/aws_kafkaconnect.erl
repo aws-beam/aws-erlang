@@ -14,6 +14,8 @@
          delete_connector/4,
          delete_custom_plugin/3,
          delete_custom_plugin/4,
+         delete_worker_configuration/3,
+         delete_worker_configuration/4,
          describe_connector/2,
          describe_connector/4,
          describe_connector/5,
@@ -29,9 +31,16 @@
          list_custom_plugins/1,
          list_custom_plugins/3,
          list_custom_plugins/4,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_worker_configurations/1,
          list_worker_configurations/3,
          list_worker_configurations/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_connector/3,
          update_connector/4]).
 
@@ -140,6 +149,29 @@ delete_custom_plugin(Client, CustomPluginArn, Input) ->
 delete_custom_plugin(Client, CustomPluginArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/custom-plugins/", aws_util:encode_uri(CustomPluginArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified worker configuration.
+delete_worker_configuration(Client, WorkerConfigurationArn, Input) ->
+    delete_worker_configuration(Client, WorkerConfigurationArn, Input, []).
+delete_worker_configuration(Client, WorkerConfigurationArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/worker-configurations/", aws_util:encode_uri(WorkerConfigurationArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -282,9 +314,33 @@ list_custom_plugins(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namePrefix">>, maps:get(<<"namePrefix">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the tags attached to the specified resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -311,11 +367,59 @@ list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"namePrefix">>, maps:get(<<"namePrefix">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Attaches tags to the specified resource.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes tags from the specified resource.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified connector.
 update_connector(Client, ConnectorArn, Input) ->
