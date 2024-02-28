@@ -302,13 +302,18 @@ create_mobile_device_access_rule(Client, Input, Options)
 %% is specified, the organization alias must match the directory alias. If
 %% you choose not to associate an existing directory with your organization,
 %% then we create a new WorkMail directory for you. For more information, see
-%% Adding an organization in the WorkMail Administrator Guide.
+%% Adding an organization:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html
+%% in the WorkMail Administrator Guide.
 %%
 %% You can associate multiple email domains with an organization, then choose
 %% your default email domain from the WorkMail console. You can also
 %% associate a domain that is managed in an Amazon Route 53 public hosted
-%% zone. For more information, see Adding a domain and Choosing the default
-%% domain in the WorkMail Administrator Guide.
+%% zone. For more information, see Adding a domain:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/add_domain.html and
+%% Choosing the default domain:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/default_domain.html
+%% in the WorkMail Administrator Guide.
 %%
 %% Optionally, you can use a customer managed key from AWS Key Management
 %% Service (AWS KMS) to encrypt email for your organization. If you don't
@@ -432,8 +437,9 @@ delete_mobile_device_access_rule(Client, Input, Options)
 %% managed by WorkMail as part of the organization.
 %%
 %% You can choose whether to delete the associated directory. For more
-%% information, see Removing an organization in the WorkMail Administrator
-%% Guide.
+%% information, see Removing an organization:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/remove_organization.html
+%% in the WorkMail Administrator Guide.
 delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
@@ -882,8 +888,9 @@ register_mail_domain(Client, Input, Options)
 %%
 %% It performs no change if the user, group, or resource is enabled and fails
 %% if the user, group, or resource is deleted. This operation results in the
-%% accumulation of costs. For more information, see Pricing. The equivalent
-%% console functionality for this operation is Enable.
+%% accumulation of costs. For more information, see Pricing:
+%% https://aws.amazon.com/workmail/pricing. The equivalent console
+%% functionality for this operation is Enable.
 %%
 %% Users can either be created by calling the `CreateUser' API operation
 %% or they can be synchronized from your directory. For more information, see
@@ -907,8 +914,9 @@ reset_password(Client, Input, Options)
 %% calendar items from the specified mailbox to the specified Amazon Simple
 %% Storage Service (Amazon S3) bucket.
 %%
-%% For more information, see Exporting mailbox content in the WorkMail
-%% Administrator Guide.
+%% For more information, see Exporting mailbox content:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html in
+%% the WorkMail Administrator Guide.
 start_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_mailbox_export_job(Client, Input, []).

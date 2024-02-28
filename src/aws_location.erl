@@ -366,10 +366,13 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Calculates a route given the following required parameters:
-%% `DeparturePosition' and `DestinationPosition'.
+%% @doc Calculates a route:
+%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html
+%% given the following required parameters: `DeparturePosition' and
+%% `DestinationPosition'.
 %%
-%% Requires that you first create a route calculator resource.
+%% Requires that you first create a route calculator resource:
+%% https://docs.aws.amazon.com/location-routes/latest/APIReference/API_CreateRouteCalculator.html.
 %%
 %% By default, a request that doesn't specify a departure time uses the
 %% best time of day to travel with the best traffic conditions when
@@ -377,17 +380,20 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %%
 %% Additional options include:
 %%
-%% <ul> <li> Specifying a departure time using either `DepartureTime' or
-%% `DepartNow'. This calculates a route based on predictive traffic data
-%% at the given time.
+%% <ul> <li> Specifying a departure time:
+%% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
+%% using either `DepartureTime' or `DepartNow'. This calculates a
+%% route based on predictive traffic data at the given time.
 %%
 %% You can't specify both `DepartureTime' and `DepartNow' in a
 %% single request. Specifying both parameters returns a validation error.
 %%
-%% </li> <li> Specifying a travel mode using TravelMode sets the
-%% transportation mode used to calculate the routes. This also lets you
-%% specify additional route preferences in `CarModeOptions' if traveling
-%% by `Car', or `TruckModeOptions' if traveling by `Truck'.
+%% </li> <li> Specifying a travel mode:
+%% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
+%% using TravelMode sets the transportation mode used to calculate the
+%% routes. This also lets you specify additional route preferences in
+%% `CarModeOptions' if traveling by `Car', or `TruckModeOptions'
+%% if traveling by `Truck'.
 %%
 %% If you specify `walking' for the travel mode and your data provider is
 %% Esri, the start and destination must be within 40km.
@@ -416,8 +422,10 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Calculates a route matrix given the following required parameters:
-%% `DeparturePositions' and `DestinationPositions'.
+%% @doc Calculates a route matrix:
+%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html
+%% given the following required parameters: `DeparturePositions' and
+%% `DestinationPositions'.
 %%
 %% `CalculateRouteMatrix' calculates routes and returns the travel time
 %% and travel distance from each departure position to each destination
@@ -431,7 +439,8 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %% Your account is charged for each route calculated, not the number of
 %% requests.
 %%
-%% Requires that you first create a route calculator resource.
+%% Requires that you first create a route calculator resource:
+%% https://docs.aws.amazon.com/location-routes/latest/APIReference/API_CreateRouteCalculator.html.
 %%
 %% By default, a request that doesn't specify a departure time uses the
 %% best time of day to travel with the best traffic conditions when
@@ -439,17 +448,20 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %%
 %% Additional options include:
 %%
-%% <ul> <li> Specifying a departure time using either `DepartureTime' or
-%% `DepartNow'. This calculates routes based on predictive traffic data
-%% at the given time.
+%% <ul> <li> Specifying a departure time:
+%% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
+%% using either `DepartureTime' or `DepartNow'. This calculates
+%% routes based on predictive traffic data at the given time.
 %%
 %% You can't specify both `DepartureTime' and `DepartNow' in a
 %% single request. Specifying both parameters returns a validation error.
 %%
-%% </li> <li> Specifying a travel mode using TravelMode sets the
-%% transportation mode used to calculate the routes. This also lets you
-%% specify additional route preferences in `CarModeOptions' if traveling
-%% by `Car', or `TruckModeOptions' if traveling by `Truck'.
+%% </li> <li> Specifying a travel mode:
+%% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
+%% using TravelMode sets the transportation mode used to calculate the
+%% routes. This also lets you specify additional route preferences in
+%% `CarModeOptions' if traveling by `Car', or `TruckModeOptions'
+%% if traveling by `Truck'.
 %%
 %% </li> </ul>
 calculate_route_matrix(Client, CalculatorName, Input) ->
@@ -502,7 +514,8 @@ create_geofence_collection(Client, Input0, Options0) ->
 %% which lets you grant actions for Amazon Location resources to the API key
 %% bearer.
 %%
-%% For more information, see Using API keys.
+%% For more information, see Using API keys:
+%% https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html.
 create_key(Client, Input) ->
     create_key(Client, Input, []).
 create_key(Client, Input0, Options0) ->
@@ -532,7 +545,7 @@ create_key(Client, Input0, Options0) ->
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the Amazon Web Services
-%% service terms for more details.
+%% service terms: http://aws.amazon.com/service-terms for more details.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 create_map(Client, Input0, Options0) ->
@@ -566,7 +579,7 @@ create_map(Client, Input0, Options0) ->
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the Amazon Web Services
-%% service terms for more details.
+%% service terms: http://aws.amazon.com/service-terms for more details.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 create_place_index(Client, Input0, Options0) ->
@@ -599,7 +612,7 @@ create_place_index(Client, Input0, Options0) ->
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the Amazon Web Services
-%% service terms for more details.
+%% service terms: http://aws.amazon.com/service-terms for more details.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
 create_route_calculator(Client, Input0, Options0) ->

@@ -13,7 +13,8 @@
 %% About Amazon GameLift solutions
 %%
 %% Get more information on these Amazon GameLift solutions in the Amazon
-%% GameLift Developer Guide.
+%% GameLift Developer Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/.
 %%
 %% <ul> <li> Amazon GameLift managed hosting -- Amazon GameLift offers a
 %% fully managed service to set up and maintain computing machines for
@@ -50,9 +51,11 @@
 %% language-specific SDK guides and the Amazon Web Services CLI reference.
 %% Useful links:
 %%
-%% <ul> <li> Amazon GameLift API operations listed by tasks
+%% <ul> <li> Amazon GameLift API operations listed by tasks:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html
 %%
-%% </li> <li> Amazon GameLift tools and resources
+%% </li> <li> Amazon GameLift tools and resources:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-components.html
 %%
 %% </li> </ul>
 -module(aws_gamelift).
@@ -303,9 +306,12 @@
 %%
 %% </li> </ul> Learn more
 %%
-%% Add FlexMatch to a game client
+%% Add FlexMatch to a game client:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
 %%
-%% FlexMatch events (reference)
+%% FlexMatch events:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html
+%% (reference)
 accept_match(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_match(Client, Input, []).
@@ -354,7 +360,8 @@ accept_match(Client, Input, Options)
 %%
 %% </li> </ul> Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 claim_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     claim_game_server(Client, Input, []).
@@ -384,7 +391,8 @@ claim_game_server(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
@@ -398,9 +406,11 @@ create_alias(Client, Input, Options)
 %% Combine game server binaries into a zip file for use with Amazon GameLift.
 %%
 %% When setting up a new game build for Amazon GameLift, we recommend using
-%% the CLI command upload-build . This helper command combines two tasks: (1)
-%% it uploads your build files from a file directory to an Amazon GameLift
-%% Amazon S3 location, and (2) it creates a new build resource.
+%% the CLI command upload-build:
+%% https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html
+%% . This helper command combines two tasks: (1) it uploads your build files
+%% from a file directory to an Amazon GameLift Amazon S3 location, and (2) it
+%% creates a new build resource.
 %%
 %% You can use the `CreateBuild' operation in the following scenarios:
 %%
@@ -415,9 +425,10 @@ create_alias(Client, Input, Options)
 %% This operation creates a new build resource and also returns an Amazon S3
 %% location with temporary access credentials. Use the credentials to
 %% manually upload your build files to the specified Amazon S3 location. For
-%% more information, see Uploading Objects in the Amazon S3 Developer Guide.
-%% After you upload build files to the Amazon GameLift Amazon S3 location,
-%% you can't update them.
+%% more information, see Uploading Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html in
+%% the Amazon S3 Developer Guide. After you upload build files to the Amazon
+%% GameLift Amazon S3 location, you can't update them.
 %%
 %% </li> </ul> If successful, this operation creates a new build resource
 %% with a unique build ID and places it in `INITIALIZED' status. A build
@@ -425,11 +436,14 @@ create_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Uploading Your Game
+%% Uploading Your Game:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html
 %%
-%% Create a Build with Files in Amazon S3
+%% Create a Build with Files in Amazon S3:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_build(Client, Input, []).
@@ -468,10 +482,11 @@ create_build(Client, Input, Options)
 %%
 %% If successful, this operation creates a new Fleet resource and places it
 %% in `NEW' status, which prompts Amazon GameLift to initiate the fleet
-%% creation workflow. You can track fleet creation by checking fleet status
-%% using `DescribeFleetAttributes' and
-%% `DescribeFleetLocationAttributes'/, or by monitoring fleet creation
-%% events using `DescribeFleetEvents'.
+%% creation workflow:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-all.html#fleets-creation-workflow.
+%% You can track fleet creation by checking fleet status using
+%% `DescribeFleetAttributes' and `DescribeFleetLocationAttributes'/,
+%% or by monitoring fleet creation events using `DescribeFleetEvents'.
 %%
 %% When the fleet status changes to `ACTIVE', you can enable automatic
 %% scaling with `PutScalingPolicy' and set capacity for the home Region
@@ -481,11 +496,14 @@ create_build(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up fleets
+%% Setting up fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Debug fleet creation issues
+%% Debug fleet creation issues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html#fleets-creating-debug-creation
 %%
-%% Multi-location fleets
+%% Multi-location fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -511,13 +529,16 @@ create_fleet(Client, Input, Options)
 %% their status set to `NEW'. Amazon GameLift initiates the process of
 %% starting an instance in each added location. You can track the status of
 %% each new location by monitoring location creation events using
-%% DescribeFleetEvents.
+%% DescribeFleetEvents:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetEvents.html.
 %%
 %% Learn more
 %%
-%% Setting up fleets
+%% Setting up fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Multi-location fleets
+%% Multi-location fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 create_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_locations(Client, Input, []).
@@ -541,13 +562,16 @@ create_fleet_locations(Client, Input, Options)
 %% <ul> <li> An Amazon Elastic Compute Cloud launch template that specifies
 %% how to launch Amazon Elastic Compute Cloud instances with your game server
 %% build. For more information, see Launching an Instance from a Launch
-%% Template in the Amazon Elastic Compute Cloud User Guide.
+%% Template:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% </li> <li> An IAM role that extends limited access to your Amazon Web
 %% Services account to allow Amazon GameLift FleetIQ to create and interact
 %% with the Auto Scaling group. For more information, see Create IAM roles
-%% for cross-service interaction in the Amazon GameLift FleetIQ Developer
-%% Guide.
+%% for cross-service interaction:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions-roles.html
+%% in the Amazon GameLift FleetIQ Developer Guide.
 %%
 %% </li> </ul> To create a new game server group, specify a unique group
 %% name, IAM role and Amazon Elastic Compute Cloud launch template, and
@@ -567,7 +591,8 @@ create_fleet_locations(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 create_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_server_group(Client, Input, []).
@@ -581,8 +606,10 @@ create_game_server_group(Client, Input, Options)
 %% This operation prompts an available server process to start a game session
 %% and retrieves connection information for the new game session. As an
 %% alternative, consider using the Amazon GameLift game session placement
-%% feature with StartGameSessionPlacement , which uses the FleetIQ algorithm
-%% and queues to optimize the placement process.
+%% feature with StartGameSessionPlacement:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html
+%% , which uses the FleetIQ algorithm and queues to optimize the placement
+%% process.
 %%
 %% When creating a game session, you specify exactly where you want to place
 %% it and provide a set of game session configuration settings. The target
@@ -607,19 +634,24 @@ create_game_server_group(Client, Input, Options)
 %% `ACTIVE', it is updated with connection information and you can create
 %% player sessions for the game session. By default, newly created game
 %% sessions are open to new players. You can restrict new player access by
-%% using UpdateGameSession to change the game session's player session
-%% creation policy.
+%% using UpdateGameSession:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateGameSession.html
+%% to change the game session's player session creation policy.
 %%
 %% Amazon GameLift retains logs for active for 14 days. To access the logs,
-%% call GetGameSessionLogUrl to download the log files.
+%% call GetGameSessionLogUrl:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetGameSessionLogUrl.html
+%% to download the log files.
 %%
 %% Available in Amazon GameLift Local.
 %%
 %% Learn more
 %%
-%% Start a game session
+%% Start a game session:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session(Client, Input, []).
@@ -658,19 +690,32 @@ create_game_session(Client, Input, Options)
 %%
 %% If successful, a new `GameSessionQueue' object is returned with an
 %% assigned queue ARN. New game session requests, which are submitted to
-%% queue with StartGameSessionPlacement or StartMatchmaking, reference a
-%% queue's name or ARN.
+%% queue with StartGameSessionPlacement:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html
+%% or StartMatchmaking:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartMatchmaking.html,
+%% reference a queue's name or ARN.
 %%
 %% Learn more
 %%
-%% Design a game session queue
+%% Design a game session queue:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-design.html
 %%
-%% Create a game session queue
+%% Create a game session queue:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-creating.html
 %%
 %% Related actions
 %%
-%% CreateGameSessionQueue | DescribeGameSessionQueues |
-%% UpdateGameSessionQueue | DeleteGameSessionQueue | All APIs by task
+%% CreateGameSessionQueue:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSessionQueue.html
+%% | DescribeGameSessionQueues:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionQueues.html
+%% | UpdateGameSessionQueue:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateGameSessionQueue.html
+%% | DeleteGameSessionQueue:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeleteGameSessionQueue.html
+%% | All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session_queue(Client, Input, []).
@@ -711,9 +756,11 @@ create_location(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Design a FlexMatch matchmaker
+%% Design a FlexMatch matchmaker:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html
 %%
-%% Set up FlexMatch event notification
+%% Set up FlexMatch event notification:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
 create_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_configuration(Client, Input, []).
@@ -732,16 +779,20 @@ create_matchmaking_configuration(Client, Input, Options)
 %% as the matchmaking configuration they are used with.
 %%
 %% Since matchmaking rule sets cannot be edited, it is a good idea to check
-%% the rule set syntax using ValidateMatchmakingRuleSet before creating a new
-%% rule set.
+%% the rule set syntax using ValidateMatchmakingRuleSet:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_ValidateMatchmakingRuleSet.html
+%% before creating a new rule set.
 %%
 %% Learn more
 %%
-%% <ul> <li> Build a rule set
+%% <ul> <li> Build a rule set:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
 %%
-%% </li> <li> Design a matchmaker
+%% </li> <li> Design a matchmaker:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html
 %%
-%% </li> <li> Matchmaking with FlexMatch
+%% </li> <li> Matchmaking with FlexMatch:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html
 %%
 %% </li> </ul>
 create_matchmaking_rule_set(Client, Input)
@@ -756,7 +807,9 @@ create_matchmaking_rule_set(Client, Input, Options)
 %% New player sessions can be created in any game session with an open slot
 %% that is in `ACTIVE' status and has a player creation policy of
 %% `ACCEPT_ALL'. You can add a group of players to a game session with
-%% CreatePlayerSessions .
+%% CreatePlayerSessions:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSessions.html
+%% .
 %%
 %% To create a player session, specify a game session ID, player ID, and
 %% optionally a set of player data.
@@ -773,7 +826,8 @@ create_matchmaking_rule_set(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_player_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_session(Client, Input, []).
@@ -786,7 +840,8 @@ create_player_session(Client, Input, Options)
 %% New player sessions can be created in any game session with an open slot
 %% that is in `ACTIVE' status and has a player creation policy of
 %% `ACCEPT_ALL'. To add a single player to a game session, use
-%% CreatePlayerSession
+%% CreatePlayerSession:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html
 %%
 %% To create player sessions, specify a game session ID and a list of player
 %% IDs. Optionally, provide a set of player data for each player ID.
@@ -803,7 +858,8 @@ create_player_session(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_sessions(Client, Input, []).
@@ -839,13 +895,16 @@ create_player_sessions(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Realtime Servers
+%% Amazon GameLift Realtime Servers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
-%% Set Up a Role for Amazon GameLift Access
+%% Set Up a Role for Amazon GameLift Access:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
@@ -859,9 +918,11 @@ create_script(Client, Input, Options)
 %%
 %% VPC peering enables the game servers on your fleet to communicate directly
 %% with other Amazon Web Services resources. After you've received
-%% authorization, use CreateVpcPeeringConnection to establish the peering
-%% connection. For more information, see VPC Peering with Amazon GameLift
-%% Fleets.
+%% authorization, use CreateVpcPeeringConnection:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringConnection.html
+%% to establish the peering connection. For more information, see VPC Peering
+%% with Amazon GameLift Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html.
 %%
 %% You can peer with VPCs that are owned by any Amazon Web Services account
 %% you have access to, including the account that you use to manage your
@@ -889,7 +950,8 @@ create_script(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_authorization(Client, Input, []).
@@ -906,14 +968,16 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% Amazon Web Services account that you have access to, including the account
 %% that you use to manage your Amazon GameLift fleets. You cannot peer with
 %% VPCs that are in different Regions. For more information, see VPC Peering
-%% with Amazon GameLift Fleets.
+%% with Amazon GameLift Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html.
 %%
 %% Before calling this operation to establish the peering connection, you
-%% first need to use CreateVpcPeeringAuthorization and identify the VPC you
-%% want to peer with. Once the authorization for the specified VPC is issued,
-%% you have 24 hours to establish the connection. These two operations handle
-%% all tasks necessary to peer the two VPCs, including acceptance, updating
-%% routing tables, etc.
+%% first need to use CreateVpcPeeringAuthorization:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html
+%% and identify the VPC you want to peer with. Once the authorization for the
+%% specified VPC is issued, you have 24 hours to establish the connection.
+%% These two operations handle all tasks necessary to peer the two VPCs,
+%% including acceptance, updating routing tables, etc.
 %%
 %% To establish the connection, call this operation from the Amazon Web
 %% Services account that is used to manage the Amazon GameLift fleets.
@@ -922,12 +986,17 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% with the VPC that you want to peer with; and (3) The ID of the VPC you
 %% want to peer with. This operation is asynchronous. If successful, a
 %% connection request is created. You can use continuous polling to track the
-%% request's status using DescribeVpcPeeringConnections , or by
-%% monitoring fleet events for success or failure using DescribeFleetEvents .
+%% request's status using DescribeVpcPeeringConnections:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeVpcPeeringConnections.html
+%% , or by monitoring fleet events for success or failure using
+%% DescribeFleetEvents:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetEvents.html
+%% .
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 create_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_connection(Client, Input, []).
@@ -943,7 +1012,8 @@ create_vpc_peering_connection(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
@@ -962,9 +1032,11 @@ delete_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Upload a Custom Server Build
+%% Upload a Custom Server Build:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 delete_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build(Client, Input, []).
@@ -979,8 +1051,9 @@ delete_build(Client, Input, Options)
 %%
 %% If the fleet being deleted has a VPC peering connection, you first need to
 %% get a valid authorization (good for 24 hours) by calling
-%% CreateVpcPeeringAuthorization. You do not need to explicitly delete the
-%% VPC peering connection.
+%% CreateVpcPeeringAuthorization:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html.
+%% You do not need to explicitly delete the VPC peering connection.
 %%
 %% To delete a fleet, specify the fleet ID to be terminated. During the
 %% deletion process the fleet status is changed to `DELETING'. When
@@ -989,7 +1062,8 @@ delete_build(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift Fleets
+%% Setting up Amazon GameLift Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
@@ -1012,7 +1086,8 @@ delete_fleet(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 delete_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_locations(Client, Input, []).
@@ -1051,7 +1126,8 @@ delete_fleet_locations(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 delete_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_server_group(Client, Input, []).
@@ -1062,8 +1138,10 @@ delete_game_server_group(Client, Input, Options)
 %% @doc Deletes a game session queue.
 %%
 %% Once a queue is successfully deleted, unfulfilled
-%% StartGameSessionPlacement requests that reference the queue will fail. To
-%% delete a queue, specify the queue name.
+%% StartGameSessionPlacement:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html
+%% requests that reference the queue will fail. To delete a queue, specify
+%% the queue name.
 delete_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_session_queue(Client, Input, []).
@@ -1075,7 +1153,8 @@ delete_game_session_queue(Client, Input, Options)
 %%
 %% Before deleting a custom location, review any fleets currently using the
 %% custom location and deregister the location if it is in use. For more
-%% information, see DeregisterCompute.
+%% information, see DeregisterCompute:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeregisterCompute.html.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
@@ -1101,7 +1180,8 @@ delete_matchmaking_configuration(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% <ul> <li> Build a rule set
+%% <ul> <li> Build a rule set:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
 %%
 %% </li> </ul>
 delete_matchmaking_rule_set(Client, Input)
@@ -1117,8 +1197,9 @@ delete_matchmaking_rule_set(Client, Input, Options)
 %% all record of it. To delete a scaling policy, specify both the scaling
 %% policy name and the fleet ID it is associated with.
 %%
-%% To temporarily suspend scaling policies, use StopFleetActions. This
-%% operation suspends all policies for the fleet.
+%% To temporarily suspend scaling policies, use StopFleetActions:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopFleetActions.html.
+%% This operation suspends all policies for the fleet.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -1140,11 +1221,13 @@ delete_scaling_policy(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Realtime Servers
+%% Amazon GameLift Realtime Servers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 delete_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_script(Client, Input, []).
@@ -1155,11 +1238,13 @@ delete_script(Client, Input, Options)
 %% @doc Cancels a pending VPC peering authorization for the specified VPC.
 %%
 %% If you need to delete an existing VPC peering connection, use
-%% DeleteVpcPeeringConnection.
+%% DeleteVpcPeeringConnection:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeleteVpcPeeringConnection.html.
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 delete_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_authorization(Client, Input, []).
@@ -1179,7 +1264,8 @@ delete_vpc_peering_authorization(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 delete_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_connection(Client, Input, []).
@@ -1211,7 +1297,8 @@ deregister_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 deregister_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_game_server(Client, Input, []).
@@ -1229,7 +1316,8 @@ deregister_game_server(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alias(Client, Input, []).
@@ -1244,9 +1332,11 @@ describe_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Upload a Custom Server Build
+%% Upload a Custom Server Build:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_build(Client, Input, []).
@@ -1279,11 +1369,12 @@ describe_compute(Client, Input, Options)
 %%
 %% Instance limits control the number of instances, per instance type, per
 %% location, that your Amazon Web Services account can use. Learn more at
-%% Amazon EC2 Instance Types. The information returned includes the maximum
-%% number of instances allowed and your account's current usage across
-%% all fleets. This information can affect your ability to scale your Amazon
-%% GameLift fleets. You can request a limit increase for your account by
-%% using the Service limits page in the Amazon GameLift console.
+%% Amazon EC2 Instance Types: http://aws.amazon.com/ec2/instance-types/. The
+%% information returned includes the maximum number of instances allowed and
+%% your account's current usage across all fleets. This information can
+%% affect your ability to scale your Amazon GameLift fleets. You can request
+%% a limit increase for your account by using the Service limits page in the
+%% Amazon GameLift console.
 %%
 %% Instance limits differ based on whether the instances are deployed in a
 %% fleet's home Region or in a remote location. For remote locations,
@@ -1327,7 +1418,8 @@ describe_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 describe_ec2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ec2_instance_limits(Client, Input, []).
@@ -1358,7 +1450,8 @@ describe_ec2_instance_limits(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 describe_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_attributes(Client, Input, []).
@@ -1396,9 +1489,11 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% GameLift metrics for fleets
+%% GameLift metrics for fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
 describe_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_capacity(Client, Input, []).
@@ -1421,7 +1516,8 @@ describe_fleet_capacity(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 describe_fleet_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_events(Client, Input, []).
@@ -1452,7 +1548,8 @@ describe_fleet_events(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 describe_fleet_location_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_attributes(Client, Input, []).
@@ -1475,9 +1572,11 @@ describe_fleet_location_attributes(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% GameLift metrics for fleets
+%% GameLift metrics for fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
 describe_fleet_location_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_capacity(Client, Input, []).
@@ -1500,9 +1599,11 @@ describe_fleet_location_capacity(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% GameLift metrics for fleets
+%% GameLift metrics for fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
 describe_fleet_location_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_utilization(Client, Input, []).
@@ -1533,7 +1634,8 @@ describe_fleet_location_utilization(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 describe_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_port_settings(Client, Input, []).
@@ -1546,8 +1648,9 @@ describe_fleet_port_settings(Client, Input, Options)
 %% Utilization data provides a snapshot of how the fleet's hosting
 %% resources are currently being used. For fleets with remote locations, this
 %% operation retrieves data for the fleet's home Region only. See
-%% DescribeFleetLocationUtilization to get utilization statistics for a
-%% fleet's remote locations.
+%% DescribeFleetLocationUtilization:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetLocationUtilization.html
+%% to get utilization statistics for a fleet's remote locations.
 %%
 %% This operation can be used in the following ways:
 %%
@@ -1560,10 +1663,11 @@ describe_fleet_port_settings(Client, Input, Options)
 %% </li> </ul> When requesting multiple fleets, use the pagination parameters
 %% to retrieve results as a set of sequential pages.
 %%
-%% If successful, a FleetUtilization object is returned for each requested
-%% fleet ID, unless the fleet identifier is not found. Each fleet utilization
-%% object includes a `Location' property, which is set to the fleet's
-%% home Region.
+%% If successful, a FleetUtilization:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_FleetUtilization.html
+%% object is returned for each requested fleet ID, unless the fleet
+%% identifier is not found. Each fleet utilization object includes a
+%% `Location' property, which is set to the fleet's home Region.
 %%
 %% Some API operations may limit the number of fleet IDs allowed in one
 %% request. If a request exceeds this limit, the request fails and the error
@@ -1571,9 +1675,11 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift Fleets
+%% Setting up Amazon GameLift Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% GameLift Metrics for Fleets
+%% GameLift Metrics for Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
 describe_fleet_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_utilization(Client, Input, []).
@@ -1593,7 +1699,8 @@ describe_fleet_utilization(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 describe_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server(Client, Input, []).
@@ -1615,7 +1722,8 @@ describe_game_server(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 describe_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_group(Client, Input, []).
@@ -1644,7 +1752,8 @@ describe_game_server_group(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 describe_game_server_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_instances(Client, Input, []).
@@ -1682,9 +1791,11 @@ describe_game_server_instances(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Find a game session
+%% Find a game session:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-find
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_game_session_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_details(Client, Input, []).
@@ -1719,7 +1830,8 @@ describe_game_session_placement(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% View Your Queues
+%% View Your Queues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html
 describe_game_session_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_queues(Client, Input, []).
@@ -1765,9 +1877,11 @@ describe_game_session_queues(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Find a game session
+%% Find a game session:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-find
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_sessions(Client, Input, []).
@@ -1803,13 +1917,16 @@ describe_game_sessions(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Remotely connect to fleet instances
+%% Remotely connect to fleet instances:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html
 %%
-%% Debug fleet issues
+%% Debug fleet issues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
@@ -1835,9 +1952,11 @@ describe_instances(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Add FlexMatch to a game client
+%% Add FlexMatch to a game client:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
 %%
-%% Set Up FlexMatch event notification
+%% Set Up FlexMatch event notification:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
 describe_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking(Client, Input, []).
@@ -1859,7 +1978,8 @@ describe_matchmaking(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up FlexMatch matchmakers
+%% Setting up FlexMatch matchmakers:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html
 describe_matchmaking_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_configurations(Client, Input, []).
@@ -1876,7 +1996,8 @@ describe_matchmaking_configurations(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% <ul> <li> Build a rule set
+%% <ul> <li> Build a rule set:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
 %%
 %% </li> </ul>
 describe_matchmaking_rule_sets(Client, Input)
@@ -1910,7 +2031,8 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_player_sessions(Client, Input, []).
@@ -1932,9 +2054,11 @@ describe_player_sessions(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 %%
-%% Running multiple processes on a fleet
+%% Running multiple processes on a fleet:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html
 describe_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_runtime_configuration(Client, Input, []).
@@ -1966,11 +2090,13 @@ describe_scaling_policies(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Realtime Servers
+%% Amazon GameLift Realtime Servers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_script(Client, Input, []).
@@ -1986,7 +2112,8 @@ describe_script(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_vpc_peering_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_authorizations(Client, Input, []).
@@ -2008,7 +2135,8 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 describe_vpc_peering_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_connections(Client, Input, []).
@@ -2031,14 +2159,17 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% If successful, this operation returns a set of temporary Amazon Web
 %% Services credentials, including a two-part access key and a session token.
 %% Use these credentials with Amazon EC2 Systems Manager (SSM) to start a
-%% session with the compute. For more details, see Starting a session (CLI)
+%% session with the compute. For more details, see Starting a session (CLI):
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-cli
 %% in the Amazon EC2 Systems Manager User Guide.
 %%
 %% Learn more
 %%
-%% Remotely connect to fleet instances
+%% Remotely connect to fleet instances:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html
 %%
-%% Debug fleet issues
+%% Debug fleet issues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
 get_compute_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_access(Client, Input, []).
@@ -2052,7 +2183,7 @@ get_compute_access(Client, Input, Options)
 %% The game servers that are running on the compute use this token to
 %% authenticate with the Amazon GameLift service. Each server process must
 %% provide a valid authentication token in its call to the Amazon GameLift
-%% server SDK action `InitSDK()'.
+%% server SDK action .
 %%
 %% Authentication tokens are valid for a limited time span. Use a mechanism
 %% to regularly request a fresh authentication token before the current token
@@ -2060,11 +2191,15 @@ get_compute_access(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% <ul> <li> Create an Anywhere fleet
+%% <ul> <li> Create an Anywhere fleet:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-anywhere.html
 %%
-%% </li> <li> Test your integration
+%% </li> <li> Test your integration:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing.html
 %%
-%% </li> <li> Server SDK reference guides (for version 5.x)
+%% </li> <li> Server SDK reference guides:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
+%% (for version 5.x)
 %%
 %% </li> </ul>
 get_compute_auth_token(Client, Input)
@@ -2081,10 +2216,13 @@ get_compute_auth_token(Client, Input, Options)
 %% the logs in Amazon S3 and retains them for 14 days. Use this URL to
 %% download the logs.
 %%
-%% See the Amazon Web Services Service Limits page for maximum log file
-%% sizes. Log files that exceed this limit are not saved.
+%% See the Amazon Web Services Service Limits:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift
+%% page for maximum log file sizes. Log files that exceed this limit are not
+%% saved.
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 get_game_session_log_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_game_session_log_url(Client, Input, []).
@@ -2102,7 +2240,9 @@ get_game_session_log_url(Client, Input, Options)
 %%
 %% To request access to an instance, specify IDs for the instance and the
 %% fleet it belongs to. You can retrieve instance IDs for a fleet by calling
-%% DescribeInstances with the fleet ID.
+%% DescribeInstances:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeInstances.html
+%% with the fleet ID.
 %%
 %% If successful, this operation returns an IP address and credentials. The
 %% returned credentials match the operating system of the instance, as
@@ -2114,18 +2254,22 @@ get_game_session_log_url(Client, Input, Options)
 %% </li> <li> For a Linux instance: returns a user name and secret (RSA
 %% private key) for use with an SSH client. You must save the secret to a
 %% `.pem' file. If you're using the CLI, see the example Get
-%% credentials for a Linux instance for tips on automatically saving the
-%% secret to a `.pem' file.
+%% credentials for a Linux instance:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetInstanceAccess.html#API_GetInstanceAccess_Examples
+%% for tips on automatically saving the secret to a `.pem' file.
 %%
 %% </li> </ul> Learn more
 %%
-%% Remotely connect to fleet instances
+%% Remotely connect to fleet instances:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html
 %%
-%% Debug fleet issues
+%% Debug fleet issues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 get_instance_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access(Client, Input, []).
@@ -2142,7 +2286,8 @@ get_instance_access(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
@@ -2161,9 +2306,11 @@ list_aliases(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Upload a Custom Server Build
+%% Upload a Custom Server Build:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
@@ -2224,7 +2371,8 @@ list_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
@@ -2250,7 +2398,8 @@ list_game_server_groups(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 list_game_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_servers(Client, Input, []).
@@ -2271,11 +2420,13 @@ list_locations(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Realtime Servers
+%% Amazon GameLift Realtime Servers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 list_scripts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scripts(Client, Input, []).
@@ -2294,14 +2445,17 @@ list_scripts(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Tagging Amazon Web Services Resources in the Amazon Web Services General
-%% Reference
+%% Tagging Amazon Web Services Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in the
+%% Amazon Web Services General Reference
 %%
-%% Amazon Web Services Tagging Strategies
+%% Amazon Web Services Tagging Strategies:
+%% http://aws.amazon.com/answers/account-management/aws-tagging-strategies/
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -2326,7 +2480,8 @@ list_tags_for_resource(Client, Input, Options)
 %% because multiple auto-scaling policies can have unintended consequences.
 %%
 %% Learn more about how to work with auto-scaling in Set Up Fleet Automatic
-%% Scaling.
+%% Scaling:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html.
 %%
 %% Target-based policy
 %%
@@ -2408,15 +2563,19 @@ put_scaling_policy(Client, Input, Options)
 %% Amazon GameLift SDK endpoint. Game server processes that run on the
 %% compute use this endpoint to communicate with the Amazon GameLift service.
 %% Each server process includes the SDK endpoint in its call to the Amazon
-%% GameLift server SDK action `InitSDK()'.
+%% GameLift server SDK action .
 %%
 %% Learn more
 %%
-%% <ul> <li> Create an Anywhere fleet
+%% <ul> <li> Create an Anywhere fleet:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-anywhere.html
 %%
-%% </li> <li> Test your integration
+%% </li> <li> Test your integration:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing.html
 %%
-%% </li> <li> Server SDK reference guides (for version 5.x)
+%% </li> <li> Server SDK reference guides:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
+%% (for version 5.x)
 %%
 %% </li> </ul>
 register_compute(Client, Input)
@@ -2447,7 +2606,8 @@ register_compute(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 register_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_game_server(Client, Input, []).
@@ -2458,7 +2618,8 @@ register_game_server(Client, Input, Options)
 %% @doc Retrieves a fresh set of credentials for use when uploading a new set
 %% of game build files to Amazon GameLift's Amazon S3.
 %%
-%% This is done as part of the build creation process; see GameSession.
+%% This is done as part of the build creation process; see GameSession:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateBuild.html.
 %%
 %% To request new credentials, specify the build ID as returned with an
 %% initial `CreateBuild' request. If successful, a new set of credentials
@@ -2467,9 +2628,11 @@ register_game_server(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Create a Build with Files in S3
+%% Create a Build with Files in S3:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 request_upload_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_upload_credentials(Client, Input, []).
@@ -2481,7 +2644,8 @@ request_upload_credentials(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 resolve_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_alias(Client, Input, []).
@@ -2493,12 +2657,13 @@ resolve_alias(Client, Input, Options)
 %% game server groups.
 %%
 %% Reinstates activity on a game server group after it has been suspended. A
-%% game server group might be suspended by the SuspendGameServerGroup
-%% operation, or it might be suspended involuntarily due to a configuration
-%% problem. In the second case, you can manually resume activity on the group
-%% once the configuration problem has been resolved. Refer to the game server
-%% group status and status reason for more information on why group activity
-%% is suspended.
+%% game server group might be suspended by the SuspendGameServerGroup:
+%% gamelift/latest/apireference/API_SuspendGameServerGroup.html operation, or
+%% it might be suspended involuntarily due to a configuration problem. In the
+%% second case, you can manually resume activity on the group once the
+%% configuration problem has been resolved. Refer to the game server group
+%% status and status reason for more information on why group activity is
+%% suspended.
 %%
 %% To resume activity, specify a game server group ARN and the type of
 %% activity to be resumed. If successful, a `GameServerGroup' object is
@@ -2507,7 +2672,8 @@ resolve_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 resume_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_game_server_group(Client, Input, []).
@@ -2547,7 +2713,9 @@ resume_game_server_group(Client, Input, Options)
 %% If successful, a `GameSession' object is returned for each game
 %% session that matches the request. Search finds game sessions that are in
 %% `ACTIVE' status only. To retrieve information on game sessions in
-%% other statuses, use DescribeGameSessions .
+%% other statuses, use DescribeGameSessions:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessions.html
+%% .
 %%
 %% To set search and sort criteria, create a filter expression using the
 %% following game session attributes. For game session search examples, see
@@ -2570,7 +2738,8 @@ resume_game_server_group(Client, Input, Options)
 %% &quot;novice&quot;'. All game property values are searched as strings.
 %%
 %% For examples of searching game sessions, see the ones below, and also see
-%% Search game sessions by game property.
+%% Search game sessions by game property:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#game-properties-search.
 %%
 %% </li> <li> maximumSessions -- Maximum number of player sessions allowed
 %% for a game session.
@@ -2594,7 +2763,8 @@ resume_game_server_group(Client, Input, Options)
 %% sure to refresh search results often, and handle sessions that fill up
 %% before a player can join.
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 search_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_game_sessions(Client, Input, []).
@@ -2603,7 +2773,8 @@ search_game_sessions(Client, Input, Options)
     request(Client, <<"SearchGameSessions">>, Input, Options).
 
 %% @doc Resumes certain types of activity on fleet instances that were
-%% suspended with StopFleetActions.
+%% suspended with StopFleetActions:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopFleetActions.html.
 %%
 %% For multi-location fleets, fleet actions are managed separately for each
 %% location. Currently, this operation is used to restart a fleet's
@@ -2624,7 +2795,8 @@ search_game_sessions(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 start_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fleet_actions(Client, Input, []).
@@ -2673,10 +2845,12 @@ start_fleet_actions(Client, Input, Options)
 %% </li> </ul> If successful, a new game session placement is created.
 %%
 %% To track the status of a placement request, call
-%% DescribeGameSessionPlacement and check the request's status. If the
-%% status is `FULFILLED', a new game session has been created and a game
-%% session ARN and Region are referenced. If the placement request times out,
-%% you can resubmit the request or retry it with a different queue.
+%% DescribeGameSessionPlacement:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html
+%% and check the request's status. If the status is `FULFILLED', a
+%% new game session has been created and a game session ARN and Region are
+%% referenced. If the placement request times out, you can resubmit the
+%% request or retry it with a different queue.
 start_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_game_session_placement(Client, Input, []).
@@ -2720,11 +2894,15 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Backfill existing games with FlexMatch
+%% Backfill existing games with FlexMatch:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html
 %%
-%% Matchmaking events (reference)
+%% Matchmaking events:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html
+%% (reference)
 %%
-%% How Amazon GameLift FlexMatch works
+%% How Amazon GameLift FlexMatch works:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
 start_match_backfill(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_match_backfill(Client, Input, []).
@@ -2756,11 +2934,14 @@ start_match_backfill(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Add FlexMatch to a game client
+%% Add FlexMatch to a game client:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
 %%
-%% Set Up FlexMatch event notification
+%% Set Up FlexMatch event notification:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
 %%
-%% How Amazon GameLift FlexMatch works
+%% How Amazon GameLift FlexMatch works:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
 start_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_matchmaking(Client, Input, []).
@@ -2789,11 +2970,13 @@ start_matchmaking(Client, Input, Options)
 %% suspend.
 %%
 %% </li> </ul> If successful, Amazon GameLift no longer initiates scaling
-%% events except in response to manual changes using UpdateFleetCapacity.
+%% events except in response to manual changes using UpdateFleetCapacity:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateFleetCapacity.html.
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift Fleets
+%% Setting up Amazon GameLift Fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 stop_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_fleet_actions(Client, Input, []).
@@ -2830,7 +3013,8 @@ stop_game_session_placement(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Add FlexMatch to a game client
+%% Add FlexMatch to a game client:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
 stop_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_matchmaking(Client, Input, []).
@@ -2843,7 +3027,9 @@ stop_matchmaking(Client, Input, Options)
 %%
 %% Temporarily stops activity on a game server group without terminating
 %% instances or the game server group. You can restart activity by calling
-%% ResumeGameServerGroup. You can suspend the following activity:
+%% ResumeGameServerGroup:
+%% gamelift/latest/apireference/API_ResumeGameServerGroup.html. You can
+%% suspend the following activity:
 %%
 %% <ul> <li> Instance type replacement - This activity evaluates the current
 %% game hosting viability of all Spot instance types that are defined for the
@@ -2862,7 +3048,8 @@ stop_matchmaking(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 suspend_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_game_server_group(Client, Input, []).
@@ -2883,14 +3070,17 @@ suspend_game_server_group(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Tagging Amazon Web Services Resources in the Amazon Web Services General
-%% Reference
+%% Tagging Amazon Web Services Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in the
+%% Amazon Web Services General Reference
 %%
-%% Amazon Web Services Tagging Strategies
+%% Amazon Web Services Tagging Strategies:
+%% http://aws.amazon.com/answers/account-management/aws-tagging-strategies/
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -2911,14 +3101,17 @@ tag_resource(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Tagging Amazon Web Services Resources in the Amazon Web Services General
-%% Reference
+%% Tagging Amazon Web Services Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in the
+%% Amazon Web Services General Reference
 %%
-%% Amazon Web Services Tagging Strategies
+%% Amazon Web Services Tagging Strategies:
+%% http://aws.amazon.com/answers/account-management/aws-tagging-strategies/
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -2935,7 +3128,8 @@ untag_resource(Client, Input, Options)
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
@@ -2952,9 +3146,11 @@ update_alias(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Upload a Custom Server Build
+%% Upload a Custom Server Build:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 update_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_build(Client, Input, []).
@@ -2972,7 +3168,8 @@ update_build(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 update_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_attributes(Client, Input, []).
@@ -2996,9 +3193,11 @@ update_fleet_attributes(Client, Input, Options)
 %% </li> <li> Desired capacity: Manually set the number of Amazon EC2
 %% instances to be maintained in a fleet location. Before changing a
 %% fleet's desired capacity, you may want to call
-%% DescribeEC2InstanceLimits to get the maximum capacity of the fleet's
-%% Amazon EC2 instance type. Alternatively, consider using automatic scaling
-%% to adjust capacity based on player demand.
+%% DescribeEC2InstanceLimits:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeEC2InstanceLimits.html
+%% to get the maximum capacity of the fleet's Amazon EC2 instance type.
+%% Alternatively, consider using automatic scaling to adjust capacity based
+%% on player demand.
 %%
 %% </li> </ul> This operation can be used in the following ways:
 %%
@@ -3015,14 +3214,17 @@ update_fleet_attributes(Client, Input, Options)
 %% start new instances or terminate existing instances in the requested fleet
 %% location. This continues until the location's active instance count
 %% matches the new desired instance count. You can track a fleet's
-%% current capacity by calling DescribeFleetCapacity or
-%% DescribeFleetLocationCapacity. If the requested desired instance count is
-%% higher than the instance type's limit, the `LimitExceeded'
-%% exception occurs.
+%% current capacity by calling DescribeFleetCapacity:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetCapacity.html
+%% or DescribeFleetLocationCapacity:
+%% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetLocationCapacity.html.
+%% If the requested desired instance count is higher than the instance
+%% type's limit, the `LimitExceeded' exception occurs.
 %%
 %% Learn more
 %%
-%% Scaling fleet capacity
+%% Scaling fleet capacity:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-manage-capacity.html
 update_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_capacity(Client, Input, []).
@@ -3046,7 +3248,8 @@ update_fleet_capacity(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 update_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_port_settings(Client, Input, []).
@@ -3086,7 +3289,8 @@ update_fleet_port_settings(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 update_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server(Client, Input, []).
@@ -3110,7 +3314,8 @@ update_game_server(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift FleetIQ Guide
+%% Amazon GameLift FleetIQ Guide:
+%% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
 update_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server_group(Client, Input, []).
@@ -3125,7 +3330,8 @@ update_game_server_group(Client, Input, Options)
 %%
 %% If successful, the updated `GameSession' object is returned.
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 update_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session(Client, Input, []).
@@ -3142,7 +3348,8 @@ update_game_session(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Using Multi-Region Queues
+%% Using Multi-Region Queues:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html
 update_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session_queue(Client, Input, []).
@@ -3158,7 +3365,8 @@ update_game_session_queue(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Design a FlexMatch matchmaker
+%% Design a FlexMatch matchmaker:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html
 update_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_matchmaking_configuration(Client, Input, []).
@@ -3186,7 +3394,8 @@ update_matchmaking_configuration(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Setting up Amazon GameLift fleets
+%% Setting up Amazon GameLift fleets:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
 update_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_runtime_configuration(Client, Input, []).
@@ -3211,11 +3420,13 @@ update_runtime_configuration(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% Amazon GameLift Realtime Servers
+%% Amazon GameLift Realtime Servers:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html
 %%
 %% Related actions
 %%
-%% All APIs by task
+%% All APIs by task:
+%% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
 update_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_script(Client, Input, []).
@@ -3231,7 +3442,8 @@ update_script(Client, Input, Options)
 %%
 %% Learn more
 %%
-%% <ul> <li> Build a rule set
+%% <ul> <li> Build a rule set:
+%% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
 %%
 %% </li> </ul>
 validate_matchmaking_rule_set(Client, Input)

@@ -5,9 +5,11 @@
 %%
 %% Other Resources:
 %%
-%% <ul> <li> SageMaker Developer Guide
+%% <ul> <li> SageMaker Developer Guide:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user
 %%
-%% </li> <li> Amazon Augmented AI Runtime API Reference
+%% </li> <li> Amazon Augmented AI Runtime API Reference:
+%% https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html
 %%
 %% </li> </ul>
 -module(aws_sagemaker).
@@ -664,7 +666,8 @@
 %% A source can be associated with multiple destinations, and a destination
 %% can be associated with multiple sources. An association is a lineage
 %% tracking entity. For more information, see Amazon SageMaker ML Lineage
-%% Tracking.
+%% Tracking:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
 add_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_association(Client, Input, []).
@@ -681,7 +684,8 @@ add_association(Client, Input, Options)
 %%
 %% Each tag consists of a key and an optional value. Tag keys must be unique
 %% per resource. For more information about tags, see For more information,
-%% see Amazon Web Services Tagging Strategies.
+%% see Amazon Web Services Tagging Strategies:
+%% https://aws.amazon.com/answers/account-management/aws-tagging-strategies/.
 %%
 %% Tags that you add to a hyperparameter tuning job by calling this API are
 %% also added to any training jobs that the hyperparameter tuning job
@@ -690,7 +694,8 @@ add_association(Client, Input, Options)
 %% sure that the tags associated with a hyperparameter tuning job are also
 %% added to all training jobs that the hyperparameter tuning job launches,
 %% add the tags when you first create the tuning job by specifying them in
-%% the `Tags' parameter of CreateHyperParameterTuningJob
+%% the `Tags' parameter of CreateHyperParameterTuningJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html
 %%
 %% Tags that you add to a SageMaker Domain or User Profile by calling this
 %% API are also added to any Apps that the Domain or User Profile launches
@@ -699,7 +704,10 @@ add_association(Client, Input, Options)
 %% with a Domain or User Profile are also added to all Apps that the Domain
 %% or User Profile launches, add the tags when you first create the Domain or
 %% User Profile by specifying them in the `Tags' parameter of
-%% CreateDomain or CreateUserProfile.
+%% CreateDomain:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html
+%% or CreateUserProfile:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -710,7 +718,9 @@ add_tags(Client, Input, Options)
 %% @doc Associates a trial component with a trial.
 %%
 %% A trial component can be associated with multiple trials. To disassociate
-%% a trial component from a trial, call the DisassociateTrialComponent API.
+%% a trial component from a trial, call the DisassociateTrialComponent:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
+%% API.
 associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
@@ -731,7 +741,8 @@ batch_describe_model_package(Client, Input, Options)
 %% An action is a lineage tracking entity that represents an action or
 %% activity. For example, a model deployment or an HPO job. Generally, an
 %% action involves at least one input or output artifact. For more
-%% information, see Amazon SageMaker ML Lineage Tracking.
+%% information, see Amazon SageMaker ML Lineage Tracking:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
 create_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_action(Client, Input, []).
@@ -777,7 +788,8 @@ create_app_image_config(Client, Input, Options)
 %% An artifact is a lineage tracking entity that represents a URI addressable
 %% object or data. Some examples are the S3 URI of a dataset and the ECR
 %% registry path of an image. For more information, see Amazon SageMaker ML
-%% Lineage Tracking.
+%% Lineage Tracking:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
 create_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_artifact(Client, Input, []).
@@ -788,8 +800,11 @@ create_artifact(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job.
 %%
-%% We recommend using the new versions CreateAutoMLJobV2 and
-%% DescribeAutoMLJobV2, which offer backward compatibility.
+%% We recommend using the new versions CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
+%% and DescribeAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html,
+%% which offer backward compatibility.
 %%
 %% `CreateAutoMLJobV2' can manage tabular problem types identical to
 %% those of its previous version `CreateAutoMLJob', as well as
@@ -797,10 +812,14 @@ create_artifact(Client, Input, Options)
 %% classification, and text generation (LLMs fine-tuning).
 %%
 %% Find guidelines about how to migrate a `CreateAutoMLJob' to
-%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
+%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-create-experiment.html#autopilot-create-experiment-api-migrate-v1-v2.
 %%
 %% You can find the best-performing model after you run an AutoML job by
-%% calling DescribeAutoMLJobV2 (recommended) or DescribeAutoMLJob.
+%% calling DescribeAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html
+%% (recommended) or DescribeAutoMLJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html.
 create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
@@ -811,8 +830,15 @@ create_auto_ml_job(Client, Input, Options)
 %% @doc Creates an Autopilot job also referred to as Autopilot experiment or
 %% AutoML job V2.
 %%
-%% CreateAutoMLJobV2 and DescribeAutoMLJobV2 are new versions of
-%% CreateAutoMLJob and DescribeAutoMLJob which offer backward compatibility.
+%% CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
+%% and DescribeAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html
+%% are new versions of CreateAutoMLJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html
+%% and DescribeAutoMLJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html
+%% which offer backward compatibility.
 %%
 %% `CreateAutoMLJobV2' can manage tabular problem types identical to
 %% those of its previous version `CreateAutoMLJob', as well as
@@ -820,13 +846,16 @@ create_auto_ml_job(Client, Input, Options)
 %% classification, and text generation (LLMs fine-tuning).
 %%
 %% Find guidelines about how to migrate a `CreateAutoMLJob' to
-%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2.
+%% `CreateAutoMLJobV2' in Migrate a CreateAutoMLJob to CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-create-experiment.html#autopilot-create-experiment-api-migrate-v1-v2.
 %%
 %% For the list of available problem types supported by
-%% `CreateAutoMLJobV2', see AutoMLProblemTypeConfig.
+%% `CreateAutoMLJobV2', see AutoMLProblemTypeConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLProblemTypeConfig.html.
 %%
 %% You can find the best-performing model after you run an AutoML job V2 by
-%% calling DescribeAutoMLJobV2.
+%% calling DescribeAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html.
 create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
@@ -839,7 +868,9 @@ create_auto_ml_job_v2(Client, Input, Options)
 %% SageMaker HyperPod is a capability of SageMaker for creating and managing
 %% persistent clusters for developing large machine learning models, such as
 %% large language models (LLMs) and diffusion models. To learn more, see
-%% Amazon SageMaker HyperPod in the Amazon SageMaker Developer Guide.
+%% Amazon SageMaker HyperPod:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html in
+%% the Amazon SageMaker Developer Guide.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -855,8 +886,9 @@ create_cluster(Client, Input, Options)
 %% than one notebook instance, and it persists independently from the
 %% lifecycle of any notebook instances it is associated with.
 %%
-%% The repository can be hosted either in Amazon Web Services CodeCommit or
-%% in any other Git repository.
+%% The repository can be hosted either in Amazon Web Services CodeCommit:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html or in
+%% any other Git repository.
 create_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_code_repository(Client, Input, []).
@@ -891,10 +923,14 @@ create_code_repository(Client, Input, Options)
 %% compilation job's resource use and costs. The response body contains
 %% the `CompilationJobArn' for the compiled job.
 %%
-%% To stop a model compilation job, use StopCompilationJob. To get
-%% information about a particular model compilation job, use
-%% DescribeCompilationJob. To get information about multiple model
-%% compilation jobs, use ListCompilationJobs.
+%% To stop a model compilation job, use StopCompilationJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopCompilationJob.html.
+%% To get information about a particular model compilation job, use
+%% DescribeCompilationJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeCompilationJob.html.
+%% To get information about multiple model compilation jobs, use
+%% ListCompilationJobs:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
 create_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_compilation_job(Client, Input, []).
@@ -907,7 +943,8 @@ create_compilation_job(Client, Input, Options)
 %% A context is a lineage tracking entity that represents a logical grouping
 %% of other tracking or experiment entities. Some examples are an endpoint
 %% and a model package. For more information, see Amazon SageMaker ML Lineage
-%% Tracking.
+%% Tracking:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
 create_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_context(Client, Input, []).
@@ -917,7 +954,8 @@ create_context(Client, Input, Options)
 
 %% @doc Creates a definition for a job that monitors data quality and drift.
 %%
-%% For information about model monitor, see Amazon SageMaker Model Monitor.
+%% For information about model monitor, see Amazon SageMaker Model Monitor:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
 create_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_job_definition(Client, Input, []).
@@ -950,7 +988,8 @@ create_device_fleet(Client, Input, Options)
 %% Services KMS) to encrypt the EFS volume attached to the domain with an
 %% Amazon Web Services managed key by default. For more control, you can
 %% specify a customer managed key. For more information, see Protect Data at
-%% Rest Using Encryption.
+%% Rest Using Encryption:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html.
 %%
 %% VPC configuration
 %%
@@ -978,7 +1017,8 @@ create_device_fleet(Client, Input, Options)
 %% app successfully.
 %%
 %% For more information, see Connect Amazon SageMaker Studio Notebooks to
-%% Resources in a VPC.
+%% Resources in a VPC:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -1020,7 +1060,9 @@ create_edge_packaging_job(Client, Input, Options)
 %% request.
 %%
 %% SageMaker uses the endpoint to provision resources and deploy models. You
-%% create the endpoint configuration with the CreateEndpointConfig API.
+%% create the endpoint configuration with the CreateEndpointConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html
+%% API.
 %%
 %% Use this API to deploy models using SageMaker hosting services.
 %%
@@ -1035,22 +1077,28 @@ create_edge_packaging_job(Client, Input, Options)
 %% When it receives the request, SageMaker creates the endpoint, launches the
 %% resources (ML compute instances), and deploys the model(s) on them.
 %%
-%% When you call CreateEndpoint, a load call is made to DynamoDB to verify
-%% that your endpoint configuration exists. When you read data from a
-%% DynamoDB table supporting `Eventually Consistent Reads' , the response
-%% might not reflect the results of a recently completed write operation. The
-%% response might include some stale data. If the dependent entities are not
-%% yet in DynamoDB, this causes a validation error. If you repeat your read
-%% request after a short time, the response should return the latest data. So
-%% retry logic is recommended to handle these possible issues. We also
-%% recommend that customers call DescribeEndpointConfig before calling
-%% CreateEndpoint to minimize the potential impact of a DynamoDB eventually
-%% consistent read.
+%% When you call CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html,
+%% a load call is made to DynamoDB to verify that your endpoint configuration
+%% exists. When you read data from a DynamoDB table supporting `Eventually
+%% Consistent Reads' :
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html,
+%% the response might not reflect the results of a recently completed write
+%% operation. The response might include some stale data. If the dependent
+%% entities are not yet in DynamoDB, this causes a validation error. If you
+%% repeat your read request after a short time, the response should return
+%% the latest data. So retry logic is recommended to handle these possible
+%% issues. We also recommend that customers call DescribeEndpointConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpointConfig.html
+%% before calling CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
+%% to minimize the potential impact of a DynamoDB eventually consistent read.
 %%
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Creating'. After it creates the endpoint, it sets the status to
 %% `InService'. SageMaker can then process incoming requests for
-%% inferences. To check the status of an endpoint, use the DescribeEndpoint
+%% inferences. To check the status of an endpoint, use the DescribeEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html
 %% API.
 %%
 %% If any of the models hosted at this endpoint get model data from an Amazon
@@ -1060,14 +1108,18 @@ create_edge_packaging_job(Client, Input, Options)
 %% If you previously deactivated Amazon Web Services STS for a region, you
 %% need to reactivate Amazon Web Services STS for that region. For more
 %% information, see Activating and Deactivating Amazon Web Services STS in an
-%% Amazon Web Services Region in the Amazon Web Services Identity and Access
-%% Management User Guide.
+%% Amazon Web Services Region:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html
+%% in the Amazon Web Services Identity and Access Management User Guide.
 %%
 %% To add the IAM role policies for using this API operation, go to the IAM
-%% console, and choose Roles in the left navigation pane. Search the IAM role
-%% that you want to grant access to use the CreateEndpoint and
-%% CreateEndpointConfig API operations, add the following policies to the
-%% role.
+%% console: https://console.aws.amazon.com/iam/, and choose Roles in the left
+%% navigation pane. Search the IAM role that you want to grant access to use
+%% the CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
+%% and CreateEndpointConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html
+%% API operations, add the following policies to the role.
 %%
 %% Option 1: For a full SageMaker access, search and attach the
 %% `AmazonSageMakerFullAccess' policy.
@@ -1087,7 +1139,8 @@ create_edge_packaging_job(Client, Input, Options)
 %% `]'
 %%
 %% For more information, see SageMaker API Permissions: Actions, Permissions,
-%% and Resources Reference.
+%% and Resources Reference:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -1100,7 +1153,9 @@ create_endpoint(Client, Input, Options)
 %%
 %% In the configuration, you identify one or more models, created using the
 %% `CreateModel' API, to deploy and the resources that you want SageMaker
-%% to provision. Then you call the CreateEndpoint API.
+%% to provision. Then you call the CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
+%% API.
 %%
 %% Use this API if you want to use SageMaker hosting services to deploy
 %% models into production.
@@ -1116,17 +1171,22 @@ create_endpoint(Client, Input, Options)
 %% traffic weight 2 for model A and 1 for model B. SageMaker distributes
 %% two-thirds of the traffic to Model A, and one-third to model B.
 %%
-%% When you call CreateEndpoint, a load call is made to DynamoDB to verify
-%% that your endpoint configuration exists. When you read data from a
-%% DynamoDB table supporting `Eventually Consistent Reads' , the response
-%% might not reflect the results of a recently completed write operation. The
-%% response might include some stale data. If the dependent entities are not
-%% yet in DynamoDB, this causes a validation error. If you repeat your read
-%% request after a short time, the response should return the latest data. So
-%% retry logic is recommended to handle these possible issues. We also
-%% recommend that customers call DescribeEndpointConfig before calling
-%% CreateEndpoint to minimize the potential impact of a DynamoDB eventually
-%% consistent read.
+%% When you call CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html,
+%% a load call is made to DynamoDB to verify that your endpoint configuration
+%% exists. When you read data from a DynamoDB table supporting `Eventually
+%% Consistent Reads' :
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html,
+%% the response might not reflect the results of a recently completed write
+%% operation. The response might include some stale data. If the dependent
+%% entities are not yet in DynamoDB, this causes a validation error. If you
+%% repeat your read request after a short time, the response should return
+%% the latest data. So retry logic is recommended to handle these possible
+%% issues. We also recommend that customers call DescribeEndpointConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpointConfig.html
+%% before calling CreateEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
+%% to minimize the potential impact of a DynamoDB eventually consistent read.
 create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
@@ -1154,16 +1214,26 @@ create_endpoint_config(Client, Input, Options)
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
 %% You can add tags to experiments, trials, trial components and then use the
-%% Search API to search for the tags.
+%% Search:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
+%% API to search for the tags.
 %%
 %% To add a description to an experiment, specify the optional
 %% `Description' parameter. To add a description later, or to change the
-%% description, call the UpdateExperiment API.
+%% description, call the UpdateExperiment:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UpdateExperiment.html
+%% API.
 %%
-%% To get a list of all your experiments, call the ListExperiments API. To
-%% view an experiment's properties, call the DescribeExperiment API. To
-%% get a list of all the trials associated with an experiment, call the
-%% ListTrials API. To create a trial call the CreateTrial API.
+%% To get a list of all your experiments, call the ListExperiments:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListExperiments.html
+%% API. To view an experiment's properties, call the DescribeExperiment:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeExperiment.html
+%% API. To get a list of all the trials associated with an experiment, call
+%% the ListTrials:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrials.html
+%% API. To create a trial call the CreateTrial:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrial.html
+%% API.
 create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
@@ -1180,8 +1250,9 @@ create_experiment(Client, Input, Options)
 %% `FeatureGroup'. A `FeatureGroup' definition is composed of a list
 %% of `Features', a `RecordIdentifierFeatureName', an
 %% `EventTimeFeatureName' and configurations for its `OnlineStore'
-%% and `OfflineStore'. Check Amazon Web Services service quotas to see
-%% the `FeatureGroup's quota for your Amazon Web Services account.
+%% and `OfflineStore'. Check Amazon Web Services service quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html to
+%% see the `FeatureGroup's quota for your Amazon Web Services account.
 %%
 %% Note that it can take approximately 10-15 minutes to provision an
 %% `OnlineStore' `FeatureGroup' with the `InMemory'
@@ -1237,7 +1308,8 @@ create_human_task_ui(Client, Input, Options)
 %% A hyperparameter tuning job automatically creates Amazon SageMaker
 %% experiments, trials, and trial components for each training job that it
 %% runs. You can view these entities in Amazon SageMaker Studio. For more
-%% information, see View Experiments, Trials, and Trial Components.
+%% information, see View Experiments, Trials, and Trial Components:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/experiments-view-compare.html#experiments-view.
 %%
 %% Do not include any security-sensitive information including account access
 %% IDs, secrets or tokens in any hyperparameter field. If the use of
@@ -1254,7 +1326,8 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 %%
 %% A SageMaker image is a set of image versions. Each image version
 %% represents a container image stored in Amazon ECR. For more information,
-%% see Bring your own SageMaker image.
+%% see Bring your own SageMaker image:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -1297,7 +1370,8 @@ create_inference_component(Client, Input, Options)
 %%
 %% Use this API to setup and schedule an experiment to compare model variants
 %% on a Amazon SageMaker inference endpoint. For more information about
-%% inference experiments, see Shadow tests.
+%% inference experiments, see Shadow tests:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html.
 %%
 %% Amazon SageMaker begins your experiment at the scheduled time and routes
 %% traffic to your endpoint's model variants based on your specified
@@ -1305,7 +1379,8 @@ create_inference_component(Client, Input, Options)
 %%
 %% While the experiment is in progress or after it has concluded, you can
 %% view metrics that compare your model variants. For more information, see
-%% View, monitor, and edit shadow tests.
+%% View, monitor, and edit shadow tests:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests-view-monitor-edit.html.
 create_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_experiment(Client, Input, []).
@@ -1346,11 +1421,13 @@ create_inference_recommendations_job(Client, Input, Options)
 %% of data objects that need to be labeled by a human. Automated data
 %% labeling uses active learning to determine if a data object can be labeled
 %% by machine or if it needs to be sent to a human worker. For more
-%% information, see Using Automated Data Labeling.
+%% information, see Using Automated Data Labeling:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html.
 %%
 %% The data objects to be labeled are contained in an Amazon S3 bucket. You
 %% create a manifest file that describes the location of each object. For
-%% more information, see Using Input and Output Data.
+%% more information, see Using Input and Output Data:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html.
 %%
 %% The output can be used as the manifest file for another labeling job or as
 %% training data for your machine learning models.
@@ -1361,9 +1438,11 @@ create_inference_recommendations_job(Client, Input, Options)
 %% streaming labeling job runs perpetually until it is manually stopped, or
 %% remains idle for 10 days. You can send new data objects to an active
 %% (`InProgress') streaming labeling job in real time. To learn how to
-%% create a static labeling job, see Create a Labeling Job (API) in the
-%% Amazon SageMaker Developer Guide. To learn how to create a streaming
-%% labeling job, see Create a Streaming Labeling Job.
+%% create a static labeling job, see Create a Labeling Job (API) :
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html
+%% in the Amazon SageMaker Developer Guide. To learn how to create a
+%% streaming labeling job, see Create a Streaming Labeling Job:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html.
 create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
@@ -1389,7 +1468,8 @@ create_labeling_job(Client, Input, Options)
 %%
 %% For an example that calls this method when deploying a model to SageMaker
 %% hosting services, see Create a Model (Amazon Web Services SDK for Python
-%% (Boto 3)).
+%% (Boto 3)).:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-deployment.html#realtime-endpoints-deployment-create-model
 %%
 %% To run a batch transform using your model, you start a job with the
 %% `CreateTransformJob' API. SageMaker uses your model and your dataset
@@ -1419,7 +1499,7 @@ create_model_bias_job_definition(Client, Input, Options)
 %% @doc Creates an Amazon SageMaker Model Card.
 %%
 %% For information about how to use model cards, see Amazon SageMaker Model
-%% Card.
+%% Card: https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html.
 create_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card(Client, Input, []).
@@ -1481,7 +1561,8 @@ create_model_package_group(Client, Input, Options)
 
 %% @doc Creates a definition for a job that monitors model quality and drift.
 %%
-%% For information about model monitor, see Amazon SageMaker Model Monitor.
+%% For information about model monitor, see Amazon SageMaker Model Monitor:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
 create_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_quality_job_definition(Client, Input, []).
@@ -1538,7 +1619,8 @@ create_monitoring_schedule(Client, Input, Options)
 %% model, host models by creating SageMaker endpoints, and validate hosted
 %% models.
 %%
-%% For more information, see How It Works.
+%% For more information, see How It Works:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
 create_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance(Client, Input, []).
@@ -1566,7 +1648,8 @@ create_notebook_instance(Client, Input, Options)
 %% is not created or started.
 %%
 %% For information about notebook instance lifestyle configurations, see Step
-%% 2.1: (Optional) Customize a Notebook Instance.
+%% 2.1: (Optional) Customize a Notebook Instance:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
 create_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance_lifecycle_config(Client, Input, []).
@@ -1598,7 +1681,9 @@ create_pipeline(Client, Input, Options)
 %% You can restrict access to this API and to the URL that it returns to a
 %% list of IP addresses, Amazon VPCs or Amazon VPC Endpoints that you
 %% specify. For more information, see Connect to Amazon SageMaker Studio
-%% Through an Interface VPC Endpoint .
+%% Through an Interface VPC Endpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-interface-endpoint.html
+%% .
 %%
 %% The URL that you get from a call to `CreatePresignedDomainUrl' has a
 %% default timeout of 5 minutes. You can configure this value using
@@ -1630,10 +1715,12 @@ create_presigned_domain_url(Client, Input, Options)
 %% condition operator and the `aws:SourceIP' condition context key to
 %% specify the list of IP addresses that you want to have access to the
 %% notebook instance. For more information, see Limit Access to a Notebook
-%% Instance by IP Address.
+%% Instance by IP Address:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter.
 %%
-%% The URL that you get from a call to CreatePresignedNotebookInstanceUrl is
-%% valid only for 5 minutes. If you try to use the URL after the 5-minute
+%% The URL that you get from a call to CreatePresignedNotebookInstanceUrl:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreatePresignedNotebookInstanceUrl.html
+%% is valid only for 5 minutes. If you try to use the URL after the 5-minute
 %% limit expires, you are directed to the Amazon Web Services console sign-in
 %% page.
 create_presigned_notebook_instance_url(Client, Input)
@@ -1696,7 +1783,7 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% parameters to enable the estimation of model parameters during training.
 %% Hyperparameters can be tuned to optimize this learning process. For a list
 %% of hyperparameters for each training algorithm provided by SageMaker, see
-%% Algorithms.
+%% Algorithms: https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html.
 %%
 %% Do not include any security-sensitive information including account access
 %% IDs, secrets or tokens in any hyperparameter field. If the use of
@@ -1715,7 +1802,8 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% </li> <li> `EnableManagedSpotTraining' - Optimize the cost of training
 %% machine learning models by up to 80% by using Amazon EC2 Spot instances.
-%% For more information, see Managed Spot Training.
+%% For more information, see Managed Spot Training:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html.
 %%
 %% </li> <li> `RoleArn' - The Amazon Resource Name (ARN) that SageMaker
 %% assumes to perform tasks on your behalf during model training. You must
@@ -1733,7 +1821,8 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% </li> <li> `RetryStrategy' - The number of times to retry the job when
 %% the job fails due to an `InternalServerError'.
 %%
-%% </li> </ul> For more information about SageMaker, see How It Works.
+%% </li> </ul> For more information about SageMaker, see How It Works:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
 create_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_training_job(Client, Input, []).
@@ -1758,7 +1847,8 @@ create_training_job(Client, Input, Options)
 %% </li> <li> `ModelName' - Identifies the model to use. `ModelName'
 %% must be the name of an existing Amazon SageMaker model in the same Amazon
 %% Web Services Region and Amazon Web Services account. For information on
-%% creating a model, see CreateModel.
+%% creating a model, see CreateModel:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html.
 %%
 %% </li> <li> `TransformInput' - Describes the dataset to be transformed
 %% and the Amazon S3 location where it is stored.
@@ -1770,7 +1860,8 @@ create_training_job(Client, Input, Options)
 %% for the transform job.
 %%
 %% </li> </ul> For more information about how batch transformation works, see
-%% Batch Transform.
+%% Batch Transform:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html.
 create_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transform_job(Client, Input, []).
@@ -1788,12 +1879,17 @@ create_transform_job(Client, Input, Options)
 %% logged, and indexed. When you use the Amazon Web Services SDK for Python
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
-%% You can add tags to a trial and then use the Search API to search for the
-%% tags.
+%% You can add tags to a trial and then use the Search:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
+%% API to search for the tags.
 %%
-%% To get a list of all your trials, call the ListTrials API. To view a
-%% trial's properties, call the DescribeTrial API. To create a trial
-%% component, call the CreateTrialComponent API.
+%% To get a list of all your trials, call the ListTrials:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrials.html
+%% API. To view a trial's properties, call the DescribeTrial:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrial.html
+%% API. To create a trial component, call the CreateTrialComponent:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrialComponent.html
+%% API.
 create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
@@ -1815,8 +1911,9 @@ create_trial(Client, Input, Options)
 %% logged, and indexed. When you use the Amazon Web Services SDK for Python
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
-%% You can add tags to a trial component and then use the Search API to
-%% search for the tags.
+%% You can add tags to a trial component and then use the Search:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
+%% API to search for the tags.
 create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial_component(Client, Input, []).
@@ -1849,20 +1946,23 @@ create_user_profile(Client, Input, Options)
 %% account.
 %%
 %% If you want to create a new workforce in an Amazon Web Services Region
-%% where a workforce already exists, use the DeleteWorkforce API operation to
-%% delete the existing workforce and then use `CreateWorkforce' to create
-%% a new workforce.
+%% where a workforce already exists, use the DeleteWorkforce:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteWorkforce.html
+%% API operation to delete the existing workforce and then use
+%% `CreateWorkforce' to create a new workforce.
 %%
 %% To create a private workforce using Amazon Cognito, you must specify a
 %% Cognito user pool in `CognitoConfig'. You can also create an Amazon
 %% Cognito workforce using the Amazon SageMaker console. For more
-%% information, see Create a Private Workforce (Amazon Cognito).
+%% information, see Create a Private Workforce (Amazon Cognito):
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private.html.
 %%
 %% To create a private workforce using your own OIDC Identity Provider (IdP),
 %% specify your IdP configuration in `OidcConfig'. Your OIDC IdP must
 %% support groups because groups are used by Ground Truth and Amazon A2I to
 %% create work teams. For more information, see Create a Private Workforce
-%% (OIDC IdP).
+%% (OIDC IdP):
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html.
 create_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workforce(Client, Input, []).
@@ -2028,13 +2128,16 @@ delete_edge_deployment_stage(Client, Input, Options)
 %% endpoint was created.
 %%
 %% SageMaker retires any custom KMS key grants associated with the endpoint,
-%% meaning you don't need to use the RevokeGrant API call.
+%% meaning you don't need to use the RevokeGrant:
+%% http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html
+%% API call.
 %%
 %% When you delete your endpoint, SageMaker asynchronously deletes associated
 %% endpoint resources such as KMS key grants. You might still see these
 %% resources in your account for a few minutes after deleting your endpoint.
-%% Do not delete or revoke the permissions for your ` ExecutionRoleArn ',
-%% otherwise SageMaker cannot delete these resources.
+%% Do not delete or revoke the permissions for your ` ExecutionRoleArn:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html#sagemaker-CreateModel-request-ExecutionRoleArn
+%% ', otherwise SageMaker cannot delete these resources.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -2064,7 +2167,9 @@ delete_endpoint_config(Client, Input, Options)
 %% @doc Deletes an SageMaker experiment.
 %%
 %% All trials associated with the experiment must be deleted first. Use the
-%% ListTrials API to get a list of the trials associated with the experiment.
+%% ListTrials:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrials.html
+%% API to get a list of the trials associated with the experiment.
 delete_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experiment(Client, Input, []).
@@ -2124,8 +2229,10 @@ delete_hub_content(Client, Input, Options)
 %% template).
 %%
 %% To see a list of human task user interfaces (work task templates) in your
-%% account, use ListHumanTaskUis. When you delete a worker task template, it
-%% no longer appears when you call `ListHumanTaskUis'.
+%% account, use ListHumanTaskUis:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListHumanTaskUis.html.
+%% When you delete a worker task template, it no longer appears when you call
+%% `ListHumanTaskUis'.
 delete_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_human_task_ui(Client, Input, []).
@@ -2353,7 +2460,9 @@ delete_tags(Client, Input, Options)
 %% @doc Deletes the specified trial.
 %%
 %% All trial components that make up the trial must be deleted first. Use the
-%% DescribeTrialComponent API to get the list of trial components.
+%% DescribeTrialComponent:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html
+%% API to get the list of trial components.
 delete_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial(Client, Input, []).
@@ -2365,7 +2474,9 @@ delete_trial(Client, Input, Options)
 %%
 %% A trial component must be disassociated from all trials before the trial
 %% component can be deleted. To disassociate a trial component from a trial,
-%% call the DisassociateTrialComponent API.
+%% call the DisassociateTrialComponent:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
+%% API.
 delete_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial_component(Client, Input, []).
@@ -2388,12 +2499,16 @@ delete_user_profile(Client, Input, Options)
 %%
 %% If you want to create a new workforce in an Amazon Web Services Region
 %% where a workforce already exists, use this operation to delete the
-%% existing workforce and then use CreateWorkforce to create a new workforce.
+%% existing workforce and then use CreateWorkforce:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateWorkforce.html
+%% to create a new workforce.
 %%
 %% If a private workforce contains one or more work teams, you must use the
-%% DeleteWorkteam operation to delete all work teams before you delete the
-%% workforce. If you try to delete a workforce that contains one or more work
-%% teams, you will recieve a `ResourceInUse' error.
+%% DeleteWorkteam:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteWorkteam.html
+%% operation to delete all work teams before you delete the workforce. If you
+%% try to delete a workforce that contains one or more work teams, you will
+%% recieve a `ResourceInUse' error.
 delete_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workforce(Client, Input, []).
@@ -2463,10 +2578,12 @@ describe_artifact(Client, Input, Options)
     request(Client, <<"DescribeArtifact">>, Input, Options).
 
 %% @doc Returns information about an AutoML job created by calling
-%% CreateAutoMLJob.
+%% CreateAutoMLJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html.
 %%
-%% AutoML jobs created by calling CreateAutoMLJobV2 cannot be described by
-%% `DescribeAutoMLJob'.
+%% AutoML jobs created by calling CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
+%% cannot be described by `DescribeAutoMLJob'.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
@@ -2475,7 +2592,10 @@ describe_auto_ml_job(Client, Input, Options)
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
 
 %% @doc Returns information about an AutoML job created by calling
-%% CreateAutoMLJobV2 or CreateAutoMLJob.
+%% CreateAutoMLJobV2:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
+%% or CreateAutoMLJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html.
 describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).
@@ -2510,9 +2630,11 @@ describe_code_repository(Client, Input, Options)
 
 %% @doc Returns information about a model compilation job.
 %%
-%% To create a model compilation job, use CreateCompilationJob. To get
-%% information about multiple model compilation jobs, use
-%% ListCompilationJobs.
+%% To create a model compilation job, use CreateCompilationJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html.
+%% To get information about multiple model compilation jobs, use
+%% ListCompilationJobs:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
 describe_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compilation_job(Client, Input, []).
@@ -2721,8 +2843,9 @@ describe_labeling_job(Client, Input, Options)
 
 %% @doc Provides a list of properties for the requested lineage group.
 %%
-%% For more information, see Cross-Account Lineage Tracking in the Amazon
-%% SageMaker Developer Guide.
+%% For more information, see Cross-Account Lineage Tracking :
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
+%% in the Amazon SageMaker Developer Guide.
 describe_lineage_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lineage_group(Client, Input, []).
@@ -2819,7 +2942,8 @@ describe_notebook_instance(Client, Input, Options)
 %% @doc Returns a description of a notebook instance lifecycle configuration.
 %%
 %% For information about notebook instance lifestyle configurations, see Step
-%% 2.1: (Optional) Customize a Notebook Instance.
+%% 2.1: (Optional) Customize a Notebook Instance:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
 describe_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_instance_lifecycle_config(Client, Input, []).
@@ -2944,8 +3068,8 @@ describe_user_profile(Client, Input, Options)
     request(Client, <<"DescribeUserProfile">>, Input, Options).
 
 %% @doc Lists private workforce information, including workforce name, Amazon
-%% Resource Name (ARN), and, if applicable, allowed IP address ranges
-%% (CIDRs).
+%% Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
 %%
 %% Allowable IP address ranges are the IP addresses that workers can use to
 %% access tasks.
@@ -2985,9 +3109,13 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 %% This doesn't effect other trials the component is associated with.
 %% Before you can delete a component, you must disassociate the component
 %% from all trials it is associated with. To associate a trial component with
-%% a trial, call the AssociateTrialComponent API.
+%% a trial, call the AssociateTrialComponent:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AssociateTrialComponent.html
+%% API.
 %%
-%% To get a list of the trials a component is associated with, use the Search
+%% To get a list of the trials a component is associated with, use the
+%% Search:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
 %% API. Specify `ExperimentTrialComponent' for the `Resource'
 %% parameter. The list appears in the response under
 %% `Results.TrialComponent.Parents'.
@@ -3027,8 +3155,9 @@ get_lineage_group_policy(Client, Input, Options)
 %% @doc Gets a resource policy that manages access for a model group.
 %%
 %% For information about resource policies, see Identity-based policies and
-%% resource-based policies in the Amazon Web Services Identity and Access
-%% Management User Guide..
+%% resource-based policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
+%% in the Amazon Web Services Identity and Access Management User Guide..
 get_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_package_group_policy(Client, Input, []).
@@ -3183,9 +3312,11 @@ list_code_repositories(Client, Input, Options)
 
 %% @doc Lists model compilation jobs that satisfy various filters.
 %%
-%% To create a model compilation job, use CreateCompilationJob. To get
-%% information about a particular model compilation job you have created, use
-%% DescribeCompilationJob.
+%% To create a model compilation job, use CreateCompilationJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateCompilationJob.html.
+%% To get information about a particular model compilation job you have
+%% created, use DescribeCompilationJob:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeCompilationJob.html.
 list_compilation_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compilation_jobs(Client, Input, []).
@@ -3332,8 +3463,10 @@ list_human_task_uis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHumanTaskUis">>, Input, Options).
 
-%% @doc Gets a list of HyperParameterTuningJobSummary objects that describe
-%% the hyperparameter tuning jobs launched in your account.
+%% @doc Gets a list of HyperParameterTuningJobSummary:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobSummary.html
+%% objects that describe the hyperparameter tuning jobs launched in your
+%% account.
 list_hyper_parameter_tuning_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hyper_parameter_tuning_jobs(Client, Input, []).
@@ -3416,8 +3549,9 @@ list_labeling_jobs_for_workteam(Client, Input, Options)
 %% @doc A list of lineage groups shared with your Amazon Web Services
 %% account.
 %%
-%% For more information, see Cross-Account Lineage Tracking in the Amazon
-%% SageMaker Developer Guide.
+%% For more information, see Cross-Account Lineage Tracking :
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
+%% in the Amazon SageMaker Developer Guide.
 list_lineage_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_lineage_groups(Client, Input, []).
@@ -3541,7 +3675,9 @@ list_monitoring_schedules(Client, Input, Options)
     request(Client, <<"ListMonitoringSchedules">>, Input, Options).
 
 %% @doc Lists notebook instance lifestyle configurations created with the
-%% CreateNotebookInstanceLifecycleConfig API.
+%% CreateNotebookInstanceLifecycleConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
+%% API.
 list_notebook_instance_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instance_lifecycle_configs(Client, Input, []).
@@ -3691,8 +3827,10 @@ list_training_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobs">>, Input, Options).
 
-%% @doc Gets a list of TrainingJobSummary objects that describe the training
-%% jobs that a hyperparameter tuning job launched.
+%% @doc Gets a list of TrainingJobSummary:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html
+%% objects that describe the training jobs that a hyperparameter tuning job
+%% launched.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, []).
@@ -3776,8 +3914,9 @@ list_workteams(Client, Input, Options)
 %% @doc Adds a resouce policy to control access to a model group.
 %%
 %% For information about resoure policies, see Identity-based policies and
-%% resource-based policies in the Amazon Web Services Identity and Access
-%% Management User Guide..
+%% resource-based policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
+%% in the Amazon Web Services Identity and Access Management User Guide..
 put_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_model_package_group_policy(Client, Input, []).
@@ -3788,8 +3927,9 @@ put_model_package_group_policy(Client, Input, Options)
 %% @doc Use this action to inspect your lineage and discover relationships
 %% between entities.
 %%
-%% For more information, see Querying Lineage Entities in the Amazon
-%% SageMaker Developer Guide.
+%% For more information, see Querying Lineage Entities:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html
+%% in the Amazon SageMaker Developer Guide.
 query_lineage(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_lineage(Client, Input, []).
@@ -3832,7 +3972,8 @@ retry_pipeline_execution(Client, Input, Options)
 %% and timestamp.
 %%
 %% The Search API may provide access to otherwise restricted data. See Amazon
-%% SageMaker API Permissions: Actions, Permissions, and Resources Reference
+%% SageMaker API Permissions: Actions, Permissions, and Resources Reference:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html
 %% for more information.
 search(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -4134,7 +4275,8 @@ update_cluster(Client, Input, Options)
 %% security patching.
 %%
 %% To learn how to use this API, see Update the SageMaker HyperPod platform
-%% software of a cluster.
+%% software of a cluster:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software.
 update_cluster_software(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_software(Client, Input, []).
@@ -4189,12 +4331,15 @@ update_domain(Client, Input, Options)
 %% endpoint configuration and then deletes the old instances using the
 %% previous `EndpointConfig' (there is no availability loss). For more
 %% information about how to control the update and traffic shifting process,
-%% see Update models in production.
+%% see Update models in production:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html.
 %%
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
-%% DescribeEndpoint API.
+%% DescribeEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html
+%% API.
 %%
 %% You must not delete an `EndpointConfig' in use by an endpoint that is
 %% live or while the `UpdateEndpoint' or `CreateEndpoint' operations
@@ -4219,7 +4364,9 @@ update_endpoint(Client, Input, Options)
 %% When it receives the request, SageMaker sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
-%% DescribeEndpoint API.
+%% DescribeEndpoint:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html
+%% API.
 update_endpoint_weights_and_capacities(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_weights_and_capacities(Client, Input, []).
@@ -4281,7 +4428,11 @@ update_hub(Client, Input, Options)
 
 %% @doc Updates the properties of a SageMaker image.
 %%
-%% To change the image's tags, use the AddTags and DeleteTags APIs.
+%% To change the image's tags, use the AddTags:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AddTags.html
+%% and DeleteTags:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteTags.html
+%% APIs.
 update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
@@ -4318,7 +4469,8 @@ update_inference_component_runtime_config(Client, Input, Options)
 %%
 %% The status of the inference experiment has to be either `Created',
 %% `Running'. For more information on the status of an inference
-%% experiment, see DescribeInferenceExperiment.
+%% experiment, see DescribeInferenceExperiment:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeInferenceExperiment.html.
 update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
@@ -4374,7 +4526,9 @@ update_notebook_instance(Client, Input, Options)
     request(Client, <<"UpdateNotebookInstance">>, Input, Options).
 
 %% @doc Updates a notebook instance lifecycle configuration created with the
-%% CreateNotebookInstanceLifecycleConfig API.
+%% CreateNotebookInstanceLifecycleConfig:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
+%% API.
 update_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance_lifecycle_config(Client, Input, []).
@@ -4464,10 +4618,12 @@ update_user_profile(Client, Input, Options)
 %%
 %% Use `SourceIpConfig' to restrict worker access to tasks to a specific
 %% range of IP addresses. You specify allowed IP addresses by creating a list
-%% of up to ten CIDRs. By default, a workforce isn't restricted to
-%% specific IP addresses. If you specify a range of IP addresses, workers who
-%% attempt to access tasks using any IP address outside the specified range
-%% are denied and get a `Not Found' error message on the worker portal.
+%% of up to ten CIDRs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html. By
+%% default, a workforce isn't restricted to specific IP addresses. If you
+%% specify a range of IP addresses, workers who attempt to access tasks using
+%% any IP address outside the specified range are denied and get a `Not
+%% Found' error message on the worker portal.
 %%
 %% To restrict access to all the workers in public internet, add the
 %% `SourceIpConfig' CIDR value as &quot;10.0.0.0/16&quot;.
@@ -4480,11 +4636,15 @@ update_user_profile(Client, Input, Options)
 %%
 %% You can only update your OIDC IdP configuration when there are no work
 %% teams associated with your workforce. You can delete work teams using the
-%% DeleteWorkteam operation.
+%% DeleteWorkteam:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteWorkteam.html
+%% operation.
 %%
 %% After restricting access to a range of IP addresses or updating your OIDC
 %% IdP configuration with this operation, you can view details about your
-%% update workforce using the DescribeWorkforce operation.
+%% update workforce using the DescribeWorkforce:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeWorkforce.html
+%% operation.
 %%
 %% This operation only applies to private workforces.
 update_workforce(Client, Input)

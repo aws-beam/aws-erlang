@@ -408,7 +408,8 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc Run queries to access information from your knowledge graph of
 %% entities within individual workspaces.
 %%
-%% The ExecuteQuery action only works with Amazon Web Services Java SDK2.
+%% The ExecuteQuery action only works with Amazon Web Services Java SDK2:
+%% https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html.
 %% ExecuteQuery will not work with any Amazon Web Services Java SDK version
 %% &lt; 2.x.
 execute_query(Client, Input) ->

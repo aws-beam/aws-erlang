@@ -10,7 +10,9 @@
 %% This guide describes the Cloud Directory operations that you can call
 %% programmatically and includes detailed information on data types and
 %% errors. For information about Cloud Directory features, see AWS Directory
-%% Service and the Amazon Cloud Directory Developer Guide.
+%% Service: https://aws.amazon.com/directoryservice/ and the Amazon Cloud
+%% Directory Developer Guide:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html.
 -module(aws_clouddirectory).
 
 -export([add_facet_to_object/2,
@@ -293,7 +295,8 @@ attach_to_index(Client, Input0, Options0) ->
 
 %% @doc Attaches a typed link to a specified source and target object.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 attach_typed_link(Client, Input) ->
     attach_typed_link(Client, Input, []).
 attach_typed_link(Client, Input0, Options0) ->
@@ -377,8 +380,9 @@ batch_write(Client, Input0, Options0) ->
 %% A directory cannot be created without a schema.
 %%
 %% You can also quickly create a directory using a managed schema, called the
-%% `QuickStartSchema'. For more information, see Managed Schema in the
-%% Amazon Cloud Directory Developer Guide.
+%% `QuickStartSchema'. For more information, see Managed Schema:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html
+%% in the Amazon Cloud Directory Developer Guide.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
 create_directory(Client, Input0, Options0) ->
@@ -432,7 +436,9 @@ create_facet(Client, Input0, Options0) ->
 
 %% @doc Creates an index object.
 %%
-%% See Indexing and search for more information.
+%% See Indexing and search:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html
+%% for more information.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 create_index(Client, Input0, Options0) ->
@@ -528,7 +534,8 @@ create_schema(Client, Input0, Options0) ->
 
 %% @doc Creates a `TypedLinkFacet'.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 create_typed_link_facet(Client, Input) ->
     create_typed_link_facet(Client, Input, []).
 create_typed_link_facet(Client, Input0, Options0) ->
@@ -613,7 +620,8 @@ delete_facet(Client, Input0, Options0) ->
 %%
 %% Only objects with no children and no parents can be deleted. The maximum
 %% number of attributes that can be deleted during an object deletion is 30.
-%% For more information, see Amazon Cloud Directory Limits.
+%% For more information, see Amazon Cloud Directory Limits:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
 delete_object(Client, Input0, Options0) ->
@@ -667,7 +675,8 @@ delete_schema(Client, Input0, Options0) ->
 
 %% @doc Deletes a `TypedLinkFacet'.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 delete_typed_link_facet(Client, Input) ->
     delete_typed_link_facet(Client, Input, []).
 delete_typed_link_facet(Client, Input0, Options0) ->
@@ -772,7 +781,8 @@ detach_policy(Client, Input0, Options0) ->
 
 %% @doc Detaches a typed link from a specified source and target object.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 detach_typed_link(Client, Input) ->
     detach_typed_link(Client, Input, []).
 detach_typed_link(Client, Input0, Options0) ->
@@ -1011,7 +1021,9 @@ get_object_information(Client, Input0, Options0) ->
 
 %% @doc Retrieves a JSON representation of the schema.
 %%
-%% See JSON Schema Format for more information.
+%% See JSON Schema Format:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json
+%% for more information.
 get_schema_as_json(Client, Input) ->
     get_schema_as_json(Client, Input, []).
 get_schema_as_json(Client, Input0, Options0) ->
@@ -1039,7 +1051,8 @@ get_schema_as_json(Client, Input0, Options0) ->
 %% @doc Returns the identity attribute order for a specific
 %% `TypedLinkFacet'.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 get_typed_link_facet_information(Client, Input) ->
     get_typed_link_facet_information(Client, Input, []).
 get_typed_link_facet_information(Client, Input0, Options0) ->
@@ -1216,7 +1229,8 @@ list_facet_names(Client, Input0, Options0) ->
 %% information for an object.
 %%
 %% It also supports filtering by typed link facet and identity attributes.
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
 list_incoming_typed_links(Client, Input0, Options0) ->
@@ -1349,7 +1363,8 @@ list_object_children(Client, Input0, Options0) ->
 %% @doc Retrieves all available parent paths for any object type such as
 %% node, leaf node, policy node, and index node objects.
 %%
-%% For more information about objects, see Directory Structure.
+%% For more information about objects, see Directory Structure:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html.
 %%
 %% Use this API to evaluate all parents for an object. The call returns all
 %% objects from the root of the directory up to the requested object. The API
@@ -1439,7 +1454,8 @@ list_object_policies(Client, Input0, Options0) ->
 %% information for an object.
 %%
 %% It also supports filtering by typed link facet and identity attributes.
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
 list_outgoing_typed_links(Client, Input0, Options0) ->
@@ -1547,7 +1563,8 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %% @doc Returns a paginated list of all attribute definitions for a
 %% particular `TypedLinkFacet'.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_typed_link_facet_attributes(Client, Input) ->
     list_typed_link_facet_attributes(Client, Input, []).
 list_typed_link_facet_attributes(Client, Input0, Options0) ->
@@ -1575,7 +1592,8 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
 %% @doc Returns a paginated list of `TypedLink' facet names for a
 %% particular schema.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 list_typed_link_facet_names(Client, Input) ->
     list_typed_link_facet_names(Client, Input, []).
 list_typed_link_facet_names(Client, Input0, Options0) ->
@@ -1608,7 +1626,8 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
 %% returns the `ObjectIdentifier' for such objects. If policies are
 %% present, it returns `ObjectIdentifier', `policyId', and
 %% `policyType'. Paths that don't lead to the root from the target
-%% object are ignored. For more information, see Policies.
+%% object are ignored. For more information, see Policies:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
 lookup_policy(Client, Input0, Options0) ->
@@ -1661,8 +1680,9 @@ publish_schema(Client, Input0, Options0) ->
 
 %% @doc Allows a schema to be updated using JSON upload.
 %%
-%% Only available for development schemas. See JSON Schema Format for more
-%% information.
+%% Only available for development schemas. See JSON Schema Format:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json
+%% for more information.
 put_schema_from_json(Client, Input) ->
     put_schema_from_json(Client, Input, []).
 put_schema_from_json(Client, Input0, Options0) ->
@@ -1875,7 +1895,8 @@ update_schema(Client, Input0, Options0) ->
 
 %% @doc Updates a `TypedLinkFacet'.
 %%
-%% For more information, see Typed Links.
+%% For more information, see Typed Links:
+%% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
 update_typed_link_facet(Client, Input) ->
     update_typed_link_facet(Client, Input, []).
 update_typed_link_facet(Client, Input0, Options0) ->

@@ -16,17 +16,22 @@
 %% repository. It provides an automatic delivery pipeline with fully managed
 %% operations, high performance, scalability, and security.
 %%
-%% For more information about App Runner, see the App Runner Developer Guide.
-%% For release information, see the App Runner Release Notes.
+%% For more information about App Runner, see the App Runner Developer Guide:
+%% https://docs.aws.amazon.com/apprunner/latest/dg/. For release information,
+%% see the App Runner Release Notes:
+%% https://docs.aws.amazon.com/apprunner/latest/relnotes/.
 %%
 %% To install the Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE) Toolkits, and command line tools that you can use to
-%% access the API, see Tools for Amazon Web Services.
+%% access the API, see Tools for Amazon Web Services:
+%% http://aws.amazon.com/tools/.
 %%
 %% Endpoints
 %%
 %% For a list of Region-specific endpoints that App Runner supports, see App
-%% Runner endpoints and quotas in the Amazon Web Services General Reference.
+%% Runner endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/apprunner.html in the Amazon
+%% Web Services General Reference.
 -module(aws_apprunner).
 
 -export([associate_custom_domain/2,
@@ -120,7 +125,8 @@
 %% one or more certificate validation records. App Runner then performs DNS
 %% validation to verify that you own or control the domain name that you
 %% associated. App Runner tracks domain validity in a certificate stored in
-%% AWS Certificate Manager (ACM).
+%% AWS Certificate Manager (ACM):
+%% https://docs.aws.amazon.com/acm/latest/userguide.
 associate_custom_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_custom_domain(Client, Input, []).
@@ -203,8 +209,9 @@ create_observability_configuration(Client, Input, Options)
 %% deployment.
 %%
 %% This is an asynchronous operation. On a successful call, you can use the
-%% returned `OperationId' and the ListOperations call to track the
-%% operation's progress.
+%% returned `OperationId' and the ListOperations:
+%% https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html
+%% call to track the operation's progress.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -374,7 +381,8 @@ describe_vpc_ingress_connection(Client, Input, Options)
 %% @doc Disassociate a custom domain name from an App Runner service.
 %%
 %% Certificates tracking domain validity are associated with a custom domain
-%% and are stored in AWS Certificate Manager (ACM). These certificates
+%% and are stored in AWS Certificate Manager (ACM):
+%% https://docs.aws.amazon.com/acm/latest/userguide. These certificates
 %% aren't deleted as part of this action. App Runner delays certificate
 %% deletion for 30 days after a domain is disassociated from your service.
 disassociate_custom_domain(Client, Input)

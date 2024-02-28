@@ -39,7 +39,8 @@
 %% </li> <li> Custom resources provided by your own applications or services
 %%
 %% </li> </ul> To learn more about Application Auto Scaling, see the
-%% Application Auto Scaling User Guide.
+%% Application Auto Scaling User Guide:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html.
 %%
 %% API Summary
 %%
@@ -57,11 +58,12 @@
 %% recent scaling activity history.
 %%
 %% </li> <li> Suspend and resume scaling - Temporarily suspend and later
-%% resume automatic scaling by calling the RegisterScalableTarget API action
-%% for any Application Auto Scaling scalable target. You can suspend and
-%% resume (individually or in combination) scale-out activities that are
-%% triggered by a scaling policy, scale-in activities that are triggered by a
-%% scaling policy, and scheduled scaling.
+%% resume automatic scaling by calling the RegisterScalableTarget:
+%% https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html
+%% API action for any Application Auto Scaling scalable target. You can
+%% suspend and resume (individually or in combination) scale-out activities
+%% that are triggered by a scaling policy, scale-in activities that are
+%% triggered by a scaling policy, and scheduled scaling.
 %%
 %% </li> </ul>
 -module(aws_application_auto_scaling).
@@ -106,8 +108,11 @@
 %% does not delete the CloudWatch alarm associated with the scaling policy,
 %% even if it no longer has an associated action.
 %%
-%% For more information, see Delete a step scaling policy and Delete a target
-%% tracking scaling policy in the Application Auto Scaling User Guide.
+%% For more information, see Delete a step scaling policy:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/create-step-scaling-policy-cli.html#delete-step-scaling-policy
+%% and Delete a target tracking scaling policy:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/create-target-tracking-policy-cli.html#delete-target-tracking-policy
+%% in the Application Auto Scaling User Guide.
 delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
@@ -118,8 +123,9 @@ delete_scaling_policy(Client, Input, Options)
 %% @doc Deletes the specified scheduled action for an Application Auto
 %% Scaling scalable target.
 %%
-%% For more information, see Delete a scheduled action in the Application
-%% Auto Scaling User Guide.
+%% For more information, see Delete a scheduled action:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action
+%% in the Application Auto Scaling User Guide.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
@@ -130,7 +136,8 @@ delete_scheduled_action(Client, Input, Options)
 %% @doc Deregisters an Application Auto Scaling scalable target when you have
 %% finished using it.
 %%
-%% To see which resources have been registered, use DescribeScalableTargets.
+%% To see which resources have been registered, use DescribeScalableTargets:
+%% https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html.
 %%
 %% Deregistering a scalable target deletes the scaling policies and the
 %% scheduled actions that are associated with it.
@@ -160,7 +167,8 @@ describe_scalable_targets(Client, Input, Options)
 %% `ScalableDimension'.
 %%
 %% For information about viewing scaling activities using the Amazon Web
-%% Services CLI, see Scaling activities for Application Auto Scaling.
+%% Services CLI, see Scaling activities for Application Auto Scaling:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -174,8 +182,11 @@ describe_scaling_activities(Client, Input, Options)
 %% You can filter the results using `ResourceId',
 %% `ScalableDimension', and `PolicyNames'.
 %%
-%% For more information, see Target tracking scaling policies and Step
-%% scaling policies in the Application Auto Scaling User Guide.
+%% For more information, see Target tracking scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html
+%% and Step scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html
+%% in the Application Auto Scaling User Guide.
 describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
@@ -189,7 +200,10 @@ describe_scaling_policies(Client, Input, Options)
 %% You can filter the results using the `ResourceId',
 %% `ScalableDimension', and `ScheduledActionNames' parameters.
 %%
-%% For more information, see Scheduled scaling and Managing scheduled scaling
+%% For more information, see Scheduled scaling:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html
+%% and Managing scheduled scaling:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html
 %% in the Application Auto Scaling User Guide.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -202,8 +216,9 @@ describe_scheduled_actions(Client, Input, Options)
 %% scalable target.
 %%
 %% For general information about tags, including the format and syntax, see
-%% Tagging Amazon Web Services resources in the Amazon Web Services General
-%% Reference.
+%% Tagging Amazon Web Services resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in the
+%% Amazon Web Services General Reference.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -238,8 +253,11 @@ list_tags_for_resource(Client, Input, Options)
 %% activity completes, the target tracking policy could instruct the scalable
 %% target to scale out again.
 %%
-%% For more information, see Target tracking scaling policies and Step
-%% scaling policies in the Application Auto Scaling User Guide.
+%% For more information, see Target tracking scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html
+%% and Step scaling policies:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html
+%% in the Application Auto Scaling User Guide.
 %%
 %% If a scalable target is deregistered, the scalable target is no longer
 %% available to use scaling policies. Any scaling policies that were
@@ -267,8 +285,9 @@ put_scaling_policy(Client, Input, Options)
 %% change. If you don't specify start and end times, the old values are
 %% deleted.
 %%
-%% For more information, see Scheduled scaling in the Application Auto
-%% Scaling User Guide.
+%% For more information, see Scheduled scaling:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html
+%% in the Application Auto Scaling User Guide.
 %%
 %% If a scalable target is deregistered, the scalable target is no longer
 %% available to run scheduled actions. Any scheduled actions that were
@@ -300,10 +319,14 @@ put_scheduled_action(Client, Input, Options)
 %%
 %% After you register a scalable target, you do not need to register it again
 %% to use other Application Auto Scaling operations. To see which resources
-%% have been registered, use DescribeScalableTargets. You can also view the
-%% scaling policies for a service namespace by using DescribeScalableTargets.
+%% have been registered, use DescribeScalableTargets:
+%% https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html.
+%% You can also view the scaling policies for a service namespace by using
+%% DescribeScalableTargets:
+%% https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html.
 %% If you no longer need a scalable target, you can deregister it by using
-%% DeregisterScalableTarget.
+%% DeregisterScalableTarget:
+%% https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html.
 %%
 %% To update a scalable target, specify the parameters that you want to
 %% change. Include the parameters that identify the scalable target: resource
@@ -312,10 +335,11 @@ put_scheduled_action(Client, Input, Options)
 %%
 %% If you call the `RegisterScalableTarget' API operation to create a
 %% scalable target, there might be a brief delay until the operation achieves
-%% eventual consistency. You might become aware of this brief delay if you
-%% get unexpected errors when performing sequential operations. The typical
-%% strategy is to retry the request, and some Amazon Web Services SDKs
-%% include automatic backoff and retry logic.
+%% eventual consistency: https://en.wikipedia.org/wiki/Eventual_consistency.
+%% You might become aware of this brief delay if you get unexpected errors
+%% when performing sequential operations. The typical strategy is to retry
+%% the request, and some Amazon Web Services SDKs include automatic backoff
+%% and retry logic.
 %%
 %% If you call the `RegisterScalableTarget' API operation to update an
 %% existing scalable target, Application Auto Scaling retrieves the current
@@ -343,12 +367,14 @@ register_scalable_target(Client, Input, Options)
 %% creating it (`RegisterScalableTarget').
 %%
 %% For general information about tags, including the format and syntax, see
-%% Tagging Amazon Web Services resources in the Amazon Web Services General
-%% Reference.
+%% Tagging Amazon Web Services resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html in the
+%% Amazon Web Services General Reference.
 %%
 %% Use tags to control access to a scalable target. For more information, see
-%% Tagging support for Application Auto Scaling in the Application Auto
-%% Scaling User Guide.
+%% Tagging support for Application Auto Scaling:
+%% https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html
+%% in the Application Auto Scaling User Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

@@ -15,23 +15,28 @@
 %% resources provided by the Amazon Pinpoint API.
 %%
 %% If you're new to Amazon Pinpoint, it's also helpful to review the
-%% Amazon Pinpoint Developer Guide. The Amazon Pinpoint Developer Guide
-%% provides tutorials, code samples, and procedures that demonstrate how to
-%% use Amazon Pinpoint features programmatically and how to integrate Amazon
-%% Pinpoint functionality into mobile apps and other types of applications.
-%% The guide also provides key information, such as Amazon Pinpoint
-%% integration with other Amazon Web Services services, and the quotas that
-%% apply to use of the service.
+%% Amazon Pinpoint Developer Guide:
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html.
+%% The Amazon Pinpoint Developer Guide provides tutorials, code samples, and
+%% procedures that demonstrate how to use Amazon Pinpoint features
+%% programmatically and how to integrate Amazon Pinpoint functionality into
+%% mobile apps and other types of applications. The guide also provides key
+%% information, such as Amazon Pinpoint integration with other Amazon Web
+%% Services services, and the quotas that apply to use of the service.
 %%
 %% Regional availability
 %%
 %% The Amazon Pinpoint SMS and Voice, version 2 API Reference is available in
 %% several Amazon Web Services Regions and it provides an endpoint for each
 %% of these Regions. For a list of all the Regions and endpoints where the
-%% API is currently available, see Amazon Web Services Service Endpoints and
-%% Amazon Pinpoint endpoints and quotas in the Amazon Web Services General
-%% Reference. To learn more about Amazon Web Services Regions, see Managing
-%% Amazon Web Services Regions in the Amazon Web Services General Reference.
+%% API is currently available, see Amazon Web Services Service Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region
+%% and Amazon Pinpoint endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/pinpoint.html in the Amazon
+%% Web Services General Reference. To learn more about Amazon Web Services
+%% Regions, see Managing Amazon Web Services Regions:
+%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
+%% Amazon Web Services General Reference.
 %%
 %% In each Region, Amazon Web Services maintains multiple Availability Zones.
 %% These Availability Zones are physically isolated from each other, but are
@@ -39,7 +44,8 @@
 %% network connections. These Availability Zones enable us to provide very
 %% high levels of availability and redundancy, while also minimizing latency.
 %% To learn more about the number of Availability Zones that are available in
-%% each Region, see Amazon Web Services Global Infrastructure.
+%% each Region, see Amazon Web Services Global Infrastructure.:
+%% https://aws.amazon.com/about-aws/global-infrastructure/
 -module(aws_pinpoint_sms_voice_v2).
 
 -export([associate_origination_identity/2,
@@ -246,7 +252,9 @@ create_event_destination(Client, Input, Options)
 %% keyword &quot;STOP,&quot; an entry for the phone number is added to the
 %% opt-out list. In addition to STOP, your recipients can use any supported
 %% opt-out keyword, such as CANCEL or OPTOUT. For a list of supported opt-out
-%% keywords, see SMS opt out in the Amazon Pinpoint User Guide.
+%% keywords, see SMS opt out :
+%% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-manage.html#channels-sms-manage-optout
+%% in the Amazon Pinpoint User Guide.
 create_opt_out_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_opt_out_list(Client, Input, []).
@@ -470,8 +478,9 @@ delete_registration_field_value(Client, Input, Options)
 %%
 %% Deleting a spend limit override will set the `EnforcedLimit' to equal
 %% the `MaxLimit', which is controlled by Amazon Web Services. For more
-%% information on spend limits (quotas) see Amazon Pinpoint quotas in the
-%% Amazon Pinpoint Developer Guide.
+%% information on spend limits (quotas) see Amazon Pinpoint quotas :
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html in
+%% the Amazon Pinpoint Developer Guide.
 delete_text_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_text_message_spend_limit_override(Client, Input, []).
@@ -492,8 +501,9 @@ delete_verified_destination_number(Client, Input, Options)
 %%
 %% Deleting a spend limit override sets the `EnforcedLimit' equal to the
 %% `MaxLimit', which is controlled by Amazon Web Services. For more
-%% information on spending limits (quotas) see Amazon Pinpoint quotas in the
-%% Amazon Pinpoint Developer Guide.
+%% information on spending limits (quotas) see Amazon Pinpoint quotas:
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html in
+%% the Amazon Pinpoint Developer Guide.
 delete_voice_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_voice_message_spend_limit_override(Client, Input, []).
@@ -527,8 +537,9 @@ describe_account_attributes(Client, Input, Options)
 %% When you establish an Amazon Web Services account, the account has initial
 %% quotas on the maximum number of configuration sets, opt-out lists, phone
 %% numbers, and pools that you can create in a given Region. For more
-%% information see Amazon Pinpoint quotas in the Amazon Pinpoint Developer
-%% Guide.
+%% information see Amazon Pinpoint quotas :
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html in
+%% the Amazon Pinpoint Developer Guide.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -735,7 +746,9 @@ describe_sender_ids(Client, Input, Options)
 %% When you establish an Amazon Web Services account, the account has initial
 %% monthly spend limit in a given Region. For more information on increasing
 %% your monthly spend limit, see Requesting increases to your monthly SMS
-%% spending quota for Amazon Pinpoint in the Amazon Pinpoint User Guide.
+%% spending quota for Amazon Pinpoint :
+%% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-spend-threshold.html
+%% in the Amazon Pinpoint User Guide.
 describe_spend_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spend_limits(Client, Input, []).
@@ -857,8 +870,9 @@ release_sender_id(Client, Input, Options)
 
 %% @doc Request an origination phone number for use in your account.
 %%
-%% For more information on phone number request see Requesting a number in
-%% the Amazon Pinpoint User Guide.
+%% For more information on phone number request see Requesting a number :
+%% https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html
+%% in the Amazon Pinpoint User Guide.
 request_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_phone_number(Client, Input, []).
@@ -894,7 +908,8 @@ send_destination_number_verification_code(Client, Input, Options)
 %% SMS throughput limits are measured in Message Parts per Second (MPS). Your
 %% MPS limit depends on the destination country of your messages, as well as
 %% the type of phone number (origination number) that you use to send the
-%% message. For more information, see Message Parts per Second (MPS) limits
+%% message. For more information, see Message Parts per Second (MPS) limits:
+%% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html
 %% in the Amazon Pinpoint User Guide.
 send_text_message(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -906,8 +921,8 @@ send_text_message(Client, Input, Options)
 %% @doc Allows you to send a request that sends a voice message through
 %% Amazon Pinpoint.
 %%
-%% This operation uses Amazon Polly to convert a text script into a voice
-%% message.
+%% This operation uses Amazon Polly: http://aws.amazon.com/polly/ to convert
+%% a text script into a voice message.
 send_voice_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_voice_message(Client, Input, []).
@@ -981,8 +996,9 @@ submit_registration_version(Client, Input, Options)
 %% When you specify an existing tag key, the value is overwritten with the
 %% new value. Each resource can have a maximum of 50 tags. Each tag consists
 %% of a key and an optional value. Tag keys must be unique per resource. For
-%% more information about tags, see Tagging Amazon Pinpoint resources in the
-%% Amazon Pinpoint Developer Guide.
+%% more information about tags, see Tagging Amazon Pinpoint resources:
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
+%% in the Amazon Pinpoint Developer Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -993,8 +1009,9 @@ tag_resource(Client, Input, Options)
 %% @doc Removes the association of the specified tags from an Amazon Pinpoint
 %% SMS Voice V2 resource.
 %%
-%% For more information on tags see Tagging Amazon Pinpoint resources in the
-%% Amazon Pinpoint Developer Guide.
+%% For more information on tags see Tagging Amazon Pinpoint resources:
+%% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
+%% in the Amazon Pinpoint Developer Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

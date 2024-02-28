@@ -6,14 +6,18 @@
 %% manage your accounts and their resources.
 %%
 %% This guide provides descriptions of the Organizations operations. For more
-%% information about using this service, see the Organizations User Guide.
+%% information about using this service, see the Organizations User Guide:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html.
 %%
 %% Support and feedback for Organizations
 %%
 %% We welcome your feedback. Send your comments to
-%% feedback-awsorganizations@amazon.com or post your feedback and questions
-%% in the Organizations support forum. For more information about the Amazon
-%% Web Services support forums, see Forums Help.
+%% feedback-awsorganizations@amazon.com:
+%% mailto:feedback-awsorganizations@amazon.com or post your feedback and
+%% questions in the Organizations support forum:
+%% http://forums.aws.amazon.com/forum.jspa?forumID=219. For more information
+%% about the Amazon Web Services support forums, see Forums Help:
+%% http://forums.aws.amazon.com/help.jspa.
 %%
 %% Endpoint to call When using the CLI or the Amazon Web Services SDK
 %%
@@ -64,9 +68,11 @@
 %% CloudTrail, you can determine which requests the Organizations service
 %% received, who made the request and when, and so on. For more about
 %% Organizations and its support for CloudTrail, see Logging Organizations
-%% API calls with CloudTrail in the Organizations User Guide. To learn more
-%% about CloudTrail, including how to turn it on and find your log files, see
-%% the CloudTrail User Guide.
+%% API calls with CloudTrail:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_incident-response.html#orgs_cloudtrail-integration
+%% in the Organizations User Guide. To learn more about CloudTrail, including
+%% how to turn it on and find your log files, see the CloudTrail User Guide:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html.
 -module(aws_organizations).
 
 -export([accept_handshake/2,
@@ -201,16 +207,21 @@
 %% `iam:CreateServiceLinkedRole' permission so that Organizations can
 %% create the required service-linked role named
 %% `AWSServiceRoleForOrganizations'. For more information, see
-%% Organizations and service-linked roles in the Organizations User Guide.
+%% Organizations and service-linked roles:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integrate_services-using_slrs
+%% in the Organizations User Guide.
 %%
 %% </li> <li> Enable all features final confirmation handshake: only a
 %% principal from the management account.
 %%
 %% For more information about invitations, see Inviting an Amazon Web
-%% Services account to join your organization in the Organizations User
-%% Guide. For more information about requests to enable all features in the
-%% organization, see Enabling all features in your organization in the
-%% Organizations User Guide.
+%% Services account to join your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html
+%% in the Organizations User Guide. For more information about requests to
+%% enable all features in the organization, see Enabling all features in your
+%% organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
+%% in the Organizations User Guide.
 %%
 %% </li> </ul> After you accept a handshake, it continues to appear in the
 %% results of relevant APIs for only 30 days. After that, it's deleted.
@@ -227,13 +238,17 @@ accept_handshake(Client, Input, Options)
 %% How the policy affects accounts depends on the type of policy. Refer to
 %% the Organizations User Guide for information about each policy type:
 %%
-%% <ul> <li> AISERVICES_OPT_OUT_POLICY
+%% <ul> <li> AISERVICES_OPT_OUT_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html
 %%
-%% </li> <li> BACKUP_POLICY
+%% </li> <li> BACKUP_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html
 %%
-%% </li> <li> SERVICE_CONTROL_POLICY
+%% </li> <li> SERVICE_CONTROL_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html
 %%
-%% </li> <li> TAG_POLICY
+%% </li> <li> TAG_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html
 %%
 %% </li> </ul> This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
@@ -265,13 +280,14 @@ cancel_handshake(Client, Input, Options)
 
 %% @doc Closes an Amazon Web Services member account within an organization.
 %%
-%% You can close an account when all features are enabled . You can't
-%% close the management account with this API. This is an asynchronous
-%% request that Amazon Web Services performs in the background. Because
-%% `CloseAccount' operates asynchronously, it can return a successful
-%% completion message even though account closure might still be in progress.
-%% You need to wait a few minutes before the account is fully closed. To
-%% check the status of the request, do one of the following:
+%% You can close an account when all features are enabled :
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html.
+%% You can't close the management account with this API. This is an
+%% asynchronous request that Amazon Web Services performs in the background.
+%% Because `CloseAccount' operates asynchronously, it can return a
+%% successful completion message even though account closure might still be
+%% in progress. You need to wait a few minutes before the account is fully
+%% closed. To check the status of the request, do one of the following:
 %%
 %% <ul> <li> Use the `AccountId' that you sent in the `CloseAccount'
 %% request to provide as a parameter to the `DescribeAccount' operation.
@@ -283,14 +299,19 @@ cancel_handshake(Client, Input, Options)
 %% </li> <li> Check the CloudTrail log for the `CloseAccountResult' event
 %% that gets published after the account closes successfully. For information
 %% on using CloudTrail with Organizations, see Logging and monitoring in
-%% Organizations in the Organizations User Guide.
+%% Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration
+%% in the Organizations User Guide.
 %%
 %% </li> </ul> You can close only 10% of member accounts, between 10 and
 %% 1000, within a rolling 30 day period. This quota is not bound by a
 %% calendar month, but starts when you close an account. After you reach this
 %% limit, you can close additional accounts. For more information, see
-%% Closing a member account in your organization and Quotas for
-%% Organizationsin the Organizations User Guide.
+%% Closing a member account in your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
+%% and Quotas for Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.htmlin
+%% the Organizations User Guide.
 %%
 %% To reinstate a closed account, contact Amazon Web Services Support within
 %% the 90-day grace period while the account is in SUSPENDED status.
@@ -298,8 +319,9 @@ cancel_handshake(Client, Input, Options)
 %% If the Amazon Web Services account you attempt to close is linked to an
 %% Amazon Web Services GovCloud (US) account, the `CloseAccount' request
 %% will close both accounts. To learn important pre-closure details, see
-%% Closing an Amazon Web Services GovCloud (US) account in the Amazon Web
-%% Services GovCloud User Guide.
+%% Closing an Amazon Web Services GovCloud (US) account:
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html
+%% in the Amazon Web Services GovCloud User Guide.
 close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
@@ -323,13 +345,17 @@ close_account(Client, Input, Options)
 %%
 %% </li> <li> Check the CloudTrail log for the `CreateAccountResult'
 %% event. For information on using CloudTrail with Organizations, see Logging
-%% and monitoring in Organizations in the Organizations User Guide.
+%% and monitoring in Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration
+%% in the Organizations User Guide.
 %%
 %% </li> </ul> The user who calls the API to create an account must have the
 %% `organizations:CreateAccount' permission. If you enabled all features
 %% in the organization, Organizations creates the required service-linked
 %% role named `AWSServiceRoleForOrganizations'. For more information, see
-%% Organizations and service-linked roles in the Organizations User Guide.
+%% Organizations and service-linked roles:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs
+%% in the Organizations User Guide.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -345,7 +371,9 @@ close_account(Client, Input, Options)
 %% account.
 %%
 %% For more information about creating accounts, see Creating a member
-%% account in your organization in the Organizations User Guide.
+%% account in your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html
+%% in the Organizations User Guide.
 %%
 %% When you create an account in an organization using the Organizations
 %% console, API, or CLI commands, the information required for the account to
@@ -353,22 +381,26 @@ close_account(Client, Input, Options)
 %% end user license agreement (EULA) is not automatically collected. If you
 %% must remove an account from your organization later, you can do so only
 %% after you provide the missing information. For more information, see
-%% Considerations before removing an account from an organization in the
-%% Organizations User Guide.
+%% Considerations before removing an account from an organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html
+%% in the Organizations User Guide.
 %%
 %% If you get an exception that indicates that you exceeded your account
-%% limits for the organization, contact Amazon Web Services Support.
+%% limits for the organization, contact Amazon Web Services Support:
+%% https://console.aws.amazon.com/support/home#/.
 %%
 %% If you get an exception that indicates that the operation failed because
 %% your organization is still initializing, wait one hour and then try again.
-%% If the error persists, contact Amazon Web Services Support.
+%% If the error persists, contact Amazon Web Services Support:
+%% https://console.aws.amazon.com/support/home#/.
 %%
 %% Using `CreateAccount' to create multiple temporary accounts isn't
 %% recommended. You can only close an account from the Billing and Cost
 %% Management console, and you must be signed in as the root user. For
 %% information on the requirements and process for closing an account, see
-%% Closing a member account in your organization in the Organizations User
-%% Guide.
+%% Closing a member account in your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
+%% in the Organizations User Guide.
 %%
 %% When you create a member account with this operation, you can choose
 %% whether to create the account with the IAM User and Role Access to Billing
@@ -376,7 +408,8 @@ close_account(Client, Input, Options)
 %% have appropriate permissions can view billing information for the account.
 %% If you disable it, only the account root user can access billing
 %% information. For information about how to disable this switch for an
-%% account, see Granting access to your billing information and tools.
+%% account, see Granting access to your billing information and tools:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#grantaccess.
 create_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account(Client, Input, []).
@@ -390,7 +423,8 @@ create_account(Client, Input, Options)
 %% Services GovCloud (US) Region.
 %%
 %% For more information on the Amazon Web Services GovCloud (US) Region, see
-%% the Amazon Web Services GovCloud User Guide.
+%% the Amazon Web Services GovCloud User Guide.:
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html
 %%
 %% </li> <li> You already have an account in the Amazon Web Services GovCloud
 %% (US) Region that is paired with a management account of an organization in
@@ -404,8 +438,9 @@ create_account(Client, Input, Options)
 %%
 %% </li> </ul> Organizations automatically creates the required
 %% service-linked role named `AWSServiceRoleForOrganizations'. For more
-%% information, see Organizations and service-linked roles in the
-%% Organizations User Guide.
+%% information, see Organizations and service-linked roles:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs
+%% in the Organizations User Guide.
 %%
 %% Amazon Web Services automatically enables CloudTrail for Amazon Web
 %% Services GovCloud (US) accounts, but you should also do the following:
@@ -414,8 +449,9 @@ create_account(Client, Input, Options)
 %%
 %% </li> <li> Create an Amazon S3 bucket for CloudTrail log storage.
 %%
-%% For more information, see Verifying CloudTrail Is Enabled in the Amazon
-%% Web Services GovCloud User Guide.
+%% For more information, see Verifying CloudTrail Is Enabled:
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/verifying-cloudtrail.html
+%% in the Amazon Web Services GovCloud User Guide.
 %%
 %% </li> </ul> If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission. The tags are attached to the
@@ -430,8 +466,9 @@ create_account(Client, Input, Options)
 %% created, the management account of an organization in the Amazon Web
 %% Services GovCloud (US) Region can invite it to that organization. For more
 %% information on inviting standalone accounts in the Amazon Web Services
-%% GovCloud (US) to join an organization, see Organizations in the Amazon Web
-%% Services GovCloud User Guide.
+%% GovCloud (US) to join an organization, see Organizations:
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html
+%% in the Amazon Web Services GovCloud User Guide.
 %%
 %% Calling `CreateGovCloudAccount' is an asynchronous request that Amazon
 %% Web Services performs in the background. Because
@@ -447,7 +484,9 @@ create_account(Client, Input, Options)
 %%
 %% </li> <li> Check the CloudTrail log for the `CreateAccountResult'
 %% event. For information on using CloudTrail with Organizations, see Logging
-%% and monitoring in Organizations in the Organizations User Guide.
+%% and monitoring in Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html
+%% in the Organizations User Guide.
 %%
 %% </li> </ul>
 %%
@@ -466,10 +505,14 @@ create_account(Client, Input, Options)
 %% can be assumed by the Amazon Web Services GovCloud (US) account that is
 %% associated with the management account of the commercial organization. For
 %% more information and to view a diagram that explains how account access
-%% works, see Organizations in the Amazon Web Services GovCloud User Guide.
+%% works, see Organizations:
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html
+%% in the Amazon Web Services GovCloud User Guide.
 %%
 %% For more information about creating accounts, see Creating a member
-%% account in your organization in the Organizations User Guide.
+%% account in your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html
+%% in the Organizations User Guide.
 %%
 %% When you create an account in an organization using the Organizations
 %% console, API, or CLI commands, the information required for the account to
@@ -478,21 +521,26 @@ create_account(Client, Input, Options)
 %% (EULA). If you must remove an account from your organization later, you
 %% can do so only after you provide the missing information. For more
 %% information, see Considerations before removing an account from an
-%% organization in the Organizations User Guide.
+%% organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html
+%% in the Organizations User Guide.
 %%
 %% If you get an exception that indicates that you exceeded your account
-%% limits for the organization, contact Amazon Web Services Support.
+%% limits for the organization, contact Amazon Web Services Support:
+%% https://console.aws.amazon.com/support/home#/.
 %%
 %% If you get an exception that indicates that the operation failed because
 %% your organization is still initializing, wait one hour and then try again.
-%% If the error persists, contact Amazon Web Services Support.
+%% If the error persists, contact Amazon Web Services Support:
+%% https://console.aws.amazon.com/support/home#/.
 %%
 %% Using `CreateGovCloudAccount' to create multiple temporary accounts
 %% isn't recommended. You can only close an account from the Amazon Web
 %% Services Billing and Cost Management console, and you must be signed in as
 %% the root user. For information on the requirements and process for closing
-%% an account, see Closing a member account in your organization in the
-%% Organizations User Guide.
+%% an account, see Closing a member account in your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
+%% in the Organizations User Guide.
 %%
 %% When you create a member account with this operation, you can choose
 %% whether to create the account with the IAM User and Role Access to Billing
@@ -500,7 +548,8 @@ create_account(Client, Input, Options)
 %% have appropriate permissions can view billing information for the account.
 %% If you disable it, only the account root user can access billing
 %% information. For information about how to disable this switch for an
-%% account, see Granting access to your billing information and tools.
+%% account, see Granting access to your billing information and tools:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html.
 create_gov_cloud_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gov_cloud_account(Client, Input, []).
@@ -511,7 +560,9 @@ create_gov_cloud_account(Client, Input, Options)
 %% @doc Creates an Amazon Web Services organization.
 %%
 %% The account whose user is calling the `CreateOrganization' operation
-%% automatically becomes the management account of the new organization.
+%% automatically becomes the management account:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account
+%% of the new organization.
 %%
 %% This operation must be called using credentials from the account that is
 %% to become the new organization's management account. The principal
@@ -539,8 +590,9 @@ create_organization(Client, Input, Options)
 %% types enabled for that root. For service control policies, the limit is
 %% five.
 %%
-%% For more information about OUs, see Managing organizational units (OUs) in
-%% the Organizations User Guide.
+%% For more information about OUs, see Managing organizational units (OUs):
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html
+%% in the Organizations User Guide.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -558,7 +610,8 @@ create_organizational_unit(Client, Input, Options)
 %% an organizational unit (OU), or an individual Amazon Web Services account.
 %%
 %% For more information about policies and their use, see Managing
-%% Organizations policies.
+%% Organizations policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -654,8 +707,9 @@ delete_resource_policy(Client, Input, Options)
 %% You can run this action only for Amazon Web Services services that support
 %% this feature. For a current list of services that support it, see the
 %% column Supports Delegated Administrator in the table at Amazon Web
-%% Services Services that you can use with Organizations in the Organizations
-%% User Guide.
+%% Services Services that you can use with Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
+%% in the Organizations User Guide.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -703,7 +757,9 @@ describe_create_account_status(Client, Input, Options)
 %% policies (SCPs).
 %%
 %% For more information about policy inheritance, see Understanding
-%% management policy inheritance in the Organizations User Guide.
+%% management policy inheritance:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inheritance_mgmt.html
+%% in the Organizations User Guide.
 %%
 %% This operation can be called from any account in the organization.
 describe_effective_policy(Client, Input)
@@ -792,12 +848,14 @@ describe_resource_policy(Client, Input, Options)
 %% want to replace the default `FullAWSAccess' policy with an SCP that
 %% limits the permissions that can be delegated, you must attach the
 %% replacement SCP before you can remove the default SCP. This is the
-%% authorization strategy of an &quot;allow list&quot;. If you instead attach
-%% a second SCP and leave the `FullAWSAccess' SCP still attached, and
-%% specify `&quot;Effect&quot;: &quot;Deny&quot;' in the second SCP to
-%% override the `&quot;Effect&quot;: &quot;Allow&quot;' in the
-%% `FullAWSAccess' policy (or any other attached SCP), you're using
-%% the authorization strategy of a &quot;deny list&quot;.
+%% authorization strategy of an &quot;allow list:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist&quot;.
+%% If you instead attach a second SCP and leave the `FullAWSAccess' SCP
+%% still attached, and specify `&quot;Effect&quot;: &quot;Deny&quot;' in
+%% the second SCP to override the `&quot;Effect&quot;: &quot;Allow&quot;'
+%% in the `FullAWSAccess' policy (or any other attached SCP), you're
+%% using the authorization strategy of a &quot;deny list:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist&quot;.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -813,10 +871,12 @@ detach_policy(Client, Input, Options)
 %% service that is specified by `ServicePrincipal') with Organizations.
 %%
 %% When you disable integration, the specified service no longer can create a
-%% service-linked role in new accounts in your organization. This means the
-%% service can't perform operations on your behalf on any new accounts in
-%% your organization. The service can still perform operations in older
-%% accounts until the service completes its clean-up from Organizations.
+%% service-linked role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html
+%% in new accounts in your organization. This means the service can't
+%% perform operations on your behalf on any new accounts in your
+%% organization. The service can still perform operations in older accounts
+%% until the service completes its clean-up from Organizations.
 %%
 %% We strongly recommend that you don't use this command to disable
 %% integration between Organizations and the specified Amazon Web Services
@@ -829,7 +889,9 @@ detach_policy(Client, Input, Options)
 %% For information about how to disable trusted service access to your
 %% organization using the trusted service, see the Learn more link under the
 %% Supports Trusted Access column at Amazon Web Services services that you
-%% can use with Organizations. on this page.
+%% can use with Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html.
+%% on this page.
 %%
 %% If you disable access by using this command, it causes the following
 %% actions to occur:
@@ -864,8 +926,9 @@ detach_policy(Client, Input, Options)
 %%
 %% For more information about integrating other services with Organizations,
 %% including the list of services that work with Organizations, see Using
-%% Organizations with other Amazon Web Services services in the Organizations
-%% User Guide.
+%% Organizations with other Amazon Web Services services:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
+%% in the Organizations User Guide.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -886,10 +949,11 @@ disable_aws_service_access(Client, Input, Options)
 %%
 %% This is an asynchronous request that Amazon Web Services performs in the
 %% background. If you disable a policy type for a root, it still appears
-%% enabled for the organization if all features are enabled for the
-%% organization. Amazon Web Services recommends that you first use
-%% `ListRoots' to see the status of policy types for a specified root,
-%% and then use this operation.
+%% enabled for the organization if all features:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
+%% are enabled for the organization. Amazon Web Services recommends that you
+%% first use `ListRoots' to see the status of policy types for a
+%% specified root, and then use this operation.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -911,7 +975,9 @@ disable_policy_type(Client, Input, Options)
 %% all features, you have access only to consolidated billing, and you
 %% can't use any of the advanced account administration features that
 %% Organizations supports. For more information, see Enabling all features in
-%% your organization in the Organizations User Guide.
+%% your organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
+%% in the Organizations User Guide.
 %%
 %% This operation is required only for organizations that were created
 %% explicitly with only the consolidated billing features enabled. Calling
@@ -950,9 +1016,10 @@ enable_all_features(Client, Input, Options)
 %% service that is specified by `ServicePrincipal') with Organizations.
 %%
 %% When you enable integration, you allow the specified service to create a
-%% service-linked role in all the accounts in your organization. This allows
-%% the service to perform operations on your behalf in your organization and
-%% its accounts.
+%% service-linked role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html
+%% in all the accounts in your organization. This allows the service to
+%% perform operations on your behalf in your organization and its accounts.
 %%
 %% We recommend that you enable integration between Organizations and the
 %% specified Amazon Web Services service by using the console or commands
@@ -964,10 +1031,13 @@ enable_all_features(Client, Input, Options)
 %%
 %% For more information about enabling services to integrate with
 %% Organizations, see Using Organizations with other Amazon Web Services
-%% services in the Organizations User Guide.
+%% services:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
+%% in the Organizations User Guide.
 %%
 %% You can only call this operation from the organization's management
-%% account and only if the organization has enabled all features.
+%% account and only if the organization has enabled all features:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html.
 enable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_service_access(Client, Input, []).
@@ -1013,12 +1083,14 @@ enable_policy_type(Client, Input, Options)
 %% Amazon Web Services seller in India, you can invite only other AISPL
 %% accounts to your organization. You can't combine accounts from AISPL
 %% and Amazon Web Services or from any other Amazon Web Services seller. For
-%% more information, see Consolidated billing in India.
+%% more information, see Consolidated billing in India:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-India.html.
 %%
 %% If you receive an exception that indicates that you exceeded your account
 %% limits for the organization or that the operation failed because your
 %% organization is still initializing, wait one hour and then try again. If
-%% the error persists after an hour, contact Amazon Web Services Support.
+%% the error persists after an hour, contact Amazon Web Services Support:
+%% https://console.aws.amazon.com/support/home#/.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -1064,8 +1136,9 @@ invite_account_to_organization(Client, Input, Options)
 %% Amazon Web Services uses the payment method to charge for any billable
 %% (not free tier) Amazon Web Services activity that occurs while the account
 %% isn't attached to an organization. For more information, see
-%% Considerations before removing an account from an organization in the
-%% Organizations User Guide.
+%% Considerations before removing an account from an organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html
+%% in the Organizations User Guide.
 %%
 %% The account that you want to leave must not be a delegated administrator
 %% account for any Amazon Web Services service enabled for your organization.
@@ -1075,8 +1148,9 @@ invite_account_to_organization(Client, Input, Options)
 %%
 %% You can leave an organization only after you enable IAM user access to
 %% billing in your account. For more information, see About IAM access to the
-%% Billing and Cost Management console in the Amazon Web Services Billing and
-%% Cost Management User Guide.
+%% Billing and Cost Management console:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate
+%% in the Amazon Web Services Billing and Cost Management User Guide.
 %%
 %% After the account leaves the organization, all tags that were attached to
 %% the account object in the organization are deleted. Amazon Web Services
@@ -1150,8 +1224,9 @@ list_accounts_for_parent(Client, Input, Options)
 %%
 %% For more information about integrating other services with Organizations,
 %% including the list of services that currently work with Organizations, see
-%% Using Organizations with other Amazon Web Services services in the
-%% Organizations User Guide.
+%% Using Organizations with other Amazon Web Services services:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html
+%% in the Organizations User Guide.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1463,8 +1538,9 @@ put_resource_policy(Client, Input, Options)
 %% You can run this action only for Amazon Web Services services that support
 %% this feature. For a current list of services that support it, see the
 %% column Supports Delegated Administrator in the table at Amazon Web
-%% Services Services that you can use with Organizations in the Organizations
-%% User Guide.
+%% Services Services that you can use with Organizations:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
+%% in the Organizations User Guide.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -1492,8 +1568,9 @@ register_delegated_administrator(Client, Input, Options)
 %% account. When you create an account in an organization using the
 %% Organizations console, API, or CLI commands, the information required of
 %% standalone accounts is not automatically collected. For more information,
-%% see Considerations before removing an account from an organization in the
-%% Organizations User Guide.
+%% see Considerations before removing an account from an organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html
+%% in the Organizations User Guide.
 %%
 %% The account that you want to leave must not be a delegated administrator
 %% account for any Amazon Web Services service enabled for your organization.

@@ -627,7 +627,8 @@ list_timeline_events(Client, Input0, Options0) ->
 %%
 %% The resource policy is used to share the response plan using Resource
 %% Access Manager (RAM). For more information about cross-account sharing,
-%% see Cross-Region and cross-account incident management.
+%% see Cross-Region and cross-account incident management:
+%% https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 put_resource_policy(Client, Input0, Options0) ->
@@ -749,7 +750,8 @@ update_deletion_protection(Client, Input0, Options0) ->
 %%
 %% You can use this operation to update an incident record from the defined
 %% chat channel. For more information about using actions in chat channels,
-%% see Interacting through chat.
+%% see Interacting through chat:
+%% https://docs.aws.amazon.com/incident-manager/latest/userguide/chat.html#chat-interact.
 update_incident_record(Client, Input) ->
     update_incident_record(Client, Input, []).
 update_incident_record(Client, Input0, Options0) ->

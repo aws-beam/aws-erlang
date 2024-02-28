@@ -304,8 +304,9 @@
 %% provide the alias and the ID of the target distribution for the alias. For
 %% more information, including how to set up the target distribution,
 %% prerequisites that you must complete, and other restrictions, see Moving
-%% an alternate domain name to a different distribution in the Amazon
-%% CloudFront Developer Guide.
+%% an alternate domain name to a different distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
+%% in the Amazon CloudFront Developer Guide.
 associate_alias(Client, TargetDistributionId, Input) ->
     associate_alias(Client, TargetDistributionId, Input, []).
 associate_alias(Client, TargetDistributionId, Input0, Options0) ->
@@ -343,11 +344,14 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %%
 %% This API operation requires the following IAM permissions:
 %%
-%% <ul> <li> GetDistribution
+%% <ul> <li> GetDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html
 %%
-%% </li> <li> CreateDistribution
+%% </li> <li> CreateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html
 %%
-%% </li> <li> CopyDistribution
+%% </li> <li> CopyDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CopyDistribution.html
 %%
 %% </li> </ul>
 copy_distribution(Client, PrimaryDistributionId, Input) ->
@@ -413,7 +417,8 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %% to the origin but not include them in the cache key, use
 %% `OriginRequestPolicy'.
 %%
-%% For more information about cache policies, see Controlling the cache key
+%% For more information about cache policies, see Controlling the cache key:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
 %% in the Amazon CloudFront Developer Guide.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
@@ -459,7 +464,8 @@ create_cache_policy(Client, Input0, Options0) ->
 %% If you're using Amazon S3 for your origin, you can use an origin
 %% access identity to require users to access your content using a CloudFront
 %% URL instead of the Amazon S3 URL. For more information about how to use
-%% origin access identities, see Serving Private Content through CloudFront
+%% origin access identities, see Serving Private Content through CloudFront:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the Amazon CloudFront Developer Guide.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
@@ -595,9 +601,11 @@ create_distribution(Client, Input0, Options0) ->
 %%
 %% This API operation requires the following IAM permissions:
 %%
-%% <ul> <li> CreateDistribution
+%% <ul> <li> CreateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html
 %%
-%% </li> <li> TagResource
+%% </li> <li> TagResource:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html
 %%
 %% </li> </ul>
 create_distribution_with_tags(Client, Input) ->
@@ -812,7 +820,8 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
     end.
 
 %% @doc Creates a key group that you can use with CloudFront signed URLs and
-%% signed cookies.
+%% signed cookies:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html.
 %%
 %% To create a key group, you must specify at least one public key for the
 %% key group. After you create a key group, you can reference it from one or
@@ -822,7 +831,9 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
 %% private key whose corresponding public key is in the key group. The signed
 %% URL or cookie contains information about which public key CloudFront
 %% should use to verify the signature. For more information, see Serving
-%% private content in the Amazon CloudFront Developer Guide.
+%% private content:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
+%% in the Amazon CloudFront Developer Guide.
 create_key_group(Client, Input) ->
     create_key_group(Client, Input, []).
 create_key_group(Client, Input0, Options0) ->
@@ -912,7 +923,9 @@ create_key_value_store(Client, Input0, Options0) ->
 %% The additional metrics incur an additional cost.
 %%
 %% For more information, see Viewing additional CloudFront distribution
-%% metrics in the Amazon CloudFront Developer Guide.
+%% metrics:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional
+%% in the Amazon CloudFront Developer Guide.
 create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
 create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
@@ -946,8 +959,9 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% CloudFront.
 %%
 %% For more information about using a CloudFront origin access control, see
-%% Restricting access to an Amazon Web Services origin in the Amazon
-%% CloudFront Developer Guide.
+%% Restricting access to an Amazon Web Services origin:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html
+%% in the Amazon CloudFront Developer Guide.
 create_origin_access_control(Client, Input) ->
     create_origin_access_control(Client, Input, []).
 create_origin_access_control(Client, Input0, Options0) ->
@@ -1013,7 +1027,9 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% `CachePolicy'.
 %%
 %% For more information about origin request policies, see Controlling origin
-%% requests in the Amazon CloudFront Developer Guide.
+%% requests:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
+%% in the Amazon CloudFront Developer Guide.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
 create_origin_request_policy(Client, Input0, Options0) ->
@@ -1054,7 +1070,10 @@ create_origin_request_policy(Client, Input0, Options0) ->
     end.
 
 %% @doc Uploads a public key to CloudFront that you can use with signed URLs
-%% and signed cookies, or with field-level encryption.
+%% and signed cookies:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html,
+%% or with field-level encryption:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
 create_public_key(Client, Input0, Options0) ->
@@ -1101,7 +1120,9 @@ create_public_key(Client, Input0, Options0) ->
 %% Kinesis data stream.
 %%
 %% For more information about real-time log configurations, see Real-time
-%% logs in the Amazon CloudFront Developer Guide.
+%% logs:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html
+%% in the Amazon CloudFront Developer Guide.
 create_realtime_log_config(Client, Input) ->
     create_realtime_log_config(Client, Input, []).
 create_realtime_log_config(Client, Input0, Options0) ->
@@ -1138,7 +1159,9 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% according to the configuration of the response headers policy.
 %%
 %% For more information, see Adding or removing HTTP headers in CloudFront
-%% responses in the Amazon CloudFront Developer Guide.
+%% responses:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/modifying-response-headers.html
+%% in the Amazon CloudFront Developer Guide.
 create_response_headers_policy(Client, Input) ->
     create_response_headers_policy(Client, Input, []).
 create_response_headers_policy(Client, Input0, Options0) ->
@@ -1182,7 +1205,8 @@ create_response_headers_policy(Client, Input0, Options0) ->
 %%
 %% Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
 %% distributions on December 31, 2020. For more information, read the
-%% announcement on the Amazon CloudFront discussion forum.
+%% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
+%% Amazon CloudFront discussion forum.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
 create_streaming_distribution(Client, Input0, Options0) ->
@@ -1226,7 +1250,8 @@ create_streaming_distribution(Client, Input0, Options0) ->
 %%
 %% Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
 %% distributions on December 31, 2020. For more information, read the
-%% announcement on the Amazon CloudFront discussion forum.
+%% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
+%% Amazon CloudFront discussion forum.
 create_streaming_distribution_with_tags(Client, Input) ->
     create_streaming_distribution_with_tags(Client, Input, []).
 create_streaming_distribution_with_tags(Client, Input0, Options0) ->
@@ -1738,8 +1763,9 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 %% request to confirm that the distribution was successfully deleted.
 %%
 %% </li> </ol> For information about deleting a distribution using the
-%% CloudFront console, see Deleting a Distribution in the Amazon CloudFront
-%% Developer Guide.
+%% CloudFront console, see Deleting a Distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html
+%% in the Amazon CloudFront Developer Guide.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
 delete_streaming_distribution(Client, Id, Input0, Options0) ->
@@ -3075,7 +3101,9 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %% a distribution in your account that has an attached SSL/TLS certificate
 %% that includes the provided alias. For more information, including how to
 %% set up the distribution and certificate, see Moving an alternate domain
-%% name to a different distribution in the Amazon CloudFront Developer Guide.
+%% name to a different distribution:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
+%% in the Amazon CloudFront Developer Guide.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -3879,7 +3907,9 @@ tag_resource(Client, Input0, Options0) ->
 %% you provided, and returns the function's result (the modified event
 %% object) in the response. The response also contains function logs and
 %% error messages, if any exist. For more information about testing
-%% functions, see Testing functions in the Amazon CloudFront Developer Guide.
+%% functions, see Testing functions:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function
+%% in the Amazon CloudFront Developer Guide.
 %%
 %% To test a function, you provide the function's name and version
 %% (`ETag' value) along with the event object. To get the function's
@@ -4180,9 +4210,11 @@ update_distribution(Client, Id, Input0, Options0) ->
 %%
 %% This API operation requires the following IAM permissions:
 %%
-%% <ul> <li> GetDistribution
+%% <ul> <li> GetDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html
 %%
-%% </li> <li> UpdateDistribution
+%% </li> <li> UpdateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
 %%
 %% </li> </ul>
 update_distribution_with_staging_config(Client, Id, Input) ->

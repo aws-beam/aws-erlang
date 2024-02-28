@@ -21,13 +21,14 @@
 %%
 %% You must first call the `GetDataEndpoint' API to get an endpoint. Then
 %% send the `GetMedia' requests to this endpoint using the --endpoint-url
-%% parameter.
+%% parameter: https://docs.aws.amazon.com/cli/latest/reference/.
 %%
 %% When you put media data (fragments) on a stream, Kinesis Video Streams
 %% stores each incoming fragment and related metadata in what is called a
-%% &quot;chunk.&quot; For more information, see PutMedia. The `GetMedia'
-%% API returns a stream of these chunks starting from the chunk that you
-%% specify in the request.
+%% &quot;chunk.&quot; For more information, see PutMedia:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html.
+%% The `GetMedia' API returns a stream of these chunks starting from the
+%% chunk that you specify in the request.
 %%
 %% The following limits apply when using the `GetMedia' API:
 %%
@@ -54,7 +55,8 @@
 %% programmer might need to take in order to successfully try again.
 %%
 %% For more information, see the Errors section at the bottom of this topic,
-%% as well as Common Errors.
+%% as well as Common Errors:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
 get_media(Client, Input) ->
     get_media(Client, Input, []).
 get_media(Client, Input0, Options0) ->

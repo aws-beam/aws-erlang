@@ -829,8 +829,9 @@ get_builtin_intents(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a list of built-in slot types that meet the specified criteria.
 %%
-%% For a list of built-in slot types, see Slot Type Reference in the Alexa
-%% Skills Kit.
+%% For a list of built-in slot types, see Slot Type Reference:
+%% https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference
+%% in the Alexa Skills Kit.
 %%
 %% This operation requires permission for the `lex:GetBuiltInSlotTypes'
 %% action.
@@ -1479,8 +1480,9 @@ start_import(Client, Input0, Options0) ->
 %% Migrate your bot when you want to take advantage of the new features of
 %% Amazon Lex V2.
 %%
-%% For more information, see Migrating a bot in the Amazon Lex developer
-%% guide.
+%% For more information, see Migrating a bot:
+%% https://docs.aws.amazon.com/lex/latest/dg/migrate.html in the Amazon Lex
+%% developer guide.
 start_migration(Client, Input) ->
     start_migration(Client, Input, []).
 start_migration(Client, Input0, Options0) ->

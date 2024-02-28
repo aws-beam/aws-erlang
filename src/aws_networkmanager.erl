@@ -280,8 +280,9 @@ associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
 %% network. When you register a transit gateway or core network, customer
 %% gateways that are connected to the transit gateway are automatically
 %% included in the global network. To list customer gateways that are
-%% connected to a transit gateway, use the DescribeVpnConnections EC2 API and
-%% filter by `transit-gateway-id'.
+%% connected to a transit gateway, use the DescribeVpnConnections:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html
+%% EC2 API and filter by `transit-gateway-id'.
 %%
 %% You cannot associate a customer gateway with more than one device and
 %% link.
@@ -2102,12 +2103,13 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% @doc Registers a transit gateway in your global network.
 %%
 %% Not all Regions support transit gateways for global networks. For a list
-%% of the supported Regions, see Region Availability in the Amazon Web
-%% Services Transit Gateways for Global Networks User Guide. The transit
-%% gateway can be in any of the supported Amazon Web Services Regions, but it
-%% must be owned by the same Amazon Web Services account that owns the global
-%% network. You cannot register a transit gateway in more than one global
-%% network.
+%% of the supported Regions, see Region Availability:
+%% https://docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html#nm-available-regions
+%% in the Amazon Web Services Transit Gateways for Global Networks User
+%% Guide. The transit gateway can be in any of the supported Amazon Web
+%% Services Regions, but it must be owned by the same Amazon Web Services
+%% account that owns the global network. You cannot register a transit
+%% gateway in more than one global network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
@@ -2209,7 +2211,8 @@ start_organization_service_access_update(Client, Input0, Options0) ->
 %% @doc Starts analyzing the routing path between the specified source and
 %% destination.
 %%
-%% For more information, see Route Analyzer.
+%% For more information, see Route Analyzer:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/route-analyzer.html.
 start_route_analysis(Client, GlobalNetworkId, Input) ->
     start_route_analysis(Client, GlobalNetworkId, Input, []).
 start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->

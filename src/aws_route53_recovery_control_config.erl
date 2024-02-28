@@ -178,8 +178,9 @@ create_routing_control(Client, Input0, Options0) ->
 %% you can configure more complex gating scenarios, for example by
 %% configuring multiple gating routing controls.
 %%
-%% For more information, see Safety rules in the Amazon Route 53 Application
-%% Recovery Controller Developer Guide.
+%% For more information, see Safety rules:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.safety-rules.html
+%% in the Amazon Route 53 Application Recovery Controller Developer Guide.
 create_safety_rule(Client, Input) ->
     create_safety_rule(Client, Input, []).
 create_safety_rule(Client, Input0, Options0) ->

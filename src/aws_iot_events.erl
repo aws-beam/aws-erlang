@@ -82,8 +82,9 @@
 %% @doc Creates an alarm model to monitor an AWS IoT Events input attribute.
 %%
 %% You can use the alarm to get notified when the value is outside a
-%% specified range. For more information, see Create an alarm model in the
-%% AWS IoT Events Developer Guide.
+%% specified range. For more information, see Create an alarm model:
+%% https://docs.aws.amazon.com/iotevents/latest/developerguide/create-alarms.html
+%% in the AWS IoT Events Developer Guide.
 create_alarm_model(Client, Input) ->
     create_alarm_model(Client, Input, []).
 create_alarm_model(Client, Input0, Options0) ->
@@ -619,8 +620,9 @@ put_logging_options(Client, Input0, Options0) ->
 
 %% @doc Performs an analysis of your detector model.
 %%
-%% For more information, see Troubleshooting a detector model in the AWS IoT
-%% Events Developer Guide.
+%% For more information, see Troubleshooting a detector model:
+%% https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html
+%% in the AWS IoT Events Developer Guide.
 start_detector_model_analysis(Client, Input) ->
     start_detector_model_analysis(Client, Input, []).
 start_detector_model_analysis(Client, Input0, Options0) ->

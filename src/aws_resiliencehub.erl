@@ -139,7 +139,9 @@
 %% the latest physical ID for each resource in the application template. For
 %% more information about different types of resources suported by Resilience
 %% Hub and how to add them in your application, see Step 2: How is your
-%% application managed? in the Resilience Hub User Guide.
+%% application managed?:
+%% https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html
+%% in the Resilience Hub User Guide.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
 add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
@@ -196,7 +198,8 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 %% and an appropriate resiliency policy. In addition, you can also add
 %% resources that are located on Amazon Elastic Kubernetes Service (Amazon
 %% EKS) clusters as optional resources. For more information about the number
-%% of resources supported per application, see Service quotas.
+%% of resources supported per application, see Service quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub.
 %%
 %% After you create an Resilience Hub application, you publish it so that you
 %% can run a resiliency assessment on it. You can then use recommendations
@@ -768,7 +771,8 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 %% different input sources.
 %%
 %% For more information about the input sources supported by Resilience Hub,
-%% see Discover the structure and describe your Resilience Hub application.
+%% see Discover the structure and describe your Resilience Hub application:
+%% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
 import_resources_to_draft_app_version(Client, Input0, Options0) ->
@@ -925,7 +929,8 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 %% @doc Lists all the input sources of the Resilience Hub application.
 %%
 %% For more information about the input sources supported by Resilience Hub,
-%% see Discover the structure and describe your Resilience Hub application.
+%% see Discover the structure and describe your Resilience Hub application:
+%% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
 list_app_input_sources(Client, Input) ->
     list_app_input_sources(Client, Input, []).
 list_app_input_sources(Client, Input0, Options0) ->

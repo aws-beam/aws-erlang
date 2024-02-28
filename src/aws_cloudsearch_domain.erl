@@ -11,7 +11,8 @@
 %% the domain dashboard in the Amazon CloudSearch console. You submit suggest
 %% requests to the search endpoint.
 %%
-%% For more information, see the Amazon CloudSearch Developer Guide.
+%% For more information, see the Amazon CloudSearch Developer Guide:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide.
 -module(aws_cloudsearch_domain).
 
 -export([search/2,
@@ -43,8 +44,9 @@
 %% search criteria using the Apache Lucene query parser syntax.</li>
 %% <li>`dismax': specify search criteria using the simplified subset of
 %% the Apache Lucene query parser syntax defined by the DisMax query
-%% parser.</li> </ul> For more information, see Searching Your Data in the
-%% Amazon CloudSearch Developer Guide.
+%% parser.</li> </ul> For more information, see Searching Your Data:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html
+%% in the Amazon CloudSearch Developer Guide.
 %%
 %% The endpoint for submitting `Search' requests is domain-specific. You
 %% submit search requests to a domain's search endpoint. To get the
@@ -100,8 +102,9 @@ search(Client, Query, QueryMap, HeadersMap, Options0)
 %% match the query string to be considered a match.
 %%
 %% For more information about configuring suggesters and retrieving
-%% suggestions, see Getting Suggestions in the Amazon CloudSearch Developer
-%% Guide.
+%% suggestions, see Getting Suggestions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
+%% in the Amazon CloudSearch Developer Guide.
 %%
 %% The endpoint for submitting `Suggest' requests is domain-specific. You
 %% submit suggest requests to a domain's search endpoint. To get the
@@ -157,9 +160,12 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
 %% Amazon CloudSearch console.
 %%
 %% For more information about formatting your data for Amazon CloudSearch,
-%% see Preparing Your Data in the Amazon CloudSearch Developer Guide. For
-%% more information about uploading data for indexing, see Uploading Data in
-%% the Amazon CloudSearch Developer Guide.
+%% see Preparing Your Data:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html
+%% in the Amazon CloudSearch Developer Guide. For more information about
+%% uploading data for indexing, see Uploading Data:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html
+%% in the Amazon CloudSearch Developer Guide.
 upload_documents(Client, Input) ->
     upload_documents(Client, Input, []).
 upload_documents(Client, Input0, Options0) ->

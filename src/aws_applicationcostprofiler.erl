@@ -10,7 +10,8 @@
 %% service.
 %%
 %% For more information about using this service, see the AWS Application
-%% Cost Profiler User Guide.
+%% Cost Profiler User Guide:
+%% https://docs.aws.amazon.com/application-cost-profiler/latest/userguide/introduction.html.
 -module(aws_applicationcostprofiler).
 
 -export([delete_report_definition/3,

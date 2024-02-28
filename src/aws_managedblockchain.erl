@@ -679,9 +679,12 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options0)
 %%
 %% Each tag consists of a key and optional value.
 %%
-%% For more information about tags, see Tagging Resources in the Amazon
-%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
-%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+%% For more information about tags, see Tagging Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging
+%% Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -744,9 +747,12 @@ reject_invitation(Client, InvitationId, Input0, Options0) ->
 %% A resource can have up to 50 tags. If you try to create more than 50 tags
 %% for a resource, your request fails and returns an error.
 %%
-%% For more information about tags, see Tagging Resources in the Amazon
-%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
-%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+%% For more information about tags, see Tagging Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging
+%% Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -772,9 +778,12 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes the specified tags from the Amazon Managed Blockchain
 %% resource.
 %%
-%% For more information about tags, see Tagging Resources in the Amazon
-%% Managed Blockchain Ethereum Developer Guide, or Tagging Resources in the
-%% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
+%% For more information about tags, see Tagging Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Ethereum Developer Guide, or Tagging
+%% Resources:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
+%% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

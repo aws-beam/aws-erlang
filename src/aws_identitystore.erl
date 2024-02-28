@@ -4,7 +4,8 @@
 %% @doc The Identity Store service used by IAM Identity Center provides a
 %% single place to retrieve all of your identities (users and groups).
 %%
-%% For more information, see the IAM Identity Center User Guide.
+%% For more information, see the IAM Identity Center User Guide:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
 %%
 %% This reference guide describes the identity store operations that you can
 %% call programmatically and includes detailed information about data types
@@ -114,8 +115,9 @@ delete_user(Client, Input, Options)
 %% identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
@@ -127,8 +129,9 @@ describe_group(Client, Input, Options)
 %% in an identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
@@ -140,8 +143,9 @@ describe_group_membership(Client, Input, Options)
 %% an identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -152,8 +156,9 @@ describe_user(Client, Input, Options)
 %% @doc Retrieves `GroupId' in an identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 get_group_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_id(Client, Input, []).
@@ -164,8 +169,9 @@ get_group_id(Client, Input, Options)
 %% @doc Retrieves the `MembershipId' in an identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 get_group_membership_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_membership_id(Client, Input, []).
@@ -176,8 +182,9 @@ get_group_membership_id(Client, Input, Options)
 %% @doc Retrieves the `UserId' in an identity store.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 get_user_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_id(Client, Input, []).
@@ -189,8 +196,9 @@ get_user_id(Client, Input, Options)
 %% if the member exists in all queried groups.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
@@ -203,8 +211,9 @@ is_member_in_groups(Client, Input, Options)
 %% form.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 list_group_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships(Client, Input, []).
@@ -217,8 +226,9 @@ list_group_memberships(Client, Input, Options)
 %% form.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 list_group_memberships_for_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships_for_member(Client, Input, []).
@@ -233,8 +243,9 @@ list_group_memberships_for_member(Client, Input, Options)
 %% the `GetGroupId' API action.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -249,8 +260,9 @@ list_groups(Client, Input, Options)
 %% `GetUserId' API action.
 %%
 %% If you have administrator access to a member account, you can use this API
-%% from the member account. Read about member accounts in the Organizations
-%% User Guide.
+%% from the member account. Read about member accounts:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
+%% in the Organizations User Guide.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).

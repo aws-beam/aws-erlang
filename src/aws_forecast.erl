@@ -201,15 +201,20 @@ create_auto_predictor(Client, Input, Options)
 %%
 %% </li> </ul> After creating a dataset, you import your training data into
 %% it and add the dataset to a dataset group. You use the dataset group to
-%% create a predictor. For more information, see Importing datasets.
+%% create a predictor. For more information, see Importing datasets:
+%% https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html.
 %%
-%% To get a list of all your datasets, use the ListDatasets operation.
+%% To get a list of all your datasets, use the ListDatasets:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasets.html
+%% operation.
 %%
 %% For example Forecast datasets, see the Amazon Forecast Sample GitHub
-%% repository.
+%% repository: https://github.com/aws-samples/amazon-forecast-samples.
 %%
 %% The `Status' of a dataset must be `ACTIVE' before you can import
-%% training data. Use the DescribeDataset operation to get the status.
+%% training data. Use the DescribeDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
+%% operation to get the status.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -221,18 +226,24 @@ create_dataset(Client, Input, Options)
 %% datasets.
 %%
 %% You can add datasets to the dataset group when you create the dataset
-%% group, or later by using the UpdateDatasetGroup operation.
+%% group, or later by using the UpdateDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
+%% operation.
 %%
 %% After creating a dataset group and adding datasets, you use the dataset
 %% group when you create a predictor. For more information, see Dataset
-%% groups.
+%% groups:
+%% https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html.
 %%
-%% To get a list of all your datasets groups, use the ListDatasetGroups
+%% To get a list of all your datasets groups, use the ListDatasetGroups:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasetGroups.html
 %% operation.
 %%
 %% The `Status' of a dataset group must be `ACTIVE' before you can
 %% use the dataset group to create a predictor. To get the status, use the
-%% DescribeDatasetGroup operation.
+%% DescribeDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
+%% operation.
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
@@ -246,11 +257,13 @@ create_dataset_group(Client, Input, Options)
 %% Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the
 %% dataset that you want to import the data to.
 %%
-%% You must specify a DataSource object that includes an Identity and Access
-%% Management (IAM) role that Amazon Forecast can assume to access the data,
-%% as Amazon Forecast makes a copy of your data and processes it in an
-%% internal Amazon Web Services system. For more information, see Set up
-%% permissions.
+%% You must specify a DataSource:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DataSource.html object
+%% that includes an Identity and Access Management (IAM) role that Amazon
+%% Forecast can assume to access the data, as Amazon Forecast makes a copy of
+%% your data and processes it in an internal Amazon Web Services system. For
+%% more information, see Set up permissions:
+%% https://docs.aws.amazon.com/forecast/latest/dg/aws-forecast-iam-roles.html.
 %%
 %% The training data must be in CSV or Parquet format. The delimiter must be
 %% a comma (,).
@@ -266,7 +279,9 @@ create_dataset_group(Client, Input, Options)
 %% since the previous import.
 %%
 %% To get a list of all your dataset import jobs, filtered by specified
-%% criteria, use the ListDatasetImportJobs operation.
+%% criteria, use the ListDatasetImportJobs:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasetImportJobs.html
+%% operation.
 create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
@@ -456,7 +471,8 @@ create_forecast_export_job(Client, Input, Options)
 %%
 %% Predictor monitoring allows you to see how your predictor's
 %% performance changes over time. For more information, see Predictor
-%% Monitoring.
+%% Monitoring:
+%% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html.
 create_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitor(Client, Input, []).
@@ -635,14 +651,20 @@ create_what_if_forecast_export(Client, Input, Options)
     request(Client, <<"CreateWhatIfForecastExport">>, Input, Options).
 
 %% @doc Deletes an Amazon Forecast dataset that was created using the
-%% CreateDataset operation.
+%% CreateDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDataset.html
+%% operation.
 %%
 %% You can only delete datasets that have a status of `ACTIVE' or
-%% `CREATE_FAILED'. To get the status use the DescribeDataset operation.
+%% `CREATE_FAILED'. To get the status use the DescribeDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
+%% operation.
 %%
 %% Forecast does not automatically update any dataset groups that contain the
 %% deleted dataset. In order to update the dataset group, use the
-%% UpdateDatasetGroup operation, omitting the deleted dataset's ARN.
+%% UpdateDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
+%% operation, omitting the deleted dataset's ARN.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -650,12 +672,15 @@ delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
 
-%% @doc Deletes a dataset group created using the CreateDatasetGroup
+%% @doc Deletes a dataset group created using the CreateDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetGroup.html
 %% operation.
 %%
 %% You can only delete dataset groups that have a status of `ACTIVE',
 %% `CREATE_FAILED', or `UPDATE_FAILED'. To get the status, use the
-%% DescribeDatasetGroup operation.
+%% DescribeDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
+%% operation.
 %%
 %% This operation deletes only the dataset group, not the datasets in the
 %% group.
@@ -666,12 +691,16 @@ delete_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetGroup">>, Input, Options).
 
-%% @doc Deletes a dataset import job created using the CreateDatasetImportJob
+%% @doc Deletes a dataset import job created using the
+%% CreateDatasetImportJob:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html
 %% operation.
 %%
 %% You can delete only dataset import jobs that have a status of `ACTIVE'
 %% or `CREATE_FAILED'. To get the status, use the
-%% DescribeDatasetImportJob operation.
+%% DescribeDatasetImportJob:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
+%% operation.
 delete_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_import_job(Client, Input, []).
@@ -845,7 +874,8 @@ describe_auto_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoPredictor">>, Input, Options).
 
-%% @doc Describes an Amazon Forecast dataset created using the CreateDataset
+%% @doc Describes an Amazon Forecast dataset created using the CreateDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDataset.html
 %% operation.
 %%
 %% In addition to listing the parameters specified in the `CreateDataset'
@@ -865,7 +895,8 @@ describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
 
-%% @doc Describes a dataset group created using the CreateDatasetGroup
+%% @doc Describes a dataset group created using the CreateDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetGroup.html
 %% operation.
 %%
 %% In addition to listing the parameters provided in the
@@ -889,7 +920,9 @@ describe_dataset_group(Client, Input, Options)
     request(Client, <<"DescribeDatasetGroup">>, Input, Options).
 
 %% @doc Describes a dataset import job created using the
-%% CreateDatasetImportJob operation.
+%% CreateDatasetImportJob:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html
+%% operation.
 %%
 %% In addition to listing the parameters provided in the
 %% `CreateDatasetImportJob' request, this operation includes the
@@ -1145,7 +1178,8 @@ describe_what_if_forecast_export(Client, Input, Options)
 %%
 %% Use metrics to see how well the model performed and to decide whether to
 %% use the predictor to generate a forecast. For more information, see
-%% Predictor Metrics.
+%% Predictor Metrics:
+%% https://docs.aws.amazon.com/forecast/latest/dg/metrics.html.
 %%
 %% This operation generates metrics for each backtest window that was
 %% evaluated. The number of backtest windows (`NumberOfBacktestWindows')
@@ -1170,13 +1204,17 @@ get_accuracy_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccuracyMetrics">>, Input, Options).
 
-%% @doc Returns a list of dataset groups created using the CreateDatasetGroup
+%% @doc Returns a list of dataset groups created using the
+%% CreateDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetGroup.html
 %% operation.
 %%
 %% For each dataset group, this operation returns a summary of its
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the dataset group ARN with the
-%% DescribeDatasetGroup operation.
+%% DescribeDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
+%% operation.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
@@ -1185,13 +1223,16 @@ list_dataset_groups(Client, Input, Options)
     request(Client, <<"ListDatasetGroups">>, Input, Options).
 
 %% @doc Returns a list of dataset import jobs created using the
-%% CreateDatasetImportJob operation.
+%% CreateDatasetImportJob:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDatasetImportJob.html
+%% operation.
 %%
 %% For each import job, this operation returns a summary of its properties,
 %% including its Amazon Resource Name (ARN). You can retrieve the complete
-%% set of properties by using the ARN with the DescribeDatasetImportJob
-%% operation. You can filter the list by providing an array of Filter
-%% objects.
+%% set of properties by using the ARN with the DescribeDatasetImportJob:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
+%% operation. You can filter the list by providing an array of Filter:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html objects.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
@@ -1199,11 +1240,15 @@ list_dataset_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetImportJobs">>, Input, Options).
 
-%% @doc Returns a list of datasets created using the CreateDataset operation.
+%% @doc Returns a list of datasets created using the CreateDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_CreateDataset.html
+%% operation.
 %%
 %% For each dataset, a summary of its properties, including its Amazon
 %% Resource Name (ARN), is returned. To retrieve the complete set of
-%% properties, use the ARN with the DescribeDataset operation.
+%% properties, use the ARN with the DescribeDataset:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
+%% operation.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -1275,7 +1320,8 @@ list_forecasts(Client, Input, Options)
 %%
 %% For information about monitoring see `predictor-monitoring'. For more
 %% information about retrieving monitoring results see Viewing Monitoring
-%% Results.
+%% Results:
+%% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring-results.html.
 list_monitor_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitor_evaluations(Client, Input, []).
@@ -1442,7 +1488,8 @@ untag_resource(Client, Input, Options)
 %% @doc Replaces the datasets in a dataset group with the specified datasets.
 %%
 %% The `Status' of the dataset group must be `ACTIVE' before you can
-%% use the dataset group to create a predictor. Use the DescribeDatasetGroup
+%% use the dataset group to create a predictor. Use the DescribeDatasetGroup:
+%% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation to get the status.
 update_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->

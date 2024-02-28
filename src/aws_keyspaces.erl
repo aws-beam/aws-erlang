@@ -18,16 +18,20 @@
 %% describes the supported DDL operations in detail.
 %%
 %% For the list of all supported CQL APIs, see Supported Cassandra APIs,
-%% operations, and data types in Amazon Keyspaces in the Amazon Keyspaces
-%% Developer Guide.
+%% operations, and data types in Amazon Keyspaces:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/cassandra-apis.html
+%% in the Amazon Keyspaces Developer Guide.
 %%
 %% To learn how Amazon Keyspaces API actions are recorded with CloudTrail,
-%% see Amazon Keyspaces information in CloudTrail in the Amazon Keyspaces
-%% Developer Guide.
+%% see Amazon Keyspaces information in CloudTrail:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html#service-name-info-in-cloudtrail
+%% in the Amazon Keyspaces Developer Guide.
 %%
 %% For more information about Amazon Web Services APIs, for example how to
 %% implement retry logic or how to sign Amazon Web Services API requests, see
-%% Amazon Web Services APIs in the General Reference.
+%% Amazon Web Services APIs:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-apis.html in the General
+%% Reference.
 -module(aws_keyspaces).
 
 -export([create_keyspace/2,
@@ -75,8 +79,9 @@
 %% creation status of the new keyspace by using the `GetKeyspace'
 %% operation.
 %%
-%% For more information, see Creating keyspaces in the Amazon Keyspaces
-%% Developer Guide.
+%% For more information, see Creating keyspaces:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-keyspaces.html#keyspaces-create
+%% in the Amazon Keyspaces Developer Guide.
 create_keyspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_keyspace(Client, Input, []).
@@ -95,8 +100,9 @@ create_keyspace(Client, Input, Options)
 %% operation, which returns the current `status' of the table. You can
 %% start using a table when the status is `ACTIVE'.
 %%
-%% For more information, see Creating tables in the Amazon Keyspaces
-%% Developer Guide.
+%% For more information, see Creating tables:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create
+%% in the Amazon Keyspaces Developer Guide.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -163,8 +169,9 @@ get_table(Client, Input, Options)
 %% variable workloads efficiently by increasing and decreasing your
 %% table's read and write capacity automatically in response to
 %% application traffic. For more information, see Managing throughput
-%% capacity automatically with Amazon Keyspaces auto scaling in the Amazon
-%% Keyspaces Developer Guide.
+%% capacity automatically with Amazon Keyspaces auto scaling:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html in
+%% the Amazon Keyspaces Developer Guide.
 %%
 %% `GetTableAutoScalingSettings' can't be used as an action in an IAM
 %% policy.
@@ -214,7 +221,9 @@ list_tags_for_resource(Client, Input, Options)
 %% `earliest_restorable_timestamp' and the current time.
 %%
 %% For more information about restore points, see Time window for PITR
-%% continuous backups in the Amazon Keyspaces Developer Guide.
+%% continuous backups:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window
+%% in the Amazon Keyspaces Developer Guide.
 %%
 %% Any number of users can execute up to 4 concurrent restores (any type of
 %% restore) in a given account.
@@ -245,8 +254,9 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% </li> <li> Tags
 %%
-%% </li> </ul> For more information, see PITR restore settings in the Amazon
-%% Keyspaces Developer Guide.
+%% </li> </ul> For more information, see PITR restore settings:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_settings
+%% in the Amazon Keyspaces Developer Guide.
 %%
 %% Note that the following settings are not restored, and you must configure
 %% them manually for the new table:
@@ -267,12 +277,15 @@ restore_table(Client, Input, Options)
 %%
 %% You can then activate these user-defined tags so that they appear on the
 %% Cost Management Console for cost allocation tracking. For more
-%% information, see Adding tags and labels to Amazon Keyspaces resources in
-%% the Amazon Keyspaces Developer Guide.
+%% information, see Adding tags and labels to Amazon Keyspaces resources:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html
+%% in the Amazon Keyspaces Developer Guide.
 %%
 %% For IAM policy examples that show how to control access to Amazon
 %% Keyspaces resources based on tags, see Amazon Keyspaces resource access
-%% based on tags in the Amazon Keyspaces Developer Guide.
+%% based on tags:
+%% https://docs.aws.amazon.com/keyspaces/latest/devguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-tags
+%% in the Amazon Keyspaces Developer Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

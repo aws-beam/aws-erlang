@@ -148,7 +148,8 @@
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 associate_entities_to_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_entities_to_experience(Client, Input, []).
@@ -162,7 +163,8 @@ associate_entities_to_experience(Client, Input, Options)
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 associate_personas_to_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_personas_to_entities(Client, Input, []).
@@ -203,7 +205,9 @@ batch_delete_featured_results_set(Client, Input, Options)
     request(Client, <<"BatchDeleteFeaturedResultsSet">>, Input, Options).
 
 %% @doc Returns the indexing status for one or more documents submitted with
-%% the BatchPutDocument API.
+%% the BatchPutDocument:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html
+%% API.
 %%
 %% When you use the `BatchPutDocument' API, documents are indexed
 %% asynchronously. You can use the `BatchGetDocumentStatus' API to get
@@ -211,8 +215,10 @@ batch_delete_featured_results_set(Client, Input, Options)
 %% they have been successfully indexed.
 %%
 %% You can also use the `BatchGetDocumentStatus' API to check the status
-%% of the BatchDeleteDocument API. When a document is deleted from the index,
-%% Amazon Kendra returns `NOT_FOUND' as the status.
+%% of the BatchDeleteDocument:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_BatchDeleteDocument.html
+%% API. When a document is deleted from the index, Amazon Kendra returns
+%% `NOT_FOUND' as the status.
 batch_get_document_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_document_status(Client, Input, []).
@@ -235,7 +241,8 @@ batch_get_document_status(Client, Input, Options)
 %% progress of indexing your documents.
 %%
 %% For an example of ingesting inline documents using Python and Java SDKs,
-%% see Adding files directly to an index.
+%% see Adding files directly to an index:
+%% https://docs.aws.amazon.com/kendra/latest/dg/in-adding-binary-doc.html.
 batch_put_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_document(Client, Input, []).
@@ -279,12 +286,15 @@ clear_query_suggestions(Client, Input, Options)
 %% re-configure access control for your documents as circumstances change.
 %%
 %% To apply your access control configuration to certain documents, you call
-%% the BatchPutDocument API with the `AccessControlConfigurationId'
-%% included in the Document object. If you use an S3 bucket as a data source,
-%% you update the `.metadata.json' with the
-%% `AccessControlConfigurationId' and synchronize your data source.
-%% Amazon Kendra currently only supports access control configuration for S3
-%% data sources and documents indexed using the `BatchPutDocument' API.
+%% the BatchPutDocument:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html API
+%% with the `AccessControlConfigurationId' included in the Document:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_Document.html object. If
+%% you use an S3 bucket as a data source, you update the `.metadata.json'
+%% with the `AccessControlConfigurationId' and synchronize your data
+%% source. Amazon Kendra currently only supports access control configuration
+%% for S3 data sources and documents indexed using the `BatchPutDocument'
+%% API.
 create_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_control_configuration(Client, Input, []).
@@ -304,8 +314,11 @@ create_access_control_configuration(Client, Input, Options)
 %% is raised.
 %%
 %% For an example of creating an index and data source using the Python SDK,
-%% see Getting started with Python SDK. For an example of creating an index
-%% and data source using the Java SDK, see Getting started with Java SDK.
+%% see Getting started with Python SDK:
+%% https://docs.aws.amazon.com/kendra/latest/dg/gs-python.html. For an
+%% example of creating an index and data source using the Java SDK, see
+%% Getting started with Java SDK:
+%% https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html.
 create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
@@ -317,7 +330,8 @@ create_data_source(Client, Input, Options)
 %%
 %% For more information on creating a search application experience,
 %% including using the Python and Java SDKs, see Building a search experience
-%% with no code.
+%% with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 create_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experience(Client, Input, []).
@@ -331,7 +345,8 @@ create_experience(Client, Input, Options)
 %% Adding FAQs to an index is an asynchronous operation.
 %%
 %% For an example of adding an FAQ to an index using Python and Java SDKs,
-%% see Using your FAQ file.
+%% see Using your FAQ file:
+%% https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html#using-faq-file.
 create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
@@ -348,7 +363,8 @@ create_faq(Client, Input, Options)
 %% documents are featured in the search results.
 %%
 %% You can create up to 50 sets of featured results per index. You can
-%% request to increase this limit by contacting Support.
+%% request to increase this limit by contacting Support:
+%% http://aws.amazon.com/contact-us/.
 create_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_featured_results_set(Client, Input, []).
@@ -364,11 +380,15 @@ create_featured_results_set(Client, Input, Options)
 %% the index is ready to use.
 %%
 %% Once the index is active, you can index your documents using the
-%% `BatchPutDocument' API or using one of the supported data sources.
+%% `BatchPutDocument' API or using one of the supported data sources:
+%% https://docs.aws.amazon.com/kendra/latest/dg/data-sources.html.
 %%
 %% For an example of creating an index and data source using the Python SDK,
-%% see Getting started with Python SDK. For an example of creating an index
-%% and data source using the Java SDK, see Getting started with Java SDK.
+%% see Getting started with Python SDK:
+%% https://docs.aws.amazon.com/kendra/latest/dg/gs-python.html. For an
+%% example of creating an index and data source using the Java SDK, see
+%% Getting started with Java SDK:
+%% https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html.
 create_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_index(Client, Input, []).
@@ -386,13 +406,15 @@ create_index(Client, Input, Options)
 %% separate line.
 %%
 %% For information on the current quota limits for block lists, see Quotas
-%% for Amazon Kendra.
+%% for Amazon Kendra:
+%% https://docs.aws.amazon.com/kendra/latest/dg/quotas.html.
 %%
 %% `CreateQuerySuggestionsBlockList' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
 %%
 %% For an example of creating a block list for query suggestions using the
-%% Python SDK, see Query suggestions block list.
+%% Python SDK, see Query suggestions block list:
+%% https://docs.aws.amazon.com/kendra/latest/dg/query-suggestions.html#query-suggestions-blocklist.
 create_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_query_suggestions_block_list(Client, Input, []).
@@ -405,7 +427,8 @@ create_query_suggestions_block_list(Client, Input, Options)
 %% The thesaurus contains a list of synonyms in Solr format.
 %%
 %% For an example of adding a thesaurus file to an index, see Adding custom
-%% synonyms to an index.
+%% synonyms to an index:
+%% https://docs.aws.amazon.com/kendra/latest/dg/index-synonyms-adding-thesaurus-file.html.
 create_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_thesaurus(Client, Input, []).
@@ -431,7 +454,8 @@ delete_access_control_configuration(Client, Input, Options)
 %% An exception is not thrown if the data source is already being deleted.
 %% While the data source is being deleted, the `Status' field returned by
 %% a call to the `DescribeDataSource' API is set to `DELETING'. For
-%% more information, see Deleting Data Sources.
+%% more information, see Deleting Data Sources:
+%% https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html.
 %%
 %% Deleting an entire data source or re-syncing your index after deleting
 %% specific documents from a data source could take up to an hour or more,
@@ -446,7 +470,8 @@ delete_data_source(Client, Input, Options)
 %% @doc Deletes your Amazon Kendra experience such as a search application.
 %%
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 delete_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experience(Client, Input, []).
@@ -546,7 +571,8 @@ describe_data_source(Client, Input, Options)
 %% application.
 %%
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 describe_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experience(Client, Input, []).
@@ -641,7 +667,8 @@ describe_thesaurus(Client, Input, Options)
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 disassociate_entities_from_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_entities_from_experience(Client, Input, []).
@@ -655,7 +682,8 @@ disassociate_entities_from_experience(Client, Input, Options)
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 disassociate_personas_from_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_personas_from_entities(Client, Input, []).
@@ -727,7 +755,8 @@ list_entity_personas(Client, Input, Options)
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 list_experience_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experience_entities(Client, Input, []).
@@ -739,7 +768,8 @@ list_experience_entities(Client, Input, Options)
 %%
 %% You can create an Amazon Kendra experience such as a search application.
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 list_experiences(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experiences(Client, Input, []).
@@ -790,7 +820,8 @@ list_indices(Client, Input, Options)
 %% @doc Lists the block lists used for query suggestions for an index.
 %%
 %% For information on the current quota limits for block lists, see Quotas
-%% for Amazon Kendra.
+%% for Amazon Kendra:
+%% https://docs.aws.amazon.com/kendra/latest/dg/quotas.html.
 %%
 %% `ListQuerySuggestionsBlockLists' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
@@ -832,7 +863,8 @@ list_thesauri(Client, Input, Options)
 %%
 %% This is useful for user context filtering, where search results are
 %% filtered based on the user or their group access to documents. For more
-%% information, see Filtering on user context.
+%% information, see Filtering on user context:
+%% https://docs.aws.amazon.com/kendra/latest/dg/user-context-filter.html.
 %%
 %% If more than five `PUT' actions for a group are currently processing,
 %% a validation exception is thrown.
@@ -847,10 +879,11 @@ put_principal_mapping(Client, Input, Options)
 %%
 %% If you are working with large language models (LLMs) or implementing
 %% retrieval augmented generation (RAG) systems, you can use Amazon
-%% Kendra's Retrieve API, which can return longer semantically relevant
-%% passages. We recommend using the `Retrieve' API instead of filing a
-%% service limit increase to increase the `Query' API document excerpt
-%% length.
+%% Kendra's Retrieve:
+%% https://docs.aws.amazon.com/kendra/latest/APIReference/API_Retrieve.html
+%% API, which can return longer semantically relevant passages. We recommend
+%% using the `Retrieve' API instead of filing a service limit increase to
+%% increase the `Query' API document excerpt length.
 %%
 %% You can configure boosting or relevance tuning at the query level to
 %% override boosting at the index level, filter based on document
@@ -883,15 +916,17 @@ query(Client, Input, Options)
 
 %% @doc Retrieves relevant passages or text excerpts given an input query.
 %%
-%% This API is similar to the Query API. However, by default, the `Query'
-%% API only returns excerpt passages of up to 100 token words. With the
-%% `Retrieve' API, you can retrieve longer passages of up to 200 token
-%% words and up to 100 semantically relevant passages. This doesn't
-%% include question-answer or FAQ type responses from your index. The
-%% passages are text excerpts that can be semantically extracted from
-%% multiple documents and multiple parts of the same document. If in extreme
-%% cases your documents produce zero passages using the `Retrieve' API,
-%% you can alternatively use the `Query' API and its types of responses.
+%% This API is similar to the Query:
+%% https://docs.aws.amazon.com/kendra/latest/APIReference/API_Query.html API.
+%% However, by default, the `Query' API only returns excerpt passages of
+%% up to 100 token words. With the `Retrieve' API, you can retrieve
+%% longer passages of up to 200 token words and up to 100 semantically
+%% relevant passages. This doesn't include question-answer or FAQ type
+%% responses from your index. The passages are text excerpts that can be
+%% semantically extracted from multiple documents and multiple parts of the
+%% same document. If in extreme cases your documents produce zero passages
+%% using the `Retrieve' API, you can alternatively use the `Query'
+%% API and its types of responses.
 %%
 %% You can also do the following:
 %%
@@ -910,10 +945,12 @@ query(Client, Input, Options)
 %% </li> </ul> You can also include certain fields in the response that might
 %% provide useful additional information.
 %%
-%% The `Retrieve' API shares the number of query capacity units that you
-%% set for your index. For more information on what's included in a
-%% single capacity unit and the default base capacity for an index, see
-%% Adjusting capacity.
+%% The `Retrieve' API shares the number of query capacity units:
+%% https://docs.aws.amazon.com/kendra/latest/APIReference/API_CapacityUnitsConfiguration.html
+%% that you set for your index. For more information on what's included
+%% in a single capacity unit and the default base capacity for an index, see
+%% Adjusting capacity:
+%% https://docs.aws.amazon.com/kendra/latest/dg/adjusting-capacity.html.
 retrieve(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve(Client, Input, []).
@@ -996,13 +1033,16 @@ untag_resource(Client, Input, Options)
 %% configuration to re-configure access control for your documents as
 %% circumstances change.
 %%
-%% You call the BatchPutDocument API to apply the updated access control
-%% configuration, with the `AccessControlConfigurationId' included in the
-%% Document object. If you use an S3 bucket as a data source, you synchronize
-%% your data source to apply the `AccessControlConfigurationId' in the
-%% `.metadata.json' file. Amazon Kendra currently only supports access
-%% control configuration for S3 data sources and documents indexed using the
-%% `BatchPutDocument' API.
+%% You call the BatchPutDocument:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html API
+%% to apply the updated access control configuration, with the
+%% `AccessControlConfigurationId' included in the Document:
+%% https://docs.aws.amazon.com/kendra/latest/dg/API_Document.html object. If
+%% you use an S3 bucket as a data source, you synchronize your data source to
+%% apply the `AccessControlConfigurationId' in the `.metadata.json'
+%% file. Amazon Kendra currently only supports access control configuration
+%% for S3 data sources and documents indexed using the `BatchPutDocument'
+%% API.
 update_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_control_configuration(Client, Input, []).
@@ -1021,7 +1061,8 @@ update_data_source(Client, Input, Options)
 %% @doc Updates your Amazon Kendra experience such as a search application.
 %%
 %% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% Building a search experience with no code:
+%% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
 update_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experience(Client, Input, []).

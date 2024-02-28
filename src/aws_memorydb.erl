@@ -97,7 +97,8 @@
 %% @doc Apply the service update to a list of clusters supplied.
 %%
 %% For more information on service updates and applying them, see Applying
-%% the service updates.
+%% the service updates:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/managing-updates.html#applying-updates.
 batch_update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_cluster(Client, Input, []).
@@ -116,7 +117,8 @@ copy_snapshot(Client, Input, Options)
 %% @doc Creates an Access Control List.
 %%
 %% For more information, see Authenticating users with Access Contol Lists
-%% (ACLs).
+%% (ACLs):
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
 create_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_acl(Client, Input, []).
@@ -138,7 +140,8 @@ create_cluster(Client, Input, Options)
 %%
 %% A parameter group is a collection of parameters and their values that are
 %% applied to all of the nodes in any cluster. For more information, see
-%% Configuring engine parameters using parameter groups.
+%% Configuring engine parameters using parameter groups:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/parametergroups.html.
 create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
@@ -161,7 +164,8 @@ create_snapshot(Client, Input, Options)
 %% (VPC) environment. When you create a cluster in an Amazon VPC, you must
 %% specify a subnet group. MemoryDB uses that subnet group to choose a subnet
 %% and IP addresses within that subnet to associate with your nodes. For more
-%% information, see Subnets and subnet groups.
+%% information, see Subnets and subnet groups:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/subnetgroups.html.
 create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
@@ -172,7 +176,8 @@ create_subnet_group(Client, Input, Options)
 %% @doc Creates a MemoryDB user.
 %%
 %% For more information, see Authenticating users with Access Contol Lists
-%% (ACLs).
+%% (ACLs):
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -184,7 +189,8 @@ create_user(Client, Input, Options)
 %%
 %% The ACL must first be disassociated from the cluster before it can be
 %% deleted. For more information, see Authenticating users with Access Contol
-%% Lists (ACLs).
+%% Lists (ACLs):
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
 delete_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_acl(Client, Input, []).
@@ -393,7 +399,8 @@ list_allowed_node_type_updates(Client, Input, Options)
 %%
 %% A tag is a key-value pair where the key and value are case-sensitive. You
 %% can use tags to categorize and track your MemoryDB resources. For more
-%% information, see Tagging your MemoryDB resources
+%% information, see Tagging your MemoryDB resources:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -429,14 +436,16 @@ reset_parameter_group(Client, Input, Options)
 %% You can use tags to categorize and track all your MemoryDB resources. When
 %% you add or remove tags on clusters, those actions will be replicated to
 %% all nodes in the cluster. For more information, see Resource-level
-%% permissions.
+%% permissions:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/iam.resourcelevelpermissions.html.
 %%
 %% For example, you can use cost-allocation tags to your MemoryDB resources,
 %% Amazon generates a cost allocation report as a comma-separated value (CSV)
 %% file with your usage and costs aggregated by your tags. You can apply tags
 %% that represent business categories (such as cost centers, application
 %% names, or owners) to organize your costs across multiple services. For
-%% more information, see Using Cost Allocation Tags.
+%% more information, see Using Cost Allocation Tags:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -484,7 +493,8 @@ update_parameter_group(Client, Input, Options)
 
 %% @doc Updates a subnet group.
 %%
-%% For more information, see Updating a subnet group
+%% For more information, see Updating a subnet group:
+%% https://docs.aws.amazon.com/MemoryDB/latest/devguide/ubnetGroups.Modifying.html
 update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).

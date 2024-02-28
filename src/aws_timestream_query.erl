@@ -43,7 +43,9 @@
 %% before the cancellation request was issued. Because cancellation is an
 %% idempotent operation, subsequent cancellation requests will return a
 %% `CancellationMessage', indicating that the query has already been
-%% canceled. See code sample for details.
+%% canceled. See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html
+%% for details.
 cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_query(Client, Input, []).
@@ -85,7 +87,8 @@ delete_scheduled_query(Client, Input, Options)
 %% service endpoints, it is not recommended that you use this API unless:
 %%
 %% <ul> <li> You are using VPC endpoints (Amazon Web Services PrivateLink)
-%% with Timestream
+%% with Timestream :
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints
 %%
 %% </li> <li> Your application uses a programming language that does not yet
 %% have SDK support
@@ -93,7 +96,8 @@ delete_scheduled_query(Client, Input, Options)
 %% </li> <li> You require better control over the client-side implementation
 %%
 %% </li> </ul> For detailed information on how and when to use and implement
-%% DescribeEndpoints, see The Endpoint Discovery Pattern.
+%% DescribeEndpoints, see The Endpoint Discovery Pattern:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -152,7 +156,9 @@ prepare_query(Client, Input, Options)
 %% query against your Amazon Timestream data.
 %%
 %% `Query' will time out after 60 seconds. You must update the default
-%% timeout in the SDK to support a timeout of 60 seconds. See the code sample
+%% timeout in the SDK to support a timeout of 60 seconds. See the code
+%% sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.run-query.html
 %% for details.
 %%
 %% Your query request will fail in the following cases:

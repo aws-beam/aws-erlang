@@ -29,7 +29,8 @@
 %% determine the request that was made to Security Lake, the IP address from
 %% which the request was made, who made the request, when it was made, and
 %% additional details. To learn more about Security Lake information in
-%% CloudTrail, see the Amazon Security Lake User Guide.
+%% CloudTrail, see the Amazon Security Lake User Guide:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html.
 %%
 %% Security Lake automates the collection of security-related log and event
 %% data from integrated Amazon Web Services and third-party services. It also
@@ -201,7 +202,8 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% Lake also enables all the existing settings and resources that it stores
 %% or maintains for your Amazon Web Services account in the current Region,
 %% including security log and event data. For more information, see the
-%% Amazon Security Lake User Guide.
+%% Amazon Security Lake User Guide:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html.
 create_data_lake(Client, Input) ->
     create_data_lake(Client, Input, []).
 create_data_lake(Client, Input0, Options0) ->
@@ -398,7 +400,8 @@ delete_custom_log_source(Client, SourceName, Input0, Options0) ->
 %%
 %% The `DeleteDataLake' operation does not delete the data that is stored
 %% in your Amazon S3 bucket, which is owned by your Amazon Web Services
-%% account. For more information, see the Amazon Security Lake User Guide.
+%% account. For more information, see the Amazon Security Lake User Guide:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/disable-security-lake.html.
 delete_data_lake(Client, Input) ->
     delete_data_lake(Client, Input, []).
 delete_data_lake(Client, Input0, Options0) ->
@@ -832,8 +835,9 @@ register_data_lake_delegated_administrator(Client, Input0, Options0) ->
 %% for a more specific tag value. A tag value acts as a descriptor for a tag
 %% key. Tags can help you identify, categorize, and manage resources in
 %% different ways, such as by owner, environment, or other criteria. For more
-%% information, see Tagging Amazon Security Lake resources in the Amazon
-%% Security Lake User Guide.
+%% information, see Tagging Amazon Security Lake resources:
+%% https://docs.aws.amazon.com/security-lake/latest/userguide/tagging-resources.html
+%% in the Amazon Security Lake User Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

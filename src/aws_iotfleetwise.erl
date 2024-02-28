@@ -10,8 +10,9 @@
 %% architecture, and define data collection rules to transfer only high-value
 %% data to the cloud.
 %%
-%% For more information, see What is Amazon Web Services IoT FleetWise? in
-%% the Amazon Web Services IoT FleetWise Developer Guide.
+%% For more information, see What is Amazon Web Services IoT FleetWise?:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/ in the
+%% Amazon Web Services IoT FleetWise Developer Guide.
 -module(aws_iotfleetwise).
 
 -export([associate_vehicle_fleet/2,
@@ -138,8 +139,9 @@ associate_vehicle_fleet(Client, Input, Options)
 %% You must specify a decoder manifest and a vehicle model (model manifest)
 %% for each vehicle.
 %%
-%% For more information, see Create multiple vehicles (AWS CLI) in the Amazon
-%% Web Services IoT FleetWise Developer Guide.
+%% For more information, see Create multiple vehicles (AWS CLI):
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/create-vehicles-cli.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 batch_create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_vehicle(Client, Input, []).
@@ -152,8 +154,9 @@ batch_create_vehicle(Client, Input, Options)
 %% You must specify a decoder manifest and a vehicle model (model manifest)
 %% for each vehicle.
 %%
-%% For more information, see Update multiple vehicles (AWS CLI) in the Amazon
-%% Web Services IoT FleetWise Developer Guide.
+%% For more information, see Update multiple vehicles (AWS CLI):
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/update-vehicles-cli.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 batch_update_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_vehicle(Client, Input, []).
@@ -169,8 +172,9 @@ batch_update_vehicle(Client, Input, Options)
 %% campaigns, Amazon Web Services IoT FleetWise automatically deploys them to
 %% vehicles.
 %%
-%% For more information, see Collect and transfer data with campaigns in the
-%% Amazon Web Services IoT FleetWise Developer Guide.
+%% For more information, see Collect and transfer data with campaigns:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/campaigns.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
@@ -203,8 +207,9 @@ create_decoder_manifest(Client, Input, Options)
 %% You must create both a signal catalog and vehicles before you can create a
 %% fleet.
 %%
-%% For more information, see Fleets in the Amazon Web Services IoT FleetWise
-%% Developer Guide.
+%% For more information, see Fleets:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleets.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -215,8 +220,9 @@ create_fleet(Client, Input, Options)
 %% @doc Creates a vehicle model (model manifest) that specifies signals
 %% (attributes, branches, sensors, and actuators).
 %%
-%% For more information, see Vehicle models in the Amazon Web Services IoT
-%% FleetWise Developer Guide.
+%% For more information, see Vehicle models:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/vehicle-models.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 create_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_manifest(Client, Input, []).
@@ -243,8 +249,9 @@ create_signal_catalog(Client, Input, Options)
 %% Web Services IoT FleetWise to create a vehicle and collect data from your
 %% thing.
 %%
-%% For more information, see Create a vehicle (AWS CLI) in the Amazon Web
-%% Services IoT FleetWise Developer Guide.
+%% For more information, see Create a vehicle (AWS CLI):
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/create-vehicle-cli.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vehicle(Client, Input, []).
@@ -280,8 +287,9 @@ delete_decoder_manifest(Client, Input, Options)
 %% @doc Deletes a fleet.
 %%
 %% Before you delete a fleet, all vehicles must be dissociated from the
-%% fleet. For more information, see Delete a fleet (AWS CLI) in the Amazon
-%% Web Services IoT FleetWise Developer Guide.
+%% fleet. For more information, see Delete a fleet (AWS CLI):
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/delete-fleet-cli.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 %%
 %% If the fleet is successfully deleted, Amazon Web Services IoT FleetWise
 %% sends back an HTTP 200 response with an empty body.
@@ -393,7 +401,8 @@ get_model_manifest(Client, Input, Options)
 %% Services Cloud.
 %%
 %% For more information, including step-by-step procedures, see Setting up
-%% Amazon Web Services IoT FleetWise.
+%% Amazon Web Services IoT FleetWise:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/setting-up.html.
 %%
 %% This API operation doesn't require input parameters.
 get_register_account_status(Client, Input)
@@ -600,8 +609,9 @@ list_vehicles_in_fleet(Client, Input, Options)
 %%
 %% Amazon Web Services IoT FleetWise can encrypt your data and resources
 %% using an Amazon Web Services managed key. Or, you can use a KMS key that
-%% you own and manage. For more information, see Data encryption in the
-%% Amazon Web Services IoT FleetWise Developer Guide.
+%% you own and manage. For more information, see Data encryption:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/data-encryption.html
+%% in the Amazon Web Services IoT FleetWise Developer Guide.
 put_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_encryption_configuration(Client, Input, []).
@@ -621,31 +631,40 @@ put_logging_options(Client, Input, Options)
 %%
 %% Register your account again without the Timestream resources parameter so
 %% that Amazon Web Services IoT FleetWise can remove the Timestream metadata
-%% stored. You should then pass the data destination into the CreateCampaign
+%% stored. You should then pass the data destination into the CreateCampaign:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/APIReference/API_CreateCampaign.html
 %% API operation.
 %%
 %% You must delete any existing campaigns that include an empty data
 %% destination before you register your account again. For more information,
-%% see the DeleteCampaign API operation.
+%% see the DeleteCampaign:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/APIReference/API_DeleteCampaign.html
+%% API operation.
 %%
 %% If you want to delete the Timestream inline policy from the service-linked
 %% role, such as to mitigate an overly permissive policy, you must first
 %% delete any existing campaigns. Then delete the service-linked role and
 %% register your account again to enable CloudWatch metrics. For more
-%% information, see DeleteServiceLinkedRole in the Identity and Access
-%% Management API Reference.
+%% information, see DeleteServiceLinkedRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteServiceLinkedRole.html
+%% in the Identity and Access Management API Reference.
 %%
 %% Registers your Amazon Web Services account, IAM, and Amazon Timestream
 %% resources so Amazon Web Services IoT FleetWise can transfer your vehicle
 %% data to the Amazon Web Services Cloud. For more information, including
-%% step-by-step procedures, see Setting up Amazon Web Services IoT FleetWise.
+%% step-by-step procedures, see Setting up Amazon Web Services IoT FleetWise:
+%% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/setting-up.html.
 %%
 %% An Amazon Web Services account is not the same thing as a
-%% &quot;user.&quot; An Amazon Web Services user is an identity that you
-%% create using Identity and Access Management (IAM) and takes the form of
-%% either an IAM user or an IAM role, both with credentials. A single Amazon
-%% Web Services account can, and typically does, contain many users and
-%% roles.
+%% &quot;user.&quot; An Amazon Web Services user:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_identity-management.html#intro-identity-users
+%% is an identity that you create using Identity and Access Management (IAM)
+%% and takes the form of either an IAM user:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html or an IAM
+%% role, both with credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html. A single
+%% Amazon Web Services account can, and typically does, contain many users
+%% and roles.
 register_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_account(Client, Input, []).

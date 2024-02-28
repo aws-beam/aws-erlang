@@ -7,7 +7,8 @@
 %% The endpoint for configuration service requests is Region specific:
 %% es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
 %% current list of supported Regions and endpoints, see Amazon Web Services
-%% service endpoints.
+%% service endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#service-regions.
 -module(aws_opensearch).
 
 -export([accept_inbound_connection/3,
@@ -175,7 +176,8 @@
 %% accept an inbound cross-cluster search connection request.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 accept_inbound_connection(Client, ConnectionId, Input) ->
     accept_inbound_connection(Client, ConnectionId, Input, []).
 accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -201,7 +203,8 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% @doc Creates a new direct-query data source to the specified domain.
 %%
 %% For more information, see Creating Amazon OpenSearch Service data source
-%% integrations with Amazon S3.
+%% integrations with Amazon S3:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 add_data_source(Client, DomainName, Input) ->
     add_data_source(Client, DomainName, Input, []).
 add_data_source(Client, DomainName, Input0, Options0) ->
@@ -228,7 +231,8 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 %%
 %% Tags are a set of case-sensitive key-value pairs. A domain can have up to
 %% 10 tags. For more information, see Tagging Amazon OpenSearch Service
-%% domains.
+%% domains:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 add_tags(Client, Input0, Options0) ->
@@ -253,7 +257,8 @@ add_tags(Client, Input0, Options0) ->
 
 %% @doc Associates a package with an Amazon OpenSearch Service domain.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
@@ -330,7 +335,8 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 %% You can only perform this operation before the `AutomatedUpdateDate'
 %% and when the domain's `UpdateStatus' is `PENDING_UPDATE'. For
 %% more information, see Service software updates in Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 cancel_service_software_update(Client, Input0, Options0) ->
@@ -356,7 +362,8 @@ cancel_service_software_update(Client, Input0, Options0) ->
 %% @doc Creates an Amazon OpenSearch Service domain.
 %%
 %% For more information, see Creating and managing Amazon OpenSearch Service
-%% domains.
+%% domains:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input0, Options0) ->
@@ -383,7 +390,8 @@ create_domain(Client, Input0, Options0) ->
 %% OpenSearch Service domain to a destination domain.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 create_outbound_connection(Client, Input) ->
     create_outbound_connection(Client, Input, []).
 create_outbound_connection(Client, Input0, Options0) ->
@@ -408,7 +416,8 @@ create_outbound_connection(Client, Input0, Options0) ->
 
 %% @doc Creates a package for use with Amazon OpenSearch Service domains.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 create_package(Client, Input0, Options0) ->
@@ -457,7 +466,8 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 %% @doc Deletes a direct-query data source.
 %%
 %% For more information, see Deleting an Amazon OpenSearch Service data
-%% source with Amazon S3.
+%% source with Amazon S3:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html.
 delete_data_source(Client, DomainName, Name, Input) ->
     delete_data_source(Client, DomainName, Name, Input, []).
 delete_data_source(Client, DomainName, Name, Input0, Options0) ->
@@ -509,7 +519,8 @@ delete_domain(Client, DomainName, Input0, Options0) ->
 %% delete an existing inbound cross-cluster search connection.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 delete_inbound_connection(Client, ConnectionId, Input) ->
     delete_inbound_connection(Client, ConnectionId, Input, []).
 delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -536,7 +547,8 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% existing outbound cross-cluster search connection.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 delete_outbound_connection(Client, ConnectionId, Input) ->
     delete_outbound_connection(Client, ConnectionId, Input, []).
 delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -561,7 +573,8 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
 
 %% @doc Deletes an Amazon OpenSearch Service package.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 delete_package(Client, PackageID, Input0, Options0) ->
@@ -635,7 +648,8 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns the list of optimizations that Auto-Tune has made to an
 %% Amazon OpenSearch Service domain.
 %%
-%% For more information, see Auto-Tune for Amazon OpenSearch Service.
+%% For more information, see Auto-Tune for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
@@ -662,7 +676,8 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% on an Amazon OpenSearch Service domain.
 %%
 %% For more information, see Making configuration changes in Amazon
-%% OpenSearch Service.
+%% OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html.
 describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
@@ -790,7 +805,8 @@ describe_domains(Client, Input0, Options0) ->
 %% OpenSearch Service domain.
 %%
 %% For more information, see Determining whether a change will cause a
-%% blue/green deployment.
+%% blue/green deployment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes#dryrun.
 describe_dry_run_progress(Client, DomainName)
   when is_map(Client) ->
     describe_dry_run_progress(Client, DomainName, #{}, #{}).
@@ -822,7 +838,8 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% destination (remote) Amazon OpenSearch Service domain.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 describe_inbound_connections(Client, Input) ->
     describe_inbound_connections(Client, Input, []).
 describe_inbound_connections(Client, Input0, Options0) ->
@@ -877,7 +894,8 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 %% Amazon OpenSearch Service domain.
 %%
 %% For more information, see Cross-cluster search for Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
 describe_outbound_connections(Client, Input) ->
     describe_outbound_connections(Client, Input, []).
 describe_outbound_connections(Client, Input0, Options0) ->
@@ -902,7 +920,8 @@ describe_outbound_connections(Client, Input0, Options0) ->
 
 %% @doc Describes all packages available to OpenSearch Service.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 describe_packages(Client, Input0, Options0) ->
@@ -928,7 +947,8 @@ describe_packages(Client, Input0, Options0) ->
 %% @doc Describes the available Amazon OpenSearch Service Reserved Instance
 %% offerings for a given Region.
 %%
-%% For more information, see Reserved Instances in Amazon OpenSearch Service.
+%% For more information, see Reserved Instances in Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
 describe_reserved_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_instance_offerings(Client, #{}, #{}).
@@ -960,7 +980,8 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Describes the Amazon OpenSearch Service instances that you have
 %% reserved in a given Region.
 %%
-%% For more information, see Reserved Instances in Amazon OpenSearch Service.
+%% For more information, see Reserved Instances in Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
 describe_reserved_instances(Client)
   when is_map(Client) ->
     describe_reserved_instances(Client, #{}, #{}).
@@ -1019,7 +1040,8 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 %% The package can't be in use with any OpenSearch index for the
 %% dissociation to succeed. The package is still available in OpenSearch
 %% Service for association later. For more information, see Custom packages
-%% for Amazon OpenSearch Service.
+%% for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
@@ -1124,7 +1146,8 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 %% with their creation time, commit message, and plugin properties (if the
 %% package is a zip plugin package).
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
@@ -1208,7 +1231,8 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Lists direct-query data sources for a specific domain.
 %%
 %% For more information, see For more information, see Working with Amazon
-%% OpenSearch Service direct queries with Amazon S3.
+%% OpenSearch Service direct queries with Amazon S3:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html.
 list_data_sources(Client, DomainName)
   when is_map(Client) ->
     list_data_sources(Client, DomainName, #{}, #{}).
@@ -1292,7 +1316,8 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all Amazon OpenSearch Service domains associated with a given
 %% package.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
@@ -1355,7 +1380,8 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
 %% @doc Lists all packages associated with an Amazon OpenSearch Service
 %% domain.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
@@ -1386,8 +1412,10 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of configuration changes that are scheduled for a
 %% domain.
 %%
-%% These changes can be service software updates or blue/green Auto-Tune
-%% enhancements.
+%% These changes can be service software updates:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html
+%% or blue/green Auto-Tune enhancements:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
 list_scheduled_actions(Client, DomainName)
   when is_map(Client) ->
     list_scheduled_actions(Client, DomainName, #{}, #{}).
@@ -1417,7 +1445,8 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns all resource tags for an Amazon OpenSearch Service domain.
 %%
-%% For more information, see Tagging Amazon OpenSearch Service domains.
+%% For more information, see Tagging Amazon OpenSearch Service domains:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
 list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
@@ -1608,7 +1637,8 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% @doc Removes the specified set of tags from an Amazon OpenSearch Service
 %% domain.
 %%
-%% For more information, see Tagging Amazon OpenSearch Service domains.
+%% For more information, see Tagging Amazon OpenSearch Service domains:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains.html#managedomains-awsresorcetagging.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 remove_tags(Client, Input0, Options0) ->
@@ -1685,7 +1715,8 @@ start_domain_maintenance(Client, DomainName, Input0, Options0) ->
 %% domain.
 %%
 %% For more information, see Service software updates in Amazon OpenSearch
-%% Service.
+%% Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
 start_service_software_update(Client, Input) ->
     start_service_software_update(Client, Input, []).
 start_service_software_update(Client, Input0, Options0) ->
@@ -1711,7 +1742,8 @@ start_service_software_update(Client, Input0, Options0) ->
 %% @doc Updates a direct-query data source.
 %%
 %% For more information, see Working with Amazon OpenSearch Service data
-%% source integrations with Amazon S3.
+%% source integrations with Amazon S3:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 update_data_source(Client, DomainName, Name, Input) ->
     update_data_source(Client, DomainName, Name, Input, []).
 update_data_source(Client, DomainName, Name, Input0, Options0) ->
@@ -1760,7 +1792,8 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
 
 %% @doc Updates a package for use with Amazon OpenSearch Service domains.
 %%
-%% For more information, see Custom packages for Amazon OpenSearch Service.
+%% For more information, see Custom packages for Amazon OpenSearch Service:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 update_package(Client, Input0, Options0) ->
@@ -1785,8 +1818,10 @@ update_package(Client, Input0, Options0) ->
 
 %% @doc Reschedules a planned domain configuration change for a later time.
 %%
-%% This change can be a scheduled service software update or a blue/green
-%% Auto-Tune enhancement.
+%% This change can be a scheduled service software update:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html
+%% or a blue/green Auto-Tune enhancement:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
 update_scheduled_action(Client, DomainName, Input) ->
     update_scheduled_action(Client, DomainName, Input, []).
 update_scheduled_action(Client, DomainName, Input0, Options0) ->

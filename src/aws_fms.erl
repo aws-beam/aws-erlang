@@ -6,10 +6,12 @@
 %% This guide is for developers who need detailed information about the
 %% Firewall Manager API actions, data types, and errors. For detailed
 %% information about Firewall Manager features, see the Firewall Manager
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html.
 %%
 %% Some API actions require explicit resource permissions. For information,
-%% see the developer guide topic Service roles for Firewall Manager.
+%% see the developer guide topic Service roles for Firewall Manager:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service.
 -module(aws_fms).
 
 -export([associate_admin_account/2,
@@ -112,8 +114,9 @@
 %% whose resources you want to protect.
 %%
 %% For information about working with Firewall Manager administrator
-%% accounts, see Managing Firewall Manager administrators in the Firewall
-%% Manager Developer Guide.
+%% accounts, see Managing Firewall Manager administrators:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/fms-administrators.html
+%% in the Firewall Manager Developer Guide.
 associate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_admin_account(Client, Input, []).
@@ -476,7 +479,8 @@ list_third_party_firewall_firewall_policies(Client, Input, Options)
 %% administrator, Firewall Manager calls Organizations to delegate the
 %% account within Organizations. For more information about administrator
 %% accounts within Organizations, see Managing the Amazon Web Services
-%% Accounts in Your Organization.
+%% Accounts in Your Organization:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html.
 put_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_admin_account(Client, Input, []).
@@ -502,7 +506,9 @@ put_apps_list(Client, Input, Options)
 %% trust relationship configured to allow the Firewall Manager service
 %% principal `fms.amazonaws.com' to assume this role. For information
 %% about configuring an SNS access policy, see Service roles for Firewall
-%% Manager in the Firewall Manager Developer Guide.
+%% Manager:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service
+%% in the Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).
@@ -539,7 +545,7 @@ put_notification_channel(Client, Input, Options)
 %% </li> <li> Third-party firewall policy - This policy applies third-party
 %% firewall protections. Third-party firewalls are available by subscription
 %% through the Amazon Web Services Marketplace console at Amazon Web Services
-%% Marketplace.
+%% Marketplace: https://aws.amazon.com/marketplace.
 %%
 %% <ul> <li> Palo Alto Networks Cloud NGFW policy - This policy applies Palo
 %% Alto Networks Cloud Next Generation Firewall (NGFW) protections and Palo

@@ -12,7 +12,7 @@
 %% JSON response. Alternatively, you can use one of the Amazon Web Services
 %% SDKs to access an API that is tailored to the programming language or
 %% platform that you prefer. For more information, see Amazon Web Services
-%% SDKs.
+%% SDKs: https://aws.amazon.com/tools/#SDKs.
 %%
 %% Each Amazon Web Services Private CA API operation has a quota that
 %% determines the number of times the operation can be called per second.
@@ -21,12 +21,15 @@
 %% Private CA rejects an otherwise valid request because the request exceeds
 %% the operation's quota for the number of requests per second. When a
 %% request is throttled, Amazon Web Services Private CA returns a
-%% ThrottlingException error. Amazon Web Services Private CA does not
-%% guarantee a minimum request rate for APIs.
+%% ThrottlingException:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/CommonErrors.html
+%% error. Amazon Web Services Private CA does not guarantee a minimum request
+%% rate for APIs.
 %%
 %% To see an up-to-date list of your Amazon Web Services Private CA quotas,
 %% or to request a quota increase, log into your Amazon Web Services account
-%% and visit the Service Quotas console.
+%% and visit the Service Quotas:
+%% https://console.aws.amazon.com/servicequotas/ console.
 -module(aws_acm_pca).
 
 -export([create_certificate_authority/2,
@@ -101,10 +104,12 @@
 %% permission to write to the S3 bucket that you specify. If the IAM
 %% principal making the call does not have permission to write to the bucket,
 %% then an exception is thrown. For more information, see Access policies for
-%% CRLs in Amazon S3.
+%% CRLs in Amazon S3:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
 %%
 %% Amazon Web Services Private CA assets that are stored in Amazon S3 can be
-%% protected with encryption. For more information, see Encrypting Your CRLs.
+%% protected with encryption. For more information, see Encrypting Your CRLs:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PcaCreateCa.html#crl-encryption.
 create_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority(Client, Input, []).
@@ -116,17 +121,23 @@ create_certificate_authority(Client, Input, Options)
 %% key is used.
 %%
 %% The report is saved in the Amazon S3 bucket that you specify on input. The
-%% IssueCertificate and RevokeCertificate actions use the private key.
+%% IssueCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_IssueCertificate.html
+%% and RevokeCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RevokeCertificate.html
+%% actions use the private key.
 %%
 %% Both Amazon Web Services Private CA and the IAM principal must have
 %% permission to write to the S3 bucket that you specify. If the IAM
 %% principal making the call does not have permission to write to the bucket,
 %% then an exception is thrown. For more information, see Access policies for
-%% CRLs in Amazon S3.
+%% CRLs in Amazon S3:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
 %%
 %% Amazon Web Services Private CA assets that are stored in Amazon S3 can be
 %% protected with encryption. For more information, see Encrypting Your Audit
-%% Reports.
+%% Reports:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#audit-report-encryption.
 %%
 %% You can generate a maximum of one report every 30 minutes.
 create_certificate_authority_audit_report(Client, Input)
@@ -142,8 +153,11 @@ create_certificate_authority_audit_report(Client, Input, Options)
 %% These permissions allow ACM to issue and renew ACM certificates that
 %% reside in the same Amazon Web Services account as the CA.
 %%
-%% You can list current permissions with the ListPermissions action and
-%% revoke them with the DeletePermission action.
+%% You can list current permissions with the ListPermissions:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListPermissions.html
+%% action and revoke them with the DeletePermission:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeletePermission.html
+%% action.
 %%
 %% == About Permissions ==
 %%
@@ -158,7 +172,8 @@ create_certificate_authority_audit_report(Client, Input, Options)
 %% accounts, then permissions cannot be used to enable automatic renewals.
 %% Instead, the ACM certificate owner must set up a resource-based policy to
 %% enable cross-account issuance and renewals. For more information, see
-%% Using a Resource Based Policy with Amazon Web Services Private CA.
+%% Using a Resource Based Policy with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> </ul>
 create_permission(Client, Input)
@@ -172,14 +187,17 @@ create_permission(Client, Input, Options)
 %%
 %% You must provide the Amazon Resource Name (ARN) of the private CA that you
 %% want to delete. You can find the ARN by calling the
-%% ListCertificateAuthorities action.
+%% ListCertificateAuthorities:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListCertificateAuthorities.html
+%% action.
 %%
 %% Deleting a CA will invalidate other CAs and certificates below it in your
 %% CA hierarchy.
 %%
 %% Before you can delete a CA that you have created and activated, you must
-%% disable it. To do this, call the UpdateCertificateAuthority action and set
-%% the CertificateAuthorityStatus parameter to `DISABLED'.
+%% disable it. To do this, call the UpdateCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UpdateCertificateAuthority.html
+%% action and set the CertificateAuthorityStatus parameter to `DISABLED'.
 %%
 %% Additionally, you can delete a CA if you are waiting for it to be created
 %% (that is, the status of the CA is `CREATING'). You can also delete it
@@ -187,14 +205,19 @@ create_permission(Client, Input, Options)
 %% certificate into Amazon Web Services Private CA (that is, the status of
 %% the CA is `PENDING_CERTIFICATE').
 %%
-%% When you successfully call DeleteCertificateAuthority, the CA's status
-%% changes to `DELETED'. However, the CA won't be permanently deleted
-%% until the restoration period has passed. By default, if you do not set the
-%% `PermanentDeletionTimeInDays' parameter, the CA remains restorable for
-%% 30 days. You can set the parameter from 7 to 30 days. The
-%% DescribeCertificateAuthority action returns the time remaining in the
-%% restoration window of a private CA in the `DELETED' state. To restore
-%% an eligible CA, call the RestoreCertificateAuthority action.
+%% When you successfully call DeleteCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeleteCertificateAuthority.html,
+%% the CA's status changes to `DELETED'. However, the CA won't be
+%% permanently deleted until the restoration period has passed. By default,
+%% if you do not set the `PermanentDeletionTimeInDays' parameter, the CA
+%% remains restorable for 30 days. You can set the parameter from 7 to 30
+%% days. The DescribeCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DescribeCertificateAuthority.html
+%% action returns the time remaining in the restoration window of a private
+%% CA in the `DELETED' state. To restore an eligible CA, call the
+%% RestoreCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RestoreCertificateAuthority.html
+%% action.
 delete_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate_authority(Client, Input, []).
@@ -210,8 +233,11 @@ delete_certificate_authority(Client, Input, Options)
 %% these permissions, ACM will no longer renew the affected certificates
 %% automatically.
 %%
-%% Permissions can be granted with the CreatePermission action and listed
-%% with the ListPermissions action.
+%% Permissions can be granted with the CreatePermission:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreatePermission.html
+%% action and listed with the ListPermissions:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListPermissions.html
+%% action.
 %%
 %% == About Permissions ==
 %%
@@ -226,7 +252,8 @@ delete_certificate_authority(Client, Input, Options)
 %% accounts, then permissions cannot be used to enable automatic renewals.
 %% Instead, the ACM certificate owner must set up a resource-based policy to
 %% enable cross-account issuance and renewals. For more information, see
-%% Using a Resource Based Policy with Amazon Web Services Private CA.
+%% Using a Resource Based Policy with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> </ul>
 delete_permission(Client, Input)
@@ -248,7 +275,10 @@ delete_permission(Client, Input, Options)
 %% The Certificate Manager Service Linked Role that the policy supports is
 %% not affected when you delete the policy.
 %%
-%% The current policy can be shown with GetPolicy and updated with PutPolicy.
+%% The current policy can be shown with GetPolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_GetPolicy.html
+%% and updated with PutPolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_PutPolicy.html.
 %%
 %% == About Policies ==
 %%
@@ -256,7 +286,8 @@ delete_permission(Client, Input, Options)
 %% customer account, to Amazon Web Services Organizations, or to an Amazon
 %% Web Services Organizations unit. Policies are under the control of a CA
 %% administrator. For more information, see Using a Resource Based Policy
-%% with Amazon Web Services Private CA.
+%% with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> <li> A policy permits a user of Certificate Manager (ACM) to issue
 %% ACM certificates signed by a CA in another account.
@@ -265,11 +296,13 @@ delete_permission(Client, Input, Options)
 %% ACM user must configure a Service Linked Role (SLR). The SLR allows the
 %% ACM service to assume the identity of the user, subject to confirmation
 %% against the Amazon Web Services Private CA policy. For more information,
-%% see Using a Service Linked Role with ACM.
+%% see Using a Service Linked Role with ACM:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html.
 %%
 %% </li> <li> Updates made in Amazon Web Services Resource Manager (RAM) are
 %% reflected in policies. For more information, see Attach a Policy for
-%% Cross-Account Access.
+%% Cross-Account Access:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
 %%
 %% </li> </ul>
 delete_policy(Client, Input)
@@ -318,11 +351,17 @@ describe_certificate_authority(Client, Input, Options)
     request(Client, <<"DescribeCertificateAuthority">>, Input, Options).
 
 %% @doc Lists information about a specific audit report created by calling
-%% the CreateCertificateAuthorityAuditReport action.
+%% the CreateCertificateAuthorityAuditReport:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html
+%% action.
 %%
 %% Audit information is created every time the certificate authority (CA)
 %% private key is used. The private key is used when you call the
-%% IssueCertificate action or the RevokeCertificate action.
+%% IssueCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_IssueCertificate.html
+%% action or the RevokeCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RevokeCertificate.html
+%% action.
 describe_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority_audit_report(Client, Input, []).
@@ -333,13 +372,15 @@ describe_certificate_authority_audit_report(Client, Input, Options)
 %% @doc Retrieves a certificate from your private CA or one that has been
 %% shared with you.
 %%
-%% The ARN of the certificate is returned when you call the IssueCertificate
+%% The ARN of the certificate is returned when you call the IssueCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_IssueCertificate.html
 %% action. You must specify both the ARN of your private CA and the ARN of
 %% the issued certificate when calling the GetCertificate action. You can
 %% retrieve the certificate if it is in the ISSUED state. You can call the
-%% CreateCertificateAuthorityAuditReport action to create a report that
-%% contains information about all of the certificates issued and revoked by
-%% your private CA.
+%% CreateCertificateAuthorityAuditReport:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html
+%% action to create a report that contains information about all of the
+%% certificates issued and revoked by your private CA.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
@@ -363,12 +404,14 @@ get_certificate_authority_certificate(Client, Input, Options)
 %% @doc Retrieves the certificate signing request (CSR) for your private
 %% certificate authority (CA).
 %%
-%% The CSR is created when you call the CreateCertificateAuthority action.
-%% Sign the CSR with your Amazon Web Services Private CA-hosted or
+%% The CSR is created when you call the CreateCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthority.html
+%% action. Sign the CSR with your Amazon Web Services Private CA-hosted or
 %% on-premises root or subordinate CA. Then import the signed certificate
 %% back into Amazon Web Services Private CA by calling the
-%% ImportCertificateAuthorityCertificate action. The CSR is returned as a
-%% base64 PEM-encoded string.
+%% ImportCertificateAuthorityCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html
+%% action. The CSR is returned as a base64 PEM-encoded string.
 get_certificate_authority_csr(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_csr(Client, Input, []).
@@ -381,8 +424,10 @@ get_certificate_authority_csr(Client, Input, Options)
 %% If either the private CA resource or the policy cannot be found, this
 %% action returns a `ResourceNotFoundException'.
 %%
-%% The policy can be attached or updated with PutPolicy and removed with
-%% DeletePolicy.
+%% The policy can be attached or updated with PutPolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_PutPolicy.html
+%% and removed with DeletePolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeletePolicy.html.
 %%
 %% == About Policies ==
 %%
@@ -390,7 +435,8 @@ get_certificate_authority_csr(Client, Input, Options)
 %% customer account, to Amazon Web Services Organizations, or to an Amazon
 %% Web Services Organizations unit. Policies are under the control of a CA
 %% administrator. For more information, see Using a Resource Based Policy
-%% with Amazon Web Services Private CA.
+%% with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> <li> A policy permits a user of Certificate Manager (ACM) to issue
 %% ACM certificates signed by a CA in another account.
@@ -399,11 +445,13 @@ get_certificate_authority_csr(Client, Input, Options)
 %% ACM user must configure a Service Linked Role (SLR). The SLR allows the
 %% ACM service to assume the identity of the user, subject to confirmation
 %% against the Amazon Web Services Private CA policy. For more information,
-%% see Using a Service Linked Role with ACM.
+%% see Using a Service Linked Role with ACM:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html.
 %%
 %% </li> <li> Updates made in Amazon Web Services Resource Manager (RAM) are
 %% reflected in policies. For more information, see Attach a Policy for
-%% Cross-Account Access.
+%% Cross-Account Access:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
 %%
 %% </li> </ul>
 get_policy(Client, Input)
@@ -421,11 +469,14 @@ get_policy(Client, Input, Options)
 %% action, the following preparations must in place:
 %%
 %% <ol> <li> In Amazon Web Services Private CA, call the
-%% CreateCertificateAuthority action to create the private CA that you plan
-%% to back with the imported certificate.
+%% CreateCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthority.html
+%% action to create the private CA that you plan to back with the imported
+%% certificate.
 %%
-%% </li> <li> Call the GetCertificateAuthorityCsr action to generate a
-%% certificate signing request (CSR).
+%% </li> <li> Call the GetCertificateAuthorityCsr:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_GetCertificateAuthorityCsr.html
+%% action to generate a certificate signing request (CSR).
 %%
 %% </li> <li> Sign the CSR using a root or intermediate CA hosted by either
 %% an on-premises PKI hierarchy or by a commercial CA.
@@ -524,8 +575,9 @@ import_certificate_authority_certificate(Client, Input, Options)
 %% shared with you, to issue a client certificate.
 %%
 %% This action returns the Amazon Resource Name (ARN) of the certificate. You
-%% can retrieve the certificate by calling the GetCertificate action and
-%% specifying the ARN.
+%% can retrieve the certificate by calling the GetCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_GetCertificate.html
+%% action and specifying the ARN.
 %%
 %% You cannot use the ACM ListCertificateAuthorities action to retrieve the
 %% ARNs of the certificates that you issue by using Amazon Web Services
@@ -538,7 +590,9 @@ issue_certificate(Client, Input, Options)
     request(Client, <<"IssueCertificate">>, Input, Options).
 
 %% @doc Lists the private certificate authorities that you created by using
-%% the CreateCertificateAuthority action.
+%% the CreateCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthority.html
+%% action.
 list_certificate_authorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificate_authorities(Client, Input, []).
@@ -552,8 +606,11 @@ list_certificate_authorities(Client, Input, Options)
 %% These permissions allow ACM to issue and renew ACM certificates that
 %% reside in the same Amazon Web Services account as the CA.
 %%
-%% Permissions can be granted with the CreatePermission action and revoked
-%% with the DeletePermission action.
+%% Permissions can be granted with the CreatePermission:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreatePermission.html
+%% action and revoked with the DeletePermission:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeletePermission.html
+%% action.
 %%
 %% == About Permissions ==
 %%
@@ -568,7 +625,8 @@ list_certificate_authorities(Client, Input, Options)
 %% accounts, then permissions cannot be used to enable automatic renewals.
 %% Instead, the ACM certificate owner must set up a resource-based policy to
 %% enable cross-account issuance and renewals. For more information, see
-%% Using a Resource Based Policy with Amazon Web Services Private CA.
+%% Using a Resource Based Policy with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> </ul>
 list_permissions(Client, Input)
@@ -583,8 +641,12 @@ list_permissions(Client, Input, Options)
 %%
 %% Tags are labels that you can use to identify and organize your CAs. Each
 %% tag consists of a key and an optional value. Call the
-%% TagCertificateAuthority action to add one or more tags to your CA. Call
-%% the UntagCertificateAuthority action to remove tags.
+%% TagCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_TagCertificateAuthority.html
+%% action to add one or more tags to your CA. Call the
+%% UntagCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UntagCertificateAuthority.html
+%% action to remove tags.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -596,9 +658,13 @@ list_tags(Client, Input, Options)
 %%
 %% A policy can also be applied by sharing a private CA through Amazon Web
 %% Services Resource Access Manager (RAM). For more information, see Attach a
-%% Policy for Cross-Account Access.
+%% Policy for Cross-Account Access:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
 %%
-%% The policy can be displayed with GetPolicy and removed with DeletePolicy.
+%% The policy can be displayed with GetPolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_GetPolicy.html
+%% and removed with DeletePolicy:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeletePolicy.html.
 %%
 %% == About Policies ==
 %%
@@ -606,7 +672,8 @@ list_tags(Client, Input, Options)
 %% customer account, to Amazon Web Services Organizations, or to an Amazon
 %% Web Services Organizations unit. Policies are under the control of a CA
 %% administrator. For more information, see Using a Resource Based Policy
-%% with Amazon Web Services Private CA.
+%% with Amazon Web Services Private CA:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
 %%
 %% </li> <li> A policy permits a user of Certificate Manager (ACM) to issue
 %% ACM certificates signed by a CA in another account.
@@ -615,11 +682,13 @@ list_tags(Client, Input, Options)
 %% ACM user must configure a Service Linked Role (SLR). The SLR allows the
 %% ACM service to assume the identity of the user, subject to confirmation
 %% against the Amazon Web Services Private CA policy. For more information,
-%% see Using a Service Linked Role with ACM.
+%% see Using a Service Linked Role with ACM:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html.
 %%
 %% </li> <li> Updates made in Amazon Web Services Resource Manager (RAM) are
 %% reflected in policies. For more information, see Attach a Policy for
-%% Cross-Account Access.
+%% Cross-Account Access:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
 %%
 %% </li> </ul>
 put_policy(Client, Input)
@@ -633,19 +702,26 @@ put_policy(Client, Input, Options)
 %% state.
 %%
 %% You can restore a CA during the period that you defined in the
-%% PermanentDeletionTimeInDays parameter of the DeleteCertificateAuthority
+%% PermanentDeletionTimeInDays parameter of the DeleteCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DeleteCertificateAuthority.html
 %% action. Currently, you can specify 7 to 30 days. If you did not specify a
 %% PermanentDeletionTimeInDays value, by default you can restore the CA at
 %% any time in a 30 day period. You can check the time remaining in the
 %% restoration period of a private CA in the `DELETED' state by calling
-%% the DescribeCertificateAuthority or ListCertificateAuthorities actions.
-%% The status of a restored CA is set to its pre-deletion status when the
-%% RestoreCertificateAuthority action returns. To change its status to
-%% `ACTIVE', call the UpdateCertificateAuthority action. If the private
-%% CA was in the `PENDING_CERTIFICATE' state at deletion, you must use
-%% the ImportCertificateAuthorityCertificate action to import a certificate
-%% authority into the private CA before it can be activated. You cannot
-%% restore a CA after the restoration period has ended.
+%% the DescribeCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_DescribeCertificateAuthority.html
+%% or ListCertificateAuthorities:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListCertificateAuthorities.html
+%% actions. The status of a restored CA is set to its pre-deletion status
+%% when the RestoreCertificateAuthority action returns. To change its status
+%% to `ACTIVE', call the UpdateCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UpdateCertificateAuthority.html
+%% action. If the private CA was in the `PENDING_CERTIFICATE' state at
+%% deletion, you must use the ImportCertificateAuthorityCertificate:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html
+%% action to import a certificate authority into the private CA before it can
+%% be activated. You cannot restore a CA after the restoration period has
+%% ended.
 restore_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_certificate_authority(Client, Input, []).
@@ -664,17 +740,20 @@ restore_certificate_authority(Client, Input, Options)
 %% fails, Amazon Web Services Private CA attempts makes further attempts
 %% every 15 minutes. With Amazon CloudWatch, you can create alarms for the
 %% metrics `CRLGenerated' and `MisconfiguredCRLBucket'. For more
-%% information, see Supported CloudWatch Metrics.
+%% information, see Supported CloudWatch Metrics:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html.
 %%
 %% Both Amazon Web Services Private CA and the IAM principal must have
 %% permission to write to the S3 bucket that you specify. If the IAM
 %% principal making the call does not have permission to write to the bucket,
 %% then an exception is thrown. For more information, see Access policies for
-%% CRLs in Amazon S3.
+%% CRLs in Amazon S3:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
 %%
 %% Amazon Web Services Private CA also writes revocation information to the
 %% audit report. For more information, see
-%% CreateCertificateAuthorityAuditReport.
+%% CreateCertificateAuthorityAuditReport:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html.
 %%
 %% You cannot revoke a root CA self-signed certificate.
 revoke_certificate(Client, Input)
@@ -693,13 +772,17 @@ revoke_certificate(Client, Input, Options)
 %% private CA if you want to identify a specific characteristic of that CA,
 %% or you can apply the same tag to multiple private CAs if you want to
 %% filter for a common relationship among those CAs. To remove one or more
-%% tags, use the UntagCertificateAuthority action. Call the ListTags action
-%% to see what tags are associated with your CA.
+%% tags, use the UntagCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UntagCertificateAuthority.html
+%% action. Call the ListTags:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListTags.html
+%% action to see what tags are associated with your CA.
 %%
 %% To attach tags to a private CA during the creation procedure, a CA
 %% administrator must first associate an inline IAM policy with the
 %% `CreateCertificateAuthority' action and explicitly allow tagging. For
-%% more information, see Attaching tags to a CA at the time of creation.
+%% more information, see Attaching tags to a CA at the time of creation:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/auth-InlinePolicies.html#policy-tag-ca.
 tag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_certificate_authority(Client, Input, []).
@@ -713,8 +796,11 @@ tag_certificate_authority(Client, Input, Options)
 %% portion of the tag when calling this action, the tag will be removed
 %% regardless of value. If you specify a value, the tag is removed only if it
 %% is associated with the specified value. To add tags to a private CA, use
-%% the TagCertificateAuthority. Call the ListTags action to see what tags are
-%% associated with your CA.
+%% the TagCertificateAuthority:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_TagCertificateAuthority.html.
+%% Call the ListTags:
+%% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListTags.html
+%% action to see what tags are associated with your CA.
 untag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_certificate_authority(Client, Input, []).
@@ -734,7 +820,8 @@ untag_certificate_authority(Client, Input, Options)
 %% permission to write to the S3 bucket that you specify. If the IAM
 %% principal making the call does not have permission to write to the bucket,
 %% then an exception is thrown. For more information, see Access policies for
-%% CRLs in Amazon S3.
+%% CRLs in Amazon S3:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
 update_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_authority(Client, Input, []).

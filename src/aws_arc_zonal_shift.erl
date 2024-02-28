@@ -33,7 +33,8 @@
 %% scaling on demand when an autoshift or practice run starts.
 %%
 %% For more information about using zonal shift and zonal autoshift, see the
-%% Amazon Route 53 Application Recovery Controller Developer Guide.
+%% Amazon Route 53 Application Recovery Controller Developer Guide:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-recovery.html.
 -module(aws_arc_zonal_shift).
 
 -export([cancel_zonal_shift/3,
@@ -109,8 +110,9 @@ cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
 %% blocking alarm, to block practice runs from starting.
 %%
 %% For more information, see Considerations when you configure zonal
-%% autoshift in the Amazon Route 53 Application Recovery Controller Developer
-%% Guide.
+%% autoshift:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.considerations.html
+%% in the Amazon Route 53 Application Recovery Controller Developer Guide.
 create_practice_run_configuration(Client, Input) ->
     create_practice_run_configuration(Client, Input, []).
 create_practice_run_configuration(Client, Input0, Options0) ->
@@ -265,7 +267,8 @@ list_managed_resources(Client, QueryMap, HeadersMap, Options0)
 %% zonal autoshift.
 %%
 %% The `ListZonalShifts' operation does not list autoshifts. For more
-%% information about listing autoshifts, see &quot;&gt;ListAutoshifts.
+%% information about listing autoshifts, see &quot;&gt;ListAutoshifts:
+%% https://docs.aws.amazon.com/arc-zonal-shift/latest/api/API_ListAutoshifts.html.
 list_zonal_shifts(Client)
   when is_map(Client) ->
     list_zonal_shifts(Client, #{}, #{}).
@@ -315,8 +318,9 @@ list_zonal_shifts(Client, QueryMap, HeadersMap, Options0)
 %% for existing, in-progress connections in the Availability Zone to
 %% complete.
 %%
-%% For more information, see Zonal shift in the Amazon Route 53 Application
-%% Recovery Controller Developer Guide.
+%% For more information, see Zonal shift:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html in
+%% the Amazon Route 53 Application Recovery Controller Developer Guide.
 start_zonal_shift(Client, Input) ->
     start_zonal_shift(Client, Input, []).
 start_zonal_shift(Client, Input0, Options0) ->

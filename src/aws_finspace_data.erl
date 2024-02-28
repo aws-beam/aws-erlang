@@ -476,7 +476,8 @@ get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
 %% @doc Request programmatic credentials to use with FinSpace SDK.
 %%
 %% For more information, see Step 2. Access credentials programmatically
-%% using IAM access key id and secret access key.
+%% using IAM access key id and secret access key:
+%% https://docs.aws.amazon.com/finspace/latest/data-api/fs-using-the-finspace-api.html#accessing-credentials.
 get_programmatic_access_credentials(Client, EnvironmentId)
   when is_map(Client) ->
     get_programmatic_access_credentials(Client, EnvironmentId, #{}, #{}).

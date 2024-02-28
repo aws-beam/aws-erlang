@@ -464,7 +464,9 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% `CreateAccountCustomization' or `UpdateAccountCustomization' API
 %% operation. To further customize Amazon QuickSight by removing Amazon
 %% QuickSight sample assets and videos for all new users, see Customizing
-%% Amazon QuickSight in the Amazon QuickSight User Guide.
+%% Amazon QuickSight:
+%% https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html
+%% in the Amazon QuickSight User Guide.
 %%
 %% You can create customizations for your Amazon Web Services account or, if
 %% you specify a namespace, for a QuickSight namespace instead.
@@ -478,9 +480,12 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% with the namespace. If you don't share it with the namespace, the
 %% theme isn't visible to your users even if you make it the default
 %% theme. To check if the theme is shared, view the current permissions by
-%% using the ` DescribeThemePermissions ' API operation. To share the
-%% theme, grant permissions by using the ` UpdateThemePermissions ' API
-%% operation.
+%% using the ` DescribeThemePermissions:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeThemePermissions.html
+%% ' API operation. To share the theme, grant permissions by using the `
+%% UpdateThemePermissions:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemePermissions.html
+%% ' API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
@@ -512,11 +517,14 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% Before you use this operation, make sure that you can connect to an
 %% existing Amazon Web Services account. If you don't have an Amazon Web
-%% Services account, see Sign up for Amazon Web Services in the Amazon
-%% QuickSight User Guide. The person who signs up for Amazon QuickSight needs
-%% to have the correct Identity and Access Management (IAM) permissions. For
-%% more information, see IAM Policy Examples for Amazon QuickSight in the
-%% Amazon QuickSight User Guide.
+%% Services account, see Sign up for Amazon Web Services:
+%% https://docs.aws.amazon.com/quicksight/latest/user/setting-up-aws-sign-up.html
+%% in the Amazon QuickSight User Guide. The person who signs up for Amazon
+%% QuickSight needs to have the correct Identity and Access Management (IAM)
+%% permissions. For more information, see IAM Policy Examples for Amazon
+%% QuickSight:
+%% https://docs.aws.amazon.com/quicksight/latest/user/iam-policy-examples.html
+%% in the Amazon QuickSight User Guide.
 %%
 %% If your IAM policy includes both the `Subscribe' and
 %% `CreateAccountSubscription' actions, make sure that both actions are
@@ -525,15 +533,17 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% You can't pass an existing IAM role to access other Amazon Web
 %% Services services using this API operation. To pass your existing IAM role
-%% to Amazon QuickSight, see Passing IAM roles to Amazon QuickSight in the
-%% Amazon QuickSight User Guide.
+%% to Amazon QuickSight, see Passing IAM roles to Amazon QuickSight:
+%% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html#security-create-iam-role
+%% in the Amazon QuickSight User Guide.
 %%
 %% You can't set default resource access on the new account from the
 %% Amazon QuickSight API. Instead, add default resource access from the
 %% Amazon QuickSight console. For more information about setting default
 %% resource access to Amazon Web Services services, see Setting default
-%% resource access to Amazon Web Services services in the Amazon QuickSight
-%% User Guide.
+%% resource access to Amazon Web Services services:
+%% https://docs.aws.amazon.com/quicksight/latest/user/scoping-policies-defaults.html
+%% in the Amazon QuickSight User Guide.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
 create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
@@ -585,7 +595,9 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %% @doc Creates a dashboard from either a template or directly with a
 %% `DashboardDefinition'.
 %%
-%% To first create a template, see the ` CreateTemplate ' API operation.
+%% To first create a template, see the ` CreateTemplate:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTemplate.html
+%% ' API operation.
 %%
 %% A dashboard is an entity in Amazon QuickSight that identifies Amazon
 %% QuickSight reports, created from analyses. You can share Amazon QuickSight
@@ -806,7 +818,9 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 %%
 %% Any ingestions operating on tagged datasets inherit the same tags
 %% automatically for use in access control. For an example, see How do I
-%% create an IAM policy to control access to Amazon EC2 resources using tags?
+%% create an IAM policy to control access to Amazon EC2 resources using
+%% tags?:
+%% http://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/
 %% in the Amazon Web Services Knowledge Center. Tags are visible on the
 %% tagged dataset, but not on the ingestion resource.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
@@ -976,7 +990,9 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %%
 %% A theme is set of configuration options for color and layout. Themes apply
 %% to analyses and dashboards. For more information, see Using Themes in
-%% Amazon QuickSight in the Amazon QuickSight User Guide.
+%% Amazon QuickSight:
+%% https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html
+%% in the Amazon QuickSight User Guide.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
 create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
@@ -1777,13 +1793,16 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 %% your Region settings. If you're using the CLI, you can use one of the
 %% following options:
 %%
-%% <ul> <li> Use command line options.
+%% <ul> <li> Use command line options:
+%% https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html.
 %%
-%% </li> <li> Use named profiles.
+%% </li> <li> Use named profiles:
+%% https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html.
 %%
 %% </li> <li> Run `aws configure' to change your default Amazon Web
 %% Services Region. Use Enter to key the same settings for your keys. For
-%% more information, see Configuring the CLI.
+%% more information, see Configuring the CLI:
+%% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html.
 %%
 %% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a
 %% partition that contains users and assets (data sources, datasets,
@@ -1909,7 +1928,9 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 %%
 %% If you do not need to know details about the content of an Analysis, for
 %% instance if you are trying to check the status of a recently created or
-%% updated Analysis, use the `DescribeAnalysis' instead.
+%% updated Analysis, use the `DescribeAnalysis' :
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysis.html
+%% instead.
 describe_analysis_definition(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, #{}, #{}).
@@ -2044,7 +2065,9 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 %%
 %% If you do not need to know details about the content of a dashboard, for
 %% instance if you are trying to check the status of a recently created or
-%% updated dashboard, use the `DescribeDashboard' instead.
+%% updated dashboard, use the `DescribeDashboard' :
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html
+%% instead.
 describe_dashboard_definition(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, #{}, #{}).
@@ -2603,7 +2626,9 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 %%
 %% If you do not need to know details about the content of a template, for
 %% instance if you are trying to check the status of a recently created or
-%% updated template, use the `DescribeTemplate' instead.
+%% updated template, use the `DescribeTemplate' :
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplate.html
+%% instead.
 describe_template_definition(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, #{}, #{}).
@@ -2881,19 +2906,22 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %%
 %% </li> <li> The URL validity period should not be confused with the actual
 %% session lifetime that can be customized using the `
-%% SessionLifetimeInMinutes ' parameter. The resulting user session is
-%% valid for 15 minutes (minimum) to 10 hours (maximum). The default session
-%% duration is 10 hours.
+%% SessionLifetimeInMinutes:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForAnonymousUser.html#QS-GenerateEmbedUrlForAnonymousUser-request-SessionLifetimeInMinutes
+%% ' parameter. The resulting user session is valid for 15 minutes
+%% (minimum) to 10 hours (maximum). The default session duration is 10 hours.
 %%
 %% </li> <li> You are charged only when the URL is used or there is
 %% interaction with Amazon QuickSight.
 %%
-%% </li> </ul> For more information, see Embedded Analytics in the Amazon
-%% QuickSight User Guide.
+%% </li> </ul> For more information, see Embedded Analytics:
+%% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
+%% in the Amazon QuickSight User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal.
+%% QuickSight Developer Portal:
+%% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input, []).
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
@@ -2931,7 +2959,9 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% </li> <li> The URL validity period should not be confused with the actual
 %% session lifetime that can be customized using the `
-%% SessionLifetimeInMinutes ' parameter.
+%% SessionLifetimeInMinutes:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForRegisteredUser.html#QS-GenerateEmbedUrlForRegisteredUser-request-SessionLifetimeInMinutes
+%% ' parameter.
 %%
 %% The resulting user session is valid for 15 minutes (minimum) to 10 hours
 %% (maximum). The default session duration is 10 hours.
@@ -2939,12 +2969,14 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% </li> <li> You are charged only when the URL is used or there is
 %% interaction with Amazon QuickSight.
 %%
-%% </li> </ul> For more information, see Embedded Analytics in the Amazon
-%% QuickSight User Guide.
+%% </li> </ul> For more information, see Embedded Analytics:
+%% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
+%% in the Amazon QuickSight User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal.
+%% QuickSight Developer Portal:
+%% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_registered_user(Client, AwsAccountId, Input, []).
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
@@ -2992,11 +3024,14 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% `SessionLifetimeInMinutes' parameter to customize session duration.
 %%
 %% </li> </ul> For more information, see Embedding Analytics Using
-%% GetDashboardEmbedUrl in the Amazon QuickSight User Guide.
+%% GetDashboardEmbedUrl:
+%% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
+%% in the Amazon QuickSight User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal.
+%% QuickSight Developer Portal:
+%% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
@@ -3038,14 +3073,19 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %% dashboards. The users who access an embedded Amazon QuickSight console
 %% need belong to the author or admin security cohort. If you want to
 %% restrict permissions to some of these features, add a custom permissions
-%% profile to the user with the ` UpdateUser ' API operation. Use `
-%% RegisterUser ' API operation to add a new user with a custom
-%% permission profile attached. For more information, see the following
-%% sections in the Amazon QuickSight User Guide:
+%% profile to the user with the ` UpdateUser:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUser.html
+%% ' API operation. Use ` RegisterUser:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisterUser.html
+%% ' API operation to add a new user with a custom permission profile
+%% attached. For more information, see the following sections in the Amazon
+%% QuickSight User Guide:
 %%
-%% <ul> <li> Embedding Analytics
+%% <ul> <li> Embedding Analytics:
+%% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
-%% </li> <li> Customizing Access to the Amazon QuickSight Console
+%% </li> <li> Customizing Access to the Amazon QuickSight Console:
+%% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
 %%
 %% </li> </ul>
 get_session_embed_url(Client, AwsAccountId)
@@ -3973,7 +4013,8 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options
 %% QuickSight API. If you want new users to receive a registration email,
 %% then add those users in the Amazon QuickSight console. For more
 %% information on registering a new user in the Amazon QuickSight console,
-%% see Inviting users to access Amazon QuickSight.
+%% see Inviting users to access Amazon QuickSight:
+%% https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
@@ -4456,8 +4497,9 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 %%
 %% Updating a Dashboard creates a new dashboard version but does not
 %% immediately publish the new version. You can update the published version
-%% of a dashboard by using the ` UpdateDashboardPublishedVersion ' API
-%% operation.
+%% of a dashboard by using the ` UpdateDashboardPublishedVersion:
+%% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPublishedVersion.html
+%% ' API operation.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
@@ -4805,8 +4847,9 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 %% Before you can turn on public sharing on your account, make sure to give
 %% public sharing permissions to an administrative user in the Identity and
 %% Access Management (IAM) console. For more information on using IAM with
-%% Amazon QuickSight, see Using Amazon QuickSight with IAM in the Amazon
-%% QuickSight User Guide.
+%% Amazon QuickSight, see Using Amazon QuickSight with IAM:
+%% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
+%% in the Amazon QuickSight User Guide.
 update_public_sharing_settings(Client, AwsAccountId, Input) ->
     update_public_sharing_settings(Client, AwsAccountId, Input, []).
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->

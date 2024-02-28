@@ -21,7 +21,8 @@
 %% hosting services, your client applications use this API to get inferences
 %% from the model hosted at the specified endpoint.
 %%
-%% For an overview of Amazon SageMaker, see How It Works.
+%% For an overview of Amazon SageMaker, see How It Works:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
 %%
 %% Amazon SageMaker strips all POST headers except those supported by the
 %% API. Amazon SageMaker might add additional headers. You should not rely on
@@ -29,7 +30,9 @@
 %%
 %% Calls to `InvokeEndpoint' are authenticated by using Amazon Web
 %% Services Signature Version 4. For information, see Authenticating Requests
-%% (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference.
+%% (Amazon Web Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon S3 API Reference.
 %%
 %% A customer's model containers must respond to requests within 60
 %% seconds. The model itself can have a maximum processing time of 60 seconds
@@ -106,7 +109,9 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %%
 %% Calls to `InvokeEndpointAsync' are authenticated by using Amazon Web
 %% Services Signature Version 4. For information, see Authenticating Requests
-%% (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference.
+%% (Amazon Web Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon S3 API Reference.
 invoke_endpoint_async(Client, EndpointName, Input) ->
     invoke_endpoint_async(Client, EndpointName, Input, []).
 invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
@@ -167,16 +172,19 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %% sections in the Amazon SageMaker Developer Guide:
 %%
 %% <ul> <li> For information about how to add streaming support to a model,
-%% see How Containers Serve Requests.
+%% see How Containers Serve Requests:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-code-how-containe-serves-requests.
 %%
 %% </li> <li> For information about how to process the streaming response,
-%% see Invoke real-time endpoints.
+%% see Invoke real-time endpoints:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-test-endpoints.html.
 %%
 %% </li> </ul> Before you can use this operation, your IAM permissions must
 %% allow the `sagemaker:InvokeEndpoint' action. For more information
 %% about Amazon SageMaker actions for IAM policies, see Actions, resources,
-%% and condition keys for Amazon SageMaker in the IAM Service Authorization
-%% Reference.
+%% and condition keys for Amazon SageMaker:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html
+%% in the IAM Service Authorization Reference.
 %%
 %% Amazon SageMaker strips all POST headers except those supported by the
 %% API. Amazon SageMaker might add additional headers. You should not rely on
@@ -184,8 +192,9 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %%
 %% Calls to `InvokeEndpointWithResponseStream' are authenticated by using
 %% Amazon Web Services Signature Version 4. For information, see
-%% Authenticating Requests (Amazon Web Services Signature Version 4) in the
-%% Amazon S3 API Reference.
+%% Authenticating Requests (Amazon Web Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon S3 API Reference.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
     invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
 invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->

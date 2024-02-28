@@ -4,7 +4,8 @@
 %% @doc This is the Amazon Lookout for Metrics API Reference.
 %%
 %% For an introduction to the service with tutorials for getting started,
-%% visit Amazon Lookout for Metrics Developer Guide.
+%% visit Amazon Lookout for Metrics Developer Guide:
+%% https://docs.aws.amazon.com/lookoutmetrics/latest/dev.
 -module(aws_lookoutmetrics).
 
 -export([activate_anomaly_detector/2,
@@ -633,7 +634,9 @@ list_metric_sets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets a list of tags for a detector, dataset, or alert.
+%% @doc Gets a list of tags:
+%% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
+%% for a detector, dataset, or alert.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -679,7 +682,9 @@ put_feedback(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a detector, dataset, or alert.
+%% @doc Adds tags:
+%% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
+%% to a detector, dataset, or alert.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -702,7 +707,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from a detector, dataset, or alert.
+%% @doc Removes tags:
+%% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
+%% from a detector, dataset, or alert.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

@@ -20,10 +20,11 @@
 %%
 %% For more information about configuring, administering, and using Amazon
 %% Verified Permissions in your applications, see the Amazon Verified
-%% Permissions User Guide.
+%% Permissions User Guide:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/.
 %%
 %% For more information about the Cedar policy language, see the Cedar Policy
-%% Language Guide.
+%% Language Guide: https://docs.cedarpolicy.com/.
 %%
 %% When you write Cedar policies that reference principals, resources and
 %% actions, you can define the unique identifiers used for each of those
@@ -164,17 +165,18 @@ batch_is_authorized(Client, Input, Options)
 %%
 %% After you create an identity source, you can use the identities provided
 %% by the IdP as proxies for the principal in authorization queries that use
-%% the IsAuthorizedWithToken operation. These identities take the form of
-%% tokens that contain claims about the user, such as IDs, attributes and
-%% group memberships. Amazon Cognito provides both identity tokens and access
-%% tokens, and Verified Permissions can use either or both. Any combination
-%% of identity and access tokens results in the same Cedar principal.
-%% Verified Permissions automatically translates the information about the
-%% identities into the standard Cedar attributes that can be evaluated by
-%% your policies. Because the Amazon Cognito identity and access tokens can
-%% contain different information, the tokens you choose to use determine
-%% which principal attributes are available to access when evaluating Cedar
-%% policies.
+%% the IsAuthorizedWithToken:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html
+%% operation. These identities take the form of tokens that contain claims
+%% about the user, such as IDs, attributes and group memberships. Amazon
+%% Cognito provides both identity tokens and access tokens, and Verified
+%% Permissions can use either or both. Any combination of identity and access
+%% tokens results in the same Cedar principal. Verified Permissions
+%% automatically translates the information about the identities into the
+%% standard Cedar attributes that can be evaluated by your policies. Because
+%% the Amazon Cognito identity and access tokens can contain different
+%% information, the tokens you choose to use determine which principal
+%% attributes are available to access when evaluating Cedar policies.
 %%
 %% If you delete a Amazon Cognito user pool or user, tokens from that deleted
 %% pool or that deleted user continue to be usable until they expire.
@@ -189,9 +191,10 @@ batch_is_authorized(Client, Input, Options)
 %% `CognitoUserPoolId' and `CognitoClientId' are defined by the
 %% Amazon Cognito user pool.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 create_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_source(Client, Input, []).
@@ -218,9 +221,10 @@ create_identity_source(Client, Input, Options)
 %% in the policy store. If the policy doesn't pass validation, the
 %% operation fails and the policy isn't stored.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -232,12 +236,14 @@ create_policy(Client, Input, Options)
 %%
 %% A policy store is a container for policy resources.
 %%
-%% Although Cedar supports multiple namespaces, Verified Permissions
-%% currently supports only one namespace per policy store.
+%% Although Cedar supports multiple namespaces:
+%% https://docs.cedarpolicy.com/schema/schema.html#namespace, Verified
+%% Permissions currently supports only one namespace per policy store.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
@@ -255,9 +261,10 @@ create_policy_store(Client, Input, Options)
 %% dynamically linked to the template. If the template changes, then any
 %% policies that are linked to that template are immediately updated as well.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 create_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_template(Client, Input, []).
@@ -270,7 +277,9 @@ create_policy_template(Client, Input, Options)
 %%
 %% After you delete the identity source, you can no longer use tokens for
 %% identities from that identity source to represent principals in
-%% authorization queries made using IsAuthorizedWithToken. operations.
+%% authorization queries made using IsAuthorizedWithToken:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html.
+%% operations.
 delete_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_source(Client, Input, []).
@@ -376,12 +385,13 @@ is_authorized(Client, Input, Options)
 %% the parameters.
 %%
 %% The principal in this request comes from an external identity source in
-%% the form of an identity token formatted as a JSON web token (JWT). The
-%% information in the parameters can also define additional context that
-%% Verified Permissions can include in the evaluation. The request is
-%% evaluated against all matching policies in the specified policy store. The
-%% result of the decision is either `Allow' or `Deny', along with a
-%% list of the policies that resulted in the decision.
+%% the form of an identity token formatted as a JSON web token (JWT):
+%% https://wikipedia.org/wiki/JSON_Web_Token. The information in the
+%% parameters can also define additional context that Verified Permissions
+%% can include in the evaluation. The request is evaluated against all
+%% matching policies in the specified policy store. The result of the
+%% decision is either `Allow' or `Deny', along with a list of the
+%% policies that resulted in the decision.
 %%
 %% If you specify the `identityToken' parameter, then this operation
 %% derives the principal from that token. You must not also include that
@@ -451,9 +461,10 @@ list_policy_templates(Client, Input, Options)
 %% you later update a policy, then it is evaluated against the new schema at
 %% that time.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 put_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema(Client, Input, []).
@@ -465,9 +476,10 @@ put_schema(Client, Input, Options)
 %% (IdP) source, or to change the mapping of identities from the IdP to a
 %% different principal entity type.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 update_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_source(Client, Input, []).
@@ -477,10 +489,12 @@ update_identity_source(Client, Input, Options)
 
 %% @doc Modifies a Cedar static policy in the specified policy store.
 %%
-%% You can change only certain elements of the UpdatePolicyDefinition
+%% You can change only certain elements of the UpdatePolicyDefinition:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyInput.html#amazonverifiedpermissions-UpdatePolicy-request-UpdatePolicyDefinition
 %% parameter. You can directly update only static policies. To change a
 %% template-linked policy, you must update the template instead, using
-%% UpdatePolicyTemplate.
+%% UpdatePolicyTemplate:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyTemplate.html.
 %%
 %% If policy validation is enabled in the policy store, then updating a
 %% static policy causes Verified Permissions to validate the policy against
@@ -506,9 +520,10 @@ update_identity_source(Client, Input, Options)
 %%
 %% To update a template-linked policy, you must update the template instead.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
@@ -518,9 +533,10 @@ update_policy(Client, Input, Options)
 
 %% @doc Modifies the validation setting for a policy store.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 update_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_store(Client, Input, []).
@@ -531,16 +547,18 @@ update_policy_store(Client, Input, Options)
 %% @doc Updates the specified policy template.
 %%
 %% You can update only the description and the some elements of the
-%% policyBody.
+%% policyBody:
+%% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_UpdatePolicyTemplate.html#amazonverifiedpermissions-UpdatePolicyTemplate-request-policyBody.
 %%
 %% Changes you make to the policy template content are immediately (within
 %% the constraints of eventual consistency) reflected in authorization
 %% decisions that involve all template-linked policies instantiated from this
 %% template.
 %%
-%% Verified Permissions is eventually consistent . It can take a few seconds
-%% for a new or changed element to be propagate through the service and be
-%% visible in the results of other Verified Permissions operations.
+%% Verified Permissions is eventually consistent:
+%% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
+%% seconds for a new or changed element to be propagate through the service
+%% and be visible in the results of other Verified Permissions operations.
 update_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_template(Client, Input, []).

@@ -3,8 +3,9 @@
 
 %% @doc This is the AWS HealthOmics API Reference.
 %%
-%% For an introduction to the service, see What is AWS HealthOmics? in the
-%% AWS HealthOmics User Guide.
+%% For an introduction to the service, see What is AWS HealthOmics?:
+%% https://docs.aws.amazon.com/omics/latest/dev/ in the AWS HealthOmics User
+%% Guide.
 -module(aws_omics).
 
 -export([abort_multipart_read_set_upload/4,

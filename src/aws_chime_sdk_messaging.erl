@@ -6,7 +6,8 @@
 %%
 %% These APIs depend on the frameworks provided by the Amazon Chime SDK
 %% identity APIs. For more information about the messaging APIs, see Amazon
-%% Chime SDK messaging.
+%% Chime SDK messaging:
+%% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html.
 -module(aws_chime_sdk_messaging).
 
 -export([associate_channel_flow/3,
@@ -320,7 +321,9 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %%
 %% </li> </ol> Channel flows don't process Control or System messages.
 %% For more information about the message types provided by Chime SDK
-%% messaging, refer to Message types in the Amazon Chime developer guide.
+%% messaging, refer to Message types:
+%% https://docs.aws.amazon.com/chime/latest/dg/using-the-messaging-sdk.html#msg-types
+%% in the Amazon Chime developer guide.
 create_channel_flow(Client, Input) ->
     create_channel_flow(Client, Input, []).
 create_channel_flow(Client, Input0, Options0) ->
@@ -621,8 +624,9 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 
 %% @doc Deletes the streaming configurations for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data in the Amazon Chime SDK
-%% Developer Guide.
+%% For more information, see Streaming messaging data:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
+%% the Amazon Chime SDK Developer Guide.
 delete_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
 delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
@@ -1060,8 +1064,9 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the data streaming configuration for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data in the Amazon Chime SDK
-%% Developer Guide.
+%% For more information, see Streaming messaging data:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
+%% the Amazon Chime SDK Developer Guide.
 get_messaging_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_messaging_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
@@ -1159,7 +1164,9 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% as the value in the header.
 %%
 %% If you want to list the channels to which a specific app instance user
-%% belongs, see the ListChannelMembershipsForAppInstanceUser API.
+%% belongs, see the ListChannelMembershipsForAppInstanceUser:
+%% https://docs.aws.amazon.com/chime/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html
+%% API.
 list_channel_memberships(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1571,8 +1578,9 @@ put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Option
 
 %% @doc Sets the data streaming configuration for an `AppInstance'.
 %%
-%% For more information, see Streaming messaging data in the Amazon Chime SDK
-%% Developer Guide.
+%% For more information, see Streaming messaging data:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
+%% the Amazon Chime SDK Developer Guide.
 put_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
 put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->

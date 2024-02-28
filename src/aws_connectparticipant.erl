@@ -53,7 +53,8 @@
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 complete_attachment_upload(Client, Input) ->
     complete_attachment_upload(Client, Input, []).
 complete_attachment_upload(Client, Input0, Options0) ->
@@ -100,17 +101,23 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% URL and perform the same steps as before.
 %%
 %% Message streaming support: This API can also be used together with the
-%% StartContactStreaming API to create a participant connection for chat
-%% contacts that are not using a websocket. For more information about
-%% message streaming, Enable real-time chat message streaming in the Amazon
-%% Connect Administrator Guide.
+%% StartContactStreaming:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
+%% API to create a participant connection for chat contacts that are not
+%% using a websocket. For more information about message streaming, Enable
+%% real-time chat message streaming:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
+%% in the Amazon Connect Administrator Guide.
 %%
 %% Feature specifications: For information about feature specifications, such
 %% as the allowed number of open websocket connections per participant, see
-%% Feature specifications in the Amazon Connect Administrator Guide.
+%% Feature specifications:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
+%% in the Amazon Connect Administrator Guide.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 create_participant_connection(Client, Input) ->
     create_participant_connection(Client, Input, []).
 create_participant_connection(Client, Input0, Options0) ->
@@ -168,7 +175,8 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 disconnect_participant(Client, Input0, Options0) ->
@@ -201,7 +209,8 @@ disconnect_participant(Client, Input0, Options0) ->
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 get_attachment(Client, Input) ->
     get_attachment(Client, Input, []).
 get_attachment(Client, Input0, Options0) ->
@@ -230,7 +239,8 @@ get_attachment(Client, Input0, Options0) ->
 %% attachments.
 %%
 %% For information about accessing past chat contact transcripts for a
-%% persistent chat, see Enable persistent chat.
+%% persistent chat, see Enable persistent chat:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html.
 %%
 %% If you have a process that consumes events in the transcript of an chat
 %% that has ended, note that chat transcripts contain the following event
@@ -252,7 +262,8 @@ get_attachment(Client, Input0, Options0) ->
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
 get_transcript(Client, Input0, Options0) ->
@@ -281,8 +292,9 @@ get_transcript(Client, Input0, Options0) ->
 %% `application/vnd.amazonaws.connect.event.connection.acknowledged'
 %% ContentType will no longer be supported starting December 31, 2024.
 %%
-%% This event has been migrated to the CreateParticipantConnection API using
-%% the `ConnectParticipant' field.
+%% This event has been migrated to the CreateParticipantConnection:
+%% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
+%% API using the `ConnectParticipant' field.
 %%
 %% Sends an event. Message receipts are not supported when there are more
 %% than two active participants in the chat. Using the SendEvent API for
@@ -293,7 +305,8 @@ get_transcript(Client, Input0, Options0) ->
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 send_event(Client, Input0, Options0) ->
@@ -324,7 +337,8 @@ send_event(Client, Input0, Options0) ->
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
 send_message(Client, Input0, Options0) ->
@@ -356,7 +370,8 @@ send_message(Client, Input0, Options0) ->
 %% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
-%% authentication.
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 start_attachment_upload(Client, Input) ->
     start_attachment_upload(Client, Input, []).
 start_attachment_upload(Client, Input0, Options0) ->

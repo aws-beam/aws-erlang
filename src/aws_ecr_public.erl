@@ -12,7 +12,8 @@
 %% reliable registry for your Docker or Open Container Initiative (OCI)
 %% images. Amazon ECR supports public repositories with this API. For
 %% information about the Amazon ECR API for private repositories, see Amazon
-%% Elastic Container Registry API Reference.
+%% Elastic Container Registry API Reference:
+%% https://docs.aws.amazon.com/AmazonECR/latest/APIReference/Welcome.html.
 -module(aws_ecr_public).
 
 -export([batch_check_layer_availability/2,
@@ -124,8 +125,9 @@ complete_layer_upload(Client, Input, Options)
 
 %% @doc Creates a repository in a public registry.
 %%
-%% For more information, see Amazon ECR repositories in the Amazon Elastic
-%% Container Registry User Guide.
+%% For more information, see Amazon ECR repositories:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html
+%% in the Amazon Elastic Container Registry User Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -294,8 +296,9 @@ put_repository_catalog_data(Client, Input, Options)
 %% @doc Applies a repository policy to the specified public repository to
 %% control access permissions.
 %%
-%% For more information, see Amazon ECR Repository Policies in the Amazon
-%% Elastic Container Registry User Guide.
+%% For more information, see Amazon ECR Repository Policies:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html
+%% in the Amazon Elastic Container Registry User Guide.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).

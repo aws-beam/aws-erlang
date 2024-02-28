@@ -41,8 +41,9 @@ describe_report_creation(Client, Input, Options)
 %% @doc Returns a table that shows counts of resources that are noncompliant
 %% with their tag policies.
 %%
-%% For more information on tag policies, see Tag Policies in the
-%% Organizations User Guide.
+%% For more information on tag policies, see Tag Policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html
+%% in the Organizations User Guide.
 %%
 %% You can call this operation only from the organization's management
 %% account and from the us-east-1 Region.
@@ -72,8 +73,9 @@ get_compliance_summary(Client, Input, Options)
 %% requested resources.
 %%
 %% </li> <li> Information about compliance with the account's effective
-%% tag policy. For more information on tag policies, see Tag Policies in the
-%% Organizations User Guide.
+%% tag policy. For more information on tag policies, see Tag Policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html
+%% in the Organizations User Guide.
 %%
 %% </li> </ul> This operation supports pagination, where the response can be
 %% sent in multiple pages. You should check the `PaginationToken'
@@ -149,13 +151,16 @@ start_report_creation(Client, Input, Options)
 %%
 %% <ul> <li> Not all resources can have tags. For a list of services with
 %% resources that support tagging using this operation, see Services that
-%% support the Resource Groups Tagging API. If the resource doesn't yet
-%% support this operation, the resource's service might support tagging
-%% using its own API operations. For more information, refer to the
-%% documentation for that service.
+%% support the Resource Groups Tagging API:
+%% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html.
+%% If the resource doesn't yet support this operation, the resource's
+%% service might support tagging using its own API operations. For more
+%% information, refer to the documentation for that service.
 %%
 %% </li> <li> Each resource can have up to 50 tags. For other limits, see Tag
-%% Naming and Usage Conventions in the Amazon Web Services General Reference.
+%% Naming and Usage Conventions:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions
+%% in the Amazon Web Services General Reference.
 %%
 %% </li> <li> You can only tag resources that are located in the specified
 %% Amazon Web Services Region for the Amazon Web Services account.

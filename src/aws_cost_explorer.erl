@@ -16,7 +16,8 @@
 %% <ul> <li> `https://ce.us-east-1.amazonaws.com'
 %%
 %% </li> </ul> For information about the costs that are associated with the
-%% Cost Explorer API, see Amazon Web Services Cost Management Pricing.
+%% Cost Explorer API, see Amazon Web Services Cost Management Pricing:
+%% http://aws.amazon.com/aws-cost-management/pricing/.
 -module(aws_cost_explorer).
 
 -export([create_anomaly_monitor/2,
@@ -212,12 +213,14 @@ get_anomaly_subscriptions(Client, Input, Options)
 %% request to return. For example, you can specify `BlendedCosts' or
 %% `UsageQuantity'. You can also filter and group your data by various
 %% dimensions, such as `SERVICE' or `AZ', in a specific time range.
-%% For a complete list of valid dimensions, see the GetDimensionValues
+%% For a complete list of valid dimensions, see the GetDimensionValues:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html
 %% operation. Management account in an organization in Organizations have
 %% access to all member accounts.
 %%
-%% For information about filter limitations, see Quotas and restrictions in
-%% the Billing and Cost Management User Guide.
+%% For information about filter limitations, see Quotas and restrictions:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html
+%% in the Billing and Cost Management User Guide.
 get_cost_and_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage(Client, Input, []).
@@ -231,15 +234,17 @@ get_cost_and_usage(Client, Input, Options)
 %% `BlendedCosts' or `UsageQuantity', that you want the request to
 %% return. You can also filter and group your data by various dimensions,
 %% such as `SERVICE' or `AZ', in a specific time range. For a
-%% complete list of valid dimensions, see the GetDimensionValues operation.
-%% Management account in an organization in Organizations have access to all
-%% member accounts. This API is currently available for the Amazon Elastic
-%% Compute Cloud – Compute service only.
+%% complete list of valid dimensions, see the GetDimensionValues:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html
+%% operation. Management account in an organization in Organizations have
+%% access to all member accounts. This API is currently available for the
+%% Amazon Elastic Compute Cloud – Compute service only.
 %%
 %% This is an opt-in only feature. You can enable this feature from the Cost
 %% Explorer Settings page. For information about how to access the Settings
-%% page, see Controlling Access for Cost Explorer in the Billing and Cost
-%% Management User Guide.
+%% page, see Controlling Access for Cost Explorer:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html
+%% in the Billing and Cost Management User Guide.
 get_cost_and_usage_with_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage_with_resources(Client, Input, []).
@@ -372,7 +377,9 @@ get_reservation_utilization(Client, Input, Options)
 %% Recommendations are generated to either downsize or terminate instances,
 %% along with providing savings detail and metrics. For more information
 %% about calculation and function, see Optimizing Your Cost with Rightsizing
-%% Recommendations in the Billing and Cost Management User Guide.
+%% Recommendations:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html
+%% in the Billing and Cost Management User Guide.
 get_rightsizing_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rightsizing_recommendation(Client, Input, []).
@@ -597,7 +604,9 @@ update_anomaly_monitor(Client, Input, Options)
 %% Specify the fields that you want to update. Omitted fields are unchanged.
 %%
 %% The JSON below describes the generic construct for each type. See Request
-%% Parameters for possible values as they apply to `AnomalySubscription'.
+%% Parameters:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalySubscription.html#API_UpdateAnomalySubscription_RequestParameters
+%% for possible values as they apply to `AnomalySubscription'.
 update_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_subscription(Client, Input, []).

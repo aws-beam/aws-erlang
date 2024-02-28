@@ -12,8 +12,9 @@
 %% well as heterogeneous migrations between different database platforms,
 %% such as Oracle to MySQL or SQL Server to PostgreSQL.
 %%
-%% For more information about DMS, see What Is Database Migration Service? in
-%% the Database Migration Service User Guide.
+%% For more information about DMS, see What Is Database Migration Service?:
+%% https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html in the
+%% Database Migration Service User Guide.
 -module(aws_database_migration).
 
 -export([add_tags_to_resource/2,
@@ -240,7 +241,9 @@
 %%
 %% These tags can also be used with cost allocation reporting to track cost
 %% associated with DMS resources, or used in a Condition statement in an IAM
-%% policy for DMS. For more information, see `Tag' data type description.
+%% policy for DMS. For more information, see `Tag' :
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data type
+%% description.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -260,7 +263,8 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% @doc Starts the analysis of up to 20 source databases to recommend target
 %% engines for each source database.
 %%
-%% This is a batch version of StartRecommendations.
+%% This is a batch version of StartRecommendations:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartRecommendations.html.
 %%
 %% The result of analysis of each source database is reported individually in
 %% the response. Because the batch request can result in a combination of
@@ -327,7 +331,9 @@ create_endpoint(Client, Input, Options)
 %% events generated from all DMS sources belonging to your customer account.
 %%
 %% For more information about DMS events, see Working with Events and
-%% Notifications in the Database Migration Service User Guide.
+%% Notifications:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
+%% Database Migration Service User Guide.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -354,7 +360,10 @@ create_instance_profile(Client, Input, Options)
 %% @doc Creates the migration project using the specified parameters.
 %%
 %% You can run this action only after you create an instance profile and data
-%% providers using CreateInstanceProfile and CreateDataProvider.
+%% providers using CreateInstanceProfile:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateInstanceProfile.html
+%% and CreateDataProvider:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateDataProvider.html.
 create_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_migration_project(Client, Input, []).
@@ -379,12 +388,16 @@ create_replication_config(Client, Input, Options)
 %% DMS requires that your account have certain roles with appropriate
 %% permissions before you can create a replication instance. For information
 %% on the required roles, see Creating the IAM Roles to Use With the CLI and
-%% DMS API. For information on the required permissions, see IAM Permissions
-%% Needed to Use DMS.
+%% DMS API:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole.
+%% For information on the required permissions, see IAM Permissions Needed to
+%% Use DMS:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions.
 %%
 %% If you don't specify a version when creating a replication instance,
 %% DMS will create the instance using the default engine version. For
-%% information about the default engine version, see Release Notes.
+%% information about the default engine version, see Release Notes:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReleaseNotes.html.
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -403,9 +416,10 @@ create_replication_instance(Client, Input, Options)
 %% the CreateReplicationSubnetGroup action returns the following error
 %% message: The Replication Subnet Group already exists. In this case, delete
 %% the existing replication subnet group. To do so, use the
-%% DeleteReplicationSubnetGroup action. Optionally, choose Subnet groups in
-%% the DMS console, then choose your subnet group. Next, choose Delete from
-%% Actions.
+%% DeleteReplicationSubnetGroup:
+%% https://docs.aws.amazon.com/en_us/dms/latest/APIReference/API_DeleteReplicationSubnetGroup.html
+%% action. Optionally, choose Subnet groups in the DMS console, then choose
+%% your subnet group. Next, choose Delete from Actions.
 create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
@@ -679,8 +693,9 @@ describe_engine_versions(Client, Input, Options)
 %% specified source type.
 %%
 %% You can see a list of the event categories and source types in Working
-%% with Events and Notifications in the Database Migration Service User
-%% Guide.
+%% with Events and Notifications:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
+%% Database Migration Service User Guide.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -706,8 +721,9 @@ describe_event_subscriptions(Client, Input, Options)
 %% @doc Lists events for a given source identifier and source type.
 %%
 %% You can also specify a start and end time. For more information on DMS
-%% events, see Working with Events and Notifications in the Database
-%% Migration Service User Guide.
+%% events, see Working with Events and Notifications:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
+%% Database Migration Service User Guide.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -923,7 +939,9 @@ describe_replication_table_statistics(Client, Input, Options)
 %% This action always returns the latest results.
 %%
 %% For more information about DMS task assessments, see Creating a task
-%% assessment report in the Database Migration Service User Guide.
+%% assessment report:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
+%% in the Database Migration Service User Guide.
 describe_replication_task_assessment_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_results(Client, Input, []).
@@ -1022,7 +1040,9 @@ import_certificate(Client, Input, Options)
 %% @doc Lists all metadata tags attached to an DMS resource, including
 %% replication instance, endpoint, subnet group, and migration task.
 %%
-%% For more information, see `Tag' data type description.
+%% For more information, see `Tag' :
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data type
+%% description.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1142,8 +1162,9 @@ modify_replication_subnet_group(Client, Input, Options)
 %% You can't modify the task endpoints. The task must be stopped before
 %% you can modify it.
 %%
-%% For more information about DMS tasks, see Working with Migration Tasks in
-%% the Database Migration Service User Guide.
+%% For more information about DMS tasks, see Working with Migration Tasks:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html in the
+%% Database Migration Service User Guide.
 modify_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_task(Client, Input, []).
@@ -1214,7 +1235,9 @@ reload_tables(Client, Input, Options)
 %% @doc Removes metadata tags from an DMS resource, including replication
 %% instance, endpoint, subnet group, and migration task.
 %%
-%% For more information, see `Tag' data type description.
+%% For more information, see `Tag' :
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data type
+%% description.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -1299,7 +1322,8 @@ start_metadata_model_import(Client, Input, Options)
 %% recommendations of target engines.
 %%
 %% You can create recommendations for multiple source databases using
-%% BatchStartRecommendations.
+%% BatchStartRecommendations:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_BatchStartRecommendations.html.
 start_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommendations(Client, Input, []).
@@ -1323,8 +1347,9 @@ start_replication(Client, Input, Options)
 
 %% @doc Starts the replication task.
 %%
-%% For more information about DMS tasks, see Working with Migration Tasks in
-%% the Database Migration Service User Guide.
+%% For more information about DMS tasks, see Working with Migration Tasks :
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html in the
+%% Database Migration Service User Guide.
 start_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task(Client, Input, []).
@@ -1347,7 +1372,9 @@ start_replication_task(Client, Input, Options)
 %% `InvalidResourceStateFault' error will result.
 %%
 %% For information about DMS task assessments, see Creating a task assessment
-%% report in the Database Migration Service User Guide.
+%% report:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
+%% in the Database Migration Service User Guide.
 start_replication_task_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment(Client, Input, []).
@@ -1413,8 +1440,9 @@ test_connection(Client, Input, Options)
 %%
 %% To call this operation, make sure that you have certain permissions added
 %% to your user account. For more information, see Migrating event
-%% subscriptions to Amazon EventBridge in the Amazon Web Services Database
-%% Migration Service User Guide.
+%% subscriptions to Amazon EventBridge:
+%% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html#CHAP_Events-migrate-to-eventbridge
+%% in the Amazon Web Services Database Migration Service User Guide.
 update_subscriptions_to_event_bridge(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscriptions_to_event_bridge(Client, Input, []).

@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
-%% CloudHSM User Guide.
+%% @doc For more information about AWS CloudHSM, see AWS CloudHSM:
+%% http://aws.amazon.com/cloudhsm/ and the AWS CloudHSM User Guide:
+%% https://docs.aws.amazon.com/cloudhsm/latest/userguide/.
 -module(aws_cloudhsm_v2).
 
 -export([copy_backup_to_region/2,

@@ -27,14 +27,18 @@
 %%
 %% The `controlIdentifier' is unique in each Amazon Web Services Region
 %% for each control. You can find the `controlIdentifier' for each Region
-%% and control in the Tables of control metadata in the Amazon Web Services
-%% Control Tower User Guide.
+%% and control in the Tables of control metadata:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
+%% in the Amazon Web Services Control Tower User Guide.
 %%
 %% A quick-reference list of control identifers for the Amazon Web Services
 %% Control Tower legacy Strongly recommended and Elective controls is given
-%% in Resource identifiers for APIs and controls in the Controls reference
-%% guide section of the Amazon Web Services Control Tower User Guide.
-%% Remember that Mandatory controls cannot be added or removed.
+%% in Resource identifiers for APIs and controls:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html.html
+%% in the Controls reference guide section:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html
+%% of the Amazon Web Services Control Tower User Guide. Remember that
+%% Mandatory controls cannot be added or removed.
 %%
 %% ARN format: `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}'
 %%
@@ -55,23 +59,31 @@
 %%
 %% == Details and examples ==
 %%
-%% <ul> <li> Control API input and output examples with CLI
+%% <ul> <li> Control API input and output examples with CLI:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html
 %%
-%% </li> <li> Enable controls with CloudFormation
+%% </li> <li> Enable controls with CloudFormation:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/enable-controls.html
 %%
-%% </li> <li> Control metadata tables
+%% </li> <li> Control metadata tables:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html
 %%
-%% </li> <li> List of identifiers for legacy controls
+%% </li> <li> List of identifiers for legacy controls:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html
 %%
-%% </li> <li> Controls reference guide
+%% </li> <li> Controls reference guide:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/controls.html
 %%
-%% </li> <li> Controls library groupings
+%% </li> <li> Controls library groupings:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/controls-reference.html
 %%
 %% </li> <li> Creating Amazon Web Services Control Tower resources with
-%% Amazon Web Services CloudFormation
+%% Amazon Web Services CloudFormation:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html
 %%
 %% </li> </ul> To view the open source resource repository on GitHub, see
-%% aws-cloudformation/aws-cloudformation-resource-providers-controltower
+%% aws-cloudformation/aws-cloudformation-resource-providers-controltower:
+%% https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower
 %%
 %% Recording API Requests
 %%
@@ -82,10 +94,11 @@
 %% Amazon Web Services Control Tower service received, who made the request
 %% and when, and so on. For more about Amazon Web Services Control Tower and
 %% its support for CloudTrail, see Logging Amazon Web Services Control Tower
-%% Actions with Amazon Web Services CloudTrail in the Amazon Web Services
-%% Control Tower User Guide. To learn more about CloudTrail, including how to
-%% turn it on and find your log files, see the Amazon Web Services CloudTrail
-%% User Guide.
+%% Actions with Amazon Web Services CloudTrail:
+%% https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html
+%% in the Amazon Web Services Control Tower User Guide. To learn more about
+%% CloudTrail, including how to turn it on and find your log files, see the
+%% Amazon Web Services CloudTrail User Guide.
 -module(aws_controltower).
 
 -export([delete_landing_zone/2,
@@ -197,7 +210,8 @@ disable_baseline(Client, Input0, Options0) ->
 %% It starts an asynchronous operation that deletes AWS resources on the
 %% specified organizational unit and the accounts it contains. The resources
 %% will vary according to the control that you specify. For usage examples,
-%% see the Amazon Web Services Control Tower User Guide .
+%% see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 disable_control(Client, Input) ->
     disable_control(Client, Input, []).
 disable_control(Client, Input0, Options0) ->
@@ -252,7 +266,8 @@ enable_baseline(Client, Input0, Options0) ->
 %% resources on the specified organizational unit and the accounts it
 %% contains. The resources created will vary according to the control that
 %% you specify. For usage examples, see the Amazon Web Services Control Tower
-%% User Guide .
+%% User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 enable_control(Client, Input) ->
     enable_control(Client, Input, []).
 enable_control(Client, Input0, Options0) ->
@@ -332,7 +347,8 @@ get_baseline_operation(Client, Input0, Options0) ->
 %%
 %% Displays a message in case of error. Details for an operation are
 %% available for 90 days. For usage examples, see the Amazon Web Services
-%% Control Tower User Guide .
+%% Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 get_control_operation(Client, Input) ->
     get_control_operation(Client, Input, []).
 get_control_operation(Client, Input0, Options0) ->
@@ -381,7 +397,8 @@ get_enabled_baseline(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about an enabled control.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 get_enabled_control(Client, Input) ->
     get_enabled_control(Client, Input, []).
 get_enabled_control(Client, Input0, Options0) ->
@@ -482,7 +499,8 @@ list_enabled_baselines(Client, Input0, Options0) ->
 %% @doc Lists the controls enabled by Amazon Web Services Control Tower on
 %% the specified organizational unit and the accounts it contains.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 list_enabled_controls(Client, Input) ->
     list_enabled_controls(Client, Input, []).
 list_enabled_controls(Client, Input0, Options0) ->
@@ -536,7 +554,8 @@ list_landing_zones(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags associated with the resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -613,7 +632,8 @@ reset_landing_zone(Client, Input0, Options0) ->
 
 %% @doc Applies tags to a resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -638,7 +658,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from a resource.
 %%
-%% For usage examples, see the Amazon Web Services Control Tower User Guide .
+%% For usage examples, see the Amazon Web Services Control Tower User Guide :
+%% https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

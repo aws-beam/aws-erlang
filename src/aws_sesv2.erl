@@ -3,11 +3,12 @@
 
 %% @doc Amazon SES API v2
 %%
-%% Amazon SES is an Amazon Web Services service that you can use to send
-%% email messages to your customers.
+%% Amazon SES: http://aws.amazon.com/ses is an Amazon Web Services service
+%% that you can use to send email messages to your customers.
 %%
 %% If you're new to Amazon SES API v2, you might find it helpful to
-%% review the Amazon Simple Email Service Developer Guide. The Amazon SES
+%% review the Amazon Simple Email Service Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/. The Amazon SES
 %% Developer Guide provides information and code samples that demonstrate how
 %% to use Amazon SES API v2 features programmatically.
 -module(aws_sesv2).
@@ -397,7 +398,9 @@ create_contact_list(Client, Input0, Options0) ->
 %% @doc Creates a new custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% custom verification email templates in the Amazon SES Developer Guide.
+%% custom verification email templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_custom_verification_email_template(Client, Input) ->
@@ -499,7 +502,8 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 %% tokens. You can convert these tokens into CNAME records, which you then
 %% add to the DNS configuration for your domain. Your domain is verified when
 %% Amazon SES detects these records in the DNS configuration for your domain.
-%% This verification method is known as Easy DKIM.
+%% This verification method is known as Easy DKIM:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html.
 %%
 %% Alternatively, you can perform the verification process by providing your
 %% own public-private key pair. This verification method is known as Bring
@@ -548,7 +552,8 @@ create_email_identity(Client, Input0, Options0) ->
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
@@ -577,7 +582,8 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 %%
 %% Email templates enable you to send personalized email to one or more
 %% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide.
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
 create_email_template(Client, Input) ->
@@ -758,7 +764,9 @@ delete_contact_list(Client, ContactListName, Input0, Options0) ->
 %% @doc Deletes an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% custom verification email templates in the Amazon SES Developer Guide.
+%% custom verification email templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
@@ -842,7 +850,8 @@ delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
@@ -1081,7 +1090,9 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% you specify.
 %%
 %% For more information about custom verification email templates, see Using
-%% custom verification email templates in the Amazon SES Developer Guide.
+%% custom verification email templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_custom_verification_email_template(Client, TemplateName)
@@ -1196,7 +1207,7 @@ get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
 %% charge, in addition to any other fees that you accrue by using Amazon SES
 %% and other Amazon Web Services services. For more information about the
 %% features and cost of a Deliverability dashboard subscription, see Amazon
-%% SES Pricing.
+%% SES Pricing: http://aws.amazon.com/ses/pricing/.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, #{}, #{}).
@@ -1333,7 +1344,8 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 get_email_identity_policies(Client, EmailIdentity)
@@ -1576,7 +1588,9 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% account in the current Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
-%% custom verification email templates in the Amazon SES Developer Guide.
+%% custom verification email templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 list_custom_verification_email_templates(Client)
@@ -2263,7 +2277,7 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
 %% charge, in addition to any other fees that you accrue by using Amazon SES
 %% and other Amazon Web Services services. For more information about the
 %% features and cost of a Deliverability dashboard subscription, see Amazon
-%% SES Pricing.
+%% SES Pricing: http://aws.amazon.com/ses/pricing/.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 put_deliverability_dashboard_option(Client, Input0, Options0) ->
@@ -2489,7 +2503,9 @@ send_bulk_email(Client, Input0, Options0) ->
 %% To use this operation, you must first create a custom verification email
 %% template. For more information about creating and using custom
 %% verification email templates, see Using custom verification email
-%% templates in the Amazon SES Developer Guide.
+%% templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 send_custom_verification_email(Client, Input) ->
@@ -2724,7 +2740,9 @@ update_contact_list(Client, ContactListName, Input0, Options0) ->
 %% @doc Updates an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% custom verification email templates in the Amazon SES Developer Guide.
+%% custom verification email templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_custom_verification_email_template(Client, TemplateName, Input) ->
@@ -2760,7 +2778,8 @@ update_custom_verification_email_template(Client, TemplateName, Input0, Options0
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
@@ -2789,7 +2808,8 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 %%
 %% Email templates enable you to send personalized email to one or more
 %% destinations in a single API operation. For more information, see the
-%% Amazon SES Developer Guide.
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
 update_email_template(Client, TemplateName, Input) ->

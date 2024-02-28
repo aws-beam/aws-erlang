@@ -31,7 +31,7 @@
 %% 3).
 %%
 %% </li> </ul> For more information, see the Elastic Load Balancing User
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/.
 %%
 %% All Elastic Load Balancing operations are idempotent, which means that
 %% they complete at most one time. If you repeat an operation, it succeeds.
@@ -138,8 +138,11 @@
 %% If the certificate in already in the certificate list, the call is
 %% successful but the certificate is not added again.
 %%
-%% For more information, see HTTPS listeners in the Application Load
-%% Balancers Guide or TLS listeners in the Network Load Balancers Guide.
+%% For more information, see HTTPS listeners:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html
+%% in the Application Load Balancers Guide or TLS listeners:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
+%% in the Network Load Balancers Guide.
 add_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_listener_certificates(Client, Input, []).
@@ -175,11 +178,14 @@ add_trust_store_revocations(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Listeners for your Application Load Balancers
+%% <ul> <li> Listeners for your Application Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html
 %%
-%% </li> <li> Listeners for your Network Load Balancers
+%% </li> <li> Listeners for your Network Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html
 %%
-%% </li> <li> Listeners for your Gateway Load Balancers
+%% </li> <li> Listeners for your Gateway Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-listeners.html
 %%
 %% </li> </ul> This operation is idempotent, which means that it completes at
 %% most one time. If you attempt to create multiple listeners with the same
@@ -196,11 +202,14 @@ create_listener(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Application Load Balancers
+%% <ul> <li> Application Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html
 %%
-%% </li> <li> Network Load Balancers
+%% </li> <li> Network Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html
 %%
-%% </li> <li> Gateway Load Balancers
+%% </li> <li> Gateway Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html
 %%
 %% </li> </ul> This operation is idempotent, which means that it completes at
 %% most one time. If you attempt to create multiple load balancers with the
@@ -220,8 +229,9 @@ create_load_balancer(Client, Input, Options)
 %% conditions. Rules are evaluated in priority order, from the lowest value
 %% to the highest value. When the conditions for a rule are met, its actions
 %% are performed. If the conditions for no rules are met, the actions for the
-%% default rule are performed. For more information, see Listener rules in
-%% the Application Load Balancers Guide.
+%% default rule are performed. For more information, see Listener rules:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
+%% in the Application Load Balancers Guide.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
@@ -233,11 +243,14 @@ create_rule(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Target groups for your Application Load Balancers
+%% <ul> <li> Target groups for your Application Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html
 %%
-%% </li> <li> Target groups for your Network Load Balancers
+%% </li> <li> Target groups for your Network Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html
 %%
-%% </li> <li> Target groups for your Gateway Load Balancers
+%% </li> <li> Target groups for your Gateway Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html
 %%
 %% </li> </ul> This operation is idempotent, which means that it completes at
 %% most one time. If you attempt to create multiple target groups with the
@@ -332,12 +345,17 @@ delete_trust_store(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Deregistration delay in the Application Load Balancers User
-%% Guide
+%% <ul> <li> Deregistration delay:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay
+%% in the Application Load Balancers User Guide
 %%
-%% </li> <li> Deregistration delay in the Network Load Balancers User Guide
+%% </li> <li> Deregistration delay:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay
+%% in the Network Load Balancers User Guide
 %%
-%% </li> <li> Deregistration delay in the Gateway Load Balancers User Guide
+%% </li> <li> Deregistration delay:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#deregistration-delay
+%% in the Gateway Load Balancers User Guide
 %%
 %% </li> </ul> Note: If the specified target does not exist, the action
 %% returns successfully.
@@ -353,11 +371,14 @@ deregister_targets(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Quotas for your Application Load Balancers
+%% <ul> <li> Quotas for your Application Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html
 %%
-%% </li> <li> Quotas for your Network Load Balancers
+%% </li> <li> Quotas for your Network Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html
 %%
-%% </li> <li> Quotas for your Gateway Load Balancers
+%% </li> <li> Quotas for your Gateway Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html
 %%
 %% </li> </ul>
 describe_account_limits(Client, Input)
@@ -374,9 +395,11 @@ describe_account_limits(Client, Input, Options)
 %% twice in the results (once with `IsDefault' set to true and once with
 %% `IsDefault' set to false).
 %%
-%% For more information, see SSL certificates in the Application Load
-%% Balancers Guide or Server certificates in the Network Load Balancers
-%% Guide.
+%% For more information, see SSL certificates:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates
+%% in the Application Load Balancers Guide or Server certificates:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate
+%% in the Network Load Balancers Guide.
 describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
@@ -401,11 +424,17 @@ describe_listeners(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Load balancer attributes in the Application Load Balancers Guide
+%% <ul> <li> Load balancer attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes
+%% in the Application Load Balancers Guide
 %%
-%% </li> <li> Load balancer attributes in the Network Load Balancers Guide
+%% </li> <li> Load balancer attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes
+%% in the Network Load Balancers Guide
 %%
-%% </li> <li> Load balancer attributes in the Gateway Load Balancers Guide
+%% </li> <li> Load balancer attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes
+%% in the Gateway Load Balancers Guide
 %%
 %% </li> </ul>
 describe_load_balancer_attributes(Client, Input)
@@ -437,8 +466,11 @@ describe_rules(Client, Input, Options)
 %% @doc Describes the specified policies or all policies used for SSL
 %% negotiation.
 %%
-%% For more information, see Security policies in the Application Load
-%% Balancers Guide or Security policies in the Network Load Balancers Guide.
+%% For more information, see Security policies:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies
+%% in the Application Load Balancers Guide or Security policies:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
+%% in the Network Load Balancers Guide.
 describe_ssl_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ssl_policies(Client, Input, []).
@@ -463,11 +495,17 @@ describe_tags(Client, Input, Options)
 %%
 %% For more information, see the following:
 %%
-%% <ul> <li> Target group attributes in the Application Load Balancers Guide
+%% <ul> <li> Target group attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes
+%% in the Application Load Balancers Guide
 %%
-%% </li> <li> Target group attributes in the Network Load Balancers Guide
+%% </li> <li> Target group attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes
+%% in the Network Load Balancers Guide
 %%
-%% </li> <li> Target group attributes in the Gateway Load Balancers Guide
+%% </li> <li> Target group attributes:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes
+%% in the Gateway Load Balancers Guide
 %%
 %% </li> </ul>
 describe_target_group_attributes(Client, Input)

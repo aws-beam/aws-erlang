@@ -104,7 +104,8 @@ create_signaling_channel(Client, Input0, Options0) ->
 %%
 %% `CreateStream' is an asynchronous operation.
 %%
-%% For information about how the service works, see How it Works.
+%% For information about how the service works, see How it Works:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html.
 %%
 %% You must have permissions for the `KinesisVideo:CreateStream' action.
 create_stream(Client, Input) ->
@@ -655,8 +656,9 @@ start_edge_configuration_update(Client, Input0, Options0) ->
 %% A tag is a key-value pair (the value is optional) that you can define and
 %% assign to Amazon Web Services resources. If you specify a tag that already
 %% exists, the tag value is replaced with the value that you specify in the
-%% request. For more information, see Using Cost Allocation Tags in the
-%% Billing and Cost Management and Cost Management User Guide.
+%% request. For more information, see Using Cost Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management and Cost Management User Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -684,8 +686,9 @@ tag_resource(Client, Input0, Options0) ->
 %% A tag is a key-value pair (the value is optional) that you can define and
 %% assign to Amazon Web Services resources. If you specify a tag that already
 %% exists, the tag value is replaced with the value that you specify in the
-%% request. For more information, see Using Cost Allocation Tags in the
-%% Billing and Cost Management and Cost Management User Guide.
+%% request. For more information, see Using Cost Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management and Cost Management User Guide.
 %%
 %% You must provide either the `StreamName' or the `StreamARN'.
 %%

@@ -11,7 +11,9 @@
 %%
 %% Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 %% For information about using Amazon Data Lifecycle Manager with Amazon EBS,
-%% see Amazon Data Lifecycle Manager in the Amazon EC2 User Guide.
+%% see Amazon Data Lifecycle Manager:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html
+%% in the Amazon EC2 User Guide.
 -module(aws_dlm).
 
 -export([create_lifecycle_policy/2,
@@ -54,7 +56,8 @@
 %%
 %% </li> <li> Default policy for EBS-backed AMIs
 %%
-%% </li> </ul> For more information, see Default policies vs custom policies.
+%% </li> </ul> For more information, see Default policies vs custom policies:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/policy-differences.html.
 %%
 %% If you create a default policy, you can specify the request parameters
 %% either in the request body, or in the PolicyDetails request structure, but
@@ -85,7 +88,8 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 %% operations that the policy specified.
 %%
 %% For more information about deleting a policy, see Delete lifecycle
-%% policies.
+%% policies:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#delete.
 delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
@@ -111,7 +115,8 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
 %% @doc Gets summary information about all or the specified data lifecycle
 %% policies.
 %%
-%% To get complete information about a policy, use GetLifecyclePolicy.
+%% To get complete information about a policy, use GetLifecyclePolicy:
+%% https://docs.aws.amazon.com/dlm/latest/APIReference/API_GetLifecyclePolicy.html.
 get_lifecycle_policies(Client)
   when is_map(Client) ->
     get_lifecycle_policies(Client, #{}, #{}).
@@ -239,7 +244,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the specified lifecycle policy.
 %%
 %% For more information about updating a policy, see Modify lifecycle
-%% policies.
+%% policies:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#modify.
 update_lifecycle_policy(Client, PolicyId, Input) ->
     update_lifecycle_policy(Client, PolicyId, Input, []).
 update_lifecycle_policy(Client, PolicyId, Input0, Options0) ->

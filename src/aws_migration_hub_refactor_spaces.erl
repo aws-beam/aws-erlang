@@ -10,12 +10,14 @@
 %% The topic for each action shows the API request parameters and the
 %% response. Alternatively, you can use one of the Amazon Web Services SDKs
 %% to access an API that is tailored to the programming language or platform
-%% that you're using. For more information, see Amazon Web Services SDKs.
+%% that you're using. For more information, see Amazon Web Services SDKs:
+%% https://aws.amazon.com/tools/#SDKs.
 %%
 %% To share Refactor Spaces environments with other Amazon Web Services
 %% accounts or with Organizations and their OUs, use Resource Access
-%% Manager's `CreateResourceShare' API. See CreateResourceShare in
-%% the Amazon Web Services RAM API Reference.
+%% Manager's `CreateResourceShare' API. See CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
+%% in the Amazon Web Services RAM API Reference.
 -module(aws_migration_hub_refactor_spaces).
 
 -export([create_application/3,
@@ -93,11 +95,15 @@
 %% VPC link, and Network Load Balancer for the application proxy inside your
 %% account.
 %%
-%% In environments created with a CreateEnvironment:NetworkFabricType of
-%% `NONE' you need to configure VPC to VPC connectivity between your
-%% service VPC and the application proxy VPC to route traffic through the
-%% application proxy to a service with a private URL endpoint. For more
-%% information, see Create an application in the Refactor Spaces User Guide.
+%% In environments created with a CreateEnvironment:NetworkFabricType:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
+%% of `NONE' you need to configure VPC to VPC connectivity:
+%% https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
+%% between your service VPC and the application proxy VPC to route traffic
+%% through the application proxy to a service with a private URL endpoint.
+%% For more information, see Create an application:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-application.html
+%% in the Refactor Spaces User Guide.
 create_application(Client, EnvironmentIdentifier, Input) ->
     create_application(Client, EnvironmentIdentifier, Input, []).
 create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
@@ -130,12 +136,15 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% added to the environment by other accounts that the environment is shared
 %% with.
 %%
-%% When creating an environment with a CreateEnvironment:NetworkFabricType of
-%% `TRANSIT_GATEWAY', Refactor Spaces provisions a transit gateway to
+%% When creating an environment with a CreateEnvironment:NetworkFabricType:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
+%% of `TRANSIT_GATEWAY', Refactor Spaces provisions a transit gateway to
 %% enable services in VPCs to communicate directly across accounts. If
-%% CreateEnvironment:NetworkFabricType is `NONE', Refactor Spaces does
-%% not create a transit gateway and you must use your network infrastructure
-%% to route traffic to services with private URL endpoints.
+%% CreateEnvironment:NetworkFabricType:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
+%% is `NONE', Refactor Spaces does not create a transit gateway and you
+%% must use your network infrastructure to route traffic to services with
+%% private URL endpoints.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 create_environment(Client, Input0, Options0) ->
@@ -202,12 +211,14 @@ create_environment(Client, Input0, Options0) ->
 %% and the load balancer target group runs default target health checks. By
 %% default, the health check is run against the service endpoint URL.
 %% Optionally, the health check can be performed against a different
-%% protocol, port, and/or path using the CreateService:UrlEndpoint parameter.
-%% All other health check settings for the load balancer use the default
-%% values described in the Health checks for your target groups in the
-%% Elastic Load Balancing guide. The health check is considered successful if
-%% at least one target within the target group transitions to a healthy
-%% state.
+%% protocol, port, and/or path using the CreateService:UrlEndpoint:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateService.html#migrationhubrefactorspaces-CreateService-request-UrlEndpoint
+%% parameter. All other health check settings for the load balancer use the
+%% default values described in the Health checks for your target groups:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html
+%% in the Elastic Load Balancing guide. The health check is considered
+%% successful if at least one target within the target group transitions to a
+%% healthy state.
 %%
 %% </li> <li> Lambda function endpoints
 %%
@@ -219,7 +230,9 @@ create_environment(Client, Input0, Options0) ->
 %% function configuration is updated so that Lambda resources are
 %% provisioned. If the Lambda state is `Failed', then the route creation
 %% fails. For more information, see the GetFunctionConfiguration's State
-%% response parameter in the Lambda Developer Guide.
+%% response parameter:
+%% https://docs.aws.amazon.com/lambda/latest/dg/API_GetFunctionConfiguration.html#SSS-GetFunctionConfiguration-response-State
+%% in the Lambda Developer Guide.
 %%
 %% A check is performed to determine that a Lambda function with the
 %% specified ARN exists. If it does not exist, the health check fails. For
@@ -229,12 +242,17 @@ create_environment(Client, Input0, Options0) ->
 %% </li> </ul> Environments without a network bridge
 %%
 %% When you create environments without a network bridge
-%% (CreateEnvironment:NetworkFabricType is `NONE)' and you use your own
-%% networking infrastructure, you need to configure VPC to VPC connectivity
+%% (CreateEnvironment:NetworkFabricType:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/APIReference/API_CreateEnvironment.html#migrationhubrefactorspaces-CreateEnvironment-request-NetworkFabricType
+%% is `NONE)' and you use your own networking infrastructure, you need to
+%% configure VPC to VPC connectivity:
+%% https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
 %% between your network and the application proxy VPC. Route creation from
 %% the application proxy to service endpoints will fail if your network is
 %% not configured to connect to the application proxy VPC. For more
-%% information, see Create a route in the Refactor Spaces User Guide.
+%% information, see Create a route:
+%% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-role.html
+%% in the Refactor Spaces User Guide.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->

@@ -7,7 +7,8 @@
 %% a private CA that you own.
 %%
 %% For more information, see Amazon Web Services Private CA Connector for
-%% Active Directory.
+%% Active Directory:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/ad-connector.html.
 -module(aws_pca_connector_ad).
 
 -export([create_connector/2,
@@ -699,7 +700,8 @@ update_template(Client, TemplateArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a group access control entry you created using
-%% CreateTemplateGroupAccessControlEntry.
+%% CreateTemplateGroupAccessControlEntry:
+%% https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplateGroupAccessControlEntry.html.
 update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input) ->
     update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input, []).
 update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input0, Options0) ->

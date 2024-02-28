@@ -6,25 +6,32 @@
 %%
 %% Signer supports the following applications:
 %%
-%% With code signing for AWS Lambda, you can sign AWS Lambda deployment
-%% packages. Integrated support is provided for Amazon S3, Amazon CloudWatch,
-%% and AWS CloudTrail. In order to sign code, you create a signing profile
-%% and then use Signer to sign Lambda zip files in S3.
+%% With code signing for AWS Lambda, you can sign AWS Lambda:
+%% http://docs.aws.amazon.com/lambda/latest/dg/ deployment packages.
+%% Integrated support is provided for Amazon S3:
+%% http://docs.aws.amazon.com/AmazonS3/latest/gsg/, Amazon CloudWatch:
+%% http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/, and AWS
+%% CloudTrail: http://docs.aws.amazon.com/awscloudtrail/latest/userguide/. In
+%% order to sign code, you create a signing profile and then use Signer to
+%% sign Lambda zip files in S3.
 %%
 %% With code signing for IoT, you can sign code for any IoT device that is
-%% supported by AWS. IoT code signing is available for Amazon FreeRTOS and
-%% AWS IoT Device Management, and is integrated with AWS Certificate Manager
-%% (ACM). In order to sign code, you import a third-party code-signing
-%% certificate using ACM, and use that to sign updates in Amazon FreeRTOS and
-%% AWS IoT Device Management.
+%% supported by AWS. IoT code signing is available for Amazon FreeRTOS:
+%% http://docs.aws.amazon.com/freertos/latest/userguide/ and AWS IoT Device
+%% Management: http://docs.aws.amazon.com/iot/latest/developerguide/, and is
+%% integrated with AWS Certificate Manager (ACM):
+%% http://docs.aws.amazon.com/acm/latest/userguide/. In order to sign code,
+%% you import a third-party code-signing certificate using ACM, and use that
+%% to sign updates in Amazon FreeRTOS and AWS IoT Device Management.
 %%
-%% With Signer and the Notation CLI from the Notary Project, you can sign
-%% container images stored in a container registry such as Amazon Elastic
-%% Container Registry (ECR). The signatures are stored in the registry
-%% alongside the images, where they are available for verifying image
-%% authenticity and integrity.
+%% With Signer and the Notation CLI from the Notary Project:
+%% https://notaryproject.dev/, you can sign container images stored in a
+%% container registry such as Amazon Elastic Container Registry (ECR). The
+%% signatures are stored in the registry alongside the images, where they are
+%% available for verifying image authenticity and integrity.
 %%
-%% For more information about Signer, see the AWS Signer Developer Guide.
+%% For more information about Signer, see the AWS Signer Developer Guide:
+%% https://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html.
 -module(aws_signer).
 
 -export([add_profile_permission/3,
@@ -544,7 +551,9 @@ sign_payload(Client, Input0, Options0) ->
 %% years after they are performed. Note the following requirements:
 %%
 %% <ul> <li> You must create an Amazon S3 source bucket. For more
-%% information, see Creating a Bucket in the Amazon S3 Getting Started Guide.
+%% information, see Creating a Bucket:
+%% http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html in the
+%% Amazon S3 Getting Started Guide.
 %%
 %% </li> <li> Your S3 source bucket must be version enabled.
 %%
@@ -560,7 +569,8 @@ sign_payload(Client, Input0, Options0) ->
 %% </li> </ul> You can call the `DescribeSigningJob' and the
 %% `ListSigningJobs' actions after you call `StartSigningJob'.
 %%
-%% For a Java example that shows how to use this action, see StartSigningJob.
+%% For a Java example that shows how to use this action, see StartSigningJob:
+%% https://docs.aws.amazon.com/signer/latest/developerguide/api-startsigningjob.html.
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
 start_signing_job(Client, Input0, Options0) ->

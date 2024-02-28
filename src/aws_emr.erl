@@ -186,7 +186,8 @@ add_job_flow_steps(Client, Input, Options)
 %%
 %% Tags make it easier to associate resources in various ways, such as
 %% grouping clusters to track your Amazon EMR resource allocation costs. For
-%% more information, see Tag Clusters.
+%% more information, see Tag Clusters:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -234,7 +235,8 @@ create_studio(Client, Input, Options)
 %% Use `CreateStudioSessionMapping' to assign users to a Studio when you
 %% use IAM Identity Center authentication. For instructions on how to assign
 %% users to a Studio when you use IAM authentication, see Assign a user or
-%% group to your EMR Studio.
+%% group to your EMR Studio:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups.
 create_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_session_mapping(Client, Input, []).
@@ -363,8 +365,9 @@ get_auto_termination_policy(Client, Input, Options)
 %% @doc Returns the Amazon EMR block public access configuration for your
 %% Amazon Web Services account in the current Region.
 %%
-%% For more information see Configure Block Public Access for Amazon EMR in
-%% the Amazon EMR Management Guide.
+%% For more information see Configure Block Public Access for Amazon EMR:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html
+%% in the Amazon EMR Management Guide.
 get_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_block_public_access_configuration(Client, Input, []).
@@ -593,12 +596,14 @@ put_auto_scaling_policy(Client, Input, Options)
 %% @doc Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0
 %% and later.
 %%
-%% For more information, see Using an auto-termination policy.
+%% For more information, see Using an auto-termination policy:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html.
 %%
 %% Creates or updates an auto-termination policy for an Amazon EMR cluster.
 %% An auto-termination policy defines the amount of idle time in seconds
 %% after which a cluster automatically terminates. For alternative cluster
-%% termination options, see Control cluster termination.
+%% termination options, see Control cluster termination:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-termination.html.
 put_auto_termination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_auto_termination_policy(Client, Input, []).
@@ -609,8 +614,9 @@ put_auto_termination_policy(Client, Input, Options)
 %% @doc Creates or updates an Amazon EMR block public access configuration
 %% for your Amazon Web Services account in the current Region.
 %%
-%% For more information see Configure Block Public Access for Amazon EMR in
-%% the Amazon EMR Management Guide.
+%% For more information see Configure Block Public Access for Amazon EMR:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html
+%% in the Amazon EMR Management Guide.
 put_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_block_public_access_configuration(Client, Input, []).
@@ -662,7 +668,8 @@ remove_managed_scaling_policy(Client, Input, Options)
 %%
 %% Tags make it easier to associate resources in various ways, such as
 %% grouping clusters to track your Amazon EMR resource allocation costs. For
-%% more information, see Tag Clusters.
+%% more information, see Tag Clusters:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html.
 %%
 %% The following example removes the stack tag with value Prod from a
 %% cluster:
@@ -718,8 +725,9 @@ run_job_flow(Client, Input, Options)
 %% `SetKeepJobFlowAliveWhenNoSteps' to false. If you want a long running
 %% cluster, configure `SetKeepJobFlowAliveWhenNoSteps' to true.
 %%
-%% For more information, see Managing Cluster Termination in the Amazon EMR
-%% Management Guide.
+%% For more information, see Managing Cluster Termination:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html
+%% in the Amazon EMR Management Guide.
 set_keep_job_flow_alive_when_no_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_keep_job_flow_alive_when_no_steps(Client, Input, []).
@@ -746,8 +754,9 @@ set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
 %% job flow by a subsequent call to `SetTerminationProtection' in which
 %% you set the value to `false'.
 %%
-%% For more information, see Managing Cluster Termination in the Amazon EMR
-%% Management Guide.
+%% For more information, see Managing Cluster Termination:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html
+%% in the Amazon EMR Management Guide.
 set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_termination_protection(Client, Input, []).
@@ -770,8 +779,9 @@ set_termination_protection(Client, Input, Options)
 %% applications on the cluster to stop scheduling tasks with these nodes,
 %% moves the data, and then terminates the nodes.
 %%
-%% For more information, see graceful node replacement in the Amazon EMR
-%% Management Guide.
+%% For more information, see graceful node replacement:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_UnhealthyNodeReplacement.html
+%% in the Amazon EMR Management Guide.
 set_unhealthy_node_replacement(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_unhealthy_node_replacement(Client, Input, []).
@@ -783,7 +793,8 @@ set_unhealthy_node_replacement(Client, Input, Options)
 %%
 %% Your cluster may be visible to all users in your account. To restrict
 %% cluster access using an IAM policy, see Identity and Access Management for
-%% Amazon EMR.
+%% Amazon EMR:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-access-IAM.html.
 %%
 %% Sets the `Cluster$VisibleToAllUsers' value for an Amazon EMR cluster.
 %% When `true', IAM principals in the Amazon Web Services account can
@@ -797,7 +808,9 @@ set_unhealthy_node_replacement(Client, Input, Options)
 %% `RunJobFlowInput$VisibleToAllUsers' parameter.
 %%
 %% For more information, see Understanding the Amazon EMR Cluster
-%% VisibleToAllUsers Setting in the Amazon EMR Management Guide.
+%% VisibleToAllUsers Setting:
+%% https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_IAM_emr-with-IAM.html#security_set_visible_to_all_users
+%% in the Amazon EMR Management Guide.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).

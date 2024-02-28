@@ -71,7 +71,8 @@
 %% </li> <li> Remove their account from a behavior graph.
 %%
 %% </li> </ul> All API actions are logged as CloudTrail events. See Logging
-%% Detective API Calls with CloudTrail.
+%% Detective API Calls with CloudTrail:
+%% https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html.
 %%
 %% We replaced the term &quot;master account&quot; with the term
 %% &quot;administrator account&quot;. An administrator account is used to

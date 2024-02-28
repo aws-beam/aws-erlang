@@ -297,7 +297,9 @@ associate_hosted_connection(Client, Input, Options)
 %% `cak') pair in the request.
 %%
 %% For information about MAC Security (MACsec) key considerations, see MACsec
-%% pre-shared CKN/CAK key considerations in the Direct Connect User Guide.
+%% pre-shared CKN/CAK key considerations :
+%% https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration
+%% in the Direct Connect User Guide.
 associate_mac_sec_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_mac_sec_key(Client, Input, []).
@@ -407,7 +409,8 @@ confirm_transit_virtual_interface(Client, Input, Options)
 %% this option if you intend to use the customer router peer IP address as
 %% the source and destination for traffic. Instead you should use RFC 1918 or
 %% other addressing, and specify the address yourself. For more information
-%% about RFC 1918 see Address Allocation for Private Internets.
+%% about RFC 1918 see Address Allocation for Private Internets:
+%% https://datatracker.ietf.org/doc/html/rfc1918.
 %%
 %% For a public virtual interface, the Autonomous System Number (ASN) must be
 %% private or already on the allow list for the virtual interface.
@@ -713,7 +716,9 @@ delete_virtual_interface(Client, Input, Options)
 %% a document that your APN partner or service provider uses when
 %% establishing your cross connect to Amazon Web Services at the colocation
 %% facility. For more information, see Requesting Cross Connects at Direct
-%% Connect Locations in the Direct Connect User Guide.
+%% Connect Locations:
+%% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
+%% in the Direct Connect User Guide.
 describe_connection_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_loa(Client, Input, []).
@@ -847,8 +852,9 @@ describe_hosted_connections(Client, Input, Options)
 %% The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is
 %% a document that is used when establishing your cross connect to Amazon Web
 %% Services at the colocation facility. For more information, see Requesting
-%% Cross Connects at Direct Connect Locations in the Direct Connect User
-%% Guide.
+%% Cross Connects at Direct Connect Locations:
+%% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
+%% in the Direct Connect User Guide.
 describe_interconnect_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_interconnect_loa(Client, Input, []).
@@ -880,8 +886,9 @@ describe_lags(Client, Input, Options)
 %% The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is
 %% a document that is used when establishing your cross connect to Amazon Web
 %% Services at the colocation facility. For more information, see Requesting
-%% Cross Connects at Direct Connect Locations in the Direct Connect User
-%% Guide.
+%% Cross Connects at Direct Connect Locations:
+%% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
+%% in the Direct Connect User Guide.
 describe_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_loa(Client, Input, []).
@@ -994,11 +1001,13 @@ list_virtual_interface_test_history(Client, Input, Options)
 %% You can run the test on public, private, transit, and hosted virtual
 %% interfaces.
 %%
-%% You can use ListVirtualInterfaceTestHistory to view the virtual interface
-%% test history.
+%% You can use ListVirtualInterfaceTestHistory:
+%% https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html
+%% to view the virtual interface test history.
 %%
 %% If you need to stop the test before the test interval completes, use
-%% StopBgpFailoverTest.
+%% StopBgpFailoverTest:
+%% https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html.
 start_bgp_failover_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_bgp_failover_test(Client, Input, []).

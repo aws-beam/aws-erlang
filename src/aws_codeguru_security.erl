@@ -12,7 +12,8 @@
 %% By proactively detecting and providing recommendations for addressing
 %% security risks, CodeGuru Security improves the overall security of your
 %% application code. For more information about CodeGuru Security, see the
-%% Amazon CodeGuru Security User Guide.
+%% Amazon CodeGuru Security User Guide:
+%% https://docs.aws.amazon.com/codeguru/latest/security-ug/what-is-codeguru-security.html.
 -module(aws_codeguru_security).
 
 -export([batch_get_findings/2,

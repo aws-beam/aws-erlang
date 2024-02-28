@@ -138,8 +138,11 @@
 %%
 %% An HTTP 200 response indicates the association was successfully started,
 %% but doesn’t indicate whether it was completed. You can check if the
-%% association completed by using ListMembers for multiple accounts or
-%% GetMembers for a single account.
+%% association completed by using ListMembers:
+%% https://docs.aws.amazon.com/inspector/v2/APIReference/API_ListMembers.html
+%% for multiple accounts or GetMembers:
+%% https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html
+%% for a single account.
 associate_member(Client, Input) ->
     associate_member(Client, Input, []).
 associate_member(Client, Input0, Options0) ->

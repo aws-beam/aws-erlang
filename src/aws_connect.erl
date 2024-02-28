@@ -11,12 +11,14 @@
 %%
 %% There are limits to the number of Amazon Connect resources that you can
 %% create. There are also limits to the number of requests that you can make
-%% per second. For more information, see Amazon Connect Service Quotas in the
-%% Amazon Connect Administrator Guide.
+%% per second. For more information, see Amazon Connect Service Quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
+%% in the Amazon Connect Administrator Guide.
 %%
 %% You can connect programmatically to an Amazon Web Services service by
 %% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
-%% Connect Endpoints.
+%% Connect Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -module(aws_connect).
 
 -export([activate_evaluation_form/4,
@@ -1065,7 +1067,8 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
 %% allowed to assume a role in your account and call this API.
 %%
 %% Allows you to create a batch of contacts in Amazon Connect. The outbound
-%% campaigns capability ingests dial requests via the PutDialRequestBatch
+%% campaigns capability ingests dial requests via the PutDialRequestBatch:
+%% https://docs.aws.amazon.com/connect-outbound/latest/APIReference/API_PutDialRequestBatch.html
 %% API. It then uses BatchPutContact to create contacts corresponding to
 %% those dial requests. If agents are available, the dial requests are dialed
 %% out, which results in a voice call. The resulting voice call uses the same
@@ -1099,12 +1102,20 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
 %% the Amazon Connect instance or traffic distribution group was created.
 %%
 %% For more information about how to use this operation, see Claim a phone
-%% number in your country and Claim phone numbers to traffic distribution
-%% groups in the Amazon Connect Administrator Guide.
+%% number in your country:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-number.html
+%% and Claim phone numbers to traffic distribution groups:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-numbers-traffic-distribution-groups.html
+%% in the Amazon Connect Administrator Guide.
 %%
-%% You can call the SearchAvailablePhoneNumbers API for available phone
-%% numbers that you can claim. Call the DescribePhoneNumber API to verify the
-%% status of a previous ClaimPhoneNumber operation.
+%% You can call the SearchAvailablePhoneNumbers:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html
+%% API for available phone numbers that you can claim. Call the
+%% DescribePhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
+%% API to verify the status of a previous ClaimPhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimPhoneNumber.html
+%% operation.
 %%
 %% If you plan to claim and release numbers frequently during a 30 day
 %% period, contact us for a service quota exception. Otherwise, it is
@@ -1174,7 +1185,8 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a flow for the specified Amazon Connect instance.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
-%% language.
+%% language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
 create_contact_flow(Client, InstanceId, Input0, Options0) ->
@@ -1335,7 +1347,8 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 %% @doc Adds a new participant into an on-going chat contact.
 %%
 %% For more information, see Customize chat flow experiences by integrating
-%% custom participants.
+%% custom participants:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html.
 create_participant(Client, Input) ->
     create_participant(Client, Input, []).
 create_participant(Client, Input0, Options0) ->
@@ -1360,8 +1373,9 @@ create_participant(Client, Input0, Options0) ->
 
 %% @doc Enables rehydration of chats for the lifespan of a contact.
 %%
-%% For more information about chat rehydration, see Enable persistent chat in
-%% the Amazon Connect Administrator Guide.
+%% For more information about chat rehydration, see Enable persistent chat:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html
+%% in the Amazon Connect Administrator Guide.
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input) ->
     create_persistent_contact_association(Client, InitialContactId, InstanceId, Input, []).
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input0, Options0) ->
@@ -1411,8 +1425,9 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% @doc Creates a prompt.
 %%
 %% For more information about prompts, such as supported file types and
-%% maximum length, see Create prompts in the Amazon Connect
-%% Administrator's Guide.
+%% maximum length, see Create prompts:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
+%% Amazon Connect Administrator's Guide.
 create_prompt(Client, InstanceId, Input) ->
     create_prompt(Client, InstanceId, Input, []).
 create_prompt(Client, InstanceId, Input0, Options0) ->
@@ -1453,11 +1468,14 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %% Only use the phone number ARN format that doesn't contain
 %% `instance' in the path, for example,
 %% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
-%% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
+%% same ARN format that is returned when you call the ListPhoneNumbersV2:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
+%% API.
 %%
 %% If you plan to use IAM policies to allow/deny access to this API for phone
 %% number resources claimed to a traffic distribution group, see Allow or
-%% Deny queue API actions for phone numbers in a replica Region.
+%% Deny queue API actions for phone numbers in a replica Region:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 create_queue(Client, InstanceId, Input0, Options0) ->
@@ -1528,7 +1546,9 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates a rule for the specified Amazon Connect instance.
 %%
-%% Use the Rules Function language to code conditions for the rule.
+%% Use the Rules Function language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
+%% to code conditions for the rule.
 create_rule(Client, InstanceId, Input) ->
     create_rule(Client, InstanceId, Input, []).
 create_rule(Client, InstanceId, Input0, Options0) ->
@@ -1602,13 +1622,16 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %%
 %% The `SignInConfig' distribution is available only on a default
 %% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
-%% TrafficDistributionGroup data type). If you call
-%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
-%% non-default `TrafficDistributionGroup', an
+%% TrafficDistributionGroup:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroup.html
+%% data type). If you call `UpdateTrafficDistribution' with a modified
+%% `SignInConfig' and a non-default `TrafficDistributionGroup', an
 %% `InvalidRequestException' is returned.
 %%
 %% For more information about creating traffic distribution groups, see Set
-%% up traffic distribution groups in the Amazon Connect Administrator Guide.
+%% up traffic distribution groups:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html
+%% in the Amazon Connect Administrator Guide.
 create_traffic_distribution_group(Client, Input) ->
     create_traffic_distribution_group(Client, Input, []).
 create_traffic_distribution_group(Client, Input0, Options0) ->
@@ -1656,13 +1679,17 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 
 %% @doc Creates a user account for the specified Amazon Connect instance.
 %%
-%% Certain UserIdentityInfo parameters are required in some situations. For
-%% example, `Email' is required if you are using SAML for identity
-%% management. `FirstName' and `LastName' are required if you are
-%% using Amazon Connect or SAML for identity management.
+%% Certain UserIdentityInfo:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html
+%% parameters are required in some situations. For example, `Email' is
+%% required if you are using SAML for identity management. `FirstName'
+%% and `LastName' are required if you are using Amazon Connect or SAML
+%% for identity management.
 %%
 %% For information about how to create users using the Amazon Connect admin
-%% website, see Add Users in the Amazon Connect Administrator Guide.
+%% website, see Add Users:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html
+%% in the Amazon Connect Administrator Guide.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 create_user(Client, InstanceId, Input0, Options0) ->
@@ -2202,8 +2229,9 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% group is created.
 %%
 %% For more information about deleting traffic distribution groups, see
-%% Delete traffic distribution groups in the Amazon Connect Administrator
-%% Guide.
+%% Delete traffic distribution groups:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html
+%% in the Amazon Connect Administrator Guide.
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input) ->
     delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input, []).
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Options0) ->
@@ -2252,8 +2280,9 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 %%
 %% For information about what happens to a user's data when their account
-%% is deleted, see Delete Users from Your Amazon Connect Instance in the
-%% Amazon Connect Administrator Guide.
+%% is deleted, see Delete Users from Your Amazon Connect Instance:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
+%% the Amazon Connect Administrator Guide.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options0) ->
@@ -2457,7 +2486,8 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %% @doc Describes the specified flow.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
-%% language.
+%% language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, #{}, #{}).
@@ -2874,9 +2904,10 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 
 %% @doc Describes the specified user.
 %%
-%% You can find the instance ID in the Amazon Connect console (it’s the final
-%% part of the ARN). The console does not display the user IDs. Instead, list
-%% the users and note the IDs provided in the output.
+%% You can find the instance ID in the Amazon Connect console:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html
+%% (it’s the final part of the ARN). The console does not display the user
+%% IDs. Instead, list the users and note the IDs provided in the output.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, #{}, #{}).
@@ -3354,7 +3385,8 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 %% available state, which allows the agent to receive a new routed contact.
 %%
 %% Contacts can only be dismissed if they are in a `MISSED', `ERROR',
-%% `ENDED', or `REJECTED' state in the Agent Event Stream.
+%% `ENDED', or `REJECTED' state in the Agent Event Stream:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html.
 dismiss_user_contact(Client, InstanceId, UserId, Input) ->
     dismiss_user_contact(Client, InstanceId, UserId, Input, []).
 dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
@@ -3403,8 +3435,9 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
-%% For a description of each metric, see Real-time Metrics Definitions in the
-%% Amazon Connect Administrator Guide.
+%% For a description of each metric, see Real-time Metrics Definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html
+%% in the Amazon Connect Administrator Guide.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 get_current_metric_data(Client, InstanceId, Input0, Options0) ->
@@ -3459,7 +3492,8 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 %%
 %% For more information about how SAML sign-in works in Amazon Connect, see
 %% Configure SAML with IAM for Amazon Connect in the Amazon Connect
-%% Administrator Guide.
+%% Administrator Guide.:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/configure-saml.html
 %%
 %% This API doesn't support root users. If you try to invoke
 %% GetFederationToken with root credentials, an error message similar to the
@@ -3516,16 +3550,19 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 %% instance.
 %%
 %% For a description of each historical metric, see Historical Metrics
-%% Definitions in the Amazon Connect Administrator Guide.
+%% Definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
+%% in the Amazon Connect Administrator Guide.
 %%
-%% We recommend using the GetMetricDataV2 API. It provides more flexibility,
-%% features, and the ability to query longer time ranges than
-%% `GetMetricData'. Use it to retrieve historical agent and contact
-%% metrics for the last 3 months, at varying intervals. You can also use it
-%% to build custom dashboards to measure historical queue and agent
-%% performance. For example, you can track the number of incoming contacts
-%% for the last 7 days, with data split by day, to see how contact volume
-%% changed per day of the week.
+%% We recommend using the GetMetricDataV2:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html
+%% API. It provides more flexibility, features, and the ability to query
+%% longer time ranges than `GetMetricData'. Use it to retrieve historical
+%% agent and contact metrics for the last 3 months, at varying intervals. You
+%% can also use it to build custom dashboards to measure historical queue and
+%% agent performance. For example, you can track the number of incoming
+%% contacts for the last 7 days, with data split by day, to see how contact
+%% volume changed per day of the week.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 get_metric_data(Client, InstanceId, Input0, Options0) ->
@@ -3550,15 +3587,18 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Gets metric data from the specified Amazon Connect instance.
 %%
-%% `GetMetricDataV2' offers more features than GetMetricData, the
-%% previous version of this API. It has new metrics, offers filtering at a
-%% metric level, and offers the ability to filter and group data by channels,
-%% queues, routing profiles, agents, and agent hierarchy levels. It can
-%% retrieve historical data for the last 3 months, at varying intervals.
+%% `GetMetricDataV2' offers more features than GetMetricData:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricData.html,
+%% the previous version of this API. It has new metrics, offers filtering at
+%% a metric level, and offers the ability to filter and group data by
+%% channels, queues, routing profiles, agents, and agent hierarchy levels. It
+%% can retrieve historical data for the last 3 months, at varying intervals.
 %%
 %% For a description of the historical metrics that are supported by
 %% `GetMetricDataV2' and `GetMetricData', see Historical metrics
-%% definitions in the Amazon Connect Administrator's Guide.
+%% definitions:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
+%% in the Amazon Connect Administrator's Guide.
 get_metric_data_v2(Client, Input) ->
     get_metric_data_v2(Client, Input, []).
 get_metric_data_v2(Client, Input0, Options0) ->
@@ -3876,10 +3916,12 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% instance.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
-%% language.
+%% language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 %%
-%% For more information about flows, see Flows in the Amazon Connect
-%% Administrator Guide.
+%% For more information about flows, see Flows:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html
+%% in the Amazon Connect Administrator Guide.
 list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, #{}, #{}).
@@ -4054,7 +4096,9 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Amazon Connect instance.
 %%
 %% For more information about hours of operation, see Set the Hours of
-%% Operation for a Queue in the Amazon Connect Administrator Guide.
+%% Operation for a Queue:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html
+%% in the Amazon Connect Administrator Guide.
 list_hours_of_operations(Client, InstanceId)
   when is_map(Client) ->
     list_hours_of_operations(Client, InstanceId, #{}, #{}).
@@ -4248,7 +4292,9 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% Returns a paginated list of all the Amazon Lex V1 bots currently
 %% associated with the instance. To return both Amazon Lex V1 and V2 bots,
-%% use the ListBots API.
+%% use the ListBots:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListBots.html
+%% API.
 list_lex_bots(Client, InstanceId)
   when is_map(Client) ->
     list_lex_bots(Client, InstanceId, #{}, #{}).
@@ -4280,19 +4326,25 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Connect instance.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your Contact Center in the Amazon Connect Administrator Guide.
+%% Your Contact Center:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
+%% in the Amazon Connect Administrator Guide.
 %%
-%% We recommend using ListPhoneNumbersV2 to return phone number types.
-%% ListPhoneNumbers doesn't support number types `UIFN',
-%% `SHARED', `THIRD_PARTY_TF', and `THIRD_PARTY_DID'. While it
-%% returns numbers of those types, it incorrectly lists them as
-%% `TOLL_FREE' or `DID'.
+%% We recommend using ListPhoneNumbersV2:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
+%% to return phone number types. ListPhoneNumbers doesn't support number
+%% types `UIFN', `SHARED', `THIRD_PARTY_TF', and
+%% `THIRD_PARTY_DID'. While it returns numbers of those types, it
+%% incorrectly lists them as `TOLL_FREE' or `DID'.
 %%
 %% The phone number `Arn' value that is returned from each of the items
-%% in the PhoneNumberSummaryList cannot be used to tag phone number
-%% resources. It will fail with a `ResourceNotFoundException'. Instead,
-%% use the ListPhoneNumbersV2 API. It returns the new phone number ARN that
-%% can be used to tag phone number resources.
+%% in the PhoneNumberSummaryList:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbers.html#connect-ListPhoneNumbers-response-PhoneNumberSummaryList
+%% cannot be used to tag phone number resources. It will fail with a
+%% `ResourceNotFoundException'. Instead, use the ListPhoneNumbersV2:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
+%% API. It returns the new phone number ARN that can be used to tag phone
+%% number resources.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
@@ -4330,7 +4382,9 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% distribution group.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
-%% Your Contact Center in the Amazon Connect Administrator Guide.
+%% Your Contact Center:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html
+%% in the Amazon Connect Administrator Guide.
 %%
 %% When given an instance ARN, `ListPhoneNumbersV2' returns only the
 %% phone numbers claimed to the instance.
@@ -4456,8 +4510,9 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% results if you have more than 1000 agents and you limit the number of
 %% results of the API call in code.
 %%
-%% For more information about queues, see Queues: Standard and Agent in the
-%% Amazon Connect Administrator Guide.
+%% For more information about queues, see Queues: Standard and Agent:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html
+%% in the Amazon Connect Administrator Guide.
 list_queues(Client, InstanceId)
   when is_map(Client) ->
     list_queues(Client, InstanceId, #{}, #{}).
@@ -4571,8 +4626,11 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
 %% @doc Provides summary information about the routing profiles for the
 %% specified Amazon Connect instance.
 %%
-%% For more information about routing profiles, see Routing Profiles and
-%% Create a Routing Profile in the Amazon Connect Administrator Guide.
+%% For more information about routing profiles, see Routing Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html
+%% and Create a Routing Profile:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html
+%% in the Amazon Connect Administrator Guide.
 list_routing_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_routing_profiles(Client, InstanceId, #{}, #{}).
@@ -4722,8 +4780,9 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 %% @doc Provides summary information about the security profiles for the
 %% specified Amazon Connect instance.
 %%
-%% For more information about security profiles, see Security Profiles in the
-%% Amazon Connect Administrator Guide.
+%% For more information about security profiles, see Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
+%% in the Amazon Connect Administrator Guide.
 list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, #{}, #{}).
@@ -4754,7 +4813,9 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the tags for the specified resource.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
-%% Policy Examples in the Amazon Connect Administrator Guide.
+%% Policy Examples:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
+%% in the Amazon Connect Administrator Guide.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4895,7 +4956,9 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
 %% @doc Provides summary information about the hierarchy groups for the
 %% specified Amazon Connect instance.
 %%
-%% For more information about agent hierarchies, see Set Up Agent Hierarchies
+%% For more information about agent hierarchies, see Set Up Agent
+%% Hierarchies:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html
 %% in the Amazon Connect Administrator Guide.
 list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
@@ -5097,8 +5160,11 @@ pause_contact(Client, Input0, Options0) ->
 %% If the agent is currently handling a contact, this sets the agent's
 %% next status.
 %%
-%% For more information, see Agent status and Set your next status in the
-%% Amazon Connect Administrator Guide.
+%% For more information, see Agent status:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-agent-status.html
+%% and Set your next status:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/set-next-status.html
+%% in the Amazon Connect Administrator Guide.
 put_user_status(Client, InstanceId, UserId, Input) ->
     put_user_status(Client, InstanceId, UserId, Input, []).
 put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
@@ -5180,8 +5246,9 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% resources across Amazon Web Services Regions.
 %%
 %% For more information about replicating an Amazon Connect instance, see
-%% Create a replica of your existing Amazon Connect instance in the Amazon
-%% Connect Administrator Guide.
+%% Create a replica of your existing Amazon Connect instance:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html
+%% in the Amazon Connect Administrator Guide.
 replicate_instance(Client, InstanceId, Input) ->
     replicate_instance(Client, InstanceId, Input, []).
 replicate_instance(Client, InstanceId, Input0, Options0) ->
@@ -5592,29 +5659,34 @@ send_chat_integration_event(Client, Input0, Options0) ->
 %% @doc Initiates a flow to start a new chat for the customer.
 %%
 %% Response of this API provides a token required to obtain credentials from
-%% the CreateParticipantConnection API in the Amazon Connect Participant
-%% Service.
+%% the CreateParticipantConnection:
+%% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
+%% API in the Amazon Connect Participant Service.
 %%
 %% When a new chat contact is successfully created, clients must subscribe to
 %% the participant’s connection for the created chat within 5 minutes. This
-%% is achieved by invoking CreateParticipantConnection with WEBSOCKET and
-%% CONNECTION_CREDENTIALS.
+%% is achieved by invoking CreateParticipantConnection:
+%% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
+%% with WEBSOCKET and CONNECTION_CREDENTIALS.
 %%
 %% A 429 error occurs in the following situations:
 %%
 %% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
 %% `TooManyRequests' exception.
 %%
-%% </li> <li> The quota for concurrent active chats is exceeded. Active chat
-%% throttling returns a `LimitExceededException'.
+%% </li> <li> The quota for concurrent active chats:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
+%% is exceeded. Active chat throttling returns a
+%% `LimitExceededException'.
 %%
 %% </li> </ul> If you use the `ChatDurationInMinutes' parameter and
 %% receive a 400 error, your account may not support the ability to configure
 %% custom chat durations. For more information, contact Amazon Web Services
 %% Support.
 %%
-%% For more information about chat, see Chat in the Amazon Connect
-%% Administrator Guide.
+%% For more information about chat, see Chat:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat.html in the
+%% Amazon Connect Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options0) ->
@@ -5684,7 +5756,9 @@ start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
 %% SuspendContactRecording and ResumeContactRecording.
 %%
 %% You can use this API to override the recording behavior configured in the
-%% Set recording behavior block.
+%% Set recording behavior:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html
+%% block.
 %%
 %% Only voice recordings are supported at this time.
 start_contact_recording(Client, Input) ->
@@ -5712,7 +5786,9 @@ start_contact_recording(Client, Input0, Options0) ->
 %% @doc Initiates real-time message streaming for a new chat contact.
 %%
 %% For more information about message streaming, see Enable real-time chat
-%% message streaming in the Amazon Connect Administrator Guide.
+%% message streaming:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
+%% in the Amazon Connect Administrator Guide.
 start_contact_streaming(Client, Input) ->
     start_contact_streaming(Client, Input, []).
 start_contact_streaming(Client, Input0, Options0) ->
@@ -5750,12 +5826,14 @@ start_contact_streaming(Client, Input0, Options0) ->
 %%
 %% UK numbers with a 447 prefix are not allowed by default. Before you can
 %% dial these UK mobile numbers, you must submit a service quota increase
-%% request. For more information, see Amazon Connect Service Quotas in the
-%% Amazon Connect Administrator Guide.
+%% request. For more information, see Amazon Connect Service Quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
+%% in the Amazon Connect Administrator Guide.
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
 %% `TrafficType' = `CAMPAIGN', you must submit a service quota
-%% increase request to the quota Amazon Connect campaigns.
+%% increase request to the quota Amazon Connect campaigns:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options0) ->
@@ -5781,7 +5859,8 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 %% @doc Initiates a flow to start a new task contact.
 %%
 %% For more information about task contacts, see Concepts: Tasks in Amazon
-%% Connect in the Amazon Connect Administrator Guide.
+%% Connect: https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html
+%% in the Amazon Connect Administrator Guide.
 %%
 %% When using `PreviousContactId' and `RelatedContactId' input
 %% parameters, note the following:
@@ -5818,8 +5897,9 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 %% A `ServiceQuotaExceededException' occurs when the number of open tasks
 %% exceeds the active tasks quota or there are already 12 tasks referencing
 %% the same `PreviousContactId'. For more information about service
-%% quotas for task contacts, see Amazon Connect service quotas in the Amazon
-%% Connect Administrator Guide.
+%% quotas for task contacts, see Amazon Connect service quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
+%% in the Amazon Connect Administrator Guide.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
@@ -5939,7 +6019,9 @@ stop_contact_recording(Client, Input0, Options0) ->
 %% @doc Ends message streaming on a specified contact.
 %%
 %% To restart message streaming on that contact, call the
-%% StartContactStreaming API.
+%% StartContactStreaming:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
+%% API.
 stop_contact_streaming(Client, Input) ->
     stop_contact_streaming(Client, Input, []).
 stop_contact_streaming(Client, Input0, Options0) ->
@@ -6031,7 +6113,8 @@ suspend_contact_recording(Client, Input0, Options0) ->
 %% @doc Adds the specified tags to the contact resource.
 %%
 %% For more information about this API is used, see Set up granular billing
-%% for a detailed view of your Amazon Connect usage.
+%% for a detailed view of your Amazon Connect usage:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 tag_contact(Client, Input) ->
     tag_contact(Client, Input, []).
 tag_contact(Client, Input0, Options0) ->
@@ -6059,10 +6142,13 @@ tag_contact(Client, Input0, Options0) ->
 %% Some of the supported resource types are agents, routing profiles, queues,
 %% quick connects, contact flows, agent statuses, hours of operation, phone
 %% numbers, security profiles, and task templates. For a complete list, see
-%% Tagging resources in Amazon Connect.
+%% Tagging resources in Amazon Connect:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
-%% Policy Examples in the Amazon Connect Administrator Guide.
+%% Policy Examples:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
+%% in the Amazon Connect Administrator Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -6134,7 +6220,8 @@ transfer_contact(Client, Input0, Options0) ->
 %% @doc Removes the specified tags from the contact resource.
 %%
 %% For more information about this API is used, see Set up granular billing
-%% for a detailed view of your Amazon Connect usage.
+%% for a detailed view of your Amazon Connect usage:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
 untag_contact(Client, ContactId, InstanceId, Input) ->
     untag_contact(Client, ContactId, InstanceId, Input, []).
 untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
@@ -6254,7 +6341,9 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 %% Contact attributes are available in Amazon Connect for 24 months, and are
 %% then deleted. For information about contact record retention and the
 %% maximum size of the contact record attributes section, see Feature
-%% specifications in the Amazon Connect Administrator Guide.
+%% specifications:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
+%% in the Amazon Connect Administrator Guide.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 update_contact_attributes(Client, Input0, Options0) ->
@@ -6309,7 +6398,8 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% @doc Updates the specified flow.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
-%% language.
+%% language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0) ->
@@ -6405,7 +6495,8 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 %% @doc The name of the flow.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
-%% language.
+%% language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
@@ -6441,7 +6532,8 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 %% routing order. Note that adjusting the routing age of a contact affects
 %% only its position in queue, and not its actual queue wait time as reported
 %% through metrics. These properties can also be updated by using the Set
-%% routing priority / age flow block.
+%% routing priority / age flow block:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html.
 update_contact_routing_data(Client, ContactId, InstanceId, Input) ->
     update_contact_routing_data(Client, ContactId, InstanceId, Input, []).
 update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
@@ -6613,7 +6705,8 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
 %% </li> <li> Agent auto-disconnect timeout
 %%
 %% </li> </ul> For more information about how chat timeouts work, see Set up
-%% chat timeouts for human participants.
+%% chat timeouts for human participants:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-chat-timeouts.html.
 update_participant_role_config(Client, ContactId, InstanceId, Input) ->
     update_participant_role_config(Client, ContactId, InstanceId, Input, []).
 update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) ->
@@ -6646,8 +6739,11 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
 %% instance or traffic distribution group. It doesn't migrate the flow
 %% configuration of the phone number, too.
 %%
-%% You can call DescribePhoneNumber API to verify the status of a previous
-%% UpdatePhoneNumber operation.
+%% You can call DescribePhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
+%% API to verify the status of a previous UpdatePhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumber.html
+%% operation.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -6673,7 +6769,9 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% @doc Updates a phone number’s metadata.
 %%
 %% To verify the status of a previous UpdatePhoneNumberMetadata operation,
-%% call the DescribePhoneNumber API.
+%% call the DescribePhoneNumber:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
+%% API.
 update_phone_number_metadata(Client, PhoneNumberId, Input) ->
     update_phone_number_metadata(Client, PhoneNumberId, Input, []).
 update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
@@ -6842,11 +6940,14 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% Only use the phone number ARN format that doesn't contain
 %% `instance' in the path, for example,
 %% `arn:aws:connect:us-east-1:1234567890:phone-number/uuid'. This is the
-%% same ARN format that is returned when you call the ListPhoneNumbersV2 API.
+%% same ARN format that is returned when you call the ListPhoneNumbersV2:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html
+%% API.
 %%
 %% If you plan to use IAM policies to allow/deny access to this API for phone
 %% number resources claimed to a traffic distribution group, see Allow or
-%% Deny queue API actions for phone numbers in a replica Region.
+%% Deny queue API actions for phone numbers in a replica Region:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
@@ -7068,7 +7169,9 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 
 %% @doc Updates a rule for the specified Amazon Connect instance.
 %%
-%% Use the Rules Function language to code conditions for the rule.
+%% Use the Rules Function language:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
+%% to code conditions for the rule.
 update_rule(Client, InstanceId, RuleId, Input) ->
     update_rule(Client, InstanceId, RuleId, Input, []).
 update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
@@ -7146,13 +7249,15 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %%
 %% The `SignInConfig' distribution is available only on a default
 %% `TrafficDistributionGroup' (see the `IsDefault' parameter in the
-%% TrafficDistributionGroup data type). If you call
-%% `UpdateTrafficDistribution' with a modified `SignInConfig' and a
-%% non-default `TrafficDistributionGroup', an
+%% TrafficDistributionGroup:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroup.html
+%% data type). If you call `UpdateTrafficDistribution' with a modified
+%% `SignInConfig' and a non-default `TrafficDistributionGroup', an
 %% `InvalidRequestException' is returned.
 %%
 %% For more information about updating a traffic distribution group, see
-%% Update telephony traffic distribution across Amazon Web Services Regions
+%% Update telephony traffic distribution across Amazon Web Services Regions :
+%% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
 %% in the Amazon Connect Administrator Guide.
 update_traffic_distribution(Client, Id, Input) ->
     update_traffic_distribution(Client, Id, Input, []).
@@ -7254,7 +7359,9 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %% poses a security risk to your organization. They can change the email
 %% address of a user to the attacker's email address, and then reset the
 %% password through email. For more information, see Best Practices for
-%% Security Profiles in the Amazon Connect Administrator Guide.
+%% Security Profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html
+%% in the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->

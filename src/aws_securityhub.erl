@@ -37,10 +37,12 @@
 %% This guide, the Security Hub API Reference, provides information about the
 %% Security Hub API. This includes supported resources, HTTP methods,
 %% parameters, and schemas. If you're new to Security Hub, you might find
-%% it helpful to also review the Security Hub User Guide . The user guide
-%% explains key concepts and provides procedures that demonstrate how to use
-%% Security Hub features. It also provides information about topics such as
-%% integrating Security Hub with other Amazon Web Services.
+%% it helpful to also review the Security Hub User Guide :
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html.
+%% The user guide explains key concepts and provides procedures that
+%% demonstrate how to use Security Hub features. It also provides information
+%% about topics such as integrating Security Hub with other Amazon Web
+%% Services.
 %%
 %% In addition to interacting with Security Hub by making calls to the
 %% Security Hub API, you can use a current version of an Amazon Web Services
@@ -51,7 +53,7 @@
 %% Web Services . They also handle tasks such as signing requests, managing
 %% errors, and retrying requests automatically. For information about
 %% installing and using the Amazon Web Services tools and SDKs, see Tools to
-%% Build on Amazon Web Services.
+%% Build on Amazon Web Services: http://aws.amazon.com/developer/tools/.
 %%
 %% With the exception of operations that are related to central
 %% configuration, Security Hub API requests are executed only in the Amazon
@@ -63,7 +65,9 @@
 %% use central configuration, API requests for enabling Security Hub,
 %% standards, and controls are executed in the home Region and all linked
 %% Regions. For a list of central configuration operations, see the Central
-%% configuration terms and concepts section of the Security Hub User Guide.
+%% configuration terms and concepts:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts
+%% section of the Security Hub User Guide.
 %%
 %% The following throttling limits apply to Security Hub API operations.
 %%
@@ -375,8 +379,9 @@ batch_delete_automation_rules(Client, Input0, Options0) ->
 %% @doc Disables the standards specified by the provided
 %% `StandardsSubscriptionArns'.
 %%
-%% For more information, see Security Standards section of the Security Hub
-%% User Guide.
+%% For more information, see Security Standards:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
+%% section of the Security Hub User Guide.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
 batch_disable_standards(Client, Input0, Options0) ->
@@ -404,8 +409,9 @@ batch_disable_standards(Client, Input0, Options0) ->
 %% To obtain the ARN for a standard, use the `DescribeStandards'
 %% operation.
 %%
-%% For more information, see the Security Standards section of the Security
-%% Hub User Guide.
+%% For more information, see the Security Standards:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
+%% section of the Security Hub User Guide.
 batch_enable_standards(Client, Input) ->
     batch_enable_standards(Client, Input, []).
 batch_enable_standards(Client, Input0, Options0) ->
@@ -537,10 +543,11 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 %% `BatchImportFindings' must be called by one of the following:
 %%
 %% <ul> <li> The Amazon Web Services account that is associated with a
-%% finding if you are using the default product ARN or are a partner sending
-%% findings from within a customer's Amazon Web Services account. In
-%% these cases, the identifier of the account that you are calling
-%% `BatchImportFindings' from needs to be the same as the
+%% finding if you are using the default product ARN:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-custom-providers.html#securityhub-custom-providers-bfi-reqs
+%% or are a partner sending findings from within a customer's Amazon Web
+%% Services account. In these cases, the identifier of the account that you
+%% are calling `BatchImportFindings' from needs to be the same as the
 %% `AwsAccountId' attribute for the finding.
 %%
 %% </li> <li> An Amazon Web Services account that Security Hub has
@@ -658,7 +665,9 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 %% </li> </ul> You can configure IAM policies to restrict access to fields
 %% and field values. For example, you might not want member accounts to be
 %% able to suppress findings or change the finding severity. See Configuring
-%% access to BatchUpdateFindings in the Security Hub User Guide.
+%% access to BatchUpdateFindings:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access
+%% in the Security Hub User Guide.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
 batch_update_findings(Client, Input0, Options0) ->
@@ -785,7 +794,9 @@ create_configuration_policy(Client, Input0, Options0) ->
 %% Must be called from the aggregation Region.
 %%
 %% For more details about cross-Region replication, see Configuring finding
-%% aggregation in the Security Hub User Guide.
+%% aggregation:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html
+%% in the Security Hub User Guide.
 create_finding_aggregator(Client, Input) ->
     create_finding_aggregator(Client, Input, []).
 create_finding_aggregator(Client, Input0, Options0) ->
@@ -1540,7 +1551,9 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% `BatchEnableStandards' operation. To disable a standard, use the
 %% `BatchDisableStandards' operation.
 %%
-%% To learn more, see the setup information in the Security Hub User Guide.
+%% To learn more, see the setup information:
+%% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html
+%% in the Security Hub User Guide.
 enable_security_hub(Client, Input) ->
     enable_security_hub(Client, Input, []).
 enable_security_hub(Client, Input0, Options0) ->

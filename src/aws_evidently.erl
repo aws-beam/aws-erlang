@@ -174,7 +174,8 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 %% sessions from a certain location or who use a certain internet browser.
 %%
 %% Don't use this operation to update an existing experiment. Instead,
-%% use UpdateExperiment.
+%% use UpdateExperiment:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateExperiment.html.
 create_experiment(Client, Project, Input) ->
     create_experiment(Client, Project, Input, []).
 create_experiment(Client, Project, Input0, Options0) ->
@@ -201,10 +202,12 @@ create_experiment(Client, Project, Input0, Options0) ->
 %%
 %% You can define up to five variations of a feature, and use these
 %% variations in your launches and experiments. A feature must be created in
-%% a project. For information about creating a project, see CreateProject.
+%% a project. For information about creating a project, see CreateProject:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateProject.html.
 %%
 %% Don't use this operation to update an existing feature. Instead, use
-%% UpdateFeature.
+%% UpdateFeature:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateFeature.html.
 create_feature(Client, Project, Input) ->
     create_feature(Client, Project, Input, []).
 create_feature(Client, Project, Input0, Options0) ->
@@ -239,7 +242,8 @@ create_feature(Client, Project, Input0, Options0) ->
 %% unintended consequences before you fully launch the feature.
 %%
 %% Don't use this operation to update an existing launch. Instead, use
-%% UpdateLaunch.
+%% UpdateLaunch:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateLaunch.html.
 create_launch(Client, Project, Input) ->
     create_launch(Client, Project, Input, []).
 create_launch(Client, Project, Input0, Options0) ->
@@ -267,7 +271,8 @@ create_launch(Client, Project, Input0, Options0) ->
 %%
 %% Use projects to group similar features together.
 %%
-%% To update an existing project, use UpdateProject.
+%% To update an existing project, use UpdateProject:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateProject.html.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options0) ->
@@ -303,12 +308,14 @@ create_project(Client, Input0, Options0) ->
 %% audience segments.
 %%
 %% For more information about segment pattern syntax, see Segment rule
-%% pattern syntax.
+%% pattern syntax:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html.
 %%
 %% The pattern that you define for a segment is matched against the value of
 %% `evaluationContext', which is passed into Evidently in the
-%% EvaluateFeature operation, when Evidently assigns a feature variation to a
-%% user.
+%% EvaluateFeature:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html
+%% operation, when Evidently assigns a feature variation to a user.
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 create_segment(Client, Input0, Options0) ->
@@ -335,7 +342,8 @@ create_segment(Client, Input0, Options0) ->
 %%
 %% The feature used for the experiment is not deleted.
 %%
-%% To stop an experiment without deleting it, use StopExperiment.
+%% To stop an experiment without deleting it, use StopExperiment:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_StopExperiment.html.
 delete_experiment(Client, Experiment, Project, Input) ->
     delete_experiment(Client, Experiment, Project, Input, []).
 delete_experiment(Client, Experiment, Project, Input0, Options0) ->
@@ -385,7 +393,8 @@ delete_feature(Client, Feature, Project, Input0, Options0) ->
 %%
 %% The feature used for the launch is not deleted.
 %%
-%% To stop a launch without deleting it, use StopLaunch.
+%% To stop a launch without deleting it, use StopLaunch:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_StopLaunch.html.
 delete_launch(Client, Launch, Project, Input) ->
     delete_launch(Client, Launch, Project, Input, []).
 delete_launch(Client, Launch, Project, Input0, Options0) ->
@@ -411,7 +420,8 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
 %% @doc Deletes an Evidently project.
 %%
 %% Before you can delete a project, you must delete all the features that the
-%% project contains. To delete a feature, use DeleteFeature.
+%% project contains. To delete a feature, use DeleteFeature:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_DeleteFeature.html.
 delete_project(Client, Project, Input) ->
     delete_project(Client, Project, Input, []).
 delete_project(Client, Project, Input0, Options0) ->
@@ -473,7 +483,10 @@ delete_segment(Client, Segment, Input0, Options0) ->
 %% overrides, and if the user session's `evaluationContext' matches a
 %% segment rule defined in a segment override, the configuration in the
 %% segment overrides is used. For more information about segments, see
-%% CreateSegment and Use segments to focus your audience.
+%% CreateSegment:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html
+%% and Use segments to focus your audience:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html.
 %%
 %% If there is a launch with no segment overrides, the user might be assigned
 %% to a variation in the launch. The chance of this depends on the percentage
@@ -521,7 +534,8 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
 %% @doc Returns the details about one experiment.
 %%
 %% You must already know the experiment name. To retrieve a list of
-%% experiments in your account, use ListExperiments.
+%% experiments in your account, use ListExperiments:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListExperiments.html.
 get_experiment(Client, Experiment, Project)
   when is_map(Client) ->
     get_experiment(Client, Experiment, Project, #{}, #{}).
@@ -582,7 +596,8 @@ get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
 %% @doc Returns the details about one feature.
 %%
 %% You must already know the feature name. To retrieve a list of features in
-%% your account, use ListFeatures.
+%% your account, use ListFeatures:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListFeatures.html.
 get_feature(Client, Feature, Project)
   when is_map(Client) ->
     get_feature(Client, Feature, Project, #{}, #{}).
@@ -608,7 +623,8 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details about one launch.
 %%
 %% You must already know the launch name. To retrieve a list of launches in
-%% your account, use ListLaunches.
+%% your account, use ListLaunches:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListLaunches.html.
 get_launch(Client, Launch, Project)
   when is_map(Client) ->
     get_launch(Client, Launch, Project, #{}, #{}).
@@ -634,7 +650,8 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details about one launch.
 %%
 %% You must already know the project name. To retrieve a list of projects in
-%% your account, use ListProjects.
+%% your account, use ListProjects:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListProjects.html.
 get_project(Client, Project)
   when is_map(Client) ->
     get_project(Client, Project, #{}, #{}).
@@ -909,7 +926,8 @@ put_project_events(Client, Project, Input0, Options0) ->
 
 %% @doc Starts an existing experiment.
 %%
-%% To create an experiment, use CreateExperiment.
+%% To create an experiment, use CreateExperiment:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateExperiment.html.
 start_experiment(Client, Experiment, Project, Input) ->
     start_experiment(Client, Experiment, Project, Input, []).
 start_experiment(Client, Experiment, Project, Input0, Options0) ->
@@ -934,7 +952,8 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
 
 %% @doc Starts an existing launch.
 %%
-%% To create a launch, use CreateLaunch.
+%% To create a launch, use CreateLaunch:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateLaunch.html.
 start_launch(Client, Launch, Project, Input) ->
     start_launch(Client, Launch, Project, Input, []).
 start_launch(Client, Launch, Project, Input0, Options0) ->
@@ -1031,7 +1050,8 @@ stop_launch(Client, Launch, Project, Input0, Options0) ->
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
-%% For more information, see Tagging Amazon Web Services resources.
+%% For more information, see Tagging Amazon Web Services resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1057,7 +1077,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Use this operation to test a rules pattern that you plan to use to
 %% create an audience segment.
 %%
-%% For more information about segments, see CreateSegment.
+%% For more information about segments, see CreateSegment:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html.
 test_segment_pattern(Client, Input) ->
     test_segment_pattern(Client, Input, []).
 test_segment_pattern(Client, Input0, Options0) ->
@@ -1107,7 +1128,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates an Evidently experiment.
 %%
 %% Don't use this operation to update an experiment's tag. Instead,
-%% use TagResource.
+%% use TagResource:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_experiment(Client, Experiment, Project, Input) ->
     update_experiment(Client, Experiment, Project, Input, []).
 update_experiment(Client, Experiment, Project, Input0, Options0) ->
@@ -1133,7 +1155,8 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% @doc Updates an existing feature.
 %%
 %% You can't use this operation to update the tags of an existing
-%% feature. Instead, use TagResource.
+%% feature. Instead, use TagResource:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_feature(Client, Feature, Project, Input) ->
     update_feature(Client, Feature, Project, Input, []).
 update_feature(Client, Feature, Project, Input0, Options0) ->
@@ -1159,7 +1182,8 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
 %% @doc Updates a launch of a given feature.
 %%
 %% Don't use this operation to update the tags of an existing launch.
-%% Instead, use TagResource.
+%% Instead, use TagResource:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_launch(Client, Launch, Project, Input) ->
     update_launch(Client, Launch, Project, Input, []).
 update_launch(Client, Launch, Project, Input0, Options0) ->
@@ -1184,13 +1208,16 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
 
 %% @doc Updates the description of an existing project.
 %%
-%% To create a new project, use CreateProject.
+%% To create a new project, use CreateProject:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateProject.html.
 %%
 %% Don't use this operation to update the data storage options of a
-%% project. Instead, use UpdateProjectDataDelivery.
+%% project. Instead, use UpdateProjectDataDelivery:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateProjectDataDelivery.html.
 %%
 %% Don't use this operation to update the tags of a project. Instead, use
-%% TagResource.
+%% TagResource:
+%% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
 update_project(Client, Project, Input) ->
     update_project(Client, Project, Input, []).
 update_project(Client, Project, Input0, Options0) ->

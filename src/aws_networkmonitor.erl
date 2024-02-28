@@ -14,8 +14,9 @@
 %% monitor network traffic to help you identify where network issues might be
 %% affecting your traffic.
 %%
-%% For more information, see Using Amazon CloudWatch Network Monitor in the
-%% Amazon CloudWatch User Guide.
+%% For more information, see Using Amazon CloudWatch Network Monitor:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/what-is-network-monitor.html
+%% in the Amazon CloudWatch User Guide.
 -module(aws_networkmonitor).
 
 -export([create_monitor/2,

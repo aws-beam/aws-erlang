@@ -6,12 +6,15 @@
 %% The Amazon IVS Chat control-plane API enables you to create and manage
 %% Amazon IVS Chat resources.
 %%
-%% You also need to integrate with the Amazon IVS Chat Messaging API, to
-%% enable users to interact with chat rooms in real time.
+%% You also need to integrate with the Amazon IVS Chat Messaging API:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/chat-messaging-api.html,
+%% to enable users to interact with chat rooms in real time.
 %%
 %% The API is an AWS regional service. For a list of supported regions and
 %% Amazon IVS Chat HTTPS service endpoints, see the Amazon IVS Chat
-%% information on the Amazon IVS page in the AWS General Reference.
+%% information on the Amazon IVS page:
+%% https://docs.aws.amazon.com/general/latest/gr/ivs.html in the AWS General
+%% Reference.
 %%
 %% Notes on terminology:
 %%
@@ -39,14 +42,16 @@
 %% A tag is a metadata label that you assign to an AWS resource. A tag
 %% comprises a key and a value, both set by you. For example, you might set a
 %% tag as `topic:nature' to label a particular video category. See
-%% Tagging AWS Resources for more information, including restrictions that
-%% apply to tags and &quot;Tag naming limits and requirements&quot;; Amazon
-%% IVS Chat has no service-specific constraints beyond what is documented
-%% there.
+%% Tagging AWS Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
+%% information, including restrictions that apply to tags and &quot;Tag
+%% naming limits and requirements&quot;; Amazon IVS Chat has no
+%% service-specific constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
 %% you can use the same tag for different resources to indicate that they are
-%% related. You can also use tags to manage access (see Access Tags).
+%% related. You can also use tags to manage access (see Access Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS Chat API has these tag-related endpoints:
 %% `TagResource', `UntagResource', and `ListTagsForResource'. The
@@ -87,18 +92,22 @@
 %% For more information:
 %%
 %% <ul> <li> Authentication and generating signatures — See Authenticating
-%% Requests (Amazon Web Services Signature Version 4) in the Amazon Web
-%% Services General Reference.
+%% Requests (Amazon Web Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon Web Services General Reference.
 %%
 %% </li> <li> Managing Amazon IVS permissions — See Identity and Access
-%% Management on the Security page of the Amazon IVS User Guide.
+%% Management:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html on the
+%% Security page of the Amazon IVS User Guide.
 %%
 %% </li> </ul> Amazon Resource Names (ARNs)
 %%
 %% ARNs uniquely identify AWS resources. An ARN is required when you need to
 %% specify a resource unambiguously across all of AWS, such as in IAM
-%% policies and API calls. For more information, see Amazon Resource Names in
-%% the AWS General Reference.
+%% policies and API calls. For more information, see Amazon Resource Names:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the AWS General Reference.
 %%
 %% Messaging Endpoints
 %%
@@ -106,10 +115,13 @@
 %% directs clients to delete a specific message; that is, unrender it from
 %% view and delete it from the client’s chat history. This event’s
 %% `EventName' is `aws:DELETE_MESSAGE'. This replicates the
-%% DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
+%% DeleteMessage:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html
+%% WebSocket operation in the Amazon IVS Chat Messaging API.
 %%
 %% </li> <li> `DisconnectUser' — Disconnects all connections using a
-%% specified user ID from a room. This replicates the DisconnectUser
+%% specified user ID from a room. This replicates the DisconnectUser:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
 %%
 %% </li> <li> `SendEvent' — Sends an event to a room. Use this within
@@ -169,7 +181,8 @@
 %%
 %% </li> </ul> All the above are HTTP operations. There is a separate
 %% messaging API for managing Chat resources; see the Amazon IVS Chat
-%% Messaging API Reference.
+%% Messaging API Reference:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/chat-messaging-api.html.
 -module(aws_ivschat).
 
 -export([create_chat_token/2,
@@ -329,8 +342,9 @@ delete_logging_configuration(Client, Input0, Options0) ->
 %% client’s chat history.
 %%
 %% This event’s `EventName' is `aws:DELETE_MESSAGE'. This replicates
-%% the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging
-%% API.
+%% the DeleteMessage:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html
+%% WebSocket operation in the Amazon IVS Chat Messaging API.
 delete_message(Client, Input) ->
     delete_message(Client, Input, []).
 delete_message(Client, Input0, Options0) ->
@@ -378,8 +392,9 @@ delete_room(Client, Input0, Options0) ->
 
 %% @doc Disconnects all connections using a specified user ID from a room.
 %%
-%% This replicates the DisconnectUser WebSocket operation in the Amazon IVS
-%% Chat Messaging API.
+%% This replicates the DisconnectUser:
+%% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html
+%% WebSocket operation in the Amazon IVS Chat Messaging API.
 disconnect_user(Client, Input) ->
     disconnect_user(Client, Input, []).
 disconnect_user(Client, Input0, Options0) ->

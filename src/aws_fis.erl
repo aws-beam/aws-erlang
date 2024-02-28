@@ -4,7 +4,8 @@
 %% @doc Fault Injection Simulator is a managed service that enables you to
 %% perform fault injection experiments on your Amazon Web Services workloads.
 %%
-%% For more information, see the Fault Injection Simulator User Guide.
+%% For more information, see the Fault Injection Simulator User Guide:
+%% https://docs.aws.amazon.com/fis/latest/userguide/.
 -module(aws_fis).
 
 -export([create_experiment_template/2,
@@ -92,8 +93,9 @@
 %% experiment is running, the experiment is automatically stopped. You can
 %% define a stop condition as a CloudWatch alarm.
 %%
-%% </li> </ul> For more information, see experiment templates in the Fault
-%% Injection Simulator User Guide.
+%% </li> </ul> For more information, see experiment templates:
+%% https://docs.aws.amazon.com/fis/latest/userguide/experiment-templates.html
+%% in the Fault Injection Simulator User Guide.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
 create_experiment_template(Client, Input0, Options0) ->
@@ -120,8 +122,9 @@ create_experiment_template(Client, Input0, Options0) ->
 %%
 %% A target account configuration is required when `accountTargeting' of
 %% `experimentOptions' is set to `multi-account'. For more
-%% information, see experiment options in the Fault Injection Simulator User
-%% Guide.
+%% information, see experiment options:
+%% https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html
+%% in the Fault Injection Simulator User Guide.
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input0, Options0) ->

@@ -313,8 +313,9 @@ notify_migration_task_state(Client, Input, Options)
 %% overriding the MAC address.
 %%
 %% Note the instructions regarding the special use case of the
-%% `ResourceAttributeList' parameter when specifying any &quot;VM&quot;
-%% related value.
+%% `ResourceAttributeList' :
+%% https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList
+%% parameter when specifying any &quot;VM&quot; related value.
 %%
 %% Because this is an asynchronous call, it will always return 200, whether
 %% an association occurs or not. To confirm if an association was found based

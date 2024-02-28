@@ -6,13 +6,16 @@
 %%
 %% You can create, import, export, share, manage, and delete keys. You can
 %% also manage Identity and Access Management (IAM) policies for keys. For
-%% more information, see Identity and access management in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% more information, see Identity and access management:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% To use encryption keys for payment-related transaction processing and
 %% associated cryptographic operations, you use the Amazon Web Services
-%% Payment Cryptography Data Plane. You can perform actions like encrypt,
-%% decrypt, generate, and verify payment-related data.
+%% Payment Cryptography Data Plane:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/Welcome.html.
+%% You can perform actions like encrypt, decrypt, generate, and verify
+%% payment-related data.
 %%
 %% All Amazon Web Services Payment Cryptography API calls must be signed and
 %% transmitted using Transport Layer Security (TLS). We recommend you always
@@ -26,7 +29,8 @@
 %% Services Payment Cryptography, who made the request, when it was made, and
 %% so on. If you don't conﬁgure a trail, you can still view the most
 %% recent events in the CloudTrail console. For more information, see the
-%% CloudTrail User Guide.
+%% CloudTrail User Guide:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/.
 -module(aws_payment_cryptography).
 
 -export([create_alias/2,
@@ -80,7 +84,10 @@
 %% Payment Cryptography key.
 %%
 %% You can use an alias to identify a key in the console and when you call
-%% cryptographic operations such as EncryptData or DecryptData.
+%% cryptographic operations such as EncryptData:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_EncryptData.html
+%% or DecryptData:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_DecryptData.html.
 %%
 %% You can associate the alias with any key in the same Amazon Web Services
 %% Region. Each alias is associated with only one key at a time, but a key
@@ -132,10 +139,11 @@ create_alias(Client, Input, Options)
 %% example key class (example: `SYMMETRIC_KEY'), key algorithm (example:
 %% `TDES_2KEY'), key usage (example: `TR31_P0_PIN_ENCRYPTION_KEY')
 %% and key modes of use (example: `Encrypt'). For information about valid
-%% combinations of key attributes, see Understanding key attributes in the
-%% Amazon Web Services Payment Cryptography User Guide. The mutable data
-%% contained within a key includes usage timestamp and key deletion timestamp
-%% and can be modified after creation.
+%% combinations of key attributes, see Understanding key attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% in the Amazon Web Services Payment Cryptography User Guide. The mutable
+%% data contained within a key includes usage timestamp and key deletion
+%% timestamp and can be modified after creation.
 %%
 %% Amazon Web Services Payment Cryptography binds key attributes to keys
 %% using key blocks when you store or export them. Amazon Web Services
@@ -292,8 +300,9 @@ delete_key(Client, Input, Options)
 %% Services Payment Cryptography, will use the KRD wrapping cerificate to
 %% encrypt (wrap) the key under export and signs it with signing private key
 %% to generate a TR-34 WrappedKeyBlock. For more information on TR-34 key
-%% export, see section Exporting symmetric keys in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% export, see section Exporting symmetric keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-export.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Set the following parameters:
 %%
@@ -600,8 +609,9 @@ get_public_key_certificate(Client, Input, Options)
 %% Web Services Payment Cryptography. The KDH will also need to import the
 %% root certificate chain of the KDH signing certificate by calling
 %% `ImportKey' for `RootCertificatePublicKey'. For more information
-%% on TR-34 key import, see section Importing symmetric keys in the Amazon
-%% Web Services Payment Cryptography User Guide.
+%% on TR-34 key import, see section Importing symmetric keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-import.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Set the following parameters:
 %%
@@ -682,7 +692,9 @@ import_key(Client, Input, Options)
 %% Services account and Amazon Web Services Region.
 %%
 %% You can filter the list of aliases. For more information, see Using
-%% aliases in the Amazon Web Services Payment Cryptography User Guide.
+%% aliases:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the aliases. When the response contains only

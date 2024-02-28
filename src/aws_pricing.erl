@@ -29,8 +29,9 @@
 %% in, such as an `AmazonEC2' instance, with a `Provisioned IOPS'
 %% `volumeType'.
 %%
-%% For more information, see Using the Amazon Web Services Price List API in
-%% the Billing User Guide.
+%% For more information, see Using the Amazon Web Services Price List API:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html
+%% in the Billing User Guide.
 -module(aws_pricing).
 
 -export([describe_services/2,
@@ -69,8 +70,10 @@ describe_services(Client, Input, Options)
 %% @doc Returns a list of attribute values.
 %%
 %% Attributes are similar to the details in a Price List API offer file. For
-%% a list of available attributes, see Offer File Definitions in the Billing
-%% and Cost Management User Guide.
+%% a list of available attributes, see Offer File Definitions:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs
+%% in the Billing and Cost Management User Guide:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html.
 get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).
@@ -81,12 +84,14 @@ get_attribute_values(Client, Input, Options)
 %% @doc This feature is in preview release and is subject to change.
 %%
 %% Your use of Amazon Web Services Price List API is subject to the Beta
-%% Service Participation terms of the Amazon Web Services Service Terms
-%% (Section 1.10).
+%% Service Participation terms of the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Section 1.10).
 %%
 %% This returns the URL that you can retrieve your Price List file from. This
 %% URL is based on the `PriceListArn' and `FileFormat' that you
-%% retrieve from the ListPriceLists response.
+%% retrieve from the ListPriceLists:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html
+%% response.
 get_price_list_file_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_price_list_file_url(Client, Input, []).
@@ -105,8 +110,8 @@ get_products(Client, Input, Options)
 %% @doc This feature is in preview release and is subject to change.
 %%
 %% Your use of Amazon Web Services Price List API is subject to the Beta
-%% Service Participation terms of the Amazon Web Services Service Terms
-%% (Section 1.10).
+%% Service Participation terms of the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Section 1.10).
 %%
 %% This returns a list of Price List references that the requester if
 %% authorized to view, given a `ServiceCode', `CurrencyCode', and an
@@ -115,7 +120,9 @@ get_products(Client, Input, Options)
 %% `RegionCode' filter to get the Price List reference that's
 %% specific to a specific Amazon Web Services Region. You can use the
 %% `PriceListArn' from the response to get your preferred Price List
-%% files through the GetPriceListFileUrl API.
+%% files through the GetPriceListFileUrl:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetPriceListFileUrl.html
+%% API.
 list_price_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_price_lists(Client, Input, []).

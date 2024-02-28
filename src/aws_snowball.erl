@@ -12,7 +12,8 @@
 %% Family device. To transfer data locally with a Snow Family device,
 %% you'll need to use the Snowball Edge client or the Amazon S3 API
 %% Interface for Snowball or OpsHub for Snow Family. For more information,
-%% see the User Guide.
+%% see the User Guide:
+%% https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html.
 -module(aws_snowball).
 
 -export([cancel_cluster/2,
@@ -144,7 +145,8 @@ create_cluster(Client, Input, Options)
 %%
 %% Availability of device types differ by Amazon Web Services Region. For
 %% more information about Region availability, see Amazon Web Services
-%% Regional Services.
+%% Regional Services:
+%% https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&amp;loc=4.
 %%
 %% == Snow Family devices and their capacities. ==
 %%

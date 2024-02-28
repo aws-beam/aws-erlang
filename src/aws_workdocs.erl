@@ -49,7 +49,7 @@
 %% `DELETE*, CANCEL'
 %%
 %% For information about Amazon WorkDocs API pricing, see Amazon WorkDocs
-%% Pricing.
+%% Pricing: https://aws.amazon.com/workdocs/pricing/.
 -module(aws_workdocs).
 
 -export([abort_document_version_upload/4,
@@ -355,7 +355,9 @@ create_labels(Client, ResourceId, Input0, Options0) ->
 %% The endpoint receives a confirmation message, and must confirm the
 %% subscription.
 %%
-%% For more information, see Setting up notifications for an IAM user or role
+%% For more information, see Setting up notifications for an IAM user or
+%% role:
+%% https://docs.aws.amazon.com/workdocs/latest/developerguide/manage-notifications.html
 %% in the Amazon WorkDocs Developer Guide.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
@@ -923,8 +925,9 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0
 %%
 %% This action requires an authentication token. To get an authentication
 %% token, register an application with Amazon WorkDocs. For more information,
-%% see Authentication and Access Control for User Applications in the Amazon
-%% WorkDocs Developer Guide.
+%% see Authentication and Access Control for User Applications:
+%% https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html
+%% in the Amazon WorkDocs Developer Guide.
 describe_root_folders(Client, AuthenticationToken)
   when is_map(Client) ->
     describe_root_folders(Client, AuthenticationToken, #{}, #{}).
@@ -1009,8 +1012,9 @@ describe_users(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This action requires an authentication token. To get an authentication
 %% token, register an application with Amazon WorkDocs. For more information,
-%% see Authentication and Access Control for User Applications in the Amazon
-%% WorkDocs Developer Guide.
+%% see Authentication and Access Control for User Applications:
+%% https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html
+%% in the Amazon WorkDocs Developer Guide.
 get_current_user(Client, AuthenticationToken)
   when is_map(Client) ->
     get_current_user(Client, AuthenticationToken, #{}, #{}).

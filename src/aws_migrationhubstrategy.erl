@@ -10,7 +10,8 @@
 %% The topic for each action shows the API request parameters and the
 %% response. Alternatively, you can use one of the AWS SDKs to access an API
 %% that is tailored to the programming language or platform that you're
-%% using. For more information, see AWS SDKs.
+%% using. For more information, see AWS SDKs:
+%% http://aws.amazon.com/tools/#SDKs.
 -module(aws_migrationhubstrategy).
 
 -export([get_application_component_details/2,

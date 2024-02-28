@@ -14,16 +14,20 @@
 %% devices.
 %%
 %% The service endpoints that expose this API are listed in Amazon Web
-%% Services IoT Core Endpoints and Quotas. You must use the endpoint for the
-%% region that has the resources you want to access.
+%% Services IoT Core Endpoints and Quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/iot-core.html. You must use
+%% the endpoint for the region that has the resources you want to access.
 %%
-%% The service name used by Amazon Web Services Signature Version 4 to sign
-%% the request is: execute-api.
+%% The service name used by Amazon Web Services Signature Version 4:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html to
+%% sign the request is: execute-api.
 %%
-%% For more information about how IoT works, see the Developer Guide.
+%% For more information about how IoT works, see the Developer Guide:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html.
 %%
 %% For information about how to use the credentials provider for IoT, see
-%% Authorizing Direct Calls to Amazon Web Services Services.
+%% Authorizing Direct Calls to Amazon Web Services Services:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html.
 -module(aws_iot).
 
 -export([accept_certificate_transfer/3,
@@ -654,7 +658,9 @@
 %% To check for pending certificate transfers, call `ListCertificates' to
 %% enumerate your certificates.
 %%
-%% Requires permission to access the AcceptCertificateTransfer action.
+%% Requires permission to access the AcceptCertificateTransfer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -680,7 +686,9 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Adds a thing to a billing group.
 %%
-%% Requires permission to access the AddThingToBillingGroup action.
+%% Requires permission to access the AddThingToBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 add_thing_to_billing_group(Client, Input) ->
     add_thing_to_billing_group(Client, Input, []).
 add_thing_to_billing_group(Client, Input0, Options0) ->
@@ -705,7 +713,9 @@ add_thing_to_billing_group(Client, Input0, Options0) ->
 
 %% @doc Adds a thing to a thing group.
 %%
-%% Requires permission to access the AddThingToThingGroup action.
+%% Requires permission to access the AddThingToThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 add_thing_to_thing_group(Client, Input) ->
     add_thing_to_thing_group(Client, Input, []).
 add_thing_to_thing_group(Client, Input0, Options0) ->
@@ -740,7 +750,8 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 %% </li> <li> The total number of targets associated with a job must not
 %% exceed 100.
 %%
-%% </li> </ul> Requires permission to access the AssociateTargetsWithJob
+%% </li> </ul> Requires permission to access the AssociateTargetsWithJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
@@ -768,7 +779,9 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
 %%
-%% Requires permission to access the AttachPolicy action.
+%% Requires permission to access the AttachPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
 attach_policy(Client, PolicyName, Input0, Options0) ->
@@ -798,7 +811,9 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 %% compatibility, but we won't add enhancements. Use `AttachPolicy'
 %% instead.
 %%
-%% Requires permission to access the AttachPrincipalPolicy action.
+%% Requires permission to access the AttachPrincipalPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 attach_principal_policy(Client, PolicyName, Input0, Options0) ->
@@ -829,7 +844,9 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %% Each thing group or account can have up to five security profiles
 %% associated with it.
 %%
-%% Requires permission to access the AttachSecurityProfile action.
+%% Requires permission to access the AttachSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -858,7 +875,9 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% A principal can be X.509 certificates, Amazon Cognito identities or
 %% federated identities.
 %%
-%% Requires permission to access the AttachThingPrincipal action.
+%% Requires permission to access the AttachThingPrincipal:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 attach_thing_principal(Client, ThingName, Input0, Options0) ->
@@ -887,7 +906,9 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
 %%
 %% If the task is not in progress, an InvalidRequestException occurs.
 %%
-%% Requires permission to access the CancelAuditMitigationActionsTask action.
+%% Requires permission to access the CancelAuditMitigationActionsTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -915,7 +936,9 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% The audit can be either scheduled or on demand. If the audit isn't in
 %% progress, an &quot;InvalidRequestException&quot; occurs.
 %%
-%% Requires permission to access the CancelAuditTask action.
+%% Requires permission to access the CancelAuditTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 cancel_audit_task(Client, TaskId, Input0, Options0) ->
@@ -949,7 +972,9 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
 %% After a certificate transfer is cancelled, the status of the certificate
 %% changes from PENDING_TRANSFER to INACTIVE.
 %%
-%% Requires permission to access the CancelCertificateTransfer action.
+%% Requires permission to access the CancelCertificateTransfer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
 cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -974,7 +999,8 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Cancels a Device Defender ML Detect mitigation action.
 %%
-%% Requires permission to access the CancelDetectMitigationActionsTask
+%% Requires permission to access the CancelDetectMitigationActionsTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
@@ -1000,7 +1026,9 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Cancels a job.
 %%
-%% Requires permission to access the CancelJob action.
+%% Requires permission to access the CancelJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 cancel_job(Client, JobId, Input0, Options0) ->
@@ -1026,7 +1054,9 @@ cancel_job(Client, JobId, Input0, Options0) ->
 
 %% @doc Cancels the execution of a job for a given thing.
 %%
-%% Requires permission to access the CancelJobExecution action.
+%% Requires permission to access the CancelJobExecution:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
 cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
@@ -1052,7 +1082,9 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
 
 %% @doc Clears the default authorizer.
 %%
-%% Requires permission to access the ClearDefaultAuthorizer action.
+%% Requires permission to access the ClearDefaultAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 clear_default_authorizer(Client, Input) ->
     clear_default_authorizer(Client, Input, []).
 clear_default_authorizer(Client, Input0, Options0) ->
@@ -1082,7 +1114,9 @@ clear_default_authorizer(Client, Input0, Options0) ->
 %% a token which you pass back when calling `ConfirmTopicRuleDestination'
 %% to confirm that you own or have access to the endpoint.
 %%
-%% Requires permission to access the ConfirmTopicRuleDestination action.
+%% Requires permission to access the ConfirmTopicRuleDestination:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, #{}, #{}).
@@ -1107,7 +1141,9 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
 
 %% @doc Creates a Device Defender audit suppression.
 %%
-%% Requires permission to access the CreateAuditSuppression action.
+%% Requires permission to access the CreateAuditSuppression:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_audit_suppression(Client, Input) ->
     create_audit_suppression(Client, Input, []).
 create_audit_suppression(Client, Input0, Options0) ->
@@ -1132,7 +1168,9 @@ create_audit_suppression(Client, Input0, Options0) ->
 
 %% @doc Creates an authorizer.
 %%
-%% Requires permission to access the CreateAuthorizer action.
+%% Requires permission to access the CreateAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
 create_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -1157,7 +1195,9 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
 
 %% @doc Creates a billing group.
 %%
-%% Requires permission to access the CreateBillingGroup action.
+%% Requires permission to access the CreateBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
 create_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -1183,12 +1223,15 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% @doc Creates an X.509 certificate using the specified certificate signing
 %% request.
 %%
-%% Requires permission to access the CreateCertificateFromCsr action.
+%% Requires permission to access the CreateCertificateFromCsr:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% The CSR must include a public key that is either an RSA key with a length
 %% of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST
 %% P-521 curves. For supported certificates, consult Certificate signing
-%% algorithms supported by IoT.
+%% algorithms supported by IoT:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms.
 %%
 %% Reusing the same certificate signing request (CSR) results in a distinct
 %% certificate.
@@ -1256,17 +1299,21 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 %% You can use Amazon Web Services IoT Core certificate provider to customize
 %% how to sign a certificate signing request (CSR) in IoT fleet provisioning.
 %% For more information, see Customizing certificate signing using Amazon Web
-%% Services IoT Core certificate provider from Amazon Web Services IoT Core
-%% Developer Guide.
+%% Services IoT Core certificate provider:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/provisioning-cert-provider.html
+%% from Amazon Web Services IoT Core Developer Guide.
 %%
-%% Requires permission to access the CreateCertificateProvider action.
+%% Requires permission to access the CreateCertificateProvider:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% After you create a certificate provider, the behavior of
-%% `CreateCertificateFromCsr' API for fleet provisioning will change and
-%% all API calls to `CreateCertificateFromCsr' will invoke the
-%% certificate provider to create the certificates. It can take up to a few
-%% minutes for this behavior to change after a certificate provider is
-%% created.
+%% `CreateCertificateFromCsr' API for fleet provisioning:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/fleet-provision-api.html#create-cert-csr
+%% will change and all API calls to `CreateCertificateFromCsr' will
+%% invoke the certificate provider to create the certificates. It can take up
+%% to a few minutes for this behavior to change after a certificate provider
+%% is created.
 create_certificate_provider(Client, CertificateProviderName, Input) ->
     create_certificate_provider(Client, CertificateProviderName, Input, []).
 create_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
@@ -1292,7 +1339,9 @@ create_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 %% @doc Use this API to define a Custom Metric published by your devices to
 %% Device Defender.
 %%
-%% Requires permission to access the CreateCustomMetric action.
+%% Requires permission to access the CreateCustomMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_custom_metric(Client, MetricName, Input) ->
     create_custom_metric(Client, MetricName, Input, []).
 create_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -1322,7 +1371,9 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
 %% scope of the metric only to MQTT topics whose name match the pattern
 %% specified in the dimension.
 %%
-%% Requires permission to access the CreateDimension action.
+%% Requires permission to access the CreateDimension:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 create_dimension(Client, Name, Input0, Options0) ->
@@ -1347,7 +1398,9 @@ create_dimension(Client, Name, Input0, Options0) ->
 
 %% @doc Creates a domain configuration.
 %%
-%% Requires permission to access the CreateDomainConfiguration action.
+%% Requires permission to access the CreateDomainConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -1372,7 +1425,9 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 
 %% @doc Creates a dynamic thing group.
 %%
-%% Requires permission to access the CreateDynamicThingGroup action.
+%% Requires permission to access the CreateDynamicThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
 create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -1397,7 +1452,9 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Creates a fleet metric.
 %%
-%% Requires permission to access the CreateFleetMetric action.
+%% Requires permission to access the CreateFleetMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_fleet_metric(Client, MetricName, Input) ->
     create_fleet_metric(Client, MetricName, Input, []).
 create_fleet_metric(Client, MetricName, Input0, Options0) ->
@@ -1422,7 +1479,9 @@ create_fleet_metric(Client, MetricName, Input0, Options0) ->
 
 %% @doc Creates a job.
 %%
-%% Requires permission to access the CreateJob action.
+%% Requires permission to access the CreateJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
 create_job(Client, JobId, Input0, Options0) ->
@@ -1447,7 +1506,9 @@ create_job(Client, JobId, Input0, Options0) ->
 
 %% @doc Creates a job template.
 %%
-%% Requires permission to access the CreateJobTemplate action.
+%% Requires permission to access the CreateJobTemplate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_job_template(Client, JobTemplateId, Input) ->
     create_job_template(Client, JobTemplateId, Input, []).
 create_job_template(Client, JobTemplateId, Input0, Options0) ->
@@ -1474,12 +1535,15 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
 %% the issued public key.
 %%
 %% You can also call `CreateKeysAndCertificate' over MQTT from a device,
-%% for more information, see Provisioning MQTT API.
+%% for more information, see Provisioning MQTT API:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api.
 %%
 %% Note This is the only time IoT issues the private key for this
 %% certificate, so it is important to keep it in a secure location.
 %%
-%% Requires permission to access the CreateKeysAndCertificate action.
+%% Requires permission to access the CreateKeysAndCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
 create_keys_and_certificate(Client, Input0, Options0) ->
@@ -1507,10 +1571,13 @@ create_keys_and_certificate(Client, Input0, Options0) ->
 %% StartAuditMitigationActionsTask.
 %%
 %% Only certain types of mitigation actions can be applied to specific check
-%% names. For more information, see Mitigation actions. Each mitigation
-%% action can apply only one type of change.
+%% names. For more information, see Mitigation actions:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-mitigation-actions.html.
+%% Each mitigation action can apply only one type of change.
 %%
-%% Requires permission to access the CreateMitigationAction action.
+%% Requires permission to access the CreateMitigationAction:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 create_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -1535,7 +1602,9 @@ create_mitigation_action(Client, ActionName, Input0, Options0) ->
 
 %% @doc Creates an IoT OTA update on a target group of things or groups.
 %%
-%% Requires permission to access the CreateOTAUpdate action.
+%% Requires permission to access the CreateOTAUpdate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_ota_update(Client, OtaUpdateId, Input) ->
     create_ota_update(Client, OtaUpdateId, Input, []).
 create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
@@ -1560,8 +1629,11 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 
 %% @doc Creates an IoT software package that can be deployed to your fleet.
 %%
-%% Requires permission to access the CreatePackage and
-%% GetIndexingConfiguration actions.
+%% Requires permission to access the CreatePackage:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% and GetIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% actions.
 create_package(Client, PackageName, Input) ->
     create_package(Client, PackageName, Input, []).
 create_package(Client, PackageName, Input0, Options0) ->
@@ -1587,8 +1659,11 @@ create_package(Client, PackageName, Input0, Options0) ->
 
 %% @doc Creates a new version for an existing IoT software package.
 %%
-%% Requires permission to access the CreatePackageVersion and
-%% GetIndexingConfiguration actions.
+%% Requires permission to access the CreatePackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% and GetIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% actions.
 create_package_version(Client, PackageName, VersionName, Input) ->
     create_package_version(Client, PackageName, VersionName, Input, []).
 create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
@@ -1618,7 +1693,9 @@ create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% creates a policy version with a version identifier of 1 and sets 1 as the
 %% policy's default version.
 %%
-%% Requires permission to access the CreatePolicy action.
+%% Requires permission to access the CreatePolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 create_policy(Client, PolicyName, Input0, Options0) ->
@@ -1653,7 +1730,9 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 %% version that is in effect for the certificates to which the policy is
 %% attached).
 %%
-%% Requires permission to access the CreatePolicyVersion action.
+%% Requires permission to access the CreatePolicyVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
 create_policy_version(Client, PolicyName, Input0, Options0) ->
@@ -1679,7 +1758,9 @@ create_policy_version(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Creates a provisioning claim.
 %%
-%% Requires permission to access the CreateProvisioningClaim action.
+%% Requires permission to access the CreateProvisioningClaim:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
 create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
@@ -1704,7 +1785,9 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Creates a provisioning template.
 %%
-%% Requires permission to access the CreateProvisioningTemplate action.
+%% Requires permission to access the CreateProvisioningTemplate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_provisioning_template(Client, Input) ->
     create_provisioning_template(Client, Input, []).
 create_provisioning_template(Client, Input0, Options0) ->
@@ -1729,7 +1812,8 @@ create_provisioning_template(Client, Input0, Options0) ->
 
 %% @doc Creates a new version of a provisioning template.
 %%
-%% Requires permission to access the CreateProvisioningTemplateVersion
+%% Requires permission to access the CreateProvisioningTemplateVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
@@ -1756,7 +1840,9 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Creates a role alias.
 %%
-%% Requires permission to access the CreateRoleAlias action.
+%% Requires permission to access the CreateRoleAlias:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
 create_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -1781,7 +1867,9 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
 
 %% @doc Creates a scheduled audit that is run at a specified time interval.
 %%
-%% Requires permission to access the CreateScheduledAudit action.
+%% Requires permission to access the CreateScheduledAudit:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
 create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -1806,7 +1894,9 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
 %% @doc Creates a Device Defender security profile.
 %%
-%% Requires permission to access the CreateSecurityProfile action.
+%% Requires permission to access the CreateSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
 create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -1836,7 +1926,9 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% messages from a source like S3. You can have one or more files associated
 %% with a stream.
 %%
-%% Requires permission to access the CreateStream action.
+%% Requires permission to access the CreateStream:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 create_stream(Client, StreamId, Input0, Options0) ->
@@ -1866,10 +1958,13 @@ create_stream(Client, StreamId, Input0, Options0) ->
 %% thing name but different configuration a
 %% `ResourceAlreadyExistsException' is thrown.
 %%
-%% This is a control plane operation. See Authorization for information about
-%% authorizing control plane actions.
+%% This is a control plane operation. See Authorization:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html
+%% for information about authorizing control plane actions.
 %%
-%% Requires permission to access the CreateThing action.
+%% Requires permission to access the CreateThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 create_thing(Client, ThingName, Input0, Options0) ->
@@ -1894,13 +1989,16 @@ create_thing(Client, ThingName, Input0, Options0) ->
 
 %% @doc Create a thing group.
 %%
-%% This is a control plane operation. See Authorization for information about
-%% authorizing control plane actions.
+%% This is a control plane operation. See Authorization:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html
+%% for information about authorizing control plane actions.
 %%
 %% If the `ThingGroup' that you create has the exact same attributes as
 %% an existing `ThingGroup', you will get a 200 success response.
 %%
-%% Requires permission to access the CreateThingGroup action.
+%% Requires permission to access the CreateThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 create_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -1925,7 +2023,9 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Creates a new thing type.
 %%
-%% Requires permission to access the CreateThingType action.
+%% Requires permission to access the CreateThingType:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
 create_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -1954,7 +2054,9 @@ create_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% permission to create rules will be able to access data processed by the
 %% rule.
 %%
-%% Requires permission to access the CreateTopicRule action.
+%% Requires permission to access the CreateTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 create_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -1983,7 +2085,9 @@ create_topic_rule(Client, RuleName, Input0, Options0) ->
 %%
 %% The destination must be confirmed prior to use.
 %%
-%% Requires permission to access the CreateTopicRuleDestination action.
+%% Requires permission to access the CreateTopicRuleDestination:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
 create_topic_rule_destination(Client, Input0, Options0) ->
@@ -2012,7 +2116,9 @@ create_topic_rule_destination(Client, Input0, Options0) ->
 %% Any configuration data you entered is deleted and all audit checks are
 %% reset to disabled.
 %%
-%% Requires permission to access the DeleteAccountAuditConfiguration action.
+%% Requires permission to access the DeleteAccountAuditConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
 delete_account_audit_configuration(Client, Input0, Options0) ->
@@ -2038,7 +2144,9 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes a Device Defender audit suppression.
 %%
-%% Requires permission to access the DeleteAuditSuppression action.
+%% Requires permission to access the DeleteAuditSuppression:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_audit_suppression(Client, Input) ->
     delete_audit_suppression(Client, Input, []).
 delete_audit_suppression(Client, Input0, Options0) ->
@@ -2063,7 +2171,9 @@ delete_audit_suppression(Client, Input0, Options0) ->
 
 %% @doc Deletes an authorizer.
 %%
-%% Requires permission to access the DeleteAuthorizer action.
+%% Requires permission to access the DeleteAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
 delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -2088,7 +2198,9 @@ delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
 
 %% @doc Deletes the billing group.
 %%
-%% Requires permission to access the DeleteBillingGroup action.
+%% Requires permission to access the DeleteBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
 delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -2114,7 +2226,9 @@ delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
 
 %% @doc Deletes a registered CA certificate.
 %%
-%% Requires permission to access the DeleteCACertificate action.
+%% Requires permission to access the DeleteCACertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_ca_certificate(Client, CertificateId, Input) ->
     delete_ca_certificate(Client, CertificateId, Input, []).
 delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
@@ -2145,7 +2259,9 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% `UpdateCertificate' action to set the certificate to the INACTIVE
 %% status.
 %%
-%% Requires permission to access the DeleteCertificate action.
+%% Requires permission to access the DeleteCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 delete_certificate(Client, CertificateId, Input0, Options0) ->
@@ -2171,7 +2287,9 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Deletes a certificate provider.
 %%
-%% Requires permission to access the DeleteCertificateProvider action.
+%% Requires permission to access the DeleteCertificateProvider:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% If you delete the certificate provider resource, the behavior of
 %% `CreateCertificateFromCsr' will resume, and IoT will create
@@ -2200,13 +2318,16 @@ delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
 %% @doc Deletes a Device Defender detect custom metric.
 %%
-%% Requires permission to access the DeleteCustomMetric action.
+%% Requires permission to access the DeleteCustomMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% Before you can delete a custom metric, you must first remove the custom
 %% metric from all security profiles it's a part of. The security profile
 %% associated with the custom metric can be found using the
-%% ListSecurityProfiles API with `metricName' set to your custom metric
-%% name.
+%% ListSecurityProfiles:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html
+%% API with `metricName' set to your custom metric name.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
 delete_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -2232,7 +2353,9 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
 %% @doc Removes the specified dimension from your Amazon Web Services
 %% accounts.
 %%
-%% Requires permission to access the DeleteDimension action.
+%% Requires permission to access the DeleteDimension:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
 delete_dimension(Client, Name, Input0, Options0) ->
@@ -2257,7 +2380,9 @@ delete_dimension(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes the specified domain configuration.
 %%
-%% Requires permission to access the DeleteDomainConfiguration action.
+%% Requires permission to access the DeleteDomainConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -2282,7 +2407,9 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 
 %% @doc Deletes a dynamic thing group.
 %%
-%% Requires permission to access the DeleteDynamicThingGroup action.
+%% Requires permission to access the DeleteDynamicThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
 delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -2311,7 +2438,9 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Returns successfully with no error if the deletion is successful or you
 %% specify a fleet metric that doesn't exist.
 %%
-%% Requires permission to access the DeleteFleetMetric action.
+%% Requires permission to access the DeleteFleetMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_fleet_metric(Client, MetricName, Input) ->
     delete_fleet_metric(Client, MetricName, Input, []).
 delete_fleet_metric(Client, MetricName, Input0, Options0) ->
@@ -2347,7 +2476,9 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 %% Only 10 jobs may have status &quot;DELETION_IN_PROGRESS&quot; at the same
 %% time, or a LimitExceededException will occur.
 %%
-%% Requires permission to access the DeleteJob action.
+%% Requires permission to access the DeleteJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
 delete_job(Client, JobId, Input0, Options0) ->
@@ -2374,7 +2505,9 @@ delete_job(Client, JobId, Input0, Options0) ->
 
 %% @doc Deletes a job execution.
 %%
-%% Requires permission to access the DeleteJobExecution action.
+%% Requires permission to access the DeleteJobExecution:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0) ->
@@ -2425,7 +2558,9 @@ delete_job_template(Client, JobTemplateId, Input0, Options0) ->
 %% @doc Deletes a defined mitigation action from your Amazon Web Services
 %% accounts.
 %%
-%% Requires permission to access the DeleteMitigationAction action.
+%% Requires permission to access the DeleteMitigationAction:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
 delete_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -2450,7 +2585,9 @@ delete_mitigation_action(Client, ActionName, Input0, Options0) ->
 
 %% @doc Delete an OTA update.
 %%
-%% Requires permission to access the DeleteOTAUpdate action.
+%% Requires permission to access the DeleteOTAUpdate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_ota_update(Client, OtaUpdateId, Input) ->
     delete_ota_update(Client, OtaUpdateId, Input, []).
 delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
@@ -2480,7 +2617,9 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 %% Note: All package versions must be deleted before deleting the software
 %% package.
 %%
-%% Requires permission to access the DeletePackageVersion action.
+%% Requires permission to access the DeletePackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_package(Client, PackageName, Input) ->
     delete_package(Client, PackageName, Input, []).
 delete_package(Client, PackageName, Input0, Options0) ->
@@ -2549,7 +2688,9 @@ delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% to five minutes after a policy is detached before it's ready to be
 %% deleted.
 %%
-%% Requires permission to access the DeletePolicy action.
+%% Requires permission to access the DeletePolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
 delete_policy(Client, PolicyName, Input0, Options0) ->
@@ -2579,7 +2720,9 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 %% out which version of a policy is marked as the default version, use
 %% ListPolicyVersions.
 %%
-%% Requires permission to access the DeletePolicyVersion action.
+%% Requires permission to access the DeletePolicyVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
@@ -2604,7 +2747,9 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
 
 %% @doc Deletes a provisioning template.
 %%
-%% Requires permission to access the DeleteProvisioningTemplate action.
+%% Requires permission to access the DeleteProvisioningTemplate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
 delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
@@ -2629,7 +2774,8 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Deletes a provisioning template version.
 %%
-%% Requires permission to access the DeleteProvisioningTemplateVersion
+%% Requires permission to access the DeleteProvisioningTemplateVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
@@ -2655,7 +2801,9 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
 
 %% @doc Deletes a CA certificate registration code.
 %%
-%% Requires permission to access the DeleteRegistrationCode action.
+%% Requires permission to access the DeleteRegistrationCode:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_registration_code(Client, Input) ->
     delete_registration_code(Client, Input, []).
 delete_registration_code(Client, Input0, Options0) ->
@@ -2680,7 +2828,9 @@ delete_registration_code(Client, Input0, Options0) ->
 
 %% @doc Deletes a role alias
 %%
-%% Requires permission to access the DeleteRoleAlias action.
+%% Requires permission to access the DeleteRoleAlias:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
 delete_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -2705,7 +2855,9 @@ delete_role_alias(Client, RoleAlias, Input0, Options0) ->
 
 %% @doc Deletes a scheduled audit.
 %%
-%% Requires permission to access the DeleteScheduledAudit action.
+%% Requires permission to access the DeleteScheduledAudit:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
 delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -2730,7 +2882,9 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
 %% @doc Deletes a Device Defender security profile.
 %%
-%% Requires permission to access the DeleteSecurityProfile action.
+%% Requires permission to access the DeleteSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
 delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -2756,7 +2910,9 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 
 %% @doc Deletes a stream.
 %%
-%% Requires permission to access the DeleteStream action.
+%% Requires permission to access the DeleteStream:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
 delete_stream(Client, StreamId, Input0, Options0) ->
@@ -2784,7 +2940,9 @@ delete_stream(Client, StreamId, Input0, Options0) ->
 %% Returns successfully with no error if the deletion is successful or you
 %% specify a thing that doesn't exist.
 %%
-%% Requires permission to access the DeleteThing action.
+%% Requires permission to access the DeleteThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 delete_thing(Client, ThingName, Input0, Options0) ->
@@ -2810,7 +2968,9 @@ delete_thing(Client, ThingName, Input0, Options0) ->
 
 %% @doc Deletes a thing group.
 %%
-%% Requires permission to access the DeleteThingGroup action.
+%% Requires permission to access the DeleteThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
 delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -2842,7 +3002,9 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% `UpdateThing' to change the thing type on any associated thing, and
 %% finally use `DeleteThingType' to delete the thing type.
 %%
-%% Requires permission to access the DeleteThingType action.
+%% Requires permission to access the DeleteThingType:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -2867,7 +3029,9 @@ delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
 
 %% @doc Deletes the rule.
 %%
-%% Requires permission to access the DeleteTopicRule action.
+%% Requires permission to access the DeleteTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
 delete_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -2892,7 +3056,9 @@ delete_topic_rule(Client, RuleName, Input0, Options0) ->
 
 %% @doc Deletes a topic rule destination.
 %%
-%% Requires permission to access the DeleteTopicRuleDestination action.
+%% Requires permission to access the DeleteTopicRuleDestination:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
@@ -2917,7 +3083,9 @@ delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
 
 %% @doc Deletes a logging level.
 %%
-%% Requires permission to access the DeleteV2LoggingLevel action.
+%% Requires permission to access the DeleteV2LoggingLevel:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_v2_logging_level(Client, Input) ->
     delete_v2_logging_level(Client, Input, []).
 delete_v2_logging_level(Client, Input0, Options0) ->
@@ -2946,7 +3114,9 @@ delete_v2_logging_level(Client, Input0, Options0) ->
 %%
 %% You can not associate new things with deprecated thing type.
 %%
-%% Requires permission to access the DeprecateThingType action.
+%% Requires permission to access the DeprecateThingType:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -2975,7 +3145,8 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% Settings include how audit notifications are sent and which audit checks
 %% are enabled or disabled.
 %%
-%% Requires permission to access the DescribeAccountAuditConfiguration
+%% Requires permission to access the DescribeAccountAuditConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 describe_account_audit_configuration(Client)
   when is_map(Client) ->
@@ -3004,7 +3175,9 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Properties include the reason for noncompliance, the severity of the
 %% issue, and the start time when the audit that returned the finding.
 %%
-%% Requires permission to access the DescribeAuditFinding action.
+%% Requires permission to access the DescribeAuditFinding:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, #{}, #{}).
@@ -3080,7 +3253,9 @@ describe_audit_suppression(Client, Input0, Options0) ->
 
 %% @doc Gets information about a Device Defender audit.
 %%
-%% Requires permission to access the DescribeAuditTask action.
+%% Requires permission to access the DescribeAuditTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_audit_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_task(Client, TaskId, #{}, #{}).
@@ -3105,7 +3280,9 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes an authorizer.
 %%
-%% Requires permission to access the DescribeAuthorizer action.
+%% Requires permission to access the DescribeAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_authorizer(Client, AuthorizerName)
   when is_map(Client) ->
     describe_authorizer(Client, AuthorizerName, #{}, #{}).
@@ -3130,7 +3307,9 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about a billing group.
 %%
-%% Requires permission to access the DescribeBillingGroup action.
+%% Requires permission to access the DescribeBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     describe_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -3155,7 +3334,9 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a registered CA certificate.
 %%
-%% Requires permission to access the DescribeCACertificate action.
+%% Requires permission to access the DescribeCACertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_ca_certificate(Client, CertificateId, #{}, #{}).
@@ -3180,7 +3361,9 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified certificate.
 %%
-%% Requires permission to access the DescribeCertificate action.
+%% Requires permission to access the DescribeCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_certificate(Client, CertificateId, #{}, #{}).
@@ -3205,7 +3388,9 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a certificate provider.
 %%
-%% Requires permission to access the DescribeCertificateProvider action.
+%% Requires permission to access the DescribeCertificateProvider:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_certificate_provider(Client, CertificateProviderName)
   when is_map(Client) ->
     describe_certificate_provider(Client, CertificateProviderName, #{}, #{}).
@@ -3230,7 +3415,9 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 
 %% @doc Gets information about a Device Defender detect custom metric.
 %%
-%% Requires permission to access the DescribeCustomMetric action.
+%% Requires permission to access the DescribeCustomMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_custom_metric(Client, MetricName)
   when is_map(Client) ->
     describe_custom_metric(Client, MetricName, #{}, #{}).
@@ -3255,7 +3442,9 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes the default authorizer.
 %%
-%% Requires permission to access the DescribeDefaultAuthorizer action.
+%% Requires permission to access the DescribeDefaultAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_default_authorizer(Client)
   when is_map(Client) ->
     describe_default_authorizer(Client, #{}, #{}).
@@ -3280,7 +3469,8 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a Device Defender ML Detect mitigation action.
 %%
-%% Requires permission to access the DescribeDetectMitigationActionsTask
+%% Requires permission to access the DescribeDetectMitigationActionsTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 describe_detect_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
@@ -3307,7 +3497,9 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Op
 %% @doc Provides details about a dimension that is defined in your Amazon Web
 %% Services accounts.
 %%
-%% Requires permission to access the DescribeDimension action.
+%% Requires permission to access the DescribeDimension:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_dimension(Client, Name)
   when is_map(Client) ->
     describe_dimension(Client, Name, #{}, #{}).
@@ -3332,7 +3524,9 @@ describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets summary information about a domain configuration.
 %%
-%% Requires permission to access the DescribeDomainConfiguration action.
+%% Requires permission to access the DescribeDomainConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
     describe_domain_configuration(Client, DomainConfigurationName, #{}, #{}).
@@ -3361,7 +3555,9 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 %% The first time `DescribeEndpoint' is called, an endpoint is created.
 %% All subsequent calls to `DescribeEndpoint' return the same endpoint.
 %%
-%% Requires permission to access the DescribeEndpoint action.
+%% Requires permission to access the DescribeEndpoint:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_endpoint(Client)
   when is_map(Client) ->
     describe_endpoint(Client, #{}, #{}).
@@ -3390,7 +3586,9 @@ describe_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes event configurations.
 %%
-%% Requires permission to access the DescribeEventConfigurations action.
+%% Requires permission to access the DescribeEventConfigurations:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_event_configurations(Client)
   when is_map(Client) ->
     describe_event_configurations(Client, #{}, #{}).
@@ -3415,7 +3613,9 @@ describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified fleet metric.
 %%
-%% Requires permission to access the DescribeFleetMetric action.
+%% Requires permission to access the DescribeFleetMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_fleet_metric(Client, MetricName)
   when is_map(Client) ->
     describe_fleet_metric(Client, MetricName, #{}, #{}).
@@ -3440,7 +3640,9 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a search index.
 %%
-%% Requires permission to access the DescribeIndex action.
+%% Requires permission to access the DescribeIndex:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_index(Client, IndexName)
   when is_map(Client) ->
     describe_index(Client, IndexName, #{}, #{}).
@@ -3465,7 +3667,9 @@ describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a job.
 %%
-%% Requires permission to access the DescribeJob action.
+%% Requires permission to access the DescribeJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_job(Client, JobId)
   when is_map(Client) ->
     describe_job(Client, JobId, #{}, #{}).
@@ -3490,7 +3694,9 @@ describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a job execution.
 %%
-%% Requires permission to access the DescribeJobExecution action.
+%% Requires permission to access the DescribeJobExecution:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
@@ -3569,7 +3775,9 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Option
 
 %% @doc Gets information about a mitigation action.
 %%
-%% Requires permission to access the DescribeMitigationAction action.
+%% Requires permission to access the DescribeMitigationAction:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_mitigation_action(Client, ActionName)
   when is_map(Client) ->
     describe_mitigation_action(Client, ActionName, #{}, #{}).
@@ -3594,7 +3802,9 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about a provisioning template.
 %%
-%% Requires permission to access the DescribeProvisioningTemplate action.
+%% Requires permission to access the DescribeProvisioningTemplate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_provisioning_template(Client, TemplateName)
   when is_map(Client) ->
     describe_provisioning_template(Client, TemplateName, #{}, #{}).
@@ -3619,7 +3829,8 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Optio
 
 %% @doc Returns information about a provisioning template version.
 %%
-%% Requires permission to access the DescribeProvisioningTemplateVersion
+%% Requires permission to access the DescribeProvisioningTemplateVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 describe_provisioning_template_version(Client, TemplateName, VersionId)
   when is_map(Client) ->
@@ -3645,7 +3856,9 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
 
 %% @doc Describes a role alias.
 %%
-%% Requires permission to access the DescribeRoleAlias action.
+%% Requires permission to access the DescribeRoleAlias:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_role_alias(Client, RoleAlias)
   when is_map(Client) ->
     describe_role_alias(Client, RoleAlias, #{}, #{}).
@@ -3670,7 +3883,9 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a scheduled audit.
 %%
-%% Requires permission to access the DescribeScheduledAudit action.
+%% Requires permission to access the DescribeScheduledAudit:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_scheduled_audit(Client, ScheduledAuditName)
   when is_map(Client) ->
     describe_scheduled_audit(Client, ScheduledAuditName, #{}, #{}).
@@ -3695,7 +3910,9 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Optio
 
 %% @doc Gets information about a Device Defender security profile.
 %%
-%% Requires permission to access the DescribeSecurityProfile action.
+%% Requires permission to access the DescribeSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     describe_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -3720,7 +3937,9 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Opt
 
 %% @doc Gets information about a stream.
 %%
-%% Requires permission to access the DescribeStream action.
+%% Requires permission to access the DescribeStream:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_stream(Client, StreamId)
   when is_map(Client) ->
     describe_stream(Client, StreamId, #{}, #{}).
@@ -3745,7 +3964,9 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified thing.
 %%
-%% Requires permission to access the DescribeThing action.
+%% Requires permission to access the DescribeThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_thing(Client, ThingName)
   when is_map(Client) ->
     describe_thing(Client, ThingName, #{}, #{}).
@@ -3770,7 +3991,9 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describe a thing group.
 %%
-%% Requires permission to access the DescribeThingGroup action.
+%% Requires permission to access the DescribeThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     describe_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -3795,7 +4018,9 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a bulk thing provisioning task.
 %%
-%% Requires permission to access the DescribeThingRegistrationTask action.
+%% Requires permission to access the DescribeThingRegistrationTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_thing_registration_task(Client, TaskId)
   when is_map(Client) ->
     describe_thing_registration_task(Client, TaskId, #{}, #{}).
@@ -3820,7 +4045,9 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified thing type.
 %%
-%% Requires permission to access the DescribeThingType action.
+%% Requires permission to access the DescribeThingType:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_thing_type(Client, ThingTypeName)
   when is_map(Client) ->
     describe_thing_type(Client, ThingTypeName, #{}, #{}).
@@ -3849,7 +4076,9 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
 %% to five minutes after a policy is detached before it's ready to be
 %% deleted.
 %%
-%% Requires permission to access the DetachPolicy action.
+%% Requires permission to access the DetachPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
 detach_policy(Client, PolicyName, Input0, Options0) ->
@@ -3878,7 +4107,9 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 %% compatibility, but we won't add enhancements. Use `DetachPolicy'
 %% instead.
 %%
-%% Requires permission to access the DetachPrincipalPolicy action.
+%% Requires permission to access the DetachPrincipalPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 detach_principal_policy(Client, PolicyName, Input0, Options0) ->
@@ -3906,7 +4137,9 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Disassociates a Device Defender security profile from a thing group
 %% or from this account.
 %%
-%% Requires permission to access the DetachSecurityProfile action.
+%% Requires permission to access the DetachSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
 detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -3938,7 +4171,9 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% This call is asynchronous. It might take several seconds for the
 %% detachment to propagate.
 %%
-%% Requires permission to access the DetachThingPrincipal action.
+%% Requires permission to access the DetachThingPrincipal:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 detach_thing_principal(Client, ThingName, Input0, Options0) ->
@@ -3965,7 +4200,9 @@ detach_thing_principal(Client, ThingName, Input0, Options0) ->
 
 %% @doc Disables the rule.
 %%
-%% Requires permission to access the DisableTopicRule action.
+%% Requires permission to access the DisableTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
 disable_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -3990,7 +4227,9 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
 
 %% @doc Enables the rule.
 %%
-%% Requires permission to access the EnableTopicRule action.
+%% Requires permission to access the EnableTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
 enable_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -4016,7 +4255,8 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
 %% @doc Returns a Device Defender's ML Detect Security Profile training
 %% model's status.
 %%
-%% Requires permission to access the GetBehaviorModelTrainingSummaries
+%% Requires permission to access the GetBehaviorModelTrainingSummaries:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 get_behavior_model_training_summaries(Client)
   when is_map(Client) ->
@@ -4049,7 +4289,9 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
 %% @doc Aggregates on indexed data with search queries pertaining to
 %% particular fields.
 %%
-%% Requires permission to access the GetBucketsAggregation action.
+%% Requires permission to access the GetBucketsAggregation:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_buckets_aggregation(Client, Input) ->
     get_buckets_aggregation(Client, Input, []).
 get_buckets_aggregation(Client, Input0, Options0) ->
@@ -4074,7 +4316,9 @@ get_buckets_aggregation(Client, Input0, Options0) ->
 
 %% @doc Returns the approximate count of unique values that match the query.
 %%
-%% Requires permission to access the GetCardinality action.
+%% Requires permission to access the GetCardinality:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
 get_cardinality(Client, Input0, Options0) ->
@@ -4101,7 +4345,9 @@ get_cardinality(Client, Input0, Options0) ->
 %% behavior of the specified device when it connects to the IoT device
 %% gateway.
 %%
-%% Requires permission to access the GetEffectivePolicies action.
+%% Requires permission to access the GetEffectivePolicies:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_effective_policies(Client, Input) ->
     get_effective_policies(Client, Input, []).
 get_effective_policies(Client, Input0, Options0) ->
@@ -4127,7 +4373,9 @@ get_effective_policies(Client, Input0, Options0) ->
 
 %% @doc Gets the indexing configuration.
 %%
-%% Requires permission to access the GetIndexingConfiguration action.
+%% Requires permission to access the GetIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_indexing_configuration(Client)
   when is_map(Client) ->
     get_indexing_configuration(Client, #{}, #{}).
@@ -4152,7 +4400,9 @@ get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a job document.
 %%
-%% Requires permission to access the GetJobDocument action.
+%% Requires permission to access the GetJobDocument:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_job_document(Client, JobId)
   when is_map(Client) ->
     get_job_document(Client, JobId, #{}, #{}).
@@ -4180,7 +4430,9 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 %% NOTE: use of this command is not recommended. Use
 %% `GetV2LoggingOptions' instead.
 %%
-%% Requires permission to access the GetLoggingOptions action.
+%% Requires permission to access the GetLoggingOptions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_logging_options(Client)
   when is_map(Client) ->
     get_logging_options(Client, #{}, #{}).
@@ -4205,7 +4457,9 @@ get_logging_options(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets an OTA update.
 %%
-%% Requires permission to access the GetOTAUpdate action.
+%% Requires permission to access the GetOTAUpdate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
     get_ota_update(Client, OtaUpdateId, #{}, #{}).
@@ -4230,7 +4484,9 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified software package.
 %%
-%% Requires permission to access the GetPackage action.
+%% Requires permission to access the GetPackage:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_package(Client, PackageName)
   when is_map(Client) ->
     get_package(Client, PackageName, #{}, #{}).
@@ -4256,7 +4512,9 @@ get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about the specified software package's
 %% configuration.
 %%
-%% Requires permission to access the GetPackageConfiguration action.
+%% Requires permission to access the GetPackageConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_package_configuration(Client)
   when is_map(Client) ->
     get_package_configuration(Client, #{}, #{}).
@@ -4281,7 +4539,9 @@ get_package_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified package version.
 %%
-%% Requires permission to access the GetPackageVersion action.
+%% Requires permission to access the GetPackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_package_version(Client, PackageName, VersionName)
   when is_map(Client) ->
     get_package_version(Client, PackageName, VersionName, #{}, #{}).
@@ -4318,7 +4578,9 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Opti
 %% the more values that match the query, the more accurate the percentile
 %% values.
 %%
-%% Requires permission to access the GetPercentiles action.
+%% Requires permission to access the GetPercentiles:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
 get_percentiles(Client, Input0, Options0) ->
@@ -4344,7 +4606,9 @@ get_percentiles(Client, Input0, Options0) ->
 %% @doc Gets information about the specified policy with the policy document
 %% of the default version.
 %%
-%% Requires permission to access the GetPolicy action.
+%% Requires permission to access the GetPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_policy(Client, PolicyName)
   when is_map(Client) ->
     get_policy(Client, PolicyName, #{}, #{}).
@@ -4369,7 +4633,9 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified policy version.
 %%
-%% Requires permission to access the GetPolicyVersion action.
+%% Requires permission to access the GetPolicyVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_policy_version(Client, PolicyName, PolicyVersionId)
   when is_map(Client) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, #{}, #{}).
@@ -4399,7 +4665,9 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
 %% have a registration code, this API call will return the same registration
 %% code.
 %%
-%% Requires permission to access the GetRegistrationCode action.
+%% Requires permission to access the GetRegistrationCode:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_registration_code(Client)
   when is_map(Client) ->
     get_registration_code(Client, #{}, #{}).
@@ -4428,7 +4696,9 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
 %% If the aggregation field is of type `String', only the count statistic
 %% is returned.
 %%
-%% Requires permission to access the GetStatistics action.
+%% Requires permission to access the GetStatistics:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
 get_statistics(Client, Input0, Options0) ->
@@ -4453,7 +4723,9 @@ get_statistics(Client, Input0, Options0) ->
 
 %% @doc Gets information about the rule.
 %%
-%% Requires permission to access the GetTopicRule action.
+%% Requires permission to access the GetTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_topic_rule(Client, RuleName)
   when is_map(Client) ->
     get_topic_rule(Client, RuleName, #{}, #{}).
@@ -4478,7 +4750,9 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a topic rule destination.
 %%
-%% Requires permission to access the GetTopicRuleDestination action.
+%% Requires permission to access the GetTopicRuleDestination:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_topic_rule_destination(Client, Arn)
   when is_map(Client) ->
     get_topic_rule_destination(Client, Arn, #{}, #{}).
@@ -4503,7 +4777,9 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the fine grained logging options.
 %%
-%% Requires permission to access the GetV2LoggingOptions action.
+%% Requires permission to access the GetV2LoggingOptions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_v2_logging_options(Client)
   when is_map(Client) ->
     get_v2_logging_options(Client, #{}, #{}).
@@ -4529,7 +4805,9 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the active violations for a given Device Defender security
 %% profile.
 %%
-%% Requires permission to access the ListActiveViolations action.
+%% Requires permission to access the ListActiveViolations:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_active_violations(Client)
   when is_map(Client) ->
     list_active_violations(Client, #{}, #{}).
@@ -4564,7 +4842,9 @@ list_active_violations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the policies attached to the specified thing group.
 %%
-%% Requires permission to access the ListAttachedPolicies action.
+%% Requires permission to access the ListAttachedPolicies:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
 list_attached_policies(Client, Target, Input0, Options0) ->
@@ -4595,7 +4875,9 @@ list_attached_policies(Client, Target, Input0, Options0) ->
 %%
 %% (Findings are retained for 90 days.)
 %%
-%% Requires permission to access the ListAuditFindings action.
+%% Requires permission to access the ListAuditFindings:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
 list_audit_findings(Client, Input0, Options0) ->
@@ -4620,7 +4902,8 @@ list_audit_findings(Client, Input0, Options0) ->
 
 %% @doc Gets the status of audit mitigation action tasks that were executed.
 %%
-%% Requires permission to access the ListAuditMitigationActionsExecutions
+%% Requires permission to access the ListAuditMitigationActionsExecutions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
   when is_map(Client) ->
@@ -4655,7 +4938,9 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 %% @doc Gets a list of audit mitigation action tasks that match the specified
 %% filters.
 %%
-%% Requires permission to access the ListAuditMitigationActionsTasks action.
+%% Requires permission to access the ListAuditMitigationActionsTasks:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -4690,7 +4975,9 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 
 %% @doc Lists your Device Defender audit listings.
 %%
-%% Requires permission to access the ListAuditSuppressions action.
+%% Requires permission to access the ListAuditSuppressions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_audit_suppressions(Client, Input) ->
     list_audit_suppressions(Client, Input, []).
 list_audit_suppressions(Client, Input0, Options0) ->
@@ -4716,7 +5003,9 @@ list_audit_suppressions(Client, Input0, Options0) ->
 %% @doc Lists the Device Defender audits that have been performed during a
 %% given time period.
 %%
-%% Requires permission to access the ListAuditTasks action.
+%% Requires permission to access the ListAuditTasks:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_audit_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -4750,7 +5039,9 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the authorizers registered in your account.
 %%
-%% Requires permission to access the ListAuthorizers action.
+%% Requires permission to access the ListAuthorizers:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_authorizers(Client)
   when is_map(Client) ->
     list_authorizers(Client, #{}, #{}).
@@ -4782,7 +5073,9 @@ list_authorizers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the billing groups you have created.
 %%
-%% Requires permission to access the ListBillingGroups action.
+%% Requires permission to access the ListBillingGroups:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_billing_groups(Client)
   when is_map(Client) ->
     list_billing_groups(Client, #{}, #{}).
@@ -4817,7 +5110,9 @@ list_billing_groups(Client, QueryMap, HeadersMap, Options0)
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
 %%
-%% Requires permission to access the ListCACertificates action.
+%% Requires permission to access the ListCACertificates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_ca_certificates(Client)
   when is_map(Client) ->
     list_ca_certificates(Client, #{}, #{}).
@@ -4850,7 +5145,9 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all your certificate providers in your Amazon Web Services
 %% account.
 %%
-%% Requires permission to access the ListCertificateProviders action.
+%% Requires permission to access the ListCertificateProviders:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_certificate_providers(Client)
   when is_map(Client) ->
     list_certificate_providers(Client, #{}, #{}).
@@ -4884,7 +5181,9 @@ list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
 %%
-%% Requires permission to access the ListCertificates action.
+%% Requires permission to access the ListCertificates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_certificates(Client)
   when is_map(Client) ->
     list_certificates(Client, #{}, #{}).
@@ -4915,7 +5214,9 @@ list_certificates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the device certificates signed by the specified CA certificate.
 %%
-%% Requires permission to access the ListCertificatesByCA action.
+%% Requires permission to access the ListCertificatesByCA:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_certificates_by_ca(Client, CaCertificateId)
   when is_map(Client) ->
     list_certificates_by_ca(Client, CaCertificateId, #{}, #{}).
@@ -4946,7 +5247,9 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists your Device Defender detect custom metrics.
 %%
-%% Requires permission to access the ListCustomMetrics action.
+%% Requires permission to access the ListCustomMetrics:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_custom_metrics(Client)
   when is_map(Client) ->
     list_custom_metrics(Client, #{}, #{}).
@@ -4977,7 +5280,8 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists mitigation actions executions for a Device Defender ML Detect
 %% Security Profile.
 %%
-%% Requires permission to access the ListDetectMitigationActionsExecutions
+%% Requires permission to access the ListDetectMitigationActionsExecutions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
 list_detect_mitigation_actions_executions(Client)
   when is_map(Client) ->
@@ -5013,7 +5317,9 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
 
 %% @doc List of Device Defender ML Detect mitigation actions tasks.
 %%
-%% Requires permission to access the ListDetectMitigationActionsTasks action.
+%% Requires permission to access the ListDetectMitigationActionsTasks:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -5046,7 +5352,9 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 %% @doc List the set of dimensions that are defined for your Amazon Web
 %% Services accounts.
 %%
-%% Requires permission to access the ListDimensions action.
+%% Requires permission to access the ListDimensions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_dimensions(Client)
   when is_map(Client) ->
     list_dimensions(Client, #{}, #{}).
@@ -5078,7 +5386,9 @@ list_dimensions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This list is sorted alphabetically by domain configuration name.
 %%
-%% Requires permission to access the ListDomainConfigurations action.
+%% Requires permission to access the ListDomainConfigurations:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_domain_configurations(Client)
   when is_map(Client) ->
     list_domain_configurations(Client, #{}, #{}).
@@ -5109,7 +5419,9 @@ list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all your fleet metrics.
 %%
-%% Requires permission to access the ListFleetMetrics action.
+%% Requires permission to access the ListFleetMetrics:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_fleet_metrics(Client)
   when is_map(Client) ->
     list_fleet_metrics(Client, #{}, #{}).
@@ -5139,7 +5451,9 @@ list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the search indices.
 %%
-%% Requires permission to access the ListIndices action.
+%% Requires permission to access the ListIndices:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_indices(Client)
   when is_map(Client) ->
     list_indices(Client, #{}, #{}).
@@ -5169,7 +5483,9 @@ list_indices(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the job executions for a job.
 %%
-%% Requires permission to access the ListJobExecutionsForJob action.
+%% Requires permission to access the ListJobExecutionsForJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_job_executions_for_job(Client, JobId)
   when is_map(Client) ->
     list_job_executions_for_job(Client, JobId, #{}, #{}).
@@ -5200,7 +5516,9 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the job executions for the specified thing.
 %%
-%% Requires permission to access the ListJobExecutionsForThing action.
+%% Requires permission to access the ListJobExecutionsForThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_job_executions_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_job_executions_for_thing(Client, ThingName, #{}, #{}).
@@ -5233,7 +5551,9 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of job templates.
 %%
-%% Requires permission to access the ListJobTemplates action.
+%% Requires permission to access the ListJobTemplates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
@@ -5263,7 +5583,9 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists jobs.
 %%
-%% Requires permission to access the ListJobs action.
+%% Requires permission to access the ListJobs:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -5364,7 +5686,9 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
 %% @doc Gets a list of all mitigation actions that match the specified filter
 %% criteria.
 %%
-%% Requires permission to access the ListMitigationActions action.
+%% Requires permission to access the ListMitigationActions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_mitigation_actions(Client)
   when is_map(Client) ->
     list_mitigation_actions(Client, #{}, #{}).
@@ -5395,7 +5719,9 @@ list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists OTA updates.
 %%
-%% Requires permission to access the ListOTAUpdates action.
+%% Requires permission to access the ListOTAUpdates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_ota_updates(Client)
   when is_map(Client) ->
     list_ota_updates(Client, #{}, #{}).
@@ -5426,7 +5752,9 @@ list_ota_updates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists certificates that are being transferred but not yet accepted.
 %%
-%% Requires permission to access the ListOutgoingCertificates action.
+%% Requires permission to access the ListOutgoingCertificates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_outgoing_certificates(Client)
   when is_map(Client) ->
     list_outgoing_certificates(Client, #{}, #{}).
@@ -5457,7 +5785,9 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the software package versions associated to the account.
 %%
-%% Requires permission to access the ListPackageVersions action.
+%% Requires permission to access the ListPackageVersions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_package_versions(Client, PackageName)
   when is_map(Client) ->
     list_package_versions(Client, PackageName, #{}, #{}).
@@ -5488,7 +5818,9 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the software packages associated to the account.
 %%
-%% Requires permission to access the ListPackages action.
+%% Requires permission to access the ListPackages:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_packages(Client)
   when is_map(Client) ->
     list_packages(Client, #{}, #{}).
@@ -5518,7 +5850,9 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists your policies.
 %%
-%% Requires permission to access the ListPolicies action.
+%% Requires permission to access the ListPolicies:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_policies(Client)
   when is_map(Client) ->
     list_policies(Client, #{}, #{}).
@@ -5553,7 +5887,9 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 %% compatibility, but we won't add enhancements. Use
 %% `ListTargetsForPolicy' instead.
 %%
-%% Requires permission to access the ListPolicyPrincipals action.
+%% Requires permission to access the ListPolicyPrincipals:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_policy_principals(Client, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, PolicyName, #{}, #{}).
@@ -5589,7 +5925,9 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% @doc Lists the versions of the specified policy and identifies the default
 %% version.
 %%
-%% Requires permission to access the ListPolicyVersions action.
+%% Requires permission to access the ListPolicyVersions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_policy_versions(Client, PolicyName)
   when is_map(Client) ->
     list_policy_versions(Client, PolicyName, #{}, #{}).
@@ -5615,13 +5953,16 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% @doc Lists the policies attached to the specified principal.
 %%
 %% If you use an Cognito identity, the ID must be in AmazonCognito Identity
-%% format.
+%% format:
+%% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax.
 %%
 %% Note: This action is deprecated and works as expected for backward
 %% compatibility, but we won't add enhancements. Use
 %% `ListAttachedPolicies' instead.
 %%
-%% Requires permission to access the ListPrincipalPolicies action.
+%% Requires permission to access the ListPrincipalPolicies:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_principal_policies(Client, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, Principal, #{}, #{}).
@@ -5659,7 +6000,9 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
 %%
-%% Requires permission to access the ListPrincipalThings action.
+%% Requires permission to access the ListPrincipalThings:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_principal_things(Client, Principal)
   when is_map(Client) ->
     list_principal_things(Client, Principal, #{}, #{}).
@@ -5693,7 +6036,9 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
 
 %% @doc A list of provisioning template versions.
 %%
-%% Requires permission to access the ListProvisioningTemplateVersions action.
+%% Requires permission to access the ListProvisioningTemplateVersions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_provisioning_template_versions(Client, TemplateName)
   when is_map(Client) ->
     list_provisioning_template_versions(Client, TemplateName, #{}, #{}).
@@ -5723,7 +6068,9 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, 
 
 %% @doc Lists the provisioning templates in your Amazon Web Services account.
 %%
-%% Requires permission to access the ListProvisioningTemplates action.
+%% Requires permission to access the ListProvisioningTemplates:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_provisioning_templates(Client)
   when is_map(Client) ->
     list_provisioning_templates(Client, #{}, #{}).
@@ -5774,11 +6121,14 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 %% </li> <li> ISSUER_CERTIFICATE
 %%
 %% </li> </ul> This API is similar to DescribeAuditFinding's
-%% RelatedResources but provides pagination and is not limited to 10
-%% resources. When calling DescribeAuditFinding for the intermediate CA
-%% revoked for active device certificates check, RelatedResources will not be
-%% populated. You must use this API, ListRelatedResourcesForAuditFinding, to
-%% list the certificates.
+%% RelatedResources:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html
+%% but provides pagination and is not limited to 10 resources. When calling
+%% DescribeAuditFinding:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html
+%% for the intermediate CA revoked for active device certificates check,
+%% RelatedResources will not be populated. You must use this API,
+%% ListRelatedResourcesForAuditFinding, to list the certificates.
 list_related_resources_for_audit_finding(Client, FindingId)
   when is_map(Client) ->
     list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
@@ -5809,7 +6159,9 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
 
 %% @doc Lists the role aliases registered in your account.
 %%
-%% Requires permission to access the ListRoleAliases action.
+%% Requires permission to access the ListRoleAliases:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_role_aliases(Client)
   when is_map(Client) ->
     list_role_aliases(Client, #{}, #{}).
@@ -5840,7 +6192,9 @@ list_role_aliases(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all of your scheduled audits.
 %%
-%% Requires permission to access the ListScheduledAudits action.
+%% Requires permission to access the ListScheduledAudits:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_scheduled_audits(Client)
   when is_map(Client) ->
     list_scheduled_audits(Client, #{}, #{}).
@@ -5872,7 +6226,9 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can filter security profiles by dimension or custom metric.
 %%
-%% Requires permission to access the ListSecurityProfiles action.
+%% Requires permission to access the ListSecurityProfiles:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% `dimensionName' and `metricName' cannot be used in the same
 %% request.
@@ -5908,7 +6264,9 @@ list_security_profiles(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Device Defender security profiles attached to a target
 %% (thing group).
 %%
-%% Requires permission to access the ListSecurityProfilesForTarget action.
+%% Requires permission to access the ListSecurityProfilesForTarget:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_security_profiles_for_target(Client, SecurityProfileTargetArn)
   when is_map(Client) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, #{}, #{}).
@@ -5940,7 +6298,9 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 
 %% @doc Lists all of the streams in your Amazon Web Services account.
 %%
-%% Requires permission to access the ListStreams action.
+%% Requires permission to access the ListStreams:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_streams(Client)
   when is_map(Client) ->
     list_streams(Client, #{}, #{}).
@@ -5971,7 +6331,9 @@ list_streams(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
 %%
-%% Requires permission to access the ListTagsForResource action.
+%% Requires permission to access the ListTagsForResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -6001,7 +6363,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc List targets for the specified policy.
 %%
-%% Requires permission to access the ListTargetsForPolicy action.
+%% Requires permission to access the ListTargetsForPolicy:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
 list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
@@ -6029,7 +6393,9 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Lists the targets (thing groups) associated with a given Device
 %% Defender security profile.
 %%
-%% Requires permission to access the ListTargetsForSecurityProfile action.
+%% Requires permission to access the ListTargetsForSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_targets_for_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     list_targets_for_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -6059,7 +6425,9 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
 
 %% @doc List the thing groups in your account.
 %%
-%% Requires permission to access the ListThingGroups action.
+%% Requires permission to access the ListThingGroups:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_thing_groups(Client)
   when is_map(Client) ->
     list_thing_groups(Client, #{}, #{}).
@@ -6092,7 +6460,9 @@ list_thing_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the thing groups to which the specified thing belongs.
 %%
-%% Requires permission to access the ListThingGroupsForThing action.
+%% Requires permission to access the ListThingGroupsForThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_thing_groups_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_thing_groups_for_thing(Client, ThingName, #{}, #{}).
@@ -6125,7 +6495,9 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
 %%
-%% Requires permission to access the ListThingPrincipals action.
+%% Requires permission to access the ListThingPrincipals:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_thing_principals(Client, ThingName)
   when is_map(Client) ->
     list_thing_principals(Client, ThingName, #{}, #{}).
@@ -6184,7 +6556,9 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
 
 %% @doc List bulk thing provisioning tasks.
 %%
-%% Requires permission to access the ListThingRegistrationTasks action.
+%% Requires permission to access the ListThingRegistrationTasks:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_thing_registration_tasks(Client)
   when is_map(Client) ->
     list_thing_registration_tasks(Client, #{}, #{}).
@@ -6215,7 +6589,9 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the existing thing types.
 %%
-%% Requires permission to access the ListThingTypes action.
+%% Requires permission to access the ListThingTypes:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_thing_types(Client)
   when is_map(Client) ->
     list_thing_types(Client, #{}, #{}).
@@ -6249,10 +6625,13 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %% Use the attributeName and attributeValue parameters to filter your things.
 %% For example, calling `ListThings' with attributeName=Color and
 %% attributeValue=Red retrieves all things in the registry that contain an
-%% attribute Color with the value Red. For more information, see List Things
+%% attribute Color with the value Red. For more information, see List Things:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/thing-registry.html#list-things
 %% from the Amazon Web Services IoT Core Developer Guide.
 %%
-%% Requires permission to access the ListThings action.
+%% Requires permission to access the ListThings:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% You will not be charged for calling this API if an `Access denied'
 %% error is returned. You will also not be charged if no attributes or
@@ -6291,7 +6670,9 @@ list_things(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the things you have added to the given billing group.
 %%
-%% Requires permission to access the ListThingsInBillingGroup action.
+%% Requires permission to access the ListThingsInBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_things_in_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     list_things_in_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -6321,7 +6702,9 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Opt
 
 %% @doc Lists the things in the specified group.
 %%
-%% Requires permission to access the ListThingsInThingGroup action.
+%% Requires permission to access the ListThingsInThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_things_in_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     list_things_in_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -6353,7 +6736,9 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options
 %% @doc Lists all the topic rule destinations in your Amazon Web Services
 %% account.
 %%
-%% Requires permission to access the ListTopicRuleDestinations action.
+%% Requires permission to access the ListTopicRuleDestinations:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_topic_rule_destinations(Client)
   when is_map(Client) ->
     list_topic_rule_destinations(Client, #{}, #{}).
@@ -6383,7 +6768,9 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the rules for the specific topic.
 %%
-%% Requires permission to access the ListTopicRules action.
+%% Requires permission to access the ListTopicRules:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_topic_rules(Client)
   when is_map(Client) ->
     list_topic_rules(Client, #{}, #{}).
@@ -6415,7 +6802,9 @@ list_topic_rules(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists logging levels.
 %%
-%% Requires permission to access the ListV2LoggingLevels action.
+%% Requires permission to access the ListV2LoggingLevels:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_v2_logging_levels(Client)
   when is_map(Client) ->
     list_v2_logging_levels(Client, #{}, #{}).
@@ -6450,7 +6839,9 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 %% You can use filters to limit the results to those alerts issued for a
 %% particular security profile, behavior, or thing (device).
 %%
-%% Requires permission to access the ListViolationEvents action.
+%% Requires permission to access the ListViolationEvents:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_violation_events(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_violation_events(Client, EndTime, StartTime, #{}, #{}).
@@ -6516,7 +6907,9 @@ put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
 %% certificates with the same `CA subject field' per Amazon Web Services
 %% account.
 %%
-%% Requires permission to access the RegisterCACertificate action.
+%% Requires permission to access the RegisterCACertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 register_ca_certificate(Client, Input) ->
     register_ca_certificate(Client, Input, []).
 register_ca_certificate(Client, Input0, Options0) ->
@@ -6541,14 +6934,17 @@ register_ca_certificate(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a device certificate with IoT in the same certificate mode
+%% @doc Registers a device certificate with IoT in the same certificate mode:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode
 %% as the signing CA.
 %%
 %% If you have more than one CA certificate that has the same subject field,
 %% you must specify the CA certificate that was used to sign the device
 %% certificate being registered.
 %%
-%% Requires permission to access the RegisterCertificate action.
+%% Requires permission to access the RegisterCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
 register_certificate(Client, Input0, Options0) ->
@@ -6576,7 +6972,8 @@ register_certificate(Client, Input0, Options0) ->
 %% (CA).
 %%
 %% For supported certificates, consult Certificate signing algorithms
-%% supported by IoT.
+%% supported by IoT:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms.
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
 register_certificate_without_ca(Client, Input0, Options0) ->
@@ -6602,11 +6999,15 @@ register_certificate_without_ca(Client, Input0, Options0) ->
 %% @doc Provisions a thing in the device registry.
 %%
 %% RegisterThing calls other IoT control plane APIs. These calls might exceed
-%% your account level IoT Throttling Limits and cause throttle errors. Please
-%% contact Amazon Web Services Customer Support to raise your throttling
-%% limits if necessary.
+%% your account level IoT Throttling Limits:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot
+%% and cause throttle errors. Please contact Amazon Web Services Customer
+%% Support: https://console.aws.amazon.com/support/home to raise your
+%% throttling limits if necessary.
 %%
-%% Requires permission to access the RegisterThing action.
+%% Requires permission to access the RegisterThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
 register_thing(Client, Input0, Options0) ->
@@ -6641,7 +7042,9 @@ register_thing(Client, Input0, Options0) ->
 %% called, the certificate will be returned to the source's account in
 %% the INACTIVE state.
 %%
-%% Requires permission to access the RejectCertificateTransfer action.
+%% Requires permission to access the RejectCertificateTransfer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
 reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -6666,7 +7069,9 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Removes the given thing from the billing group.
 %%
-%% Requires permission to access the RemoveThingFromBillingGroup action.
+%% Requires permission to access the RemoveThingFromBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% This call is asynchronous. It might take several seconds for the
 %% detachment to propagate.
@@ -6698,7 +7103,9 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 %% identify the thing group and either a `thingArn' or a `thingName'
 %% to identify the thing to remove from the thing group.
 %%
-%% Requires permission to access the RemoveThingFromThingGroup action.
+%% Requires permission to access the RemoveThingFromThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
 remove_thing_from_thing_group(Client, Input0, Options0) ->
@@ -6727,7 +7134,9 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
 %% administrator-level action. Any user who has permission to create rules
 %% will be able to access data processed by the rule.
 %%
-%% Requires permission to access the ReplaceTopicRule action.
+%% Requires permission to access the ReplaceTopicRule:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 replace_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -6752,7 +7161,9 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
 
 %% @doc The query search index.
 %%
-%% Requires permission to access the SearchIndex action.
+%% Requires permission to access the SearchIndex:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 search_index(Client, Input) ->
     search_index(Client, Input, []).
 search_index(Client, Input0, Options0) ->
@@ -6780,7 +7191,9 @@ search_index(Client, Input0, Options0) ->
 %% This will be used if a websocket connection is made without specifying an
 %% authorizer.
 %%
-%% Requires permission to access the SetDefaultAuthorizer action.
+%% Requires permission to access the SetDefaultAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
 set_default_authorizer(Client, Input0, Options0) ->
@@ -6810,7 +7223,9 @@ set_default_authorizer(Client, Input0, Options0) ->
 %% list the principals the policy is attached to, use the
 %% `ListPrincipalPolicies' action.
 %%
-%% Requires permission to access the SetDefaultPolicyVersion action.
+%% Requires permission to access the SetDefaultPolicyVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
@@ -6838,7 +7253,9 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 %% NOTE: use of this command is not recommended. Use
 %% `SetV2LoggingOptions' instead.
 %%
-%% Requires permission to access the SetLoggingOptions action.
+%% Requires permission to access the SetLoggingOptions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
 set_logging_options(Client, Input0, Options0) ->
@@ -6863,7 +7280,9 @@ set_logging_options(Client, Input0, Options0) ->
 
 %% @doc Sets the logging level.
 %%
-%% Requires permission to access the SetV2LoggingLevel action.
+%% Requires permission to access the SetV2LoggingLevel:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 set_v2_logging_level(Client, Input) ->
     set_v2_logging_level(Client, Input, []).
 set_v2_logging_level(Client, Input0, Options0) ->
@@ -6888,7 +7307,9 @@ set_v2_logging_level(Client, Input0, Options0) ->
 
 %% @doc Sets the logging options for the V2 logging service.
 %%
-%% Requires permission to access the SetV2LoggingOptions action.
+%% Requires permission to access the SetV2LoggingOptions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 set_v2_logging_options(Client, Input) ->
     set_v2_logging_options(Client, Input, []).
 set_v2_logging_options(Client, Input0, Options0) ->
@@ -6914,7 +7335,9 @@ set_v2_logging_options(Client, Input0, Options0) ->
 %% @doc Starts a task that applies a set of mitigation actions to the
 %% specified target.
 %%
-%% Requires permission to access the StartAuditMitigationActionsTask action.
+%% Requires permission to access the StartAuditMitigationActionsTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
 start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -6939,7 +7362,9 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Starts a Device Defender ML Detect mitigation actions task.
 %%
-%% Requires permission to access the StartDetectMitigationActionsTask action.
+%% Requires permission to access the StartDetectMitigationActionsTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 start_detect_mitigation_actions_task(Client, TaskId, Input) ->
     start_detect_mitigation_actions_task(Client, TaskId, Input, []).
 start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -6964,7 +7389,9 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Starts an on-demand Device Defender audit.
 %%
-%% Requires permission to access the StartOnDemandAuditTask action.
+%% Requires permission to access the StartOnDemandAuditTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
 start_on_demand_audit_task(Client, Input0, Options0) ->
@@ -6989,7 +7416,9 @@ start_on_demand_audit_task(Client, Input0, Options0) ->
 
 %% @doc Creates a bulk thing provisioning task.
 %%
-%% Requires permission to access the StartThingRegistrationTask action.
+%% Requires permission to access the StartThingRegistrationTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 start_thing_registration_task(Client, Input) ->
     start_thing_registration_task(Client, Input, []).
 start_thing_registration_task(Client, Input0, Options0) ->
@@ -7014,7 +7443,9 @@ start_thing_registration_task(Client, Input0, Options0) ->
 
 %% @doc Cancels a bulk thing provisioning task.
 %%
-%% Requires permission to access the StopThingRegistrationTask action.
+%% Requires permission to access the StopThingRegistrationTask:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
 stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
@@ -7041,7 +7472,9 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
 %%
 %% Tags are metadata which can be used to manage a resource.
 %%
-%% Requires permission to access the TagResource action.
+%% Requires permission to access the TagResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -7070,7 +7503,9 @@ tag_resource(Client, Input0, Options0) ->
 %% Use this to test and debug the authorization behavior of devices that
 %% connect to the IoT device gateway.
 %%
-%% Requires permission to access the TestAuthorization action.
+%% Requires permission to access the TestAuthorization:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
 test_authorization(Client, Input0, Options0) ->
@@ -7100,7 +7535,9 @@ test_authorization(Client, Input0, Options0) ->
 %% Use this to test and debug the custom authorization behavior of devices
 %% that connect to the IoT device gateway.
 %%
-%% Requires permission to access the TestInvokeAuthorizer action.
+%% Requires permission to access the TestInvokeAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -7126,7 +7563,9 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% @doc Transfers the specified certificate to the specified Amazon Web
 %% Services account.
 %%
-%% Requires permission to access the TransferCertificate action.
+%% Requires permission to access the TransferCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% You can cancel the transfer until it is acknowledged by the recipient.
 %%
@@ -7163,7 +7602,9 @@ transfer_certificate(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Removes the given tags (metadata) from the resource.
 %%
-%% Requires permission to access the UntagResource action.
+%% Requires permission to access the UntagResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -7192,7 +7633,9 @@ untag_resource(Client, Input0, Options0) ->
 %% Settings include how audit notifications are sent and which audit checks
 %% are enabled or disabled.
 %%
-%% Requires permission to access the UpdateAccountAuditConfiguration action.
+%% Requires permission to access the UpdateAccountAuditConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
 update_account_audit_configuration(Client, Input0, Options0) ->
@@ -7240,7 +7683,9 @@ update_audit_suppression(Client, Input0, Options0) ->
 
 %% @doc Updates an authorizer.
 %%
-%% Requires permission to access the UpdateAuthorizer action.
+%% Requires permission to access the UpdateAuthorizer:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
 update_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -7265,7 +7710,9 @@ update_authorizer(Client, AuthorizerName, Input0, Options0) ->
 
 %% @doc Updates information about the billing group.
 %%
-%% Requires permission to access the UpdateBillingGroup action.
+%% Requires permission to access the UpdateBillingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
 update_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -7290,7 +7737,9 @@ update_billing_group(Client, BillingGroupName, Input0, Options0) ->
 
 %% @doc Updates a registered CA certificate.
 %%
-%% Requires permission to access the UpdateCACertificate action.
+%% Requires permission to access the UpdateCACertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_ca_certificate(Client, CertificateId, Input) ->
     update_ca_certificate(Client, CertificateId, Input, []).
 update_ca_certificate(Client, CertificateId, Input0, Options0) ->
@@ -7319,7 +7768,9 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %%
 %% This operation is idempotent.
 %%
-%% Requires permission to access the UpdateCertificate action.
+%% Requires permission to access the UpdateCertificate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% Certificates must be in the ACTIVE state to authenticate devices that use
 %% a certificate to connect to IoT.
@@ -7353,7 +7804,9 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
 
 %% @doc Updates a certificate provider.
 %%
-%% Requires permission to access the UpdateCertificateProvider action.
+%% Requires permission to access the UpdateCertificateProvider:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_certificate_provider(Client, CertificateProviderName, Input) ->
     update_certificate_provider(Client, CertificateProviderName, Input, []).
 update_certificate_provider(Client, CertificateProviderName, Input0, Options0) ->
@@ -7378,7 +7831,9 @@ update_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 
 %% @doc Updates a Device Defender detect custom metric.
 %%
-%% Requires permission to access the UpdateCustomMetric action.
+%% Requires permission to access the UpdateCustomMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_custom_metric(Client, MetricName, Input) ->
     update_custom_metric(Client, MetricName, Input, []).
 update_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -7406,7 +7861,9 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 %% You cannot change the type of a dimension after it is created (you can
 %% delete it and recreate it).
 %%
-%% Requires permission to access the UpdateDimension action.
+%% Requires permission to access the UpdateDimension:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 update_dimension(Client, Name, Input0, Options0) ->
@@ -7433,7 +7890,9 @@ update_dimension(Client, Name, Input0, Options0) ->
 %%
 %% Domain configurations for default endpoints can't be updated.
 %%
-%% Requires permission to access the UpdateDomainConfiguration action.
+%% Requires permission to access the UpdateDomainConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -7458,7 +7917,9 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 
 %% @doc Updates a dynamic thing group.
 %%
-%% Requires permission to access the UpdateDynamicThingGroup action.
+%% Requires permission to access the UpdateDynamicThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -7483,7 +7944,9 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Updates the event configurations.
 %%
-%% Requires permission to access the UpdateEventConfigurations action.
+%% Requires permission to access the UpdateEventConfigurations:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_event_configurations(Client, Input) ->
     update_event_configurations(Client, Input, []).
 update_event_configurations(Client, Input0, Options0) ->
@@ -7508,7 +7971,9 @@ update_event_configurations(Client, Input0, Options0) ->
 
 %% @doc Updates the data for a fleet metric.
 %%
-%% Requires permission to access the UpdateFleetMetric action.
+%% Requires permission to access the UpdateFleetMetric:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_fleet_metric(Client, MetricName, Input) ->
     update_fleet_metric(Client, MetricName, Input, []).
 update_fleet_metric(Client, MetricName, Input0, Options0) ->
@@ -7533,7 +7998,9 @@ update_fleet_metric(Client, MetricName, Input0, Options0) ->
 
 %% @doc Updates the search configuration.
 %%
-%% Requires permission to access the UpdateIndexingConfiguration action.
+%% Requires permission to access the UpdateIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_indexing_configuration(Client, Input) ->
     update_indexing_configuration(Client, Input, []).
 update_indexing_configuration(Client, Input0, Options0) ->
@@ -7558,7 +8025,9 @@ update_indexing_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates supported fields of the specified job.
 %%
-%% Requires permission to access the UpdateJob action.
+%% Requires permission to access the UpdateJob:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
 update_job(Client, JobId, Input0, Options0) ->
@@ -7584,7 +8053,9 @@ update_job(Client, JobId, Input0, Options0) ->
 
 %% @doc Updates the definition for the specified mitigation action.
 %%
-%% Requires permission to access the UpdateMitigationAction action.
+%% Requires permission to access the UpdateMitigationAction:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
 update_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -7609,8 +8080,11 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
 
 %% @doc Updates the supported fields for a specific software package.
 %%
-%% Requires permission to access the UpdatePackage and
-%% GetIndexingConfiguration actions.
+%% Requires permission to access the UpdatePackage:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% and GetIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% actions.
 update_package(Client, PackageName, Input) ->
     update_package(Client, PackageName, Input, []).
 update_package(Client, PackageName, Input0, Options0) ->
@@ -7636,8 +8110,11 @@ update_package(Client, PackageName, Input0, Options0) ->
 
 %% @doc Updates the software package configuration.
 %%
-%% Requires permission to access the UpdatePackageConfiguration and
-%% iam:PassRole actions.
+%% Requires permission to access the UpdatePackageConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% and iam:PassRole:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html
+%% actions.
 update_package_configuration(Client, Input) ->
     update_package_configuration(Client, Input, []).
 update_package_configuration(Client, Input0, Options0) ->
@@ -7663,8 +8140,11 @@ update_package_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the supported fields for a specific package version.
 %%
-%% Requires permission to access the UpdatePackageVersion and
-%% GetIndexingConfiguration actions.
+%% Requires permission to access the UpdatePackageVersion:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% and GetIndexingConfiguration:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% actions.
 update_package_version(Client, PackageName, VersionName, Input) ->
     update_package_version(Client, PackageName, VersionName, Input, []).
 update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
@@ -7690,7 +8170,9 @@ update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 
 %% @doc Updates a provisioning template.
 %%
-%% Requires permission to access the UpdateProvisioningTemplate action.
+%% Requires permission to access the UpdateProvisioningTemplate:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
 update_provisioning_template(Client, TemplateName, Input0, Options0) ->
@@ -7715,7 +8197,9 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Updates a role alias.
 %%
-%% Requires permission to access the UpdateRoleAlias action.
+%% Requires permission to access the UpdateRoleAlias:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
 update_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -7741,7 +8225,9 @@ update_role_alias(Client, RoleAlias, Input0, Options0) ->
 %% @doc Updates a scheduled audit, including which checks are performed and
 %% how often the audit takes place.
 %%
-%% Requires permission to access the UpdateScheduledAudit action.
+%% Requires permission to access the UpdateScheduledAudit:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
 update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -7766,7 +8252,9 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
 %% @doc Updates a Device Defender security profile.
 %%
-%% Requires permission to access the UpdateSecurityProfile action.
+%% Requires permission to access the UpdateSecurityProfile:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
 update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -7794,7 +8282,9 @@ update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %%
 %% The stream version will be incremented by one.
 %%
-%% Requires permission to access the UpdateStream action.
+%% Requires permission to access the UpdateStream:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 update_stream(Client, StreamId, Input0, Options0) ->
@@ -7819,7 +8309,9 @@ update_stream(Client, StreamId, Input0, Options0) ->
 
 %% @doc Updates the data for a thing.
 %%
-%% Requires permission to access the UpdateThing action.
+%% Requires permission to access the UpdateThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
 update_thing(Client, ThingName, Input0, Options0) ->
@@ -7844,7 +8336,9 @@ update_thing(Client, ThingName, Input0, Options0) ->
 
 %% @doc Update a thing group.
 %%
-%% Requires permission to access the UpdateThingGroup action.
+%% Requires permission to access the UpdateThingGroup:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
 update_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -7869,7 +8363,9 @@ update_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
 %% @doc Updates the groups to which the thing belongs.
 %%
-%% Requires permission to access the UpdateThingGroupsForThing action.
+%% Requires permission to access the UpdateThingGroupsForThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_thing_groups_for_thing(Client, Input) ->
     update_thing_groups_for_thing(Client, Input, []).
 update_thing_groups_for_thing(Client, Input0, Options0) ->
@@ -7897,7 +8393,9 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
 %% You use this to change the status, endpoint URL, or confirmation URL of
 %% the destination.
 %%
-%% Requires permission to access the UpdateTopicRuleDestination action.
+%% Requires permission to access the UpdateTopicRuleDestination:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
 update_topic_rule_destination(Client, Input0, Options0) ->
@@ -7922,7 +8420,9 @@ update_topic_rule_destination(Client, Input0, Options0) ->
 
 %% @doc Validates a Device Defender security profile behaviors specification.
 %%
-%% Requires permission to access the ValidateSecurityProfileBehaviors action.
+%% Requires permission to access the ValidateSecurityProfileBehaviors:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 validate_security_profile_behaviors(Client, Input) ->
     validate_security_profile_behaviors(Client, Input, []).
 validate_security_profile_behaviors(Client, Input0, Options0) ->

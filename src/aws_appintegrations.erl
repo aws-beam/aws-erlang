@@ -5,9 +5,11 @@
 %% connections to external applications.
 %%
 %% For information about how you can use external applications with Amazon
-%% Connect, see Set up pre-built integrations and Deliver information to
-%% agents using Amazon Connect Wisdom in the Amazon Connect Administrator
-%% Guide.
+%% Connect, see Set up pre-built integrations:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/crm.html and Deliver
+%% information to agents using Amazon Connect Wisdom:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-wisdom.html
+%% in the Amazon Connect Administrator Guide.
 -module(aws_appintegrations).
 
 -export([create_application/2,
@@ -183,7 +185,9 @@ delete_application(Client, Arn, Input0, Options0) ->
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration API.
+%% recreate the DataIntegration using the CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% API.
 delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
     delete_data_integration(Client, DataIntegrationIdentifier, Input, []).
 delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
@@ -261,7 +265,9 @@ get_application(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration API.
+%% recreate the DataIntegration using the CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% API.
 get_data_integration(Client, Identifier)
   when is_map(Client) ->
     get_data_integration(Client, Identifier, #{}, #{}).
@@ -371,7 +377,9 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration API.
+%% recreate the DataIntegration using the CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% API.
 list_data_integration_associations(Client, DataIntegrationIdentifier)
   when is_map(Client) ->
     list_data_integration_associations(Client, DataIntegrationIdentifier, #{}, #{}).
@@ -403,7 +411,9 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration API.
+%% recreate the DataIntegration using the CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% API.
 list_data_integrations(Client)
   when is_map(Client) ->
     list_data_integrations(Client, #{}, #{}).
@@ -587,7 +597,9 @@ update_application(Client, Arn, Input0, Options0) ->
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or
-%% recreate the DataIntegration using the CreateDataIntegration API.
+%% recreate the DataIntegration using the CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% API.
 update_data_integration(Client, Identifier, Input) ->
     update_data_integration(Client, Identifier, Input, []).
 update_data_integration(Client, Identifier, Input0, Options0) ->

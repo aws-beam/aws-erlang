@@ -16,7 +16,9 @@
 %% </li> <li> Aurora MySQL - Serverless v1 only
 %%
 %% </li> </ul> For more information about the Data API, see Using RDS Data
-%% API in the Amazon Aurora User Guide.
+%% API:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
+%% in the Amazon Aurora User Guide.
 -module(aws_rds_data).
 
 -export([batch_execute_statement/2,

@@ -18,8 +18,9 @@
 %% specified VPC. This allows your DNS resolvers to easily resolve domain
 %% names for Amazon Web Services resources such as EC2 instances or records
 %% in a Route 53 private hosted zone. For more information, see How DNS
-%% Resolvers on Your Network Forward DNS Queries to Route 53 Resolver in the
-%% Amazon Route 53 Developer Guide.
+%% Resolvers on Your Network Forward DNS Queries to Route 53 Resolver:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% Conditionally forward queries from a VPC to resolvers on your network
 %%
@@ -32,8 +33,9 @@
 %% acme.example.com), Resolver chooses the rule with the most specific match
 %% (acme.example.com) and forwards the query to the IP addresses that you
 %% specified in that rule. For more information, see How Route 53 Resolver
-%% Forwards DNS Queries from Your VPCs to Your Network in the Amazon Route 53
-%% Developer Guide.
+%% Forwards DNS Queries from Your VPCs to Your Network:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% Like Amazon VPC, Resolver is Regional. In each Region where you have VPCs,
 %% you can choose whether to forward queries from your VPCs to your network
@@ -199,7 +201,8 @@ associate_firewall_rule_group(Client, Input, Options)
 %% `AssociateResolverEndpointIpAddress' request for each IP address.
 %%
 %% To remove an IP address from an endpoint, see
-%% DisassociateResolverEndpointIpAddress.
+%% DisassociateResolverEndpointIpAddress:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverEndpointIpAddress.html.
 associate_resolver_endpoint_ip_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_endpoint_ip_address(Client, Input, []).
@@ -219,7 +222,8 @@ associate_resolver_endpoint_ip_address(Client, Input, Options)
 %% the same Region as the configuration.
 %%
 %% To remove a VPC from a query logging configuration, see
-%% DisassociateResolverQueryLogConfig.
+%% DisassociateResolverQueryLogConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html.
 associate_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_query_log_config(Client, Input, []).
@@ -233,7 +237,8 @@ associate_resolver_query_log_config(Client, Input, Options)
 %% for the domain name that is specified in the rule and that originate in
 %% the VPC. The queries are forwarded to the IP addresses for the DNS
 %% resolvers that are specified in the rule. For more information about
-%% rules, see CreateResolverRule.
+%% rules, see CreateResolverRule:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html.
 associate_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_rule(Client, Input, []).
@@ -308,7 +313,8 @@ create_resolver_endpoint(Client, Input, Options)
 %%
 %% To specify which VPCs you want to log queries for, you use
 %% `AssociateResolverQueryLogConfig'. For more information, see
-%% AssociateResolverQueryLogConfig.
+%% AssociateResolverQueryLogConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverQueryLogConfig.html.
 %%
 %% You can optionally use Resource Access Manager (RAM) to share a query
 %% logging configuration with other Amazon Web Services accounts. The other
@@ -394,7 +400,8 @@ delete_resolver_endpoint(Client, Input, Options)
 %%
 %% Before you can delete a query logging configuration, you must first
 %% disassociate all VPCs from the configuration. See
-%% DisassociateResolverQueryLogConfig.
+%% DisassociateResolverQueryLogConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html.
 %%
 %% If you used Resource Access Manager (RAM) to share a query logging
 %% configuration with other accounts, you must stop sharing the configuration
@@ -414,7 +421,8 @@ delete_resolver_query_log_config(Client, Input, Options)
 %%
 %% Before you can delete a Resolver rule, you must disassociate it from all
 %% the VPCs that you associated the Resolver rule with. For more information,
-%% see DisassociateResolverRule.
+%% see DisassociateResolverRule:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverRule.html.
 delete_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resolver_rule(Client, Input, []).
@@ -438,7 +446,8 @@ disassociate_firewall_rule_group(Client, Input, Options)
 %% `DisassociateResolverEndpointIpAddress' request for each IP address.
 %%
 %% To add an IP address to an endpoint, see
-%% AssociateResolverEndpointIpAddress.
+%% AssociateResolverEndpointIpAddress:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html.
 disassociate_resolver_endpoint_ip_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_resolver_endpoint_ip_address(Client, Input, []).
@@ -608,7 +617,8 @@ get_resolver_rule(Client, Input, Options)
 %% @doc Gets information about an association between a specified Resolver
 %% rule and a VPC.
 %%
-%% You associate a Resolver rule and a VPC using AssociateResolverRule.
+%% You associate a Resolver rule and a VPC using AssociateResolverRule:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html.
 get_resolver_rule_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_rule_association(Client, Input, []).

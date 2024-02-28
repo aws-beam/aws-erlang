@@ -8,18 +8,22 @@
 %%
 %% Applications can use Amazon SNS to easily push real-time notification
 %% messages to interested subscribers over multiple delivery protocols. For
-%% more information about this product see the Amazon SNS product page. For
-%% detailed information about Amazon SNS features and their associated API
-%% calls, see the Amazon SNS Developer Guide.
+%% more information about this product see the Amazon SNS product page:
+%% http://aws.amazon.com/sns/. For detailed information about Amazon SNS
+%% features and their associated API calls, see the Amazon SNS Developer
+%% Guide: https://docs.aws.amazon.com/sns/latest/dg/.
 %%
 %% For information on the permissions you need to use this API, see Identity
-%% and access management in Amazon SNS in the Amazon SNS Developer Guide.
+%% and access management in Amazon SNS:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html
+%% in the Amazon SNS Developer Guide.
 %%
 %% We also provide SDKs that enable you to access Amazon SNS from your
 %% preferred programming language. The SDKs contain functionality that
 %% automatically takes care of tasks such as: cryptographically signing your
 %% service requests, retrying requests, and handling error responses. For a
-%% list of available SDKs, go to Tools for Amazon Web Services.
+%% list of available SDKs, go to Tools for Amazon Web Services:
+%% http://aws.amazon.com/tools/.
 -module(aws_sns).
 
 -export([add_permission/2,
@@ -216,12 +220,14 @@ create_platform_application(Client, Input, Options)
 %% `CreatePlatformEndpoint' action is idempotent, so if the requester
 %% already owns an endpoint with the same device token and attributes, that
 %% endpoint's ARN is returned without creating a new endpoint. For more
-%% information, see Using Amazon SNS Mobile Push Notifications.
+%% information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% When using `CreatePlatformEndpoint' with Baidu, two attributes must be
 %% provided: ChannelId and UserId. The token field must also contain the
 %% ChannelId. For more information, see Creating an Amazon SNS Endpoint for
-%% Baidu.
+%% Baidu:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html.
 create_platform_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_endpoint(Client, Input, []).
@@ -239,8 +245,9 @@ create_platform_endpoint(Client, Input, Options)
 %% the SMS sandbox, you can use all of the features of Amazon SNS. However,
 %% you can send SMS messages only to verified destination phone numbers. For
 %% more information, including how to move out of the sandbox to send
-%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-%% Guide.
+%% messages without restrictions, see SMS sandbox:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in the
+%% Amazon SNS Developer Guide.
 create_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sms_sandbox_phone_number(Client, Input, []).
@@ -251,7 +258,8 @@ create_sms_sandbox_phone_number(Client, Input, Options)
 %% @doc Creates a topic to which notifications can be published.
 %%
 %% Users can create at most 100,000 standard topics (at most 1,000 FIFO
-%% topics). For more information, see Creating an Amazon SNS topic in the
+%% topics). For more information, see Creating an Amazon SNS topic:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html in the
 %% Amazon SNS Developer Guide. This action is idempotent, so if the requester
 %% already owns a topic with the specified name, that topic's ARN is
 %% returned without creating a new topic.
@@ -265,7 +273,8 @@ create_topic(Client, Input, Options)
 %% @doc Deletes the endpoint for a device and mobile app from Amazon SNS.
 %%
 %% This action is idempotent. For more information, see Using Amazon SNS
-%% Mobile Push Notifications.
+%% Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% When you delete an endpoint that is also subscribed to a topic, then you
 %% must also unsubscribe the endpoint from the topic.
@@ -279,7 +288,8 @@ delete_endpoint(Client, Input, Options)
 %% @doc Deletes a platform application object for one of the supported push
 %% notification services, such as APNS and GCM (Firebase Cloud Messaging).
 %%
-%% For more information, see Using Amazon SNS Mobile Push Notifications.
+%% For more information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 delete_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_application(Client, Input, []).
@@ -297,8 +307,9 @@ delete_platform_application(Client, Input, Options)
 %% the SMS sandbox, you can use all of the features of Amazon SNS. However,
 %% you can send SMS messages only to verified destination phone numbers. For
 %% more information, including how to move out of the sandbox to send
-%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-%% Guide.
+%% messages without restrictions, see SMS sandbox:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in the
+%% Amazon SNS Developer Guide.
 delete_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sms_sandbox_phone_number(Client, Input, []).
@@ -331,7 +342,8 @@ get_data_protection_policy(Client, Input, Options)
 %% supported push notification services, such as GCM (Firebase Cloud
 %% Messaging) and APNS.
 %%
-%% For more information, see Using Amazon SNS Mobile Push Notifications.
+%% For more information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 get_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_attributes(Client, Input, []).
@@ -343,7 +355,8 @@ get_endpoint_attributes(Client, Input, Options)
 %% supported push notification services, such as APNS and GCM (Firebase Cloud
 %% Messaging).
 %%
-%% For more information, see Using Amazon SNS Mobile Push Notifications.
+%% For more information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 get_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_platform_application_attributes(Client, Input, []).
@@ -372,8 +385,9 @@ get_sms_attributes(Client, Input, Options)
 %% the SMS sandbox, you can use all of the features of Amazon SNS. However,
 %% you can send SMS messages only to verified destination phone numbers. For
 %% more information, including how to move out of the sandbox to send
-%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-%% Guide.
+%% messages without restrictions, see SMS sandbox:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in the
+%% Amazon SNS Developer Guide.
 get_sms_sandbox_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_sandbox_account_status(Client, Input, []).
@@ -411,7 +425,8 @@ get_topic_attributes(Client, Input, Options)
 %% `ListEndpointsByPlatformApplication' again using the NextToken string
 %% received from the previous call. When there are no more records to return,
 %% NextToken will be null. For more information, see Using Amazon SNS Mobile
-%% Push Notifications.
+%% Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
 list_endpoints_by_platform_application(Client, Input)
@@ -424,8 +439,9 @@ list_endpoints_by_platform_application(Client, Input, Options)
 %% @doc Lists the calling Amazon Web Services account's dedicated
 %% origination numbers and their metadata.
 %%
-%% For more information about origination numbers, see Origination numbers in
-%% the Amazon SNS Developer Guide.
+%% For more information about origination numbers, see Origination numbers:
+%% https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html
+%% in the Amazon SNS Developer Guide.
 list_origination_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_origination_numbers(Client, Input, []).
@@ -460,7 +476,8 @@ list_phone_numbers_opted_out(Client, Input, Options)
 %% `ListPlatformApplications' using the NextToken string received from
 %% the previous call. When there are no more records to return,
 %% `NextToken' will be null. For more information, see Using Amazon SNS
-%% Mobile Push Notifications.
+%% Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 15 transactions per second (TPS).
 list_platform_applications(Client, Input)
@@ -480,8 +497,9 @@ list_platform_applications(Client, Input, Options)
 %% the SMS sandbox, you can use all of the features of Amazon SNS. However,
 %% you can send SMS messages only to verified destination phone numbers. For
 %% more information, including how to move out of the sandbox to send
-%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-%% Guide.
+%% messages without restrictions, see SMS sandbox:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in the
+%% Amazon SNS Developer Guide.
 list_sms_sandbox_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sms_sandbox_phone_numbers(Client, Input, []).
@@ -521,8 +539,9 @@ list_subscriptions_by_topic(Client, Input, Options)
 
 %% @doc List all tags added to the specified Amazon SNS topic.
 %%
-%% For an overview, see Amazon SNS Tags in the Amazon Simple Notification
-%% Service Developer Guide.
+%% For an overview, see Amazon SNS Tags:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the Amazon
+%% Simple Notification Service Developer Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -572,7 +591,8 @@ opt_in_phone_number(Client, Input, Options)
 %% returned when making a call with the `CreatePlatformEndpoint' action.
 %%
 %% For more information about formatting messages, see Send Custom
-%% Platform-Specific Payloads in Messages to Mobile Devices.
+%% Platform-Specific Payloads in Messages to Mobile Devices:
+%% https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html.
 %%
 %% You can publish messages only to topics and endpoints in the same Amazon
 %% Web Services Region.
@@ -646,7 +666,8 @@ remove_permission(Client, Input, Options)
 %% supported push notification services, such as GCM (Firebase Cloud
 %% Messaging) and APNS.
 %%
-%% For more information, see Using Amazon SNS Mobile Push Notifications.
+%% For more information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 set_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_endpoint_attributes(Client, Input, []).
@@ -658,9 +679,11 @@ set_endpoint_attributes(Client, Input, Options)
 %% supported push notification services, such as APNS and GCM (Firebase Cloud
 %% Messaging).
 %%
-%% For more information, see Using Amazon SNS Mobile Push Notifications. For
+%% For more information, see Using Amazon SNS Mobile Push Notifications:
+%% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html. For
 %% information on configuring attributes for message delivery status, see
-%% Using Amazon SNS Application Attributes for Message Delivery Status.
+%% Using Amazon SNS Application Attributes for Message Delivery Status:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html.
 set_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_platform_application_attributes(Client, Input, []).
@@ -673,7 +696,8 @@ set_platform_application_attributes(Client, Input, Options)
 %%
 %% You can override some of these settings for a single message when you use
 %% the `Publish' action with the `MessageAttributes.entry.N'
-%% parameter. For more information, see Publishing to a mobile phone in the
+%% parameter. For more information, see Publishing to a mobile phone:
+%% https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html in the
 %% Amazon SNS Developer Guide.
 %%
 %% To use this operation, you must grant the Amazon SNS service principal
@@ -726,7 +750,9 @@ subscribe(Client, Input, Options)
 
 %% @doc Add tags to the specified Amazon SNS topic.
 %%
-%% For an overview, see Amazon SNS Tags in the Amazon SNS Developer Guide.
+%% For an overview, see Amazon SNS Tags:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the Amazon SNS
+%% Developer Guide.
 %%
 %% When you use topic tags, keep the following guidelines in mind:
 %%
@@ -742,7 +768,8 @@ subscribe(Client, Input, Options)
 %%
 %% </li> <li> Tagging actions are limited to 10 TPS per Amazon Web Services
 %% account, per Amazon Web Services Region. If your application requires a
-%% higher throughput, file a technical support request.
+%% higher throughput, file a technical support request:
+%% https://console.aws.amazon.com/support/home#/case/create?issueType=technical.
 %%
 %% </li> </ul>
 tag_resource(Client, Input)
@@ -776,7 +803,9 @@ unsubscribe(Client, Input, Options)
 
 %% @doc Remove tags from the specified Amazon SNS topic.
 %%
-%% For an overview, see Amazon SNS Tags in the Amazon SNS Developer Guide.
+%% For an overview, see Amazon SNS Tags:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the Amazon SNS
+%% Developer Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -794,8 +823,9 @@ untag_resource(Client, Input, Options)
 %% the SMS sandbox, you can use all of the features of Amazon SNS. However,
 %% you can send SMS messages only to verified destination phone numbers. For
 %% more information, including how to move out of the sandbox to send
-%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
-%% Guide.
+%% messages without restrictions, see SMS sandbox:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in the
+%% Amazon SNS Developer Guide.
 verify_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_sms_sandbox_phone_number(Client, Input, []).

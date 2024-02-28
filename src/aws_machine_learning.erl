@@ -104,7 +104,7 @@ create_batch_prediction(Client, Input, Options)
     request(Client, <<"CreateBatchPrediction">>, Input, Options).
 
 %% @doc Creates a `DataSource' object from an Amazon Relational Database
-%% Service (Amazon RDS).
+%% Service: http://aws.amazon.com/rds/ (Amazon RDS).
 %%
 %% A `DataSource' references data that can be used to perform
 %% `CreateMLModel', `CreateEvaluation', or

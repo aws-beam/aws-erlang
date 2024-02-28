@@ -12,10 +12,12 @@
 %% (lookalike segment) that resembles the training data.
 %%
 %% To learn more about Amazon Web Services Clean Rooms ML concepts,
-%% procedures, and best practices, see the Clean Rooms User Guide.
+%% procedures, and best practices, see the Clean Rooms User Guide:
+%% https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html.
 %%
 %% To learn more about SQL commands, functions, and conditions supported in
-%% Clean Rooms, see the Clean Rooms SQL Reference.
+%% Clean Rooms, see the Clean Rooms SQL Reference:
+%% https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html.
 -module(aws_cleanroomsml).
 
 -export([create_audience_model/2,

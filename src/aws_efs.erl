@@ -10,8 +10,10 @@
 %% With Amazon EFS, storage capacity is elastic, growing and shrinking
 %% automatically as you add and remove files, so that your applications have
 %% the storage they need, when they need it. For more information, see the
-%% Amazon Elastic File System API Reference and the Amazon Elastic File
-%% System User Guide.
+%% Amazon Elastic File System API Reference:
+%% https://docs.aws.amazon.com/efs/latest/ug/api-reference.html and the
+%% Amazon Elastic File System User Guide:
+%% https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html.
 -module(aws_efs).
 
 -export([create_access_point/2,
@@ -103,7 +105,8 @@
 %% NFS client. The file system path is exposed as the access point's root
 %% directory. Applications using the access point can only access data in the
 %% application's own directory and any subdirectories. To learn more, see
-%% Mounting a file system using EFS access points.
+%% Mounting a file system using EFS access points:
+%% https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html.
 %%
 %% If multiple requests to create access points on the same file system are
 %% sent in quick succession, and the file system is near the limit of 1,000
@@ -119,7 +122,8 @@
 %% `elasticfilesystem:TagResource' action to verify if users have
 %% permissions to create tags. Therefore, you must grant explicit permissions
 %% to use the `elasticfilesystem:TagResource' action. For more
-%% information, see Granting permissions to tag resources during creation.
+%% information, see Granting permissions to tag resources during creation:
+%% https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html.
 create_access_point(Client, Input) ->
     create_access_point(Client, Input, []).
 create_access_point(Client, Input0, Options0) ->
@@ -171,8 +175,9 @@ create_access_point(Client, Input0, Options0) ->
 %% system, the client can learn of its existence from the
 %% `FileSystemAlreadyExists' error.
 %%
-%% For more information, see Creating a file system in the Amazon EFS User
-%% Guide.
+%% For more information, see Creating a file system:
+%% https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#creating-using-create-fs-part1
+%% in the Amazon EFS User Guide.
 %%
 %% The `CreateFileSystem' call returns while the file system's
 %% lifecycle state is still `creating'. You can check the file system
@@ -191,7 +196,8 @@ create_access_point(Client, Input0, Options0) ->
 %% General Purpose performance mode for all file systems.
 %%
 %% The performance mode can't be changed after the file system has been
-%% created. For more information, see Amazon EFS performance modes.
+%% created. For more information, see Amazon EFS performance modes:
+%% https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html.
 %%
 %% You can set the throughput mode for the file system using the
 %% `ThroughputMode' parameter.
@@ -201,7 +207,8 @@ create_access_point(Client, Input0, Options0) ->
 %% targets for the file system in your VPC. For more information, see
 %% `CreateMountTarget'. You mount your Amazon EFS file system on an EC2
 %% instances in your VPC by using the mount target. For more information, see
-%% Amazon EFS: How it Works.
+%% Amazon EFS: How it Works:
+%% https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:CreateFileSystem' action.
@@ -211,7 +218,8 @@ create_access_point(Client, Input0, Options0) ->
 %% `elasticfilesystem:TagResource' action to verify if users have
 %% permissions to create tags. Therefore, you must grant explicit permissions
 %% to use the `elasticfilesystem:TagResource' action. For more
-%% information, see Granting permissions to tag resources during creation.
+%% information, see Granting permissions to tag resources during creation:
+%% https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html.
 create_file_system(Client, Input) ->
     create_file_system(Client, Input, []).
 create_file_system(Client, Input0, Options0) ->
@@ -254,7 +262,8 @@ create_file_system(Client, Input0, Options0) ->
 %% with the file system's Availability Zone when creating the mount
 %% target.
 %%
-%% For more information, see Amazon EFS: How it Works.
+%% For more information, see Amazon EFS: How it Works:
+%% https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html.
 %%
 %% To create a mount target for a file system, the file system's
 %% lifecycle state must be `available'. For more information, see
@@ -282,7 +291,8 @@ create_file_system(Client, Input0, Options0) ->
 %% mounting the file system. The EC2 instance on which you mount the file
 %% system by using the mount target can resolve the mount target's DNS
 %% name to its IP address. For more information, see How it Works:
-%% Implementation Overview.
+%% Implementation Overview:
+%% https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation.
 %%
 %% Note that you can create mount targets for a file system in only one VPC,
 %% and there can be only one mount target per Availability Zone. That is, if
@@ -336,11 +346,11 @@ create_file_system(Client, Input0, Options0) ->
 %% We recommend that you create a mount target in each of the Availability
 %% Zones. There are cost considerations for using a file system in an
 %% Availability Zone through a mount target created in another Availability
-%% Zone. For more information, see Amazon EFS. In addition, by always using a
-%% mount target local to the instance's Availability Zone, you eliminate
-%% a partial failure scenario. If the Availability Zone in which your mount
-%% target is created goes down, then you can't access your file system
-%% through that mount target.
+%% Zone. For more information, see Amazon EFS: http://aws.amazon.com/efs/. In
+%% addition, by always using a mount target local to the instance's
+%% Availability Zone, you eliminate a partial failure scenario. If the
+%% Availability Zone in which your mount target is created goes down, then
+%% you can't access your file system through that mount target.
 %%
 %% This operation requires permissions for the following action on the file
 %% system:
@@ -382,8 +392,10 @@ create_mount_target(Client, Input0, Options0) ->
 %% @doc Creates a replication configuration that replicates an existing EFS
 %% file system to a new, read-only file system.
 %%
-%% For more information, see Amazon EFS replication in the Amazon EFS User
-%% Guide. The replication configuration specifies the following:
+%% For more information, see Amazon EFS replication:
+%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html in the
+%% Amazon EFS User Guide. The replication configuration specifies the
+%% following:
 %%
 %% <ul> <li> Source file system – The EFS file system that you want
 %% replicated. The source file system cannot be a destination file system in
@@ -393,8 +405,9 @@ create_mount_target(Client, Input0, Options0) ->
 %% which the destination file system is created. Amazon EFS replication is
 %% available in all Amazon Web Services Regions in which EFS is available.
 %% The Region must be enabled. For more information, see Managing Amazon Web
-%% Services Regions in the Amazon Web Services General Reference Reference
-%% Guide.
+%% Services Regions:
+%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable
+%% in the Amazon Web Services General Reference Reference Guide.
 %%
 %% </li> <li> Destination file system configuration – The configuration of
 %% the destination file system to which the source file system will be
@@ -407,11 +420,13 @@ create_mount_target(Client, Input0, Options0) ->
 %% replication. If no ID is provided, then EFS creates a new file system with
 %% the default settings. For existing file systems, the file system's
 %% replication overwrite protection must be disabled. For more information,
-%% see Replicating to an existing file system.
+%% see Replicating to an existing file system:
+%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication#replicate-existing-destination.
 %%
 %% </li> <li> Availability Zone – If you want the destination file system to
 %% use One Zone storage, you must specify the Availability Zone to create the
-%% file system in. For more information, see EFS file system types in the
+%% file system in. For more information, see EFS file system types:
+%% https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html in the
 %% Amazon EFS User Guide.
 %%
 %% </li> <li> Encryption – All destination file systems are created with
@@ -445,8 +460,9 @@ create_mount_target(Client, Input0, Options0) ->
 %% destination file system. After the file system is created, you can change
 %% this setting.
 %%
-%% </li> </ul> For more information, see Amazon EFS replication in the Amazon
-%% EFS User Guide.
+%% </li> </ul> For more information, see Amazon EFS replication:
+%% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html in the
+%% Amazon EFS User Guide.
 create_replication_configuration(Client, SourceFileSystemId, Input) ->
     create_replication_configuration(Client, SourceFileSystemId, Input, []).
 create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
@@ -585,7 +601,8 @@ delete_file_system(Client, FileSystemId, Input0, Options0) ->
 %%
 %% The default `FileSystemPolicy' goes into effect once the existing
 %% policy is deleted. For more information about the default file system
-%% policy, see Using Resource-based Policies with EFS.
+%% policy, see Using Resource-based Policies with EFS:
+%% https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteFileSystemPolicy' action.
@@ -666,7 +683,8 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
 %% Deleting a replication configuration ends the replication process. After a
 %% replication configuration is deleted, the destination file system becomes
 %% `Writeable' and its replication overwrite protection is re-enabled.
-%% For more information, see Delete a replication configuration.
+%% For more information, see Delete a replication configuration:
+%% https://docs.aws.amazon.com/efs/latest/ug/delete-replications.html.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteReplicationConfiguration' action.
@@ -699,8 +717,9 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 %% Deletes the specified tags from a file system. If the `DeleteTags'
 %% request includes a tag key that doesn't exist, Amazon EFS ignores it
 %% and doesn't cause an error. For more information about tags and
-%% related restrictions, see Tag restrictions in the Billing and Cost
-%% Management User Guide.
+%% related restrictions, see Tag restrictions:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management User Guide.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteTags' action.
@@ -1160,7 +1179,8 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
 %% All existing resource IDs are not affected by any changes you make. You
 %% can set the ID preference during the opt-in period as EFS transitions to
 %% long resource IDs. For more information, see Managing Amazon EFS resource
-%% IDs.
+%% IDs:
+%% https://docs.aws.amazon.com/efs/latest/ug/manage-efs-resource-ids.html.
 %%
 %% Starting in October, 2021, you will receive an error if you try to set the
 %% account preference to use the short 8 character format resource ID.
@@ -1222,7 +1242,8 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
 %% or updated using this API operation. EFS file system policies have a
 %% 20,000 character limit. When an explicit policy is set, it overrides the
 %% default policy. For more information about the default file system policy,
-%% see Default EFS File System Policy.
+%% see Default EFS File System Policy:
+%% https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy.
 %%
 %% EFS file system policies have a 20,000 character limit.
 %%
@@ -1274,7 +1295,8 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% move files in the file system back to primary storage (Standard storage
 %% class) after they are accessed in IA or Archive storage.
 %%
-%% </li> </ul> For more information, see Managing file system storage.
+%% </li> </ul> For more information, see Managing file system storage:
+%% https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html.
 %%
 %% Each Amazon EFS file system supports one lifecycle configuration, which
 %% applies to all files in the file system. If a `LifecycleConfiguration'

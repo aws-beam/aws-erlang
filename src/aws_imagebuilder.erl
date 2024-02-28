@@ -541,14 +541,19 @@ delete_distribution_configuration(Client, Input0, Options0) ->
 %% the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI
 %% commands.
 %%
-%% <ul> <li> To deregister an EC2 Linux AMI, see Deregister your Linux AMI in
+%% <ul> <li> To deregister an EC2 Linux AMI, see Deregister your Linux AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html in
 %% the Amazon EC2 User Guide .
 %%
 %% </li> <li> To deregister an EC2 Windows AMI, see Deregister your Windows
-%% AMI in the Amazon EC2 Windows Guide .
+%% AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/deregister-ami.html
+%% in the Amazon EC2 Windows Guide .
 %%
 %% </li> <li> To delete a container image from Amazon ECR, see Deleting an
-%% image in the Amazon ECR User Guide.
+%% image:
+%% https://docs.aws.amazon.com/AmazonECR/latest/userguide/delete_image.html
+%% in the Amazon ECR User Guide.
 %%
 %% </li> </ul>
 delete_image(Client, Input) ->
@@ -1157,8 +1162,11 @@ import_component(Client, Input0, Options0) ->
 %% environment, that process creates a set of one or more disk container
 %% files that act as snapshots of your VM’s environment, settings, and data.
 %%
-%% The Amazon EC2 API ImportImage action uses those files to import your VM
-%% and create an AMI. To import using the CLI command, see import-image
+%% The Amazon EC2 API ImportImage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html
+%% action uses those files to import your VM and create an AMI. To import
+%% using the CLI command, see import-image:
+%% https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html
 %%
 %% You can reference the task ID from the VM import to pull in the AMI that
 %% the import created as the base image for your Image Builder recipe.
@@ -1743,11 +1751,14 @@ list_workflows(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to a component.
 %%
-%% We recommend that you call the RAM API CreateResourceShare to share
-%% resources. If you call the Image Builder API `PutComponentPolicy', you
-%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
-%% for the resource to be visible to all principals with whom the resource is
-%% shared.
+%% We recommend that you call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
+%% to share resources. If you call the Image Builder API
+%% `PutComponentPolicy', you must also call the RAM API
+%% PromoteResourceShareCreatedFromPolicy:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
+%% in order for the resource to be visible to all principals with whom the
+%% resource is shared.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
 put_component_policy(Client, Input0, Options0) ->
@@ -1804,11 +1815,14 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to an image.
 %%
-%% We recommend that you call the RAM API CreateResourceShare to share
-%% resources. If you call the Image Builder API `PutImagePolicy', you
-%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
-%% for the resource to be visible to all principals with whom the resource is
-%% shared.
+%% We recommend that you call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
+%% to share resources. If you call the Image Builder API
+%% `PutImagePolicy', you must also call the RAM API
+%% PromoteResourceShareCreatedFromPolicy:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
+%% in order for the resource to be visible to all principals with whom the
+%% resource is shared.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
 put_image_policy(Client, Input0, Options0) ->
@@ -1833,10 +1847,13 @@ put_image_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to an image recipe.
 %%
-%% We recommend that you call the RAM API CreateResourceShare to share
-%% resources. If you call the Image Builder API `PutImageRecipePolicy',
-%% you must also call the RAM API PromoteResourceShareCreatedFromPolicy in
-%% order for the resource to be visible to all principals with whom the
+%% We recommend that you call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
+%% to share resources. If you call the Image Builder API
+%% `PutImageRecipePolicy', you must also call the RAM API
+%% PromoteResourceShareCreatedFromPolicy:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
+%% in order for the resource to be visible to all principals with whom the
 %% resource is shared.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).

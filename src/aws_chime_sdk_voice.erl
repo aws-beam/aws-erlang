@@ -391,7 +391,9 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 %% @doc Creates a SIP media application.
 %%
 %% For more information about SIP media applications, see Managing SIP media
-%% applications and rules in the Amazon Chime SDK Administrator Guide.
+%% applications and rules:
+%% https://docs.aws.amazon.com/chime-sdk/latest/ag/manage-sip-applications.html
+%% in the Amazon Chime SDK Administrator Guide.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 create_sip_media_application(Client, Input0, Options0) ->
@@ -443,7 +445,9 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% as a target for a specific trigger type.
 %%
 %% For more information about SIP rules, see Managing SIP media applications
-%% and rules in the Amazon Chime SDK Administrator Guide.
+%% and rules:
+%% https://docs.aws.amazon.com/chime-sdk/latest/ag/manage-sip-applications.html
+%% in the Amazon Chime SDK Administrator Guide.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 create_sip_rule(Client, Input0, Options0) ->
@@ -469,7 +473,9 @@ create_sip_rule(Client, Input0, Options0) ->
 %% @doc Creates an Amazon Chime SDK Voice Connector.
 %%
 %% For more information about Voice Connectors, see Managing Amazon Chime SDK
-%% Voice Connector groups in the Amazon Chime SDK Administrator Guide.
+%% Voice Connector groups:
+%% https://docs.aws.amazon.com/chime-sdk/latest/ag/voice-connector-groups.html
+%% in the Amazon Chime SDK Administrator Guide.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 create_voice_connector(Client, Input0, Options0) ->
@@ -528,11 +534,13 @@ create_voice_connector_group(Client, Input0, Options0) ->
 %%
 %% Before creating any voice profiles, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms for the
-%% Amazon Chime SDK.
+%% and biometrics laws, and as required under the AWS service terms:
+%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
 %%
 %% For more information about voice profiles and voice analytics, see Using
-%% Amazon Chime SDK Voice Analytics in the Amazon Chime SDK Developer Guide.
+%% Amazon Chime SDK Voice Analytics:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
+%% in the Amazon Chime SDK Developer Guide.
 create_voice_profile(Client, Input) ->
     create_voice_profile(Client, Input, []).
 create_voice_profile(Client, Input0, Options0) ->
@@ -560,11 +568,13 @@ create_voice_profile(Client, Input0, Options0) ->
 %%
 %% Before creating any voice profiles, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms for the
-%% Amazon Chime SDK.
+%% and biometrics laws, and as required under the AWS service terms:
+%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
 %%
 %% For more information about voice profile domains, see Using Amazon Chime
-%% SDK Voice Analytics in the Amazon Chime SDK Developer Guide.
+%% SDK Voice Analytics:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
+%% in the Amazon Chime SDK Developer Guide.
 create_voice_profile_domain(Client, Input) ->
     create_voice_profile_domain(Client, Input, []).
 create_voice_profile_domain(Client, Input0, Options0) ->
@@ -2159,8 +2169,8 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Before starting any speaker search tasks, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms for the
-%% Amazon Chime SDK.
+%% and biometrics laws, and as required under the AWS service terms:
+%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
 start_speaker_search_task(Client, VoiceConnectorId, Input) ->
     start_speaker_search_task(Client, VoiceConnectorId, Input, []).
 start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2186,12 +2196,15 @@ start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
 %% @doc Starts a voice tone analysis task.
 %%
 %% For more information about voice tone analysis, see Using Amazon Chime SDK
-%% voice analytics in the Amazon Chime SDK Developer Guide.
+%% voice analytics:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% Before starting any voice tone analysis tasks, you must provide all
 %% notices and obtain all consents from the speaker as required under
 %% applicable privacy and biometrics laws, and as required under the AWS
-%% service terms for the Amazon Chime SDK.
+%% service terms: https://aws.amazon.com/service-terms/ for the Amazon Chime
+%% SDK.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
     start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->

@@ -5,9 +5,12 @@
 %%
 %% This is the Well-Architected Tool API Reference.
 %%
-%% The WA Tool API provides programmatic access to the Well-Architected Tool
-%% in the Amazon Web Services Management Console. For information about the
-%% Well-Architected Tool, see the Well-Architected Tool User Guide.
+%% The WA Tool API provides programmatic access to the Well-Architected Tool:
+%% http://aws.amazon.com/well-architected-tool in the Amazon Web Services
+%% Management Console: https://console.aws.amazon.com/wellarchitected. For
+%% information about the Well-Architected Tool, see the Well-Architected Tool
+%% User Guide:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html.
 -module(aws_wellarchitected).
 
 -export([associate_lenses/3,
@@ -254,8 +257,9 @@ associate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% If you share a lens with an organization or OU, all accounts in the
 %% organization or OU are granted access to the lens.
 %%
-%% For more information, see Sharing a custom lens in the Well-Architected
-%% Tool User Guide.
+%% For more information, see Sharing a custom lens:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-sharing.html
+%% in the Well-Architected Tool User Guide.
 %%
 %% Disclaimer
 %%
@@ -466,8 +470,9 @@ create_template_share(Client, TemplateArn, Input0, Options0) ->
 %% in the same Amazon Web Services Region. Only the owner of a workload can
 %% delete it.
 %%
-%% For more information, see Defining a Workload in the Well-Architected Tool
-%% User Guide.
+%% For more information, see Defining a Workload:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html
+%% in the Well-Architected Tool User Guide.
 %%
 %% Either `AwsRegions', `NonAwsRegions', or both must be specified
 %% when creating a workload.
@@ -518,8 +523,9 @@ create_workload(Client, Input0, Options0) ->
 %% If you share a workload with an organization or OU, all accounts in the
 %% organization or OU are granted access to the workload.
 %%
-%% For more information, see Sharing a workload in the Well-Architected Tool
-%% User Guide.
+%% For more information, see Sharing a workload:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html
+%% in the Well-Architected Tool User Guide.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
 create_workload_share(Client, WorkloadId, Input0, Options0) ->
@@ -838,7 +844,9 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% Services (Amazon Web Services Official Content) cannot be exported.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
-%% specification in the Well-Architected Tool User Guide.
+%% specification:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-format-specification.html
+%% in the Well-Architected Tool User Guide.
 %%
 %% Disclaimer
 %%
@@ -1219,7 +1227,9 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% until it's published with `CreateLensVersion'.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
-%% specification in the Well-Architected Tool User Guide.
+%% specification:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-format-specification.html
+%% in the Well-Architected Tool User Guide.
 %%
 %% A custom lens cannot exceed 500 KB in size.
 %%

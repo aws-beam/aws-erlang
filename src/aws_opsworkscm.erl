@@ -65,8 +65,9 @@
 %%
 %% </li> <li> opsworks-cm.eu-west-1.amazonaws.com
 %%
-%% </li> </ul> For more information, see AWS OpsWorks endpoints and quotas in
-%% the AWS General Reference.
+%% </li> </ul> For more information, see AWS OpsWorks endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html in the
+%% AWS General Reference.
 %%
 %% Throttling limits
 %%

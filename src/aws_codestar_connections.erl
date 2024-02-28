@@ -68,7 +68,8 @@
 %% Amazon Web Services CodeStar Connections.
 %%
 %% </li> </ul> For information about how to use Amazon Web Services CodeStar
-%% Connections, see the Developer Tools User Guide.
+%% Connections, see the Developer Tools User Guide:
+%% https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html.
 -module(aws_codestar_connections).
 
 -export([create_connection/2,

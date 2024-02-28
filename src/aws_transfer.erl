@@ -181,7 +181,10 @@ create_agreement(Client, Input, Options)
 %% For AS2, the connector is required for sending files to an externally
 %% hosted AS2 server. For SFTP, the connector is required when sending files
 %% to an SFTP server or receiving files from an SFTP server. For more details
-%% about connectors, see Create AS2 connectors and Create SFTP connectors.
+%% about connectors, see Create AS2 connectors:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/create-b2b-server.html#configure-as2-connector
+%% and Create SFTP connectors:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/configure-sftp-connector.html.
 %%
 %% You must specify exactly one configuration object: either for AS2
 %% (`As2Config') or SFTP (`SftpConfig').
@@ -414,7 +417,8 @@ describe_profile(Client, Input, Options)
 %%
 %% The response contains a description of the security policy's
 %% properties. For more information about security policies, see Working with
-%% security policies.
+%% security policies:
+%% https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html.
 describe_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_policy(Client, Input, []).

@@ -10,13 +10,17 @@
 %% Use the following operations to configure your `OnlineStore' and
 %% `OfflineStore' features, and to create and manage feature groups:
 %%
-%% <ul> <li> CreateFeatureGroup
+%% <ul> <li> CreateFeatureGroup:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFeatureGroup.html
 %%
-%% </li> <li> DeleteFeatureGroup
+%% </li> <li> DeleteFeatureGroup:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFeatureGroup.html
 %%
-%% </li> <li> DescribeFeatureGroup
+%% </li> <li> DescribeFeatureGroup:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html
 %%
-%% </li> <li> ListFeatureGroups
+%% </li> <li> ListFeatureGroups:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFeatureGroups.html
 %%
 %% </li> </ul>
 -module(aws_sagemaker_featurestore_runtime).
@@ -93,7 +97,8 @@ batch_get_record(Client, Input0, Options0) ->
 %% remove all history of a record from the `OfflineStore' using Amazon
 %% Athena or Apache Spark. For information on how to hard delete a record
 %% from the `OfflineStore' with the Iceberg table format enabled, see
-%% Delete records from the offline store.
+%% Delete records from the offline store:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records-offline-store.html#feature-store-delete-records-offline-store.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->

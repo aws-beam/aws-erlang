@@ -7,7 +7,8 @@
 %% receive meeting notifications.
 %%
 %% For more information about the meeting APIs, see Amazon Chime SDK
-%% meetings.
+%% meetings:
+%% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Meetings.html.
 -module(aws_chime_sdk_meetings).
 
 -export([batch_create_attendee/3,
@@ -56,7 +57,8 @@
 %% @doc Creates up to 100 attendees for an active Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -145,7 +147,8 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 %% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -172,9 +175,12 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 %% with no initial attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime Developer Guide. For more information
-%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
-%% Chime Developer Guide.
+%% Media Regions:
+%% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
+%% in the Amazon Chime Developer Guide. For more information about the Amazon
+%% Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Amazon Chime Developer Guide.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options0) ->
@@ -201,9 +207,12 @@ create_meeting(Client, Input0, Options0) ->
 %% with attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime Developer Guide. For more information
-%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
-%% Chime Developer Guide.
+%% Media Regions:
+%% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
+%% in the Amazon Chime Developer Guide. For more information about the Amazon
+%% Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Amazon Chime Developer Guide.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options0) ->
@@ -231,7 +240,9 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK in the Amazon Chime Developer Guide.
+%% Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Amazon Chime Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
@@ -258,8 +269,9 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %%
 %% The operation deletes all attendees, disconnects all clients, and prevents
 %% new clients from joining the meeting. For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime
-%% Developer Guide.
+%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% Amazon Chime Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options0) ->
@@ -286,7 +298,8 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %% and attendee ID.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
@@ -313,7 +326,8 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 %% ID.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
@@ -339,7 +353,8 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK: https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% in the Amazon Chime Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -396,27 +411,30 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription
+%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% If you specify an invalid configuration, a `TranscriptFailed' event
 %% will be sent with the contents of the `BadRequestException' generated
 %% by Amazon Transcribe. For more information on each parameter and which
-%% combinations are valid, refer to the StartStreamTranscription API in the
-%% Amazon Transcribe Developer Guide.
+%% combinations are valid, refer to the StartStreamTranscription:
+%% https://docs.aws.amazon.com/transcribe/latest/APIReference/API_streaming_StartStreamTranscription.html
+%% API in the Amazon Transcribe Developer Guide.
 %%
 %% By default, Amazon Transcribe may use and store audio content processed by
 %% the service to develop and improve Amazon Web Services AI/ML services as
-%% further described in section 50 of the Amazon Web Services Service Terms.
-%% Using Amazon Transcribe may be subject to federal and state laws or
-%% regulations regarding the recording or interception of electronic
-%% communications. It is your and your end users’ responsibility to comply
-%% with all applicable laws regarding the recording, including properly
-%% notifying all participants in a recorded session or communication that the
-%% session or communication is being recorded, and obtaining all necessary
-%% consents. You can opt out from Amazon Web Services using audio content to
-%% develop and improve AWS AI/ML services by configuring an AI services opt
-%% out policy using Amazon Web Services Organizations.
+%% further described in section 50 of the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe may be
+%% subject to federal and state laws or regulations regarding the recording
+%% or interception of electronic communications. It is your and your end
+%% users’ responsibility to comply with all applicable laws regarding the
+%% recording, including properly notifying all participants in a recorded
+%% session or communication that the session or communication is being
+%% recorded, and obtaining all necessary consents. You can opt out from
+%% Amazon Web Services using audio content to develop and improve AWS AI/ML
+%% services by configuring an AI services opt out policy using Amazon Web
+%% Services Organizations.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
@@ -441,21 +459,23 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 
 %% @doc Stops transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription
+%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% By default, Amazon Transcribe may use and store audio content processed by
 %% the service to develop and improve Amazon Web Services AI/ML services as
-%% further described in section 50 of the Amazon Web Services Service Terms.
-%% Using Amazon Transcribe may be subject to federal and state laws or
-%% regulations regarding the recording or interception of electronic
-%% communications. It is your and your end users’ responsibility to comply
-%% with all applicable laws regarding the recording, including properly
-%% notifying all participants in a recorded session or communication that the
-%% session or communication is being recorded, and obtaining all necessary
-%% consents. You can opt out from Amazon Web Services using audio content to
-%% develop and improve Amazon Web Services AI/ML services by configuring an
-%% AI services opt out policy using Amazon Web Services Organizations.
+%% further described in section 50 of the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/. Using Amazon Transcribe may be
+%% subject to federal and state laws or regulations regarding the recording
+%% or interception of electronic communications. It is your and your end
+%% users’ responsibility to comply with all applicable laws regarding the
+%% recording, including properly notifying all participants in a recorded
+%% session or communication that the session or communication is being
+%% recorded, and obtaining all necessary consents. You can opt out from
+%% Amazon Web Services using audio content to develop and improve Amazon Web
+%% Services AI/ML services by configuring an AI services opt out policy using
+%% Amazon Web Services Organizations.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->

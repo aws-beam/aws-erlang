@@ -7,7 +7,8 @@
 %% limited-privilege credentials for users.
 %%
 %% This guide provides descriptions of the STS API. For more information
-%% about using this service, see Temporary Security Credentials.
+%% about using this service, see Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html.
 -module(aws_sts).
 
 -export([assume_role/2,
@@ -40,8 +41,11 @@
 %% key, and a security token. Typically, you use `AssumeRole' within your
 %% account or for cross-account access. For a comparison of `AssumeRole'
 %% with other API operations that produce temporary credentials, see
-%% Requesting Temporary Security Credentials and Comparing the Amazon Web
-%% Services STS API operations in the IAM User Guide.
+%% Requesting Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Comparing the Amazon Web Services STS API operations:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% in the IAM User Guide.
 %%
 %% Permissions
 %%
@@ -50,9 +54,10 @@
 %% exception: You cannot call the Amazon Web Services STS
 %% `GetFederationToken' or `GetSessionToken' API operations.
 %%
-%% (Optional) You can pass inline or managed session policies to this
-%% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policy Amazon
+%% (Optional) You can pass inline or managed session policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% to this operation. You can pass a single JSON policy document to use as an
+%% inline session policy. You can also specify up to 10 managed policy Amazon
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
@@ -62,7 +67,9 @@
 %% API calls to access resources in the account that owns the role. You
 %% cannot use session policies to grant more permissions than those allowed
 %% by the identity-based policy of the role that is being assumed. For more
-%% information, see Session Policies in the IAM User Guide.
+%% information, see Session Policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% in the IAM User Guide.
 %%
 %% When you create a role, you create two policies: a role trust policy that
 %% specifies who can assume the role, and a permissions policy that specifies
@@ -94,21 +101,28 @@
 %% IAM resource-based policy. When a resource-based policy grants access to a
 %% principal in the same account, no additional identity-based policy is
 %% required. For more information about trust policies and resource-based
-%% policies, see IAM Policies in the IAM User Guide.
+%% policies, see IAM Policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html in
+%% the IAM User Guide.
 %%
 %% Tags
 %%
 %% (Optional) You can pass tag key-value pairs to your session. These tags
 %% are called session tags. For more information about session tags, see
-%% Passing Session Tags in STS in the IAM User Guide.
+%% Passing Session Tags in STS:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html in
+%% the IAM User Guide.
 %%
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
 %% to pass only specific session tags. For more information, see Tutorial:
-%% Using Tags for Attribute-Based Access Control in the IAM User Guide.
+%% Using Tags for Attribute-Based Access Control:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html
+%% in the IAM User Guide.
 %%
 %% You can set the session tags as transitive. Transitive tags persist during
-%% role chaining. For more information, see Chaining Roles with Session Tags
+%% role chaining. For more information, see Chaining Roles with Session Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining
 %% in the IAM User Guide.
 %%
 %% Using MFA with AssumeRole
@@ -125,8 +139,9 @@
 %% `&quot;Condition&quot;: {&quot;Bool&quot;:
 %% {&quot;aws:MultiFactorAuthPresent&quot;: true}}'
 %%
-%% For more information, see Configuring MFA-Protected API Access in the IAM
-%% User Guide guide.
+%% For more information, see Configuring MFA-Protected API Access:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/MFAProtectedAPI.html in
+%% the IAM User Guide guide.
 %%
 %% To use MFA with `AssumeRole', you pass values for the
 %% `SerialNumber' and `TokenCode' parameters. The `SerialNumber'
@@ -147,9 +162,11 @@ assume_role(Client, Input, Options)
 %% or directory to role-based Amazon Web Services access without
 %% user-specific credentials or configuration. For a comparison of
 %% `AssumeRoleWithSAML' with the other API operations that produce
-%% temporary credentials, see Requesting Temporary Security Credentials and
-%% Comparing the Amazon Web Services STS API operations in the IAM User
-%% Guide.
+%% temporary credentials, see Requesting Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Comparing the Amazon Web Services STS API operations:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this operation consist of
 %% an access key ID, a secret access key, and a security token. Applications
@@ -167,16 +184,20 @@ assume_role(Client, Input, Options)
 %% `DurationSeconds' value from 900 seconds (15 minutes) up to the
 %% maximum session duration setting for the role. This setting can have a
 %% value from 1 hour to 12 hours. To learn how to view the maximum value for
-%% your role, see View the Maximum Session Duration Setting for a Role in the
-%% IAM User Guide. The maximum session duration limit applies when you use
-%% the `AssumeRole*' API operations or the `assume-role*' CLI
+%% your role, see View the Maximum Session Duration Setting for a Role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session
+%% in the IAM User Guide. The maximum session duration limit applies when you
+%% use the `AssumeRole*' API operations or the `assume-role*' CLI
 %% commands. However the limit does not apply when you use those operations
-%% to create a console URL. For more information, see Using IAM Roles in the
+%% to create a console URL. For more information, see Using IAM Roles:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html in the
 %% IAM User Guide.
 %%
-%% Role chaining limits your CLI or Amazon Web Services API role session to a
-%% maximum of one hour. When you use the `AssumeRole' API operation to
-%% assume a role, you can specify the duration of your role session with the
+%% Role chaining:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining
+%% limits your CLI or Amazon Web Services API role session to a maximum of
+%% one hour. When you use the `AssumeRole' API operation to assume a
+%% role, you can specify the duration of your role session with the
 %% `DurationSeconds' parameter. You can specify a parameter value of up
 %% to 43200 seconds (12 hours), depending on the maximum session duration
 %% setting for your role. However, if you assume a role using role chaining
@@ -190,9 +211,10 @@ assume_role(Client, Input, Options)
 %% following exception: you cannot call the STS `GetFederationToken' or
 %% `GetSessionToken' API operations.
 %%
-%% (Optional) You can pass inline or managed session policies to this
-%% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policy Amazon
+%% (Optional) You can pass inline or managed session policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% to this operation. You can pass a single JSON policy document to use as an
+%% inline session policy. You can also specify up to 10 managed policy Amazon
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
@@ -202,7 +224,9 @@ assume_role(Client, Input, Options)
 %% API calls to access resources in the account that owns the role. You
 %% cannot use session policies to grant more permissions than those allowed
 %% by the identity-based policy of the role that is being assumed. For more
-%% information, see Session Policies in the IAM User Guide.
+%% information, see Session Policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% in the IAM User Guide.
 %%
 %% Calling `AssumeRoleWithSAML' does not require the use of Amazon Web
 %% Services security credentials. The identity of the caller is validated by
@@ -221,12 +245,15 @@ assume_role(Client, Input, Options)
 %% (Optional) You can configure your IdP to pass attributes into your SAML
 %% assertion as session tags. Each session tag consists of a key name and an
 %% associated value. For more information about session tags, see Passing
-%% Session Tags in STS in the IAM User Guide.
+%% Session Tags in STS:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html in
+%% the IAM User Guide.
 %%
 %% You can pass up to 50 session tags. The plaintext session tag keys can’t
 %% exceed 128 characters and the values can’t exceed 256 characters. For
-%% these and additional limits, see IAM and STS Character Limits in the IAM
-%% User Guide.
+%% these and additional limits, see IAM and STS Character Limits:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length
+%% in the IAM User Guide.
 %%
 %% An Amazon Web Services conversion compresses the passed inline session
 %% policy, managed policy ARNs, and session tags into a packed binary format
@@ -242,10 +269,13 @@ assume_role(Client, Input, Options)
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
 %% to pass only specific session tags. For more information, see Tutorial:
-%% Using Tags for Attribute-Based Access Control in the IAM User Guide.
+%% Using Tags for Attribute-Based Access Control:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html
+%% in the IAM User Guide.
 %%
 %% You can set the session tags as transitive. Transitive tags persist during
-%% role chaining. For more information, see Chaining Roles with Session Tags
+%% role chaining. For more information, see Chaining Roles with Session Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining
 %% in the IAM User Guide.
 %%
 %% SAML Configuration
@@ -259,13 +289,21 @@ assume_role(Client, Input, Options)
 %%
 %% For more information, see the following resources:
 %%
-%% <ul> <li> About SAML 2.0-based Federation in the IAM User Guide.
+%% <ul> <li> About SAML 2.0-based Federation:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
+%% in the IAM User Guide.
 %%
-%% </li> <li> Creating SAML Identity Providers in the IAM User Guide.
+%% </li> <li> Creating SAML Identity Providers:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml.html
+%% in the IAM User Guide.
 %%
-%% </li> <li> Configuring a Relying Party and Claims in the IAM User Guide.
+%% </li> <li> Configuring a Relying Party and Claims:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html
+%% in the IAM User Guide.
 %%
-%% </li> <li> Creating a Role for SAML 2.0 Federation in the IAM User Guide.
+%% </li> <li> Creating a Role for SAML 2.0 Federation:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+%% in the IAM User Guide.
 %%
 %% </li> </ul>
 assume_role_with_saml(Client, Input)
@@ -281,16 +319,19 @@ assume_role_with_saml(Client, Input, Options)
 %%
 %% Example providers include the OAuth 2.0 providers Login with Amazon and
 %% Facebook, or any OpenID Connect-compatible identity provider such as
-%% Google or Amazon Cognito federated identities.
+%% Google or Amazon Cognito federated identities:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html.
 %%
 %% For mobile applications, we recommend that you use Amazon Cognito. You can
 %% use Amazon Cognito with the Amazon Web Services SDK for iOS Developer
-%% Guide and the Amazon Web Services SDK for Android Developer Guide to
+%% Guide: http://aws.amazon.com/sdkforios/ and the Amazon Web Services SDK
+%% for Android Developer Guide: http://aws.amazon.com/sdkforandroid/ to
 %% uniquely identify a user. You can also supply the user with a consistent
 %% identity throughout the lifetime of an application.
 %%
-%% To learn more about Amazon Cognito, see Amazon Cognito identity pools in
-%% Amazon Cognito Developer Guide.
+%% To learn more about Amazon Cognito, see Amazon Cognito identity pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html
+%% in Amazon Cognito Developer Guide.
 %%
 %% Calling `AssumeRoleWithWebIdentity' does not require the use of Amazon
 %% Web Services security credentials. Therefore, you can distribute an
@@ -301,9 +342,11 @@ assume_role_with_saml(Client, Input, Options)
 %% credentials. Instead, the identity of the caller is validated by using a
 %% token from the web identity provider. For a comparison of
 %% `AssumeRoleWithWebIdentity' with the other API operations that produce
-%% temporary credentials, see Requesting Temporary Security Credentials and
-%% Comparing the Amazon Web Services STS API operations in the IAM User
-%% Guide.
+%% temporary credentials, see Requesting Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Comparing the Amazon Web Services STS API operations:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this API consist of an
 %% access key ID, a secret access key, and a security token. Applications can
@@ -318,11 +361,13 @@ assume_role_with_saml(Client, Input, Options)
 %% your session. You can provide a value from 900 seconds (15 minutes) up to
 %% the maximum session duration setting for the role. This setting can have a
 %% value from 1 hour to 12 hours. To learn how to view the maximum value for
-%% your role, see View the Maximum Session Duration Setting for a Role in the
-%% IAM User Guide. The maximum session duration limit applies when you use
-%% the `AssumeRole*' API operations or the `assume-role*' CLI
+%% your role, see View the Maximum Session Duration Setting for a Role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session
+%% in the IAM User Guide. The maximum session duration limit applies when you
+%% use the `AssumeRole*' API operations or the `assume-role*' CLI
 %% commands. However the limit does not apply when you use those operations
-%% to create a console URL. For more information, see Using IAM Roles in the
+%% to create a console URL. For more information, see Using IAM Roles:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html in the
 %% IAM User Guide.
 %%
 %% Permissions
@@ -332,9 +377,10 @@ assume_role_with_saml(Client, Input, Options)
 %% Amazon Web Services service with the following exception: you cannot call
 %% the STS `GetFederationToken' or `GetSessionToken' API operations.
 %%
-%% (Optional) You can pass inline or managed session policies to this
-%% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policy Amazon
+%% (Optional) You can pass inline or managed session policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% to this operation. You can pass a single JSON policy document to use as an
+%% inline session policy. You can also specify up to 10 managed policy Amazon
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
@@ -344,19 +390,24 @@ assume_role_with_saml(Client, Input, Options)
 %% API calls to access resources in the account that owns the role. You
 %% cannot use session policies to grant more permissions than those allowed
 %% by the identity-based policy of the role that is being assumed. For more
-%% information, see Session Policies in the IAM User Guide.
+%% information, see Session Policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% in the IAM User Guide.
 %%
 %% Tags
 %%
 %% (Optional) You can configure your IdP to pass attributes into your web
 %% identity token as session tags. Each session tag consists of a key name
 %% and an associated value. For more information about session tags, see
-%% Passing Session Tags in STS in the IAM User Guide.
+%% Passing Session Tags in STS:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html in
+%% the IAM User Guide.
 %%
 %% You can pass up to 50 session tags. The plaintext session tag keys can’t
 %% exceed 128 characters and the values can’t exceed 256 characters. For
-%% these and additional limits, see IAM and STS Character Limits in the IAM
-%% User Guide.
+%% these and additional limits, see IAM and STS Character Limits:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length
+%% in the IAM User Guide.
 %%
 %% An Amazon Web Services conversion compresses the passed inline session
 %% policy, managed policy ARNs, and session tags into a packed binary format
@@ -372,10 +423,13 @@ assume_role_with_saml(Client, Input, Options)
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
 %% to pass only specific session tags. For more information, see Tutorial:
-%% Using Tags for Attribute-Based Access Control in the IAM User Guide.
+%% Using Tags for Attribute-Based Access Control:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html
+%% in the IAM User Guide.
 %%
 %% You can set the session tags as transitive. Transitive tags persist during
-%% role chaining. For more information, see Chaining Roles with Session Tags
+%% role chaining. For more information, see Chaining Roles with Session Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining
 %% in the IAM User Guide.
 %%
 %% Identities
@@ -388,32 +442,39 @@ assume_role_with_saml(Client, Input, Options)
 %% the role's trust policy.
 %%
 %% Calling `AssumeRoleWithWebIdentity' can result in an entry in your
-%% CloudTrail logs. The entry includes the Subject of the provided web
-%% identity token. We recommend that you avoid using any personally
-%% identifiable information (PII) in this field. For example, you could
-%% instead use a GUID or a pairwise identifier, as suggested in the OIDC
-%% specification.
+%% CloudTrail logs. The entry includes the Subject:
+%% http://openid.net/specs/openid-connect-core-1_0.html#Claims of the
+%% provided web identity token. We recommend that you avoid using any
+%% personally identifiable information (PII) in this field. For example, you
+%% could instead use a GUID or a pairwise identifier, as suggested in the
+%% OIDC specification:
+%% http://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes.
 %%
 %% For more information about how to use web identity federation and the
 %% `AssumeRoleWithWebIdentity' API, see the following resources:
 %%
-%% <ul> <li> Using Web Identity Federation API Operations for Mobile Apps and
-%% Federation Through a Web-based Identity Provider.
+%% <ul> <li> Using Web Identity Federation API Operations for Mobile Apps:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html
+%% and Federation Through a Web-based Identity Provider:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity.
 %%
-%% </li> <li> Web Identity Federation Playground. Walk through the process of
-%% authenticating through Login with Amazon, Facebook, or Google, getting
-%% temporary security credentials, and then using those credentials to make a
-%% request to Amazon Web Services.
+%% </li> <li> Web Identity Federation Playground:
+%% https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/.
+%% Walk through the process of authenticating through Login with Amazon,
+%% Facebook, or Google, getting temporary security credentials, and then
+%% using those credentials to make a request to Amazon Web Services.
 %%
-%% </li> <li> Amazon Web Services SDK for iOS Developer Guide and Amazon Web
-%% Services SDK for Android Developer Guide. These toolkits contain sample
-%% apps that show how to invoke the identity providers. The toolkits then
-%% show how to use the information from these providers to get and use
-%% temporary security credentials.
+%% </li> <li> Amazon Web Services SDK for iOS Developer Guide:
+%% http://aws.amazon.com/sdkforios/ and Amazon Web Services SDK for Android
+%% Developer Guide: http://aws.amazon.com/sdkforandroid/. These toolkits
+%% contain sample apps that show how to invoke the identity providers. The
+%% toolkits then show how to use the information from these providers to get
+%% and use temporary security credentials.
 %%
-%% </li> <li> Web Identity Federation with Mobile Applications. This article
-%% discusses web identity federation and shows an example of how to use web
-%% identity federation to get access to content in Amazon S3.
+%% </li> <li> Web Identity Federation with Mobile Applications:
+%% http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications.
+%% This article discusses web identity federation and shows an example of how
+%% to use web identity federation to get access to content in Amazon S3.
 %%
 %% </li> </ul>
 assume_role_with_web_identity(Client, Input)
@@ -441,15 +502,18 @@ assume_role_with_web_identity(Client, Input, Options)
 %% The message is encoded because the details of the authorization status can
 %% contain privileged information that the user who requested the operation
 %% should not see. To decode an authorization status message, a user must be
-%% granted permissions through an IAM policy to request the
-%% `DecodeAuthorizationMessage' (`sts:DecodeAuthorizationMessage')
-%% action.
+%% granted permissions through an IAM policy:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html to
+%% request the `DecodeAuthorizationMessage'
+%% (`sts:DecodeAuthorizationMessage') action.
 %%
 %% The decoded message includes the following type of information:
 %%
 %% <ul> <li> Whether the request was denied due to an explicit deny or due to
 %% the absence of an explicit allow. For more information, see Determining
-%% Whether a Request is Allowed or Denied in the IAM User Guide.
+%% Whether a Request is Allowed or Denied:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow
+%% in the IAM User Guide.
 %%
 %% </li> <li> The principal who made the request.
 %%
@@ -473,8 +537,9 @@ decode_authorization_message(Client, Input, Options)
 %% Access keys consist of two parts: an access key ID (for example,
 %% `AKIAIOSFODNN7EXAMPLE') and a secret access key (for example,
 %% `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'). For more information
-%% about access keys, see Managing Access Keys for IAM Users in the IAM User
-%% Guide.
+%% about access keys, see Managing Access Keys for IAM Users:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+%% in the IAM User Guide.
 %%
 %% When you pass an access key ID to this operation, it returns the ID of the
 %% Amazon Web Services account to which the keys belong. Access key IDs
@@ -483,9 +548,13 @@ decode_authorization_message(Client, Input, Options)
 %% `ASIA' are temporary credentials that are created using STS
 %% operations. If the account in the response belongs to you, you can sign in
 %% as the root user and review your root user access keys. Then, you can pull
-%% a credentials report to learn which IAM user owns the keys. To learn who
-%% requested the temporary credentials for an `ASIA' access key, view the
-%% STS events in your CloudTrail logs in the IAM User Guide.
+%% a credentials report:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html
+%% to learn which IAM user owns the keys. To learn who requested the
+%% temporary credentials for an `ASIA' access key, view the STS events in
+%% your CloudTrail logs:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html
+%% in the IAM User Guide.
 %%
 %% This operation does not indicate the state of the access key. The key
 %% might be active, inactive, or deleted. Active keys might not have
@@ -506,7 +575,9 @@ get_access_key_info(Client, Input, Options)
 %% `sts:GetCallerIdentity' action, you can still perform this operation.
 %% Permissions are not required because the same information is returned when
 %% access is denied. To view an example response, see I Am Not Authorized to
-%% Perform: iam:DeleteVirtualMFADevice in the IAM User Guide.
+%% Perform: iam:DeleteVirtualMFADevice:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa
+%% in the IAM User Guide.
 get_caller_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_caller_identity(Client, Input, []).
@@ -526,22 +597,28 @@ get_caller_identity(Client, Input, Options)
 %% in contexts where those credentials can be safeguarded, usually in a
 %% server-based application. For a comparison of `GetFederationToken'
 %% with the other API operations that produce temporary credentials, see
-%% Requesting Temporary Security Credentials and Comparing the Amazon Web
-%% Services STS API operations in the IAM User Guide.
+%% Requesting Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Comparing the Amazon Web Services STS API operations:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% in the IAM User Guide.
 %%
 %% Although it is possible to call `GetFederationToken' using the
 %% security credentials of an Amazon Web Services account root user rather
 %% than an IAM user that you create for the purpose of a proxy application,
 %% we do not recommend it. For more information, see Safeguard your root user
-%% credentials and don't use them for everyday tasks in the IAM User
-%% Guide.
+%% credentials and don't use them for everyday tasks:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#lock-away-credentials
+%% in the IAM User Guide.
 %%
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
 %% Google, or an OpenID Connect-compatible identity provider. In this case,
-%% we recommend that you use Amazon Cognito or
-%% `AssumeRoleWithWebIdentity'. For more information, see Federation
-%% Through a Web-based Identity Provider in the IAM User Guide.
+%% we recommend that you use Amazon Cognito: http://aws.amazon.com/cognito/
+%% or `AssumeRoleWithWebIdentity'. For more information, see Federation
+%% Through a Web-based Identity Provider:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity
+%% in the IAM User Guide.
 %%
 %% Session duration
 %%
@@ -565,11 +642,13 @@ get_caller_identity(Client, Input, Options)
 %% </li> </ul> You can use temporary credentials for single sign-on (SSO) to
 %% the console.
 %%
-%% You must pass an inline or managed session policy to this operation. You
-%% can pass a single JSON policy document to use as an inline session policy.
-%% You can also specify up to 10 managed policy Amazon Resource Names (ARNs)
-%% to use as managed session policies. The plaintext that you use for both
-%% inline and managed session policies can't exceed 2,048 characters.
+%% You must pass an inline or managed session policy:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% to this operation. You can pass a single JSON policy document to use as an
+%% inline session policy. You can also specify up to 10 managed policy Amazon
+%% Resource Names (ARNs) to use as managed session policies. The plaintext
+%% that you use for both inline and managed session policies can't exceed
+%% 2,048 characters.
 %%
 %% Though the session policy parameters are optional, if you do not pass a
 %% policy, then the resulting federated user session has no permissions. When
@@ -578,9 +657,12 @@ get_caller_identity(Client, Input, Options)
 %% you a way to further restrict the permissions for a federated user. You
 %% cannot use session policies to grant more permissions than those that are
 %% defined in the permissions policy of the IAM user. For more information,
-%% see Session Policies in the IAM User Guide. For information about using
+%% see Session Policies:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session
+%% in the IAM User Guide. For information about using
 %% `GetFederationToken' to create temporary security credentials, see
-%% GetFederationToken—Federation Through a Custom Identity Broker.
+%% GetFederationToken—Federation Through a Custom Identity Broker:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken.
 %%
 %% You can use the credentials to access a resource that has a resource-based
 %% policy. If that policy specifically references the federated user session
@@ -592,19 +674,25 @@ get_caller_identity(Client, Input, Options)
 %%
 %% (Optional) You can pass tag key-value pairs to your session. These are
 %% called session tags. For more information about session tags, see Passing
-%% Session Tags in STS in the IAM User Guide.
+%% Session Tags in STS:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html in
+%% the IAM User Guide.
 %%
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
 %% Google, or an OpenID Connect-compatible identity provider. In this case,
-%% we recommend that you use Amazon Cognito or
-%% `AssumeRoleWithWebIdentity'. For more information, see Federation
-%% Through a Web-based Identity Provider in the IAM User Guide.
+%% we recommend that you use Amazon Cognito: http://aws.amazon.com/cognito/
+%% or `AssumeRoleWithWebIdentity'. For more information, see Federation
+%% Through a Web-based Identity Provider:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity
+%% in the IAM User Guide.
 %%
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
 %% to pass only specific session tags. For more information, see Tutorial:
-%% Using Tags for Attribute-Based Access Control in the IAM User Guide.
+%% Using Tags for Attribute-Based Access Control:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html
+%% in the IAM User Guide.
 %%
 %% Tag key–value pairs are not case sensitive, but case is preserved. This
 %% means that you cannot have separate `Department' and `department'
@@ -635,14 +723,18 @@ get_federation_token(Client, Input, Options)
 %% incorrect MFA code causes the API to return an access denied error. For a
 %% comparison of `GetSessionToken' with the other API operations that
 %% produce temporary credentials, see Requesting Temporary Security
-%% Credentials and Comparing the Amazon Web Services STS API operations in
-%% the IAM User Guide.
+%% Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Comparing the Amazon Web Services STS API operations:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison
+%% in the IAM User Guide.
 %%
 %% No permissions are required for users to perform this operation. The
 %% purpose of the `sts:GetSessionToken' operation is to authenticate the
 %% user using MFA. You cannot use policies to control authentication
-%% operations. For more information, see Permissions for GetSessionToken in
-%% the IAM User Guide.
+%% operations. For more information, see Permissions for GetSessionToken:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getsessiontoken.html
+%% in the IAM User Guide.
 %%
 %% Session Duration
 %%
@@ -676,11 +768,14 @@ get_federation_token(Client, Input, Options)
 %% user, we do not recommend it. If `GetSessionToken' is called using
 %% root user credentials, the temporary credentials have root user
 %% permissions. For more information, see Safeguard your root user
-%% credentials and don't use them for everyday tasks in the IAM User
-%% Guide
+%% credentials and don't use them for everyday tasks:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#lock-away-credentials
+%% in the IAM User Guide
 %%
 %% For more information about using `GetSessionToken' to create temporary
-%% credentials, see Temporary Credentials for Users in Untrusted Environments
+%% credentials, see Temporary Credentials for Users in Untrusted
+%% Environments:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken
 %% in the IAM User Guide.
 get_session_token(Client, Input)
   when is_map(Client), is_map(Input) ->

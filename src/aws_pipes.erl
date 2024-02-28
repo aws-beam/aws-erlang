@@ -69,8 +69,9 @@ create_pipe(Client, Name, Input0, Options0) ->
 
 %% @doc Delete an existing pipe.
 %%
-%% For more information about pipes, see Amazon EventBridge Pipes in the
-%% Amazon EventBridge User Guide.
+%% For more information about pipes, see Amazon EventBridge Pipes:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
+%% the Amazon EventBridge User Guide.
 delete_pipe(Client, Name, Input) ->
     delete_pipe(Client, Name, Input, []).
 delete_pipe(Client, Name, Input0, Options0) ->
@@ -95,8 +96,9 @@ delete_pipe(Client, Name, Input0, Options0) ->
 
 %% @doc Get the information about an existing pipe.
 %%
-%% For more information about pipes, see Amazon EventBridge Pipes in the
-%% Amazon EventBridge User Guide.
+%% For more information about pipes, see Amazon EventBridge Pipes:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
+%% the Amazon EventBridge User Guide.
 describe_pipe(Client, Name)
   when is_map(Client) ->
     describe_pipe(Client, Name, #{}, #{}).
@@ -121,8 +123,9 @@ describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Get the pipes associated with this account.
 %%
-%% For more information about pipes, see Amazon EventBridge Pipes in the
-%% Amazon EventBridge User Guide.
+%% For more information about pipes, see Amazon EventBridge Pipes:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
+%% the Amazon EventBridge User Guide.
 list_pipes(Client)
   when is_map(Client) ->
     list_pipes(Client, #{}, #{}).
@@ -300,8 +303,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% objects, EventBridge sets that field to its system-default value during
 %% the update.
 %%
-%% For more information about pipes, see Amazon EventBridge Pipes in the
-%% Amazon EventBridge User Guide.
+%% For more information about pipes, see Amazon EventBridge Pipes:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
+%% the Amazon EventBridge User Guide.
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
 update_pipe(Client, Name, Input0, Options0) ->

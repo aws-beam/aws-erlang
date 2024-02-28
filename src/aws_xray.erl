@@ -124,12 +124,16 @@ create_group(Client, Input0, Options0) ->
 %% @doc Creates a rule to control sampling behavior for instrumented
 %% applications.
 %%
-%% Services retrieve rules with GetSamplingRules, and evaluate each rule in
-%% ascending order of priority for each request. If a rule matches, the
-%% service records a trace, borrowing it from the reservoir size. After 10
-%% seconds, the service reports back to X-Ray with GetSamplingTargets to get
-%% updated versions of each in-use rule. The updated rule contains a trace
-%% quota that the service can use instead of borrowing from the reservoir.
+%% Services retrieve rules with GetSamplingRules:
+%% https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingRules.html, and
+%% evaluate each rule in ascending order of priority for each request. If a
+%% rule matches, the service records a trace, borrowing it from the reservoir
+%% size. After 10 seconds, the service reports back to X-Ray with
+%% GetSamplingTargets:
+%% https://docs.aws.amazon.com/xray/latest/api/API_GetSamplingTargets.html to
+%% get updated versions of each in-use rule. The updated rule contains a
+%% trace quota that the service can use instead of borrowing from the
+%% reservoir.
 create_sampling_rule(Client, Input) ->
     create_sampling_rule(Client, Input, []).
 create_sampling_rule(Client, Input0, Options0) ->
@@ -472,8 +476,9 @@ get_sampling_targets(Client, Input0, Options0) ->
 %%
 %% Root services process incoming requests and make calls to downstream
 %% services. Root services are applications that use the Amazon Web Services
-%% X-Ray SDK. Downstream services can be other applications, Amazon Web
-%% Services resources, HTTP web APIs, or SQL databases.
+%% X-Ray SDK: https://docs.aws.amazon.com/xray/index.html. Downstream
+%% services can be other applications, Amazon Web Services resources, HTTP
+%% web APIs, or SQL databases.
 get_service_graph(Client, Input) ->
     get_service_graph(Client, Input, []).
 get_service_graph(Client, Input0, Options0) ->
@@ -561,8 +566,9 @@ get_trace_graph(Client, Input0, Options0) ->
 %% `annotation.account = &quot;12345&quot;'
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
-%% expressions, see Using Filter Expressions in the Amazon Web Services X-Ray
-%% Developer Guide.
+%% expressions, see Using Filter Expressions:
+%% https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html
+%% in the Amazon Web Services X-Ray Developer Guide.
 get_trace_summaries(Client, Input) ->
     get_trace_summaries(Client, Input, []).
 get_trace_summaries(Client, Input0, Options0) ->
@@ -710,13 +716,15 @@ put_telemetry_records(Client, Input0, Options0) ->
 
 %% @doc Uploads segment documents to Amazon Web Services X-Ray.
 %%
-%% The X-Ray SDK generates segment documents and sends them to the X-Ray
-%% daemon, which uploads them in batches. A segment document can be a
-%% completed segment, an in-progress segment, or an array of subsegments.
+%% The X-Ray SDK: https://docs.aws.amazon.com/xray/index.html generates
+%% segment documents and sends them to the X-Ray daemon, which uploads them
+%% in batches. A segment document can be a completed segment, an in-progress
+%% segment, or an array of subsegments.
 %%
 %% Segments must include the following fields. For the full segment document
-%% schema, see Amazon Web Services X-Ray Segment Documents in the Amazon Web
-%% Services X-Ray Developer Guide.
+%% schema, see Amazon Web Services X-Ray Segment Documents:
+%% https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+%% in the Amazon Web Services X-Ray Developer Guide.
 %%
 %% == Required segment document fields ==
 %%

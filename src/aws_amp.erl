@@ -12,7 +12,9 @@
 %% the underlying infrastructure.
 %%
 %% For more information about Amazon Managed Service for Prometheus, see the
-%% Amazon Managed Service for Prometheus User Guide.
+%% Amazon Managed Service for Prometheus:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html
+%% User Guide.
 %%
 %% Amazon Managed Service for Prometheus includes two APIs.
 %%
@@ -20,8 +22,9 @@
 %% manage Amazon Managed Service for Prometheus resources, such as
 %% workspaces, rule groups, and alert managers.
 %%
-%% </li> <li> Use the Prometheus-compatible API to work within your
-%% Prometheus workspace.
+%% </li> <li> Use the Prometheus-compatible API:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis
+%% to work within your Prometheus workspace.
 %%
 %% </li> </ul>
 -module(aws_amp).
@@ -190,8 +193,9 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %%
 %% If needed, an IAM role will be created for you that gives Amazon Managed
 %% Service for Prometheus access to the metrics in your cluster. For more
-%% information, see Using roles for scraping metrics from EKS in the Amazon
-%% Managed Service for Prometheus User Guide.
+%% information, see Using roles for scraping metrics from EKS:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/using-service-linked-roles.html#using-service-linked-roles-prom-scraper
+%% in the Amazon Managed Service for Prometheus User Guide.
 %%
 %% You cannot update a scraper. If you want to change the configuration of
 %% the scraper, create a new scraper and delete the old one.
@@ -201,8 +205,9 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %%
 %% For more information about collectors, including what metrics are
 %% collected, and how to configure the scraper, see Amazon Web Services
-%% managed collectors in the Amazon Managed Service for Prometheus User
-%% Guide.
+%% managed collectors:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html
+%% in the Amazon Managed Service for Prometheus User Guide.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
 create_scraper(Client, Input0, Options0) ->

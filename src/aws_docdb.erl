@@ -198,12 +198,16 @@ create_db_cluster(Client, Input, Options)
 %% DocumentDB, you cannot make modifications directly to the
 %% `default.docdb3.6' cluster parameter group. If your Amazon DocumentDB
 %% cluster is using the default cluster parameter group and you want to
-%% modify a value in it, you must first create a new parameter group or copy
-%% an existing parameter group, modify it, and then apply the modified
-%% parameter group to your cluster. For the new cluster parameter group and
-%% associated settings to take effect, you must then reboot the instances in
-%% the cluster without failover. For more information, see Modifying Amazon
-%% DocumentDB Cluster Parameter Groups.
+%% modify a value in it, you must first create a new parameter group:
+%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-create.html
+%% or copy an existing parameter group:
+%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-copy.html,
+%% modify it, and then apply the modified parameter group to your cluster.
+%% For the new cluster parameter group and associated settings to take
+%% effect, you must then reboot the instances in the cluster without
+%% failover. For more information, see Modifying Amazon DocumentDB Cluster
+%% Parameter Groups:
+%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-modify.html.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -771,7 +775,8 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %% `DBClusterIdentifier'.
 %%
 %% For more information, see Stopping and Starting an Amazon DocumentDB
-%% Cluster.
+%% Cluster:
+%% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
@@ -783,7 +788,8 @@ start_db_cluster(Client, Input, Options)
 %% `DBClusterIdentifier'.
 %%
 %% The cluster must be in the available state. For more information, see
-%% Stopping and Starting an Amazon DocumentDB Cluster.
+%% Stopping and Starting an Amazon DocumentDB Cluster:
+%% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
 stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).

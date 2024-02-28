@@ -4,23 +4,26 @@
 %% @doc Health
 %%
 %% The Health API provides access to the Health information that appears in
-%% the Health Dashboard.
+%% the Health Dashboard: https://health.aws.amazon.com/health/home.
 %%
 %% You can use the API operations to get information about events that might
 %% affect your Amazon Web Services and resources.
 %%
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% from Amazon Web Services Support to use the Health API. If you call the
-%% Health API from an Amazon Web Services account that doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, you receive a
-%% `SubscriptionRequiredException' error.
+%% from Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to
+%% use the Health API. If you call the Health API from an Amazon Web Services
+%% account that doesn't have a Business, Enterprise On-Ramp, or
+%% Enterprise Support plan, you receive a `SubscriptionRequiredException'
+%% error.
 %%
 %% For API access, you need an access key ID and a secret access key. Use
 %% temporary credentials instead of long-term access keys when possible.
 %% Temporary credentials include an access key ID, a secret access key, and a
 %% security token that indicates when the credentials expire. For more
 %% information, see Best practices for managing Amazon Web Services access
-%% keys in the Amazon Web Services General Reference.
+%% keys:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+%% in the Amazon Web Services General Reference.
 %%
 %% You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS) to
 %% call the Health API operations. Health supports a multi-Region application
@@ -28,10 +31,13 @@
 %% configuration. You can use the high availability endpoint example to
 %% determine which Amazon Web Services Region is active, so that you can get
 %% the latest information from the API. For more information, see Accessing
-%% the Health API in the Health User Guide.
+%% the Health API:
+%% https://docs.aws.amazon.com/health/latest/ug/health-api.html in the Health
+%% User Guide.
 %%
 %% For authentication of requests, Health uses the Signature Version 4
-%% Signing Process.
+%% Signing Process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 %%
 %% If your Amazon Web Services account is part of Organizations, you can use
 %% the Health organizational view feature. This feature provides a
@@ -40,13 +46,17 @@
 %% accounts in your organization that are affected by an operational event or
 %% get notified of security vulnerabilities. Use the organizational view API
 %% operations to enable this feature and return event information. For more
-%% information, see Aggregating Health events in the Health User Guide.
+%% information, see Aggregating Health events:
+%% https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html in the
+%% Health User Guide.
 %%
 %% When you use the Health API operations to return Health events, see the
 %% following recommendations:
 %%
-%% Use the eventScopeCode parameter to specify whether to return Health
-%% events that are public or account-specific.
+%% Use the eventScopeCode:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode
+%% parameter to specify whether to return Health events that are public or
+%% account-specific.
 %%
 %% Use pagination to view all events from the response. For example, if you
 %% call the `DescribeEventsForOrganization' operation to get all events
@@ -93,12 +103,14 @@
 %% that are affected by the provided event.
 %%
 %% For more information about the different types of Health events, see
-%% Event.
+%% Event:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html.
 %%
 %% Before you can call this operation, you must first enable Health to work
 %% with Organizations. To do this, call the
-%% EnableHealthServiceAccessForOrganization operation from your
-%% organization's management account.
+%% EnableHealthServiceAccessForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html
+%% operation from your organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
@@ -124,8 +136,9 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %%
 %% This operation supports resource-level permissions. You can use this
 %% operation to allow or deny access to specific Health events. For more
-%% information, see Resource- and action-based conditions in the Health User
-%% Guide.
+%% information, see Resource- and action-based conditions:
+%% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
+%% in the Health User Guide.
 describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities(Client, Input, []).
@@ -144,16 +157,18 @@ describe_affected_entities(Client, Input, Options)
 %%
 %% Before you can call this operation, you must first enable Health to work
 %% with Organizations. To do this, call the
-%% EnableHealthServiceAccessForOrganization operation from your
-%% organization's management account.
+%% EnableHealthServiceAccessForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html
+%% operation from your organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
 %%
 %% This operation doesn't support resource-level permissions. You
 %% can't use this operation to allow or deny access to specific Health
-%% events. For more information, see Resource- and action-based conditions in
-%% the Health User Guide.
+%% events. For more information, see Resource- and action-based conditions:
+%% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
+%% in the Health User Guide.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
@@ -197,18 +212,22 @@ describe_event_aggregates(Client, Input, Options)
 %% @doc Returns detailed information about one or more specified events.
 %%
 %% Information includes standard event data (Amazon Web Services Region,
-%% service, and so on, as returned by DescribeEvents), a detailed event
-%% description, and possible additional metadata that depends upon the nature
-%% of the event. Affected entities are not included. To retrieve the
-%% entities, use the DescribeAffectedEntities operation.
+%% service, and so on, as returned by DescribeEvents:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html),
+%% a detailed event description, and possible additional metadata that
+%% depends upon the nature of the event. Affected entities are not included.
+%% To retrieve the entities, use the DescribeAffectedEntities:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html
+%% operation.
 %%
 %% If a specified event can't be retrieved, an error message is returned
 %% for that event.
 %%
 %% This operation supports resource-level permissions. You can use this
 %% operation to allow or deny access to specific Health events. For more
-%% information, see Resource- and action-based conditions in the Health User
-%% Guide.
+%% information, see Resource- and action-based conditions:
+%% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
+%% in the Health User Guide.
 describe_event_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details(Client, Input, []).
@@ -223,12 +242,15 @@ describe_event_details(Client, Input, Options)
 %% Services Region and service), an event description, and (depending on the
 %% event) possible metadata. This operation doesn't return affected
 %% entities, such as the resources related to the event. To return affected
-%% entities, use the DescribeAffectedEntitiesForOrganization operation.
+%% entities, use the DescribeAffectedEntitiesForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html
+%% operation.
 %%
 %% Before you can call this operation, you must first enable Health to work
 %% with Organizations. To do this, call the
-%% EnableHealthServiceAccessForOrganization operation from your
-%% organization's management account.
+%% EnableHealthServiceAccessForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html
+%% operation from your organization's management account.
 %%
 %% When you call the `DescribeEventDetailsForOrganization' operation,
 %% specify the `organizationEventDetailFilters' object in the request.
@@ -245,12 +267,14 @@ describe_event_details(Client, Input, Options)
 %% returns an error message because the event is specific to an account in
 %% your organization.
 %%
-%% </li> </ul> For more information, see Event.
+%% </li> </ul> For more information, see Event:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html.
 %%
 %% This operation doesn't support resource-level permissions. You
 %% can't use this operation to allow or deny access to specific Health
-%% events. For more information, see Resource- and action-based conditions in
-%% the Health User Guide.
+%% events. For more information, see Resource- and action-based conditions:
+%% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
+%% in the Health User Guide.
 describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
@@ -262,7 +286,9 @@ describe_event_details_for_organization(Client, Input, Options)
 %%
 %% You can use this API operation to find information about the Health event,
 %% such as the category, Amazon Web Service, and event code. The metadata for
-%% each event appears in the EventType object.
+%% each event appears in the EventType:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html
+%% object.
 %%
 %% If you don't specify a filter criteria, the API operation returns all
 %% event types, in no particular order.
@@ -282,7 +308,11 @@ describe_event_types(Client, Input, Options)
 %% Events are returned in a summary form and do not include the detailed
 %% description, any additional metadata that depends on the event type, or
 %% any affected resources. To retrieve that information, use the
-%% DescribeEventDetails and DescribeAffectedEntities operations.
+%% DescribeEventDetails:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html
+%% and DescribeAffectedEntities:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html
+%% operations.
 %%
 %% If no filter criteria are specified, all events are returned. Results are
 %% sorted by `lastModifiedTime', starting with the most recent event.
@@ -294,7 +324,8 @@ describe_event_types(Client, Input, Options)
 %% (Amazon EC2) instance, Health might return events that aren't specific
 %% to that resource or service. To get events that are specific to a service,
 %% use the `services' parameter in the `filter' object. For more
-%% information, see Event.
+%% information, see Event:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
@@ -314,11 +345,14 @@ describe_events(Client, Input, Options)
 %% depends on the event type, or any affected resources. To retrieve that
 %% information, use the following operations:
 %%
-%% <ul> <li> DescribeAffectedAccountsForOrganization
+%% <ul> <li> DescribeAffectedAccountsForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html
 %%
-%% </li> <li> DescribeEventDetailsForOrganization
+%% </li> <li> DescribeEventDetailsForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html
 %%
-%% </li> <li> DescribeAffectedEntitiesForOrganization
+%% </li> <li> DescribeAffectedEntitiesForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html
 %%
 %% </li> </ul> If you don't specify a `filter', the
 %% `DescribeEventsForOrganizations' returns all events across your
@@ -326,12 +360,14 @@ describe_events(Client, Input, Options)
 %% the most recent event.
 %%
 %% For more information about the different types of Health events, see
-%% Event.
+%% Event:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html.
 %%
 %% Before you can call this operation, you must first enable Health to work
 %% with Organizations. To do this, call the
-%% EnableHealthServiceAccessForOrganization operation from your
-%% organization's management account.
+%% EnableHealthServiceAccessForOrganization:
+%% https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html
+%% operation from your organization's management account.
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
@@ -357,21 +393,25 @@ describe_health_service_status_for_organization(Client, Input, Options)
 %% @doc Disables Health from working with Organizations.
 %%
 %% To call this operation, you must sign in to the organization's
-%% management account. For more information, see Aggregating Health events in
-%% the Health User Guide.
+%% management account. For more information, see Aggregating Health events:
+%% https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html in the
+%% Health User Guide.
 %%
 %% This operation doesn't remove the service-linked role from the
 %% management account in your organization. You must use the IAM console,
 %% API, or Command Line Interface (CLI) to remove the service-linked role.
-%% For more information, see Deleting a Service-Linked Role in the IAM User
-%% Guide.
+%% For more information, see Deleting a Service-Linked Role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role
+%% in the IAM User Guide.
 %%
 %% You can also disable the organizational feature by using the Organizations
-%% DisableAWSServiceAccess API operation. After you call this operation,
-%% Health stops aggregating events for all other Amazon Web Services accounts
-%% in your organization. If you call the Health API operations for
-%% organizational view, Health returns an error. Health continues to
-%% aggregate health events for your Amazon Web Services account.
+%% DisableAWSServiceAccess:
+%% https://docs.aws.amazon.com/organizations/latest/APIReference/API_DisableAWSServiceAccess.html
+%% API operation. After you call this operation, Health stops aggregating
+%% events for all other Amazon Web Services accounts in your organization. If
+%% you call the Health API operations for organizational view, Health returns
+%% an error. Health continues to aggregate health events for your Amazon Web
+%% Services account.
 disable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_health_service_access_for_organization(Client, Input, []).
@@ -391,18 +431,22 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %% To call this operation, you must meet the following requirements:
 %%
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% from Amazon Web Services Support to use the Health API. If you call the
-%% Health API from an Amazon Web Services account that doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, you receive a
-%% `SubscriptionRequiredException' error.
+%% from Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to
+%% use the Health API. If you call the Health API from an Amazon Web Services
+%% account that doesn't have a Business, Enterprise On-Ramp, or
+%% Enterprise Support plan, you receive a `SubscriptionRequiredException'
+%% error.
 %%
 %% You must have permission to call this operation from the
 %% organization's management account. For example IAM policies, see
-%% Health identity-based policy examples.
+%% Health identity-based policy examples:
+%% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html.
 %%
 %% If you don't have the required support plan, you can instead use the
 %% Health console to enable the organizational view feature. For more
-%% information, see Aggregating Health events in the Health User Guide.
+%% information, see Aggregating Health events:
+%% https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html in the
+%% Health User Guide.
 enable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_health_service_access_for_organization(Client, Input, []).

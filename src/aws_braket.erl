@@ -6,7 +6,8 @@
 %%
 %% Additional Resources:
 %%
-%% <ul> <li> Amazon Braket Developer Guide
+%% <ul> <li> Amazon Braket Developer Guide:
+%% https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html
 %%
 %% </li> </ul>
 -module(aws_braket).

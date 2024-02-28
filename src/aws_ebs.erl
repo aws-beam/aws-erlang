@@ -25,10 +25,13 @@
 %% types, parameters, and errors of the EBS direct APIs. For more information
 %% about the elements that make up the EBS direct APIs, and examples of how
 %% to use them effectively, see Accessing the Contents of an Amazon EBS
-%% Snapshot in the Amazon Elastic Compute Cloud User Guide. For more
-%% information about the supported Amazon Web Services Regions, endpoints,
-%% and service quotas for the EBS direct APIs, see Amazon Elastic Block Store
-%% Endpoints and Quotas in the Amazon Web Services General Reference.
+%% Snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html
+%% in the Amazon Elastic Compute Cloud User Guide. For more information about
+%% the supported Amazon Web Services Regions, endpoints, and service quotas
+%% for the EBS direct APIs, see Amazon Elastic Block Store Endpoints and
+%% Quotas: https://docs.aws.amazon.com/general/latest/gr/ebs-service.html in
+%% the Amazon Web Services General Reference.
 -module(aws_ebs).
 
 -export([complete_snapshot/3,
@@ -62,8 +65,9 @@
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 complete_snapshot(Client, SnapshotId, Input0, Options0) ->
@@ -97,8 +101,9 @@ complete_snapshot(Client, SnapshotId, Input0, Options0) ->
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
@@ -149,8 +154,9 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
@@ -186,8 +192,9 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
@@ -226,8 +233,9 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
@@ -277,14 +285,16 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 %% The new snapshot enters the `pending' state after the request
 %% completes.
 %%
-%% After creating the snapshot, use PutSnapshotBlock to write blocks of data
-%% to the snapshot.
+%% After creating the snapshot, use PutSnapshotBlock:
+%% https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html
+%% to write blocks of data to the snapshot.
 %%
 %% You should always retry requests that receive server (`5xx') error
 %% responses, and `ThrottlingException' and
 %% `RequestThrottledException' client error responses. For more
-%% information see Error retries in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% information see Error retries:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 start_snapshot(Client, Input0, Options0) ->

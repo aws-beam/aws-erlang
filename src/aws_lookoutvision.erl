@@ -675,7 +675,9 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %% `Status' is `SUCCEEDED'.
 %%
 %% To deploy the component to the target device, use the component name and
-%% component version with the AWS IoT Greengrass CreateDeployment API.
+%% component version with the AWS IoT Greengrass CreateDeployment:
+%% https://docs.aws.amazon.com/greengrass/v2/APIReference/API_CreateDeployment.html
+%% API.
 %%
 %% This operation requires the following permissions:
 %%

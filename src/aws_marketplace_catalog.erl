@@ -266,8 +266,10 @@ list_entities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all tags that have been added to a resource (either an entity
-%% or change set).
+%% @doc Lists all tags that have been added to a resource (either an entity:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
+%% or change set:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options0) ->
@@ -327,15 +329,20 @@ put_resource_policy(Client, Input0, Options0) ->
 %% `ResourceInUseException' error.
 %%
 %% For example, you can't start the `ChangeSet' described in the
-%% example later in this topic because it contains two changes to run the
-%% same change type (`AddRevisions') against the same entity
-%% (`entity-id@1').
+%% example:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples
+%% later in this topic because it contains two changes to run the same change
+%% type (`AddRevisions') against the same entity (`entity-id@1').
 %%
 %% For more information about working with change sets, see Working with
-%% change sets. For information about change types for single-AMI products,
-%% see Working with single-AMI products. Also, for more information about
-%% change types available for container-based products, see Working with
-%% container products.
+%% change sets:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets.
+%% For information about change types for single-AMI products, see Working
+%% with single-AMI products:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#working-with-single-AMI-products.
+%% Also, for more information about change types available for
+%% container-based products, see Working with container products:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options0) ->
@@ -358,7 +365,10 @@ start_change_set(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tags a resource (either an entity or change set).
+%% @doc Tags a resource (either an entity:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
+%% or change set:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -381,8 +391,10 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a tag or list of tags from a resource (either an entity or
-%% change set).
+%% @doc Removes a tag or list of tags from a resource (either an entity:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
+%% or change set:
+%% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->

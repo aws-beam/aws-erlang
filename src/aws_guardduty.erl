@@ -25,7 +25,8 @@
 %% GuardDuty informs you about the status of your Amazon Web Services
 %% environment by producing security findings that you can view in the
 %% GuardDuty console or through Amazon EventBridge. For more information, see
-%% the Amazon GuardDuty User Guide .
+%% the Amazon GuardDuty User Guide:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html .
 -module(aws_guardduty).
 
 -export([accept_administrator_invitation/3,
@@ -277,7 +278,8 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 create_detector(Client, Input0, Options0) ->
@@ -303,7 +305,8 @@ create_detector(Client, Input0, Options0) ->
 %% @doc Creates a filter using the specified finding criteria.
 %%
 %% The maximum number of saved filters per Amazon Web Services account per
-%% Region is 100. For more information, see Quotas for GuardDuty.
+%% Region is 100. For more information, see Quotas for GuardDuty:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 create_filter(Client, DetectorId, Input0, Options0) ->
@@ -371,18 +374,23 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% GuardDuty applies your organization's auto-enable settings to the
 %% member accounts in this request, irrespective of the accounts being new or
 %% existing members. For more information about the existing auto-enable
-%% settings for your organization, see DescribeOrganizationConfiguration.
+%% settings for your organization, see DescribeOrganizationConfiguration:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html.
 %%
-%% If you are adding accounts by invitation, before using InviteMembers, use
-%% `CreateMembers' after GuardDuty has been enabled in potential member
-%% accounts.
+%% If you are adding accounts by invitation, before using InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html,
+%% use `CreateMembers' after GuardDuty has been enabled in potential
+%% member accounts.
 %%
 %% If you disassociate a member from a GuardDuty delegated administrator, the
 %% member account details obtained from this API, including the associated
 %% email addresses, will be retained. This is done so that the delegated
-%% administrator can invoke the InviteMembers API without the need to invoke
-%% the CreateMembers API again. To remove the details associated with a
-%% member account, the delegated administrator must invoke the DeleteMembers
+%% administrator can invoke the InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To remove the
+%% details associated with a member account, the delegated administrator must
+%% invoke the DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
@@ -688,7 +696,8 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
 describe_malware_scans(Client, DetectorId, Input0, Options0) ->
@@ -716,7 +725,8 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
     describe_organization_configuration(Client, DetectorId, #{}, #{}).
@@ -798,12 +808,16 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% administrator account.
 %%
 %% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers
+%% administrator, the member account details obtained from the CreateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
 %% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers API
-%% without the need to invoke the CreateMembers API again. To remove the
+%% so that the delegated administrator can invoke the InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To remove the
 %% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers API.
+%% invoke the DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+%% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
 %% organization set to `ALL', you'll receive an error if you attempt
@@ -834,12 +848,16 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
 %% administrator account.
 %%
 %% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers
+%% administrator, the member account details obtained from the CreateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
 %% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers API
-%% without the need to invoke the CreateMembers API again. To remove the
+%% so that the delegated administrator can invoke the InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To remove the
 %% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers API.
+%% invoke the DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+%% API.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
@@ -866,12 +884,16 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 %% administrator account) specified by the account IDs.
 %%
 %% When you disassociate an invited member from a GuardDuty delegated
-%% administrator, the member account details obtained from the CreateMembers
+%% administrator, the member account details obtained from the CreateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
 %% API, including the associated email addresses, are retained. This is done
-%% so that the delegated administrator can invoke the InviteMembers API
-%% without the need to invoke the CreateMembers API again. To remove the
+%% so that the delegated administrator can invoke the InviteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+%% API without the need to invoke the CreateMembers API again. To remove the
 %% details associated with a member account, the delegated administrator must
-%% invoke the DeleteMembers API.
+%% invoke the DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+%% API.
 %%
 %% With `autoEnableOrganizationMembers' configuration for your
 %% organization set to `ALL', you'll receive an error if you attempt
@@ -984,7 +1006,8 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_detector(Client, DetectorId)
   when is_map(Client) ->
     get_detector(Client, DetectorId, #{}, #{}).
@@ -1058,7 +1081,8 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some flags might not be
 %% available in all the Regions where GuardDuty is currently supported. For
-%% more information, see Regions and endpoints.
+%% more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 get_findings_statistics(Client, DetectorId, Input0, Options0) ->
@@ -1133,7 +1157,8 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_malware_scan_settings(Client, DetectorId)
   when is_map(Client) ->
     get_malware_scan_settings(Client, DetectorId, #{}, #{}).
@@ -1185,7 +1210,8 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 get_member_detectors(Client, DetectorId, Input0, Options0) ->
@@ -1317,7 +1343,8 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
 %% include only the usage so far under 30 days. This may differ from the cost
 %% metrics in the console, which project usage over 30 days to provide a
 %% monthly cost estimate. For more information, see Understanding How Usage
-%% Costs are Calculated.
+%% Costs are Calculated:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 get_usage_statistics(Client, DetectorId, Input0, Options0) ->
@@ -1346,7 +1373,8 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %%
 %% If you are using Amazon Web Services Organizations to manage your
 %% GuardDuty environment, this step is not needed. For more information, see
-%% Managing accounts with organizations.
+%% Managing accounts with organizations:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html.
 %%
 %% To invite Amazon Web Services accounts, the first step is to ensure that
 %% GuardDuty has been enabled in the potential member accounts. You can now
@@ -1354,15 +1382,22 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% either accept or decline the invitation from their GuardDuty accounts.
 %% Each invited Amazon Web Services account can choose to accept the
 %% invitation from only one Amazon Web Services account. For more
-%% information, see Managing GuardDuty accounts by invitation.
+%% information, see Managing GuardDuty accounts by invitation:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_invitations.html.
 %%
 %% After the invite has been accepted and you choose to disassociate a member
-%% account (by using DisassociateMembers) from your account, the details of
-%% the member account obtained by invoking CreateMembers, including the
-%% associated email addresses, will be retained. This is done so that you can
-%% invoke InviteMembers without the need to invoke CreateMembers again. To
-%% remove the details associated with a member account, you must also invoke
-%% DeleteMembers.
+%% account (by using DisassociateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateMembers.html)
+%% from your account, the details of the member account obtained by invoking
+%% CreateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html,
+%% including the associated email addresses, will be retained. This is done
+%% so that you can invoke InviteMembers without the need to invoke
+%% CreateMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+%% again. To remove the details associated with a member account, you must
+%% also invoke DeleteMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options0) ->
@@ -1475,7 +1510,8 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% There might be regional differences because some flags might not be
 %% available in all the Regions where GuardDuty is currently supported. For
-%% more information, see Regions and endpoints.
+%% more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 list_findings(Client, DetectorId, Input0, Options0) ->
@@ -1710,8 +1746,9 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Initiates the malware scan.
 %%
-%% Invoking this API will automatically create the Service-linked role in the
-%% corresponding account.
+%% Invoking this API will automatically create the Service-linked role :
+%% https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
+%% in the corresponding account.
 start_malware_scan(Client, Input) ->
     start_malware_scan(Client, Input, []).
 start_malware_scan(Client, Input0, Options0) ->
@@ -1737,7 +1774,9 @@ start_malware_scan(Client, Input0, Options0) ->
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%
 %% Use this operation to restart monitoring of accounts that you stopped
-%% monitoring with the StopMonitoringMembers operation.
+%% monitoring with the StopMonitoringMembers:
+%% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html
+%% operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options0) ->
@@ -1864,7 +1903,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 update_detector(Client, DetectorId, Input0, Options0) ->
@@ -1960,7 +2000,8 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_malware_scan_settings(Client, DetectorId, Input) ->
     update_malware_scan_settings(Client, DetectorId, Input, []).
 update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
@@ -1987,7 +2028,8 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 update_member_detectors(Client, DetectorId, Input0, Options0) ->
@@ -2018,7 +2060,8 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is
-%% presently supported. For more information, see Regions and endpoints.
+%% presently supported. For more information, see Regions and endpoints:
+%% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 update_organization_configuration(Client, DetectorId, Input0, Options0) ->

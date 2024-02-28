@@ -19,12 +19,12 @@
 %% resources for you.
 %%
 %% For more information about CloudFormation, see the CloudFormation product
-%% page.
+%% page: http://aws.amazon.com/cloudformation/.
 %%
 %% CloudFormation makes use of other Amazon Web Services products. If you
 %% need additional technical information about a specific Amazon Web Services
 %% product, you can find the product's technical documentation at
-%% docs.aws.amazon.com.
+%% docs.aws.amazon.com: https://docs.aws.amazon.com/.
 -module(aws_cloudformation).
 
 -export([activate_organizations_access/2,
@@ -211,13 +211,17 @@ activate_organizations_access(Client, Input, Options)
 %% @doc Activates a public third-party extension, making it available for use
 %% in stack templates.
 %%
-%% For more information, see Using public extensions in the CloudFormation
-%% User Guide.
+%% For more information, see Using public extensions:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html
+%% in the CloudFormation User Guide.
 %%
 %% Once you have activated a public third-party extension in your account and
-%% Region, use SetTypeConfiguration to specify configuration properties for
-%% the extension. For more information, see Configuring extensions at the
-%% account level in the CloudFormation User Guide.
+%% Region, use SetTypeConfiguration:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
+%% to specify configuration properties for the extension. For more
+%% information, see Configuring extensions at the account level:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% in the CloudFormation User Guide.
 activate_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_type(Client, Input, []).
@@ -228,8 +232,9 @@ activate_type(Client, Input, Options)
 %% @doc Returns configuration data for the specified CloudFormation
 %% extensions, from the CloudFormation registry for the account and Region.
 %%
-%% For more information, see Configuring extensions at the account level in
-%% the CloudFormation User Guide.
+%% For more information, see Configuring extensions at the account level:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% in the CloudFormation User Guide.
 batch_describe_type_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_type_configurations(Client, Input, []).
@@ -254,8 +259,9 @@ cancel_update_stack(Client, Input, Options)
 %% state, continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE'
 %% state.
 %%
-%% Depending on the cause of the failure, you can manually fix the error and
-%% continue the rollback. By continuing the rollback, you can return your
+%% Depending on the cause of the failure, you can manually fix the error:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed
+%% and continue the rollback. By continuing the rollback, you can return your
 %% stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state), and
 %% then try to update the stack again.
 %%
@@ -456,7 +462,8 @@ delete_stack_set(Client, Input, Options)
 %% and marked as deprecated.
 %%
 %% To view the deprecation status of an extension or extension version, use
-%% DescribeType.
+%% DescribeType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
 deregister_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_type(Client, Input, []).
@@ -467,8 +474,9 @@ deregister_type(Client, Input, Options)
 %% @doc Retrieves your account's CloudFormation limits, such as the
 %% maximum number of stacks that you can create in your account.
 %%
-%% For more information about account limits, see CloudFormation Quotas in
-%% the CloudFormation User Guide.
+%% For more information about account limits, see CloudFormation Quotas:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html
+%% in the CloudFormation User Guide.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -479,8 +487,9 @@ describe_account_limits(Client, Input, Options)
 %% @doc Returns the inputs for the change set and a list of changes that
 %% CloudFormation will make if you execute the change set.
 %%
-%% For more information, see Updating Stacks Using Change Sets in the
-%% CloudFormation User Guide.
+%% For more information, see Updating Stacks Using Change Sets:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html
+%% in the CloudFormation User Guide.
 describe_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_change_set(Client, Input, []).
@@ -531,10 +540,12 @@ describe_organizations_access(Client, Input, Options)
 %%
 %% For more information about registering as a publisher, see:
 %%
-%% <ul> <li> RegisterPublisher
+%% <ul> <li> RegisterPublisher:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html
 %%
-%% </li> <li> Publishing extensions to make them available for public use in
-%% the CloudFormation CLI User Guide
+%% </li> <li> Publishing extensions to make them available for public use:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html
+%% in the CloudFormation CLI User Guide
 %%
 %% </li> </ul>
 describe_publisher(Client, Input)
@@ -560,7 +571,8 @@ describe_resource_scan(Client, Input, Options)
 %% parameters. A stack is considered to have drifted if one or more of its
 %% resources have drifted. For more information about stack and resource
 %% drift, see Detecting Unregulated Configuration Changes to Stacks and
-%% Resources.
+%% Resources:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html.
 %%
 %% Use `DetectStackDrift' to initiate a stack drift detection operation.
 %% `DetectStackDrift' returns a `StackDriftDetectionId' you can use
@@ -578,8 +590,9 @@ describe_stack_drift_detection_status(Client, Input, Options)
 %% @doc Returns all stack related events for a specified stack in reverse
 %% chronological order.
 %%
-%% For more information about a stack's event history, go to Stacks in
-%% the CloudFormation User Guide.
+%% For more information about a stack's event history, go to Stacks:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html
+%% in the CloudFormation User Guide.
 %%
 %% You can list events for stacks that have failed to create or have been
 %% deleted by specifying the unique stack identifier (stack ID).
@@ -625,7 +638,8 @@ describe_stack_resource(Client, Input, Options)
 %% yet been checked for drift aren't included. Resources that don't
 %% currently support drift detection aren't checked, and so not included.
 %% For a list of resources that support drift detection, see Resources that
-%% Support Drift Detection.
+%% Support Drift Detection:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html.
 %%
 %% Use `DetectStackResourceDrift' to detect drift on individual
 %% resources, or `DetectStackDrift' to detect drift on all supported
@@ -655,7 +669,8 @@ describe_stack_resource_drifts(Client, Input, Options)
 %% not both. In addition, you can specify `LogicalResourceId' to filter
 %% the returned result. For more information about resources, the
 %% `LogicalResourceId' and `PhysicalResourceId', go to the
-%% CloudFormation User Guide.
+%% CloudFormation User Guide:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/.
 %%
 %% A `ValidationError' is returned if you specify both `StackName'
 %% and `PhysicalResourceId' in the same request.
@@ -732,14 +747,16 @@ describe_type_registration(Client, Input, Options)
 %% defined in the stack template are checked for drift. A stack is considered
 %% to have drifted if one or more of its resources differ from their expected
 %% template configurations. For more information, see Detecting Unregulated
-%% Configuration Changes to Stacks and Resources.
+%% Configuration Changes to Stacks and Resources:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html.
 %%
 %% Use `DetectStackDrift' to detect drift on all supported resources for
 %% a given stack, or `DetectStackResourceDrift' to detect drift on
 %% individual resources.
 %%
 %% For a list of stack resources that currently support drift detection, see
-%% Resources that Support Drift Detection.
+%% Resources that Support Drift Detection:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html.
 %%
 %% `DetectStackDrift' can take up to several minutes, depending on the
 %% number of resources contained within the stack. Use
@@ -767,7 +784,8 @@ detect_stack_drift(Client, Input, Options)
 %% resources in which CloudFormation detects drift. Only resource properties
 %% explicitly defined in the stack template are checked for drift. For more
 %% information about stack and resource drift, see Detecting Unregulated
-%% Configuration Changes to Stacks and Resources.
+%% Configuration Changes to Stacks and Resources:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html.
 %%
 %% Use `DetectStackResourceDrift' to detect drift on individual
 %% resources, or `DetectStackDrift' to detect drift on all resources in a
@@ -775,7 +793,8 @@ detect_stack_drift(Client, Input, Options)
 %%
 %% Resources that don't currently support drift detection can't be
 %% checked. For a list of resources that support drift detection, see
-%% Resources that Support Drift Detection.
+%% Resources that Support Drift Detection:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html.
 detect_stack_resource_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_resource_drift(Client, Input, []).
@@ -788,7 +807,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% When CloudFormation performs drift detection on a stack set, it performs
 %% drift detection on the stack associated with each stack instance in the
 %% stack set. For more information, see How CloudFormation performs drift
-%% detection on a stack set.
+%% detection on a stack set:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html.
 %%
 %% `DetectStackSetDrift' returns the `OperationId' of the stack set
 %% drift detection operation. Use this operation id with
@@ -814,7 +834,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% time checked.
 %%
 %% </li> </ul> For more information about performing a drift detection
-%% operation on a stack set, see Detecting unmanaged changes in stack sets.
+%% operation on a stack set, see Detecting unmanaged changes in stack sets:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html.
 %%
 %% You can only run a single drift detection operation on a given stack set
 %% at one time.
@@ -950,9 +971,12 @@ list_change_sets(Client, Input, Options)
 %% you call this action.
 %%
 %% Use this action to see the exported output values that you can import into
-%% other stacks. To import values, use the Fn::ImportValue function.
+%% other stacks. To import values, use the Fn::ImportValue:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
+%% function.
 %%
-%% For more information, see CloudFormation export stack output values.
+%% For more information, see CloudFormation export stack output values:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html.
 list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
@@ -975,7 +999,9 @@ list_generated_templates(Client, Input, Options)
 %% account, see `ListExports'.
 %%
 %% For more information about importing an exported output value, see the
-%% Fn::ImportValue function.
+%% Fn::ImportValue:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
+%% function.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
@@ -1142,10 +1168,13 @@ list_types(Client, Input, Options)
 %%
 %% Public extensions are available for use by all CloudFormation users. For
 %% more information about publishing extensions, see Publishing extensions to
-%% make them available for public use in the CloudFormation CLI User Guide.
+%% make them available for public use:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html
+%% in the CloudFormation CLI User Guide.
 %%
 %% To publish an extension, you must be registered as a publisher with
-%% CloudFormation. For more information, see RegisterPublisher.
+%% CloudFormation. For more information, see RegisterPublisher:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html.
 publish_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_type(Client, Input, []).
@@ -1155,8 +1184,9 @@ publish_type(Client, Input, Options)
 
 %% @doc Reports progress of a resource handler to CloudFormation.
 %%
-%% Reserved for use by the CloudFormation CLI. Don't use this API in your
-%% code.
+%% Reserved for use by the CloudFormation CLI:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html.
+%% Don't use this API in your code.
 record_handler_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_handler_progress(Client, Input, []).
@@ -1172,7 +1202,9 @@ record_handler_progress(Client, Input, Options)
 %%
 %% For information about requirements for registering as a public extension
 %% publisher, see Registering your account to publish CloudFormation
-%% extensions in the CloudFormation CLI User Guide.
+%% extensions:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs
+%% in the CloudFormation CLI User Guide.
 register_publisher(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_publisher(Client, Input, []).
@@ -1193,21 +1225,26 @@ register_publisher(Client, Input, Options)
 %% </li> <li> Making the extension available for use in your account.
 %%
 %% </li> </ul> For more information about how to develop extensions and ready
-%% them for registration, see Creating Resource Providers in the
-%% CloudFormation CLI User Guide.
+%% them for registration, see Creating Resource Providers:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html
+%% in the CloudFormation CLI User Guide.
 %%
 %% You can have a maximum of 50 resource extension versions registered at a
-%% time. This maximum is per account and per Region. Use DeregisterType to
-%% deregister specific extension versions if necessary.
+%% time. This maximum is per account and per Region. Use DeregisterType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html
+%% to deregister specific extension versions if necessary.
 %%
 %% Once you have initiated a registration request using `RegisterType',
 %% you can use `DescribeTypeRegistration' to monitor the progress of the
 %% registration request.
 %%
 %% Once you have registered a private extension in your account and Region,
-%% use SetTypeConfiguration to specify configuration properties for the
-%% extension. For more information, see Configuring extensions at the account
-%% level in the CloudFormation User Guide.
+%% use SetTypeConfiguration:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
+%% to specify configuration properties for the extension. For more
+%% information, see Configuring extensions at the account level:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% in the CloudFormation User Guide.
 register_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_type(Client, Input, []).
@@ -1258,14 +1295,17 @@ set_stack_policy(Client, Input, Options)
 %% extension, in the given account and Region.
 %%
 %% To view the current configuration data for an extension, refer to the
-%% `ConfigurationSchema' element of DescribeType. For more information,
-%% see Configuring extensions at the account level in the CloudFormation User
-%% Guide.
+%% `ConfigurationSchema' element of DescribeType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
+%% For more information, see Configuring extensions at the account level:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
+%% in the CloudFormation User Guide.
 %%
 %% It's strongly recommended that you use dynamic references to restrict
 %% sensitive configuration definitions, such as third-party credentials. For
 %% more details on dynamic references, see Using dynamic references to
-%% specify template values in the CloudFormation User Guide.
+%% specify template values: https://docs.aws.amazon.com/ in the
+%% CloudFormation User Guide.
 set_type_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_configuration(Client, Input, []).
@@ -1332,22 +1372,28 @@ stop_stack_set_operation(Client, Input, Options)
 %% model meets all necessary requirements.
 %%
 %% </li> </ul> For more information, see Testing your public extension prior
-%% to publishing in the CloudFormation CLI User Guide.
+%% to publishing:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-testing
+%% in the CloudFormation CLI User Guide.
 %%
 %% If you don't specify a version, CloudFormation uses the default
 %% version of the extension in your account and Region for testing.
 %%
 %% To perform testing, CloudFormation assumes the execution role specified
-%% when the type was registered. For more information, see RegisterType.
+%% when the type was registered. For more information, see RegisterType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html.
 %%
 %% Once you've initiated testing on an extension using `TestType',
-%% you can pass the returned `TypeVersionArn' into DescribeType to
-%% monitor the current test status and test status description for the
+%% you can pass the returned `TypeVersionArn' into DescribeType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html
+%% to monitor the current test status and test status description for the
 %% extension.
 %%
 %% An extension must have a test status of `PASSED' before it can be
 %% published. For more information, see Publishing extensions to make them
-%% available for public use in the CloudFormation CLI User Guide.
+%% available for public use:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-publish.html
+%% in the CloudFormation CLI User Guide.
 test_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_type(Client, Input, []).
@@ -1378,7 +1424,8 @@ update_generated_template(Client, Input, Options)
 %% `GetTemplate' action.
 %%
 %% For more information about creating an update template, updating a stack,
-%% and monitoring the progress of the update, see Updating a Stack.
+%% and monitoring the progress of the update, see Updating a Stack:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html.
 update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
@@ -1393,19 +1440,23 @@ update_stack(Client, Input, Options)
 %%
 %% You can only update stack instances in Amazon Web Services Regions and
 %% accounts where they already exist; to create additional stack instances,
-%% use CreateStackInstances.
+%% use CreateStackInstances:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html.
 %%
 %% During stack set updates, any parameters overridden for a stack instance
 %% aren't updated, but retain their overridden value.
 %%
 %% You can only update the parameter values that are specified in the stack
-%% set; to add or delete a parameter itself, use UpdateStackSet to update the
-%% stack set template. If you add a parameter to a template, before you can
-%% override the parameter value specified in the stack set you must first use
-%% UpdateStackSet to update all stack instances with the updated template and
-%% parameter value specified in the stack set. Once a stack instance has been
-%% updated with the new parameter, you can then override the parameter value
-%% using `UpdateStackInstances'.
+%% set; to add or delete a parameter itself, use UpdateStackSet:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
+%% to update the stack set template. If you add a parameter to a template,
+%% before you can override the parameter value specified in the stack set you
+%% must first use UpdateStackSet:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
+%% to update all stack instances with the updated template and parameter
+%% value specified in the stack set. Once a stack instance has been updated
+%% with the new parameter, you can then override the parameter value using
+%% `UpdateStackInstances'.
 update_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_instances(Client, Input, []).
@@ -1432,11 +1483,14 @@ update_stack_set(Client, Input, Options)
 %%
 %% If a user attempts to delete a stack with termination protection enabled,
 %% the operation fails and the stack remains unchanged. For more information,
-%% see Protecting a Stack From Being Deleted in the CloudFormation User
-%% Guide.
+%% see Protecting a Stack From Being Deleted:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html
+%% in the CloudFormation User Guide.
 %%
-%% For nested stacks, termination protection is set on the root stack and
-%% can't be changed directly on the nested stack.
+%% For nested stacks:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html,
+%% termination protection is set on the root stack and can't be changed
+%% directly on the nested stack.
 update_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_termination_protection(Client, Input, []).

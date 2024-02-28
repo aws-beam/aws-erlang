@@ -21,7 +21,9 @@
 %%
 %% The key remains for 60 seconds, which gives you 60 seconds to establish a
 %% serial console connection to the instance using SSH. For more information,
-%% see EC2 Serial Console in the Amazon EC2 User Guide.
+%% see EC2 Serial Console:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html
+%% in the Amazon EC2 User Guide.
 send_serial_console_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_serial_console_ssh_public_key(Client, Input, []).
@@ -33,7 +35,9 @@ send_serial_console_ssh_public_key(Client, Input, Options)
 %% specified user.
 %%
 %% The key remains for 60 seconds. For more information, see Connect to your
-%% Linux instance using EC2 Instance Connect in the Amazon EC2 User Guide.
+%% Linux instance using EC2 Instance Connect:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html
+%% in the Amazon EC2 User Guide.
 send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_ssh_public_key(Client, Input, []).

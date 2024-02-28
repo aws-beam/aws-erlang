@@ -8,7 +8,8 @@
 %% With this deployment option, you can focus on running analytics workloads
 %% while Amazon EMR on EKS builds, configures, and manages containers for
 %% open-source applications. For more information about Amazon EMR on EKS
-%% concepts and tasks, see What is shared id=&quot;EMR-EKS&quot;/&gt;.
+%% concepts and tasks, see What is shared id=&quot;EMR-EKS&quot;/&gt;:
+%% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html.
 %%
 %% Amazon EMR containers is the API name for Amazon EMR on EKS. The
 %% `emr-containers' prefix is used in the following scenarios:
@@ -19,11 +20,13 @@
 %% </li> <li> It is the prefix before IAM policy actions for Amazon EMR on
 %% EKS. For example, `&quot;Action&quot;: [
 %% &quot;emr-containers:StartJobRun&quot;]'. For more information, see
-%% Policy actions for Amazon EMR on EKS.
+%% Policy actions for Amazon EMR on EKS:
+%% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions.
 %%
 %% </li> <li> It is the prefix used in Amazon EMR on EKS service endpoints.
 %% For example, `emr-containers.us-east-2.amazonaws.com'. For more
-%% information, see Amazon EMR on EKSService Endpoints.
+%% information, see Amazon EMR on EKSService Endpoints:
+%% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/service-quotas.html#service-endpoints.
 %%
 %% </li> </ul>
 -module(aws_emr_containers).

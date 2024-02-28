@@ -22,7 +22,9 @@
 %% You use InvokeModel to run inference for text models, image models, and
 %% embedding models.
 %%
-%% For more information, see Run inference in the Bedrock User Guide.
+%% For more information, see Run inference:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
+%% in the Bedrock User Guide.
 %%
 %% For example requests, see Examples (after the Errors section).
 invoke_model(Client, ModelId, Input) ->
@@ -71,7 +73,9 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 %%
 %% Return the response in a stream.
 %%
-%% For more information, see Run inference in the Bedrock User Guide.
+%% For more information, see Run inference:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html
+%% in the Bedrock User Guide.
 %%
 %% For an example request and response, see Examples (after the Errors
 %% section).

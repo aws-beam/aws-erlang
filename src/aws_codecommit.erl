@@ -294,7 +294,8 @@
 %% a repository trigger by sending data to the trigger target.
 %%
 %% </li> </ul> For information about how to use CodeCommit, see the
-%% CodeCommit User Guide.
+%% CodeCommit User Guide:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html.
 -module(aws_codecommit).
 
 -export([associate_approval_rule_template_with_repository/2,
@@ -983,7 +984,9 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 %% Resource Name (ARN) in CodeCommit.
 %%
 %% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations in the CodeCommit User Guide.
+%% Operations:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
+%% in the CodeCommit User Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1119,7 +1122,9 @@ put_repository_triggers(Client, Input, Options)
 %% @doc Adds or updates tags for a resource in CodeCommit.
 %%
 %% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations in the CodeCommit User Guide.
+%% Operations:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
+%% in the CodeCommit User Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1142,7 +1147,9 @@ test_repository_triggers(Client, Input, Options)
 %% @doc Removes tags for a resource in CodeCommit.
 %%
 %% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations in the CodeCommit User Guide.
+%% Operations:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
+%% in the CodeCommit User Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1273,7 +1280,9 @@ update_repository_encryption_key(Client, Input, Options)
 %% account. Repository names are limited to 100 alphanumeric, dash, and
 %% underscore characters, and cannot include certain characters. The suffix
 %% .git is prohibited. For more information about the limits on repository
-%% names, see Quotas in the CodeCommit User Guide.
+%% names, see Quotas:
+%% https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html in the
+%% CodeCommit User Guide.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).

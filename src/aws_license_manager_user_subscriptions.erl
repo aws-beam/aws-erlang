@@ -41,8 +41,9 @@
 %% Your estimated bill for charges on the number of users and related costs
 %% will take 48 hours to appear for billing periods that haven't closed
 %% (marked as Pending billing status) in Amazon Web Services Billing. For
-%% more information, see Viewing your monthly charges in the Amazon Web
-%% Services Billing User Guide.
+%% more information, see Viewing your monthly charges:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
+%% in the Amazon Web Services Billing User Guide.
 associate_user(Client, Input) ->
     associate_user(Client, Input, []).
 associate_user(Client, Input0, Options0) ->
@@ -235,8 +236,9 @@ register_identity_provider(Client, Input0, Options0) ->
 %% Your estimated bill for charges on the number of users and related costs
 %% will take 48 hours to appear for billing periods that haven't closed
 %% (marked as Pending billing status) in Amazon Web Services Billing. For
-%% more information, see Viewing your monthly charges in the Amazon Web
-%% Services Billing User Guide.
+%% more information, see Viewing your monthly charges:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
+%% in the Amazon Web Services Billing User Guide.
 start_product_subscription(Client, Input) ->
     start_product_subscription(Client, Input, []).
 start_product_subscription(Client, Input0, Options0) ->

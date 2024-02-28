@@ -10,39 +10,47 @@
 %% writing email messages, summarizing text, drafting document outlines, and
 %% brainstorming ideas. Users ask questions of Amazon Q and get answers that
 %% are presented in a conversational manner. For an introduction to the
-%% service, see the Amazon Q (for business use) Developer Guide .
+%% service, see the Amazon Q (for business use) Developer Guide :
+%% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.html.
 %%
 %% For an overview of the Amazon Q APIs, see Overview of Amazon Q API
-%% operations.
+%% operations:
+%% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/api-ref.html#api-overview.
 %%
 %% For information about the IAM access control permissions you need to use
-%% this API, see IAM roles for Amazon Q in the Amazon Q (for business use)
-%% Developer Guide.
+%% this API, see IAM roles for Amazon Q:
+%% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/iam-roles.html
+%% in the Amazon Q (for business use) Developer Guide.
 %%
 %% You can use the following AWS SDKs to access Amazon Q APIs:
 %%
-%% <ul> <li> AWS SDK for C++
+%% <ul> <li> AWS SDK for C++: https://docs.aws.amazon.com/sdk-for-cpp
 %%
-%% </li> <li> AWS SDK for Go
+%% </li> <li> AWS SDK for Go: https://docs.aws.amazon.com/sdk-for-go
 %%
-%% </li> <li> AWS SDK for Java
+%% </li> <li> AWS SDK for Java: https://docs.aws.amazon.com/sdk-for-java
 %%
-%% </li> <li> AWS SDK for JavaScript
+%% </li> <li> AWS SDK for JavaScript:
+%% https://docs.aws.amazon.com/sdk-for-javascript
 %%
-%% </li> <li> AWS SDK for .NET
+%% </li> <li> AWS SDK for .NET: https://docs.aws.amazon.com/sdk-for-net
 %%
-%% </li> <li> AWS SDK for Python (Boto3)
+%% </li> <li> AWS SDK for Python (Boto3):
+%% https://docs.aws.amazon.com/pythonsdk
 %%
-%% </li> <li> AWS SDK for Ruby
+%% </li> <li> AWS SDK for Ruby: https://docs.aws.amazon.com/sdk-for-ruby
 %%
 %% </li> </ul> The following resources provide additional information about
 %% using the Amazon Q API:
 %%
-%% <ul> <li> Setting up for Amazon Q
+%% <ul> <li> Setting up for Amazon Q:
+%% https://docs.aws.amazon.com/amazonq/latest/business-use-dg/setting-up.html
 %%
-%% </li> <li> Amazon Q CLI Reference
+%% </li> <li> Amazon Q CLI Reference:
+%% https://awscli.amazonaws.com/v2/documentation/api/latest/reference/qbusiness/index.html
 %%
-%% </li> <li> Amazon Web Services General Reference
+%% </li> <li> Amazon Web Services General Reference:
+%% https://docs.aws.amazon.com/general/latest/gr/amazonq.html
 %%
 %% </li> </ul>
 -module(aws_qbusiness).
@@ -301,7 +309,11 @@ create_application(Client, Input0, Options0) ->
 %% to `ACTIVE' when the index is ready to use.
 %%
 %% Once the index is active, you can index your documents using the
-%% `BatchPutDocument' API or the `CreateDataSource' API.
+%% `BatchPutDocument' :
+%% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_BatchPutDocument.html
+%% API or the `CreateDataSource' :
+%% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_CreateDataSource.html
+%% API.
 create_index(Client, ApplicationId, Input) ->
     create_index(Client, ApplicationId, Input, []).
 create_index(Client, ApplicationId, Input0, Options0) ->

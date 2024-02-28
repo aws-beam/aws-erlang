@@ -302,7 +302,8 @@ cancel_world_generation_job(Client, Input0, Options0) ->
 %% The robot application must have a numbered `applicationVersion' for
 %% consistency reasons. To create a new version, use
 %% `CreateRobotApplicationVersion' or see Creating a Robot Application
-%% Version.
+%% Version:
+%% https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html.
 %%
 %% After 90 days, deployment jobs expire and will be deleted. They will no
 %% longer be accessible.
@@ -1407,8 +1408,9 @@ sync_deployment_job(Client, Input0, Options0) ->
 %% are both required, but tag values can be empty strings.
 %%
 %% For information about the rules that apply to tag keys and tag values, see
-%% User-Defined Tag Restrictions in the AWS Billing and Cost Management User
-%% Guide.
+%% User-Defined Tag Restrictions:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html
+%% in the AWS Billing and Cost Management User Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1434,7 +1436,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes the specified tags from the specified AWS RoboMaker resource.
 %%
 %% To remove a tag, specify the tag key. To change the tag value of an
-%% existing tag key, use `TagResource' .
+%% existing tag key, use `TagResource' :
+%% https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

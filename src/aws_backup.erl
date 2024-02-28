@@ -306,7 +306,8 @@ create_backup_plan(Client, Input0, Options0) ->
 %% @doc Creates a JSON document that specifies a set of resources to assign
 %% to a backup plan.
 %%
-%% For examples, see Assigning resources programmatically.
+%% For examples, see Assigning resources programmatically:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-json.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
@@ -652,7 +653,9 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% If the Vault Lock configuration is immutable, then you cannot delete Vault
 %% Lock using API operations, and you will receive an
 %% `InvalidRequestException' if you attempt to do so. For more
-%% information, see Vault Lock in the Backup Developer Guide.
+%% information, see Vault Lock:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html in
+%% the Backup Developer Guide.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
@@ -733,7 +736,8 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %%
 %% `EXPIRED' recovery points can be deleted with this API once the IAM
 %% role has the `iam:CreateServiceLinkedRole' action. To learn more about
-%% adding this role, see Troubleshooting manual deletions.
+%% adding this role, see Troubleshooting manual deletions:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/deleting-backups.html#deleting-backups-troubleshooting.
 %%
 %% If the user or role is deleted or the permission within the role is
 %% removed, the deletion will not be successful and will enter an
@@ -1569,7 +1573,8 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of existing backup jobs for an authenticated account
 %% for the last 30 days.
 %%
-%% For a longer period of time, consider using these monitoring tools.
+%% For a longer period of time, consider using these monitoring tools:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html.
 list_backup_jobs(Client)
   when is_map(Client) ->
     list_backup_jobs(Client, #{}, #{}).
@@ -2297,7 +2302,9 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 %% `ListTags' only works for resource types that support full Backup
 %% management of their backups. Those resource types are listed in the
 %% &quot;Full Backup management&quot; section of the Feature availability by
-%% resource table.
+%% resource:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
+%% table.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
@@ -2363,7 +2370,8 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% Backup Vault Lock has been assessed by Cohasset Associates for use in
 %% environments that are subject to SEC 17a-4, CFTC, and FINRA regulations.
 %% For more information about how Backup Vault Lock relates to these
-%% regulations, see the Cohasset Associates Compliance Assessment.
+%% regulations, see the Cohasset Associates Compliance Assessment.:
+%% samples/cohassetreport.zip
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
@@ -2700,8 +2708,9 @@ update_global_settings(Client, Input0, Options0) ->
 %%
 %% Resource types that are able to be transitioned to cold storage are listed
 %% in the &quot;Lifecycle to cold storage&quot; section of the Feature
-%% availability by resource table. Backup ignores this expression for other
-%% resource types.
+%% availability by resource:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
+%% table. Backup ignores this expression for other resource types.
 %%
 %% This operation does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->

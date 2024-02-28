@@ -221,9 +221,11 @@
 %%
 %% </li> <li> Specify the `resourceIdentifier' parameter with a
 %% `query-result' resource, to use that key to encrypt the stored results
-%% of all future StartQuery operations in the account. The response from a
-%% GetQueryResults operation will still return the query results in plain
-%% text.
+%% of all future StartQuery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html
+%% operations in the account. The response from a GetQueryResults:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetQueryResults.html
+%% operation will still return the query results in plain text.
 %%
 %% Even if you have not associated a key with your query results, the query
 %% results are encrypted when stored, using the default CloudWatch Logs
@@ -240,7 +242,8 @@
 %%
 %% CloudWatch Logs supports only symmetric KMS keys. Do not use an associate
 %% an asymmetric KMS key with your log group or query results. For more
-%% information, see Using Symmetric and Asymmetric Keys.
+%% information, see Using Symmetric and Asymmetric Keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html.
 %%
 %% It can take up to 5 minutes for this operation to take effect.
 %%
@@ -272,7 +275,8 @@ cancel_export_task(Client, Input, Options)
 %% Only some Amazon Web Services services support being configured as a
 %% delivery source using this operation. These services are listed as
 %% Supported [V2 Permissions] in the table at Enabling logging from Amazon
-%% Web Services services.
+%% Web Services services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 %%
 %% A delivery destination can represent a log group in CloudWatch Logs, an
 %% Amazon S3 bucket, or a delivery stream in Kinesis Data Firehose.
@@ -282,16 +286,19 @@ cancel_export_task(Client, Input, Options)
 %%
 %% <ul> <li> Create a delivery source, which is a logical object that
 %% represents the resource that is actually sending the logs. For more
-%% information, see PutDeliverySource.
+%% information, see PutDeliverySource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html.
 %%
 %% </li> <li> Create a delivery destination, which is a logical object that
 %% represents the actual delivery destination. For more information, see
-%% PutDeliveryDestination.
+%% PutDeliveryDestination:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html.
 %%
 %% </li> <li> If you are delivering logs cross-account, you must use
-%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
-%% policy to the destination. This policy allows delivery to that
-%% destination.
+%% PutDeliveryDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html
+%% in the destination account to assign an IAM policy to the destination.
+%% This policy allows delivery to that destination.
 %%
 %% </li> <li> Use `CreateDelivery' to create a delivery by pairing
 %% exactly one delivery source and one delivery destination.
@@ -325,10 +332,12 @@ create_delivery(Client, Input, Options)
 %%
 %% This is an asynchronous call. If all the required information is provided,
 %% this operation initiates an export task and responds with the ID of the
-%% task. After the task has started, you can use DescribeExportTasks to get
-%% the status of the export task. Each account can only have one active
-%% (`RUNNING' or `PENDING') export task at a time. To cancel an
-%% export task, use CancelExportTask.
+%% task. After the task has started, you can use DescribeExportTasks:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeExportTasks.html
+%% to get the status of the export task. Each account can only have one
+%% active (`RUNNING' or `PENDING') export task at a time. To cancel
+%% an export task, use CancelExportTask:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html.
 %%
 %% You can export logs from multiple log groups or multiple time ranges to
 %% the same S3 bucket. To separate log data for each export task, specify a
@@ -373,7 +382,8 @@ create_export_task(Client, Input, Options)
 %%
 %% Any parts of log events that are masked as sensitive data are not scanned
 %% for anomalies. For more information about masking sensitive data, see Help
-%% protect sensitive log data with masking.
+%% protect sensitive log data with masking:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html.
 create_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_anomaly_detector(Client, Input, []).
@@ -400,7 +410,8 @@ create_log_anomaly_detector(Client, Input, Options)
 %%
 %% </li> </ul> When you create a log group, by default the log events in the
 %% log group do not expire. To set a retention policy so that events expire
-%% and are deleted after a specified time, use PutRetentionPolicy.
+%% and are deleted after a specified time, use PutRetentionPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html.
 %%
 %% If you associate an KMS key with the log group, ingested data is encrypted
 %% using the KMS key. This association is stored as long as the data
@@ -413,7 +424,8 @@ create_log_anomaly_detector(Client, Input, Options)
 %%
 %% CloudWatch Logs supports only symmetric KMS keys. Do not associate an
 %% asymmetric KMS key with your log group. For more information, see Using
-%% Symmetric and Asymmetric Keys.
+%% Symmetric and Asymmetric Keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html.
 create_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_group(Client, Input, []).
@@ -475,7 +487,8 @@ delete_account_policy(Client, Input, Options)
 %% @doc Deletes the data protection policy from the specified log group.
 %%
 %% For more information about data protection policies, see
-%% PutDataProtectionPolicy.
+%% PutDataProtectionPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDataProtectionPolicy.html.
 delete_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_protection_policy(Client, Input, []).
@@ -503,8 +516,9 @@ delete_delivery(Client, Input, Options)
 %%
 %% You can't delete a delivery destination if any current deliveries are
 %% associated with it. To find whether any deliveries are associated with
-%% this delivery destination, use the DescribeDeliveries operation and check
-%% the `deliveryDestinationArn' field in the results.
+%% this delivery destination, use the DescribeDeliveries:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
+%% operation and check the `deliveryDestinationArn' field in the results.
 delete_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination(Client, Input, []).
@@ -515,7 +529,8 @@ delete_delivery_destination(Client, Input, Options)
 %% @doc Deletes a delivery destination policy.
 %%
 %% For more information about these policies, see
-%% PutDeliveryDestinationPolicy.
+%% PutDeliveryDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
 delete_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination_policy(Client, Input, []).
@@ -530,8 +545,9 @@ delete_delivery_destination_policy(Client, Input, Options)
 %%
 %% You can't delete a delivery source if any current deliveries are
 %% associated with it. To find whether any deliveries are associated with
-%% this delivery source, use the DescribeDeliveries operation and check the
-%% `deliverySourceName' field in the results.
+%% this delivery source, use the DescribeDeliveries:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
+%% operation and check the `deliverySourceName' field in the results.
 delete_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_source(Client, Input, []).
@@ -644,14 +660,17 @@ describe_account_policies(Client, Input, Options)
 %% @doc Retrieves a list of the deliveries that have been created in the
 %% account.
 %%
-%% A delivery is a connection between a delivery source and a delivery
-%% destination .
+%% A delivery is a connection between a delivery source :
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html
+%% and a delivery destination :
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html.
 %%
 %% A delivery source represents an Amazon Web Services resource that sends
 %% logs to an logs delivery destination. The destination can be CloudWatch
 %% Logs, Amazon S3, or Kinesis Data Firehose. Only some Amazon Web Services
 %% services support being configured as a delivery source. These services are
-%% listed in Enable logging from Amazon Web Services services.
+%% listed in Enable logging from Amazon Web Services services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 describe_deliveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deliveries(Client, Input, []).
@@ -708,12 +727,14 @@ describe_export_tasks(Client, Input, Options)
 %% ' condition key. Other CloudWatch Logs actions do support the use of
 %% the `aws:ResourceTag/key-name ' condition key to control access. For
 %% more information about using tags to control access, see Controlling
-%% access to Amazon Web Services resources using tags.
+%% access to Amazon Web Services resources using tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 describe_log_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_groups(Client, Input, []).
@@ -736,7 +757,8 @@ describe_log_groups(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 describe_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_streams(Client, Input, []).
@@ -819,11 +841,13 @@ describe_subscription_filters(Client, Input, Options)
 %%
 %% </li> <li> Specify the `resourceIdentifier' parameter with the
 %% `query-result' resource to stop using the KMS key to encrypt the
-%% results of all future StartQuery operations in the account. They will
-%% instead be encrypted with the default CloudWatch Logs method. The results
-%% from queries that ran while the key was associated with the account are
-%% still encrypted with that key. Therefore, CloudWatch Logs will need
-%% permissions for the key whenever that data is accessed.
+%% results of all future StartQuery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html
+%% operations in the account. They will instead be encrypted with the default
+%% CloudWatch Logs method. The results from queries that ran while the key
+%% was associated with the account are still encrypted with that key.
+%% Therefore, CloudWatch Logs will need permissions for the key whenever that
+%% data is accessed.
 %%
 %% </li> </ul> It can take up to 5 minutes for this operation to take effect.
 disassociate_kms_key(Client, Input)
@@ -859,7 +883,8 @@ disassociate_kms_key(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 filter_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     filter_log_events(Client, Input, []).
@@ -877,17 +902,21 @@ get_data_protection_policy(Client, Input, Options)
 
 %% @doc Returns complete information about one logical delivery.
 %%
-%% A delivery is a connection between a delivery source and a delivery
-%% destination .
+%% A delivery is a connection between a delivery source :
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html
+%% and a delivery destination :
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html.
 %%
 %% A delivery source represents an Amazon Web Services resource that sends
 %% logs to an logs delivery destination. The destination can be CloudWatch
 %% Logs, Amazon S3, or Kinesis Data Firehose. Only some Amazon Web Services
 %% services support being configured as a delivery source. These services are
-%% listed in Enable logging from Amazon Web Services services.
+%% listed in Enable logging from Amazon Web Services services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 %%
 %% You need to specify the delivery `id' in this operation. You can find
-%% the IDs of the deliveries in your account with the DescribeDeliveries
+%% the IDs of the deliveries in your account with the DescribeDeliveries:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation.
 get_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -908,7 +937,8 @@ get_delivery_destination(Client, Input, Options)
 %% destination that you specify.
 %%
 %% For more information about delivery destinations and their policies, see
-%% PutDeliveryDestinationPolicy.
+%% PutDeliveryDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
 get_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination_policy(Client, Input, []).
@@ -946,7 +976,8 @@ get_log_anomaly_detector(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 %%
 %% You can specify the log group to search by using either
 %% `logGroupIdentifier' or `logGroupName'. You must include one of
@@ -971,7 +1002,8 @@ get_log_events(Client, Input, Options)
 %% In the results, fields that start with `@' are fields generated by
 %% CloudWatch Logs. For example, `@timestamp' is the timestamp of each
 %% log event. For more information about the fields that are generated by
-%% CloudWatch logs, see Supported Logs and Discovered Fields.
+%% CloudWatch logs, see Supported Logs and Discovered Fields:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html.
 %%
 %% The response results are sorted by the frequency percentage, starting with
 %% the highest percentage.
@@ -979,7 +1011,8 @@ get_log_events(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 get_log_group_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_group_fields(Client, Input, []).
@@ -1005,12 +1038,16 @@ get_log_record(Client, Input, Options)
 %%
 %% Only the fields requested in the query are returned, along with a
 %% `@ptr' field, which is the identifier for the log record. You can use
-%% the value of `@ptr' in a GetLogRecord operation to get the full log
-%% record.
+%% the value of `@ptr' in a GetLogRecord:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogRecord.html
+%% operation to get the full log record.
 %%
 %% `GetQueryResults' does not start running a query. To run a query, use
-%% StartQuery. For more information about how long results of previous
-%% queries are available, see CloudWatch Logs quotas.
+%% StartQuery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html.
+%% For more information about how long results of previous queries are
+%% available, see CloudWatch Logs quotas:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html.
 %%
 %% If the value of the `Status' field in the output is `Running',
 %% this operation returns only partial results. If you see a value of
@@ -1020,7 +1057,8 @@ get_log_record(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account to start queries in linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -1059,7 +1097,9 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc The ListTagsLogGroup operation is on the path to deprecation.
 %%
-%% We recommend that you use ListTagsForResource instead.
+%% We recommend that you use ListTagsForResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsForResource.html
+%% instead.
 %%
 %% Lists the tags for the specified log group.
 list_tags_log_group(Client, Input)
@@ -1092,25 +1132,30 @@ list_tags_log_group(Client, Input, Options)
 %%
 %% By default, when a user views a log event that includes masked data, the
 %% sensitive data is replaced by asterisks. A user who has the
-%% `logs:Unmask' permission can use a GetLogEvents or FilterLogEvents
+%% `logs:Unmask' permission can use a GetLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogEvents.html
+%% or FilterLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_FilterLogEvents.html
 %% operation with the `unmask' parameter set to `true' to view the
 %% unmasked log events. Users with the `logs:Unmask' can also view
 %% unmasked data in the CloudWatch Logs console by running a CloudWatch Logs
 %% Insights query with the `unmask' query command.
 %%
 %% For more information, including a list of types of data that can be
-%% audited and masked, see Protect sensitive log data with masking.
+%% audited and masked, see Protect sensitive log data with masking:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html.
 %%
 %% To use the `PutAccountPolicy' operation for a data protection policy,
 %% you must be signed on with the `logs:PutDataProtectionPolicy' and
 %% `logs:PutAccountPolicy' permissions.
 %%
 %% The `PutAccountPolicy' operation applies to all log groups in the
-%% account. You can use PutDataProtectionPolicy to create a data protection
-%% policy that applies to just one log group. If a log group has its own data
-%% protection policy and the account also has an account-level data
-%% protection policy, then the two policies are cumulative. Any sensitive
-%% term specified in either policy is masked.
+%% account. You can use PutDataProtectionPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDataProtectionPolicy.html
+%% to create a data protection policy that applies to just one log group. If
+%% a log group has its own data protection policy and the account also has an
+%% account-level data protection policy, then the two policies are
+%% cumulative. Any sensitive term specified in either policy is masked.
 %%
 %% Subscription filter policy
 %%
@@ -1134,8 +1179,10 @@ list_tags_log_group(Client, Input, Options)
 %% policy, for same-account delivery.
 %%
 %% </li> <li> A logical destination in a different account created with
-%% PutDestination, for cross-account delivery. Kinesis Data Streams and
-%% Kinesis Data Firehose are supported as logical destinations.
+%% PutDestination:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html,
+%% for cross-account delivery. Kinesis Data Streams and Kinesis Data Firehose
+%% are supported as logical destinations.
 %%
 %% </li> </ul> Each account can have one account-level subscription filter
 %% policy. If you are updating an existing filter, you must specify the
@@ -1160,22 +1207,28 @@ put_account_policy(Client, Input, Options)
 %%
 %% By default, when a user views a log event that includes masked data, the
 %% sensitive data is replaced by asterisks. A user who has the
-%% `logs:Unmask' permission can use a GetLogEvents or FilterLogEvents
+%% `logs:Unmask' permission can use a GetLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogEvents.html
+%% or FilterLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_FilterLogEvents.html
 %% operation with the `unmask' parameter set to `true' to view the
 %% unmasked log events. Users with the `logs:Unmask' can also view
 %% unmasked data in the CloudWatch Logs console by running a CloudWatch Logs
 %% Insights query with the `unmask' query command.
 %%
 %% For more information, including a list of types of data that can be
-%% audited and masked, see Protect sensitive log data with masking.
+%% audited and masked, see Protect sensitive log data with masking:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html.
 %%
 %% The `PutDataProtectionPolicy' operation applies to only the specified
-%% log group. You can also use PutAccountPolicy to create an account-level
-%% data protection policy that applies to all log groups in the account,
-%% including both existing log groups and log groups that are created level.
-%% If a log group has its own data protection policy and the account also has
-%% an account-level data protection policy, then the two policies are
-%% cumulative. Any sensitive term specified in either policy is masked.
+%% log group. You can also use PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html
+%% to create an account-level data protection policy that applies to all log
+%% groups in the account, including both existing log groups and log groups
+%% that are created level. If a log group has its own data protection policy
+%% and the account also has an account-level data protection policy, then the
+%% two policies are cumulative. Any sensitive term specified in either policy
+%% is masked.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
@@ -1195,20 +1248,23 @@ put_data_protection_policy(Client, Input, Options)
 %%
 %% <ul> <li> Create a delivery source, which is a logical object that
 %% represents the resource that is actually sending the logs. For more
-%% information, see PutDeliverySource.
+%% information, see PutDeliverySource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html.
 %%
 %% </li> <li> Use `PutDeliveryDestination' to create a delivery
 %% destination, which is a logical object that represents the actual delivery
 %% destination.
 %%
 %% </li> <li> If you are delivering logs cross-account, you must use
-%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
-%% policy to the destination. This policy allows delivery to that
-%% destination.
+%% PutDeliveryDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html
+%% in the destination account to assign an IAM policy to the destination.
+%% This policy allows delivery to that destination.
 %%
 %% </li> <li> Use `CreateDelivery' to create a delivery by pairing
 %% exactly one delivery source and one delivery destination. For more
-%% information, see CreateDelivery.
+%% information, see CreateDelivery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CreateDelivery.html.
 %%
 %% </li> </ul> You can configure a single delivery source to send logs to
 %% multiple destinations by creating multiple deliveries. You can also create
@@ -1217,7 +1273,8 @@ put_data_protection_policy(Client, Input, Options)
 %%
 %% Only some Amazon Web Services services support being configured as a
 %% delivery source. These services are listed as Supported [V2 Permissions]
-%% in the table at Enabling logging from Amazon Web Services services.
+%% in the table at Enabling logging from Amazon Web Services services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 %%
 %% If you use this operation to update an existing delivery destination, all
 %% the current delivery destination parameters are overwritten with the new
@@ -1239,23 +1296,27 @@ put_delivery_destination(Client, Input, Options)
 %%
 %% <ul> <li> Create a delivery source, which is a logical object that
 %% represents the resource that is actually sending the logs. For more
-%% information, see PutDeliverySource.
+%% information, see PutDeliverySource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html.
 %%
 %% </li> <li> Create a delivery destination, which is a logical object that
 %% represents the actual delivery destination. For more information, see
-%% PutDeliveryDestination.
+%% PutDeliveryDestination:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html.
 %%
 %% </li> <li> Use this operation in the destination account to assign an IAM
 %% policy to the destination. This policy allows delivery to that
 %% destination.
 %%
 %% </li> <li> Create a delivery by pairing exactly one delivery source and
-%% one delivery destination. For more information, see CreateDelivery.
+%% one delivery destination. For more information, see CreateDelivery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CreateDelivery.html.
 %%
 %% </li> </ul> Only some Amazon Web Services services support being
 %% configured as a delivery source. These services are listed as Supported
 %% [V2 Permissions] in the table at Enabling logging from Amazon Web Services
-%% services.
+%% services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 %%
 %% The contents of the policy must include two statements. One statement
 %% enables general logs delivery, and the other allows delivery to the chosen
@@ -1283,16 +1344,19 @@ put_delivery_destination_policy(Client, Input, Options)
 %%
 %% </li> <li> Use `PutDeliveryDestination' to create a delivery
 %% destination, which is a logical object that represents the actual delivery
-%% destination. For more information, see PutDeliveryDestination.
+%% destination. For more information, see PutDeliveryDestination:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html.
 %%
 %% </li> <li> If you are delivering logs cross-account, you must use
-%% PutDeliveryDestinationPolicy in the destination account to assign an IAM
-%% policy to the destination. This policy allows delivery to that
-%% destination.
+%% PutDeliveryDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html
+%% in the destination account to assign an IAM policy to the destination.
+%% This policy allows delivery to that destination.
 %%
 %% </li> <li> Use `CreateDelivery' to create a delivery by pairing
 %% exactly one delivery source and one delivery destination. For more
-%% information, see CreateDelivery.
+%% information, see CreateDelivery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CreateDelivery.html.
 %%
 %% </li> </ul> You can configure a single delivery source to send logs to
 %% multiple destinations by creating multiple deliveries. You can also create
@@ -1301,7 +1365,8 @@ put_delivery_destination_policy(Client, Input, Options)
 %%
 %% Only some Amazon Web Services services support being configured as a
 %% delivery source. These services are listed as Supported [V2 Permissions]
-%% in the table at Enabling logging from Amazon Web Services services.
+%% in the table at Enabling logging from Amazon Web Services services.:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 %%
 %% If you use this operation to update an existing delivery source, all the
 %% current delivery source parameters are overwritten with the new parameter
@@ -1320,14 +1385,18 @@ put_delivery_source(Client, Input, Options)
 %%
 %% A destination encapsulates a physical resource (such as an Amazon Kinesis
 %% stream). With a destination, you can subscribe to a real-time stream of
-%% log events for a different account, ingested using PutLogEvents.
+%% log events for a different account, ingested using PutLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html.
 %%
 %% Through an access policy, a destination controls what is written to it. By
 %% default, `PutDestination' does not set any access policy with the
 %% destination, which means a cross-account user cannot call
-%% PutSubscriptionFilter against this destination. To enable this, the
-%% destination owner must call PutDestinationPolicy after
-%% `PutDestination'.
+%% PutSubscriptionFilter:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutSubscriptionFilter.html
+%% against this destination. To enable this, the destination owner must call
+%% PutDestinationPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html
+%% after `PutDestination'.
 %%
 %% To perform a `PutDestination' operation, you must also have the
 %% `iam:PassRole' permission.
@@ -1341,8 +1410,10 @@ put_destination(Client, Input, Options)
 %% @doc Creates or updates an access policy associated with an existing
 %% destination.
 %%
-%% An access policy is an IAM policy document that is used to authorize
-%% claims to register a subscription filter against a given destination.
+%% An access policy is an IAM policy document:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html
+%% that is used to authorize claims to register a subscription filter against
+%% a given destination.
 put_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination_policy(Client, Input, []).
@@ -1404,7 +1475,8 @@ put_log_events(Client, Input, Options)
 %% specified log group.
 %%
 %% With metric filters, you can configure rules to extract metric data from
-%% log events ingested through PutLogEvents.
+%% log events ingested through PutLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html.
 %%
 %% The maximum number of metric filters that can be associated with a log
 %% group is 100.
@@ -1423,7 +1495,8 @@ put_log_events(Client, Input, Options)
 %%
 %% You can also set up a billing alarm to alert you if your charges are
 %% higher than expected. For more information, see Creating a Billing Alarm
-%% to Monitor Your Estimated Amazon Web Services Charges.
+%% to Monitor Your Estimated Amazon Web Services Charges:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html.
 put_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_filter(Client, Input, []).
@@ -1434,7 +1507,8 @@ put_metric_filter(Client, Input, Options)
 %% @doc Creates or updates a query definition for CloudWatch Logs Insights.
 %%
 %% For more information, see Analyzing Log Data with CloudWatch Logs
-%% Insights.
+%% Insights:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html.
 %%
 %% To update a query definition, specify its `queryDefinitionId' in your
 %% request. The values of `name', `queryString', and
@@ -1502,18 +1576,22 @@ put_retention_policy(Client, Input, Options)
 %% specified log group.
 %%
 %% With subscription filters, you can subscribe to a real-time stream of log
-%% events ingested through PutLogEvents and have them delivered to a specific
-%% destination. When log events are sent to the receiving service, they are
-%% Base64 encoded and compressed with the GZIP format.
+%% events ingested through PutLogEvents:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html
+%% and have them delivered to a specific destination. When log events are
+%% sent to the receiving service, they are Base64 encoded and compressed with
+%% the GZIP format.
 %%
 %% The following destinations are supported for subscription filters:
 %%
 %% <ul> <li> An Amazon Kinesis data stream belonging to the same account as
 %% the subscription filter, for same-account delivery.
 %%
-%% </li> <li> A logical destination created with PutDestination that belongs
-%% to a different account, for cross-account delivery. We currently support
-%% Kinesis Data Streams and Kinesis Data Firehose as logical destinations.
+%% </li> <li> A logical destination created with PutDestination:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html
+%% that belongs to a different account, for cross-account delivery. We
+%% currently support Kinesis Data Streams and Kinesis Data Firehose as
+%% logical destinations.
 %%
 %% </li> <li> An Amazon Kinesis Data Firehose delivery stream that belongs to
 %% the same account as the subscription filter, for same-account delivery.
@@ -1539,18 +1617,22 @@ put_subscription_filter(Client, Input, Options)
 %%
 %% A Live Tail session returns a stream of log events that have been recently
 %% ingested in the log groups. For more information, see Use Live Tail to
-%% view logs in near real time.
+%% view logs in near real time:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html.
 %%
 %% The response to this operation is a response stream, over which the server
 %% sends live log events and the client receives them.
 %%
 %% The following objects are sent over the stream:
 %%
-%% <ul> <li> A single LiveTailSessionStart object is sent at the start of the
-%% session.
+%% <ul> <li> A single LiveTailSessionStart:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_LiveTailSessionStart.html
+%% object is sent at the start of the session.
 %%
-%% </li> <li> Every second, a LiveTailSessionUpdate object is sent. Each of
-%% these objects contains an array of the actual log events.
+%% </li> <li> Every second, a LiveTailSessionUpdate:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_LiveTailSessionUpdate.html
+%% object is sent. Each of these objects contains an array of the actual log
+%% events.
 %%
 %% If no new log events were ingested in the past second, the
 %% `LiveTailSessionUpdate' object will contain an empty array.
@@ -1564,11 +1646,14 @@ put_subscription_filter(Client, Input, Options)
 %% them, CloudWatch Logs buffers up to 10 `LiveTailSessionUpdate' events
 %% or 5000 log events, after which it starts dropping the oldest events.
 %%
-%% </li> <li> A SessionStreamingException object is returned if an unknown
-%% error occurs on the server side.
+%% </li> <li> A SessionStreamingException:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionStreamingException.html
+%% object is returned if an unknown error occurs on the server side.
 %%
-%% </li> <li> A SessionTimeoutException object is returned when the session
-%% times out, after it has been kept open for three hours.
+%% </li> <li> A SessionTimeoutException:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_SessionTimeoutException.html
+%% object is returned when the session times out, after it has been kept open
+%% for three hours.
 %%
 %% </li> </ul> You can end a session before it times out by closing the
 %% session stream or by closing the client that is receiving the stream. The
@@ -1576,7 +1661,8 @@ put_subscription_filter(Client, Input, Options)
 %% server breaks.
 %%
 %% For examples of using an SDK to start a Live Tail session, see Start a
-%% Live Tail session using an Amazon Web Services SDK.
+%% Live Tail session using an Amazon Web Services SDK:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/example_cloudwatch-logs_StartLiveTail_section.html.
 start_live_tail(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_live_tail(Client, Input, []).
@@ -1589,16 +1675,21 @@ start_live_tail(Client, Input, Options)
 %% You specify the log group and time range to query and the query string to
 %% use.
 %%
-%% For more information, see CloudWatch Logs Insights Query Syntax.
+%% For more information, see CloudWatch Logs Insights Query Syntax:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html.
 %%
 %% After you run a query using `StartQuery', the query results are stored
-%% by CloudWatch Logs. You can use GetQueryResults to retrieve the results of
-%% a query, using the `queryId' that `StartQuery' returns.
+%% by CloudWatch Logs. You can use GetQueryResults:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetQueryResults.html
+%% to retrieve the results of a query, using the `queryId' that
+%% `StartQuery' returns.
 %%
 %% If you have associated a KMS key with the query results in this account,
-%% then StartQuery uses that key to encrypt the results when it stores them.
-%% If no key is associated with query results, the query results are
-%% encrypted with the default CloudWatch Logs encryption method.
+%% then StartQuery:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html
+%% uses that key to encrypt the results when it stores them. If no key is
+%% associated with query results, the query results are encrypted with the
+%% default CloudWatch Logs encryption method.
 %%
 %% Queries time out after 60 minutes of runtime. If your queries are timing
 %% out, reduce the time range being searched or partition your query into a
@@ -1606,7 +1697,8 @@ start_live_tail(Client, Input, Options)
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account to start a query in a linked source
-%% account. For more information, see CloudWatch cross-account observability.
+%% account. For more information, see CloudWatch cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 %% For a cross-account `StartQuery' operation, the query definition must
 %% be defined in the monitoring account.
 %%
@@ -1632,21 +1724,28 @@ stop_query(Client, Input, Options)
 
 %% @doc The TagLogGroup operation is on the path to deprecation.
 %%
-%% We recommend that you use TagResource instead.
+%% We recommend that you use TagResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagResource.html
+%% instead.
 %%
 %% Adds or updates the specified tags for the specified log group.
 %%
-%% To list the tags for a log group, use ListTagsForResource. To remove tags,
-%% use UntagResource.
+%% To list the tags for a log group, use ListTagsForResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsForResource.html.
+%% To remove tags, use UntagResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagResource.html.
 %%
 %% For more information about tags, see Tag Log Groups in Amazon CloudWatch
-%% Logs in the Amazon CloudWatch Logs User Guide.
+%% Logs:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging
+%% in the Amazon CloudWatch Logs User Guide.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that prevent users from
 %% assigning specified tags to log groups using the `aws:Resource/key-name
 %% ' or `aws:TagKeys' condition keys. For more information about
 %% using tags to control access, see Controlling access to Amazon Web
-%% Services resources using tags.
+%% Services resources using tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html.
 tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
@@ -1695,12 +1794,16 @@ test_metric_filter(Client, Input, Options)
 
 %% @doc The UntagLogGroup operation is on the path to deprecation.
 %%
-%% We recommend that you use UntagResource instead.
+%% We recommend that you use UntagResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagResource.html
+%% instead.
 %%
 %% Removes the specified tags from the specified log group.
 %%
-%% To list the tags for a log group, use ListTagsForResource. To add tags,
-%% use TagResource.
+%% To list the tags for a log group, use ListTagsForResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsForResource.html.
+%% To add tags, use TagResource:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagResource.html.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that prevent users from
 %% assigning specified tags to log groups using the `aws:Resource/key-name

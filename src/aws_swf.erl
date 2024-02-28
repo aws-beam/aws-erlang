@@ -17,7 +17,8 @@
 %% progress and maintaining their state.
 %%
 %% This documentation serves as reference only. For a broader overview of the
-%% Amazon SWF programming model, see the Amazon SWF Developer Guide .
+%% Amazon SWF programming model, see the Amazon SWF Developer Guide:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/ .
 -module(aws_swf).
 
 -export([count_closed_workflow_executions/2,
@@ -135,8 +136,9 @@
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 count_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_closed_workflow_executions(Client, Input, []).
@@ -178,8 +180,9 @@ count_closed_workflow_executions(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 count_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_open_workflow_executions(Client, Input, []).
@@ -214,7 +217,9 @@ count_open_workflow_executions(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 count_pending_activity_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_activity_tasks(Client, Input, []).
@@ -249,7 +254,9 @@ count_pending_activity_tasks(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 count_pending_decision_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_decision_tasks(Client, Input, []).
@@ -291,8 +298,9 @@ count_pending_decision_tasks(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 deprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_activity_type(Client, Input, []).
@@ -330,7 +338,9 @@ deprecate_activity_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 deprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_domain(Client, Input, []).
@@ -373,8 +383,9 @@ deprecate_domain(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 deprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_workflow_type(Client, Input, []).
@@ -412,8 +423,9 @@ deprecate_workflow_type(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 describe_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity_type(Client, Input, []).
@@ -443,7 +455,9 @@ describe_activity_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
@@ -476,7 +490,9 @@ describe_domain(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 describe_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_execution(Client, Input, []).
@@ -515,8 +531,9 @@ describe_workflow_execution(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 describe_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_type(Client, Input, []).
@@ -552,7 +569,9 @@ describe_workflow_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 get_workflow_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_execution_history(Client, Input, []).
@@ -587,7 +606,9 @@ get_workflow_execution_history(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 list_activity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activity_types(Client, Input, []).
@@ -633,8 +654,9 @@ list_activity_types(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 list_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_closed_workflow_executions(Client, Input, []).
@@ -672,7 +694,9 @@ list_closed_workflow_executions(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -718,8 +742,9 @@ list_domains(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 list_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_workflow_executions(Client, Input, []).
@@ -759,7 +784,9 @@ list_tags_for_resource(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 list_workflow_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflow_types(Client, Input, []).
@@ -802,7 +829,9 @@ list_workflow_types(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 poll_for_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_activity_task(Client, Input, []).
@@ -856,7 +885,9 @@ poll_for_activity_task(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 poll_for_decision_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_decision_task(Client, Input, []).
@@ -917,7 +948,9 @@ poll_for_decision_task(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 record_activity_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_activity_task_heartbeat(Client, Input, []).
@@ -958,8 +991,9 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 register_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_activity_type(Client, Input, []).
@@ -989,7 +1023,9 @@ register_activity_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
@@ -1033,8 +1069,9 @@ register_domain(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 register_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workflow_type(Client, Input, []).
@@ -1078,7 +1115,9 @@ register_workflow_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 request_cancel_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_cancel_workflow_execution(Client, Input, []).
@@ -1102,7 +1141,8 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
 %% `RespondActivityTaskCompleted', RespondActivityTaskCanceled,
-%% `RespondActivityTaskFailed', or the task has timed out.
+%% `RespondActivityTaskFailed', or the task has timed out:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types.
 %%
 %% Access Control
 %%
@@ -1123,7 +1163,9 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 respond_activity_task_canceled(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_canceled(Client, Input, []).
@@ -1148,7 +1190,8 @@ respond_activity_task_canceled(Client, Input, Options)
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
 %% RespondActivityTaskCompleted, `RespondActivityTaskCanceled',
-%% `RespondActivityTaskFailed', or the task has timed out.
+%% `RespondActivityTaskFailed', or the task has timed out:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types.
 %%
 %% Access Control
 %%
@@ -1169,7 +1212,9 @@ respond_activity_task_canceled(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 respond_activity_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_completed(Client, Input, []).
@@ -1188,7 +1233,8 @@ respond_activity_task_completed(Client, Input, Options)
 %% closed. Therefore a task is reported as open while a worker is processing
 %% it. A task is closed after it has been specified in a call to
 %% `RespondActivityTaskCompleted', `RespondActivityTaskCanceled',
-%% RespondActivityTaskFailed, or the task has timed out.
+%% RespondActivityTaskFailed, or the task has timed out:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types.
 %%
 %% Access Control
 %%
@@ -1209,7 +1255,9 @@ respond_activity_task_completed(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 respond_activity_task_failed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_failed(Client, Input, []).
@@ -1236,7 +1284,9 @@ respond_activity_task_failed(Client, Input, Options)
 %% policies to be as readable as possible, you can express permissions on
 %% decisions as if they were actual API calls, including applying conditions
 %% to some parameters. For more information, see Using IAM to Manage Access
-%% to Amazon SWF Workflows in the Amazon SWF Developer Guide.
+%% to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 respond_decision_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_decision_task_completed(Client, Input, []).
@@ -1277,7 +1327,9 @@ respond_decision_task_completed(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 signal_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_workflow_execution(Client, Input, []).
@@ -1328,8 +1380,9 @@ signal_workflow_execution(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 start_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_execution(Client, Input, []).
@@ -1385,7 +1438,9 @@ tag_resource(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 terminate_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_workflow_execution(Client, Input, []).
@@ -1426,8 +1481,9 @@ terminate_workflow_execution(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 undeprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_activity_type(Client, Input, []).
@@ -1462,7 +1518,9 @@ undeprecate_activity_type(Client, Input, Options)
 %% constraints, the action fails. The associated event attribute's
 %% `cause' parameter is set to `OPERATION_NOT_PERMITTED'. For details
 %% and example IAM policies, see Using IAM to Manage Access to Amazon SWF
-%% Workflows in the Amazon SWF Developer Guide.
+%% Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 undeprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_domain(Client, Input, []).
@@ -1503,8 +1561,9 @@ undeprecate_domain(Client, Input, Options)
 %% specified constraints, the action fails. The associated event
 %% attribute's `cause' parameter is set to
 %% `OPERATION_NOT_PERMITTED'. For details and example IAM policies, see
-%% Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
-%% Developer Guide.
+%% Using IAM to Manage Access to Amazon SWF Workflows:
+%% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
+%% in the Amazon SWF Developer Guide.
 undeprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_workflow_type(Client, Input, []).

@@ -48,19 +48,24 @@
 %%
 %% The video track of each fragment must contain codec private data in the
 %% Advanced Video Coding (AVC) for H.264 format and HEVC for H.265 format.
-%% For more information, see MPEG-4 specification ISO/IEC 14496-15. For
-%% information about adapting stream data to a given format, see NAL
-%% Adaptation Flags.
+%% For more information, see MPEG-4 specification ISO/IEC 14496-15:
+%% https://www.iso.org/standard/55980.html. For information about adapting
+%% stream data to a given format, see NAL Adaptation Flags:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html.
 %%
 %% The audio track (if present) of each fragment must contain codec private
-%% data in the AAC format (AAC specification ISO/IEC 13818-7) or the MS Wave
-%% format.
+%% data in the AAC format (AAC specification ISO/IEC 13818-7:
+%% https://www.iso.org/standard/43345.html) or the MS Wave format:
+%% http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html.
 %%
 %% You can monitor the amount of outgoing data by monitoring the
 %% `GetClip.OutgoingBytes' Amazon CloudWatch metric. For information
 %% about using CloudWatch to monitor Kinesis Video Streams, see Monitoring
-%% Kinesis Video Streams. For pricing information, see Amazon Kinesis Video
-%% Streams Pricing and Amazon Web Services Pricing. Charges for outgoing
+%% Kinesis Video Streams:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html.
+%% For pricing information, see Amazon Kinesis Video Streams Pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/ and Amazon Web
+%% Services Pricing: https://aws.amazon.com/pricing/. Charges for outgoing
 %% Amazon Web Services data apply.
 %%
 %% '''
@@ -125,18 +130,22 @@ get_clip(Client, Input0, Options0) ->
 %% </li> <li> The video track of each fragment must contain codec private
 %% data in the Advanced Video Coding (AVC) for H.264 format and HEVC for
 %% H.265 format. For more information, see MPEG-4 specification ISO/IEC
-%% 14496-15. For information about adapting stream data to a given format,
-%% see NAL Adaptation Flags.
+%% 14496-15: https://www.iso.org/standard/55980.html. For information about
+%% adapting stream data to a given format, see NAL Adaptation Flags:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html.
 %%
 %% </li> <li> The audio track (if present) of each fragment must contain
-%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7)
-%% or the MS Wave format.
+%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7:
+%% https://www.iso.org/standard/43345.html) or the MS Wave format:
+%% http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html.
 %%
 %% </li> </ul> The following procedure shows how to use MPEG-DASH with
 %% Kinesis Video Streams:
 %%
-%% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
-%% `GET_DASH_STREAMING_SESSION_URL' for the `APIName' parameter.
+%% <ol> <li> Get an endpoint using GetDataEndpoint:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html,
+%% specifying `GET_DASH_STREAMING_SESSION_URL' for the `APIName'
+%% parameter.
 %%
 %% </li> <li> Retrieve the MPEG-DASH URL using
 %% `GetDASHStreamingSessionURL'. Kinesis Video Streams creates an
@@ -193,20 +202,26 @@ get_clip(Client, Input0, Options0) ->
 %% session. This also means that the session fails if the fragments in a
 %% stream change from having only video to having both audio and video.
 %%
-%% Data retrieved with this action is billable. See Pricing for details.
+%% Data retrieved with this action is billable. See Pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/ for details.
 %%
 %% </li> </ul> </li> </ol> For restrictions that apply to MPEG-DASH sessions,
-%% see Kinesis Video Streams Limits.
+%% see Kinesis Video Streams Limits:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html.
 %%
 %% You can monitor the amount of data that the media player consumes by
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
-%% Streams, see Monitoring Kinesis Video Streams. For pricing information,
-%% see Amazon Kinesis Video Streams Pricing and Amazon Web Services Pricing.
-%% Charges for both HLS sessions and outgoing Amazon Web Services data apply.
+%% Streams, see Monitoring Kinesis Video Streams:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html.
+%% For pricing information, see Amazon Kinesis Video Streams Pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/ and Amazon Web
+%% Services Pricing: https://aws.amazon.com/pricing/. Charges for both HLS
+%% sessions and outgoing Amazon Web Services data apply.
 %%
-%% For more information about HLS, see HTTP Live Streaming on the Apple
-%% Developer site.
+%% For more information about HLS, see HTTP Live Streaming:
+%% https://developer.apple.com/streaming/ on the Apple Developer site:
+%% https://developer.apple.com.
 %%
 %% If an error is thrown after invoking a Kinesis Video Streams archived
 %% media API, in addition to the HTTP status code and the response body, it
@@ -225,7 +240,8 @@ get_clip(Client, Input0, Options0) ->
 %% programmer might need to take in order to successfully try again.
 %%
 %% For more information, see the Errors section at the bottom of this topic,
-%% as well as Common Errors.
+%% as well as Common Errors:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
 get_dash_streaming_session_url(Client, Input) ->
     get_dash_streaming_session_url(Client, Input, []).
 get_dash_streaming_session_url(Client, Input0, Options0) ->
@@ -271,21 +287,27 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %%
 %% </li> <li> The video track of each fragment must contain codec private
 %% data in the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
-%% format (MPEG-4 specification ISO/IEC 14496-15). For information about
-%% adapting stream data to a given format, see NAL Adaptation Flags.
+%% format (MPEG-4 specification ISO/IEC 14496-15:
+%% https://www.iso.org/standard/55980.html). For information about adapting
+%% stream data to a given format, see NAL Adaptation Flags:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html.
 %%
 %% </li> <li> The audio track (if present) of each fragment must contain
-%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7).
+%% codec private data in the AAC format (AAC specification ISO/IEC 13818-7:
+%% https://www.iso.org/standard/43345.html).
 %%
 %% </li> </ul> Kinesis Video Streams HLS sessions contain fragments in the
 %% fragmented MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also
 %% called TS chunks, which the HLS specification also supports). For more
-%% information about HLS fragment types, see the HLS specification.
+%% information about HLS fragment types, see the HLS specification:
+%% https://tools.ietf.org/html/draft-pantos-http-live-streaming-23.
 %%
 %% The following procedure shows how to use HLS with Kinesis Video Streams:
 %%
-%% <ol> <li> Get an endpoint using GetDataEndpoint, specifying
-%% `GET_HLS_STREAMING_SESSION_URL' for the `APIName' parameter.
+%% <ol> <li> Get an endpoint using GetDataEndpoint:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html,
+%% specifying `GET_HLS_STREAMING_SESSION_URL' for the `APIName'
+%% parameter.
 %%
 %% </li> <li> Retrieve the HLS URL using `GetHLSStreamingSessionURL'.
 %% Kinesis Video Streams creates an HLS streaming session to be used for
@@ -362,7 +384,8 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% is changed to an ALAW audio track. For each streaming session, only 500
 %% CPD changes are allowed.
 %%
-%% Data retrieved with this action is billable. For information, see Pricing.
+%% Data retrieved with this action is billable. For information, see Pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/.
 %%
 %% </li> <li> GetTSFragment: Retrieves MPEG TS fragments containing both
 %% initialization and media data for all tracks in the stream.
@@ -372,21 +395,27 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% media.
 %%
 %% Data retrieved with this action is billable. For more information, see
-%% Kinesis Video Streams pricing.
+%% Kinesis Video Streams pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/.
 %%
 %% </li> </ul> </li> </ol> A streaming session URL must not be shared between
 %% players. The service might throttle a session if multiple media players
-%% are sharing it. For connection limits, see Kinesis Video Streams Limits.
+%% are sharing it. For connection limits, see Kinesis Video Streams Limits:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html.
 %%
 %% You can monitor the amount of data that the media player consumes by
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
 %% metric. For information about using CloudWatch to monitor Kinesis Video
-%% Streams, see Monitoring Kinesis Video Streams. For pricing information,
-%% see Amazon Kinesis Video Streams Pricing and Amazon Web Services Pricing.
-%% Charges for both HLS sessions and outgoing Amazon Web Services data apply.
+%% Streams, see Monitoring Kinesis Video Streams:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html.
+%% For pricing information, see Amazon Kinesis Video Streams Pricing:
+%% https://aws.amazon.com/kinesis/video-streams/pricing/ and Amazon Web
+%% Services Pricing: https://aws.amazon.com/pricing/. Charges for both HLS
+%% sessions and outgoing Amazon Web Services data apply.
 %%
-%% For more information about HLS, see HTTP Live Streaming on the Apple
-%% Developer site.
+%% For more information about HLS, see HTTP Live Streaming:
+%% https://developer.apple.com/streaming/ on the Apple Developer site:
+%% https://developer.apple.com.
 %%
 %% If an error is thrown after invoking a Kinesis Video Streams archived
 %% media API, in addition to the HTTP status code and the response body, it
@@ -405,7 +434,8 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% programmer might need to take in order to successfully try again.
 %%
 %% For more information, see the Errors section at the bottom of this topic,
-%% as well as Common Errors.
+%% as well as Common Errors:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
 get_hls_streaming_session_url(Client, Input) ->
     get_hls_streaming_session_url(Client, Input, []).
 get_hls_streaming_session_url(Client, Input0, Options0) ->
@@ -457,9 +487,11 @@ get_images(Client, Input0, Options0) ->
 %%
 %% You must first call the `GetDataEndpoint' API to get an endpoint. Then
 %% send the `GetMediaForFragmentList' requests to this endpoint using the
-%% --endpoint-url parameter.
+%% --endpoint-url parameter:
+%% https://docs.aws.amazon.com/cli/latest/reference/.
 %%
-%% For limits, see Kinesis Video Streams Limits.
+%% For limits, see Kinesis Video Streams Limits:
+%% http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html.
 %%
 %% If an error is thrown after invoking a Kinesis Video Streams archived
 %% media API, in addition to the HTTP status code and the response body, it
@@ -478,7 +510,8 @@ get_images(Client, Input0, Options0) ->
 %% programmer might need to take in order to successfully try again.
 %%
 %% For more information, see the Errors section at the bottom of this topic,
-%% as well as Common Errors.
+%% as well as Common Errors:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
 get_media_for_fragment_list(Client, Input) ->
     get_media_for_fragment_list(Client, Input, []).
 get_media_for_fragment_list(Client, Input0, Options0) ->
@@ -528,7 +561,8 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 %%
 %% You must first call the `GetDataEndpoint' API to get an endpoint. Then
 %% send the `ListFragments' requests to this endpoint using the
-%% --endpoint-url parameter.
+%% --endpoint-url parameter:
+%% https://docs.aws.amazon.com/cli/latest/reference/.
 %%
 %% If an error is thrown after invoking a Kinesis Video Streams archived
 %% media API, in addition to the HTTP status code and the response body, it
@@ -547,7 +581,8 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 %% programmer might need to take in order to successfully try again.
 %%
 %% For more information, see the Errors section at the bottom of this topic,
-%% as well as Common Errors.
+%% as well as Common Errors:
+%% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
 list_fragments(Client, Input) ->
     list_fragments(Client, Input, []).
 list_fragments(Client, Input0, Options0) ->

@@ -8,7 +8,8 @@
 %% This guide is for developers who need detailed information about Global
 %% Accelerator API actions, data types, and errors. For more information
 %% about Global Accelerator features, see the Global Accelerator Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html.
 %%
 %% Global Accelerator is a service in which you create accelerators to
 %% improve the performance of your applications for local and global users.
@@ -57,7 +58,8 @@
 %% static IP addresses that are assigned to it, so you can no longer route
 %% traffic by using them. You can use IAM policies like tag-based permissions
 %% with Global Accelerator to limit the users who have permissions to delete
-%% an accelerator. For more information, see Tag-based policies.
+%% an accelerator. For more information, see Tag-based policies:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/access-control-manage-access-tag-policies.html.
 %%
 %% For standard accelerators, Global Accelerator uses the Amazon Web Services
 %% global network to route traffic to the optimal regional endpoint based on
@@ -66,7 +68,8 @@
 %% internet traffic from clients is always directed to healthy endpoints.
 %%
 %% For more information about understanding and using Global Accelerator, see
-%% the Global Accelerator Developer Guide.
+%% the Global Accelerator Developer Guide:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html.
 -module(aws_global_accelerator).
 
 -export([add_custom_routing_endpoints/2,
@@ -203,7 +206,9 @@
 %% By default, all destinations in a subnet in a custom routing accelerator
 %% cannot receive traffic. To enable all destinations to receive traffic, or
 %% to specify individual port mappings that can receive traffic, see the
-%% AllowCustomRoutingTraffic operation.
+%% AllowCustomRoutingTraffic:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html
+%% operation.
 add_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_routing_endpoints(Client, Input, []).
@@ -215,8 +220,11 @@ add_custom_routing_endpoints(Client, Input, Options)
 %%
 %% The `AddEndpoints' API operation is the recommended option for adding
 %% endpoints. The alternative options are to add endpoints when you create an
-%% endpoint group (with the CreateEndpointGroup API) or when you update an
-%% endpoint group (with the UpdateEndpointGroup API).
+%% endpoint group (with the CreateEndpointGroup:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/API_CreateEndpointGroup.html
+%% API) or when you update an endpoint group (with the UpdateEndpointGroup:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/API_UpdateEndpointGroup.html
+%% API).
 %%
 %% There are two advantages to using `AddEndpoints' to add endpoints in
 %% Global Accelerator:
@@ -231,7 +239,9 @@ add_custom_routing_endpoints(Client, Input, Options)
 %%
 %% </li> </ul> For information about endpoint types and requirements for
 %% endpoints that you can add to Global Accelerator, see Endpoints for
-%% standard accelerators in the Global Accelerator Developer Guide.
+%% standard accelerators:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
+%% in the Global Accelerator Developer Guide.
 add_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_endpoints(Client, Input, []).
@@ -246,10 +256,12 @@ add_endpoints(Client, Input, Options)
 %% It can take a few minutes before traffic to the specified addresses starts
 %% routing to Amazon Web Services because of propagation delays.
 %%
-%% To stop advertising the BYOIP address range, use WithdrawByoipCidr.
+%% To stop advertising the BYOIP address range, use WithdrawByoipCidr:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/WithdrawByoipCidr.html.
 %%
-%% For more information, see Bring your own IP addresses (BYOIP) in the
-%% Global Accelerator Developer Guide.
+%% For more information, see Bring your own IP addresses (BYOIP):
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
+%% in the Global Accelerator Developer Guide.
 advertise_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     advertise_byoip_cidr(Client, Input, []).
@@ -324,7 +336,9 @@ create_cross_account_attachment(Client, Input, Options)
 %% Be aware that, by default, all destination EC2 instances in a VPC subnet
 %% endpoint cannot receive traffic. To enable all destinations to receive
 %% traffic, or to specify individual port mappings that can receive traffic,
-%% see the AllowCustomRoutingTraffic operation.
+%% see the AllowCustomRoutingTraffic:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html
+%% operation.
 %%
 %% Global Accelerator is a global service that supports endpoints in multiple
 %% Amazon Web Services Regions but you must specify the US West (Oregon)
@@ -370,7 +384,9 @@ create_custom_routing_listener(Client, Input, Options)
 %%
 %% For more information about endpoint types and requirements for endpoints
 %% that you can add to Global Accelerator, see Endpoints for standard
-%% accelerators in the Global Accelerator Developer Guide.
+%% accelerators:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
+%% in the Global Accelerator Developer Guide.
 create_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_group(Client, Input, []).
@@ -409,7 +425,9 @@ create_listener(Client, Input, Options)
 %% have permissions in place to avoid inadvertently deleting accelerators.
 %% You can use IAM policies with Global Accelerator to limit the users who
 %% have permissions to delete an accelerator. For more information, see
-%% Identity and access management in the Global Accelerator Developer Guide.
+%% Identity and access management:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
+%% in the Global Accelerator Developer Guide.
 delete_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_accelerator(Client, Input, []).
@@ -462,7 +480,9 @@ delete_cross_account_attachment(Client, Input, Options)
 %% have permissions in place to avoid inadvertently deleting accelerators.
 %% You can use IAM policies with Global Accelerator to limit the users who
 %% have permissions to delete an accelerator. For more information, see
-%% Identity and access management in the Global Accelerator Developer Guide.
+%% Identity and access management:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
+%% in the Global Accelerator Developer Guide.
 delete_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_accelerator(Client, Input, []).
@@ -527,11 +547,14 @@ deny_custom_routing_traffic(Client, Input, Options)
 %% (BYOIP) and deletes the corresponding address pool.
 %%
 %% Before you can release an address range, you must stop advertising it by
-%% using WithdrawByoipCidr and you must not have any accelerators that are
-%% using static IP addresses allocated from its address range.
+%% using WithdrawByoipCidr:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/WithdrawByoipCidr.html
+%% and you must not have any accelerators that are using static IP addresses
+%% allocated from its address range.
 %%
-%% For more information, see Bring your own IP addresses (BYOIP) in the
-%% Global Accelerator Developer Guide.
+%% For more information, see Bring your own IP addresses (BYOIP):
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
+%% in the Global Accelerator Developer Guide.
 deprovision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_byoip_cidr(Client, Input, []).
@@ -620,8 +643,9 @@ list_accelerators(Client, Input, Options)
     request(Client, <<"ListAccelerators">>, Input, Options).
 
 %% @doc Lists the IP address ranges that were specified in calls to
-%% ProvisionByoipCidr, including the current state and a history of state
-%% changes.
+%% ProvisionByoipCidr:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/ProvisionByoipCidr.html,
+%% including the current state and a history of state changes.
 list_byoip_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byoip_cidrs(Client, Input, []).
@@ -737,8 +761,9 @@ list_listeners(Client, Input, Options)
 
 %% @doc List all tags for an accelerator.
 %%
-%% For more information, see Tagging in Global Accelerator in the Global
-%% Accelerator Developer Guide.
+%% For more information, see Tagging in Global Accelerator:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
+%% in the Global Accelerator Developer Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -751,10 +776,12 @@ list_tags_for_resource(Client, Input, Options)
 %% corresponding address pool.
 %%
 %% After the address range is provisioned, it is ready to be advertised using
-%% AdvertiseByoipCidr.
+%% AdvertiseByoipCidr:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/AdvertiseByoipCidr.html.
 %%
-%% For more information, see Bring your own IP addresses (BYOIP) in the
-%% Global Accelerator Developer Guide.
+%% For more information, see Bring your own IP addresses (BYOIP):
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
+%% in the Global Accelerator Developer Guide.
 provision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_byoip_cidr(Client, Input, []).
@@ -774,8 +801,10 @@ remove_custom_routing_endpoints(Client, Input, Options)
 %%
 %% The `RemoveEndpoints' API operation is the recommended option for
 %% removing endpoints. The alternative is to remove endpoints by updating an
-%% endpoint group by using the UpdateEndpointGroup API operation. There are
-%% two advantages to using `AddEndpoints' to remove endpoints instead:
+%% endpoint group by using the UpdateEndpointGroup:
+%% https://docs.aws.amazon.com/global-accelerator/latest/api/API_UpdateEndpointGroup.html
+%% API operation. There are two advantages to using `AddEndpoints' to
+%% remove endpoints instead:
 %%
 %% <ul> <li> It's more convenient, because you only need to specify the
 %% endpoints that you want to remove. With the `UpdateEndpointGroup' API
@@ -797,8 +826,9 @@ remove_endpoints(Client, Input, Options)
 
 %% @doc Add tags to an accelerator resource.
 %%
-%% For more information, see Tagging in Global Accelerator in the Global
-%% Accelerator Developer Guide.
+%% For more information, see Tagging in Global Accelerator:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
+%% in the Global Accelerator Developer Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -812,8 +842,9 @@ tag_resource(Client, Input, Options)
 %% associated value. The operation succeeds even if you attempt to remove
 %% tags from an accelerator that was already removed.
 %%
-%% For more information, see Tagging in Global Accelerator in the Global
-%% Accelerator Developer Guide.
+%% For more information, see Tagging in Global Accelerator:
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
+%% in the Global Accelerator Developer Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -938,8 +969,9 @@ update_listener(Client, Input, Options)
 %% It can take a few minutes before traffic to the specified addresses stops
 %% routing to Amazon Web Services because of propagation delays.
 %%
-%% For more information, see Bring your own IP addresses (BYOIP) in the
-%% Global Accelerator Developer Guide.
+%% For more information, see Bring your own IP addresses (BYOIP):
+%% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
+%% in the Global Accelerator Developer Guide.
 withdraw_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     withdraw_byoip_cidr(Client, Input, []).

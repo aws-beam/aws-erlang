@@ -7,7 +7,8 @@
 %%
 %% These APIs provide the overarching framework for creating and sending
 %% messages. For more information about the identity APIs, refer to Amazon
-%% Chime SDK identity.
+%% Chime SDK identity:
+%% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Identity.html.
 -module(aws_chime_sdk_identity).
 
 -export([create_app_instance/2,

@@ -17,8 +17,10 @@
 %% CodeArtifact components:
 %%
 %% <ul> <li> Repository: A CodeArtifact repository contains a set of package
-%% versions, each of which maps to a set of assets, or files. Repositories
-%% are polyglot, so a single repository can contain packages of any supported
+%% versions:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html#welcome-concepts-package-version,
+%% each of which maps to a set of assets, or files. Repositories are
+%% polyglot, so a single repository can contain packages of any supported
 %% type. Each repository exposes endpoints for fetching and publishing
 %% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ),
 %% Python CLIs ( `pip' and `twine'), and NuGet CLIs (`nuget' and
@@ -45,7 +47,12 @@
 %%
 %% </li> <li> Package: A package is a bundle of software and the metadata
 %% required to resolve dependencies and install the software. CodeArtifact
-%% supports npm, PyPI, Maven, and NuGet package formats.
+%% supports npm:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html, PyPI:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html,
+%% Maven: https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven, and
+%% NuGet: https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget
+%% package formats.
 %%
 %% In CodeArtifact, a package consists of:
 %%
@@ -63,9 +70,9 @@
 %% </li> </ul> </li> <li> Package version: A version of a package, such as
 %% `@types/node 12.6.9'. The version number format and semantics vary for
 %% different package formats. For example, npm package versions must conform
-%% to the Semantic Versioning specification. In CodeArtifact, a package
-%% version consists of the version identifier, metadata at the package
-%% version level, and a set of assets.
+%% to the Semantic Versioning specification: https://semver.org/. In
+%% CodeArtifact, a package version consists of the version identifier,
+%% metadata at the package version level, and a set of assets.
 %%
 %% </li> <li> Upstream repository: One repository is upstream of another when
 %% the package versions in it can be accessed from the repository endpoint of
@@ -112,12 +119,14 @@
 %% </li> <li> `DescribeDomain': Returns a `DomainDescription' object
 %% that contains information about the requested domain.
 %%
-%% </li> <li> `DescribePackage': Returns a PackageDescription object that
-%% contains details about a package.
+%% </li> <li> `DescribePackage': Returns a PackageDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html
+%% object that contains details about a package.
 %%
 %% </li> <li> `DescribePackageVersion': Returns a
-%% PackageVersionDescription object that contains details about a package
-%% version.
+%% PackageVersionDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
+%% object that contains details about a package version.
 %%
 %% </li> <li> `DescribeRepository': Returns a `RepositoryDescription'
 %% object that contains detailed information about the requested repository.
@@ -476,7 +485,9 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %% @doc Deletes a package and all associated package versions.
 %%
 %% A deleted package cannot be restored. To delete one or more package
-%% versions, use the DeletePackageVersions API.
+%% versions, use the DeletePackageVersions:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DeletePackageVersions.html
+%% API.
 delete_package(Client, Input) ->
     delete_package(Client, Input, []).
 delete_package(Client, Input0, Options0) ->
@@ -511,8 +522,10 @@ delete_package(Client, Input0, Options0) ->
 %% want to remove a package version from your repository and be able to
 %% restore it later, set its status to `Archived'. Archived packages
 %% cannot be downloaded from a repository and don't show up with list
-%% package APIs (for example, ListPackageVersions), but you can restore them
-%% using UpdatePackageVersionsStatus.
+%% package APIs (for example, ListPackageVersions:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html),
+%% but you can restore them using UpdatePackageVersionsStatus:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
 delete_package_versions(Client, Input0, Options0) ->
@@ -603,8 +616,9 @@ delete_repository_permissions_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a DomainDescription object that contains information about
-%% the requested domain.
+%% @doc Returns a DomainDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html
+%% object that contains information about the requested domain.
 describe_domain(Client, Domain)
   when is_map(Client) ->
     describe_domain(Client, Domain, #{}, #{}).
@@ -632,8 +646,9 @@ describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a PackageDescription object that contains information about
-%% the requested package.
+%% @doc Returns a PackageDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html
+%% object that contains information about the requested package.
 describe_package(Client, Domain, Format, Package, Repository)
   when is_map(Client) ->
     describe_package(Client, Domain, Format, Package, Repository, #{}, #{}).
@@ -665,8 +680,9 @@ describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a PackageVersionDescription object that contains information
-%% about the requested package version.
+%% @doc Returns a PackageVersionDescription:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
+%% object that contains information about the requested package version.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
@@ -763,10 +779,15 @@ disassociate_external_connection(Client, Input0, Options0) ->
 %% its assets are deleted.
 %%
 %% To view all disposed package versions in a repository, use
-%% ListPackageVersions and set the status parameter to `Disposed'.
+%% ListPackageVersions:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html
+%% and set the status:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax
+%% parameter to `Disposed'.
 %%
 %% To view information about a disposed package version, use
-%% DescribePackageVersion.
+%% DescribePackageVersion:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html.
 dispose_package_versions(Client, Input) ->
     dispose_package_versions(Client, Input, []).
 dispose_package_versions(Client, Input0, Options0) ->
@@ -800,7 +821,8 @@ dispose_package_versions(Client, Input0, Options0) ->
 %%
 %% This API requires the `codeartifact:GetAuthorizationToken' and
 %% `sts:GetServiceBearerToken' permissions. For more information about
-%% authorization tokens, see CodeArtifact authentication and tokens.
+%% authorization tokens, see CodeArtifact authentication and tokens:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html.
 %%
 %% CodeArtifact authorization tokens are valid for a period of 12 hours when
 %% created with the `login' command. You can call `login'
@@ -818,7 +840,9 @@ dispose_package_versions(Client, Input0, Options0) ->
 %% will be valid for the full authorization period even though this is longer
 %% than the 15-minute session duration.
 %%
-%% See Using IAM Roles for more information on controlling session duration.
+%% See Using IAM Roles:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html for
+%% more information on controlling session duration.
 get_authorization_token(Client, Input) ->
     get_authorization_token(Client, Input, []).
 get_authorization_token(Client, Input0, Options0) ->
@@ -848,6 +872,8 @@ get_authorization_token(Client, Input0, Options0) ->
 %%
 %% The policy is a resource-based policy, not an identity-based policy. For
 %% more information, see Identity-based policies and resource-based policies
+%% :
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the IAM User Guide.
 get_domain_permissions_policy(Client, Domain)
   when is_map(Client) ->
@@ -1040,8 +1066,10 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of DomainSummary objects for all domains owned by the
-%% Amazon Web Services account that makes this call.
+%% @doc Returns a list of DomainSummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
+%% objects for all domains owned by the Amazon Web Services account that
+%% makes this call.
 %%
 %% Each returned `DomainSummary' object contains information about a
 %% domain.
@@ -1067,8 +1095,9 @@ list_domains(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of AssetSummary objects for assets in a package
-%% version.
+%% @doc Returns a list of AssetSummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html
+%% objects for assets in a package version.
 list_package_version_assets(Client, Input) ->
     list_package_version_assets(Client, Input, []).
 list_package_version_assets(Client, Input0, Options0) ->
@@ -1102,12 +1131,13 @@ list_package_version_assets(Client, Input0, Options0) ->
 
 %% @doc Returns the direct dependencies for a package version.
 %%
-%% The dependencies are returned as PackageDependency objects. CodeArtifact
-%% extracts the dependencies for a package version from the metadata file for
-%% the package format (for example, the `package.json' file for npm
-%% packages and the `pom.xml' file for Maven). Any package version
-%% dependencies that are not listed in the configuration file are not
-%% returned.
+%% The dependencies are returned as PackageDependency:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html
+%% objects. CodeArtifact extracts the dependencies for a package version from
+%% the metadata file for the package format (for example, the
+%% `package.json' file for npm packages and the `pom.xml' file for
+%% Maven). Any package version dependencies that are not listed in the
+%% configuration file are not returned.
 list_package_version_dependencies(Client, Input) ->
     list_package_version_dependencies(Client, Input, []).
 list_package_version_dependencies(Client, Input0, Options0) ->
@@ -1138,8 +1168,10 @@ list_package_version_dependencies(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of PackageVersionSummary objects for package versions
-%% in a repository that match the request parameters.
+%% @doc Returns a list of PackageVersionSummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html
+%% objects for package versions in a repository that match the request
+%% parameters.
 %%
 %% Package versions of all statuses will be returned by default when calling
 %% `list-package-versions' with no `--status' parameter.
@@ -1176,8 +1208,9 @@ list_package_versions(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of PackageSummary objects for packages in a repository
-%% that match the request parameters.
+%% @doc Returns a list of PackageSummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html
+%% objects for packages in a repository that match the request parameters.
 list_packages(Client, Input) ->
     list_packages(Client, Input, []).
 list_packages(Client, Input0, Options0) ->
@@ -1210,7 +1243,9 @@ list_packages(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of RepositorySummary objects.
+%% @doc Returns a list of RepositorySummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html
+%% objects.
 %%
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified Amazon Web Services account and that matches the input
@@ -1240,7 +1275,9 @@ list_repositories(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of RepositorySummary objects.
+%% @doc Returns a list of RepositorySummary:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html
+%% objects.
 %%
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified domain and that matches the input parameters.
@@ -1302,14 +1339,19 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %%
 %% The `unfinished' flag can be used to keep the package version in the
 %% `Unfinished' state until all of its assets have been uploaded (see
-%% Package version status in the CodeArtifact user guide). To set the package
-%% version’s status to `Published', omit the `unfinished' flag when
-%% uploading the final asset, or set the status using
-%% UpdatePackageVersionStatus. Once a package version’s status is set to
-%% `Published', it cannot change back to `Unfinished'.
+%% Package version status:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/packages-overview.html#package-version-status.html#package-version-status
+%% in the CodeArtifact user guide). To set the package version’s status to
+%% `Published', omit the `unfinished' flag when uploading the final
+%% asset, or set the status using UpdatePackageVersionStatus:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html.
+%% Once a package version’s status is set to `Published', it cannot
+%% change back to `Unfinished'.
 %%
 %% Only generic packages can be published using this API. For more
-%% information, see Using generic packages in the CodeArtifact User Guide.
+%% information, see Using generic packages:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/using-generic.html in
+%% the CodeArtifact User Guide.
 publish_package_version(Client, Input) ->
     publish_package_version(Client, Input, []).
 publish_package_version(Client, Input0, Options0) ->
@@ -1379,7 +1421,9 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
 %% new package versions, or ingestion and retaining of new package versions
 %% from an external connection or upstream source. For more information about
 %% package origin controls and configuration, see Editing package origin
-%% controls in the CodeArtifact User Guide.
+%% controls:
+%% https://docs.aws.amazon.com/codeartifact/latest/ug/package-origin-controls.html
+%% in the CodeArtifact User Guide.
 %%
 %% `PutPackageOriginConfiguration' can be called on a package that
 %% doesn't yet exist in the repository. When called on a package that
@@ -1502,7 +1546,8 @@ untag_resource(Client, Input0, Options0) ->
 %% Using `UpdatePackageVersionsStatus', you can update the status of
 %% package versions to `Archived', `Published', or `Unlisted'. To
 %% set the status of a package version to `Disposed', use
-%% DisposePackageVersions.
+%% DisposePackageVersions:
+%% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DisposePackageVersions.html.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
 update_package_versions_status(Client, Input0, Options0) ->

@@ -11,7 +11,8 @@
 %% center.
 %%
 %% If you're new to Amazon Connect, you might find it helpful to review
-%% the Amazon Connect Administrator Guide.
+%% the Amazon Connect Administrator Guide:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/.
 -module(aws_customer_profiles).
 
 -export([add_profile_key/3,
@@ -176,10 +177,11 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %%
 %% After creation, new object data ingested into Customer Profiles will be
 %% included in the calculated attribute, which can be retrieved for a profile
-%% using the GetCalculatedAttributeForProfile API. Defining a calculated
-%% attribute makes it available for all profiles within a domain. Each
-%% calculated attribute can only reference one `ObjectType' and at most,
-%% two fields from that `ObjectType'.
+%% using the GetCalculatedAttributeForProfile:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetCalculatedAttributeForProfile.html
+%% API. Defining a calculated attribute makes it available for all profiles
+%% within a domain. Each calculated attribute can only reference one
+%% `ObjectType' and at most, two fields from that `ObjectType'.
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
     create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
 create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
@@ -212,12 +214,16 @@ create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %% Each Amazon Connect instance can be associated with only one domain.
 %% Multiple Amazon Connect instances can be associated with one domain.
 %%
-%% Use this API or UpdateDomain to enable identity resolution: set
-%% `Matching' to true.
+%% Use this API or UpdateDomain:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
+%% to enable identity resolution:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html:
+%% set `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
-%% Cross-service confused deputy prevention for sample policies that you
-%% should apply.
+%% Cross-service confused deputy prevention:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
+%% for sample policies that you should apply.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
 create_domain(Client, DomainName, Input0, Options0) ->
@@ -705,7 +711,8 @@ get_event_stream(Client, DomainName, EventStreamName, QueryMap, HeadersMap, Opti
 %%
 %% Identity Resolution Jobs are set up using the Amazon Connect admin
 %% console. For more information, see Use Identity Resolution to consolidate
-%% similar profiles.
+%% similar profiles:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-identity-resolution.html.
 get_identity_resolution_job(Client, DomainName, JobId)
   when is_map(Client) ->
     get_identity_resolution_job(Client, DomainName, JobId, #{}, #{}).
@@ -751,8 +758,11 @@ get_integration(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Before calling this API, use CreateDomain or UpdateDomain to enable
-%% identity resolution: set `Matching' to true.
+%% @doc Before calling this API, use CreateDomain:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomain.html
+%% or UpdateDomain:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html
+%% to enable identity resolution: set `Matching' to true.
 %%
 %% GetMatches returns potentially matching profiles, based on the results of
 %% the latest run of a machine learning process.
@@ -763,8 +773,9 @@ get_integration(Client, DomainName, Input0, Options0) ->
 %% Identity Resolution Job to run, by default it runs every Saturday at 12AM
 %% UTC to detect duplicate profiles in your domains.
 %%
-%% After the Identity Resolution Job completes, use the GetMatches API to
-%% return and review the results. Or, if you have configured
+%% After the Identity Resolution Job completes, use the GetMatches:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html
+%% API to return and review the results. Or, if you have configured
 %% `ExportingConfig' in the `MatchingRequest', you can download the
 %% results from S3.
 %%
@@ -1338,9 +1349,11 @@ list_workflows(Client, DomainName, Input0, Options0) ->
 %% profileId is always taken, even if it is a NULL value.
 %%
 %% </li> </ol> </li> </ol> </li> </ol> You can use MergeProfiles together
-%% with GetMatches, which returns potentially matching profiles, or use it
-%% with the results of another matching system. After profiles have been
-%% merged, they cannot be separated (unmerged).
+%% with GetMatches:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html,
+%% which returns potentially matching profiles, or use it with the results of
+%% another matching system. After profiles have been merged, they cannot be
+%% separated (unmerged).
 merge_profiles(Client, DomainName, Input) ->
     merge_profiles(Client, DomainName, Input, []).
 merge_profiles(Client, DomainName, Input0, Options0) ->
@@ -1368,8 +1381,10 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
 %%
 %% An integration can belong to only one domain.
 %%
-%% To add or remove tags on an existing Integration, see TagResource /
-%% UntagResource.
+%% To add or remove tags on an existing Integration, see TagResource :
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/
+%% UntagResource:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
 put_integration(Client, DomainName, Input) ->
     put_integration(Client, DomainName, Input, []).
 put_integration(Client, DomainName, Input0, Options0) ->
@@ -1430,8 +1445,9 @@ put_profile_object(Client, DomainName, Input0, Options0) ->
 
 %% @doc Defines a ProfileObjectType.
 %%
-%% To add or remove tags on an existing ObjectType, see
-%% TagResource/UntagResource.
+%% To add or remove tags on an existing ObjectType, see TagResource:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     put_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
@@ -1588,15 +1604,20 @@ update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainNa
 %%
 %% After a domain is created, the name can’t be changed.
 %%
-%% Use this API or CreateDomain to enable identity resolution: set
-%% `Matching' to true.
+%% Use this API or CreateDomain:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomain.html
+%% to enable identity resolution:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html:
+%% set `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
-%% Cross-service confused deputy prevention for sample policies that you
-%% should apply.
+%% Cross-service confused deputy prevention:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html
+%% for sample policies that you should apply.
 %%
-%% To add or remove tags on an existing Domain, see
-%% TagResource/UntagResource.
+%% To add or remove tags on an existing Domain, see TagResource:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html/UntagResource:
+%% https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
 update_domain(Client, DomainName, Input0, Options0) ->

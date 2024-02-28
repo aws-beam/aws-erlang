@@ -152,8 +152,9 @@
 %%
 %% A HTTP 200 response does not mean that all statements in the
 %% BatchExecuteStatement succeeded. Error details for individual statements
-%% can be found under the Error field of the `BatchStatementResponse' for
-%% each statement.
+%% can be found under the Error:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchStatementResponse.html#DDB-Type-BatchStatementResponse-Error
+%% field of the `BatchStatementResponse' for each statement.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -199,8 +200,9 @@ batch_execute_statement(Client, Input, Options)
 %% using exponential backoff, the individual requests in the batch are much
 %% more likely to succeed.
 %%
-%% For more information, see Batch Operations and Error Handling in the
-%% Amazon DynamoDB Developer Guide.
+%% For more information, see Batch Operations and Error Handling:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations
+%% in the Amazon DynamoDB Developer Guide.
 %%
 %% By default, `BatchGetItem' performs eventually consistent reads on
 %% every table in the request. If you want strongly consistent reads instead,
@@ -217,7 +219,9 @@ batch_execute_statement(Client, Input, Options)
 %% If a requested item does not exist, it is not returned in the result.
 %% Requests for nonexistent items consume the minimum read capacity units
 %% according to the type of read. For more information, see Working with
-%% Tables in the Amazon DynamoDB Developer Guide.
+%% Tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations
+%% in the Amazon DynamoDB Developer Guide.
 batch_get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_item(Client, Input, []).
@@ -233,7 +237,8 @@ batch_get_item(Client, Input, Options)
 %% individual items can be up to 400 KB once stored, it's important to
 %% note that an item's representation might be greater than 400KB while
 %% being sent in DynamoDB's JSON format for the API call. For more
-%% details on this distinction, see Naming Rules and Data Types.
+%% details on this distinction, see Naming Rules and Data Types:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html.
 %%
 %% `BatchWriteItem' cannot update items. If you perform a
 %% `BatchWriteItem' operation on an existing item, that item's values
@@ -264,8 +269,9 @@ batch_get_item(Client, Input, Options)
 %% using exponential backoff, the individual requests in the batch are much
 %% more likely to succeed.
 %%
-%% For more information, see Batch Operations and Error Handling in the
-%% Amazon DynamoDB Developer Guide.
+%% For more information, see Batch Operations and Error Handling:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations
+%% in the Amazon DynamoDB Developer Guide.
 %%
 %% With `BatchWriteItem', you can efficiently write or delete large
 %% amounts of data, such as from Amazon EMR, or copy data from another
@@ -365,13 +371,18 @@ create_backup(Client, Input, Options)
 %% A global table creates a replication relationship between two or more
 %% DynamoDB tables with the same table name in the provided Regions.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 %%
 %% If you want to add a new replica table to a global table, each of the
 %% following conditions must be true:
@@ -488,8 +499,9 @@ delete_item(Client, Input, Options)
 %% DynamoDB returns a `ResourceNotFoundException'. If table is already in
 %% the `DELETING' state, no error is returned.
 %%
-%% This operation only applies to Version 2019.11.21 (Current) of global
-%% tables.
+%% This operation only applies to Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% of global tables.
 %%
 %% DynamoDB might continue to accept data read and write operations, such as
 %% `GetItem' and `PutItem', on a table in the `DELETING' state
@@ -556,7 +568,8 @@ describe_contributor_insights(Client, Input, Options)
 %% @doc Returns the regional endpoint information.
 %%
 %% For more information on policy permissions, please see Internetwork
-%% traffic privacy.
+%% traffic privacy:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -574,13 +587,18 @@ describe_export(Client, Input, Options)
 
 %% @doc Returns information about the specified global table.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
@@ -590,13 +608,18 @@ describe_global_table(Client, Input, Options)
 
 %% @doc Describes Region-specific settings for a global table.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
@@ -628,14 +651,16 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 %% quotas on the maximum read capacity units and write capacity units that
 %% you can provision across all of your DynamoDB tables in a given Region.
 %% Also, there are per-table quotas that apply when you create a table there.
-%% For more information, see Service, Account, and Table Quotas page in the
-%% Amazon DynamoDB Developer Guide.
+%% For more information, see Service, Account, and Table Quotas:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+%% page in the Amazon DynamoDB Developer Guide.
 %%
 %% Although you can increase these quotas by filing a case at Amazon Web
-%% Services Support Center, obtaining the increase is not instantaneous. The
-%% `DescribeLimits' action lets you write code to compare the capacity
-%% you are currently using to those quotas imposed by your account so that
-%% you have enough time to apply for an increase before you hit a quota.
+%% Services Support Center: https://console.aws.amazon.com/support/home#/,
+%% obtaining the increase is not instantaneous. The `DescribeLimits'
+%% action lets you write code to compare the capacity you are currently using
+%% to those quotas imposed by your account so that you have enough time to
+%% apply for an increase before you hit a quota.
 %%
 %% For example, you could use one of the Amazon Web Services SDKs to do the
 %% following:
@@ -694,8 +719,9 @@ describe_limits(Client, Input, Options)
 %% the table, when it was created, the primary key schema, and any indexes on
 %% the table.
 %%
-%% This operation only applies to Version 2019.11.21 (Current) of global
-%% tables.
+%% This operation only applies to Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% of global tables.
 %%
 %% If you issue a `DescribeTable' request immediately after a
 %% `CreateTable' request, DynamoDB might return a
@@ -713,8 +739,9 @@ describe_table(Client, Input, Options)
 %% @doc Describes auto scaling settings across replicas of the global table
 %% at once.
 %%
-%% This operation only applies to Version 2019.11.21 (Current) of global
-%% tables.
+%% This operation only applies to Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% of global tables.
 describe_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_replica_auto_scaling(Client, Input, []).
@@ -784,7 +811,9 @@ execute_statement(Client, Input, Options)
 %% statements, you cannot mix both in one transaction. The EXISTS function is
 %% an exception and can be used to check the condition of specific attributes
 %% of the item in a similar manner to `ConditionCheck' in the
-%% TransactWriteItems API.
+%% TransactWriteItems:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html#transaction-apis-txwriteitems
+%% API.
 execute_transaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_transaction(Client, Input, []).
@@ -844,7 +873,8 @@ import_table(Client, Input, Options)
 %% You can call `ListBackups' a maximum of five times per second.
 %%
 %% If you want to retrieve the complete list of backups made with Amazon Web
-%% Services Backup, use the Amazon Web Services Backup list API.
+%% Services Backup, use the Amazon Web Services Backup list API.:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ListBackupJobs.html
 list_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_backups(Client, Input, []).
@@ -871,13 +901,18 @@ list_exports(Client, Input, Options)
 
 %% @doc Lists all global tables that have a replica in the specified Region.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
@@ -909,8 +944,9 @@ list_tables(Client, Input, Options)
 %%
 %% You can call ListTagsOfResource up to 10 times per second, per account.
 %%
-%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
-%% the Amazon DynamoDB Developer Guide.
+%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
+%% in the Amazon DynamoDB Developer Guide.
 list_tags_of_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_of_resource(Client, Input, []).
@@ -945,8 +981,9 @@ list_tags_of_resource(Client, Input, Options)
 %% every record must contain that attribute, the `attribute_not_exists'
 %% function will only succeed if no matching item exists.
 %%
-%% For more information about `PutItem', see Working with Items in the
-%% Amazon DynamoDB Developer Guide.
+%% For more information about `PutItem', see Working with Items:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
+%% in the Amazon DynamoDB Developer Guide.
 put_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_item(Client, Input, []).
@@ -993,7 +1030,8 @@ put_item(Client, Input, Options)
 %% set (if using the `Limit' parameter) or a maximum of 1 MB of data and
 %% then apply any filtering to the results using `FilterExpression'. If
 %% `LastEvaluatedKey' is present in the response, you will need to
-%% paginate the result set. For more information, see Paginating the Results
+%% paginate the result set. For more information, see Paginating the Results:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination
 %% in the Amazon DynamoDB Developer Guide.
 %%
 %% `FilterExpression' is applied after a `Query' finishes, but before
@@ -1123,14 +1161,16 @@ restore_table_to_point_in_time(Client, Input, Options)
 %% data and then applies any filtering to the results if a
 %% `FilterExpression' is provided. If `LastEvaluatedKey' is present
 %% in the response, pagination is required to complete the full table scan.
-%% For more information, see Paginating the Results in the Amazon DynamoDB
-%% Developer Guide.
+%% For more information, see Paginating the Results:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination
+%% in the Amazon DynamoDB Developer Guide.
 %%
 %% `Scan' operations proceed sequentially; however, for faster
 %% performance on a large table or secondary index, applications can request
 %% a parallel `Scan' operation by providing the `Segment' and
-%% `TotalSegments' parameters. For more information, see Parallel Scan in
-%% the Amazon DynamoDB Developer Guide.
+%% `TotalSegments' parameters. For more information, see Parallel Scan:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan
+%% in the Amazon DynamoDB Developer Guide.
 %%
 %% By default, a `Scan' uses eventually consistent reads when accessing
 %% the items in a table. Therefore, the results from an eventually consistent
@@ -1157,8 +1197,9 @@ scan(Client, Input, Options)
 %% Billing and Cost Management console for cost allocation tracking. You can
 %% call TagResource up to five times per second, per account.
 %%
-%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
-%% the Amazon DynamoDB Developer Guide.
+%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
+%% in the Amazon DynamoDB Developer Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1272,8 +1313,9 @@ transact_write_items(Client, Input, Options)
 %%
 %% You can call `UntagResource' up to five times per second, per account.
 %%
-%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
-%% the Amazon DynamoDB Developer Guide.
+%% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
+%% in the Amazon DynamoDB Developer Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1327,16 +1369,25 @@ update_contributor_insights(Client, Input, Options)
 %% have the same key schema, have DynamoDB Streams enabled, and have the same
 %% provisioned and maximum write capacity units.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 %%
-%% This operation only applies to Version 2017.11.29 of global tables. If you
-%% are using global tables Version 2019.11.21 you can use DescribeTable
+%% This operation only applies to Version 2017.11.29:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. If you are using global tables Version 2019.11.21:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% you can use DescribeTable:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html
 %% instead.
 %%
 %% Although you can use `UpdateGlobalTable' to add replicas and remove
@@ -1364,13 +1415,18 @@ update_global_table(Client, Input, Options)
 
 %% @doc Updates settings for a global table.
 %%
-%% This operation only applies to Version 2017.11.29 (Legacy) of global
-%% tables. We recommend using Version 2019.11.21 (Current) when creating new
-%% global tables, as it provides greater flexibility, higher efficiency and
-%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
-%% version you are using, see Determining the version. To update existing
-%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
-%% (Current), see Updating global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html
+%% of global tables. We recommend using Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% when creating new global tables, as it provides greater flexibility,
+%% higher efficiency and consumes less write capacity than 2017.11.29
+%% (Legacy). To determine which version you are using, see Determining the
+%% version:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html.
+%% To update existing global tables from version 2017.11.29 (Legacy) to
+%% version 2019.11.21 (Current), see Updating global tables:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
 update_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table_settings(Client, Input, []).
@@ -1406,8 +1462,9 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% @doc Modifies the provisioned throughput settings, global secondary
 %% indexes, or DynamoDB Streams settings for a given table.
 %%
-%% This operation only applies to Version 2019.11.21 (Current) of global
-%% tables.
+%% This operation only applies to Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% of global tables.
 %%
 %% You can only perform one of the following operations at once:
 %%
@@ -1434,8 +1491,9 @@ update_table(Client, Input, Options)
 
 %% @doc Updates auto scaling settings on your global tables at once.
 %%
-%% This operation only applies to Version 2019.11.21 (Current) of global
-%% tables.
+%% This operation only applies to Version 2019.11.21 (Current):
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
+%% of global tables.
 update_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_replica_auto_scaling(Client, Input, []).
@@ -1471,8 +1529,9 @@ update_table_replica_auto_scaling(Client, Input, Options)
 %% global secondary index immediately in the same eventually consistent way
 %% as a standard delete operation.
 %%
-%% For more information, see Time To Live in the Amazon DynamoDB Developer
-%% Guide.
+%% For more information, see Time To Live:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
+%% in the Amazon DynamoDB Developer Guide.
 update_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_time_to_live(Client, Input, []).

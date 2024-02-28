@@ -18,7 +18,8 @@
 %% namespaces.
 %%
 %% For information, including how to migrate your WAF resources to this
-%% version, see the WAF Developer Guide.
+%% version, see the WAF Developer Guide:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
 %%
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
 %% requests that are forwarded to an Amazon CloudFront distribution, Amazon
@@ -34,9 +35,11 @@
 %% This API guide is for developers who need detailed information about WAF
 %% API actions, data types, and errors. For detailed information about WAF
 %% features and guidance for configuring and using WAF, see the WAF Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html.
 %%
-%% You can make calls using the endpoints listed in WAF endpoints and quotas.
+%% You can make calls using the endpoints listed in WAF endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/waf.html.
 %%
 %% <ul> <li> For regional applications, you can use any of the endpoints in
 %% the list. A regional application can be an Application Load Balancer
@@ -50,7 +53,7 @@
 %% </li> </ul> Alternatively, you can use one of the Amazon Web Services SDKs
 %% to access an API that's tailored to the programming language or
 %% platform that you're using. For more information, see Amazon Web
-%% Services SDKs.
+%% Services SDKs: http://aws.amazon.com/tools/#SDKs.
 %%
 %% We currently provide two versions of the WAF API: this API and the prior
 %% versions, the classic WAF APIs. This new API provides the same
@@ -199,13 +202,16 @@
 %% CloudFront distribution configuration. To associate a web ACL, in the
 %% CloudFront call `UpdateDistribution', set the web ACL ID to the Amazon
 %% Resource Name (ARN) of the web ACL. For information, see
-%% UpdateDistribution in the Amazon CloudFront Developer Guide.
+%% UpdateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
+%% in the Amazon CloudFront Developer Guide.
 %%
 %% Required permissions for customer-managed IAM policies
 %%
 %% This call requires permissions that are specific to the protected resource
-%% type. For details, see Permissions for AssociateWebACL in the WAF
-%% Developer Guide.
+%% type. For details, see Permissions for AssociateWebACL:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-AssociateWebACL
+%% in the WAF Developer Guide.
 %%
 %% Temporary inconsistencies during updates
 %%
@@ -252,8 +258,9 @@ associate_web_acl(Client, Input, Options)
 %% Simple rules that cost little to run use fewer WCUs than more complex
 %% rules that use more processing power. Rule group capacity is fixed at
 %% creation, which helps users plan their web ACL WCU usage when they use a
-%% rule group. For more information, see WAF web ACL capacity units (WCU) in
-%% the WAF Developer Guide.
+%% rule group. For more information, see WAF web ACL capacity units (WCU):
+%% https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html
+%% in the WAF Developer Guide.
 check_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_capacity(Client, Input, []).
@@ -267,7 +274,9 @@ check_capacity(Client, Input, Options)
 %% JavaScript client applications. The API lets you customize the placement
 %% and characteristics of the CAPTCHA puzzle for your end users. For more
 %% information about the CAPTCHA JavaScript integration, see WAF client
-%% application integration in the WAF Developer Guide.
+%% application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 %%
 %% You can use a single key for up to 5 domains. After you generate a key,
 %% you can copy it for use in your JavaScript integration.
@@ -414,7 +423,9 @@ delete_rule_group(Client, Input, Options)
 %%
 %% For Amazon CloudFront distributions, use the CloudFront call
 %% `ListDistributionsByWebACLId'. For information, see
-%% ListDistributionsByWebACLId in the Amazon CloudFront API Reference.
+%% ListDistributionsByWebACLId:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html
+%% in the Amazon CloudFront API Reference.
 %%
 %% To disassociate a resource from a web ACL, use the following calls:
 %%
@@ -422,7 +433,9 @@ delete_rule_group(Client, Input, Options)
 %%
 %% For Amazon CloudFront distributions, provide an empty web ACL ID in the
 %% CloudFront call `UpdateDistribution'. For information, see
-%% UpdateDistribution in the Amazon CloudFront API Reference.
+%% UpdateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
+%% in the Amazon CloudFront API Reference.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
@@ -468,14 +481,16 @@ describe_managed_rule_group(Client, Input, Options)
 %% For Amazon CloudFront, don't use this call. Instead, use your
 %% CloudFront distribution configuration. To disassociate a web ACL, provide
 %% an empty web ACL ID in the CloudFront call `UpdateDistribution'. For
-%% information, see UpdateDistribution in the Amazon CloudFront API
-%% Reference.
+%% information, see UpdateDistribution:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
+%% in the Amazon CloudFront API Reference.
 %%
 %% Required permissions for customer-managed IAM policies
 %%
 %% This call requires permissions that are specific to the protected resource
-%% type. For details, see Permissions for DisassociateWebACL in the WAF
-%% Developer Guide.
+%% type. For details, see Permissions for DisassociateWebACL:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-DisassociateWebACL
+%% in the WAF Developer Guide.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -489,7 +504,9 @@ disassociate_web_acl(Client, Input, Options)
 %% The mobile SDK is not generally available. Customers who have access to
 %% the mobile SDK can use it to establish and manage WAF tokens for use in
 %% HTTP(S) requests from a mobile device to WAF. For more information, see
-%% WAF client application integration in the WAF Developer Guide.
+%% WAF client application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 generate_mobile_sdk_release_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mobile_sdk_release_url(Client, Input, []).
@@ -505,7 +522,9 @@ generate_mobile_sdk_release_url(Client, Input, Options)
 %% JavaScript client applications. The API lets you customize the placement
 %% and characteristics of the CAPTCHA puzzle for your end users. For more
 %% information about the CAPTCHA JavaScript integration, see WAF client
-%% application integration in the WAF Developer Guide.
+%% application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 get_decrypted_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_decrypted_api_key(Client, Input, []).
@@ -552,7 +571,9 @@ get_managed_rule_set(Client, Input, Options)
 %% The mobile SDK is not generally available. Customers who have access to
 %% the mobile SDK can use it to establish and manage WAF tokens for use in
 %% HTTP(S) requests from a mobile device to WAF. For more information, see
-%% WAF client application integration in the WAF Developer Guide.
+%% WAF client application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 get_mobile_sdk_release(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_sdk_release(Client, Input, []).
@@ -654,13 +675,16 @@ get_web_acl(Client, Input, Options)
 %%
 %% For Amazon CloudFront, don't use this call. Instead, call the
 %% CloudFront action `GetDistributionConfig'. For information, see
-%% GetDistributionConfig in the Amazon CloudFront API Reference.
+%% GetDistributionConfig:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html
+%% in the Amazon CloudFront API Reference.
 %%
 %% Required permissions for customer-managed IAM policies
 %%
 %% This call requires permissions that are specific to the protected resource
-%% type. For details, see Permissions for GetWebACLForResource in the WAF
-%% Developer Guide.
+%% type. For details, see Permissions for GetWebACLForResource:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-GetWebACLForResource
+%% in the WAF Developer Guide.
 get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
@@ -675,7 +699,9 @@ get_web_acl_for_resource(Client, Input, Options)
 %% JavaScript client applications. The API lets you customize the placement
 %% and characteristics of the CAPTCHA puzzle for your end users. For more
 %% information about the CAPTCHA JavaScript integration, see WAF client
-%% application integration in the WAF Developer Guide.
+%% application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 list_api_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_keys(Client, Input, []).
@@ -745,7 +771,9 @@ list_managed_rule_sets(Client, Input, Options)
 %% The mobile SDK is not generally available. Customers who have access to
 %% the mobile SDK can use it to establish and manage WAF tokens for use in
 %% HTTP(S) requests from a mobile device to WAF. For more information, see
-%% WAF client application integration in the WAF Developer Guide.
+%% WAF client application integration:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
+%% in the WAF Developer Guide.
 list_mobile_sdk_releases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_sdk_releases(Client, Input, []).
@@ -767,13 +795,16 @@ list_regex_pattern_sets(Client, Input, Options)
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use the
 %% CloudFront call `ListDistributionsByWebACLId'. For information, see
-%% ListDistributionsByWebACLId in the Amazon CloudFront API Reference.
+%% ListDistributionsByWebACLId:
+%% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html
+%% in the Amazon CloudFront API Reference.
 %%
 %% Required permissions for customer-managed IAM policies
 %%
 %% This call requires permissions that are specific to the protected resource
-%% type. For details, see Permissions for ListResourcesForWebACL in the WAF
-%% Developer Guide.
+%% type. For details, see Permissions for ListResourcesForWebACL:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-ListResourcesForWebACL
+%% in the WAF Developer Guide.
 list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
@@ -846,7 +877,9 @@ list_web_acls(Client, Input, Options)
 %% to configure additional settings or permissions.
 %%
 %% For configuration requirements and pricing information for each
-%% destination type, see Logging web ACL traffic in the WAF Developer Guide.
+%% destination type, see Logging web ACL traffic:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/logging.html in the
+%% WAF Developer Guide.
 %%
 %% </li> <li> Associate your logging destination to your web ACL using a
 %% `PutLoggingConfiguration' request.
@@ -859,7 +892,9 @@ list_web_acls(Client, Input, Options)
 %% Kinesis Data Firehose, WAF creates a service-linked role.
 %%
 %% For additional information about web ACL logging, see Logging web ACL
-%% traffic information in the WAF Developer Guide.
+%% traffic information:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/logging.html in the
+%% WAF Developer Guide.
 put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).

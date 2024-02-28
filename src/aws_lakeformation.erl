@@ -481,9 +481,10 @@ delete_lake_formation_opt_in(Client, Input0, Options0) ->
 %% Without this call, no Amazon S3 objects are automatically deleted when a
 %% transaction cancels.
 %%
-%% The Glue ETL library function `write_dynamic_frame.from_catalog()'
-%% includes an option to automatically call `DeleteObjectsOnCancel'
-%% before writes. For more information, see Rolling Back Amazon S3 Writes.
+%% The Glue ETL library function includes an option to automatically call
+%% `DeleteObjectsOnCancel' before writes. For more information, see
+%% Rolling Back Amazon S3 Writes:
+%% https://docs.aws.amazon.com/lake-formation/latest/dg/transactions-data-operations.html#rolling-back-writes.
 delete_objects_on_cancel(Client, Input) ->
     delete_objects_on_cancel(Client, Input, []).
 delete_objects_on_cancel(Client, Input0, Options0) ->
@@ -936,7 +937,8 @@ get_work_units(Client, Input0, Options0) ->
 %% Catalog and data organized in underlying data storage such as Amazon S3.
 %%
 %% For information about permissions, see Security and Access Control to
-%% Metadata and Data.
+%% Metadata and Data:
+%% https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html.
 grant_permissions(Client, Input) ->
     grant_permissions(Client, Input, []).
 grant_permissions(Client, Input0, Options0) ->
@@ -1039,7 +1041,8 @@ list_lake_formation_opt_ins(Client, Input0, Options0) ->
 %% granted.
 %%
 %% For information about permissions, see Security and Access Control to
-%% Metadata and Data.
+%% Metadata and Data:
+%% https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 list_permissions(Client, Input0, Options0) ->
@@ -1142,7 +1145,8 @@ list_transactions(Client, Input0, Options0) ->
 %% on all resources managed by Lake Formation.
 %%
 %% For more information on admin privileges, see Granting Lake Formation
-%% Permissions.
+%% Permissions:
+%% https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html.
 %%
 %% This API replaces the current list of data lake admins with the new list
 %% being passed. To add an admin, fetch the current list and add the new

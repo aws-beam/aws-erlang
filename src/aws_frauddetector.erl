@@ -6,7 +6,7 @@
 %% This guide is for developers who need detailed information about Amazon
 %% Fraud Detector API actions, data types, and errors. For more information
 %% about Amazon Fraud Detector features, see the Amazon Fraud Detector User
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/frauddetector/latest/ug/.
 %%
 %% We provide the Query API as well as AWS software development kits (SDK)
 %% for Amazon Fraud Detector in Java and Python programming languages.
@@ -19,8 +19,9 @@
 %% provide basic functions that automatically take care of tasks such as
 %% cryptographically signing your requests, retrying requests, and handling
 %% error responses, so that it is easier for you to get started. For more
-%% information about the AWS SDKs, go to Tools to build on AWS page, scroll
-%% down to the SDK section, and choose plus (+) sign to expand the section.
+%% information about the AWS SDKs, go to Tools to build on AWS:
+%% https://aws.amazon.com/developer/tools/ page, scroll down to the SDK
+%% section, and choose plus (+) sign to expand the section.
 -module(aws_frauddetector).
 
 -export([batch_create_variable/2,
@@ -238,7 +239,8 @@ create_detector_version(Client, Input, Options)
 %%
 %% List is a set of input data for a variable in your event dataset. You use
 %% the input data in a rule that's associated with your detector. For
-%% more information, see Lists.
+%% more information, see Lists:
+%% https://docs.aws.amazon.com/frauddetector/latest/ug/lists.html.
 create_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_list(Client, Input, []).

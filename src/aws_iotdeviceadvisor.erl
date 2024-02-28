@@ -61,7 +61,9 @@
 
 %% @doc Creates a Device Advisor test suite.
 %%
-%% Requires permission to access the CreateSuiteDefinition action.
+%% Requires permission to access the CreateSuiteDefinition:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 create_suite_definition(Client, Input) ->
     create_suite_definition(Client, Input, []).
 create_suite_definition(Client, Input0, Options0) ->
@@ -86,7 +88,9 @@ create_suite_definition(Client, Input0, Options0) ->
 
 %% @doc Deletes a Device Advisor test suite.
 %%
-%% Requires permission to access the DeleteSuiteDefinition action.
+%% Requires permission to access the DeleteSuiteDefinition:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 delete_suite_definition(Client, SuiteDefinitionId, Input) ->
     delete_suite_definition(Client, SuiteDefinitionId, Input, []).
 delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
@@ -141,7 +145,9 @@ get_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a Device Advisor test suite.
 %%
-%% Requires permission to access the GetSuiteDefinition action.
+%% Requires permission to access the GetSuiteDefinition:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
     get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
@@ -170,7 +176,9 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a Device Advisor test suite run.
 %%
-%% Requires permission to access the GetSuiteRun action.
+%% Requires permission to access the GetSuiteRun:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -196,7 +204,9 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 %% @doc Gets a report download link for a successful Device Advisor
 %% qualifying test suite run.
 %%
-%% Requires permission to access the GetSuiteRunReport action.
+%% Requires permission to access the GetSuiteRunReport:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -221,7 +231,9 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 
 %% @doc Lists the Device Advisor test suites you have created.
 %%
-%% Requires permission to access the ListSuiteDefinitions action.
+%% Requires permission to access the ListSuiteDefinitions:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_suite_definitions(Client)
   when is_map(Client) ->
     list_suite_definitions(Client, #{}, #{}).
@@ -254,7 +266,9 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 %% You can list all runs of the test suite, or the runs of a specific version
 %% of the test suite.
 %%
-%% Requires permission to access the ListSuiteRuns action.
+%% Requires permission to access the ListSuiteRuns:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_suite_runs(Client)
   when is_map(Client) ->
     list_suite_runs(Client, #{}, #{}).
@@ -286,7 +300,9 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags attached to an IoT Device Advisor resource.
 %%
-%% Requires permission to access the ListTagsForResource action.
+%% Requires permission to access the ListTagsForResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -311,7 +327,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a Device Advisor test suite run.
 %%
-%% Requires permission to access the StartSuiteRun action.
+%% Requires permission to access the StartSuiteRun:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
 start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
@@ -336,7 +354,9 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
 
 %% @doc Stops a Device Advisor test suite run that is currently running.
 %%
-%% Requires permission to access the StopSuiteRun action.
+%% Requires permission to access the StopSuiteRun:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
     stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
@@ -361,7 +381,9 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
 
 %% @doc Adds to and modifies existing tags of an IoT Device Advisor resource.
 %%
-%% Requires permission to access the TagResource action.
+%% Requires permission to access the TagResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -386,7 +408,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from an IoT Device Advisor resource.
 %%
-%% Requires permission to access the UntagResource action.
+%% Requires permission to access the UntagResource:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -412,7 +436,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a Device Advisor test suite.
 %%
-%% Requires permission to access the UpdateSuiteDefinition action.
+%% Requires permission to access the UpdateSuiteDefinition:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 update_suite_definition(Client, SuiteDefinitionId, Input) ->
     update_suite_definition(Client, SuiteDefinitionId, Input, []).
 update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->

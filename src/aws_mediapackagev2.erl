@@ -16,7 +16,8 @@
 %%
 %% If you created resources in MediaPackage v1, use video on demand (VOD)
 %% workflows, and aren't looking to migrate to MediaPackage v2 yet, see
-%% the MediaPackage v1 Live API Reference.
+%% the MediaPackage v1 Live API Reference:
+%% https://docs.aws.amazon.com/mediapackage/latest/apireference/what-is.html.
 %%
 %% This is the AWS Elemental MediaPackage v2 Live REST API Reference. It
 %% describes all the MediaPackage API operations for live content in detail,

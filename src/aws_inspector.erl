@@ -6,7 +6,8 @@
 %% Amazon Inspector enables you to analyze the behavior of your AWS resources
 %% and to identify potential security issues.
 %%
-%% For more information, see Amazon Inspector User Guide.
+%% For more information, see Amazon Inspector User Guide:
+%% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html.
 -module(aws_inspector).
 
 -export([add_attributes_to_findings/2,
@@ -104,12 +105,14 @@ add_attributes_to_findings(Client, Input, Options)
 %%
 %% If resourceGroupArn is not specified, all EC2 instances in the current AWS
 %% account and region are included in the assessment target. If the
-%% service-linked role isn’t already registered, this action also creates and
-%% registers a service-linked role to grant Amazon Inspector access to AWS
-%% Services needed to perform security assessments. You can create up to 50
-%% assessment targets per AWS account. You can run up to 500 concurrent
-%% agents per AWS account. For more information, see Amazon Inspector
-%% Assessment Targets.
+%% service-linked role:
+%% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html
+%% isn’t already registered, this action also creates and registers a
+%% service-linked role to grant Amazon Inspector access to AWS Services
+%% needed to perform security assessments. You can create up to 50 assessment
+%% targets per AWS account. You can run up to 500 concurrent agents per AWS
+%% account. For more information, see Amazon Inspector Assessment Targets:
+%% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html.
 create_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_target(Client, Input, []).
@@ -120,9 +123,11 @@ create_assessment_target(Client, Input, Options)
 %% @doc Creates an assessment template for the assessment target that is
 %% specified by the ARN of the assessment target.
 %%
-%% If the service-linked role isn’t already registered, this action also
-%% creates and registers a service-linked role to grant Amazon Inspector
-%% access to AWS Services needed to perform security assessments.
+%% If the service-linked role:
+%% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html
+%% isn’t already registered, this action also creates and registers a
+%% service-linked role to grant Amazon Inspector access to AWS Services
+%% needed to perform security assessments.
 create_assessment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_template(Client, Input, []).
@@ -305,7 +310,8 @@ list_assessment_runs(Client, Input, Options)
 %% @doc Lists the ARNs of the assessment targets within this AWS account.
 %%
 %% For more information about assessment targets, see Amazon Inspector
-%% Assessment Targets.
+%% Assessment Targets:
+%% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html.
 list_assessment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_targets(Client, Input, []).

@@ -12,13 +12,15 @@
 %% defects and implementing best practices, CodeGuru Reviewer improves the
 %% overall quality and maintainability of your code base during the code
 %% review stage. For more information about CodeGuru Reviewer, see the Amazon
-%% CodeGuru Reviewer User Guide.
+%% CodeGuru Reviewer User Guide:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html.
 %%
 %% To improve the security of your CodeGuru Reviewer API calls, you can
 %% establish a private connection between your VPC and CodeGuru Reviewer by
 %% creating an interface VPC endpoint. For more information, see CodeGuru
-%% Reviewer and interface VPC endpoints (Amazon Web Services PrivateLink) in
-%% the Amazon CodeGuru Reviewer User Guide.
+%% Reviewer and interface VPC endpoints (Amazon Web Services PrivateLink):
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/vpc-interface-endpoints.html
+%% in the Amazon CodeGuru Reviewer User Guide.
 -module(aws_codeguru_reviewer).
 
 -export([associate_repository/2,
@@ -72,7 +74,9 @@
 %% changes in the repository's pull requests and provides automatic
 %% recommendations. You can view recommendations using the CodeGuru Reviewer
 %% console. For more information, see Recommendations in Amazon CodeGuru
-%% Reviewer in the Amazon CodeGuru Reviewer User Guide.
+%% Reviewer:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html
+%% in the Amazon CodeGuru Reviewer User Guide.
 %%
 %% If you associate a CodeCommit or S3 repository, it must be in the same
 %% Amazon Web Services Region and Amazon Web Services account where its
@@ -80,13 +84,16 @@
 %%
 %% Bitbucket and GitHub Enterprise Server repositories are managed by Amazon
 %% Web Services CodeStar Connections to connect to CodeGuru Reviewer. For
-%% more information, see Associate a repository in the Amazon CodeGuru
-%% Reviewer User Guide.
+%% more information, see Associate a repository:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-associate-repository.html
+%% in the Amazon CodeGuru Reviewer User Guide.
 %%
 %% You cannot use the CodeGuru Reviewer SDK or the Amazon Web Services CLI to
 %% associate a GitHub repository with Amazon CodeGuru Reviewer. To associate
 %% a GitHub repository, use the console. For more information, see Getting
-%% started with CodeGuru Reviewer in the CodeGuru Reviewer User Guide.
+%% started with CodeGuru Reviewer:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html
+%% in the CodeGuru Reviewer User Guide.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
 associate_repository(Client, Input0, Options0) ->
@@ -109,8 +116,9 @@ associate_repository(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to create a code review with a CodeReviewType of
-%% `RepositoryAnalysis'.
+%% @doc Use to create a code review with a CodeReviewType:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html
+%% of `RepositoryAnalysis'.
 %%
 %% This type of code review analyzes all code under a specified branch in an
 %% associated repository. `PullRequest' code reviews are automatically
@@ -190,8 +198,10 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a RepositoryAssociation object that contains information
-%% about the requested repository association.
+%% @doc Returns a RepositoryAssociation:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html
+%% object that contains information about the requested repository
+%% association.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
     describe_repository_association(Client, AssociationArn, #{}, #{}).
@@ -271,8 +281,10 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of RecommendationFeedbackSummary objects that contain
-%% customer recommendation feedback for all CodeGuru Reviewer users.
+%% @doc Returns a list of RecommendationFeedbackSummary:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html
+%% objects that contain customer recommendation feedback for all CodeGuru
+%% Reviewer users.
 list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
@@ -330,10 +342,18 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of RepositoryAssociationSummary objects that contain
-%% summary information about a repository association.
+%% @doc Returns a list of RepositoryAssociationSummary:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html
+%% objects that contain summary information about a repository association.
 %%
-%% You can filter the returned list by ProviderType, Name, State, and Owner.
+%% You can filter the returned list by ProviderType:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType,
+%% Name:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name,
+%% State:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State,
+%% and Owner:
+%% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner.
 list_repository_associations(Client)
   when is_map(Client) ->
     list_repository_associations(Client, #{}, #{}).

@@ -262,34 +262,40 @@
 %% order to completely free all storage consumed by all parts.
 %%
 %% To verify that all parts have been removed and prevent getting charged for
-%% the part storage, you should call the ListParts API operation and ensure
-%% that the parts list is empty.
+%% the part storage, you should call the ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html API
+%% operation and ensure that the parts list is empty.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information about permissions required to use the
-%% multipart upload, see Multipart Upload and Permissions in the Amazon S3
-%% User Guide.
+%% multipart upload, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is `
@@ -298,15 +304,20 @@
 %% </dd> </dl> The following operations are related to
 %% `AbortMultipartUpload':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 abort_multipart_upload(Client, Bucket, Key, Input) ->
@@ -355,11 +366,14 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% @doc Completes a multipart upload by assembling previously uploaded parts.
 %%
 %% You first initiate the multipart upload and then upload all parts using
-%% the UploadPart operation or the UploadPartCopy operation. After
-%% successfully uploading all relevant parts of an upload, you call this
-%% `CompleteMultipartUpload' operation to complete the upload. Upon
-%% receiving this request, Amazon S3 concatenates all the parts in ascending
-%% order by part number to create a new object. In the
+%% the UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
+%% operation or the UploadPartCopy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html
+%% operation. After successfully uploading all relevant parts of an upload,
+%% you call this `CompleteMultipartUpload' operation to complete the
+%% upload. Upon receiving this request, Amazon S3 concatenates all the parts
+%% in ascending order by part number to create a new object. In the
 %% CompleteMultipartUpload request, you must provide the parts list and
 %% ensure that the parts list is complete. The CompleteMultipartUpload API
 %% operation concatenates the parts that you provide in the list. For each
@@ -384,7 +398,8 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Note that if `CompleteMultipartUpload' fails, applications should be
 %% prepared to retry the failed requests. For more information, see Amazon S3
-%% Error Best Practices.
+%% Error Best Practices:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html.
 %%
 %% You can't use `Content-Type: application/x-www-form-urlencoded'
 %% for the CompleteMultipartUpload requests. Also, if you don't provide a
@@ -392,33 +407,40 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% a `200 OK' response.
 %%
 %% For more information about multipart uploads, see Uploading Objects Using
-%% Multipart Upload in the Amazon S3 User Guide.
+%% Multipart Upload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html in
+%% the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information about permissions required to use the
-%% multipart upload API, see Multipart Upload and Permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Special errors</dt> <dd> <ul> <li> Error Code:
 %% `EntityTooSmall'
@@ -459,15 +481,20 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% </dd> </dl> The following operations are related to
 %% `CompleteMultipartUpload':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 complete_multipart_upload(Client, Bucket, Key, Input) ->
@@ -531,7 +558,8 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% copy of your object up to 5 GB in size in a single atomic action using
 %% this API. However, to copy an object greater than 5 GB, you must use the
 %% multipart upload Upload Part - Copy (UploadPartCopy) API. For more
-%% information, see Copy Object Using the REST Multipart Upload API.
+%% information, see Copy Object Using the REST Multipart Upload API:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html.
 %%
 %% You can copy individual objects between general purpose buckets, between
 %% directory buckets, and between general purpose buckets and directory
@@ -542,7 +570,9 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% Both the Region that you want to copy the object from and the Region that
 %% you want to copy the object to must be enabled for your account.
@@ -550,13 +580,15 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Amazon S3 transfer acceleration does not support cross-Region copies. If
 %% you request a cross-Region copy using a transfer acceleration endpoint,
 %% you get a `400 Bad Request' error. For more information, see Transfer
-%% Acceleration.
+%% Acceleration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html.
 %%
 %% <dl> <dt>Authentication and authorization</dt> <dd> All `CopyObject'
 %% requests must be authenticated and signed by using IAM credentials (access
 %% key ID and secret access key for the IAM identities). All headers with the
 %% `x-amz-' prefix, including `x-amz-copy-source', must be signed.
-%% For more information, see REST Authentication.
+%% For more information, see REST Authentication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html.
 %%
 %% Directory buckets - You must use the IAM credentials to authenticate and
 %% authorize your access to the `CopyObject' API operation, instead of
@@ -599,9 +631,12 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% `ReadOnly' on the copy destination bucket.
 %%
 %% </li> </ul> For example policies, see Example bucket policies for S3
-%% Express One Zone and Amazon Web Services Identity and Access Management
-%% (IAM) identity-based policies for S3 Express One Zone in the Amazon S3
-%% User Guide.
+%% Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% and Amazon Web Services Identity and Access Management (IAM)
+%% identity-based policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-identity-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Response and special errors</dt> <dd> When the
 %% request is an HTTP 1.1 request, the response is chunk encoded. When the
@@ -624,12 +659,13 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% response is embedded in the `200 OK' response. For example, in a
 %% cross-region copy, you may encounter throttling and receive a `200 OK'
 %% response. For more information, see Resolve the Error 200 response when
-%% copying objects to Amazon S3. The `200 OK' status code means the copy
-%% was accepted, but it doesn't mean the copy is complete. Another
-%% example is when you disconnect from Amazon S3 before the copy is complete,
-%% Amazon S3 might cancel the copy and you may receive a `200 OK'
-%% response. You must stay connected to Amazon S3 until the entire response
-%% is successfully received and processed.
+%% copying objects to Amazon S3:
+%% repost.aws/knowledge-center/s3-resolve-200-internalerror. The `200 OK'
+%% status code means the copy was accepted, but it doesn't mean the copy
+%% is complete. Another example is when you disconnect from Amazon S3 before
+%% the copy is complete, Amazon S3 might cancel the copy and you may receive
+%% a `200 OK' response. You must stay connected to Amazon S3 until the
+%% entire response is successfully received and processed.
 %%
 %% If you call this API operation directly, make sure to design your
 %% application to parse the content of the response and handle it
@@ -643,7 +679,8 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% is based on the storage class and Region that you specify for the
 %% destination object. The request can also result in a data retrieval charge
 %% for the source if the source storage class bills for data retrieval. For
-%% pricing information, see Amazon S3 pricing.
+%% pricing information, see Amazon S3 pricing:
+%% http://aws.amazon.com/s3/pricing/.
 %%
 %% </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets - The HTTP
 %% Host header syntax is `
@@ -651,9 +688,11 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `CopyObject':
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> GetObject
+%% </li> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
 %% </li> </ul>
 copy_object(Client, Bucket, Key, Input) ->
@@ -747,7 +786,8 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 
 %% @doc This action creates an Amazon S3 bucket.
 %%
-%% To create an Amazon S3 on Outposts bucket, see `CreateBucket' .
+%% To create an Amazon S3 on Outposts bucket, see `CreateBucket' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html.
 %%
 %% Creates a new S3 bucket. To create a bucket, you must set up Amazon S3 and
 %% have a valid Amazon Web Services Access Key ID to authenticate requests.
@@ -756,8 +796,9 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% There are two types of buckets: general purpose buckets and directory
 %% buckets. For more information about these bucket types, see Creating,
-%% configuring, and working with Amazon S3 buckets in the Amazon S3 User
-%% Guide.
+%% configuring, and working with Amazon S3 buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html
+%% in the Amazon S3 User Guide.
 %%
 %% General purpose buckets - If you send your `CreateBucket' request to
 %% the `s3.amazonaws.com' global endpoint, the request goes to the
@@ -766,14 +807,18 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% in the request specifies another Region where the bucket is to be created.
 %% If you create a bucket in a Region other than US East (N. Virginia), your
 %% application must be able to handle 307 redirect. For more information, see
-%% Virtual hosting of buckets in the Amazon S3 User Guide.
+%% Virtual hosting of buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html in the
+%% Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Regional endpoint. These endpoints support path-style
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - In addition to the `s3:CreateBucket' permission, the
@@ -803,16 +848,21 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% to an external Amazon Web Services account, your request fails with a
 %% `400' error and returns the `InvalidBucketAcLWithObjectOwnership'
 %% error code. For more information, see Setting Object Ownership on an
-%% existing bucket in the Amazon S3 User Guide.
+%% existing bucket :
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-ownership-existing-bucket.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> <li> S3 Block Public Access - If your specific use case requires
 %% granting public access to your S3 resources, you can disable Block Public
 %% Access. Specifically, you can create a new bucket with Block Public Access
-%% enabled, then separately call the `DeletePublicAccessBlock' API. To
-%% use this operation, you must have the `s3:PutBucketPublicAccessBlock'
-%% permission. For more information about S3 Block Public Access, see
-%% Blocking public access to your Amazon S3 storage in the Amazon S3 User
-%% Guide.
+%% enabled, then separately call the `DeletePublicAccessBlock' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
+%% API. To use this operation, you must have the
+%% `s3:PutBucketPublicAccessBlock' permission. For more information about
+%% S3 Block Public Access, see Blocking public access to your Amazon S3
+%% storage :
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - You must have the
 %% `s3express:CreateBucket' permission in an IAM identity-based policy
@@ -820,8 +870,9 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% isn't supported. This operation can only be performed by the Amazon
 %% Web Services account that owns the resource. For more information about
 %% directory bucket policies and permissions, see Amazon Web Services
-%% Identity and Access Management (IAM) for S3 Express One Zone in the Amazon
-%% S3 User Guide.
+%% Identity and Access Management (IAM) for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% The permissions for ACLs, Object Lock, S3 Object Ownership, and S3 Block
 %% Public Access are not supported for directory buckets. For directory
@@ -830,9 +881,12 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% These settings can't be modified.
 %%
 %% For more information about permissions for creating and working with
-%% directory buckets, see Directory buckets in the Amazon S3 User Guide. For
-%% more information about supported S3 features for directory buckets, see
-%% Features of S3 Express One Zone in the Amazon S3 User Guide.
+%% directory buckets, see Directory buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html
+%% in the Amazon S3 User Guide. For more information about supported S3
+%% features for directory buckets, see Features of S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-one-zone.html#s3-express-features
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is
@@ -840,9 +894,11 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `CreateBucket':
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> DeleteBucket
+%% </li> <li> DeleteBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
 %%
 %% </li> </ul>
 create_bucket(Client, Bucket, Input) ->
@@ -897,10 +953,13 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% This upload ID is used to associate all of the parts in the specific
 %% multipart upload. You specify this upload ID in each of your subsequent
-%% upload part requests (see UploadPart). You also include this upload ID in
-%% the final request to either complete or abort the multipart upload
-%% request. For more information about multipart uploads, see Multipart
-%% Upload Overview in the Amazon S3 User Guide.
+%% upload part requests (see UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html). You
+%% also include this upload ID in the final request to either complete or
+%% abort the multipart upload request. For more information about multipart
+%% uploads, see Multipart Upload Overview:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html in the
+%% Amazon S3 User Guide.
 %%
 %% After you initiate a multipart upload and upload one or more parts, to
 %% stop being charged for storing the uploaded parts, you must either
@@ -913,7 +972,8 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% of days specified in the bucket lifecycle configuration. Otherwise, the
 %% incomplete multipart upload becomes eligible for an abort action and
 %% Amazon S3 aborts the multipart upload. For more information, see Aborting
-%% Incomplete Multipart Uploads Using a Bucket Lifecycle Configuration.
+%% Incomplete Multipart Uploads Using a Bucket Lifecycle Configuration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config.
 %%
 %% Directory buckets - S3 Lifecycle is not supported by directory buckets.
 %%
@@ -922,7 +982,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Request signing</dt> <dd> For request signing, multipart upload
 %% is just a series of regular requests. You initiate a multipart upload,
@@ -930,35 +992,43 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% upload process. You sign each request individually. There is nothing
 %% special about signing multipart upload requests. For more information
 %% about signing, see Authenticating Requests (Amazon Web Services Signature
-%% Version 4) in the Amazon S3 User Guide.
+%% Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information about the permissions required to use the
-%% multipart upload API, see Multipart upload and permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart upload and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% To perform a multipart upload with encryption by using an Amazon Web
 %% Services KMS key, the requester must have permission to the
 %% `kms:Decrypt' and `kms:GenerateDataKey*' actions on the key. These
 %% permissions are required because Amazon S3 must decrypt and read data from
 %% the encrypted file parts before it completes the multipart upload. For
-%% more information, see Multipart upload API and permissions and Protecting
-%% data using server-side encryption with Amazon Web Services KMS in the
-%% Amazon S3 User Guide.
+%% more information, see Multipart upload API and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
+%% and Protecting data using server-side encryption with Amazon Web Services
+%% KMS:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Encryption</dt> <dd> <ul> <li> General purpose
 %% buckets - Server-side encryption is for data encryption at rest. Amazon S3
@@ -981,7 +1051,10 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% setting in your request is different from the default encryption
 %% configuration of the destination bucket, the encryption setting in your
 %% request takes precedence. If you choose to provide your own encryption
-%% key, the request headers you provide in UploadPart and UploadPartCopy
+%% key, the request headers you provide in UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html and
+%% UploadPartCopy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html
 %% requests must match the headers you used in the
 %% `CreateMultipartUpload' request.
 %%
@@ -1006,9 +1079,12 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% `kms:Decrypt' and `kms:GenerateDataKey*' actions on the key. These
 %% permissions are required because Amazon S3 must decrypt and read data from
 %% the encrypted file parts before it completes the multipart upload. For
-%% more information, see Multipart upload API and permissions and Protecting
-%% data using server-side encryption with Amazon Web Services KMS in the
-%% Amazon S3 User Guide.
+%% more information, see Multipart upload API and permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpuAndPermissions
+%% and Protecting data using server-side encryption with Amazon Web Services
+%% KMS:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
+%% in the Amazon S3 User Guide.
 %%
 %% If your Identity and Access Management (IAM) user or role is in the same
 %% Amazon Web Services account as the KMS key, then you must have these
@@ -1021,11 +1097,14 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% Layer Security (TLS), or Signature Version 4. For information about
 %% configuring any of the officially supported Amazon Web Services SDKs and
 %% Amazon Web Services CLI, see Specifying the Signature Version in Request
-%% Authentication in the Amazon S3 User Guide.
+%% Authentication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+%% in the Amazon S3 User Guide.
 %%
 %% For more information about server-side encryption with KMS keys (SSE-KMS),
-%% see Protecting Data Using Server-Side Encryption with KMS keys in the
-%% Amazon S3 User Guide.
+%% see Protecting Data Using Server-Side Encryption with KMS keys:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> <li> Use customer-provided encryption keys (SSE-C) – If you want to
 %% manage your own encryption keys, provide all the following headers in the
@@ -1039,8 +1118,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> For more information about server-side encryption with
 %% customer-provided encryption keys (SSE-C), see Protecting data using
-%% server-side encryption with customer-provided encryption keys (SSE-C) in
-%% the Amazon S3 User Guide.
+%% server-side encryption with customer-provided encryption keys (SSE-C):
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </li> <li> Directory buckets -For directory buckets, only
 %% server-side encryption with Amazon S3 managed keys (SSE-S3) (`AES256')
@@ -1053,15 +1133,20 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% </dd> </dl> The following operations are related to
 %% `CreateMultipartUpload':
 %%
-%% <ul> <li> UploadPart
+%% <ul> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 create_multipart_upload(Client, Bucket, Key, Input) ->
@@ -1147,8 +1232,9 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% on directory buckets.
 %%
 %% For more information about Zonal endpoint APIs that include the
-%% Availability Zone in the request endpoint, see S3 Express One Zone APIs in
-%% the Amazon S3 User Guide.
+%% Availability Zone in the request endpoint, see S3 Express One Zone APIs:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-APIs.html
+%% in the Amazon S3 User Guide.
 %%
 %% To make Zonal endpoint API requests on a directory bucket, use the
 %% `CreateSession' API operation. Specifically, you grant
@@ -1175,28 +1261,33 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% refreshes automatically to avoid service interruptions when a session
 %% expires. We recommend that you use the Amazon Web Services SDKs to
 %% initiate and manage requests to the CreateSession API. For more
-%% information, see Performance guidelines and design patterns in the Amazon
-%% S3 User Guide.
+%% information, see Performance guidelines and design patterns:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-optimizing-performance-guidelines-design-patterns.html#s3-express-optimizing-performance-session-authentication
+%% in the Amazon S3 User Guide.
 %%
 %% You must make requests for this API operation to the Zonal endpoint. These
 %% endpoints support virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com'. Path-style
 %% requests are not supported. For more information, see Regional and Zonal
-%% endpoints in the Amazon S3 User Guide.
+%% endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% `CopyObject' API operation - Unlike other Zonal endpoint APIs, the
 %% `CopyObject' API operation doesn't use the temporary security
 %% credentials returned from the `CreateSession' API operation for
 %% authentication and authorization. For information about authentication and
 %% authorization of the `CopyObject' API operation on directory buckets,
-%% see CopyObject.
+%% see CopyObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html.
 %%
 %% `HeadBucket' API operation - Unlike other Zonal endpoint APIs, the
 %% `HeadBucket' API operation doesn't use the temporary security
 %% credentials returned from the `CreateSession' API operation for
 %% authentication and authorization. For information about authentication and
 %% authorization of the `HeadBucket' API operation on directory buckets,
-%% see HeadBucket.
+%% see HeadBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html.
 %%
 %% <dl> <dt>Permissions</dt> <dd> To obtain temporary security credentials,
 %% you must create a bucket policy or an IAM identity-based policy that
@@ -1204,10 +1295,14 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% policy, you can have the `s3express:SessionMode' condition key to
 %% control who can create a `ReadWrite' or `ReadOnly' session. For
 %% more information about `ReadWrite' or `ReadOnly' sessions, see
-%% `x-amz-create-session-mode' . For example policies, see Example bucket
-%% policies for S3 Express One Zone and Amazon Web Services Identity and
-%% Access Management (IAM) identity-based policies for S3 Express One Zone in
-%% the Amazon S3 User Guide.
+%% `x-amz-create-session-mode' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html#API_CreateSession_RequestParameters.
+%% For example policies, see Example bucket policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% and Amazon Web Services Identity and Access Management (IAM)
+%% identity-based policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-identity-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% To grant cross-account access to Zonal endpoint APIs, the bucket policy
 %% should also grant both accounts the `s3express:CreateSession'
@@ -1259,7 +1354,9 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - You must have the `s3:DeleteBucket' permission on the
@@ -1271,8 +1368,9 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% isn't supported. This operation can only be performed by the Amazon
 %% Web Services account that owns the resource. For more information about
 %% directory bucket policies and permissions, see Amazon Web Services
-%% Identity and Access Management (IAM) for S3 Express One Zone in the Amazon
-%% S3 User Guide.
+%% Identity and Access Management (IAM) for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is
@@ -1280,9 +1378,11 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </dd> </dl> The following operations are related to `DeleteBucket':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
 %% </li> </ul>
 delete_bucket(Client, Bucket, Input) ->
@@ -1319,20 +1419,26 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %% `s3:PutAnalyticsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about the Amazon S3 analytics feature, see Amazon S3
-%% Analytics – Storage Class Analysis.
+%% Analytics – Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html.
 %%
 %% The following operations are related to
 %% `DeleteBucketAnalyticsConfiguration':
 %%
-%% <ul> <li> GetBucketAnalyticsConfiguration
+%% <ul> <li> GetBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> ListBucketAnalyticsConfigurations
+%% </li> <li> ListBucketAnalyticsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
 %%
-%% </li> <li> PutBucketAnalyticsConfiguration
+%% </li> <li> PutBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
 %%
 %% </li> </ul>
 delete_bucket_analytics_configuration(Client, Bucket, Input) ->
@@ -1370,13 +1476,16 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %% default and can grant this permission to others.
 %%
 %% For information about `cors', see Enabling Cross-Origin Resource
-%% Sharing in the Amazon S3 User Guide.
+%% Sharing: https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html in the
+%% Amazon S3 User Guide.
 %%
 %% == Related Resources ==
 %%
-%% <ul> <li> PutBucketCors
+%% <ul> <li> PutBucketCors:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html
 %%
-%% </li> <li> RESTOPTIONSobject
+%% </li> <li> RESTOPTIONSobject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
 %%
 %% </li> </ul>
 delete_bucket_cors(Client, Bucket, Input) ->
@@ -1409,20 +1518,27 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% This implementation of the DELETE action resets the default encryption for
 %% the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3).
 %% For information about the bucket default encryption feature, see Amazon S3
-%% Bucket Default Encryption in the Amazon S3 User Guide.
+%% Bucket Default Encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html in
+%% the Amazon S3 User Guide.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:PutEncryptionConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to your
-%% Amazon S3 Resources in the Amazon S3 User Guide.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `DeleteBucketEncryption':
 %%
-%% <ul> <li> PutBucketEncryption
+%% <ul> <li> PutBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html
 %%
-%% </li> <li> GetBucketEncryption
+%% </li> <li> GetBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html
 %%
 %% </li> </ul>
 delete_bucket_encryption(Client, Bucket, Input) ->
@@ -1471,16 +1587,20 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
-%% frequently and infrequently accessed objects.
+%% frequently and infrequently accessed objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access.
 %%
 %% Operations related to `DeleteBucketIntelligentTieringConfiguration'
 %% include:
 %%
-%% <ul> <li> GetBucketIntelligentTieringConfiguration
+%% <ul> <li> GetBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> PutBucketIntelligentTieringConfiguration
+%% </li> <li> PutBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> ListBucketIntelligentTieringConfigurations
+%% </li> <li> ListBucketIntelligentTieringConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
 %%
 %% </li> </ul>
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
@@ -1516,19 +1636,25 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 %% `s3:PutInventoryConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
-%% Inventory.
+%% Inventory:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html.
 %%
 %% Operations related to `DeleteBucketInventoryConfiguration' include:
 %%
-%% <ul> <li> GetBucketInventoryConfiguration
+%% <ul> <li> GetBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html
 %%
-%% </li> <li> PutBucketInventoryConfiguration
+%% </li> <li> PutBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
 %%
-%% </li> <li> ListBucketInventoryConfigurations
+%% </li> <li> ListBucketInventoryConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
 %%
 %% </li> </ul>
 delete_bucket_inventory_configuration(Client, Bucket, Input) ->
@@ -1574,13 +1700,16 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% fully propagated to all the Amazon S3 systems.
 %%
 %% For more information about the object expiration, see Elements to Describe
-%% Lifecycle Actions.
+%% Lifecycle Actions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#intro-lifecycle-rules-actions.
 %%
 %% Related actions include:
 %%
-%% <ul> <li> PutBucketLifecycleConfiguration
+%% <ul> <li> PutBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration
+%% </li> <li> GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %%
 %% </li> </ul>
 delete_bucket_lifecycle(Client, Bucket, Input) ->
@@ -1618,22 +1747,29 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% `s3:PutMetricsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
-%% Monitoring Metrics with Amazon CloudWatch.
+%% Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html.
 %%
 %% The following operations are related to
 %% `DeleteBucketMetricsConfiguration':
 %%
-%% <ul> <li> GetBucketMetricsConfiguration
+%% <ul> <li> GetBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html
 %%
-%% </li> <li> PutBucketMetricsConfiguration
+%% </li> <li> PutBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html
 %%
-%% </li> <li> ListBucketMetricsConfigurations
+%% </li> <li> ListBucketMetricsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html
 %%
-%% </li> <li> Monitoring Metrics with Amazon CloudWatch
+%% </li> <li> Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
 %%
 %% </li> </ul>
 delete_bucket_metrics_configuration(Client, Bucket, Input) ->
@@ -1667,10 +1803,12 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %% Removes `OwnershipControls' for an Amazon S3 bucket. To use this
 %% operation, you must have the `s3:PutBucketOwnershipControls'
 %% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
-%% Ownership.
+%% Ownership:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html.
 %%
 %% The following operations are related to
 %% `DeleteBucketOwnershipControls':
@@ -1712,7 +1850,9 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> If you are using an identity other than the
 %% root user of the Amazon Web Services account that owns the bucket, the
@@ -1738,7 +1878,9 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% <ul> <li> General purpose bucket permissions - The
 %% `s3:DeleteBucketPolicy' permission is required in a policy. For more
 %% information about general purpose buckets bucket policies, see Using
-%% Bucket Policies and User Policies in the Amazon S3 User Guide.
+%% Bucket Policies and User Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation, you must have the `s3express:DeleteBucketPolicy' permission
@@ -1747,7 +1889,9 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% be performed by the Amazon Web Services account that owns the resource.
 %% For more information about directory bucket policies and permissions, see
 %% Amazon Web Services Identity and Access Management (IAM) for S3 Express
-%% One Zone in the Amazon S3 User Guide.
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is
@@ -1756,9 +1900,11 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% </dd> </dl> The following operations are related to
 %% `DeleteBucketPolicy'
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
 %% </li> </ul>
 delete_bucket_policy(Client, Bucket, Input) ->
@@ -1794,19 +1940,25 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% `s3:PutReplicationConfiguration' action. The bucket owner has these
 %% permissions by default and can grant it to others. For more information
 %% about permissions, see Permissions Related to Bucket Subresource
-%% Operations and Managing Access Permissions to Your Amazon S3 Resources.
+%% Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% It can take a while for the deletion of a replication configuration to
 %% fully propagate.
 %%
-%% For information about replication configuration, see Replication in the
+%% For information about replication configuration, see Replication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html in the
 %% Amazon S3 User Guide.
 %%
 %% The following operations are related to `DeleteBucketReplication':
 %%
-%% <ul> <li> PutBucketReplication
+%% <ul> <li> PutBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html
 %%
-%% </li> <li> GetBucketReplication
+%% </li> <li> GetBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
 %%
 %% </li> </ul>
 delete_bucket_replication(Client, Bucket, Input) ->
@@ -1844,9 +1996,11 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% The following operations are related to `DeleteBucketTagging':
 %%
-%% <ul> <li> GetBucketTagging
+%% <ul> <li> GetBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html
 %%
-%% </li> <li> PutBucketTagging
+%% </li> <li> PutBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
 %%
 %% </li> </ul>
 delete_bucket_tagging(Client, Bucket, Input) ->
@@ -1890,13 +2044,16 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% granting them the `S3:DeleteBucketWebsite' permission.
 %%
 %% For more information about hosting websites, see Hosting Websites on
-%% Amazon S3.
+%% Amazon S3:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html.
 %%
 %% The following operations are related to `DeleteBucketWebsite':
 %%
-%% <ul> <li> GetBucketWebsite
+%% <ul> <li> GetBucketWebsite:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketWebsite.html
 %%
-%% </li> <li> PutBucketWebsite
+%% </li> <li> PutBucketWebsite:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
 %%
 %% </li> </ul>
 delete_bucket_website(Client, Bucket, Input) ->
@@ -1948,7 +2105,9 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% To remove a specific version, you must use the `versionId' query
 %% parameter. Using this query parameter permanently deletes the version. If
@@ -1959,17 +2118,21 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% versioning configuration is MFA Delete enabled, you must include the
 %% `x-amz-mfa' request header in the DELETE `versionId' request.
 %% Requests that include `x-amz-mfa' must use HTTPS. For more information
-%% about MFA Delete, see Using MFA Delete in the Amazon S3 User Guide. To see
-%% sample requests that use versioning, see Sample Request.
+%% about MFA Delete, see Using MFA Delete:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html in the
+%% Amazon S3 User Guide. To see sample requests that use versioning, see
+%% Sample Request:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html#ExampleVersionObjectDelete.
 %%
 %% Directory buckets - MFA delete is not supported by directory buckets.
 %%
 %% You can delete objects by explicitly calling DELETE Object or calling
-%% (PutBucketLifecycle) to enable Amazon S3 to remove them for you. If you
-%% want to block users or accounts from removing or deleting objects from
-%% your bucket, you must deny them the `s3:DeleteObject',
-%% `s3:DeleteObjectVersion', and `s3:PutLifeCycleConfiguration'
-%% actions.
+%% (PutBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html)
+%% to enable Amazon S3 to remove them for you. If you want to block users or
+%% accounts from removing or deleting objects from your bucket, you must deny
+%% them the `s3:DeleteObject', `s3:DeleteObjectVersion', and
+%% `s3:PutLifeCycleConfiguration' actions.
 %%
 %% Directory buckets - S3 Lifecycle is not supported by directory buckets.
 %%
@@ -1986,17 +2149,19 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is `
@@ -2004,7 +2169,8 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% </dd> </dl> The following action is related to `DeleteObject':
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
 %% </li> </ul>
 delete_object(Client, Bucket, Key, Input) ->
@@ -2057,7 +2223,8 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Removes the entire tag set from the specified object. For more information
-%% about managing object tags, see Object Tagging.
+%% about managing object tags, see Object Tagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:DeleteObjectTagging' action.
@@ -2068,9 +2235,11 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% The following operations are related to `DeleteObjectTagging':
 %%
-%% <ul> <li> PutObjectTagging
+%% <ul> <li> PutObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html
 %%
-%% </li> <li> GetObjectTagging
+%% </li> <li> GetObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
 %%
 %% </li> </ul>
 delete_object_tagging(Client, Bucket, Key, Input) ->
@@ -2138,7 +2307,9 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% The operation supports two modes for the response: verbose and quiet. By
 %% default, the operation uses verbose mode in which the response includes
@@ -2153,7 +2324,9 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% non-versioned objects you are trying to delete. If you provide an invalid
 %% token, whether there are versioned keys in the request or not, the entire
 %% Multi-Object Delete request will fail. For information about MFA Delete,
-%% see MFA Delete in the Amazon S3 User Guide.
+%% see MFA Delete:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete
+%% in the Amazon S3 User Guide.
 %%
 %% Directory buckets - MFA delete is not supported by directory buckets.
 %%
@@ -2170,17 +2343,19 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Content-MD5 request header</dt> <dd> <ul> <li>
 %% General purpose bucket - The Content-MD5 request header is required for
@@ -2199,15 +2374,20 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `DeleteObjects':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
 %% </li> </ul>
 delete_objects(Client, Bucket, Input) ->
@@ -2260,18 +2440,24 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %% Removes the `PublicAccessBlock' configuration for an Amazon S3 bucket.
 %% To use this operation, you must have the
 %% `s3:PutBucketPublicAccessBlock' permission. For more information about
-%% permissions, see Permissions Related to Bucket Subresource Operations and
-%% Managing Access Permissions to Your Amazon S3 Resources.
+%% permissions, see Permissions Related to Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% The following operations are related to `DeletePublicAccessBlock':
 %%
-%% <ul> <li> Using Amazon S3 Block Public Access
+%% <ul> <li> Using Amazon S3 Block Public Access:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
 %%
-%% </li> <li> GetPublicAccessBlock
+%% </li> <li> GetPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html
 %%
-%% </li> <li> PutPublicAccessBlock
+%% </li> <li> PutPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html
 %%
-%% </li> <li> GetBucketPolicyStatus
+%% </li> <li> GetBucketPolicyStatus:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html
 %%
 %% </li> </ul>
 delete_public_access_block(Client, Bucket, Input) ->
@@ -2311,24 +2497,32 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 %% `s3:GetAccelerateConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to your
-%% Amazon S3 Resources in the Amazon S3 User Guide.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% You set the Transfer Acceleration state of an existing bucket to
 %% `Enabled' or `Suspended' by using the
-%% PutBucketAccelerateConfiguration operation.
+%% PutBucketAccelerateConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html
+%% operation.
 %%
 %% A GET `accelerate' request does not return a state value for a bucket
 %% that has no transfer acceleration state. A bucket has no Transfer
 %% Acceleration state if a state has never been set on the bucket.
 %%
 %% For more information about transfer acceleration, see Transfer
-%% Acceleration in the Amazon S3 User Guide.
+%% Acceleration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to
 %% `GetBucketAccelerateConfiguration':
 %%
-%% <ul> <li> PutBucketAccelerateConfiguration
+%% <ul> <li> PutBucketAccelerateConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html
 %%
 %% </li> </ul>
 get_bucket_accelerate_configuration(Client, Bucket)
@@ -2392,17 +2586,21 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %% name. If the Object Lambda access point alias in a request is not valid,
 %% the error code `InvalidAccessPointAliasError' is returned. For more
 %% information about `InvalidAccessPointAliasError', see List of Error
-%% Codes.
+%% Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList.
 %%
 %% If your bucket uses the bucket owner enforced setting for S3 Object
 %% Ownership, requests to read ACLs are still supported and return the
 %% `bucket-owner-full-control' ACL with the owner being the account that
 %% created the bucket. For more information, see Controlling object ownership
-%% and disabling ACLs in the Amazon S3 User Guide.
+%% and disabling ACLs:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `GetBucketAcl':
 %%
-%% <ul> <li> ListObjects
+%% <ul> <li> ListObjects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
 %%
 %% </li> </ul>
 get_bucket_acl(Client, Bucket)
@@ -2441,20 +2639,28 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `s3:GetAnalyticsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources in the Amazon S3 User Guide.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% For information about Amazon S3 analytics feature, see Amazon S3 Analytics
-%% – Storage Class Analysis in the Amazon S3 User Guide.
+%% – Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to
 %% `GetBucketAnalyticsConfiguration':
 %%
-%% <ul> <li> DeleteBucketAnalyticsConfiguration
+%% <ul> <li> DeleteBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> ListBucketAnalyticsConfigurations
+%% </li> <li> ListBucketAnalyticsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
 %%
-%% </li> <li> PutBucketAnalyticsConfiguration
+%% </li> <li> PutBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
 %%
 %% </li> </ul>
 get_bucket_analytics_configuration(Client, Bucket, Id)
@@ -2505,16 +2711,19 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %% name. If the Object Lambda access point alias in a request is not valid,
 %% the error code `InvalidAccessPointAliasError' is returned. For more
 %% information about `InvalidAccessPointAliasError', see List of Error
-%% Codes.
+%% Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList.
 %%
 %% For more information about CORS, see Enabling Cross-Origin Resource
-%% Sharing.
+%% Sharing: https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html.
 %%
 %% The following operations are related to `GetBucketCors':
 %%
-%% <ul> <li> PutBucketCors
+%% <ul> <li> PutBucketCors:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html
 %%
-%% </li> <li> DeleteBucketCors
+%% </li> <li> DeleteBucketCors:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html
 %%
 %% </li> </ul>
 get_bucket_cors(Client, Bucket)
@@ -2550,20 +2759,26 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% default, all buckets have a default encryption configuration that uses
 %% server-side encryption with Amazon S3 managed keys (SSE-S3). For
 %% information about the bucket default encryption feature, see Amazon S3
-%% Bucket Default Encryption in the Amazon S3 User Guide.
+%% Bucket Default Encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html in
+%% the Amazon S3 User Guide.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetEncryptionConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% The following operations are related to `GetBucketEncryption':
 %%
-%% <ul> <li> PutBucketEncryption
+%% <ul> <li> PutBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html
 %%
-%% </li> <li> DeleteBucketEncryption
+%% </li> <li> DeleteBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
 %%
 %% </li> </ul>
 get_bucket_encryption(Client, Bucket)
@@ -2613,16 +2828,20 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
-%% frequently and infrequently accessed objects.
+%% frequently and infrequently accessed objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access.
 %%
 %% Operations related to `GetBucketIntelligentTieringConfiguration'
 %% include:
 %%
-%% <ul> <li> DeleteBucketIntelligentTieringConfiguration
+%% <ul> <li> DeleteBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> PutBucketIntelligentTieringConfiguration
+%% </li> <li> PutBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> ListBucketIntelligentTieringConfigurations
+%% </li> <li> ListBucketIntelligentTieringConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
 %%
 %% </li> </ul>
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id)
@@ -2661,20 +2880,26 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 %% `s3:GetInventoryConfiguration' action. The bucket owner has this
 %% permission by default and can grant this permission to others. For more
 %% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
-%% Inventory.
+%% Inventory:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html.
 %%
 %% The following operations are related to
 %% `GetBucketInventoryConfiguration':
 %%
-%% <ul> <li> DeleteBucketInventoryConfiguration
+%% <ul> <li> DeleteBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html
 %%
-%% </li> <li> ListBucketInventoryConfigurations
+%% </li> <li> ListBucketInventoryConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
 %%
-%% </li> <li> PutBucketInventoryConfiguration
+%% </li> <li> PutBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
 %%
 %% </li> </ul>
 get_bucket_inventory_configuration(Client, Bucket, Id)
@@ -2709,7 +2934,8 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc For an updated version of this API, see
-%% GetBucketLifecycleConfiguration.
+%% GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html.
 %%
 %% If you configured a bucket lifecycle using the `filter' element, you
 %% should see the updated version of this topic. This topic is provided for
@@ -2719,14 +2945,17 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% Returns the lifecycle configuration information set on the bucket. For
 %% information about lifecycle configuration, see Object Lifecycle
-%% Management.
+%% Management:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetLifecycleConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% `GetBucketLifecycle' has the following special error:
 %%
@@ -2741,11 +2970,14 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %% </li> </ul> </li> </ul> The following operations are related to
 %% `GetBucketLifecycle':
 %%
-%% <ul> <li> GetBucketLifecycleConfiguration
+%% <ul> <li> GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %%
-%% </li> <li> PutBucketLifecycle
+%% </li> <li> PutBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html
 %%
-%% </li> <li> DeleteBucketLifecycle
+%% </li> <li> DeleteBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
 %%
 %% </li> </ul>
 get_bucket_lifecycle(Client, Bucket)
@@ -2783,18 +3015,22 @@ get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% describes the new filter element that you can use to specify a filter to
 %% select a subset of objects to which the rule applies. If you are using a
 %% previous version of the lifecycle configuration, it still works. For the
-%% earlier action, see GetBucketLifecycle.
+%% earlier action, see GetBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html.
 %%
 %% Returns the lifecycle configuration information set on the bucket. For
 %% information about lifecycle configuration, see Object Lifecycle
-%% Management.
+%% Management:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetLifecycleConfiguration' action. The bucket owner has this
 %% permission, by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% `GetBucketLifecycleConfiguration' has the following special error:
 %%
@@ -2809,11 +3045,14 @@ get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% </li> </ul> </li> </ul> The following operations are related to
 %% `GetBucketLifecycleConfiguration':
 %%
-%% <ul> <li> GetBucketLifecycle
+%% <ul> <li> GetBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html
 %%
-%% </li> <li> PutBucketLifecycle
+%% </li> <li> PutBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html
 %%
-%% </li> <li> DeleteBucketLifecycle
+%% </li> <li> DeleteBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
 %%
 %% </li> </ul>
 get_bucket_lifecycle_configuration(Client, Bucket)
@@ -2847,7 +3086,8 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %%
 %% Returns the Region the bucket resides in. You set the bucket's Region
 %% using the `LocationConstraint' request parameter in a
-%% `CreateBucket' request. For more information, see CreateBucket.
+%% `CreateBucket' request. For more information, see CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html.
 %%
 %% When you use this API operation with an access point, provide the alias of
 %% the access point in place of the bucket name.
@@ -2857,17 +3097,21 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %% name. If the Object Lambda access point alias in a request is not valid,
 %% the error code `InvalidAccessPointAliasError' is returned. For more
 %% information about `InvalidAccessPointAliasError', see List of Error
-%% Codes.
+%% Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList.
 %%
-%% We recommend that you use HeadBucket to return the Region that a bucket
-%% resides in. For backward compatibility, Amazon S3 continues to support
-%% GetBucketLocation.
+%% We recommend that you use HeadBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html to
+%% return the Region that a bucket resides in. For backward compatibility,
+%% Amazon S3 continues to support GetBucketLocation.
 %%
 %% The following operations are related to `GetBucketLocation':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> CreateBucket
+%% </li> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
 %% </li> </ul>
 get_bucket_location(Client, Bucket)
@@ -2904,9 +3148,11 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% The following operations are related to `GetBucketLogging':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> PutBucketLogging
+%% </li> <li> PutBucketLogging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html
 %%
 %% </li> </ul>
 get_bucket_logging(Client, Bucket)
@@ -2946,22 +3192,29 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `s3:GetMetricsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
-%% Monitoring Metrics with Amazon CloudWatch.
+%% Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html.
 %%
 %% The following operations are related to
 %% `GetBucketMetricsConfiguration':
 %%
-%% <ul> <li> PutBucketMetricsConfiguration
+%% <ul> <li> PutBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html
 %%
-%% </li> <li> DeleteBucketMetricsConfiguration
+%% </li> <li> DeleteBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
 %%
-%% </li> <li> ListBucketMetricsConfigurations
+%% </li> <li> ListBucketMetricsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html
 %%
-%% </li> <li> Monitoring Metrics with Amazon CloudWatch
+%% </li> <li> Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
 %%
 %% </li> </ul>
 get_bucket_metrics_configuration(Client, Bucket, Id)
@@ -2997,7 +3250,8 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Optio
 
 %% @doc This operation is not supported by directory buckets.
 %%
-%% No longer used, see GetBucketNotificationConfiguration.
+%% No longer used, see GetBucketNotificationConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html.
 get_bucket_notification(Client, Bucket)
   when is_map(Client) ->
     get_bucket_notification(Client, Bucket, #{}, #{}).
@@ -3045,15 +3299,19 @@ get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% name. If the Object Lambda access point alias in a request is not valid,
 %% the error code `InvalidAccessPointAliasError' is returned. For more
 %% information about `InvalidAccessPointAliasError', see List of Error
-%% Codes.
+%% Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList.
 %%
 %% For more information about setting and reading the notification
-%% configuration on a bucket, see Setting Up Notification of Bucket Events.
-%% For more information about bucket policies, see Using Bucket Policies.
+%% configuration on a bucket, see Setting Up Notification of Bucket Events:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html.
+%% For more information about bucket policies, see Using Bucket Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html.
 %%
 %% The following action is related to `GetBucketNotification':
 %%
-%% <ul> <li> PutBucketNotification
+%% <ul> <li> PutBucketNotification:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html
 %%
 %% </li> </ul>
 get_bucket_notification_configuration(Client, Bucket)
@@ -3088,10 +3346,12 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %% Retrieves `OwnershipControls' for an Amazon S3 bucket. To use this
 %% operation, you must have the `s3:GetBucketOwnershipControls'
 %% permission. For more information about Amazon S3 permissions, see
-%% Specifying permissions in a policy.
+%% Specifying permissions in a policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
-%% Ownership.
+%% Ownership:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html.
 %%
 %% The following operations are related to `GetBucketOwnershipControls':
 %%
@@ -3134,7 +3394,9 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> If you are using an identity other than the
 %% root user of the Amazon Web Services account that owns the bucket, the
@@ -3159,7 +3421,9 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% <ul> <li> General purpose bucket permissions - The
 %% `s3:GetBucketPolicy' permission is required in a policy. For more
 %% information about general purpose buckets bucket policies, see Using
-%% Bucket Policies and User Policies in the Amazon S3 User Guide.
+%% Bucket Policies and User Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation, you must have the `s3express:GetBucketPolicy' permission in
@@ -3168,21 +3432,27 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% be performed by the Amazon Web Services account that owns the resource.
 %% For more information about directory bucket policies and permissions, see
 %% Amazon Web Services Identity and Access Management (IAM) for S3 Express
-%% One Zone in the Amazon S3 User Guide.
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Example bucket policies</dt> <dd> General purpose
-%% buckets example bucket policies - See Bucket policy examples in the Amazon
-%% S3 User Guide.
+%% buckets example bucket policies - See Bucket policy examples:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% Directory bucket example bucket policies - See Example bucket policies for
-%% S3 Express One Zone in the Amazon S3 User Guide.
+%% S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets - The HTTP
 %% Host header syntax is `s3express-control.region.amazonaws.com'.
 %%
 %% </dd> </dl> The following action is related to `GetBucketPolicy':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
 %% </li> </ul>
 get_bucket_policy(Client, Bucket)
@@ -3217,20 +3487,26 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Retrieves the policy status for an Amazon S3 bucket, indicating whether
 %% the bucket is public. In order to use this operation, you must have the
 %% `s3:GetBucketPolicyStatus' permission. For more information about
-%% Amazon S3 permissions, see Specifying Permissions in a Policy.
+%% Amazon S3 permissions, see Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% For more information about when Amazon S3 considers a bucket public, see
-%% The Meaning of &quot;Public&quot;.
+%% The Meaning of &quot;Public&quot;:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status.
 %%
 %% The following operations are related to `GetBucketPolicyStatus':
 %%
-%% <ul> <li> Using Amazon S3 Block Public Access
+%% <ul> <li> Using Amazon S3 Block Public Access:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
 %%
-%% </li> <li> GetPublicAccessBlock
+%% </li> <li> GetPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html
 %%
-%% </li> <li> PutPublicAccessBlock
+%% </li> <li> PutPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html
 %%
-%% </li> <li> DeletePublicAccessBlock
+%% </li> <li> DeletePublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
 %%
 %% </li> </ul>
 get_bucket_policy_status(Client, Bucket)
@@ -3268,25 +3544,30 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% configuration to all Amazon S3 systems. Therefore, a get request soon
 %% after put or delete can return a wrong result.
 %%
-%% For information about replication configuration, see Replication in the
+%% For information about replication configuration, see Replication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html in the
 %% Amazon S3 User Guide.
 %%
 %% This action requires permissions for the
 %% `s3:GetReplicationConfiguration' action. For more information about
-%% permissions, see Using Bucket Policies and User Policies.
+%% permissions, see Using Bucket Policies and User Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html.
 %%
 %% If you include the `Filter' element in a replication configuration,
 %% you must also include the `DeleteMarkerReplication' and `Priority'
 %% elements. The response also returns those elements.
 %%
 %% For information about `GetBucketReplication' errors, see List of
-%% replication-related error codes
+%% replication-related error codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList
 %%
 %% The following operations are related to `GetBucketReplication':
 %%
-%% <ul> <li> PutBucketReplication
+%% <ul> <li> PutBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html
 %%
-%% </li> <li> DeleteBucketReplication
+%% </li> <li> DeleteBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
 %%
 %% </li> </ul>
 get_bucket_replication(Client, Bucket)
@@ -3320,11 +3601,13 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% Returns the request payment configuration of a bucket. To use this version
 %% of the operation, you must be the bucket owner. For more information, see
-%% Requester Pays Buckets.
+%% Requester Pays Buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html.
 %%
 %% The following operations are related to `GetBucketRequestPayment':
 %%
-%% <ul> <li> ListObjects
+%% <ul> <li> ListObjects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
 %%
 %% </li> </ul>
 get_bucket_request_payment(Client, Bucket)
@@ -3371,9 +3654,11 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% </li> </ul> </li> </ul> The following operations are related to
 %% `GetBucketTagging':
 %%
-%% <ul> <li> PutBucketTagging
+%% <ul> <li> PutBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
 %%
-%% </li> <li> DeleteBucketTagging
+%% </li> <li> DeleteBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
 %%
 %% </li> </ul>
 get_bucket_tagging(Client, Bucket)
@@ -3416,11 +3701,14 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% The following operations are related to `GetBucketVersioning':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> PutObject
+%% </li> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
 %% </li> </ul>
 get_bucket_versioning(Client, Bucket)
@@ -3455,7 +3743,8 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Returns the website configuration for a bucket. To host website on Amazon
 %% S3, you can configure a bucket as website by adding a website
 %% configuration. For more information about hosting websites, see Hosting
-%% Websites on Amazon S3.
+%% Websites on Amazon S3:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html.
 %%
 %% This GET action requires the `S3:GetBucketWebsite' permission. By
 %% default, only the bucket owner can read the bucket website configuration.
@@ -3465,9 +3754,11 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% The following operations are related to `GetBucketWebsite':
 %%
-%% <ul> <li> DeleteBucketWebsite
+%% <ul> <li> DeleteBucketWebsite:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketWebsite.html
 %%
-%% </li> <li> PutBucketWebsite
+%% </li> <li> PutBucketWebsite:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
 %%
 %% </li> </ul>
 get_bucket_website(Client, Bucket)
@@ -3509,8 +3800,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `photos/2006/February/sample.jpg' in the bucket named
 %% `examplebucket', specify the object key name as
 %% `/examplebucket/photos/2006/February/sample.jpg'. For more information
-%% about request types, see HTTP Host Header Bucket Specification in the
-%% Amazon S3 User Guide.
+%% about request types, see HTTP Host Header Bucket Specification:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#VirtualHostingSpecifyBucket
+%% in the Amazon S3 User Guide.
 %%
 %% Directory buckets - Only virtual-hosted-style requests are supported. For
 %% a virtual hosted-style request example, if you have the object
@@ -3521,7 +3813,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% endpoints support virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - You must have the required permissions in a policy. To use
@@ -3529,7 +3823,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% version). If you grant `READ' access to the anonymous user, the
 %% `GetObject' operation returns the object without using an
 %% authorization header. For more information, see Specifying permissions in
-%% a policy in the Amazon S3 User Guide.
+%% a policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
+%% in the Amazon S3 User Guide.
 %%
 %% If you include a `versionId' in your request header, you must have the
 %% `s3:GetObjectVersion' permission to access a specific version of an
@@ -3553,26 +3849,32 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Storage classes</dt> <dd> If the object you are
 %% retrieving is stored in the S3 Glacier Flexible Retrieval storage class,
 %% the S3 Glacier Deep Archive storage class, the S3 Intelligent-Tiering
 %% Archive Access tier, or the S3 Intelligent-Tiering Deep Archive Access
 %% tier, before you can retrieve the object you must first restore a copy
-%% using RestoreObject. Otherwise, this operation returns an
-%% `InvalidObjectState' error. For information about restoring archived
-%% objects, see Restoring Archived Objects in the Amazon S3 User Guide.
+%% using RestoreObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html.
+%% Otherwise, this operation returns an `InvalidObjectState' error. For
+%% information about restoring archived objects, see Restoring Archived
+%% Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html in
+%% the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, only the S3 Express One Zone
 %% storage class is supported to store newly created objects. Unsupported
@@ -3630,9 +3932,11 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </dd> </dl> The following operations are related to `GetObject':
 %%
-%% <ul> <li> ListBuckets
+%% <ul> <li> ListBuckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
 %%
-%% </li> <li> GetObjectAcl
+%% </li> <li> GetObjectAcl:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
 %%
 %% </li> </ul>
 get_object(Client, Bucket, Key)
@@ -3737,7 +4041,9 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% Returns the access control list (ACL) of an object. To use this operation,
 %% you must have `s3:GetObjectAcl' permissions or `READ_ACP' access
 %% to the object. For more information, see Mapping of ACL permissions and
-%% access policy permissions in the Amazon S3 User Guide
+%% access policy permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping
+%% in the Amazon S3 User Guide
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 %%
@@ -3749,17 +4055,23 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% Ownership, requests to read ACLs are still supported and return the
 %% `bucket-owner-full-control' ACL with the owner being the account that
 %% created the bucket. For more information, see Controlling object ownership
-%% and disabling ACLs in the Amazon S3 User Guide.
+%% and disabling ACLs:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `GetObjectAcl':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> GetObjectAttributes
+%% </li> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
-%% </li> <li> PutObject
+%% </li> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
 %% </li> </ul>
 get_object_acl(Client, Bucket, Key)
@@ -3826,7 +4138,9 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - To use `GetObjectAttributes', you must have READ access
@@ -3836,9 +4150,11 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% `s3:GetObjectVersionAttributes' permissions for this operation. If the
 %% bucket is not versioned, you need the `s3:GetObject' and
 %% `s3:GetObjectAttributes' permissions. For more information, see
-%% Specifying Permissions in a Policy in the Amazon S3 User Guide. If the
-%% object that you request does not exist, the error Amazon S3 returns
-%% depends on whether you also have the `s3:ListBucket' permission.
+%% Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
+%% in the Amazon S3 User Guide. If the object that you request does not
+%% exist, the error Amazon S3 returns depends on whether you also have the
+%% `s3:ListBucket' permission.
 %%
 %% <ul> <li> If you have the `s3:ListBucket' permission on the bucket,
 %% Amazon S3 returns an HTTP status code `404 Not Found' (&quot;no such
@@ -3850,17 +4166,19 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Encryption</dt> <dd> Encryption request headers,
 %% like `x-amz-server-side-encryption', should not be sent for `HEAD'
@@ -3887,7 +4205,9 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% </li> <li> `x-amz-server-side-encryption-customer-key-MD5'
 %%
 %% </li> </ul> For more information about SSE-C, see Server-Side Encryption
-%% (Using Customer-Provided Encryption Keys) in the Amazon S3 User Guide.
+%% (Using Customer-Provided Encryption Keys):
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html
+%% in the Amazon S3 User Guide.
 %%
 %% Directory bucket permissions - For directory buckets, only server-side
 %% encryption with Amazon S3 managed keys (SSE-S3) (`AES256') is
@@ -3910,7 +4230,8 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> `If-Unmodified-Since' condition evaluates to `false'.
 %%
-%% </li> </ul> For more information about conditional requests, see RFC 7232.
+%% </li> </ul> For more information about conditional requests, see RFC 7232:
+%% https://tools.ietf.org/html/rfc7232.
 %%
 %% </li> <li> If both of the `If-None-Match' and `If-Modified-Since'
 %% headers are present in the request as follows, then Amazon S3 returns the
@@ -3920,7 +4241,8 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> `If-Modified-Since' condition evaluates to `true'.
 %%
-%% </li> </ul> For more information about conditional requests, see RFC 7232.
+%% </li> </ul> For more information about conditional requests, see RFC 7232:
+%% https://tools.ietf.org/html/rfc7232.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is `
@@ -3929,21 +4251,29 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% </dd> </dl> The following actions are related to
 %% `GetObjectAttributes':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> GetObjectAcl
+%% </li> <li> GetObjectAcl:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
 %%
-%% </li> <li> GetObjectLegalHold
+%% </li> <li> GetObjectLegalHold:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectLegalHold.html
 %%
-%% </li> <li> GetObjectLockConfiguration
+%% </li> <li> GetObjectLockConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectLockConfiguration.html
 %%
-%% </li> <li> GetObjectRetention
+%% </li> <li> GetObjectRetention:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectRetention.html
 %%
-%% </li> <li> GetObjectTagging
+%% </li> <li> GetObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
 %%
-%% </li> <li> HeadObject
+%% </li> <li> HeadObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadObject.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
 %% </li> </ul>
 get_object_attributes(Client, Bucket, Key, ObjectAttributes)
@@ -4006,13 +4336,15 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Gets an object's current legal hold status. For more information, see
-%% Locking Objects.
+%% Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 %%
 %% The following action is related to `GetObjectLegalHold':
 %%
-%% <ul> <li> GetObjectAttributes
+%% <ul> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
 %% </li> </ul>
 get_object_legal_hold(Client, Bucket, Key)
@@ -4051,11 +4383,13 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% Gets the Object Lock configuration for a bucket. The rule specified in the
 %% Object Lock configuration will be applied by default to every new object
-%% placed in the specified bucket. For more information, see Locking Objects.
+%% placed in the specified bucket. For more information, see Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% The following action is related to `GetObjectLockConfiguration':
 %%
-%% <ul> <li> GetObjectAttributes
+%% <ul> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
 %% </li> </ul>
 get_object_lock_configuration(Client, Bucket)
@@ -4088,13 +4422,15 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Retrieves an object's retention settings. For more information, see
-%% Locking Objects.
+%% Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 %%
 %% The following action is related to `GetObjectRetention':
 %%
-%% <ul> <li> GetObjectAttributes
+%% <ul> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
 %% </li> </ul>
 get_object_retention(Client, Bucket, Key)
@@ -4145,15 +4481,19 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% permission to others.
 %%
 %% For information about the Amazon S3 object tagging feature, see Object
-%% Tagging.
+%% Tagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html.
 %%
 %% The following actions are related to `GetObjectTagging':
 %%
-%% <ul> <li> DeleteObjectTagging
+%% <ul> <li> DeleteObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html
 %%
-%% </li> <li> GetObjectAttributes
+%% </li> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
-%% </li> <li> PutObjectTagging
+%% </li> <li> PutObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html
 %%
 %% </li> </ul>
 get_object_tagging(Client, Bucket, Key)
@@ -4219,7 +4559,8 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% The following action is related to `GetObjectTorrent':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
 %% </li> </ul>
 get_object_torrent(Client, Bucket, Key)
@@ -4271,7 +4612,8 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% Retrieves the `PublicAccessBlock' configuration for an Amazon S3
 %% bucket. To use this operation, you must have the
 %% `s3:GetBucketPublicAccessBlock' permission. For more information about
-%% Amazon S3 permissions, see Specifying Permissions in a Policy.
+%% Amazon S3 permissions, see Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
 %% bucket or an object, it checks the `PublicAccessBlock' configuration
@@ -4281,17 +4623,22 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% restrictive combination of the bucket-level and account-level settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
-%% public, see The Meaning of &quot;Public&quot;.
+%% public, see The Meaning of &quot;Public&quot;:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status.
 %%
 %% The following operations are related to `GetPublicAccessBlock':
 %%
-%% <ul> <li> Using Amazon S3 Block Public Access
+%% <ul> <li> Using Amazon S3 Block Public Access:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
 %%
-%% </li> <li> PutPublicAccessBlock
+%% </li> <li> PutPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html
 %%
-%% </li> <li> GetPublicAccessBlock
+%% </li> <li> GetPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html
 %%
-%% </li> <li> DeletePublicAccessBlock
+%% </li> <li> DeletePublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
 %%
 %% </li> </ul>
 get_public_access_block(Client, Bucket)
@@ -4336,13 +4683,16 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Zonal endpoint. These endpoints support virtual-hosted-style requests in
 %% the format `https://bucket_name.s3express-az_id.region.amazonaws.com'.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Authentication and authorization</dt> <dd> All `HeadBucket'
 %% requests must be authenticated and signed by using IAM credentials (access
 %% key ID and secret access key for the IAM identities). All headers with the
 %% `x-amz-' prefix, including `x-amz-copy-source', must be signed.
-%% For more information, see REST Authentication.
+%% For more information, see REST Authentication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html.
 %%
 %% Directory bucket - You must use IAM credentials to authenticate and
 %% authorize your access to the `HeadBucket' API operation, instead of
@@ -4358,7 +4708,9 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% must have permissions to perform the `s3:ListBucket' action. The
 %% bucket owner has this permission by default and can grant this permission
 %% to others. For more information about permissions, see Managing access
-%% permissions to your Amazon S3 resources in the Amazon S3 User Guide.
+%% permissions to your Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - You must have the
 %% `s3express:CreateSession' permission in the `Action' element of a
@@ -4367,9 +4719,12 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `s3express:SessionMode' condition key to `ReadOnly' on the bucket.
 %%
 %% For more information about example bucket policies, see Example bucket
-%% policies for S3 Express One Zone and Amazon Web Services Identity and
-%% Access Management (IAM) identity-based policies for S3 Express One Zone in
-%% the Amazon S3 User Guide.
+%% policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% and Amazon Web Services Identity and Access Management (IAM)
+%% identity-based policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-identity-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is `
@@ -4437,22 +4792,26 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% codes.
 %%
 %% Request headers are limited to 8 KB in size. For more information, see
-%% Common Request Headers.
+%% Common Request Headers:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd>
 %%
 %% <ul> <li> General purpose bucket permissions - To use `HEAD', you must
 %% have the `s3:GetObject' permission. You need the relevant read object
 %% (or version) permission for this operation. For more information, see
-%% Actions, resources, and condition keys for Amazon S3 in the Amazon S3 User
-%% Guide.
+%% Actions, resources, and condition keys for Amazon S3:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/list_amazons3.html in the
+%% Amazon S3 User Guide.
 %%
 %% If the object you request doesn't exist, the error that Amazon S3
 %% returns depends on whether you also have the `s3:ListBucket'
@@ -4466,17 +4825,19 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Encryption</dt> <dd> Encryption request headers,
 %% like `x-amz-server-side-encryption', should not be sent for `HEAD'
@@ -4503,7 +4864,9 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% </li> <li> `x-amz-server-side-encryption-customer-key-MD5'
 %%
 %% </li> </ul> For more information about SSE-C, see Server-Side Encryption
-%% (Using Customer-Provided Encryption Keys) in the Amazon S3 User Guide.
+%% (Using Customer-Provided Encryption Keys):
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html
+%% in the Amazon S3 User Guide.
 %%
 %% Directory bucket permissions - For directory buckets, only server-side
 %% encryption with Amazon S3 managed keys (SSE-S3) (`AES256') is
@@ -4531,9 +4894,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </dd> </dl> The following actions are related to `HeadObject':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> GetObjectAttributes
+%% </li> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
 %% </li> </ul>
 head_object(Client, Bucket, Key, Input) ->
@@ -4640,20 +5005,26 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 %% `s3:GetAnalyticsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about Amazon S3 analytics feature, see Amazon S3 Analytics
-%% – Storage Class Analysis.
+%% – Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html.
 %%
 %% The following operations are related to
 %% `ListBucketAnalyticsConfigurations':
 %%
-%% <ul> <li> GetBucketAnalyticsConfiguration
+%% <ul> <li> GetBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> DeleteBucketAnalyticsConfiguration
+%% </li> <li> DeleteBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> PutBucketAnalyticsConfiguration
+%% </li> <li> PutBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
 %%
 %% </li> </ul>
 list_bucket_analytics_configurations(Client, Bucket)
@@ -4707,16 +5078,20 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
-%% frequently and infrequently accessed objects.
+%% frequently and infrequently accessed objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access.
 %%
 %% Operations related to `ListBucketIntelligentTieringConfigurations'
 %% include:
 %%
-%% <ul> <li> DeleteBucketIntelligentTieringConfiguration
+%% <ul> <li> DeleteBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> PutBucketIntelligentTieringConfiguration
+%% </li> <li> PutBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> GetBucketIntelligentTieringConfiguration
+%% </li> <li> GetBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
 %%
 %% </li> </ul>
 list_bucket_intelligent_tiering_configurations(Client, Bucket)
@@ -4764,20 +5139,26 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %% `s3:GetInventoryConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about the Amazon S3 inventory feature, see Amazon S3
-%% Inventory
+%% Inventory:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html
 %%
 %% The following operations are related to
 %% `ListBucketInventoryConfigurations':
 %%
-%% <ul> <li> GetBucketInventoryConfiguration
+%% <ul> <li> GetBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html
 %%
-%% </li> <li> DeleteBucketInventoryConfiguration
+%% </li> <li> DeleteBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html
 %%
-%% </li> <li> PutBucketInventoryConfiguration
+%% </li> <li> PutBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
 %%
 %% </li> </ul>
 list_bucket_inventory_configurations(Client, Bucket)
@@ -4831,20 +5212,26 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %% `s3:GetMetricsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For more information about metrics configurations and CloudWatch request
-%% metrics, see Monitoring Metrics with Amazon CloudWatch.
+%% metrics, see Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html.
 %%
 %% The following operations are related to
 %% `ListBucketMetricsConfigurations':
 %%
-%% <ul> <li> PutBucketMetricsConfiguration
+%% <ul> <li> PutBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html
 %%
-%% </li> <li> GetBucketMetricsConfiguration
+%% </li> <li> GetBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html
 %%
-%% </li> <li> DeleteBucketMetricsConfiguration
+%% </li> <li> DeleteBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
 %%
 %% </li> </ul>
 list_bucket_metrics_configurations(Client, Bucket)
@@ -4885,7 +5272,8 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% `s3:ListAllMyBuckets' permission.
 %%
 %% For information about Amazon S3 buckets, see Creating, configuring, and
-%% working with Amazon S3 buckets.
+%% working with Amazon S3 buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
@@ -4912,15 +5300,18 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of all Amazon S3 directory buckets owned by the
 %% authenticated sender of the request.
 %%
-%% For more information about directory buckets, see Directory buckets in the
-%% Amazon S3 User Guide.
+%% For more information about directory buckets, see Directory buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html
+%% in the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Regional endpoint. These endpoints support path-style
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> You must have the
 %% `s3express:ListAllMyDirectoryBuckets' permission in an IAM
@@ -4929,7 +5320,9 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %% performed by the Amazon Web Services account that owns the resource. For
 %% more information about directory bucket policies and permissions, see
 %% Amazon Web Services Identity and Access Management (IAM) for S3 Express
-%% One Zone in the Amazon S3 User Guide.
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets - The HTTP
 %% Host header syntax is `s3express-control.region.amazonaws.com'.
@@ -4995,33 +5388,40 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% previous response.
 %%
 %% For more information about multipart uploads, see Uploading Objects Using
-%% Multipart Upload in the Amazon S3 User Guide.
+%% Multipart Upload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html in
+%% the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information about permissions required to use the
-%% multipart upload API, see Multipart Upload and Permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Sorting of multipart uploads in response</dt> <dd>
 %% <ul> <li> General purpose bucket - In the `ListMultipartUploads'
@@ -5046,15 +5446,20 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %% </dd> </dl> The following operations are related to
 %% `ListMultipartUploads':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
 %% </li> </ul>
 list_multipart_uploads(Client, Bucket)
@@ -5127,13 +5532,17 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% The following operations are related to `ListObjectVersions':
 %%
-%% <ul> <li> ListObjectsV2
+%% <ul> <li> ListObjectsV2:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html
 %%
-%% </li> <li> GetObject
+%% </li> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> PutObject
+%% </li> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
 %% </li> </ul>
 list_object_versions(Client, Bucket)
@@ -5199,20 +5608,27 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% and handle it appropriately.
 %%
 %% This action has been revised. We recommend that you use the newer version,
-%% ListObjectsV2, when developing applications. For backward compatibility,
-%% Amazon S3 continues to support `ListObjects'.
+%% ListObjectsV2:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html,
+%% when developing applications. For backward compatibility, Amazon S3
+%% continues to support `ListObjects'.
 %%
 %% The following operations are related to `ListObjects':
 %%
-%% <ul> <li> ListObjectsV2
+%% <ul> <li> ListObjectsV2:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html
 %%
-%% </li> <li> GetObject
+%% </li> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> PutObject
+%% </li> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> CreateBucket
+%% </li> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> ListBuckets
+%% </li> <li> ListBuckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
 %%
 %% </li> </ul>
 list_objects(Client, Bucket)
@@ -5275,37 +5691,47 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% subset of the objects in a bucket. A `200 OK' response can contain
 %% valid or invalid XML. Make sure to design your application to parse the
 %% contents of the response and handle it appropriately. For more information
-%% about listing objects, see Listing object keys programmatically in the
-%% Amazon S3 User Guide. To get a list of your buckets, see ListBuckets.
+%% about listing objects, see Listing object keys programmatically:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html
+%% in the Amazon S3 User Guide. To get a list of your buckets, see
+%% ListBuckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - To use this operation, you must have READ access to the
 %% bucket. You must have permission to perform the `s3:ListBucket'
 %% action. The bucket owner has this permission by default and can grant this
 %% permission to others. For more information about permissions, see
-%% Permissions Related to Bucket Subresource Operations and Managing Access
-%% Permissions to Your Amazon S3 Resources in the Amazon S3 User Guide.
+%% Permissions Related to Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Sorting order of returned objects</dt> <dd> <ul>
 %% <li> General purpose bucket - For general purpose buckets,
@@ -5322,15 +5748,19 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% </dd> </dl> This section describes the latest revision of this action. We
 %% recommend that you use this revised API operation for application
 %% development. For backward compatibility, Amazon S3 continues to support
-%% the prior version of this API operation, ListObjects.
+%% the prior version of this API operation, ListObjects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html.
 %%
 %% The following operations are related to `ListObjectsV2':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> PutObject
+%% </li> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> CreateBucket
+%% </li> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
 %% </li> </ul>
 list_objects_v2(Client, Bucket)
@@ -5393,7 +5823,8 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% To use this operation, you must provide the `upload ID' in the
 %% request. You obtain this uploadID by sending the initiate multipart upload
-%% request through CreateMultipartUpload.
+%% request through CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html.
 %%
 %% The `ListParts' request returns a maximum of 1,000 uploaded parts. The
 %% limit of 1,000 parts is also the default value. You can restrict the
@@ -5406,19 +5837,24 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `NextPartNumberMarker' field value from the previous response.
 %%
 %% For more information on multipart uploads, see Uploading Objects Using
-%% Multipart Upload in the Amazon S3 User Guide.
+%% Multipart Upload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html in
+%% the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information about permissions required to use the
-%% multipart upload API, see Multipart Upload and Permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% If the upload was created using server-side encryption with Key Management
 %% Service (KMS) keys (SSE-KMS) or dual-layer server-side encryption with
@@ -5427,17 +5863,19 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets
 %% - The HTTP Host header syntax is `
@@ -5445,17 +5883,23 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </dd> </dl> The following operations are related to `ListParts':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
-%% </li> <li> GetObjectAttributes
+%% </li> <li> GetObjectAttributes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 list_parts(Client, Bucket, Key, UploadId)
@@ -5523,8 +5967,10 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %% `s3:PutAccelerateConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% The Transfer Acceleration state of a bucket can be set to one of the
 %% following two values:
@@ -5533,8 +5979,9 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> Suspended – Disables accelerated data transfers to the bucket.
 %%
-%% </li> </ul> The GetBucketAccelerateConfiguration action returns the
-%% transfer acceleration state of a bucket.
+%% </li> </ul> The GetBucketAccelerateConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html
+%% action returns the transfer acceleration state of a bucket.
 %%
 %% After setting the Transfer Acceleration state of a bucket to Enabled, it
 %% might take up to thirty minutes before the data transfer rates to the
@@ -5544,14 +5991,17 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %% DNS-compliant and must not contain periods (&quot;.&quot;).
 %%
 %% For more information about transfer acceleration, see Transfer
-%% Acceleration.
+%% Acceleration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html.
 %%
 %% The following operations are related to
 %% `PutBucketAccelerateConfiguration':
 %%
-%% <ul> <li> GetBucketAccelerateConfiguration
+%% <ul> <li> GetBucketAccelerateConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html
 %%
-%% </li> <li> CreateBucket
+%% </li> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
 %% </li> </ul>
 put_bucket_accelerate_configuration(Client, Bucket, Input) ->
@@ -5583,8 +6033,9 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Sets the permissions on an existing bucket using access control lists
-%% (ACL). For more information, see Using ACLs. To set the ACL of a bucket,
-%% you must have the `WRITE_ACP' permission.
+%% (ACL). For more information, see Using ACLs:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html. To
+%% set the ACL of a bucket, you must have the `WRITE_ACP' permission.
 %%
 %% You can use one of the following two ways to set a bucket's
 %% permissions:
@@ -5606,8 +6057,9 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% use policies to grant access to your bucket and the objects in it.
 %% Requests to set ACLs or update ACLs fail and return the
 %% `AccessControlListNotSupported' error code. Requests to read ACLs are
-%% still supported. For more information, see Controlling object ownership in
-%% the Amazon S3 User Guide.
+%% still supported. For more information, see Controlling object ownership:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> You can set access permissions by using one
 %% of the following methods:
@@ -5617,7 +6069,8 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% canned ACL has a predefined set of grantees and permissions. Specify the
 %% canned ACL name as the value of `x-amz-acl'. If you use this header,
 %% you cannot use other access control-specific headers in your request. For
-%% more information, see Canned ACL.
+%% more information, see Canned ACL:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL.
 %%
 %% </li> <li> Specify access permissions explicitly with the
 %% `x-amz-grant-read', `x-amz-grant-read-acp',
@@ -5627,7 +6080,8 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% receive the permission. If you use these ACL-specific headers, you cannot
 %% use the `x-amz-acl' header to set a canned ACL. These parameters map
 %% to the set of permissions that Amazon S3 supports in an ACL. For more
-%% information, see Access Control List (ACL) Overview.
+%% information, see Access Control List (ACL) Overview:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html.
 %%
 %% You specify each grantee as a type=value pair, where the type is one of
 %% the following:
@@ -5661,7 +6115,9 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% South America (São Paulo)
 %%
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
-%% Regions and Endpoints in the Amazon Web Services General Reference.
+%% Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region in the
+%% Amazon Web Services General Reference.
 %%
 %% </li> </ul> For example, the following `x-amz-grant-write' header
 %% grants create, overwrite, and delete objects permission to LogDelivery
@@ -5723,16 +6179,21 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% South America (São Paulo)
 %%
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
-%% Regions and Endpoints in the Amazon Web Services General Reference.
+%% Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region in the
+%% Amazon Web Services General Reference.
 %%
 %% </li> </ul> </dd> </dl> The following operations are related to
 %% `PutBucketAcl':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> DeleteBucket
+%% </li> <li> DeleteBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
 %%
-%% </li> <li> GetObjectAcl
+%% </li> <li> GetObjectAcl:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
 %%
 %% </li> </ul>
 put_bucket_acl(Client, Bucket, Input) ->
@@ -5782,19 +6243,23 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %% written. You can export the data to a destination bucket in a different
 %% account. However, the destination bucket must be in the same Region as the
 %% bucket that you are making the PUT analytics configuration to. For more
-%% information, see Amazon S3 Analytics – Storage Class Analysis.
+%% information, see Amazon S3 Analytics – Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html.
 %%
 %% You must create a bucket policy on the destination bucket where the
 %% exported file is written to grant permissions to Amazon S3 to write
 %% objects to the bucket. For an example policy, see Granting Permissions for
-%% Amazon S3 Inventory and Storage Class Analysis.
+%% Amazon S3 Inventory and Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:PutAnalyticsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% `PutBucketAnalyticsConfiguration' has the following special errors:
 %%
@@ -5822,11 +6287,14 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> </li> </ul> The following operations are related to
 %% `PutBucketAnalyticsConfiguration':
 %%
-%% <ul> <li> GetBucketAnalyticsConfiguration
+%% <ul> <li> GetBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> DeleteBucketAnalyticsConfiguration
+%% </li> <li> DeleteBucketAnalyticsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html
 %%
-%% </li> <li> ListBucketAnalyticsConfigurations
+%% </li> <li> ListBucketAnalyticsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
 %%
 %% </li> </ul>
 put_bucket_analytics_configuration(Client, Bucket, Input) ->
@@ -5894,15 +6362,20 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %% request must match an `AllowedHeader' element.
 %%
 %% </li> </ul> For more information about CORS, go to Enabling Cross-Origin
-%% Resource Sharing in the Amazon S3 User Guide.
+%% Resource Sharing:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html in the Amazon S3
+%% User Guide.
 %%
 %% The following operations are related to `PutBucketCors':
 %%
-%% <ul> <li> GetBucketCors
+%% <ul> <li> GetBucketCors:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketCors.html
 %%
-%% </li> <li> DeleteBucketCors
+%% </li> <li> DeleteBucketCors:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html
 %%
-%% </li> <li> RESTOPTIONSobject
+%% </li> <li> RESTOPTIONSobject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
 %%
 %% </li> </ul>
 put_bucket_cors(Client, Bucket, Input) ->
@@ -5943,27 +6416,35 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% encryption with Key Management Service (KMS) keys (SSE-KMS) or dual-layer
 %% server-side encryption with Amazon Web Services KMS keys (DSSE-KMS). If
 %% you specify default encryption by using SSE-KMS, you can also configure
-%% Amazon S3 Bucket Keys. If you use PutBucketEncryption to set your default
-%% bucket encryption to SSE-KMS, you should verify that your KMS key ID is
-%% correct. Amazon S3 does not validate the KMS key ID provided in
-%% PutBucketEncryption requests.
+%% Amazon S3 Bucket Keys:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html. If you
+%% use PutBucketEncryption to set your default bucket encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html to
+%% SSE-KMS, you should verify that your KMS key ID is correct. Amazon S3 does
+%% not validate the KMS key ID provided in PutBucketEncryption requests.
 %%
 %% This action requires Amazon Web Services Signature Version 4. For more
 %% information, see Authenticating Requests (Amazon Web Services Signature
-%% Version 4).
+%% Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:PutEncryptionConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources in the Amazon S3 User Guide.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `PutBucketEncryption':
 %%
-%% <ul> <li> GetBucketEncryption
+%% <ul> <li> GetBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html
 %%
-%% </li> <li> DeleteBucketEncryption
+%% </li> <li> DeleteBucketEncryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
 %%
 %% </li> </ul>
 put_bucket_encryption(Client, Bucket, Input) ->
@@ -6014,16 +6495,20 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
-%% frequently and infrequently accessed objects.
+%% frequently and infrequently accessed objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access.
 %%
 %% Operations related to `PutBucketIntelligentTieringConfiguration'
 %% include:
 %%
-%% <ul> <li> DeleteBucketIntelligentTieringConfiguration
+%% <ul> <li> DeleteBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> GetBucketIntelligentTieringConfiguration
+%% </li> <li> GetBucketIntelligentTieringConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
 %%
-%% </li> <li> ListBucketIntelligentTieringConfigurations
+%% </li> <li> ListBucketIntelligentTieringConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
 %%
 %% </li> </ul> You only need S3 Intelligent-Tiering enabled on a bucket if
 %% you want to automatically move objects stored in the S3
@@ -6089,13 +6574,15 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% destination bucket where you want the inventory to be stored, and whether
 %% to generate the inventory daily or weekly. You can also configure what
 %% object metadata to include and whether to inventory all object versions or
-%% only current versions. For more information, see Amazon S3 Inventory in
+%% only current versions. For more information, see Amazon S3 Inventory:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html in
 %% the Amazon S3 User Guide.
 %%
 %% You must create a bucket policy on the destination bucket to grant
 %% permissions to Amazon S3 to write objects to the bucket in the defined
 %% location. For an example policy, see Granting Permissions for Amazon S3
-%% Inventory and Storage Class Analysis.
+%% Inventory and Storage Class Analysis:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9.
 %%
 %% <dl> <dt>Permissions</dt> <dd> To use this operation, you must have
 %% permission to perform the `s3:PutInventoryConfiguration' action. The
@@ -6103,18 +6590,25 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% to others.
 %%
 %% The `s3:PutInventoryConfiguration' permission allows a user to create
-%% an S3 Inventory report that includes all object metadata fields available
-%% and to specify the destination bucket to store the inventory. A user with
-%% read access to objects in the destination bucket can also access all
-%% object metadata fields that are available in the inventory report.
+%% an S3 Inventory:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html
+%% report that includes all object metadata fields available and to specify
+%% the destination bucket to store the inventory. A user with read access to
+%% objects in the destination bucket can also access all object metadata
+%% fields that are available in the inventory report.
 %%
 %% To restrict access to an inventory report, see Restricting access to an
-%% Amazon S3 Inventory report in the Amazon S3 User Guide. For more
-%% information about the metadata fields available in S3 Inventory, see
-%% Amazon S3 Inventory lists in the Amazon S3 User Guide. For more
-%% information about permissions, see Permissions related to bucket
-%% subresource operations and Identity and access management in Amazon S3 in
-%% the Amazon S3 User Guide.
+%% Amazon S3 Inventory report:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-use-case-10
+%% in the Amazon S3 User Guide. For more information about the metadata
+%% fields available in S3 Inventory, see Amazon S3 Inventory lists:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html#storage-inventory-contents
+%% in the Amazon S3 User Guide. For more information about permissions, see
+%% Permissions related to bucket subresource operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Identity and access management in Amazon S3:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> </dl> `PutBucketInventoryConfiguration' has the following
 %% special errors:
@@ -6136,11 +6630,14 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% </dd> </dl> The following operations are related to
 %% `PutBucketInventoryConfiguration':
 %%
-%% <ul> <li> GetBucketInventoryConfiguration
+%% <ul> <li> GetBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html
 %%
-%% </li> <li> DeleteBucketInventoryConfiguration
+%% </li> <li> DeleteBucketInventoryConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html
 %%
-%% </li> <li> ListBucketInventoryConfigurations
+%% </li> <li> ListBucketInventoryConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
 %%
 %% </li> </ul>
 put_bucket_inventory_configuration(Client, Bucket, Input) ->
@@ -6171,14 +6668,16 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 
 %% @doc This operation is not supported by directory buckets.
 %%
-%% For an updated version of this API, see PutBucketLifecycleConfiguration.
+%% For an updated version of this API, see PutBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html.
 %% This version has been deprecated. Existing lifecycle configurations will
 %% work. For new lifecycle configurations, use the updated API.
 %%
 %% Creates a new lifecycle configuration for the bucket or replaces an
 %% existing lifecycle configuration. For information about lifecycle
-%% configuration, see Object Lifecycle Management in the Amazon S3 User
-%% Guide.
+%% configuration, see Object Lifecycle Management:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
+%% in the Amazon S3 User Guide.
 %%
 %% By default, all Amazon S3 resources, including buckets, objects, and
 %% related subresources (for example, lifecycle configuration and website
@@ -6200,18 +6699,24 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% </li> <li> `s3:PutLifecycleConfiguration'
 %%
 %% </li> </ul> For more information about permissions, see Managing Access
-%% Permissions to your Amazon S3 Resources in the Amazon S3 User Guide.
+%% Permissions to your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% For more examples of transitioning objects to storage classes such as
-%% STANDARD_IA or ONEZONE_IA, see Examples of Lifecycle Configuration.
+%% STANDARD_IA or ONEZONE_IA, see Examples of Lifecycle Configuration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#lifecycle-configuration-examples.
 %%
 %% The following operations are related to `PutBucketLifecycle':
 %%
-%% <ul> <li> GetBucketLifecycle(Deprecated)
+%% <ul> <li> GetBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html(Deprecated)
 %%
-%% </li> <li> GetBucketLifecycleConfiguration
+%% </li> <li> GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %%
-%% </li> <li> RestoreObject
+%% </li> <li> RestoreObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html
 %%
 %% </li> <li> By default, a resource owner—in this case, a bucket owner,
 %% which is the Amazon Web Services account that created the bucket—can
@@ -6219,9 +6724,11 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% permission to perform the operation. For more information, see the
 %% following topics in the Amazon S3 User Guide:
 %%
-%% <ul> <li> Specifying Permissions in a Policy
+%% <ul> <li> Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
 %%
-%% </li> <li> Managing Access Permissions to your Amazon S3 Resources
+%% </li> <li> Managing Access Permissions to your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
 %%
 %% </li> </ul> </li> </ul>
 put_bucket_lifecycle(Client, Bucket, Input) ->
@@ -6258,14 +6765,16 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% existing lifecycle configuration, so if you want to retain any
 %% configuration details, they must be included in the new lifecycle
 %% configuration. For information about lifecycle configuration, see Managing
-%% your storage lifecycle.
+%% your storage lifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html.
 %%
 %% Bucket lifecycle configuration now supports specifying a lifecycle rule
 %% using an object key name prefix, one or more object tags, or a combination
 %% of both. Accordingly, this section describes the latest API. The previous
 %% version of the API supported filtering based only on an object key name
 %% prefix, which is supported for backward compatibility. For the related API
-%% description, see PutBucketLifecycle.
+%% description, see PutBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html.
 %%
 %% <dl> <dt>Rules</dt> <dd> You specify the lifecycle configuration in your
 %% request body. The lifecycle configuration is specified as XML consisting
@@ -6286,8 +6795,10 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% zero or more noncurrent versions). Amazon S3 provides predefined actions
 %% that you can specify for current and noncurrent object versions.
 %%
-%% </li> </ul> For more information, see Object Lifecycle Management and
-%% Lifecycle Configuration Elements.
+%% </li> </ul> For more information, see Object Lifecycle Management:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
+%% and Lifecycle Configuration Elements:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html.
 %%
 %% </dd> <dt>Permissions</dt> <dd> By default, all Amazon S3 resources are
 %% private, including buckets, objects, and related subresources (for
@@ -6309,16 +6820,20 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% </li> <li> `s3:PutLifecycleConfiguration'
 %%
 %% </li> </ul> For more information about permissions, see Managing Access
-%% Permissions to Your Amazon S3 Resources.
+%% Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% </dd> </dl> The following operations are related to
 %% `PutBucketLifecycleConfiguration':
 %%
-%% <ul> <li> Examples of Lifecycle Configuration
+%% <ul> <li> Examples of Lifecycle Configuration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-configuration-examples.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration
+%% </li> <li> GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %%
-%% </li> <li> DeleteBucketLifecycle
+%% </li> <li> DeleteBucketLifecycle:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
 %%
 %% </li> </ul>
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
@@ -6363,7 +6878,9 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% setting for S3 Object Ownership, you can't use the `Grantee'
 %% request element to grant access to others. Permissions can only be granted
 %% using policies. For more information, see Permissions for server access
-%% log delivery in the Amazon S3 User Guide.
+%% log delivery:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html#grant-log-delivery-permissions-general
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Grantee Values</dt> <dd> You can specify the person (grantee) to
 %% whom you're assigning access rights (by using request elements) in the
@@ -6401,21 +6918,29 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% xmlns=&quot;http://doc.s3.amazonaws.com/2006-03-01&quot; /&gt;'
 %%
 %% For more information about server access logging, see Server Access
-%% Logging in the Amazon S3 User Guide.
+%% Logging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html in
+%% the Amazon S3 User Guide.
 %%
-%% For more information about creating a bucket, see CreateBucket. For more
-%% information about returning the logging status of a bucket, see
-%% GetBucketLogging.
+%% For more information about creating a bucket, see CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html. For
+%% more information about returning the logging status of a bucket, see
+%% GetBucketLogging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html.
 %%
 %% The following operations are related to `PutBucketLogging':
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> DeleteBucket
+%% </li> <li> DeleteBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
 %%
-%% </li> <li> CreateBucket
+%% </li> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> GetBucketLogging
+%% </li> <li> GetBucketLogging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html
 %%
 %% </li> </ul>
 put_bucket_logging(Client, Bucket, Input) ->
@@ -6457,20 +6982,26 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 %% `s3:PutMetricsConfiguration' action. The bucket owner has this
 %% permission by default. The bucket owner can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
-%% Monitoring Metrics with Amazon CloudWatch.
+%% Monitoring Metrics with Amazon CloudWatch:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html.
 %%
 %% The following operations are related to
 %% `PutBucketMetricsConfiguration':
 %%
-%% <ul> <li> DeleteBucketMetricsConfiguration
+%% <ul> <li> DeleteBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
 %%
-%% </li> <li> GetBucketMetricsConfiguration
+%% </li> <li> GetBucketMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html
 %%
-%% </li> <li> ListBucketMetricsConfigurations
+%% </li> <li> ListBucketMetricsConfigurations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html
 %%
 %% </li> </ul> `PutBucketMetricsConfiguration' has the following special
 %% error:
@@ -6511,7 +7042,9 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 
 %% @doc This operation is not supported by directory buckets.
 %%
-%% No longer used, see the PutBucketNotificationConfiguration operation.
+%% No longer used, see the PutBucketNotificationConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html
+%% operation.
 put_bucket_notification(Client, Bucket, Input) ->
     put_bucket_notification(Client, Bucket, Input, []).
 put_bucket_notification(Client, Bucket, Input0, Options0) ->
@@ -6543,7 +7076,8 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %%
 %% Enables notifications of specified events for a bucket. For more
 %% information about event notifications, see Configuring Event
-%% Notifications.
+%% Notifications:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html.
 %%
 %% Using this API, you can replace an existing notification configuration.
 %% The configuration is an XML file that defines the event types that you
@@ -6569,14 +7103,16 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %% destinations, Amazon S3 verifies that the Lambda function permissions
 %% grant Amazon S3 permission to invoke the function from the Amazon S3
 %% bucket. For more information, see Configuring Notifications for Amazon S3
-%% Events.
+%% Events:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html.
 %%
 %% You can disable notifications by adding the empty
 %% NotificationConfiguration element.
 %%
 %% For more information about the number of event notification configurations
-%% that you can create per bucket, see Amazon S3 service quotas in Amazon Web
-%% Services General Reference.
+%% that you can create per bucket, see Amazon S3 service quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/s3.html#limits_s3 in Amazon
+%% Web Services General Reference.
 %%
 %% By default, only the bucket owner can configure notifications on a bucket.
 %% However, bucket owners can use a bucket policy to grant permission to
@@ -6599,7 +7135,8 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %% The following action is related to
 %% `PutBucketNotificationConfiguration':
 %%
-%% <ul> <li> GetBucketNotificationConfiguration
+%% <ul> <li> GetBucketNotificationConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
 %%
 %% </li> </ul>
 put_bucket_notification_configuration(Client, Bucket, Input) ->
@@ -6633,10 +7170,12 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 %% Creates or modifies `OwnershipControls' for an Amazon S3 bucket. To
 %% use this operation, you must have the `s3:PutBucketOwnershipControls'
 %% permission. For more information about Amazon S3 permissions, see
-%% Specifying permissions in a policy.
+%% Specifying permissions in a policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-with-s3-actions.html.
 %%
 %% For information about Amazon S3 Object Ownership, see Using object
-%% ownership.
+%% ownership:
+%% https://docs.aws.amazon.com/AmazonS3/latest/user-guide/about-object-ownership.html.
 %%
 %% The following operations are related to `PutBucketOwnershipControls':
 %%
@@ -6678,7 +7217,9 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% requests in the format
 %% `https://s3express-control.region_code.amazonaws.com/bucket-name '.
 %% Virtual-hosted-style requests aren't supported. For more information,
-%% see Regional and Zonal endpoints in the Amazon S3 User Guide.
+%% see Regional and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> If you are using an identity other than the
 %% root user of the Amazon Web Services account that owns the bucket, the
@@ -6703,7 +7244,9 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% <ul> <li> General purpose bucket permissions - The
 %% `s3:PutBucketPolicy' permission is required in a policy. For more
 %% information about general purpose buckets bucket policies, see Using
-%% Bucket Policies and User Policies in the Amazon S3 User Guide.
+%% Bucket Policies and User Policies:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation, you must have the `s3express:PutBucketPolicy' permission in
@@ -6712,23 +7255,30 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %% be performed by the Amazon Web Services account that owns the resource.
 %% For more information about directory bucket policies and permissions, see
 %% Amazon Web Services Identity and Access Management (IAM) for S3 Express
-%% One Zone in the Amazon S3 User Guide.
+%% One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Example bucket policies</dt> <dd> General purpose
-%% buckets example bucket policies - See Bucket policy examples in the Amazon
-%% S3 User Guide.
+%% buckets example bucket policies - See Bucket policy examples:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% Directory bucket example bucket policies - See Example bucket policies for
-%% S3 Express One Zone in the Amazon S3 User Guide.
+%% S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>HTTP Host header syntax</dt> <dd> Directory buckets - The HTTP
 %% Host header syntax is `s3express-control.region.amazonaws.com'.
 %%
 %% </dd> </dl> The following operations are related to `PutBucketPolicy':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> DeleteBucket
+%% </li> <li> DeleteBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
 %%
 %% </li> </ul>
 put_bucket_policy(Client, Bucket, Input) ->
@@ -6762,14 +7312,18 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Creates a replication configuration or replaces an existing one. For more
-%% information, see Replication in the Amazon S3 User Guide.
+%% information, see Replication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html in the
+%% Amazon S3 User Guide.
 %%
 %% Specify the replication configuration in the request body. In the
 %% replication configuration, you provide the name of the destination bucket
 %% or buckets where you want Amazon S3 to replicate objects, the IAM role
 %% that Amazon S3 can assume to replicate objects on your behalf, and other
 %% relevant information. You can invoke this request for a specific Amazon
-%% Web Services Region by using the `aws:RequestedRegion' condition key.
+%% Web Services Region by using the `aws:RequestedRegion' :
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-requestedregion
+%% condition key.
 %%
 %% A replication configuration must include at least one rule, and can
 %% contain a maximum of 1,000. Each rule identifies a subset of objects to
@@ -6785,10 +7339,12 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% If you are using an earlier version of the replication configuration,
 %% Amazon S3 handles replication of delete markers differently. For more
-%% information, see Backward Compatibility.
+%% information, see Backward Compatibility:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations.
 %%
 %% For information about enabling versioning on a bucket, see Using
-%% Versioning.
+%% Versioning:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html.
 %%
 %% <dl> <dt>Handling Replication of Encrypted Objects</dt> <dd> By default,
 %% Amazon S3 doesn't replicate objects that are stored at rest using
@@ -6796,10 +7352,12 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% KMS-encrypted objects, add the following: `SourceSelectionCriteria',
 %% `SseKmsEncryptedObjects', `Status', `EncryptionConfiguration',
 %% and `ReplicaKmsKeyID'. For information about replication
-%% configuration, see Replicating Objects Created with SSE Using KMS keys.
+%% configuration, see Replicating Objects Created with SSE Using KMS keys:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html.
 %%
 %% For information on `PutBucketReplication' errors, see List of
-%% replication-related error codes
+%% replication-related error codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList
 %%
 %% </dd> <dt>Permissions</dt> <dd> To create a `PutBucketReplication'
 %% request, you must have `s3:PutReplicationConfiguration' permissions
@@ -6808,18 +7366,24 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% By default, a resource owner, in this case the Amazon Web Services account
 %% that created the bucket, can perform this operation. The resource owner
 %% can also grant others permissions to perform the operation. For more
-%% information about permissions, see Specifying Permissions in a Policy and
-%% Managing Access Permissions to Your Amazon S3 Resources.
+%% information about permissions, see Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% To perform this operation, the user or role performing the action must
-%% have the iam:PassRole permission.
+%% have the iam:PassRole:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html
+%% permission.
 %%
 %% </dd> </dl> The following operations are related to
 %% `PutBucketReplication':
 %%
-%% <ul> <li> GetBucketReplication
+%% <ul> <li> GetBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
 %%
-%% </li> <li> DeleteBucketReplication
+%% </li> <li> DeleteBucketReplication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
 %%
 %% </li> </ul>
 put_bucket_replication(Client, Bucket, Input) ->
@@ -6856,13 +7420,16 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %% bucket owner pays for downloads from the bucket. This configuration
 %% parameter enables the bucket owner (only) to specify that the person
 %% requesting the download will be charged for the download. For more
-%% information, see Requester Pays Buckets.
+%% information, see Requester Pays Buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html.
 %%
 %% The following operations are related to `PutBucketRequestPayment':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> GetBucketRequestPayment
+%% </li> <li> GetBucketRequestPayment:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html
 %%
 %% </li> </ul>
 put_bucket_request_payment(Client, Bucket, Input) ->
@@ -6903,8 +7470,10 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %% resources with the same tag key values. For example, you can tag several
 %% resources with a specific application name, and then organize your billing
 %% information to see the total cost of that application across several
-%% services. For more information, see Cost Allocation and Tagging and Using
-%% Cost Allocation in Amazon S3 Bucket Tags.
+%% services. For more information, see Cost Allocation and Tagging:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% and Using Cost Allocation in Amazon S3 Bucket Tags:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html.
 %%
 %% When this operation sets the tags for a bucket, it will overwrite any
 %% current tags the bucket already has. You cannot use this operation to add
@@ -6914,14 +7483,19 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %% `s3:PutBucketTagging' action. The bucket owner has this permission by
 %% default and can grant this permission to others. For more information
 %% about permissions, see Permissions Related to Bucket Subresource
-%% Operations and Managing Access Permissions to Your Amazon S3 Resources.
+%% Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html.
 %%
 %% `PutBucketTagging' has the following special errors. For more Amazon
-%% S3 errors see, Error Responses.
+%% S3 errors see, Error Responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html.
 %%
 %% <ul> <li> `InvalidTag' - The tag provided was not a valid tag. This
 %% error can occur if the tag did not pass input validation. For more
-%% information, see Using Cost Allocation in Amazon S3 Bucket Tags.
+%% information, see Using Cost Allocation in Amazon S3 Bucket Tags:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html.
 %%
 %% </li> <li> `MalformedXML' - The XML provided does not match the
 %% schema.
@@ -6935,9 +7509,11 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> The following operations are related to
 %% `PutBucketTagging':
 %%
-%% <ul> <li> GetBucketTagging
+%% <ul> <li> GetBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html
 %%
-%% </li> <li> DeleteBucketTagging
+%% </li> <li> DeleteBucketTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
 %%
 %% </li> </ul>
 put_bucket_tagging(Client, Bucket, Input) ->
@@ -6980,8 +7556,9 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% added to the bucket receive the version ID null.
 %%
 %% If the versioning state has never been set on a bucket, it has no
-%% versioning state; a GetBucketVersioning request does not return a
-%% versioning state value.
+%% versioning state; a GetBucketVersioning:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
+%% request does not return a versioning state value.
 %%
 %% In order to enable MFA Delete, you must be the bucket owner. If you are
 %% the bucket owner and want to enable MFA Delete in the bucket versioning
@@ -6996,15 +7573,19 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% deletes of the noncurrent object versions in the version-enabled bucket.
 %% (A version-enabled bucket maintains one current and zero or more
 %% noncurrent object versions.) For more information, see Lifecycle and
-%% Versioning.
+%% Versioning:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config.
 %%
 %% The following operations are related to `PutBucketVersioning':
 %%
-%% <ul> <li> CreateBucket
+%% <ul> <li> CreateBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
 %%
-%% </li> <li> DeleteBucket
+%% </li> <li> DeleteBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
 %%
-%% </li> <li> GetBucketVersioning
+%% </li> <li> GetBucketVersioning:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
 %%
 %% </li> </ul>
 put_bucket_versioning(Client, Bucket, Input) ->
@@ -7041,7 +7622,8 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% `website' subresource. To configure a bucket as a website, you can add
 %% this subresource on the bucket with website configuration information such
 %% as the file name of the index document and any redirect rules. For more
-%% information, see Hosting Websites on Amazon S3.
+%% information, see Hosting Websites on Amazon S3:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html.
 %%
 %% This PUT action requires the `S3:PutBucketWebsite' permission. By
 %% default, only the bucket owner can configure the website attached to a
@@ -7102,7 +7684,8 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> Amazon S3 has a limitation of 50 routing rules per website
 %% configuration. If you require more than 50 routing rules, you can use
-%% object redirect. For more information, see Configuring an Object Redirect
+%% object redirect. For more information, see Configuring an Object Redirect:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html
 %% in the Amazon S3 User Guide.
 %%
 %% The maximum request length is limited to 128 KB.
@@ -7150,7 +7733,9 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% Amazon S3 is a distributed system. If it receives multiple write requests
 %% for the same object simultaneously, it overwrites all but the last object
@@ -7158,8 +7743,9 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% behavior:
 %%
 %% <ul> <li> S3 Object Lock - To prevent objects from being deleted or
-%% overwritten, you can use Amazon S3 Object Lock in the Amazon S3 User
-%% Guide.
+%% overwritten, you can use Amazon S3 Object Lock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html in
+%% the Amazon S3 User Guide.
 %%
 %% This functionality is not supported for directory buckets.
 %%
@@ -7170,8 +7756,11 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% a unique version ID of that object being stored in Amazon S3. You can
 %% retrieve, replace, or delete any version of the object. For more
 %% information about versioning, see Adding Objects to Versioning-Enabled
-%% Buckets in the Amazon S3 User Guide. For information about returning the
-%% versioning state of a bucket, see GetBucketVersioning.
+%% Buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/AddingObjectstoVersioningEnabledBuckets.html
+%% in the Amazon S3 User Guide. For information about returning the
+%% versioning state of a bucket, see GetBucketVersioning:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html.
 %%
 %% This functionality is not supported for directory buckets.
 %%
@@ -7192,17 +7781,19 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> </li> <li> Directory bucket permissions - To grant access to
 %% this API operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Data integrity with Content-MD5</dt> <dd> <ul> <li>
 %% General purpose bucket - To ensure that data is not corrupted traversing
@@ -7223,9 +7814,11 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% </dd> </dl> For more information about related Amazon S3 APIs, see the
 %% following:
 %%
-%% <ul> <li> CopyObject
+%% <ul> <li> CopyObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html
 %%
-%% </li> <li> DeleteObject
+%% </li> <li> DeleteObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
 %%
 %% </li> </ul>
 put_object(Client, Bucket, Key, Input) ->
@@ -7321,8 +7914,9 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% Uses the `acl' subresource to set the access control list (ACL)
 %% permissions for a new or existing object in an S3 bucket. You must have
 %% the `WRITE_ACP' permission to set the ACL of an object. For more
-%% information, see What permissions can I grant? in the Amazon S3 User
-%% Guide.
+%% information, see What permissions can I grant?:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions
+%% in the Amazon S3 User Guide.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 %%
@@ -7330,15 +7924,18 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% object using either the request body or the headers. For example, if you
 %% have an existing application that updates a bucket ACL using the request
 %% body, you can continue to use that approach. For more information, see
-%% Access Control List (ACL) Overview in the Amazon S3 User Guide.
+%% Access Control List (ACL) Overview:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html in the
+%% Amazon S3 User Guide.
 %%
 %% If your bucket uses the bucket owner enforced setting for S3 Object
 %% Ownership, ACLs are disabled and no longer affect permissions. You must
 %% use policies to grant access to your bucket and the objects in it.
 %% Requests to set ACLs or update ACLs fail and return the
 %% `AccessControlListNotSupported' error code. Requests to read ACLs are
-%% still supported. For more information, see Controlling object ownership in
-%% the Amazon S3 User Guide.
+%% still supported. For more information, see Controlling object ownership:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> You can set access permissions using one of
 %% the following methods:
@@ -7348,7 +7945,8 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% canned ACL has a predefined set of grantees and permissions. Specify the
 %% canned ACL name as the value of `x-amz-ac'l. If you use this header,
 %% you cannot use other access control-specific headers in your request. For
-%% more information, see Canned ACL.
+%% more information, see Canned ACL:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL.
 %%
 %% </li> <li> Specify access permissions explicitly with the
 %% `x-amz-grant-read', `x-amz-grant-read-acp',
@@ -7358,7 +7956,8 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% receive the permission. If you use these ACL-specific headers, you cannot
 %% use `x-amz-acl' header to set a canned ACL. These parameters map to
 %% the set of permissions that Amazon S3 supports in an ACL. For more
-%% information, see Access Control List (ACL) Overview.
+%% information, see Access Control List (ACL) Overview:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html.
 %%
 %% You specify each grantee as a type=value pair, where the type is one of
 %% the following:
@@ -7392,7 +7991,9 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% South America (São Paulo)
 %%
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
-%% Regions and Endpoints in the Amazon Web Services General Reference.
+%% Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region in the
+%% Amazon Web Services General Reference.
 %%
 %% </li> </ul> For example, the following `x-amz-grant-read' header
 %% grants list objects permission to the two Amazon Web Services accounts
@@ -7452,7 +8053,9 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% South America (São Paulo)
 %%
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
-%% Regions and Endpoints in the Amazon Web Services General Reference.
+%% Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region in the
+%% Amazon Web Services General Reference.
 %%
 %% </li> </ul> </dd> <dt>Versioning</dt> <dd> The ACL of an object is set at
 %% the object version level. By default, PUT sets the ACL of the current
@@ -7461,9 +8064,11 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `PutObjectAcl':
 %%
-%% <ul> <li> CopyObject
+%% <ul> <li> CopyObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html
 %%
-%% </li> <li> GetObject
+%% </li> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
 %% </li> </ul>
 put_object_acl(Client, Bucket, Key, Input) ->
@@ -7520,7 +8125,8 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Applies a legal hold configuration to the specified object. For more
-%% information, see Locking Objects.
+%% information, see Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 put_object_legal_hold(Client, Bucket, Key, Input) ->
@@ -7573,7 +8179,8 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% Places an Object Lock configuration on the specified bucket. The rule
 %% specified in the Object Lock configuration will be applied by default to
 %% every new object placed in the specified bucket. For more information, see
-%% Locking Objects.
+%% Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% The `DefaultRetention' settings require both a mode and a period.
 %%
@@ -7582,7 +8189,8 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% the same time.
 %%
 %% You can enable Object Lock for new or existing buckets. For more
-%% information, see Configuring Object Lock.
+%% information, see Configuring Object Lock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-configure.html.
 put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
 put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
@@ -7631,10 +8239,12 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Places an Object Retention configuration on an object. For more
-%% information, see Locking Objects. Users or accounts require the
-%% `s3:PutObjectRetention' permission in order to place an Object
-%% Retention configuration on objects. Bypassing a Governance Retention
-%% configuration requires the `s3:BypassGovernanceRetention' permission.
+%% information, see Locking Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html. Users or
+%% accounts require the `s3:PutObjectRetention' permission in order to
+%% place an Object Retention configuration on objects. Bypassing a Governance
+%% Retention configuration requires the `s3:BypassGovernanceRetention'
+%% permission.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
 put_object_retention(Client, Bucket, Key, Input) ->
@@ -7686,15 +8296,19 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% @doc This operation is not supported by directory buckets.
 %%
 %% Sets the supplied tag-set to an object that already exists in a bucket. A
-%% tag is a key-value pair. For more information, see Object Tagging.
+%% tag is a key-value pair. For more information, see Object Tagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html.
 %%
 %% You can associate tags with an object by sending a PUT request against the
 %% tagging subresource that is associated with the object. You can retrieve
-%% tags by sending a GET request. For more information, see GetObjectTagging.
+%% tags by sending a GET request. For more information, see GetObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html.
 %%
 %% For tagging-related restrictions related to characters and encodings, see
-%% Tag Restrictions. Note that Amazon S3 limits the maximum number of tags to
-%% 10 tags per object.
+%% Tag Restrictions:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html.
+%% Note that Amazon S3 limits the maximum number of tags to 10 tags per
+%% object.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:PutObjectTagging' action. By default, the bucket owner has this
@@ -7704,11 +8318,13 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% You also need permission for the `s3:PutObjectVersionTagging' action.
 %%
 %% `PutObjectTagging' has the following special errors. For more Amazon
-%% S3 errors see, Error Responses.
+%% S3 errors see, Error Responses:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html.
 %%
 %% <ul> <li> `InvalidTag' - The tag provided was not a valid tag. This
 %% error can occur if the tag did not pass input validation. For more
-%% information, see Object Tagging.
+%% information, see Object Tagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html.
 %%
 %% </li> <li> `MalformedXML' - The XML provided does not match the
 %% schema.
@@ -7722,9 +8338,11 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% </li> </ul> The following operations are related to
 %% `PutObjectTagging':
 %%
-%% <ul> <li> GetObjectTagging
+%% <ul> <li> GetObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
 %%
-%% </li> <li> DeleteObjectTagging
+%% </li> <li> DeleteObjectTagging:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html
 %%
 %% </li> </ul>
 put_object_tagging(Client, Bucket, Key, Input) ->
@@ -7777,7 +8395,8 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% Creates or modifies the `PublicAccessBlock' configuration for an
 %% Amazon S3 bucket. To use this operation, you must have the
 %% `s3:PutBucketPublicAccessBlock' permission. For more information about
-%% Amazon S3 permissions, see Specifying Permissions in a Policy.
+%% Amazon S3 permissions, see Specifying Permissions in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
 %% bucket or an object, it checks the `PublicAccessBlock' configuration
@@ -7787,17 +8406,22 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% restrictive combination of the bucket-level and account-level settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
-%% public, see The Meaning of &quot;Public&quot;.
+%% public, see The Meaning of &quot;Public&quot;:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status.
 %%
 %% The following operations are related to `PutPublicAccessBlock':
 %%
-%% <ul> <li> GetPublicAccessBlock
+%% <ul> <li> GetPublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html
 %%
-%% </li> <li> DeletePublicAccessBlock
+%% </li> <li> DeletePublicAccessBlock:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
 %%
-%% </li> <li> GetBucketPolicyStatus
+%% </li> <li> GetBucketPolicyStatus:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html
 %%
-%% </li> <li> Using Amazon S3 Block Public Access
+%% </li> <li> Using Amazon S3 Block Public Access:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
 %%
 %% </li> </ul>
 put_public_access_block(Client, Bucket, Input) ->
@@ -7842,12 +8466,16 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> For more information about the `S3' structure in the
 %% request body, see the following:
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> PutObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 %%
-%% </li> <li> Managing Access with ACLs in the Amazon S3 User Guide
+%% </li> <li> Managing Access with ACLs:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html in
+%% the Amazon S3 User Guide
 %%
-%% </li> <li> Protecting Data Using Server-Side Encryption in the Amazon S3
-%% User Guide
+%% </li> <li> Protecting Data Using Server-Side Encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+%% in the Amazon S3 User Guide
 %%
 %% </li> </ul> Define the SQL expression for the `SELECT' type of
 %% restoration for your query in the request body's
@@ -7901,8 +8529,11 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% have permissions to perform the `s3:RestoreObject' action. The bucket
 %% owner has this permission by default and can grant this permission to
 %% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
-%% Amazon S3 Resources in the Amazon S3 User Guide.
+%% Bucket Subresource Operations:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources
+%% and Managing Access Permissions to Your Amazon S3 Resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>Restoring objects</dt> <dd> Objects that you archive to the S3
 %% Glacier Flexible Retrieval Flexible Retrieval or S3 Glacier Deep Archive
@@ -7959,18 +8590,24 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> For more information about archive retrieval options and
 %% provisioned capacity for `Expedited' data access, see Restoring
-%% Archived Objects in the Amazon S3 User Guide.
+%% Archived Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html in
+%% the Amazon S3 User Guide.
 %%
 %% You can use Amazon S3 restore speed upgrade to change the restore speed to
 %% a faster speed while it is in progress. For more information, see
-%% Upgrading the speed of an in-progress restore in the Amazon S3 User Guide.
+%% Upgrading the speed of an in-progress restore:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html#restoring-objects-upgrade-tier.title.html
+%% in the Amazon S3 User Guide.
 %%
 %% To get the status of object restoration, you can send a `HEAD'
 %% request. Operations return the `x-amz-restore' header, which provides
 %% information about the restoration status, in the response. You can use
 %% Amazon S3 event notifications to notify you when a restore is initiated or
 %% completed. For more information, see Configuring Amazon S3 Event
-%% Notifications in the Amazon S3 User Guide.
+%% Notifications:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html in
+%% the Amazon S3 User Guide.
 %%
 %% After restoring an archived object, you can update the restoration period
 %% by reissuing the request with a new period. Amazon S3 updates the
@@ -7984,8 +8621,11 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% specify in a restore request. For example, if you restore an object copy
 %% for 10 days, but the object is scheduled to expire in 3 days, Amazon S3
 %% deletes the object in 3 days. For more information about lifecycle
-%% configuration, see PutBucketLifecycleConfiguration and Object Lifecycle
-%% Management in Amazon S3 User Guide.
+%% configuration, see PutBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
+%% and Object Lifecycle Management:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
+%% in Amazon S3 User Guide.
 %%
 %% </dd> <dt>Responses</dt> <dd> A successful action returns either the `200
 %% OK' or `202 Accepted' status code.
@@ -8022,9 +8662,11 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> </li> </ul> </dd> </dl> The following operations are related
 %% to `RestoreObject':
 %%
-%% <ul> <li> PutBucketLifecycleConfiguration
+%% <ul> <li> PutBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
 %%
-%% </li> <li> GetBucketNotificationConfiguration
+%% </li> <li> GetBucketNotificationConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
 %%
 %% </li> </ul>
 restore_object(Client, Bucket, Key, Input) ->
@@ -8085,12 +8727,18 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% This functionality is not supported for Amazon S3 on Outposts.
 %%
 %% For more information about Amazon S3 Select, see Selecting Content from
-%% Objects and SELECT Command in the Amazon S3 User Guide.
+%% Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html
+%% and SELECT Command:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference-select.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> You must have the `s3:GetObject'
 %% permission for this operation. Amazon S3 Select does not support anonymous
 %% access. For more information about permissions, see Specifying Permissions
-%% in a Policy in the Amazon S3 User Guide.
+%% in a Policy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>Object Data Formats</dt> <dd> You can use Amazon S3 Select to
 %% query objects that have the following format properties:
@@ -8112,31 +8760,38 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% For objects that are encrypted with customer-provided encryption keys
 %% (SSE-C), you must use HTTPS, and you must use the headers that are
-%% documented in the GetObject. For more information about SSE-C, see
-%% Server-Side Encryption (Using Customer-Provided Encryption Keys) in the
-%% Amazon S3 User Guide.
+%% documented in the GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html. For
+%% more information about SSE-C, see Server-Side Encryption (Using
+%% Customer-Provided Encryption Keys):
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html
+%% in the Amazon S3 User Guide.
 %%
 %% For objects that are encrypted with Amazon S3 managed keys (SSE-S3) and
 %% Amazon Web Services KMS keys (SSE-KMS), server-side encryption is handled
 %% transparently, so you don't need to specify anything. For more
 %% information about server-side encryption, including SSE-S3 and SSE-KMS,
-%% see Protecting Data Using Server-Side Encryption in the Amazon S3 User
-%% Guide.
+%% see Protecting Data Using Server-Side Encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Working with the Response Body</dt> <dd> Given the
 %% response size is unknown, Amazon S3 Select streams the response as a
 %% series of messages and includes a `Transfer-Encoding' header with
 %% `chunked' as its value in the response. For more information, see
-%% Appendix: SelectObjectContent Response.
+%% Appendix: SelectObjectContent Response:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelectObjectAppendix.html.
 %%
 %% </dd> <dt>GetObject Support</dt> <dd> The `SelectObjectContent' action
 %% does not support the following `GetObject' functionality. For more
-%% information, see GetObject.
+%% information, see GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html.
 %%
 %% <ul> <li> `Range': Although you can specify a scan range for an Amazon
-%% S3 Select request (see SelectObjectContentRequest - ScanRange in the
-%% request parameters), you cannot specify the range of bytes of an object to
-%% return.
+%% S3 Select request (see SelectObjectContentRequest - ScanRange:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html#AmazonS3-SelectObjectContent-request-ScanRange
+%% in the request parameters), you cannot specify the range of bytes of an
+%% object to return.
 %%
 %% </li> <li> The `GLACIER', `DEEP_ARCHIVE', and
 %% `REDUCED_REDUNDANCY' storage classes, or the `ARCHIVE_ACCESS' and
@@ -8145,20 +8800,25 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% `DEEP_ARCHIVE', or `REDUCED_REDUNDANCY' storage classes, nor
 %% objects in the `ARCHIVE_ACCESS' or `DEEP_ARCHIVE_ACCESS' access
 %% tiers of the `INTELLIGENT_TIERING' storage class. For more information
-%% about storage classes, see Using Amazon S3 storage classes in the Amazon
-%% S3 User Guide.
+%% about storage classes, see Using Amazon S3 storage classes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Special Errors</dt> <dd> For a list of special
-%% errors for this operation, see List of SELECT Object Content Error Codes
+%% errors for this operation, see List of SELECT Object Content Error Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#SelectObjectContentErrorCodeList
 %%
 %% </dd> </dl> The following operations are related to
 %% `SelectObjectContent':
 %%
-%% <ul> <li> GetObject
+%% <ul> <li> GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
 %%
-%% </li> <li> GetBucketLifecycleConfiguration
+%% </li> <li> GetBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
 %%
-%% </li> <li> PutBucketLifecycleConfiguration
+%% </li> <li> PutBucketLifecycleConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
 %%
 %% </li> </ul>
 select_object_content(Client, Bucket, Key, Input) ->
@@ -8194,12 +8854,15 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% In this operation, you provide new data as a part of an object in your
 %% request. However, you have an option to specify your existing Amazon S3
 %% object as a data source for the part you are uploading. To upload a part
-%% from an existing object, you use the UploadPartCopy operation.
+%% from an existing object, you use the UploadPartCopy:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html
+%% operation.
 %%
-%% You must initiate a multipart upload (see CreateMultipartUpload) before
-%% you can upload any part. In response to your initiate request, Amazon S3
-%% returns an upload ID, a unique identifier that you must include in your
-%% upload part request.
+%% You must initiate a multipart upload (see CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+%% before you can upload any part. In response to your initiate request,
+%% Amazon S3 returns an upload ID, a unique identifier that you must include
+%% in your upload part request.
 %%
 %% Part numbers can be any number from 1 to 10,000, inclusive. A part number
 %% uniquely identifies a part and also defines its position within the object
@@ -8208,8 +8871,9 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% overwritten.
 %%
 %% For information about maximum and minimum part sizes and other multipart
-%% upload specifications, see Multipart upload limits in the Amazon S3 User
-%% Guide.
+%% upload specifications, see Multipart upload limits:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html in the
+%% Amazon S3 User Guide.
 %%
 %% After you initiate multipart upload and upload one or more parts, you must
 %% either complete or abort multipart upload in order to stop getting charged
@@ -8217,7 +8881,8 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% multipart upload, Amazon S3 frees up the parts storage and stops charging
 %% you for the parts storage.
 %%
-%% For more information on multipart uploads, go to Multipart Upload Overview
+%% For more information on multipart uploads, go to Multipart Upload
+%% Overview: https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html
 %% in the Amazon S3 User Guide .
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
@@ -8225,26 +8890,31 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Permissions</dt> <dd> <ul> <li> General purpose bucket
 %% permissions - For information on the permissions required to use the
-%% multipart upload API, see Multipart Upload and Permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - To grant access to this API
 %% operation on a directory bucket, we recommend that you use the
-%% `CreateSession' API operation for session-based authorization.
-%% Specifically, you grant the `s3express:CreateSession' permission to
-%% the directory bucket in a bucket policy or an IAM identity-based policy.
-%% Then, you make the `CreateSession' API call on the bucket to obtain a
-%% session token. With the session token in your request header, you can make
-%% API requests to this operation. After the session token expires, you make
-%% another `CreateSession' API call to generate a new session token for
-%% use. Amazon Web Services CLI or SDKs create session and refresh the
-%% session token automatically to avoid service interruptions when a session
-%% expires. For more information about authorization, see `CreateSession'
-%% .
+%% `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html API
+%% operation for session-based authorization. Specifically, you grant the
+%% `s3express:CreateSession' permission to the directory bucket in a
+%% bucket policy or an IAM identity-based policy. Then, you make the
+%% `CreateSession' API call on the bucket to obtain a session token. With
+%% the session token in your request header, you can make API requests to
+%% this operation. After the session token expires, you make another
+%% `CreateSession' API call to generate a new session token for use.
+%% Amazon Web Services CLI or SDKs create session and refresh the session
+%% token automatically to avoid service interruptions when a session expires.
+%% For more information about authorization, see `CreateSession' :
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html.
 %%
 %% </li> </ul> </dd> <dt>Data integrity</dt> <dd> General purpose bucket - To
 %% ensure that data is not corrupted traversing the network, specify the
@@ -8254,7 +8924,8 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% 4, then Amazon Web Services S3 uses the `x-amz-content-sha256' header
 %% as a checksum instead of `Content-MD5'. For more information see
 %% Authenticating Requests: Using the Authorization Header (Amazon Web
-%% Services Signature Version 4).
+%% Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html.
 %%
 %% Directory buckets - MD5 is not supported by directory buckets. You can use
 %% checksum algorithms to check object integrity.
@@ -8278,7 +8949,8 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% don't need to specify the encryption parameters in each UploadPart
 %% request. Instead, you only need to specify the server-side encryption
 %% parameters in the initial Initiate Multipart request. For more
-%% information, see CreateMultipartUpload.
+%% information, see CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html.
 %%
 %% If you request server-side encryption using a customer-provided encryption
 %% key (SSE-C) in your initiate multipart upload request, you must provide
@@ -8295,8 +8967,9 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% server-side encryption with Amazon S3 managed keys (SSE-S3) (`AES256')
 %% is supported.
 %%
-%% </li> </ul> For more information, see Using Server-Side Encryption in the
-%% Amazon S3 User Guide.
+%% </li> </ul> For more information, see Using Server-Side Encryption:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+%% in the Amazon S3 User Guide.
 %%
 %% </dd> <dt>Special errors</dt> <dd> <ul> <li> Error Code:
 %% `NoSuchUpload'
@@ -8315,15 +8988,20 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `UploadPart':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 upload_part(Client, Bucket, Key, Input) ->
@@ -8398,35 +9076,43 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% the request header `x-amz-copy-source-range' in your request.
 %%
 %% For information about maximum and minimum part sizes and other multipart
-%% upload specifications, see Multipart upload limits in the Amazon S3 User
-%% Guide.
+%% upload specifications, see Multipart upload limits:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html in the
+%% Amazon S3 User Guide.
 %%
 %% Instead of copying data from an existing object as part data, you might
-%% use the UploadPart action to upload new data as a part of an object in
-%% your request.
+%% use the UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html action
+%% to upload new data as a part of an object in your request.
 %%
 %% You must initiate a multipart upload before you can upload any part. In
 %% response to your initiate request, Amazon S3 returns the upload ID, a
 %% unique identifier that you must include in your upload part request.
 %%
 %% For conceptual information about multipart uploads, see Uploading Objects
-%% Using Multipart Upload in the Amazon S3 User Guide. For information about
-%% copying objects using a single atomic action vs. a multipart upload, see
-%% Operations on Objects in the Amazon S3 User Guide.
+%% Using Multipart Upload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html in
+%% the Amazon S3 User Guide. For information about copying objects using a
+%% single atomic action vs. a multipart upload, see Operations on Objects:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectOperations.html in
+%% the Amazon S3 User Guide.
 %%
 %% Directory buckets - For directory buckets, you must make requests for this
 %% API operation to the Zonal endpoint. These endpoints support
 %% virtual-hosted-style requests in the format
 %% `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name '.
 %% Path-style requests are not supported. For more information, see Regional
-%% and Zonal endpoints in the Amazon S3 User Guide.
+%% and Zonal endpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html
+%% in the Amazon S3 User Guide.
 %%
 %% <dl> <dt>Authentication and authorization</dt> <dd> All
 %% `UploadPartCopy' requests must be authenticated and signed by using
 %% IAM credentials (access key ID and secret access key for the IAM
 %% identities). All headers with the `x-amz-' prefix, including
 %% `x-amz-copy-source', must be signed. For more information, see REST
-%% Authentication.
+%% Authentication:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html.
 %%
 %% Directory buckets - You must use IAM credentials to authenticate and
 %% authorize your access to the `UploadPartCopy' API operation, instead
@@ -8452,8 +9138,9 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% destination bucket.
 %%
 %% </li> </ul> For information about permissions required to use the
-%% multipart upload API, see Multipart Upload and Permissions in the Amazon
-%% S3 User Guide.
+%% multipart upload API, see Multipart Upload and Permissions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html in
+%% the Amazon S3 User Guide.
 %%
 %% </li> <li> Directory bucket permissions - You must have permissions in a
 %% bucket policy or an IAM identity-based policy based on the source and
@@ -8473,14 +9160,20 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% on the copy destination.
 %%
 %% </li> </ul> For example policies, see Example bucket policies for S3
-%% Express One Zone and Amazon Web Services Identity and Access Management
-%% (IAM) identity-based policies for S3 Express One Zone in the Amazon S3
-%% User Guide.
+%% Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-example-bucket-policies.html
+%% and Amazon Web Services Identity and Access Management (IAM)
+%% identity-based policies for S3 Express One Zone:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam-identity-policies.html
+%% in the Amazon S3 User Guide.
 %%
 %% </li> </ul> </dd> <dt>Encryption</dt> <dd> <ul> <li> General purpose
 %% buckets - For information about using server-side encryption with
 %% customer-provided encryption keys with the `UploadPartCopy' operation,
-%% see CopyObject and UploadPart.
+%% see CopyObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html and
+%% UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html.
 %%
 %% </li> <li> Directory buckets - For directory buckets, only server-side
 %% encryption with Amazon S3 managed keys (SSE-S3) (`AES256') is
@@ -8508,17 +9201,23 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% </dd> </dl> The following operations are related to `UploadPartCopy':
 %%
-%% <ul> <li> CreateMultipartUpload
+%% <ul> <li> CreateMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html
 %%
-%% </li> <li> UploadPart
+%% </li> <li> UploadPart:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html
 %%
-%% </li> <li> CompleteMultipartUpload
+%% </li> <li> CompleteMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html
 %%
-%% </li> <li> AbortMultipartUpload
+%% </li> <li> AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
 %%
-%% </li> <li> ListParts
+%% </li> <li> ListParts:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
 %%
-%% </li> <li> ListMultipartUploads
+%% </li> <li> ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
 %%
 %% </li> </ul>
 upload_part_copy(Client, Bucket, Key, Input) ->
@@ -8588,10 +9287,12 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Passes transformed objects to a `GetObject' operation when using
 %% Object Lambda access points. For information about Object Lambda access
-%% points, see Transforming objects with Object Lambda access points in the
-%% Amazon S3 User Guide.
+%% points, see Transforming objects with Object Lambda access points:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html
+%% in the Amazon S3 User Guide.
 %%
-%% This operation supports metadata that can be returned by GetObject, in
+%% This operation supports metadata that can be returned by GetObject:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html, in
 %% addition to `RequestRoute', `RequestToken', `StatusCode',
 %% `ErrorCode', and `ErrorMessage'. The `GetObject' response
 %% metadata is supported so that the `WriteGetObjectResponse' caller,
@@ -8633,7 +9334,9 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %% zlib, zstandard and ZIP.
 %%
 %% For information on how to view and use these functions, see Using Amazon
-%% Web Services built Lambda functions in the Amazon S3 User Guide.
+%% Web Services built Lambda functions:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html
+%% in the Amazon S3 User Guide.
 write_get_object_response(Client, Input) ->
     write_get_object_response(Client, Input, []).
 write_get_object_response(Client, Input0, Options0) ->

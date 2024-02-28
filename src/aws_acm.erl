@@ -7,7 +7,7 @@
 %% your Amazon Web Services-based websites and applications.
 %%
 %% For more information about using ACM, see the Certificate Manager User
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/acm/latest/userguide/.
 -module(aws_acm).
 
 -export([add_tags_to_certificate/2,
@@ -62,7 +62,7 @@
 %% resources. For example, you can add the same tag to an ACM certificate and
 %% an Elastic Load Balancing load balancer to indicate that they are both
 %% used by the same website. For more information, see Tagging ACM
-%% certificates.
+%% certificates: https://docs.aws.amazon.com/acm/latest/userguide/tags.html.
 %%
 %% To remove one or more tags, use the `RemoveTagsFromCertificate'
 %% action. To view all of the tags that have been applied to the certificate,
@@ -113,7 +113,8 @@ describe_certificate(Client, Input, Options)
 %% for the private key when exporting it.
 %%
 %% For information about exporting and formatting a certificate using the ACM
-%% console or CLI, see Export a Private Certificate.
+%% console or CLI, see Export a Private Certificate:
+%% https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html.
 export_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_certificate(Client, Input, []).
@@ -134,7 +135,8 @@ get_account_configuration(Client, Input, Options)
 %%
 %% The chain consists of the certificate of the issuing CA and the
 %% intermediate certificates of any other subordinate CAs. All of the
-%% certificates are base64 encoded. You can use OpenSSL to decode the
+%% certificates are base64 encoded. You can use OpenSSL:
+%% https://wiki.openssl.org/index.php/Command_Line_Utilities to decode the
 %% certificates and inspect individual fields.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -146,14 +148,19 @@ get_certificate(Client, Input, Options)
 %% @doc Imports a certificate into Certificate Manager (ACM) to use with
 %% services that are integrated with ACM.
 %%
-%% Note that integrated services allow only certificate types and keys they
-%% support to be associated with their resources. Further, their support
-%% differs depending on whether the certificate is imported into IAM or into
-%% ACM. For more information, see the documentation for each service. For
-%% more information about importing certificates into ACM, see Importing
-%% Certificates in the Certificate Manager User Guide.
+%% Note that integrated services:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html allow
+%% only certificate types and keys they support to be associated with their
+%% resources. Further, their support differs depending on whether the
+%% certificate is imported into IAM or into ACM. For more information, see
+%% the documentation for each service. For more information about importing
+%% certificates into ACM, see Importing Certificates:
+%% https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html
+%% in the Certificate Manager User Guide.
 %%
-%% ACM does not provide managed renewal for certificates that you import.
+%% ACM does not provide managed renewal:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html for
+%% certificates that you import.
 %%
 %% Note the following guidelines when importing third party certificates:
 %%
@@ -201,8 +208,9 @@ get_certificate(Client, Input, Options)
 %% match the algorithm of the signing CA. For example, if the signing CA key
 %% type is RSA, then the certificate key type must also be RSA.
 %%
-%% </li> </ul> This operation returns the Amazon Resource Name (ARN) of the
-%% imported certificate.
+%% </li> </ul> This operation returns the Amazon Resource Name (ARN):
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% of the imported certificate.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
@@ -272,7 +280,10 @@ remove_tags_from_certificate(Client, Input, Options)
 %% At this time, only exported private certificates can be renewed with this
 %% operation. In order to renew your Amazon Web Services Private CA
 %% certificates with ACM, you must first grant the ACM service principal
-%% permission to do so. For more information, see Testing Managed Renewal in
+%% permission to do so:
+%% https://docs.aws.amazon.com/privateca/latest/userguide/PcaPermissions.html.
+%% For more information, see Testing Managed Renewal:
+%% https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html in
 %% the ACM User Guide.
 renew_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -291,13 +302,17 @@ renew_certificate(Client, Input, Options)
 %% If you are requesting a private certificate, domain validation is not
 %% required. If you are requesting a public certificate, each domain name
 %% that you specify must be validated to verify that you own or control the
-%% domain. You can use DNS validation or email validation. We recommend that
-%% you use DNS validation. ACM issues public certificates after receiving
-%% approval from the domain owner.
+%% domain. You can use DNS validation:
+%% https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html
+%% or email validation:
+%% https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html.
+%% We recommend that you use DNS validation. ACM issues public certificates
+%% after receiving approval from the domain owner.
 %%
-%% ACM behavior differs from the RFC 6125 specification of the certificate
-%% validation process. ACM first checks for a Subject Alternative Name, and,
-%% if it finds one, ignores the common name (CN).
+%% ACM behavior differs from the RFC 6125:
+%% https://datatracker.ietf.org/doc/html/rfc6125#appendix-B.2 specification
+%% of the certificate validation process. ACM first checks for a Subject
+%% Alternative Name, and, if it finds one, ignores the common name (CN).
 %%
 %% After successful completion of the `RequestCertificate' action, there
 %% is a delay of several seconds before you can retrieve information about
@@ -321,7 +336,7 @@ request_certificate(Client, Input, Options)
 %% your original request or since your last attempt to resend validation
 %% mail, you must request a new certificate. For more information about
 %% setting up your contact email addresses, see Configure Email for your
-%% Domain.
+%% Domain: https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html.
 resend_validation_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_validation_email(Client, Input, []).
@@ -333,7 +348,8 @@ resend_validation_email(Client, Input, Options)
 %%
 %% Currently, you can use this function to specify whether to opt in to or
 %% out of recording your certificate in a certificate transparency log. For
-%% more information, see Opting Out of Certificate Transparency Logging.
+%% more information, see Opting Out of Certificate Transparency Logging:
+%% https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency.
 update_certificate_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_options(Client, Input, []).

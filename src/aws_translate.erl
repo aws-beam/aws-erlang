@@ -142,7 +142,8 @@ list_parallel_data(Client, Input, Options)
 
 %% @doc Lists all tags associated with a given Amazon Translate resource.
 %%
-%% For more information, see Tagging your resources.
+%% For more information, see Tagging your resources:
+%% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -173,7 +174,8 @@ list_text_translation_jobs(Client, Input, Options)
 %% with different source languages (specify `auto' as the source
 %% language). You can specify one or more target languages. Batch translation
 %% translates each input document into each of the target languages. For more
-%% information, see Asynchronous batch processing.
+%% information, see Asynchronous batch processing:
+%% https://docs.aws.amazon.com/translate/latest/dg/async.html.
 %%
 %% Batch translation jobs can be described with the
 %% `DescribeTextTranslationJob' operation, listed with the
@@ -207,7 +209,8 @@ stop_text_translation_job(Client, Input, Options)
 %% @doc Associates a specific tag with a resource.
 %%
 %% A tag is a key-value pair that adds as a metadata to a resource. For more
-%% information, see Tagging your resources.
+%% information, see Tagging your resources:
+%% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -226,7 +229,8 @@ tag_resource(Client, Input, Options)
 %%
 %% If you set the `Formality' parameter, the request will fail if the
 %% target language does not support formality. For a list of target languages
-%% that support formality, see Setting formality.
+%% that support formality, see Setting formality:
+%% https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html.
 translate_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_document(Client, Input, []).
@@ -238,7 +242,8 @@ translate_document(Client, Input, Options)
 %% language.
 %%
 %% For a list of available languages and language codes, see Supported
-%% languages.
+%% languages:
+%% https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_text(Client, Input, []).
@@ -248,7 +253,8 @@ translate_text(Client, Input, Options)
 
 %% @doc Removes a specific tag associated with an Amazon Translate resource.
 %%
-%% For more information, see Tagging your resources.
+%% For more information, see Tagging your resources:
+%% https://docs.aws.amazon.com/translate/latest/dg/tagging.html.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

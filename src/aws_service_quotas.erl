@@ -6,7 +6,8 @@
 %%
 %% Quotas, also referred to as limits, are the maximum number of resources
 %% that you can create in your Amazon Web Services account. For more
-%% information, see the Service Quotas User Guide.
+%% information, see the Service Quotas User Guide:
+%% https://docs.aws.amazon.com/servicequotas/latest/userguide/.
 -module(aws_service_quotas).
 
 -export([associate_service_quota_template/2,

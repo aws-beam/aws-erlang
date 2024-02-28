@@ -10,8 +10,9 @@
 %%
 %% Contact Lens for Amazon Connect provides both real-time and post-call
 %% analytics of customer-agent conversations. For more information, see
-%% Analyze conversations using Contact Lens in the Amazon Connect
-%% Administrator Guide.
+%% Analyze conversations using Contact Lens:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/analyze-conversations.html
+%% in the Amazon Connect Administrator Guide.
 -module(aws_connect_contact_lens).
 
 -export([list_realtime_contact_analysis_segments/2,

@@ -7,7 +7,8 @@
 %%
 %% Amazon VPC Lattice interconnects your microservices and legacy services
 %% within a logical boundary, so that you can discover and manage them more
-%% efficiently. For more information, see the Amazon VPC Lattice User Guide
+%% efficiently. For more information, see the Amazon VPC Lattice User Guide:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/
 -module(aws_vpc_lattice).
 
 -export([batch_update_rule/4,
@@ -173,8 +174,9 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 %% the network. The service network owner will only see access logs from
 %% clients and services that are associated with their service network.
 %% Access log entries represent traffic originated from VPCs associated with
-%% that network. For more information, see Access logs in the Amazon VPC
-%% Lattice User Guide.
+%% that network. For more information, see Access logs:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html
+%% in the Amazon VPC Lattice User Guide.
 create_access_log_subscription(Client, Input) ->
     create_access_log_subscription(Client, Input, []).
 create_access_log_subscription(Client, Input0, Options0) ->
@@ -201,7 +203,8 @@ create_access_log_subscription(Client, Input0, Options0) ->
 %%
 %% Before you start using your Amazon VPC Lattice service, you must add one
 %% or more listeners. A listener is a process that checks for connection
-%% requests to your services. For more information, see Listeners in the
+%% requests to your services. For more information, see Listeners:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html in the
 %% Amazon VPC Lattice User Guide.
 create_listener(Client, ServiceIdentifier, Input) ->
     create_listener(Client, ServiceIdentifier, Input, []).
@@ -230,7 +233,9 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
 %% Each listener has a default rule for checking connection requests, but you
 %% can define additional rules. Each rule consists of a priority, one or more
 %% actions, and one or more conditions. For more information, see Listener
-%% rules in the Amazon VPC Lattice User Guide.
+%% rules:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
+%% in the Amazon VPC Lattice User Guide.
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
@@ -259,7 +264,9 @@ create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
 %% containers, or serverless functions within an account or virtual private
 %% cloud (VPC).
 %%
-%% For more information, see Services in the Amazon VPC Lattice User Guide.
+%% For more information, see Services:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html in the
+%% Amazon VPC Lattice User Guide.
 create_service(Client, Input) ->
     create_service(Client, Input, []).
 create_service(Client, Input0, Options0) ->
@@ -287,8 +294,9 @@ create_service(Client, Input0, Options0) ->
 %% A service network is a logical boundary for a collection of services. You
 %% can associate services and VPCs with a service network.
 %%
-%% For more information, see Service networks in the Amazon VPC Lattice User
-%% Guide.
+%% For more information, see Service networks:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html in
+%% the Amazon VPC Lattice User Guide.
 create_service_network(Client, Input) ->
     create_service_network(Client, Input, []).
 create_service_network(Client, Input0, Options0) ->
@@ -350,7 +358,9 @@ create_service_network_service_association(Client, Input0, Options0) ->
 %% When you associate a VPC with the service network, it enables all the
 %% resources within that VPC to be clients and communicate with other
 %% services in the service network. For more information, see Manage VPC
-%% associations in the Amazon VPC Lattice User Guide.
+%% associations:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-vpc-associations
+%% in the Amazon VPC Lattice User Guide.
 %%
 %% You can't use this operation if there is a disassociation in progress.
 %% If the association fails, retry by deleting the association and recreating
@@ -391,8 +401,9 @@ create_service_network_vpc_association(Client, Input0, Options0) ->
 %% your application or service. A target group can only be used by a single
 %% service.
 %%
-%% For more information, see Target groups in the Amazon VPC Lattice User
-%% Guide.
+%% For more information, see Target groups:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/target-groups.html in
+%% the Amazon VPC Lattice User Guide.
 create_target_group(Client, Input) ->
     create_target_group(Client, Input, []).
 create_target_group(Client, Input0, Options0) ->
@@ -520,8 +531,9 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% actions, and one or more conditions. You can delete additional listener
 %% rules, but you cannot delete the default rule.
 %%
-%% For more information, see Listener rules in the Amazon VPC Lattice User
-%% Guide.
+%% For more information, see Listener rules:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
+%% in the Amazon VPC Lattice User Guide.
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input0, Options0) ->
@@ -550,7 +562,9 @@ delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 %% network. If you delete a service, all resources related to the service,
 %% such as the resource policy, auth policy, listeners, listener rules, and
 %% access log subscriptions, are also deleted. For more information, see
-%% Delete a service in the Amazon VPC Lattice User Guide.
+%% Delete a service:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html#delete-service
+%% in the Amazon VPC Lattice User Guide.
 delete_service(Client, ServiceIdentifier, Input) ->
     delete_service(Client, ServiceIdentifier, Input, []).
 delete_service(Client, ServiceIdentifier, Input0, Options0) ->
@@ -579,7 +593,9 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 %% associated with it. If you delete a service network, all resources related
 %% to the service network, such as the resource policy, auth policy, and
 %% access log subscriptions, are also deleted. For more information, see
-%% Delete a service network in the Amazon VPC Lattice User Guide.
+%% Delete a service network:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html#delete-service-network
+%% in the Amazon VPC Lattice User Guide.
 delete_service_network(Client, ServiceNetworkIdentifier, Input) ->
     delete_service_network(Client, ServiceNetworkIdentifier, Input, []).
 delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
@@ -803,7 +819,9 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about listener rules.
 %%
 %% You can also retrieve information about the default listener rule. For
-%% more information, see Listener rules in the Amazon VPC Lattice User Guide.
+%% more information, see Listener rules:
+%% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
+%% in the Amazon VPC Lattice User Guide.
 get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, #{}, #{}).

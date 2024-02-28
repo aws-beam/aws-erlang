@@ -10,8 +10,10 @@
 %%
 %% This guide provides detailed information about Directory Service
 %% operations, data types, parameters, and errors. For information about
-%% Directory Services features, see Directory Service and the Directory
-%% Service Administration Guide.
+%% Directory Services features, see Directory Service:
+%% https://aws.amazon.com/directoryservice/ and the Directory Service
+%% Administration Guide:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
 %% code for various programming languages and platforms (Java, Ruby, .Net,
@@ -19,7 +21,7 @@
 %% programmatic access to Directory Service and other Amazon Web Services
 %% services. For more information about the Amazon Web Services SDKs,
 %% including how to download and install them, see Tools for Amazon Web
-%% Services.
+%% Services: http://aws.amazon.com/tools/.
 -module(aws_directory).
 
 -export([accept_shared_directory/2,
@@ -183,7 +185,8 @@ accept_shared_directory(Client, Input, Options)
 %% Before you call AddIpRoutes, ensure that all of the required permissions
 %% have been explicitly granted through a policy. For details about what
 %% permissions are required to run the AddIpRoutes operation, see Directory
-%% Service API Permissions: Actions, Resources, and Conditions Reference.
+%% Service API Permissions: Actions, Resources, and Conditions Reference:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 add_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_ip_routes(Client, Input, []).
@@ -230,7 +233,8 @@ cancel_schema_extension(Client, Input, Options)
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `ConnectDirectory'
 %% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference.
+%% Conditions Reference:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_directory(Client, Input, []).
@@ -277,14 +281,16 @@ create_conditional_forwarder(Client, Input, Options)
 
 %% @doc Creates a Simple AD directory.
 %%
-%% For more information, see Simple Active Directory in the Directory Service
-%% Admin Guide.
+%% For more information, see Simple Active Directory:
+%% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html
+%% in the Directory Service Admin Guide.
 %%
 %% Before you call `CreateDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `CreateDirectory'
 %% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference.
+%% Conditions Reference:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_directory(Client, Input, []).
@@ -304,14 +310,16 @@ create_log_subscription(Client, Input, Options)
 
 %% @doc Creates a Microsoft AD directory in the Amazon Web Services Cloud.
 %%
-%% For more information, see Managed Microsoft AD in the Directory Service
-%% Admin Guide.
+%% For more information, see Managed Microsoft AD:
+%% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html
+%% in the Directory Service Admin Guide.
 %%
 %% Before you call CreateMicrosoftAD, ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the CreateMicrosoftAD
 %% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference.
+%% Conditions Reference:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 create_microsoft_ad(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_microsoft_ad(Client, Input, []).
@@ -364,7 +372,8 @@ delete_conditional_forwarder(Client, Input, Options)
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `DeleteDirectory'
 %% operation, see Directory Service API Permissions: Actions, Resources, and
-%% Conditions Reference.
+%% Conditions Reference:
+%% http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_directory(Client, Input, []).
@@ -769,7 +778,9 @@ remove_tags_from_resource(Client, Input, Options)
 %% you created your directory. For example, you cannot reset the password for
 %% a user in the Amazon Web Services Reserved OU. For more information about
 %% the OU structure for an Managed Microsoft AD directory, see What Gets
-%% Created in the Directory Service Administration Guide.
+%% Created:
+%% https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html
+%% in the Directory Service Administration Guide.
 %%
 %% </li> </ul>
 reset_user_password(Client, Input)

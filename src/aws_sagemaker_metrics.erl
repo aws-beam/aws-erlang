@@ -7,7 +7,8 @@
 %% Use these APIs to put and retrieve (get) features related to your training
 %% run.
 %%
-%% <ul> <li> BatchPutMetrics
+%% <ul> <li> BatchPutMetrics:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_metrics_BatchPutMetrics.html
 %%
 %% </li> </ul>
 -module(aws_sagemaker_metrics).

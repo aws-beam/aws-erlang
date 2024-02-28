@@ -5,10 +5,13 @@
 %% and authenticate users.
 %%
 %% To authenticate users from third-party identity providers (IdPs) in this
-%% API, you can link IdP users to native user profiles. Learn more about the
-%% authentication and authorization of federated users at Adding user pool
-%% sign-in through a third party and in the User pool federation endpoints
-%% and hosted UI reference.
+%% API, you can link IdP users to native user profiles:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html.
+%% Learn more about the authentication and authorization of federated users
+%% at Adding user pool sign-in through a third party:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html
+%% and in the User pool federation endpoints and hosted UI reference:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html.
 %%
 %% This API reference provides detailed information about API operations and
 %% object types in Amazon Cognito.
@@ -30,36 +33,50 @@
 %% unauthenticated requests to manage, authenticate, or authorize a user.
 %%
 %% </li> </ol> For more information, see Using the Amazon Cognito user pools
-%% API and user pool endpoints in the Amazon Cognito Developer Guide.
+%% API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% With your Amazon Web Services SDK, you can build the logic to support
 %% operational flows in every use case for this API. You can also make direct
-%% REST API requests to Amazon Cognito user pools service endpoints. The
-%% following links can get you started with the `CognitoIdentityProvider'
-%% client in other supported Amazon Web Services SDKs.
+%% REST API requests to Amazon Cognito user pools service endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/cognito_identity.html#cognito_identity_your_user_pools_region.
+%% The following links can get you started with the
+%% `CognitoIdentityProvider' client in other supported Amazon Web
+%% Services SDKs.
 %%
-%% <ul> <li> Amazon Web Services Command Line Interface
+%% <ul> <li> Amazon Web Services Command Line Interface:
+%% https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/index.html#cli-aws-cognito-idp
 %%
-%% </li> <li> Amazon Web Services SDK for .NET
+%% </li> <li> Amazon Web Services SDK for .NET:
+%% https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html
 %%
-%% </li> <li> Amazon Web Services SDK for C++
+%% </li> <li> Amazon Web Services SDK for C++:
+%% https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html
 %%
-%% </li> <li> Amazon Web Services SDK for Go
+%% </li> <li> Amazon Web Services SDK for Go:
+%% https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider
 %%
-%% </li> <li> Amazon Web Services SDK for Java V2
+%% </li> <li> Amazon Web Services SDK for Java V2:
+%% https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html
 %%
-%% </li> <li> Amazon Web Services SDK for JavaScript
+%% </li> <li> Amazon Web Services SDK for JavaScript:
+%% https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html
 %%
-%% </li> <li> Amazon Web Services SDK for PHP V3
+%% </li> <li> Amazon Web Services SDK for PHP V3:
+%% https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html
 %%
-%% </li> <li> Amazon Web Services SDK for Python
+%% </li> <li> Amazon Web Services SDK for Python:
+%% https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html
 %%
-%% </li> <li> Amazon Web Services SDK for Ruby V3
+%% </li> <li> Amazon Web Services SDK for Ruby V3:
+%% https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html
 %%
 %% </li> </ul> To get started with an Amazon Web Services SDK, see Tools to
-%% Build on Amazon Web Services. For example actions and scenarios, see Code
-%% examples for Amazon Cognito Identity Provider using Amazon Web Services
-%% SDKs.
+%% Build on Amazon Web Services: http://aws.amazon.com/developer/tools/. For
+%% example actions and scenarios, see Code examples for Amazon Cognito
+%% Identity Provider using Amazon Web Services SDKs:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/service_code_examples_cognito-identity-provider.html.
 -module(aws_cognito_identity_provider).
 
 -export([add_custom_attributes/2,
@@ -284,9 +301,11 @@
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 add_custom_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_attributes(Client, Input, []).
@@ -307,9 +326,11 @@ add_custom_attributes(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_add_user_to_group(Client, Input, []).
@@ -338,9 +359,11 @@ admin_add_user_to_group(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_confirm_sign_up(Client, Input, []).
@@ -357,17 +380,21 @@ admin_confirm_sign_up(Client, Input, Options)
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% This message is based on a template that you configured in your call to
 %% create or update a user pool. This template includes your custom sign-up
@@ -387,9 +414,11 @@ admin_confirm_sign_up(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
@@ -408,9 +437,11 @@ admin_create_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user(Client, Input, []).
@@ -429,9 +460,11 @@ admin_delete_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user_attributes(Client, Input, []).
@@ -448,7 +481,8 @@ admin_delete_user_attributes(Client, Input, Options)
 %% between that user and an existing user is removed. When the external user
 %% signs in again, and the user is no longer attached to the previously
 %% linked `DestinationUser', the user must create a new user account. See
-%% AdminLinkProviderForUser.
+%% AdminLinkProviderForUser:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html.
 %%
 %% The `ProviderName' must match the value specified when creating an IdP
 %% for the pool.
@@ -480,9 +514,11 @@ admin_delete_user_attributes(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
@@ -502,9 +538,11 @@ admin_disable_provider_for_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_user(Client, Input, []).
@@ -523,9 +561,11 @@ admin_disable_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_enable_user(Client, Input, []).
@@ -542,9 +582,11 @@ admin_enable_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_forget_device(Client, Input, []).
@@ -561,9 +603,11 @@ admin_forget_device(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_device(Client, Input, []).
@@ -583,9 +627,11 @@ admin_get_device(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_user(Client, Input, []).
@@ -599,17 +645,21 @@ admin_get_user(Client, Input, Options)
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -618,9 +668,11 @@ admin_get_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_initiate_auth(Client, Input, []).
@@ -656,9 +708,11 @@ admin_initiate_auth(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_link_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_link_provider_for_user(Client, Input, []).
@@ -675,9 +729,11 @@ admin_link_provider_for_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_devices(Client, Input, []).
@@ -694,9 +750,11 @@ admin_list_devices(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_groups_for_user(Client, Input, []).
@@ -714,9 +772,11 @@ admin_list_groups_for_user(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_list_user_auth_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_user_auth_events(Client, Input, []).
@@ -733,9 +793,11 @@ admin_list_user_auth_events(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_remove_user_from_group(Client, Input, []).
@@ -752,17 +814,21 @@ admin_remove_user_from_group(Client, Input, Options)
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Deactivates a user's password, requiring them to change it. If a user
 %% tries to sign in after the API is called, Amazon Cognito responds with a
@@ -780,9 +846,11 @@ admin_remove_user_from_group(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_reset_user_password(Client, Input, []).
@@ -800,23 +868,28 @@ admin_reset_user_password(Client, Input, Options)
 %% of challenge.
 %%
 %% For more information about custom authentication challenges, see Custom
-%% authentication challenge Lambda triggers.
+%% authentication challenge Lambda triggers:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-challenge.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -825,9 +898,11 @@ admin_reset_user_password(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_respond_to_auth_challenge(Client, Input, []).
@@ -850,9 +925,11 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_mfa_preference(Client, Input, []).
@@ -885,7 +962,8 @@ admin_set_user_mfa_preference(Client, Input, Options)
 %% `UpdateUserAttributes'. As a best security practice and to keep users
 %% in sync with your external IdP, don't set passwords on federated user
 %% profiles. To set up a federated user for native sign-in with a linked
-%% native user, refer to Linking federated users to an existing user profile.
+%% native user, refer to Linking federated users to an existing user profile:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -894,9 +972,11 @@ admin_set_user_mfa_preference(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
@@ -908,7 +988,9 @@ admin_set_user_password(Client, Input, Options)
 %%
 %% You can use it to configure only SMS MFA. You can't use it to
 %% configure time-based one-time password (TOTP) software token MFA. To
-%% configure either type of MFA, use AdminSetUserMFAPreference instead.
+%% configure either type of MFA, use AdminSetUserMFAPreference:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html
+%% instead.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -917,9 +999,11 @@ admin_set_user_password(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
@@ -940,9 +1024,11 @@ admin_set_user_settings(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_auth_event_feedback(Client, Input, []).
@@ -959,9 +1045,11 @@ admin_update_auth_event_feedback(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_device_status(Client, Input, []).
@@ -974,18 +1062,22 @@ admin_update_device_status(Client, Input, Options)
 %% Starting June 1, 2021, US telecom carriers require you to register an
 %% origination phone number before you can send SMS messages to US phone
 %% numbers. If you use SMS text messages in Amazon Cognito, you must register
-%% a phone number with Amazon Pinpoint. Amazon Cognito uses the registered
-%% number automatically. Otherwise, Amazon Cognito users who must receive SMS
-%% messages might not be able to sign up, activate their accounts, or sign
-%% in.
+%% a phone number with Amazon Pinpoint:
+%% https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito uses the
+%% registered number automatically. Otherwise, Amazon Cognito users who must
+%% receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Updates the specified user's attributes, including developer
 %% attributes, as an administrator. Works on any user. To delete an attribute
@@ -1005,9 +1097,11 @@ admin_update_device_status(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_user_attributes(Client, Input, []).
@@ -1024,16 +1118,19 @@ admin_update_user_attributes(Client, Input, Options)
 %% <ul> <li> Amazon Cognito no longer accepts token-authorized user
 %% operations that you authorize with a signed-out user's access tokens.
 %% For more information, see Using the Amazon Cognito user pools API and user
-%% pool endpoints.
+%% pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% Amazon Cognito returns an `Access Token has been revoked' error when
 %% your app attempts to authorize a user pools API request with a revoked
 %% access token that contains the scope `aws.cognito.signin.user.admin'.
 %%
 %% </li> <li> Amazon Cognito no longer accepts a signed-out user's ID
-%% token in a GetId request to an identity pool with
-%% `ServerSideTokenCheck' enabled for its user pool IdP configuration in
-%% CognitoIdentityProvider.
+%% token in a GetId :
+%% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html
+%% request to an identity pool with `ServerSideTokenCheck' enabled for
+%% its user pool IdP configuration in CognitoIdentityProvider:
+%% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html.
 %%
 %% </li> <li> Amazon Cognito no longer accepts a signed-out user's
 %% refresh tokens in refresh requests.
@@ -1048,9 +1145,11 @@ admin_update_user_attributes(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 admin_user_global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_user_global_sign_out(Client, Input, []).
@@ -1067,13 +1166,14 @@ admin_user_global_sign_out(Client, Input, Options)
 %% that you received from Amazon Cognito.
 %%
 %% Amazon Cognito disassociates an existing software token when you verify
-%% the new token in a VerifySoftwareToken API request. If you don't
-%% verify the software token and your user pool doesn't require MFA, the
-%% user can then authenticate with user name and password credentials alone.
-%% If your user pool requires TOTP MFA, Amazon Cognito generates an
-%% `MFA_SETUP' or `SOFTWARE_TOKEN_SETUP' challenge each time your
-%% user signs. Complete setup with `AssociateSoftwareToken' and
-%% `VerifySoftwareToken'.
+%% the new token in a VerifySoftwareToken:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerifySoftwareToken.html
+%% API request. If you don't verify the software token and your user pool
+%% doesn't require MFA, the user can then authenticate with user name and
+%% password credentials alone. If your user pool requires TOTP MFA, Amazon
+%% Cognito generates an `MFA_SETUP' or `SOFTWARE_TOKEN_SETUP'
+%% challenge each time your user signs. Complete setup with
+%% `AssociateSoftwareToken' and `VerifySoftwareToken'.
 %%
 %% After you set up software token MFA for your user, Amazon Cognito
 %% generates a `SOFTWARE_TOKEN_MFA' challenge when they authenticate.
@@ -1084,7 +1184,8 @@ admin_user_global_sign_out(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
@@ -1102,7 +1203,8 @@ associate_software_token(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
@@ -1114,7 +1216,8 @@ change_password(Client, Input, Options)
 %%
 %% This API call is the call that begins device tracking. For more
 %% information about device authentication, see Working with user devices in
-%% your user pool.
+%% your user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -1124,7 +1227,8 @@ change_password(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 confirm_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_device(Client, Input, []).
@@ -1140,7 +1244,8 @@ confirm_device(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 confirm_forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_forgot_password(Client, Input, []).
@@ -1149,8 +1254,9 @@ confirm_forgot_password(Client, Input, Options)
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
 
 %% @doc This public API operation provides a code that Amazon Cognito sent to
-%% your user when they signed up in your user pool via the SignUp API
-%% operation.
+%% your user when they signed up in your user pool via the SignUp:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignUp.html
+%% API operation.
 %%
 %% After your user enters their code, they confirm ownership of the email
 %% address or phone number that they provided, and their user account becomes
@@ -1160,17 +1266,19 @@ confirm_forgot_password(Client, Input, Options)
 %% Local users who signed up in your user pool are the only type of user who
 %% can confirm sign-up with a code. Users who federate through an external
 %% identity provider (IdP) have already been confirmed by their IdP.
-%% Administrator-created users, users created with the AdminCreateUser API
-%% operation, confirm their accounts when they respond to their invitation
-%% email message and choose a password. They do not receive a confirmation
-%% code. Instead, they receive a temporary password.
+%% Administrator-created users, users created with the AdminCreateUser:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminCreateUser.html
+%% API operation, confirm their accounts when they respond to their
+%% invitation email message and choose a password. They do not receive a
+%% confirmation code. Instead, they receive a temporary password.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_sign_up(Client, Input, []).
@@ -1187,9 +1295,11 @@ confirm_sign_up(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
@@ -1207,9 +1317,11 @@ create_group(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_provider(Client, Input, []).
@@ -1227,9 +1339,11 @@ create_identity_provider(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_server(Client, Input, []).
@@ -1246,9 +1360,11 @@ create_resource_server(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_import_job(Client, Input, []).
@@ -1261,18 +1377,22 @@ create_user_import_job(Client, Input, Options)
 %% Starting June 1, 2021, US telecom carriers require you to register an
 %% origination phone number before you can send SMS messages to US phone
 %% numbers. If you use SMS text messages in Amazon Cognito, you must register
-%% a phone number with Amazon Pinpoint. Amazon Cognito uses the registered
-%% number automatically. Otherwise, Amazon Cognito users who must receive SMS
-%% messages might not be able to sign up, activate their accounts, or sign
-%% in.
+%% a phone number with Amazon Pinpoint:
+%% https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito uses the
+%% registered number automatically. Otherwise, Amazon Cognito users who must
+%% receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Creates a new Amazon Cognito user pool and sets the password policy for
 %% the pool.
@@ -1287,9 +1407,11 @@ create_user_import_job(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool(Client, Input, []).
@@ -1300,7 +1422,8 @@ create_user_pool(Client, Input, Options)
 %% @doc Creates the user pool client.
 %%
 %% When you create a new user pool client, token revocation is automatically
-%% activated. For more information about revoking tokens, see RevokeToken.
+%% activated. For more information about revoking tokens, see RevokeToken:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_RevokeToken.html.
 %%
 %% If you don't provide a value for an attribute, Amazon Cognito sets it
 %% to its default value.
@@ -1312,9 +1435,11 @@ create_user_pool(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_client(Client, Input, []).
@@ -1331,9 +1456,11 @@ create_user_pool_client(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 create_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_domain(Client, Input, []).
@@ -1377,7 +1504,8 @@ delete_resource_server(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -1395,7 +1523,8 @@ delete_user(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_attributes(Client, Input, []).
@@ -1469,9 +1598,11 @@ describe_user_import_job(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 describe_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool(Client, Input, []).
@@ -1489,9 +1620,11 @@ describe_user_pool(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 describe_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_client(Client, Input, []).
@@ -1510,7 +1643,8 @@ describe_user_pool_domain(Client, Input, Options)
 %% @doc Forgets the specified device.
 %%
 %% For more information about device authentication, see Working with user
-%% devices in your user pool.
+%% devices in your user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -1520,7 +1654,8 @@ describe_user_pool_domain(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_device(Client, Input, []).
@@ -1534,8 +1669,11 @@ forget_device(Client, Input, Options)
 %% For the `Username' parameter, you can use the username or user alias.
 %% The method used to send the confirmation code is sent according to the
 %% specified AccountRecoverySetting. For more information, see Recovering
-%% User Accounts in the Amazon Cognito Developer Guide. To use the
-%% confirmation code for resetting the password, call ConfirmForgotPassword.
+%% User Accounts:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html
+%% in the Amazon Cognito Developer Guide. To use the confirmation code for
+%% resetting the password, call ConfirmForgotPassword:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html.
 %%
 %% If neither a verified phone number nor a verified email exists, this API
 %% returns `InvalidParameterException'. If your app client has a client
@@ -1547,23 +1685,28 @@ forget_device(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
@@ -1583,7 +1726,8 @@ get_csv_header(Client, Input, Options)
 %% @doc Gets the device.
 %%
 %% For more information about device authentication, see Working with user
-%% devices in your user pool.
+%% devices in your user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -1593,7 +1737,8 @@ get_csv_header(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
@@ -1668,7 +1813,8 @@ get_ui_customization(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
@@ -1690,23 +1836,28 @@ get_user(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 get_user_attribute_verification_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_attribute_verification_code(Client, Input, []).
@@ -1731,16 +1882,19 @@ get_user_pool_mfa_config(Client, Input, Options)
 %% <ul> <li> Amazon Cognito no longer accepts token-authorized user
 %% operations that you authorize with a signed-out user's access tokens.
 %% For more information, see Using the Amazon Cognito user pools API and user
-%% pool endpoints.
+%% pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% Amazon Cognito returns an `Access Token has been revoked' error when
 %% your app attempts to authorize a user pools API request with a revoked
 %% access token that contains the scope `aws.cognito.signin.user.admin'.
 %%
 %% </li> <li> Amazon Cognito no longer accepts a signed-out user's ID
-%% token in a GetId request to an identity pool with
-%% `ServerSideTokenCheck' enabled for its user pool IdP configuration in
-%% CognitoIdentityProvider.
+%% token in a GetId :
+%% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html
+%% request to an identity pool with `ServerSideTokenCheck' enabled for
+%% its user pool IdP configuration in CognitoIdentityProvider:
+%% https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html.
 %%
 %% </li> <li> Amazon Cognito no longer accepts a signed-out user's
 %% refresh tokens in refresh requests.
@@ -1756,7 +1910,8 @@ get_user_pool_mfa_config(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
@@ -1767,30 +1922,36 @@ global_sign_out(Client, Input, Options)
 %% @doc Initiates sign-in for a user in the Amazon Cognito user directory.
 %%
 %% You can't sign in a user with a federated IdP with `InitiateAuth'.
-%% For more information, see Adding user pool sign-in through a third party.
+%% For more information, see Adding user pool sign-in through a third party:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_auth(Client, Input, []).
@@ -1802,7 +1963,8 @@ initiate_auth(Client, Input, Options)
 %% current user.
 %%
 %% For more information about device authentication, see Working with user
-%% devices in your user pool.
+%% devices in your user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -1812,7 +1974,8 @@ initiate_auth(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
@@ -1829,9 +1992,11 @@ list_devices(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -1848,9 +2013,11 @@ list_groups(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_identity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_providers(Client, Input, []).
@@ -1867,9 +2034,11 @@ list_identity_providers(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_resource_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_servers(Client, Input, []).
@@ -1900,9 +2069,11 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_user_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_import_jobs(Client, Input, []).
@@ -1919,9 +2090,11 @@ list_user_import_jobs(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_user_pool_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pool_clients(Client, Input, []).
@@ -1938,9 +2111,11 @@ list_user_pool_clients(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_user_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pools(Client, Input, []).
@@ -1957,9 +2132,11 @@ list_user_pools(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
@@ -1976,9 +2153,11 @@ list_users(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 list_users_in_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users_in_group(Client, Input, []).
@@ -1994,23 +2173,28 @@ list_users_in_group(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 resend_confirmation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_confirmation_code(Client, Input, []).
@@ -2028,30 +2212,36 @@ resend_confirmation_code(Client, Input, Options)
 %% challenge.
 %%
 %% For more information about custom authentication challenges, see Custom
-%% authentication challenge Lambda triggers.
+%% authentication challenge Lambda triggers:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-challenge.html.
 %%
 %% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 %% policies in requests for this API operation. For this operation, you
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_to_auth_challenge(Client, Input, []).
@@ -2070,7 +2260,8 @@ respond_to_auth_challenge(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 revoke_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_token(Client, Input, []).
@@ -2143,7 +2334,8 @@ set_ui_customization(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_mfa_preference(Client, Input, []).
@@ -2157,17 +2349,21 @@ set_user_mfa_preference(Client, Input, Options)
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 set_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_pool_mfa_config(Client, Input, []).
@@ -2179,7 +2375,9 @@ set_user_pool_mfa_config(Client, Input, Options)
 %%
 %% You can use it to configure only SMS MFA. You can't use it to
 %% configure time-based one-time password (TOTP) software token MFA. To
-%% configure either type of MFA, use SetUserMFAPreference instead.
+%% configure either type of MFA, use SetUserMFAPreference:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserMFAPreference.html
+%% instead.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -2189,7 +2387,8 @@ set_user_pool_mfa_config(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
@@ -2205,23 +2404,28 @@ set_user_settings(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign_up(Client, Input, []).
@@ -2293,7 +2497,8 @@ untag_resource(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auth_event_feedback(Client, Input, []).
@@ -2304,7 +2509,8 @@ update_auth_event_feedback(Client, Input, Options)
 %% @doc Updates the device status.
 %%
 %% For more information about device authentication, see Working with user
-%% devices in your user pool.
+%% devices in your user pool:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -2314,7 +2520,8 @@ update_auth_event_feedback(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_status(Client, Input, []).
@@ -2331,9 +2538,11 @@ update_device_status(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
@@ -2350,9 +2559,11 @@ update_group(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_provider(Client, Input, []).
@@ -2374,9 +2585,11 @@ update_identity_provider(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
@@ -2400,23 +2613,28 @@ update_resource_server(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
 %% before you can send SMS messages to US phone numbers. If you use SMS text
 %% messages in Amazon Cognito, you must register a phone number with Amazon
-%% Pinpoint. Amazon Cognito uses the registered number automatically.
-%% Otherwise, Amazon Cognito users who must receive SMS messages might not be
-%% able to sign up, activate their accounts, or sign in.
+%% Pinpoint: https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito
+%% uses the registered number automatically. Otherwise, Amazon Cognito users
+%% who must receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_attributes(Client, Input, []).
@@ -2429,21 +2647,26 @@ update_user_attributes(Client, Input, Options)
 %% Starting June 1, 2021, US telecom carriers require you to register an
 %% origination phone number before you can send SMS messages to US phone
 %% numbers. If you use SMS text messages in Amazon Cognito, you must register
-%% a phone number with Amazon Pinpoint. Amazon Cognito uses the registered
-%% number automatically. Otherwise, Amazon Cognito users who must receive SMS
-%% messages might not be able to sign up, activate their accounts, or sign
-%% in.
+%% a phone number with Amazon Pinpoint:
+%% https://console.aws.amazon.com/pinpoint/home/. Amazon Cognito uses the
+%% registered number automatically. Otherwise, Amazon Cognito users who must
+%% receive SMS messages might not be able to sign up, activate their
+%% accounts, or sign in.
 %%
 %% If you have never used SMS text messages with Amazon Cognito or any other
 %% Amazon Web Service, Amazon Simple Notification Service might place your
-%% account in the SMS sandbox. In sandbox mode , you can send messages only
-%% to verified phone numbers. After you test your app while in the sandbox
-%% environment, you can move out of the sandbox and into production. For more
-%% information, see SMS message settings for Amazon Cognito user pools in the
-%% Amazon Cognito Developer Guide.
+%% account in the SMS sandbox. In sandbox mode:
+%% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html , you can
+%% send messages only to verified phone numbers. After you test your app
+%% while in the sandbox environment, you can move out of the sandbox and into
+%% production. For more information, see SMS message settings for Amazon
+%% Cognito user pools:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
+%% in the Amazon Cognito Developer Guide.
 %%
 %% Updates the specified user pool with the specified attributes. You can get
-%% a list of the current user pool settings using DescribeUserPool.
+%% a list of the current user pool settings using DescribeUserPool:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html.
 %%
 %% If you don't provide a value for an attribute, Amazon Cognito sets it
 %% to its default value.
@@ -2455,9 +2678,11 @@ update_user_attributes(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
@@ -2469,13 +2694,15 @@ update_user_pool(Client, Input, Options)
 %% attributes.
 %%
 %% You can get a list of the current user pool app client settings using
-%% DescribeUserPoolClient.
+%% DescribeUserPoolClient:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html.
 %%
 %% If you don't provide a value for an attribute, Amazon Cognito sets it
 %% to its default value.
 %%
 %% You can also use this operation to enable token revocation for user pool
-%% clients. For more information about revoking tokens, see RevokeToken.
+%% clients. For more information about revoking tokens, see RevokeToken:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_RevokeToken.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -2484,9 +2711,11 @@ update_user_pool(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
@@ -2523,7 +2752,8 @@ update_user_pool_client(Client, Input, Options)
 %% distribute your new certificate to your custom domain.
 %%
 %% For more information about adding a custom domain to your user pool, see
-%% Using Your Own Domain for the Hosted UI.
+%% Using Your Own Domain for the Hosted UI:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
 %% requests for this API operation. For this operation, you must use IAM
@@ -2532,9 +2762,11 @@ update_user_pool_client(Client, Input, Options)
 %%
 %% == Learn more ==
 %%
-%% Signing Amazon Web Services API Requests
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
 %%
-%% Using the Amazon Cognito user pools API and user pool endpoints
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
 update_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_domain(Client, Input, []).
@@ -2553,7 +2785,8 @@ update_user_pool_domain(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 verify_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_software_token(Client, Input, []).
@@ -2565,7 +2798,8 @@ verify_software_token(Client, Input, Options)
 %%
 %% If your user pool requires verification before Amazon Cognito updates the
 %% attribute value, VerifyUserAttribute updates the affected attribute to its
-%% pending value. For more information, see UserAttributeUpdateSettingsType.
+%% pending value. For more information, see UserAttributeUpdateSettingsType:
+%% https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserAttributeUpdateSettingsType.html.
 %%
 %% Authorize this action with a signed-in user's access token. It must
 %% include the scope `aws.cognito.signin.user.admin'.
@@ -2575,7 +2809,8 @@ verify_software_token(Client, Input, Options)
 %% can't use IAM credentials to authorize requests, and you can't
 %% grant IAM permissions in policies. For more information about
 %% authorization models in Amazon Cognito, see Using the Amazon Cognito user
-%% pools API and user pool endpoints.
+%% pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
 verify_user_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_user_attribute(Client, Input, []).
