@@ -108,7 +108,8 @@
 %% `AnalyzeDocument' is a synchronous operation. To analyze documents
 %% asynchronously, use `StartDocumentAnalysis'.
 %%
-%% For more information, see Document Text Analysis.
+%% For more information, see Document Text Analysis:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
 analyze_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_document(Client, Input, []).
@@ -215,7 +216,8 @@ delete_adapter_version(Client, Input, Options)
 %% `DetectDocumentText' is a synchronous operation. To analyze documents
 %% asynchronously, use `StartDocumentTextDetection'.
 %%
-%% For more information, see Document Text Detection.
+%% For more information, see Document Text Detection:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
 detect_document_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_document_text(Client, Input, []).
@@ -301,7 +303,8 @@ get_adapter_version(Client, Input, Options)
 %% `NextToken' request parameter with the token value that's returned
 %% from the previous call to `GetDocumentAnalysis'.
 %%
-%% For more information, see Document Text Analysis.
+%% For more information, see Document Text Analysis:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
 get_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_analysis(Client, Input, []).
@@ -342,7 +345,8 @@ get_document_analysis(Client, Input, Options)
 %% `NextToken' request parameter with the token value that's returned
 %% from the previous call to `GetDocumentTextDetection'.
 %%
-%% For more information, see Document Text Detection.
+%% For more information, see Document Text Detection:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
 get_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_text_detection(Client, Input, []).
@@ -375,7 +379,8 @@ get_document_text_detection(Client, Input, Options)
 %% `NextToken' request parameter with the token value that's returned
 %% from the previous call to `GetExpenseAnalysis'.
 %%
-%% For more information, see Analyzing Invoices and Receipts.
+%% For more information, see Analyzing Invoices and Receipts:
+%% https://docs.aws.amazon.com/textract/latest/dg/invoices-receipts.html.
 get_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_expense_analysis(Client, Input, []).
@@ -474,7 +479,8 @@ list_tags_for_resource(Client, Input, Options)
 %% the job identifier (`JobId') from the initial call to
 %% `StartDocumentAnalysis'.
 %%
-%% For more information, see Document Text Analysis.
+%% For more information, see Document Text Analysis:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
 start_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_analysis(Client, Input, []).
@@ -502,7 +508,8 @@ start_document_analysis(Client, Input, Options)
 %% pass the job identifier (`JobId') from the initial call to
 %% `StartDocumentTextDetection'.
 %%
-%% For more information, see Document Text Detection.
+%% For more information, see Document Text Detection:
+%% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
 start_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_text_detection(Client, Input, []).
@@ -529,7 +536,8 @@ start_document_text_detection(Client, Input, Options)
 %% and pass the job identifier (`JobId') that was returned by your call
 %% to `StartExpenseAnalysis'.
 %%
-%% For more information, see Analyzing Invoices and Receipts.
+%% For more information, see Analyzing Invoices and Receipts:
+%% https://docs.aws.amazon.com/textract/latest/dg/invoice-receipts.html.
 start_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_expense_analysis(Client, Input, []).

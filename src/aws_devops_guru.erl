@@ -10,7 +10,8 @@
 %% behavior is detected, DevOps Guru creates an insight that includes
 %% recommendations, related events, and related metrics that can help you
 %% improve your operational applications. For more information, see What is
-%% Amazon DevOps Guru.
+%% Amazon DevOps Guru:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html.
 %%
 %% You can specify 1 or 2 Amazon Simple Notification Service topics so you
 %% are notified every time a new insight is created. You can also enable
@@ -18,8 +19,10 @@
 %% for each insight to help you manage and track your work addressing
 %% insights.
 %%
-%% To learn about the DevOps Guru workflow, see How DevOps Guru works. To
-%% learn about DevOps Guru concepts, see Concepts in DevOps Guru.
+%% To learn about the DevOps Guru workflow, see How DevOps Guru works:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html#how-it-works.
+%% To learn about DevOps Guru concepts, see Concepts in DevOps Guru:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/concepts.html.
 -module(aws_devops_guru).
 
 -export([add_notification_channel/2,
@@ -107,12 +110,14 @@
 %% policy to it that grants DevOps Guru permission to send it notifications.
 %% DevOps Guru adds the required policy on your behalf to send notifications
 %% using Amazon SNS in your account. DevOps Guru only supports standard SNS
-%% topics. For more information, see Permissions for Amazon SNS topics.
+%% topics. For more information, see Permissions for Amazon SNS topics:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-required-permissions.html.
 %%
 %% If you use an Amazon SNS topic that is encrypted by an Amazon Web Services
 %% Key Management Service customer-managed key (CMK), then you must add
 %% permissions to the CMK. For more information, see Permissions for Amazon
-%% Web Services KMS–encrypted Amazon SNS topics.
+%% Web Services KMS–encrypted Amazon SNS topics:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-kms-permissions.html.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
 add_notification_channel(Client, Input0, Options0) ->
@@ -463,8 +468,10 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns an estimate of the monthly cost for DevOps Guru to analyze
 %% your Amazon Web Services resources.
 %%
-%% For more information, see Estimate your Amazon DevOps Guru costs and
-%% Amazon DevOps Guru pricing.
+%% For more information, see Estimate your Amazon DevOps Guru costs:
+%% https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html
+%% and Amazon DevOps Guru pricing:
+%% http://aws.amazon.com/devops-guru/pricing/.
 get_cost_estimation(Client)
   when is_map(Client) ->
     get_cost_estimation(Client, #{}, #{}).

@@ -84,17 +84,23 @@
 %% account to the currentAmazon Web Services account.
 %%
 %% You initiate a transfer between Amazon Web Services accounts using
-%% TransferDomainToAnotherAwsAccount.
+%% TransferDomainToAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
 %% If you use the CLI command at
-%% accept-domain-transfer-from-another-aws-account, use JSON format as input
-%% instead of text because otherwise CLI will throw an error from domain
-%% transfer input that includes single quotes.
+%% accept-domain-transfer-from-another-aws-account:
+%% https://docs.aws.amazon.com/cli/latest/reference/route53domains/accept-domain-transfer-from-another-aws-account.html,
+%% use JSON format as input instead of text because otherwise CLI will throw
+%% an error from domain transfer input that includes single quotes.
 %%
-%% Use either ListOperations or GetOperationDetail to determine whether the
-%% operation succeeded. GetOperationDetail provides additional information,
-%% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled'.
+%% Use either ListOperations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
+%% or GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to determine whether the operation succeeded. GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% provides additional information, for example, `Domain Transfer from Aws
+%% Account 111122223333 has been cancelled'.
 accept_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -109,7 +115,9 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
 %% your DNS records. This action may render your domain name unavailable on
 %% the internet if the steps are completed in the wrong order, or with
 %% incorrect timing. For more information about DNSSEC signing, see
-%% Configuring DNSSEC signing in the Route 53 developer guide.
+%% Configuring DNSSEC signing:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html
+%% in the Route 53 developer guide.
 associate_delegation_signer_to_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegation_signer_to_domain(Client, Input, []).
@@ -121,15 +129,21 @@ associate_delegation_signer_to_domain(Client, Input, Options)
 %% account to another Amazon Web Services account.
 %%
 %% You initiate a transfer betweenAmazon Web Services accounts using
-%% TransferDomainToAnotherAwsAccount.
+%% TransferDomainToAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
 %% You must cancel the transfer before the other Amazon Web Services account
-%% accepts the transfer using AcceptDomainTransferFromAnotherAwsAccount.
+%% accepts the transfer using AcceptDomainTransferFromAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html.
 %%
-%% Use either ListOperations or GetOperationDetail to determine whether the
-%% operation succeeded. GetOperationDetail provides additional information,
-%% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled'.
+%% Use either ListOperations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
+%% or GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to determine whether the operation succeeded. GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% provides additional information, for example, `Domain Transfer from Aws
+%% Account 111122223333 has been cancelled'.
 cancel_domain_transfer_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_domain_transfer_to_another_aws_account(Client, Input, []).
@@ -159,7 +173,8 @@ check_domain_transferability(Client, Input, Options)
 %% @doc This operation deletes the specified domain.
 %%
 %% This action is permanent. For more information, see Deleting a domain name
-%% registration.
+%% registration:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-delete.html.
 %%
 %% To transfer the domain registration to another registrar, use the transfer
 %% process that’s provided by the registrar to which you want to transfer the
@@ -237,9 +252,11 @@ disassociate_delegation_signer_from_domain(Client, Input, Options)
 %%
 %% The period during which you can renew a domain name varies by TLD. For a
 %% list of TLDs and their renewal policies, see Domains That You Can Register
-%% with Amazon Route 53 in the Amazon Route 53 Developer Guide. Route 53
-%% requires that you renew before the end of the renewal period so we can
-%% complete processing before the deadline.
+%% with Amazon Route 53:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html
+%% in the Amazon Route 53 Developer Guide. Route 53 requires that you renew
+%% before the end of the renewal period so we can complete processing before
+%% the deadline.
 enable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_auto_renew(Client, Input, []).
@@ -404,7 +421,8 @@ push_domain(Client, Input, Options)
 %% is not completed successfully, the domain registrant is notified by email.
 %%
 %% </li> <li> Charges your Amazon Web Services account an amount based on the
-%% top-level domain. For more information, see Amazon Route 53 Pricing.
+%% top-level domain. For more information, see Amazon Route 53 Pricing:
+%% http://aws.amazon.com/route53/pricing/.
 %%
 %% </li> </ul>
 register_domain(Client, Input)
@@ -418,12 +436,17 @@ register_domain(Client, Input, Options)
 %% account to the current Amazon Web Services account.
 %%
 %% You initiate a transfer betweenAmazon Web Services accounts using
-%% TransferDomainToAnotherAwsAccount.
+%% TransferDomainToAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
-%% Use either ListOperations or GetOperationDetail to determine whether the
-%% operation succeeded. GetOperationDetail provides additional information,
-%% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled'.
+%% Use either ListOperations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
+%% or GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to determine whether the operation succeeded. GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% provides additional information, for example, `Domain Transfer from Aws
+%% Account 111122223333 has been cancelled'.
 reject_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_domain_transfer_from_another_aws_account(Client, Input, []).
@@ -440,7 +463,9 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 %% expiration date. Some TLD registries delete domains before the expiration
 %% date if you haven't renewed far enough in advance. For more
 %% information about renewing domain registration, see Renewing Registration
-%% for a Domain in the Amazon Route 53 Developer Guide.
+%% for a Domain:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html
+%% in the Amazon Route 53 Developer Guide.
 renew_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_domain(Client, Input, []).
@@ -484,21 +509,26 @@ retrieve_domain_auth_code(Client, Input, Options)
 %%
 %% <ul> <li> For transfer requirements, a detailed procedure, and information
 %% about viewing the status of a domain that you're transferring to Route
-%% 53, see Transferring Registration for a Domain to Amazon Route 53 in the
-%% Amazon Route 53 Developer Guide.
+%% 53, see Transferring Registration for a Domain to Amazon Route 53:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% </li> <li> For information about how to transfer a domain from one Amazon
-%% Web Services account to another, see TransferDomainToAnotherAwsAccount.
+%% Web Services account to another, see TransferDomainToAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html.
 %%
 %% </li> <li> For information about how to transfer a domain to another
 %% domain registrar, see Transferring a Domain from Amazon Route 53 to
-%% Another Registrar in the Amazon Route 53 Developer Guide.
+%% Another Registrar:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% </li> </ul> During the transfer of any country code top-level domains
 %% (ccTLDs) to Route 53, except for .cc and .tv, updates to the owner contact
 %% are ignored and the owner contact data from the registry is used. You can
 %% update the owner contact after the transfer is complete. For more
-%% information, see UpdateDomainContact.
+%% information, see UpdateDomainContact:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainContact.html.
 %%
 %% If the registrar for your domain is also the DNS service provider for the
 %% domain, we highly recommend that you transfer your DNS service to Route 53
@@ -532,13 +562,16 @@ transfer_domain(Client, Input, Options)
 %% <ul> <li> The Amazon Web Services account that you're transferring the
 %% domain to must accept the transfer. If the other account doesn't
 %% accept the transfer within 3 days, we cancel the transfer. See
-%% AcceptDomainTransferFromAnotherAwsAccount.
+%% AcceptDomainTransferFromAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html.
 %%
 %% </li> <li> You can cancel the transfer before the other account accepts
-%% it. See CancelDomainTransferToAnotherAwsAccount.
+%% it. See CancelDomainTransferToAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_CancelDomainTransferToAnotherAwsAccount.html.
 %%
 %% </li> <li> The other account can reject the transfer. See
-%% RejectDomainTransferFromAnotherAwsAccount.
+%% RejectDomainTransferFromAnotherAwsAccount:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html.
 %%
 %% </li> </ul> When you transfer a domain from one Amazon Web Services
 %% account to another, Route 53 doesn't transfer the hosted zone that is
@@ -546,13 +579,18 @@ transfer_domain(Client, Input, Options)
 %% domain and the hosted zone are owned by separate accounts, so transferring
 %% the hosted zone is optional. For information about transferring the hosted
 %% zone to another Amazon Web Services account, see Migrating a Hosted Zone
-%% to a Different Amazon Web Services Account in the Amazon Route 53
-%% Developer Guide.
+%% to a Different Amazon Web Services Account:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html
+%% in the Amazon Route 53 Developer Guide.
 %%
-%% Use either ListOperations or GetOperationDetail to determine whether the
-%% operation succeeded. GetOperationDetail provides additional information,
-%% for example, `Domain Transfer from Aws Account 111122223333 has been
-%% cancelled'.
+%% Use either ListOperations:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html
+%% or GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to determine whether the operation succeeded. GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% provides additional information, for example, `Domain Transfer from Aws
+%% Account 111122223333 has been cancelled'.
 transfer_domain_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain_to_another_aws_account(Client, Input, []).
@@ -591,9 +629,11 @@ update_domain_contact(Client, Input, Options)
 %% This operation affects only the contact information for the specified
 %% contact type (administrative, registrant, or technical). If the request
 %% succeeds, Amazon Route 53 returns an operation ID that you can use with
-%% GetOperationDetail to track the progress and completion of the action. If
-%% the request doesn't complete successfully, the domain registrant will
-%% be notified by email.
+%% GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to track the progress and completion of the action. If the request
+%% doesn't complete successfully, the domain registrant will be notified
+%% by email.
 %%
 %% By disabling the privacy service via API, you consent to the publication
 %% of the contact information provided for this domain via the public WHOIS

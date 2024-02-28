@@ -34,21 +34,27 @@
 %%
 %% Amazon RDS API Reference
 %%
-%% <ul> <li> For the alphabetical list of API actions, see API Actions.
+%% <ul> <li> For the alphabetical list of API actions, see API Actions:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html.
 %%
-%% </li> <li> For the alphabetical list of data types, see Data Types.
+%% </li> <li> For the alphabetical list of data types, see Data Types:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html.
 %%
-%% </li> <li> For a list of common query parameters, see Common Parameters.
+%% </li> <li> For a list of common query parameters, see Common Parameters:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html.
 %%
-%% </li> <li> For descriptions of the error codes, see Common Errors.
+%% </li> <li> For descriptions of the error codes, see Common Errors:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html.
 %%
 %% </li> </ul> Amazon RDS User Guide
 %%
 %% <ul> <li> For a summary of the Amazon RDS interfaces, see Available RDS
-%% Interfaces.
+%% Interfaces:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces.
 %%
 %% </li> <li> For more information about how to use the Query API, see Using
-%% the Query API.
+%% the Query API:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html.
 %%
 %% </li> </ul>
 -module(aws_rds).
@@ -421,7 +427,8 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% an IAM policy for Amazon RDS.
 %%
 %% For an overview on tagging Amazon RDS resources, see Tagging Amazon RDS
-%% Resources.
+%% Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -453,14 +460,19 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% authorize ingress from a VPC security group in one VPC to an Amazon RDS DB
 %% instance in another.
 %%
-%% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+%% For an overview of CIDR ranges, go to the Wikipedia Tutorial:
+%% http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing.
 %%
 %% EC2-Classic was retired on August 15, 2022. If you haven't migrated
 %% from EC2-Classic to a VPC, we recommend that you migrate as soon as
-%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% possible. For more information, see Migrate from EC2-Classic to a VPC:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html in
 %% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
-%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
-%% the Amazon RDS User Guide.
+%% Here’s How to Prepare:
+%% http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/,
+%% and Moving a DB instance not in a VPC into a VPC:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
+%% in the Amazon RDS User Guide.
 authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_db_security_group_ingress(Client, Input, []).
@@ -472,7 +484,9 @@ authorize_db_security_group_ingress(Client, Input, Options)
 %% cluster.
 %%
 %% For more information on backtracking, see Backtracking an Aurora DB
-%% Cluster in the Amazon Aurora User Guide.
+%% Cluster:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This action applies only to Aurora MySQL DB clusters.
 backtrack_db_cluster(Client, Input)
@@ -540,13 +554,19 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% For more information on copying encrypted Amazon Aurora DB cluster
 %% snapshots from one Amazon Web Services Region to another, see Copying a
-%% Snapshot in the Amazon Aurora User Guide.
+%% Snapshot:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -577,8 +597,9 @@ copy_db_parameter_group(Client, Input, Options)
 %%
 %% This command doesn't apply to RDS Custom.
 %%
-%% For more information about copying snapshots, see Copying a DB Snapshot in
-%% the Amazon RDS User Guide.
+%% For more information about copying snapshots, see Copying a DB Snapshot:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot
+%% in the Amazon RDS User Guide.
 copy_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_snapshot(Client, Input, []).
@@ -611,9 +632,12 @@ copy_option_group(Client, Input, Options)
 %% switchover typically takes under a minute.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
-%% database updates in the Amazon RDS User Guide and Using Amazon RDS
-%% Blue/Green Deployments for database updates in the Amazon Aurora User
-%% Guide.
+%% database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
+%% in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments
+%% for database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
+%% in the Amazon Aurora User Guide.
 create_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_blue_green_deployment(Client, Input, []).
@@ -633,19 +657,25 @@ create_custom_db_engine_version(Client, Input, Options)
 %%
 %% If you create an Aurora DB cluster, the request creates an empty cluster.
 %% You must explicitly create the writer instance for your DB cluster using
-%% the CreateDBInstance operation. If you create a Multi-AZ DB cluster, the
-%% request creates a writer and two reader DB instances for you, each in a
-%% different Availability Zone.
+%% the CreateDBInstance:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html
+%% operation. If you create a Multi-AZ DB cluster, the request creates a
+%% writer and two reader DB instances for you, each in a different
+%% Availability Zone.
 %%
 %% You can use the `ReplicationSourceIdentifier' parameter to create an
 %% Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon
 %% RDS for MySQL or PostgreSQL DB instance. For more information about Amazon
-%% Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide.
+%% Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% You can also use the `ReplicationSourceIdentifier' parameter to create
 %% a Multi-AZ DB cluster read replica with an RDS for MySQL or PostgreSQL DB
 %% instance as the source. For more information about Multi-AZ DB clusters,
-%% see Multi-AZ DB cluster deployments in the Amazon RDS User Guide.
+%% see Multi-AZ DB cluster deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -692,15 +722,18 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% parameters that are critical when creating the default database for a DB
 %% cluster, such as the character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the `DescribeDBClusterParameters'
-%% operation to verify that your DB cluster parameter group has been created
-%% or modified.
+%% option of the Amazon RDS console: https://console.aws.amazon.com/rds/ or
+%% the `DescribeDBClusterParameters' operation to verify that your DB
+%% cluster parameter group has been created or modified.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -710,11 +743,14 @@ create_db_cluster_parameter_group(Client, Input, Options)
 
 %% @doc Creates a snapshot of a DB cluster.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
@@ -729,10 +765,14 @@ create_db_cluster_snapshot(Client, Input, Options)
 %% operation multiple times to add more than one DB instance to the cluster.
 %%
 %% For more information about creating an RDS DB instance, see Creating an
-%% Amazon RDS DB instance in the Amazon RDS User Guide.
+%% Amazon RDS DB instance:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html
+%% in the Amazon RDS User Guide.
 %%
 %% For more information about creating a DB instance in an Aurora DB cluster,
-%% see Creating an Amazon Aurora DB cluster in the Amazon Aurora User Guide.
+%% see Creating an Amazon Aurora DB cluster:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html
+%% in the Amazon Aurora User Guide.
 create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
@@ -746,9 +786,12 @@ create_db_instance(Client, Input, Options)
 %% You can create a read replica for a DB instance running Db2, MariaDB,
 %% MySQL, Oracle, PostgreSQL, or SQL Server. You can create a read replica
 %% for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more
-%% information, see Working with read replicas and Migrating from a Multi-AZ
-%% DB cluster to a DB instance using a read replica in the Amazon RDS User
-%% Guide.
+%% information, see Working with read replicas:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
+%% and Migrating from a Multi-AZ DB cluster to a DB instance using a read
+%% replica:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica
+%% in the Amazon RDS User Guide.
 %%
 %% Amazon Aurora doesn't support this operation. To create a DB instance
 %% for an Aurora DB cluster, use the `CreateDBInstance' operation.
@@ -786,8 +829,9 @@ create_db_instance_read_replica(Client, Input, Options)
 %% critical when creating the default database for a DB instance, such as the
 %% character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the DescribeDBParameters command to
-%% verify that your DB parameter group has been created or modified.
+%% option of the Amazon RDS console: https://console.aws.amazon.com/rds/ or
+%% the DescribeDBParameters command to verify that your DB parameter group
+%% has been created or modified.
 create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_parameter_group(Client, Input, []).
@@ -825,10 +869,14 @@ create_db_proxy_endpoint(Client, Input, Options)
 %%
 %% EC2-Classic was retired on August 15, 2022. If you haven't migrated
 %% from EC2-Classic to a VPC, we recommend that you migrate as soon as
-%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% possible. For more information, see Migrate from EC2-Classic to a VPC:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html in
 %% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
-%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
-%% the Amazon RDS User Guide.
+%% Here’s How to Prepare:
+%% http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/,
+%% and Moving a DB instance not in a VPC into a VPC:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
+%% in the Amazon RDS User Guide.
 create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_security_group(Client, Input, []).
@@ -895,11 +943,14 @@ create_db_subnet_group(Client, Input, Options)
 %% from all RDS sources belonging to your customer account.
 %%
 %% For more information about subscribing to an event for RDS DB engines, see
-%% Subscribing to Amazon RDS event notification in the Amazon RDS User Guide.
+%% Subscribing to Amazon RDS event notification:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Subscribing.html
+%% in the Amazon RDS User Guide.
 %%
 %% For more information about subscribing to an event for Aurora DB engines,
-%% see Subscribing to Amazon RDS event notification in the Amazon Aurora User
-%% Guide.
+%% see Subscribing to Amazon RDS event notification:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Subscribing.html
+%% in the Amazon Aurora User Guide.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -962,9 +1013,12 @@ create_tenant_database(Client, Input, Options)
 %% @doc Deletes a blue/green deployment.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
-%% database updates in the Amazon RDS User Guide and Using Amazon RDS
-%% Blue/Green Deployments for database updates in the Amazon Aurora User
-%% Guide.
+%% database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
+%% in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments
+%% for database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
+%% in the Amazon Aurora User Guide.
 delete_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_blue_green_deployment(Client, Input, []).
@@ -993,7 +1047,9 @@ delete_blue_green_deployment(Client, Input, Options)
 %% These calls originate from the MediaImport service for the
 %% `DeleteCustomDbEngineVersion' event.
 %%
-%% For more information, see Deleting a CEV in the Amazon RDS User Guide.
+%% For more information, see Deleting a CEV:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.delete
+%% in the Amazon RDS User Guide.
 delete_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_db_engine_version(Client, Input, []).
@@ -1012,11 +1068,14 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% cluster members are terminated and read replicas are promoted to
 %% standalone instances.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -1050,11 +1109,14 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %% The DB cluster parameter group to be deleted can't be associated with
 %% any DB clusters.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -1069,11 +1131,14 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %% The DB cluster snapshot must be in the `available' state to be
 %% deleted.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -1173,10 +1238,14 @@ delete_db_proxy_endpoint(Client, Input, Options)
 %%
 %% EC2-Classic was retired on August 15, 2022. If you haven't migrated
 %% from EC2-Classic to a VPC, we recommend that you migrate as soon as
-%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% possible. For more information, see Migrate from EC2-Classic to a VPC:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html in
 %% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
-%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
-%% the Amazon RDS User Guide.
+%% Here’s How to Prepare:
+%% http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/,
+%% and Moving a DB instance not in a VPC into a VPC:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
+%% in the Amazon RDS User Guide.
 delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_security_group(Client, Input, []).
@@ -1293,9 +1362,12 @@ describe_account_attributes(Client, Input, Options)
 %% @doc Describes one or more blue/green deployments.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
-%% database updates in the Amazon RDS User Guide and Using Amazon RDS
-%% Blue/Green Deployments for database updates in the Amazon Aurora User
-%% Guide.
+%% database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
+%% in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments
+%% for database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
+%% in the Amazon Aurora User Guide.
 describe_blue_green_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_blue_green_deployments(Client, Input, []).
@@ -1307,8 +1379,12 @@ describe_blue_green_deployments(Client, Input, Options)
 %% Amazon RDS for this Amazon Web Services account.
 %%
 %% For more information, see Using SSL/TLS to encrypt a connection to a DB
-%% instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
-%% connection to a DB cluster in the Amazon Aurora User Guide.
+%% instance:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html
+%% in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to
+%% a DB cluster:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html
+%% in the Amazon Aurora User Guide.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -1333,8 +1409,9 @@ describe_db_cluster_automated_backups(Client, Input, Options)
 
 %% @doc Returns information about backtracks for a DB cluster.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
 describe_db_cluster_backtracks(Client, Input)
@@ -1360,11 +1437,14 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% will contain only the description of the specified DB cluster parameter
 %% group.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -1375,11 +1455,14 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% @doc Returns the detailed parameter list for a particular DB cluster
 %% parameter group.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -1414,10 +1497,14 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %% This API action supports pagination.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
@@ -1431,10 +1518,14 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %% This API supports pagination.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
@@ -1563,10 +1654,14 @@ describe_db_recommendations(Client, Input, Options)
 %%
 %% EC2-Classic was retired on August 15, 2022. If you haven't migrated
 %% from EC2-Classic to a VPC, we recommend that you migrate as soon as
-%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% possible. For more information, see Migrate from EC2-Classic to a VPC:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html in
 %% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
-%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
-%% the Amazon RDS User Guide.
+%% Here’s How to Prepare:
+%% http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/,
+%% and Moving a DB instance not in a VPC into a VPC:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
+%% in the Amazon RDS User Guide.
 describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_security_groups(Client, Input, []).
@@ -1635,7 +1730,8 @@ describe_db_snapshots(Client, Input, Options)
 %% If a DBSubnetGroupName is specified, the list will contain only the
 %% descriptions of the specified DBSubnetGroup.
 %%
-%% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+%% For an overview of CIDR ranges, go to the Wikipedia Tutorial:
+%% http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing.
 describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
@@ -1646,8 +1742,9 @@ describe_db_subnet_groups(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% cluster database engine.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
@@ -1668,8 +1765,10 @@ describe_engine_default_parameters(Client, Input, Options)
 %% specified, for a specified source type.
 %%
 %% You can also see this list in the &quot;Amazon RDS event categories and
-%% event messages&quot; section of the Amazon RDS User Guide or the Amazon
-%% Aurora User Guide .
+%% event messages&quot; section of the Amazon RDS User Guide :
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
+%% or the Amazon Aurora User Guide :
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -1701,8 +1800,11 @@ describe_event_subscriptions(Client, Input, Options)
 %% Proxy can be obtained by providing the name as a parameter.
 %%
 %% For more information on working with events, see Monitoring Amazon RDS
-%% events in the Amazon RDS User Guide and Monitoring Amazon Aurora events in
-%% the Amazon Aurora User Guide.
+%% events:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/working-with-events.html
+%% in the Amazon RDS User Guide and Monitoring Amazon Aurora events:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/working-with-events.html
+%% in the Amazon Aurora User Guide.
 %%
 %% By default, RDS returns events that were generated in the past hour.
 describe_events(Client, Input)
@@ -1726,8 +1828,9 @@ describe_export_tasks(Client, Input, Options)
 %%
 %% This API supports pagination.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
 describe_global_clusters(Client, Input)
@@ -1806,7 +1909,9 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
 %%
 %% To return information about the Regions that are enabled for your account,
 %% or all Regions, use the EC2 operation `DescribeRegions'. For more
-%% information, see DescribeRegions in the Amazon EC2 API Reference.
+%% information, see DescribeRegions:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html
+%% in the Amazon EC2 API Reference.
 describe_source_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_source_regions(Client, Input, []).
@@ -1842,8 +1947,9 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 %%
 %% Disabling this endpoint disables RDS Data API.
 %%
-%% For more information, see Using RDS Data API in the Amazon Aurora User
-%% Guide.
+%% For more information, see Using RDS Data API:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation applies only to Aurora PostgreSQL Serverless v2 and
 %% provisioned DB clusters. To disable the HTTP endpoint for Aurora
@@ -1875,8 +1981,9 @@ download_db_log_file_portion(Client, Input, Options)
 %% Data API) for running SQL queries on the Aurora DB cluster. You can also
 %% query your database from inside the RDS console with the RDS query editor.
 %%
-%% For more information, see Using RDS Data API in the Amazon Aurora User
-%% Guide.
+%% For more information, see Using RDS Data API:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation applies only to Aurora PostgreSQL Serverless v2 and
 %% provisioned DB clusters. To enable the HTTP endpoint for Aurora Serverless
@@ -1912,10 +2019,14 @@ enable_http_endpoint(Client, Input, Options)
 %% that use those endpoint addresses when the failover is complete.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
@@ -1959,8 +2070,9 @@ failover_db_cluster(Client, Input, Options)
 %% in a transactionally consistent state.
 %%
 %% For more information about failing over an Amazon Aurora global database,
-%% see Performing managed failovers for Aurora global databases in the Amazon
-%% Aurora User Guide.
+%% see Performing managed failovers for Aurora global databases:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-failover.managed-unplanned
+%% in the Amazon Aurora User Guide.
 %%
 %% </li> <li> Switching over - Use this operation on a healthy global
 %% database cluster for planned events, such as Regional rotation or to fail
@@ -1968,8 +2080,9 @@ failover_db_cluster(Client, Input, Options)
 %% this operation, there is no data loss.
 %%
 %% For more information about switching over an Amazon Aurora global
-%% database, see Performing switchovers for Aurora global databases in the
-%% Amazon Aurora User Guide.
+%% database, see Performing switchovers for Aurora global databases:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover
+%% in the Amazon Aurora User Guide.
 %%
 %% </li> </ul>
 failover_global_cluster(Client, Input)
@@ -1982,7 +2095,9 @@ failover_global_cluster(Client, Input, Options)
 %% @doc Lists all tags on an Amazon RDS resource.
 %%
 %% For an overview on tagging an Amazon RDS resource, see Tagging Amazon RDS
-%% Resources in the Amazon RDS User Guide.
+%% Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
+%% in the Amazon RDS User Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1997,7 +2112,9 @@ list_tags_for_resource(Client, Input, Options)
 %% your activity stream is started and locked, you can unlock it, customize
 %% your audit policy, and then lock your activity stream. Restarting the
 %% activity stream isn't required. For more information, see Modifying a
-%% database activity stream in the Amazon RDS User Guide.
+%% database activity stream:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.Modifying.html
+%% in the Amazon RDS User Guide.
 %%
 %% This operation is supported for RDS for Oracle and Microsoft SQL Server.
 modify_activity_stream(Client, Input)
@@ -2031,12 +2148,14 @@ modify_activity_stream(Client, Input, Options)
 %% additional time to finish your application changes.
 %%
 %% </li> </ul> For more information about rotating your SSL/TLS certificate
-%% for RDS DB engines, see Rotating Your SSL/TLS Certificate in the Amazon
-%% RDS User Guide.
+%% for RDS DB engines, see Rotating Your SSL/TLS Certificate:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html
+%% in the Amazon RDS User Guide.
 %%
 %% For more information about rotating your SSL/TLS certificate for Aurora DB
-%% engines, see Rotating Your SSL/TLS Certificate in the Amazon Aurora User
-%% Guide.
+%% engines, see Rotating Your SSL/TLS Certificate:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
+%% in the Amazon Aurora User Guide.
 modify_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_certificates(Client, Input, []).
@@ -2057,13 +2176,16 @@ modify_certificates(Client, Input, Options)
 %% scaling up and the cooldown period for scaling down.
 %%
 %% For more information about Aurora Serverless v1, see Using Amazon Aurora
-%% Serverless v1 in the Amazon Aurora User Guide.
+%% Serverless v1:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html
+%% in the Amazon Aurora User Guide.
 %%
 %% If you call `ModifyCurrentDBClusterCapacity' with the default
 %% `TimeoutAction', connections that prevent Aurora Serverless v1 from
 %% finding a scaling point might be dropped. For more information about
-%% scaling points, see Autoscaling for Aurora Serverless v1 in the Amazon
-%% Aurora User Guide.
+%% scaling points, see Autoscaling for Aurora Serverless v1:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora Serverless v1 DB clusters.
 modify_current_db_cluster_capacity(Client, Input)
@@ -2085,8 +2207,9 @@ modify_current_db_cluster_capacity(Client, Input, Options)
 %% These calls originate from the MediaImport service for the
 %% `ModifyCustomDbEngineVersion' event.
 %%
-%% For more information, see Modifying CEV status in the Amazon RDS User
-%% Guide.
+%% For more information, see Modifying CEV status:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.modify
+%% in the Amazon RDS User Guide.
 modify_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_custom_db_engine_version(Client, Input, []).
@@ -2101,10 +2224,14 @@ modify_custom_db_engine_version(Client, Input, Options)
 %% new values in the request.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -2137,9 +2264,9 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% parameters that are critical when creating the default database for a DB
 %% cluster, such as the character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the `DescribeDBClusterParameters'
-%% operation to verify that your DB cluster parameter group has been created
-%% or modified.
+%% option of the Amazon RDS console: https://console.aws.amazon.com/rds/ or
+%% the `DescribeDBClusterParameters' operation to verify that your DB
+%% cluster parameter group has been created or modified.
 %%
 %% If the modified DB cluster parameter group is used by an Aurora Serverless
 %% v1 cluster, Aurora applies the update immediately. The cluster restart
@@ -2148,10 +2275,14 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% parameter changes took effect.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -2219,8 +2350,9 @@ modify_db_instance(Client, Input, Options)
 %% critical when creating the default database for a DB instance, such as the
 %% character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon RDS console or the DescribeDBParameters command to
-%% verify that your DB parameter group has been created or modified.
+%% option of the Amazon RDS console: https://console.aws.amazon.com/rds/ or
+%% the DescribeDBParameters command to verify that your DB parameter group
+%% has been created or modified.
 modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_parameter_group(Client, Input, []).
@@ -2334,8 +2466,10 @@ modify_db_subnet_group(Client, Input, Options)
 %% `RemoveSourceIdentifierFromSubscription' calls.
 %%
 %% You can see a list of the event categories for a given source type
-%% (`SourceType') in Events in the Amazon RDS User Guide or by using the
-%% `DescribeEventCategories' operation.
+%% (`SourceType') in Events:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html in
+%% the Amazon RDS User Guide or by using the `DescribeEventCategories'
+%% operation.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -2347,8 +2481,9 @@ modify_event_subscription(Client, Input, Options)
 %%
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. For more information
-%% on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User
-%% Guide.
+%% on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora global database clusters.
 modify_global_cluster(Client, Input)
@@ -2428,7 +2563,9 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %% Use this operation only for a non-Aurora Multi-AZ DB cluster.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 reboot_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_cluster(Client, Input, []).
@@ -2447,8 +2584,9 @@ reboot_db_cluster(Client, Input, Options)
 %% DB instance results in a momentary outage, during which the DB instance
 %% status is set to rebooting.
 %%
-%% For more information about rebooting, see Rebooting a DB Instance in the
-%% Amazon RDS User Guide.
+%% For more information about rebooting, see Rebooting a DB Instance:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html
+%% in the Amazon RDS User Guide.
 %%
 %% This command doesn't apply to RDS Custom.
 %%
@@ -2503,10 +2641,14 @@ remove_from_global_cluster(Client, Input, Options)
 %% Access Management (IAM) role from a DB cluster.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
@@ -2535,7 +2677,9 @@ remove_source_identifier_from_subscription(Client, Input, Options)
 %% @doc Removes metadata tags from an Amazon RDS resource.
 %%
 %% For an overview on tagging an Amazon RDS resource, see Tagging Amazon RDS
-%% Resources in the Amazon RDS User Guide.
+%% Resources:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
+%% in the Amazon RDS User Guide.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -2558,10 +2702,14 @@ remove_tags_from_resource(Client, Input, Options)
 %% cluster that you want the updated static parameter to apply to.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -2591,8 +2739,9 @@ reset_db_parameter_group(Client, Input, Options)
 %%
 %% Amazon RDS must be authorized to access the Amazon S3 bucket and the data
 %% must be created using the Percona XtraBackup utility as described in
-%% Migrating Data from MySQL by Using an Amazon S3 Bucket in the Amazon
-%% Aurora User Guide.
+%% Migrating Data from MySQL by Using an Amazon S3 Bucket:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only restores the DB cluster, not the DB instances for that
 %% DB cluster. You must invoke the `CreateDBInstance' operation to create
@@ -2601,8 +2750,9 @@ reset_db_parameter_group(Client, Input, Options)
 %% instances only after the `RestoreDBClusterFromS3' operation has
 %% completed and the DB cluster is available.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora, see What is Amazon Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters. The source DB engine
 %% must be MySQL.
@@ -2627,10 +2777,14 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% completed and the DB cluster is available.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
@@ -2655,10 +2809,14 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% cluster is available.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
-%% Aurora? in the Amazon Aurora User Guide.
+%% Aurora?:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
-%% deployments in the Amazon RDS User Guide.
+%% deployments:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
+%% in the Amazon RDS User Guide.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
@@ -2704,8 +2862,9 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% You can create a backup of your on-premises database, store it on Amazon
 %% Simple Storage Service (Amazon S3), and then restore the backup file onto
 %% a new Amazon RDS DB instance running MySQL. For more information, see
-%% Importing Data into an Amazon RDS MySQL DB Instance in the Amazon RDS User
-%% Guide.
+%% Importing Data into an Amazon RDS MySQL DB Instance:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html
+%% in the Amazon RDS User Guide.
 %%
 %% This operation doesn't apply to RDS Custom.
 restore_db_instance_from_s3(Client, Input)
@@ -2747,10 +2906,14 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
 %%
 %% EC2-Classic was retired on August 15, 2022. If you haven't migrated
 %% from EC2-Classic to a VPC, we recommend that you migrate as soon as
-%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% possible. For more information, see Migrate from EC2-Classic to a VPC:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html in
 %% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
-%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
-%% the Amazon RDS User Guide.
+%% Here’s How to Prepare:
+%% http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/,
+%% and Moving a DB instance not in a VPC into a VPC:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
+%% in the Amazon RDS User Guide.
 revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_db_security_group_ingress(Client, Input, []).
@@ -2762,8 +2925,12 @@ revoke_db_security_group_ingress(Client, Input, Options)
 %% database.
 %%
 %% For more information, see Monitoring Amazon Aurora with Database Activity
-%% Streams in the Amazon Aurora User Guide or Monitoring Amazon RDS with
-%% Database Activity Streams in the Amazon RDS User Guide.
+%% Streams:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html
+%% in the Amazon Aurora User Guide or Monitoring Amazon RDS with Database
+%% Activity Streams:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
+%% in the Amazon RDS User Guide.
 start_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_activity_stream(Client, Input, []).
@@ -2775,8 +2942,9 @@ start_activity_stream(Client, Input, Options)
 %% Web Services console, the stop-db-cluster CLI command, or the
 %% `StopDBCluster' operation.
 %%
-%% For more information, see Stopping and Starting an Aurora Cluster in the
-%% Amazon Aurora User Guide.
+%% For more information, see Stopping and Starting an Aurora Cluster:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
 start_db_cluster(Client, Input)
@@ -2791,7 +2959,9 @@ start_db_cluster(Client, Input, Options)
 %% `StopDBInstance' operation.
 %%
 %% For more information, see Starting an Amazon RDS DB instance That Was
-%% Previously Stopped in the Amazon RDS User Guide.
+%% Previously Stopped:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html
+%% in the Amazon RDS User Guide.
 %%
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
 %% PostgreSQL. For Aurora DB clusters, use `StartDBCluster' instead.
@@ -2808,7 +2978,9 @@ start_db_instance(Client, Input, Options)
 %% This command doesn't apply to RDS Custom.
 %%
 %% For more information, see Replicating Automated Backups to Another Amazon
-%% Web Services Region in the Amazon RDS User Guide.
+%% Web Services Region:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
+%% in the Amazon RDS User Guide.
 start_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance_automated_backups_replication(Client, Input, []).
@@ -2825,11 +2997,17 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %% You can't export cluster data from Multi-AZ DB clusters.
 %%
 %% For more information on exporting DB snapshot data, see Exporting DB
-%% snapshot data to Amazon S3 in the Amazon RDS User Guide or Exporting DB
-%% cluster snapshot data to Amazon S3 in the Amazon Aurora User Guide.
+%% snapshot data to Amazon S3:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ExportSnapshot.html
+%% in the Amazon RDS User Guide or Exporting DB cluster snapshot data to
+%% Amazon S3:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-export-snapshot.html
+%% in the Amazon Aurora User Guide.
 %%
 %% For more information on exporting DB cluster data, see Exporting DB
-%% cluster data to Amazon S3 in the Amazon Aurora User Guide.
+%% cluster data to Amazon S3:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/export-cluster-data.html
+%% in the Amazon Aurora User Guide.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
@@ -2842,8 +3020,12 @@ start_export_task(Client, Input, Options)
 %% `StartActivityStream' operation.
 %%
 %% For more information, see Monitoring Amazon Aurora with Database Activity
-%% Streams in the Amazon Aurora User Guide or Monitoring Amazon RDS with
-%% Database Activity Streams in the Amazon RDS User Guide.
+%% Streams:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html
+%% in the Amazon Aurora User Guide or Monitoring Amazon RDS with Database
+%% Activity Streams:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
+%% in the Amazon RDS User Guide.
 stop_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_activity_stream(Client, Input, []).
@@ -2857,8 +3039,9 @@ stop_activity_stream(Client, Input, Options)
 %% including its endpoints and DB parameter groups. Aurora also retains the
 %% transaction logs so you can do a point-in-time restore if necessary.
 %%
-%% For more information, see Stopping and Starting an Aurora Cluster in the
-%% Amazon Aurora User Guide.
+%% For more information, see Stopping and Starting an Aurora Cluster:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
 stop_db_cluster(Client, Input)
@@ -2875,7 +3058,8 @@ stop_db_cluster(Client, Input, Options)
 %% membership. Amazon RDS also retains the transaction logs so you can do a
 %% point-in-time restore if necessary.
 %%
-%% For more information, see Stopping an Amazon RDS DB Instance Temporarily
+%% For more information, see Stopping an Amazon RDS DB Instance Temporarily:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html
 %% in the Amazon RDS User Guide.
 %%
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
@@ -2893,7 +3077,9 @@ stop_db_instance(Client, Input, Options)
 %% PostgreSQL.
 %%
 %% For more information, see Replicating Automated Backups to Another Amazon
-%% Web Services Region in the Amazon RDS User Guide.
+%% Web Services Region:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
+%% in the Amazon RDS User Guide.
 stop_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance_automated_backups_replication(Client, Input, []).
@@ -2908,9 +3094,12 @@ stop_db_instance_automated_backups_replication(Client, Input, Options)
 %% to the databases in the green environment.
 %%
 %% For more information, see Using Amazon RDS Blue/Green Deployments for
-%% database updates in the Amazon RDS User Guide and Using Amazon RDS
-%% Blue/Green Deployments for database updates in the Amazon Aurora User
-%% Guide.
+%% database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
+%% in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments
+%% for database updates:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
+%% in the Amazon Aurora User Guide.
 switchover_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_blue_green_deployment(Client, Input, []).
@@ -2932,8 +3121,9 @@ switchover_blue_green_deployment(Client, Input, Options)
 %% database without losing any data. Your database is unavailable for a short
 %% time while the primary and selected secondary clusters are assuming their
 %% new roles. For more information about switching over an Aurora global
-%% database, see Performing switchovers for Amazon Aurora global databases in
-%% the Amazon Aurora User Guide.
+%% database, see Performing switchovers for Amazon Aurora global databases:
+%% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover
+%% in the Amazon Aurora User Guide.
 %%
 %% This operation is intended for controlled environments, for operations
 %% such as &quot;regional rotation&quot; or to fall back to the original

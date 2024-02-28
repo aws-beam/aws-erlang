@@ -15,7 +15,8 @@
 %% business and customers.
 %%
 %% To learn more about Amazon Redshift Serverless, see What is Amazon
-%% Redshift Serverless.
+%% Redshift Serverless:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html.
 -module(aws_redshift_serverless).
 
 -export([convert_recovery_point_to_snapshot/2,
@@ -138,7 +139,8 @@
 %% @doc Converts a recovery point to a snapshot.
 %%
 %% For more information about recovery points and snapshots, see Working with
-%% snapshots and recovery points.
+%% snapshots and recovery points:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
 convert_recovery_point_to_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     convert_recovery_point_to_snapshot(Client, Input, []).
@@ -185,7 +187,8 @@ create_scheduled_action(Client, Input, Options)
 %% @doc Creates a snapshot of all databases in a namespace.
 %%
 %% For more information about snapshots, see Working with snapshots and
-%% recovery points.
+%% recovery points:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -531,7 +534,8 @@ restore_table_from_recovery_point(Client, Input, Options)
 %% instance.
 %%
 %% You can't use this operation to restore tables with interleaved sort
-%% keys.
+%% keys:
+%% https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved.
 restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_snapshot(Client, Input, []).

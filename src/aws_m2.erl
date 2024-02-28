@@ -652,7 +652,8 @@ list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Option
 %% with applications deployed on runtime environments. This is known as
 %% importing data sets. Currently, Amazon Web Services Mainframe
 %% Modernization can import data sets into catalogs using
-%% CreateDataSetImportTask.
+%% CreateDataSetImportTask:
+%% https://docs.aws.amazon.com/m2/latest/APIReference/API_CreateDataSetImportTask.html.
 list_data_sets(Client, ApplicationId)
   when is_map(Client) ->
     list_data_sets(Client, ApplicationId, #{}, #{}).

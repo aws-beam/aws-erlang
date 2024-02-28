@@ -46,13 +46,17 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
 %%
 %% This example describes how to update in-transit email message. For more
 %% information and examples for using this API, see Updating message content
-%% with AWS Lambda.
+%% with AWS Lambda:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/update-with-lambda.html.
 %%
 %% Updates to an in-transit message only appear when you call
 %% `PutRawMessageContent' from an AWS Lambda function configured with a
-%% synchronous Run Lambda rule. If you call `PutRawMessageContent' on a
-%% delivered or sent message, the message remains unchanged, even though
-%% GetRawMessageContent returns an updated message.
+%% synchronous Run Lambda:
+%% https://docs.aws.amazon.com/workmail/latest/adminguide/lambda.html#synchronous-rules
+%% rule. If you call `PutRawMessageContent' on a delivered or sent
+%% message, the message remains unchanged, even though GetRawMessageContent:
+%% https://docs.aws.amazon.com/workmail/latest/APIReference/API_messageflow_GetRawMessageContent.html
+%% returns an updated message.
 put_raw_message_content(Client, MessageId, Input) ->
     put_raw_message_content(Client, MessageId, Input, []).
 put_raw_message_content(Client, MessageId, Input0, Options0) ->

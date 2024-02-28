@@ -9,11 +9,13 @@
 %% decouple these components.
 %%
 %% For information on the permissions you need to use this API, see Identity
-%% and access management in the Amazon SQS Developer Guide.
+%% and access management:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html
+%% in the Amazon SQS Developer Guide.
 %%
-%% You can use Amazon Web Services SDKs to access Amazon SQS using your
-%% favorite programming language. The SDKs perform tasks such as the
-%% following automatically:
+%% You can use Amazon Web Services SDKs: http://aws.amazon.com/tools/#sdk to
+%% access Amazon SQS using your favorite programming language. The SDKs
+%% perform tasks such as the following automatically:
 %%
 %% <ul> <li> Cryptographically sign your service requests
 %%
@@ -23,21 +25,26 @@
 %%
 %% </li> </ul> Additional information
 %%
-%% <ul> <li> Amazon SQS Product Page
+%% <ul> <li> Amazon SQS Product Page: http://aws.amazon.com/sqs/
 %%
 %% </li> <li> Amazon SQS Developer Guide
 %%
-%% <ul> <li> Making API Requests
+%% <ul> <li> Making API Requests:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html
 %%
-%% </li> <li> Amazon SQS Message Attributes
+%% </li> <li> Amazon SQS Message Attributes:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes
 %%
-%% </li> <li> Amazon SQS Dead-Letter Queues
+%% </li> <li> Amazon SQS Dead-Letter Queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
 %%
-%% </li> </ul> </li> <li> Amazon SQS in the Command Line Interface
+%% </li> </ul> </li> <li> Amazon SQS in the Command Line Interface :
+%% http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html
 %%
 %% </li> <li> Amazon Web Services General Reference
 %%
-%% <ul> <li> Regions and Endpoints
+%% <ul> <li> Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region
 %%
 %% </li> </ul> </li> </ul>
 -module(aws_sqs).
@@ -95,20 +102,24 @@
 %% API
 %%====================================================================
 
-%% @doc Adds a permission to a queue for a specific principal.
+%% @doc Adds a permission to a queue for a specific principal:
+%% https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P.
 %%
 %% This allows sharing access to the queue.
 %%
 %% When you create a queue, you have full control access rights for the
 %% queue. Only you, the owner of the queue, can grant or deny permissions to
 %% the queue. For more information about these permissions, see Allow
-%% Developers to Write Messages to a Shared Queue in the Amazon SQS Developer
-%% Guide.
+%% Developers to Write Messages to a Shared Queue:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue
+%% in the Amazon SQS Developer Guide.
 %%
 %% `AddPermission' generates a policy for you. You can use `
 %% `SetQueueAttributes' ' to upload your policy. For more
 %% information, see Using Custom Policies with the Amazon SQS Access Policy
-%% Language in the Amazon SQS Developer Guide.
+%% Language:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% An Amazon SQS policy can have a maximum of seven actions per statement.
 %%
@@ -120,7 +131,8 @@
 %% principal.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -137,10 +149,12 @@ add_permission(Client, Input, Options)
 %% been moved yet.
 %%
 %% This action is currently limited to supporting message redrive from
-%% dead-letter queues (DLQs) only. In this context, the source queue is the
-%% dead-letter queue (DLQ), while the destination queue can be the original
-%% source queue (from which the messages were driven to the
-%% dead-letter-queue), or a custom destination queue.
+%% dead-letter queues (DLQs):
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
+%% only. In this context, the source queue is the dead-letter queue (DLQ),
+%% while the destination queue can be the original source queue (from which
+%% the messages were driven to the dead-letter-queue), or a custom
+%% destination queue.
 %%
 %% Currently, only standard queues are supported.
 %%
@@ -158,7 +172,9 @@ cancel_message_move_task(Client, Input, Options)
 %%
 %% The default visibility timeout for a message is 30 seconds. The minimum is
 %% 0 seconds. The maximum is 12 hours. For more information, see Visibility
-%% Timeout in the Amazon SQS Developer Guide.
+%% Timeout:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% For example, if the default timeout for a queue is 60 seconds, 15 seconds
 %% have elapsed since you received the message, and you send a
@@ -195,7 +211,8 @@ cancel_message_move_task(Client, Input, Options)
 %% message. To avoid reaching the limit, you should delete messages from the
 %% queue after they're processed. You can also increase the number of
 %% queues you use to process your messages. To request a limit increase, file
-%% a support request.
+%% a support request:
+%% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-sqs.
 %%
 %% For FIFO queues, there can be a maximum of 20,000 in flight messages
 %% (received from a queue by a consumer, but not yet deleted from the queue).
@@ -249,8 +266,9 @@ change_message_visibility_batch(Client, Input, Options)
 %% convert an existing standard queue into a FIFO queue. You must either
 %% create a new FIFO queue for your application or delete your existing
 %% standard queue and recreate it as a FIFO queue. For more information, see
-%% Moving From a Standard Queue to a FIFO Queue in the Amazon SQS Developer
-%% Guide.
+%% Moving From a Standard Queue to a FIFO Queue:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving
+%% in the Amazon SQS Developer Guide.
 %%
 %% </li> <li> If you don't provide a value for an attribute, the queue is
 %% created with the default value for the attribute.
@@ -259,8 +277,9 @@ change_message_visibility_batch(Client, Input, Options)
 %% creating a queue with the same name.
 %%
 %% </li> </ul> To successfully create a new queue, you must provide a queue
-%% name that adheres to the limits related to queues and is unique within the
-%% scope of your queues.
+%% name that adheres to the limits related to queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html
+%% and is unique within the scope of your queues.
 %%
 %% After you create a queue, you must wait at least one second after the
 %% queue is created to be able to use the queue.
@@ -278,7 +297,9 @@ change_message_visibility_batch(Client, Input, Options)
 %%
 %% </li> </ul> Cross-account permissions don't apply to this action. For
 %% more information, see Grant cross-account permissions to a role and a
-%% username in the Amazon SQS Developer Guide.
+%% username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
+%% in the Amazon SQS Developer Guide.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
@@ -346,7 +367,8 @@ delete_message_batch(Client, Input, Options)
 %% a queue with the same name.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 %%
 %% The delete operation uses the HTTP `GET' verb.
@@ -359,8 +381,9 @@ delete_queue(Client, Input, Options)
 
 %% @doc Gets attributes for the specified queue.
 %%
-%% To determine whether a queue is FIFO, you can check whether
-%% `QueueName' ends with the `.fifo' suffix.
+%% To determine whether a queue is FIFO:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html,
+%% you can check whether `QueueName' ends with the `.fifo' suffix.
 get_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_attributes(Client, Input, []).
@@ -375,7 +398,9 @@ get_queue_attributes(Client, Input, Options)
 %% queue's owner. The queue's owner must grant you permission to
 %% access the queue. For more information about shared queue access, see `
 %% `AddPermission' ' or see Allow Developers to Write Messages to a
-%% Shared Queue in the Amazon SQS Developer Guide.
+%% Shared Queue:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue
+%% in the Amazon SQS Developer Guide.
 get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
@@ -396,7 +421,9 @@ get_queue_url(Client, Input, Options)
 %% receive the next page of results.
 %%
 %% For more information about using dead-letter queues, see Using Amazon SQS
-%% Dead-Letter Queues in the Amazon SQS Developer Guide.
+%% Dead-Letter Queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
+%% in the Amazon SQS Developer Guide.
 list_dead_letter_source_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dead_letter_source_queues(Client, Input, []).
@@ -408,10 +435,12 @@ list_dead_letter_source_queues(Client, Input, Options)
 %% specific source queue.
 %%
 %% This action is currently limited to supporting message redrive from
-%% dead-letter queues (DLQs) only. In this context, the source queue is the
-%% dead-letter queue (DLQ), while the destination queue can be the original
-%% source queue (from which the messages were driven to the
-%% dead-letter-queue), or a custom destination queue.
+%% dead-letter queues (DLQs):
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
+%% only. In this context, the source queue is the dead-letter queue (DLQ),
+%% while the destination queue can be the original source queue (from which
+%% the messages were driven to the dead-letter-queue), or a custom
+%% destination queue.
 %%
 %% Currently, only standard queues are supported.
 %%
@@ -427,11 +456,13 @@ list_message_move_tasks(Client, Input, Options)
 %% @doc List all cost allocation tags added to the specified Amazon SQS
 %% queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
-%% Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -455,7 +486,8 @@ list_queue_tags(Client, Input, Options)
 %% request to `listQueues' to receive the next page of results.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -488,8 +520,9 @@ purge_queue(Client, Input, Options)
 %% @doc Retrieves one or more messages (up to 10), from the specified queue.
 %%
 %% Using the `WaitTimeSeconds' parameter enables long-poll support. For
-%% more information, see Amazon SQS Long Polling in the Amazon SQS Developer
-%% Guide.
+%% more information, see Amazon SQS Long Polling:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% Short poll is the default behavior where a weighted random set of machines
 %% is sampled on a `ReceiveMessage' call. Thus, only the messages on the
@@ -505,7 +538,7 @@ purge_queue(Client, Input, Options)
 %% <ul> <li> The message body.
 %%
 %% </li> <li> An MD5 digest of the message body. For information about MD5,
-%% see RFC1321.
+%% see RFC1321: https://www.ietf.org/rfc/rfc1321.txt.
 %%
 %% </li> <li> The `MessageId' you received when you sent the message to
 %% the queue.
@@ -518,13 +551,17 @@ purge_queue(Client, Input, Options)
 %%
 %% </li> </ul> The receipt handle is the identifier you must provide when
 %% deleting the message. For more information, see Queue and Message
-%% Identifiers in the Amazon SQS Developer Guide.
+%% Identifiers:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% You can provide the `VisibilityTimeout' parameter in your request. The
 %% parameter is applied to the messages that Amazon SQS returns in the
 %% response. If you don't include the parameter, the overall visibility
 %% timeout for the queue is used for the returned messages. For more
-%% information, see Visibility Timeout in the Amazon SQS Developer Guide.
+%% information, see Visibility Timeout:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% A message that isn't deleted or a message whose visibility isn't
 %% extended before the visibility timeout expires counts as a failed receive.
@@ -547,7 +584,8 @@ receive_message(Client, Input, Options)
 %% Only the owner of a queue can remove permissions from it.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -569,7 +607,8 @@ remove_permission(Client, Input, Options)
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
 %% Any characters not included in this list will be rejected. For more
-%% information, see the W3C specification for characters.
+%% information, see the W3C specification for characters:
+%% http://www.w3.org/TR/REC-xml/#charsets.
 send_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message(Client, Input, []).
@@ -601,7 +640,8 @@ send_message(Client, Input, Options)
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
 %% Any characters not included in this list will be rejected. For more
-%% information, see the W3C specification for characters.
+%% information, see the W3C specification for characters:
+%% http://www.w3.org/TR/REC-xml/#charsets.
 %%
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS uses the default value for the queue.
@@ -627,7 +667,8 @@ send_message_batch(Client, Input, Options)
 %% handle new attributes gracefully.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
@@ -644,9 +685,10 @@ set_queue_attributes(Client, Input, Options)
 %% queue to a specified destination queue.
 %%
 %% This action is currently limited to supporting message redrive from queues
-%% that are configured as dead-letter queues (DLQs) of other Amazon SQS
-%% queues only. Non-SQS queue sources of dead-letter queues, such as Lambda
-%% or Amazon SNS topics, are currently not supported.
+%% that are configured as dead-letter queues (DLQs):
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
+%% of other Amazon SQS queues only. Non-SQS queue sources of dead-letter
+%% queues, such as Lambda or Amazon SNS topics, are currently not supported.
 %%
 %% In dead-letter queues redrive context, the `StartMessageMoveTask' the
 %% source queue is the DLQ, while the destination queue can be the original
@@ -667,8 +709,9 @@ start_message_move_task(Client, Input, Options)
 
 %% @doc Add cost allocation tags to the specified Amazon SQS queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
-%% Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% When you use queue tags, keep the following guidelines in mind:
 %%
@@ -683,10 +726,13 @@ start_message_move_task(Client, Input, Options)
 %% overwrites the existing tag.
 %%
 %% </li> </ul> For a full list of tag restrictions, see Quotas related to
-%% queues in the Amazon SQS Developer Guide.
+%% queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues
+%% in the Amazon SQS Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -697,11 +743,13 @@ tag_queue(Client, Input, Options)
 
 %% @doc Remove cost allocation tags from the specified Amazon SQS queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
-%% Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html
+%% in the Amazon SQS Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
-%% information, see Grant cross-account permissions to a role and a username
+%% information, see Grant cross-account permissions to a role and a username:
+%% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the Amazon SQS Developer Guide.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->

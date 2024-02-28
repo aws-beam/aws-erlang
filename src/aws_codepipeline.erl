@@ -9,7 +9,8 @@
 %%
 %% This guide provides descriptions of the actions and data types for
 %% CodePipeline. Some functionality for your pipeline can only be configured
-%% through the API. For more information, see the CodePipeline User Guide.
+%% through the API. For more information, see the CodePipeline User Guide:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html.
 %%
 %% You can use the CodePipeline API to work with pipelines, stages, actions,
 %% and transitions.
@@ -64,7 +65,8 @@
 %% pipeline, or `GetPipeline', which returns the entire structure of the
 %% pipeline, including the stages of that pipeline. For more information
 %% about the structure of stages and actions, see CodePipeline Pipeline
-%% Structure Reference.
+%% Structure Reference:
+%% https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html.
 %%
 %% Pipeline stages include actions that are categorized into categories such
 %% as source or build actions performed in a stage of a pipeline. For

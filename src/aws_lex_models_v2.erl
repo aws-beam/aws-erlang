@@ -477,7 +477,8 @@ create_bot_version(Client, BotId, Input0, Options0) ->
 %% single bot locale.
 %%
 %% For more information about exporting bots, and about the structure of the
-%% export archive, see Importing and exporting bots
+%% export archive, see Importing and exporting bots :
+%% https://docs.aws.amazon.com/lexv2/latest/dg/importing-exporting.html
 create_export(Client, Input) ->
     create_export(Client, Input, []).
 create_export(Client, Input0, Options0) ->
@@ -819,7 +820,9 @@ delete_bot_replica(Client, BotId, ReplicaRegion, Input0, Options0) ->
 
 %% @doc Deletes a specific version of a bot.
 %%
-%% To delete all versions of a bot, use the DeleteBot operation.
+%% To delete all versions of a bot, use the DeleteBot:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBot.html
+%% operation.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
 delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
@@ -1073,7 +1076,8 @@ delete_test_set(Client, TestSetId, Input0, Options0) ->
 %% @doc Deletes stored utterances.
 %%
 %% Amazon Lex stores the utterances that users send to your bot. Utterances
-%% are stored for 15 days for use with the ListAggregatedUtterances
+%% are stored for 15 days for use with the ListAggregatedUtterances:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListAggregatedUtterances.html
 %% operation, and then stored indefinitely for use in improving the ability
 %% of your bot to respond to user input..
 %%
@@ -1846,7 +1850,8 @@ list_bots(Client, Input0, Options0) ->
 %% To use a built-in intent as a the base for your own intent, include the
 %% built-in intent signature in the `parentIntentSignature' parameter
 %% when you call the `CreateIntent' operation. For more information, see
-%% CreateIntent.
+%% CreateIntent:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateIntent.html.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
 list_built_in_intents(Client, LocaleId, Input0, Options0) ->
@@ -1970,11 +1975,13 @@ list_imports(Client, Input0, Options0) ->
 %%
 %% The following fields are required:
 %%
-%% <ul> <li> `metrics' – A list of AnalyticsIntentMetric objects. In each
-%% object, use the `name' field to specify the metric to calculate, the
-%% `statistic' field to specify whether to calculate the `Sum',
-%% `Average', or `Max' number, and the `order' field to specify
-%% whether to sort the results in `Ascending' or `Descending' order.
+%% <ul> <li> `metrics' – A list of AnalyticsIntentMetric:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentMetric.html
+%% objects. In each object, use the `name' field to specify the metric to
+%% calculate, the `statistic' field to specify whether to calculate the
+%% `Sum', `Average', or `Max' number, and the `order' field
+%% to specify whether to sort the results in `Ascending' or
+%% `Descending' order.
 %%
 %% </li> <li> `startDateTime' and `endDateTime' – Define a time range
 %% for which you want to retrieve results.
@@ -2057,11 +2064,13 @@ list_intent_paths(Client, BotId, Input0, Options0) ->
 %%
 %% The following fields are required:
 %%
-%% <ul> <li> `metrics' – A list of AnalyticsIntentStageMetric objects. In
-%% each object, use the `name' field to specify the metric to calculate,
-%% the `statistic' field to specify whether to calculate the `Sum',
-%% `Average', or `Max' number, and the `order' field to specify
-%% whether to sort the results in `Ascending' or `Descending' order.
+%% <ul> <li> `metrics' – A list of AnalyticsIntentStageMetric:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageMetric.html
+%% objects. In each object, use the `name' field to specify the metric to
+%% calculate, the `statistic' field to specify whether to calculate the
+%% `Sum', `Average', or `Max' number, and the `order' field
+%% to specify whether to sort the results in `Ascending' or
+%% `Descending' order.
 %%
 %% </li> <li> `startDateTime' and `endDateTime' – Define a time range
 %% for which you want to retrieve results.
@@ -2194,11 +2203,13 @@ list_session_analytics_data(Client, BotId, Input0, Options0) ->
 %%
 %% The following fields are required:
 %%
-%% <ul> <li> `metrics' – A list of AnalyticsSessionMetric objects. In
-%% each object, use the `name' field to specify the metric to calculate,
-%% the `statistic' field to specify whether to calculate the `Sum',
-%% `Average', or `Max' number, and the `order' field to specify
-%% whether to sort the results in `Ascending' or `Descending' order.
+%% <ul> <li> `metrics' – A list of AnalyticsSessionMetric:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionMetric.html
+%% objects. In each object, use the `name' field to specify the metric to
+%% calculate, the `statistic' field to specify whether to calculate the
+%% `Sum', `Average', or `Max' number, and the `order' field
+%% to specify whether to sort the results in `Ascending' or
+%% `Descending' order.
 %%
 %% </li> <li> `startDateTime' and `endDateTime' – Define a time range
 %% for which you want to retrieve results.
@@ -2406,11 +2417,13 @@ list_test_sets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc To use this API operation, your IAM role must have permissions to
-%% perform the ListAggregatedUtterances operation, which provides access to
-%% utterance-related analytics.
+%% perform the ListAggregatedUtterances:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListAggregatedUtterances.html
+%% operation, which provides access to utterance-related analytics.
 %%
-%% See Viewing utterance statistics for the IAM policy to apply to the IAM
-%% role.
+%% See Viewing utterance statistics:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/monitoring-utterances.html for
+%% the IAM policy to apply to the IAM role.
 %%
 %% Retrieves a list of metadata for individual user utterances to your bot.
 %% The following fields are required:
@@ -2453,20 +2466,24 @@ list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc To use this API operation, your IAM role must have permissions to
-%% perform the ListAggregatedUtterances operation, which provides access to
-%% utterance-related analytics.
+%% perform the ListAggregatedUtterances:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListAggregatedUtterances.html
+%% operation, which provides access to utterance-related analytics.
 %%
-%% See Viewing utterance statistics for the IAM policy to apply to the IAM
-%% role.
+%% See Viewing utterance statistics:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/monitoring-utterances.html for
+%% the IAM policy to apply to the IAM role.
 %%
 %% Retrieves summary metrics for the utterances in your bot. The following
 %% fields are required:
 %%
-%% <ul> <li> `metrics' – A list of AnalyticsUtteranceMetric objects. In
-%% each object, use the `name' field to specify the metric to calculate,
-%% the `statistic' field to specify whether to calculate the `Sum',
-%% `Average', or `Max' number, and the `order' field to specify
-%% whether to sort the results in `Ascending' or `Descending' order.
+%% <ul> <li> `metrics' – A list of AnalyticsUtteranceMetric:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceMetric.html
+%% objects. In each object, use the `name' field to specify the metric to
+%% calculate, the `statistic' field to specify whether to calculate the
+%% `Sum', `Average', or `Max' number, and the `order' field
+%% to specify whether to sort the results in `Ascending' or
+%% `Descending' order.
 %%
 %% </li> <li> `startDateTime' and `endDateTime' – Define a time range
 %% for which you want to retrieve results.
@@ -2826,7 +2843,9 @@ update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Locale
 %% The password is not required. If you don't supply a password, Amazon
 %% Lex generates a zip file that is not protected by a password. This is the
 %% archive that is available at the pre-signed S3 URL provided by the
-%% DescribeExport operation.
+%% DescribeExport:
+%% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeExport.html
+%% operation.
 update_export(Client, ExportId, Input) ->
     update_export(Client, ExportId, Input, []).
 update_export(Client, ExportId, Input0, Options0) ->

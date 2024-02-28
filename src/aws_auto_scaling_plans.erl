@@ -28,7 +28,8 @@
 %%
 %% </li> </ul> To learn more about AWS Auto Scaling, including information
 %% about granting IAM users required permissions for AWS Auto Scaling
-%% actions, see the AWS Auto Scaling User Guide.
+%% actions, see the AWS Auto Scaling User Guide:
+%% https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html.
 -module(aws_auto_scaling_plans).
 
 -export([create_scaling_plan/2,

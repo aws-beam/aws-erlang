@@ -39,7 +39,8 @@
 %%
 %% For an example of using the `CreateRescoreExecutionPlan' API,
 %% including using the Python and Java SDKs, see Semantically ranking a
-%% search service's results.
+%% search service's results:
+%% https://docs.aws.amazon.com/kendra/latest/dg/search-service-rerank.html.
 create_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rescore_execution_plan(Client, Input, []).

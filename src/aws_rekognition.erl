@@ -1,160 +1,235 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the API Reference for Amazon Rekognition Image, Amazon
-%% Rekognition Custom Labels, Amazon Rekognition Stored Video, Amazon
-%% Rekognition Streaming Video.
+%% @doc This is the API Reference for Amazon Rekognition Image:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/images.html, Amazon
+%% Rekognition Custom Labels:
+%% https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html,
+%% Amazon Rekognition Stored Video:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/video.html, Amazon
+%% Rekognition Streaming Video:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html.
 %%
 %% It provides descriptions of actions, data types, common parameters, and
 %% common errors.
 %%
 %% Amazon Rekognition Image
 %%
-%% <ul> <li> AssociateFaces
+%% <ul> <li> AssociateFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_AssociateFaces.html
 %%
-%% </li> <li> CompareFaces
+%% </li> <li> CompareFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CompareFaces.html
 %%
-%% </li> <li> CreateCollection
+%% </li> <li> CreateCollection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateCollection.html
 %%
-%% </li> <li> CreateUser
+%% </li> <li> CreateUser:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateUser.html
 %%
-%% </li> <li> DeleteCollection
+%% </li> <li> DeleteCollection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteCollection.html
 %%
-%% </li> <li> DeleteFaces
+%% </li> <li> DeleteFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteFaces.html
 %%
-%% </li> <li> DeleteUser
+%% </li> <li> DeleteUser:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteUser.html
 %%
-%% </li> <li> DescribeCollection
+%% </li> <li> DescribeCollection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DescribeCollection.html
 %%
-%% </li> <li> DetectFaces
+%% </li> <li> DetectFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectFaces.html
 %%
-%% </li> <li> DetectLabels
+%% </li> <li> DetectLabels:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectLabels.html
 %%
-%% </li> <li> DetectModerationLabels
+%% </li> <li> DetectModerationLabels:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectModerationLabels.html
 %%
-%% </li> <li> DetectProtectiveEquipment
+%% </li> <li> DetectProtectiveEquipment:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectProtectiveEquipment.html
 %%
-%% </li> <li> DetectText
+%% </li> <li> DetectText:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectText.html
 %%
-%% </li> <li> DisassociateFaces
+%% </li> <li> DisassociateFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DisassociateFaces.html
 %%
-%% </li> <li> GetCelebrityInfo
+%% </li> <li> GetCelebrityInfo:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetCelebrityInfo.html
 %%
-%% </li> <li> GetMediaAnalysisJob
+%% </li> <li> GetMediaAnalysisJob:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetMediaAnalysisJob.html
 %%
-%% </li> <li> IndexFaces
+%% </li> <li> IndexFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_IndexFaces.html
 %%
-%% </li> <li> ListCollections
+%% </li> <li> ListCollections:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListCollections.html
 %%
-%% </li> <li> ListMediaAnalysisJob
+%% </li> <li> ListMediaAnalysisJob:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListMediaAnalysisJob.html
 %%
-%% </li> <li> ListFaces
+%% </li> <li> ListFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListFaces.html
 %%
-%% </li> <li> ListUsers
+%% </li> <li> ListUsers:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListFaces.html
 %%
-%% </li> <li> RecognizeCelebrities
+%% </li> <li> RecognizeCelebrities:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_RecognizeCelebrities.html
 %%
-%% </li> <li> SearchFaces
+%% </li> <li> SearchFaces:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchFaces.html
 %%
-%% </li> <li> SearchFacesByImage
+%% </li> <li> SearchFacesByImage:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchFacesByImage.html
 %%
-%% </li> <li> SearchUsers
+%% </li> <li> SearchUsers:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchUsers.html
 %%
-%% </li> <li> SearchUsersByImage
+%% </li> <li> SearchUsersByImage:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchUsersByImage.html
 %%
-%% </li> <li> StartMediaAnalysisJob
+%% </li> <li> StartMediaAnalysisJob:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartMediaAnalysisJob.html
 %%
 %% </li> </ul> Amazon Rekognition Custom Labels
 %%
-%% <ul> <li> CopyProjectVersion
+%% <ul> <li> CopyProjectVersion:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CopyProjectVersion.html
 %%
-%% </li> <li> CreateDataset
+%% </li> <li> CreateDataset:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateDataset.html
 %%
-%% </li> <li> CreateProject
+%% </li> <li> CreateProject:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateProject.html
 %%
-%% </li> <li> CreateProjectVersion
+%% </li> <li> CreateProjectVersion:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateProjectVersion.html
 %%
-%% </li> <li> DeleteDataset
+%% </li> <li> DeleteDataset:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteDataset.html
 %%
-%% </li> <li> DeleteProject
+%% </li> <li> DeleteProject:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteProject.html
 %%
-%% </li> <li> DeleteProjectPolicy
+%% </li> <li> DeleteProjectPolicy:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteProjectPolicy.html
 %%
-%% </li> <li> DeleteProjectVersion
+%% </li> <li> DeleteProjectVersion:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteProjectVersion.html
 %%
-%% </li> <li> DescribeDataset
+%% </li> <li> DescribeDataset:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DescribeDataset.html
 %%
-%% </li> <li> DescribeProjects
+%% </li> <li> DescribeProjects:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DescribeProjects.html
 %%
-%% </li> <li> DescribeProjectVersions
+%% </li> <li> DescribeProjectVersions:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DescribeProjectVersions.html
 %%
-%% </li> <li> DetectCustomLabels
+%% </li> <li> DetectCustomLabels:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DetectCustomLabels.html
 %%
-%% </li> <li> DistributeDatasetEntries
+%% </li> <li> DistributeDatasetEntries:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DistributeDatasetEntries.html
 %%
-%% </li> <li> ListDatasetEntries
+%% </li> <li> ListDatasetEntries:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListDatasetEntries.html
 %%
-%% </li> <li> ListDatasetLabels
+%% </li> <li> ListDatasetLabels:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListDatasetLabels.html
 %%
-%% </li> <li> ListProjectPolicies
+%% </li> <li> ListProjectPolicies:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListProjectPolicies.html
 %%
-%% </li> <li> PutProjectPolicy
+%% </li> <li> PutProjectPolicy:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_PutProjectPolicy.html
 %%
-%% </li> <li> StartProjectVersion
+%% </li> <li> StartProjectVersion:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartProjectVersion.html
 %%
-%% </li> <li> StopProjectVersion
+%% </li> <li> StopProjectVersion:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StopProjectVersion.html
 %%
-%% </li> <li> UpdateDatasetEntries
+%% </li> <li> UpdateDatasetEntries:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_UpdateDatasetEntries.html
 %%
 %% </li> </ul> Amazon Rekognition Video Stored Video
 %%
-%% <ul> <li> GetCelebrityRecognition
+%% <ul> <li> GetCelebrityRecognition:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetCelebrityRecognition.html
 %%
-%% </li> <li> GetContentModeration
+%% </li> <li> GetContentModeration:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetContentModeration.html
 %%
-%% </li> <li> GetFaceDetection
+%% </li> <li> GetFaceDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetFaceDetection.html
 %%
-%% </li> <li> GetFaceSearch
+%% </li> <li> GetFaceSearch:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetFaceSearch.html
 %%
-%% </li> <li> GetLabelDetection
+%% </li> <li> GetLabelDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetLabelDetection.html
 %%
-%% </li> <li> GetPersonTracking
+%% </li> <li> GetPersonTracking:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetPersonTracking.html
 %%
-%% </li> <li> GetSegmentDetection
+%% </li> <li> GetSegmentDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetSegmentDetection.html
 %%
-%% </li> <li> GetTextDetection
+%% </li> <li> GetTextDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetTextDetection.html
 %%
-%% </li> <li> StartCelebrityRecognition
+%% </li> <li> StartCelebrityRecognition:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartCelebrityRecognition.html
 %%
-%% </li> <li> StartContentModeration
+%% </li> <li> StartContentModeration:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartContentModeration.html
 %%
-%% </li> <li> StartFaceDetection
+%% </li> <li> StartFaceDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartFaceDetection.html
 %%
-%% </li> <li> StartFaceSearch
+%% </li> <li> StartFaceSearch:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartFaceSearch.html
 %%
-%% </li> <li> StartLabelDetection
+%% </li> <li> StartLabelDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartLabelDetection.html
 %%
-%% </li> <li> StartPersonTracking
+%% </li> <li> StartPersonTracking:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartPersonTracking.html
 %%
-%% </li> <li> StartSegmentDetection
+%% </li> <li> StartSegmentDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartSegmentDetection.html
 %%
-%% </li> <li> StartTextDetection
+%% </li> <li> StartTextDetection:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartTextDetection.html
 %%
 %% </li> </ul> Amazon Rekognition Video Streaming Video
 %%
-%% <ul> <li> CreateStreamProcessor
+%% <ul> <li> CreateStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateStreamProcessor.html
 %%
-%% </li> <li> DeleteStreamProcessor
+%% </li> <li> DeleteStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DeleteStreamProcessor.html
 %%
-%% </li> <li> DescribeStreamProcessor
+%% </li> <li> DescribeStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_DescribeStreamProcessor.html
 %%
-%% </li> <li> ListStreamProcessors
+%% </li> <li> ListStreamProcessors:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListStreamProcessors.html
 %%
-%% </li> <li> StartStreamProcessor
+%% </li> <li> StartStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartStreamProcessor.html
 %%
-%% </li> <li> StopStreamProcessor
+%% </li> <li> StopStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StopStreamProcessor.html
 %%
-%% </li> <li> UpdateStreamProcessor
+%% </li> <li> UpdateStreamProcessor:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_UpdateStreamProcessor.html
 %%
 %% </li> </ul>
 -module(aws_rekognition).
@@ -673,7 +748,8 @@ create_user(Client, Input, Options)
 %% @doc Deletes the specified collection.
 %%
 %% Note that this operation removes all faces in the collection. For an
-%% example, see Deleting a collection.
+%% example, see Deleting a collection:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteCollection' action.
@@ -985,7 +1061,8 @@ detect_faces(Client, Input, Options)
 %% sets of individual labels or with label categories. You can specify
 %% inclusive filters, exclusive filters, or a combination of inclusive and
 %% exclusive filters. For more information on filtering see Detecting Labels
-%% in an Image.
+%% in an Image:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/labels-detect-labels-image.html.
 %%
 %% When getting labels, you can specify `MinConfidence' to control the
 %% confidence threshold for the labels returned. The default is 55%. You can
@@ -1325,7 +1402,8 @@ get_celebrity_recognition(Client, Input, Options)
 %% `StartContentModeration'.
 %%
 %% For a list of moderation labels in Amazon Rekognition, see Using the image
-%% and video moderation APIs.
+%% and video moderation APIs:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api.
 %%
 %% Amazon Rekognition Video inappropriate or offensive content detection in a
 %% stored video is an asynchronous operation. You start analysis by calling
@@ -1814,7 +1892,8 @@ list_collections(Client, Input, Options)
 %% Lists the entries (images) within a dataset. An entry is a JSON Line that
 %% contains the information for a single image, including the image location,
 %% assigned labels, and object location bounding boxes. For more information,
-%% see Creating a manifest file.
+%% see Creating a manifest file:
+%% https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-manifest-files.html.
 %%
 %% JSON Lines in the response include information about non-terminal errors
 %% found in the dataset. Non terminal errors are reported in `errors'
@@ -1837,7 +1916,8 @@ list_dataset_entries(Client, Input, Options)
 %% @doc This operation applies only to Amazon Rekognition Custom Labels.
 %%
 %% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
-%% labels to describe images. For more information, see Labeling images.
+%% labels to describe images. For more information, see Labeling images:
+%% https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html.
 %%
 %% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
 %% labels to describe images. For more information, see Labeling images in
@@ -2147,7 +2227,8 @@ start_celebrity_recognition(Client, Input, Options)
 %% offensive content in a stored video.
 %%
 %% For a list of moderation labels in Amazon Rekognition, see Using the image
-%% and video moderation APIs.
+%% and video moderation APIs:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api.
 %%
 %% Amazon Rekognition Video can moderate content in a video stored in an
 %% Amazon S3 bucket. Use `Video' to specify the bucket name and the
@@ -2207,7 +2288,8 @@ start_face_detection(Client, Input, Options)
 %% status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
 %% call `GetFaceSearch' and pass the job identifier (`JobId') from
 %% the initial call to `StartFaceSearch'. For more information, see
-%% Searching stored videos for faces.
+%% Searching stored videos for faces:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/procedure-person-search-videos.html.
 start_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_search(Client, Input, []).
@@ -2243,7 +2325,8 @@ start_face_search(Client, Input, Options)
 %% `Settings' parameter. You can filter with sets of individual labels or
 %% with label categories. You can specify inclusive filters, exclusive
 %% filters, or a combination of inclusive and exclusive filters. For more
-%% information on filtering, see Detecting labels in a video.
+%% information on filtering, see Detecting labels in a video:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/labels-detecting-labels-video.html.
 %%
 %% You can specify `MinConfidence' to control the confidence threshold
 %% for the labels returned. The default is 50.
@@ -2404,7 +2487,8 @@ stop_stream_processor(Client, Input, Options)
 %% @doc Adds one or more key-value tags to an Amazon Rekognition collection,
 %% stream processor, or Custom Labels model.
 %%
-%% For more information, see Tagging AWS Resources.
+%% For more information, see Tagging AWS Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:TagResource' action.

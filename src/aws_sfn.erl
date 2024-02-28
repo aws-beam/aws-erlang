@@ -21,7 +21,8 @@
 %% Web Services, your own servers, or any system that has access to Amazon
 %% Web Services. You can access and use Step Functions using the console, the
 %% Amazon Web Services SDKs, or an HTTP API. For more information about Step
-%% Functions, see the Step Functions Developer Guide .
+%% Functions, see the Step Functions Developer Guide:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html .
 %%
 %% If you use the Step Functions API actions using Amazon Web Services SDK
 %% integrations, make sure the API actions are in camel case and parameter
@@ -141,8 +142,9 @@ create_activity(Client, Input, Options)
 %% (`Task' states), determine to which states to transition next
 %% (`Choice' states), stop an execution with an error (`Fail'
 %% states), and so on. State machines are specified using a JSON-based,
-%% structured language. For more information, see Amazon States Language in
-%% the Step Functions User Guide.
+%% structured language. For more information, see Amazon States Language:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html
+%% in the Step Functions User Guide.
 %%
 %% If you set the `publish' parameter of this API action to `true',
 %% it publishes version `1' as the first revision of the state machine.
@@ -167,8 +169,11 @@ create_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStateMachine">>, Input, Options).
 
-%% @doc Creates an alias for a state machine that points to one or two
-%% versions of the same state machine.
+%% @doc Creates an alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
+%% for a state machine that points to one or two versions:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
+%% of the same state machine.
 %%
 %% You can set your application to call `StartExecution' with an alias
 %% and update the version the alias uses without changing the client's
@@ -247,7 +252,10 @@ delete_activity(Client, Input, Options)
 %%
 %% `arn:partition:states:region:account-id:stateMachine:myStateMachine'
 %%
-%% </li> </ul> This API action also deletes all versions and aliases
+%% </li> </ul> This API action also deletes all versions:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
+%% and aliases:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
 %% associated with a state machine.
 %%
 %% For `EXPRESS' state machines, the deletion happens eventually (usually
@@ -260,7 +268,8 @@ delete_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachine">>, Input, Options).
 
-%% @doc Deletes a state machine alias.
+%% @doc Deletes a state machine alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% After you delete a state machine alias, you can't use it to start
 %% executions. When you delete a state machine alias, Step Functions
@@ -284,10 +293,12 @@ delete_state_machine_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStateMachineAlias">>, Input, Options).
 
-%% @doc Deletes a state machine version.
+%% @doc Deletes a state machine version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html.
 %%
 %% After you delete a version, you can't call `StartExecution' using
-%% that version's ARN or use the version with a state machine alias.
+%% that version's ARN or use the version with a state machine alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% Deleting a state machine version won't terminate its in-progress
 %% executions.
@@ -325,10 +336,12 @@ describe_activity(Client, Input, Options)
 %% state machine associated with the execution, the execution input and
 %% output, and relevant execution metadata.
 %%
-%% If you've redriven an execution, you can use this API action to return
-%% information about the redrives of that execution. In addition, you can use
-%% this API action to return the Map Run Amazon Resource Name (ARN) if the
-%% execution was dispatched by a Map Run.
+%% If you've redriven:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html
+%% an execution, you can use this API action to return information about the
+%% redrives of that execution. In addition, you can use this API action to
+%% return the Map Run Amazon Resource Name (ARN) if the execution was
+%% dispatched by a Map Run.
 %%
 %% If you specify a version or alias ARN when you call the
 %% `StartExecution' API action, `DescribeExecution' returns that ARN.
@@ -348,9 +361,12 @@ describe_execution(Client, Input, Options)
 %% @doc Provides information about a Map Run's configuration, progress,
 %% and results.
 %%
-%% If you've redriven a Map Run, this API action also returns information
-%% about the redrives of that Map Run. For more information, see Examining
-%% Map Run in the Step Functions Developer Guide.
+%% If you've redriven:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html
+%% a Map Run, this API action also returns information about the redrives of
+%% that Map Run. For more information, see Examining Map Run:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html
+%% in the Step Functions Developer Guide.
 describe_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_map_run(Client, Input, []).
@@ -402,7 +418,8 @@ describe_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachine">>, Input, Options).
 
-%% @doc Returns details about a state machine alias.
+%% @doc Returns details about a state machine alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html.
 %%
 %% Related operations:
 %%
@@ -456,8 +473,9 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% request).
 %%
 %% Polling with `GetActivityTask' can cause latency in some
-%% implementations. See Avoid Latency When Polling for Activity Tasks in the
-%% Step Functions Developer Guide.
+%% implementations. See Avoid Latency When Polling for Activity Tasks:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html
+%% in the Step Functions Developer Guide.
 get_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_activity_task(Client, Input, []).
@@ -509,10 +527,15 @@ list_activities(Client, Input, Options)
 %% You can list all executions related to a state machine by specifying a
 %% state machine Amazon Resource Name (ARN), or those related to a Map Run by
 %% specifying a Map Run ARN. Using this API action, you can also list all
-%% redriven executions.
+%% redriven:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html
+%% executions.
 %%
-%% You can also provide a state machine alias ARN or version ARN to list the
-%% executions associated with a specific alias or version.
+%% You can also provide a state machine alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
+%% ARN or version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
+%% ARN to list the executions associated with a specific alias or version.
 %%
 %% Results are sorted by time, with the most recent execution first.
 %%
@@ -546,13 +569,16 @@ list_map_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMapRuns">>, Input, Options).
 
-%% @doc Lists aliases for a specified state machine ARN.
+%% @doc Lists aliases:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
+%% for a specified state machine ARN.
 %%
 %% Results are sorted by time, with the most recently created aliases listed
 %% first.
 %%
-%% To list aliases that reference a state machine version, you can specify
-%% the version ARN in the `stateMachineArn' parameter.
+%% To list aliases that reference a state machine version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html,
+%% you can specify the version ARN in the `stateMachineArn' parameter.
 %%
 %% If `nextToken' is returned, there are more results available. The
 %% value of `nextToken' is a unique pagination token for each page. Make
@@ -579,8 +605,9 @@ list_state_machine_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStateMachineAliases">>, Input, Options).
 
-%% @doc Lists versions for the specified state machine Amazon Resource Name
-%% (ARN).
+%% @doc Lists versions:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
+%% for the specified state machine Amazon Resource Name (ARN).
 %%
 %% The results are sorted in descending order of the version creation time.
 %%
@@ -634,7 +661,9 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Creates a version from the current revision of a state machine.
+%% @doc Creates a version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
+%% from the current revision of a state machine.
 %%
 %% Use versions to create immutable snapshots of your state machine. You can
 %% start executions from versions either directly or with an alias. To create
@@ -670,7 +699,8 @@ publish_state_machine_version(Client, Input, Options)
 %% @doc Restarts unsuccessful executions of Standard workflows that
 %% didn't complete successfully in the last 14 days.
 %%
-%% These include failed, aborted, or timed out executions. When you redrive
+%% These include failed, aborted, or timed out executions. When you redrive:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html
 %% an execution, it continues the failed execution from the unsuccessful step
 %% and uses the same input. Step Functions preserves the results and
 %% execution history of the successful steps, and doesn't rerun these
@@ -678,15 +708,19 @@ publish_state_machine_version(Client, Input, Options)
 %% state machine definition and execution ARN as the original execution
 %% attempt.
 %%
-%% For workflows that include an Inline Map or Parallel state,
-%% `RedriveExecution' API action reschedules and redrives only the
+%% For workflows that include an Inline Map:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html
+%% or Parallel:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html
+%% state, `RedriveExecution' API action reschedules and redrives only the
 %% iterations and branches that failed or aborted.
 %%
 %% To redrive a workflow that includes a Distributed Map state whose Map Run
-%% failed, you must redrive the parent workflow. The parent workflow redrives
-%% all the unsuccessful states, including a failed Map Run. If a Map Run was
-%% not started in the original execution attempt, the redriven parent
-%% workflow starts the Map Run.
+%% failed, you must redrive the parent workflow:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/use-dist-map-orchestrate-large-scale-parallel-workloads.html#dist-map-orchestrate-parallel-workloads-key-terms.
+%% The parent workflow redrives all the unsuccessful states, including a
+%% failed Map Run. If a Map Run was not started in the original execution
+%% attempt, the redriven parent workflow starts the Map Run.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
 %%
@@ -694,7 +728,8 @@ publish_state_machine_version(Client, Input, Options)
 %% workflows in a Distributed Map by redriving its Map Run. When you redrive
 %% a Map Run, the Express child workflows are rerun using the
 %% `StartExecution' API action. For more information, see Redriving Map
-%% Runs.
+%% Runs:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html.
 %%
 %% You can redrive executions if your original execution meets the following
 %% conditions:
@@ -708,7 +743,8 @@ publish_state_machine_version(Client, Input, Options)
 %%
 %% </li> <li> The workflow execution has not exceeded the maximum open time
 %% of one year. For more information about state machine quotas, see Quotas
-%% related to state machine executions.
+%% related to state machine executions:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions.
 %%
 %% </li> <li> The execution event history count is less than 24,999. Redriven
 %% executions append their event history to the existing event history. Make
@@ -724,9 +760,11 @@ redrive_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RedriveExecution">>, Input, Options).
 
-%% @doc Used by activity workers, Task states using the callback pattern, and
-%% optionally Task states using the job run pattern to report that the task
-%% identified by the `taskToken' failed.
+%% @doc Used by activity workers, Task states using the callback:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token
+%% pattern, and optionally Task states using the job run:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
+%% pattern to report that the task identified by the `taskToken' failed.
 send_task_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_failure(Client, Input, []).
@@ -734,17 +772,22 @@ send_task_failure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskFailure">>, Input, Options).
 
-%% @doc Used by activity workers and Task states using the callback pattern,
-%% and optionally Task states using the job run pattern to report to Step
-%% Functions that the task represented by the specified `taskToken' is
-%% still making progress.
+%% @doc Used by activity workers and Task states using the callback:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token
+%% pattern, and optionally Task states using the job run:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
+%% pattern to report to Step Functions that the task represented by the
+%% specified `taskToken' is still making progress.
 %%
 %% This action resets the `Heartbeat' clock. The `Heartbeat'
 %% threshold is specified in the state machine's Amazon States Language
 %% definition (`HeartbeatSeconds'). This action does not in itself create
 %% an event in the execution history. However, if the task times out, the
 %% execution history contains an `ActivityTimedOut' entry for activities,
-%% or a `TaskTimedOut' entry for tasks using the job run or callback
+%% or a `TaskTimedOut' entry for tasks using the job run:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
+%% or callback:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token
 %% pattern.
 %%
 %% The `Timeout' of a task, defined in the state machine's Amazon
@@ -758,9 +801,12 @@ send_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTaskHeartbeat">>, Input, Options).
 
-%% @doc Used by activity workers, Task states using the callback pattern, and
-%% optionally Task states using the job run pattern to report that the task
-%% identified by the `taskToken' completed successfully.
+%% @doc Used by activity workers, Task states using the callback:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token
+%% pattern, and optionally Task states using the job run:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
+%% pattern to report that the task identified by the `taskToken'
+%% completed successfully.
 send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).
@@ -802,9 +848,12 @@ send_task_success(Client, Input, Options)
 %% ARN, Step Functions uses the latest revision of the state machine for the
 %% execution.
 %%
-%% To start executions of a state machine version, call `StartExecution'
-%% and provide the version ARN or the ARN of an alias that points to the
-%% version.
+%% To start executions of a state machine version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html,
+%% call `StartExecution' and provide the version ARN or the ARN of an
+%% alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
+%% that points to the version.
 %%
 %% `StartExecution' is idempotent for `STANDARD' workflows. For a
 %% `STANDARD' workflow, if you call `StartExecution' with the same
@@ -852,8 +901,11 @@ stop_execution(Client, Input, Options)
 %% @doc Add a tag to a Step Functions resource.
 %%
 %% An array of key-value pairs. For more information, see Using Cost
-%% Allocation Tags in the Amazon Web Services Billing and Cost Management
-%% User Guide, and Controlling Access Using IAM Tags.
+%% Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Amazon Web Services Billing and Cost Management User Guide, and
+%% Controlling Access Using IAM Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html.
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.
@@ -869,38 +921,59 @@ tag_resource(Client, Input, Options)
 %% You can test a state without creating a state machine or updating an
 %% existing state machine. Using this API, you can test the following:
 %%
-%% <ul> <li> A state's input and output processing data flow
+%% <ul> <li> A state's input and output processing:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-input-output-dataflow
+%% data flow
 %%
-%% </li> <li> An Amazon Web Services service integration request and response
+%% </li> <li> An Amazon Web Services service integration:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-services.html
+%% request and response
 %%
-%% </li> <li> An HTTP Task request and response
+%% </li> <li> An HTTP Task:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-third-party-apis.html
+%% request and response
 %%
 %% </li> </ul> You can call this API on only one state at a time. The states
 %% that you can test include the following:
 %%
-%% <ul> <li> All Task types except Activity
+%% <ul> <li> All Task types:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-task-state.html#task-types
+%% except Activity:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html
 %%
-%% </li> <li> Pass
+%% </li> <li> Pass:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-pass-state.html
 %%
-%% </li> <li> Wait
+%% </li> <li> Wait:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-wait-state.html
 %%
-%% </li> <li> Choice
+%% </li> <li> Choice:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html
 %%
-%% </li> <li> Succeed
+%% </li> <li> Succeed:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-succeed-state.html
 %%
-%% </li> <li> Fail
+%% </li> <li> Fail:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-fail-state.html
 %%
 %% </li> </ul> The `TestState' API assumes an IAM role which must contain
 %% the required IAM permissions for the resources your state is accessing.
 %% For information about the permissions a state might need, see IAM
-%% permissions to test a state.
+%% permissions to test a state:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-permissions.
 %%
 %% The `TestState' API can run for up to five minutes. If the execution
 %% of a state exceeds this duration, it fails with the `States.Timeout'
 %% error.
 %%
-%% `TestState' doesn't support Activity tasks, `.sync' or
-%% `.waitForTaskToken' service integration patterns, Parallel, or Map
+%% `TestState' doesn't support Activity tasks:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html,
+%% `.sync' or `.waitForTaskToken' service integration patterns:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html,
+%% Parallel:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html,
+%% or Map:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html
 %% states.
 test_state(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -969,8 +1042,9 @@ update_map_run(Client, Input, Options)
 %%
 %% </li> </ul> After you update your state machine, you can set the
 %% `publish' parameter to `true' in the same action to publish a new
-%% version. This way, you can opt-in to strict versioning of your state
-%% machine.
+%% version:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html.
+%% This way, you can opt-in to strict versioning of your state machine.
 %%
 %% Step Functions assigns monotonically increasing integers for state machine
 %% versions, starting at version number 1.
@@ -986,8 +1060,9 @@ update_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStateMachine">>, Input, Options).
 
-%% @doc Updates the configuration of an existing state machine alias by
-%% modifying its `description' or `routingConfiguration'.
+%% @doc Updates the configuration of an existing state machine alias:
+%% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html
+%% by modifying its `description' or `routingConfiguration'.
 %%
 %% You must specify at least one of the `description' or
 %% `routingConfiguration' parameters to update a state machine alias.

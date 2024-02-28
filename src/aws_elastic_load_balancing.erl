@@ -16,7 +16,8 @@
 %% Elastic Load Balancing supports three types of load balancers: Application
 %% Load Balancers, Network Load Balancers, and Classic Load Balancers. You
 %% can select a load balancer based on your application needs. For more
-%% information, see the Elastic Load Balancing User Guide.
+%% information, see the Elastic Load Balancing User Guide:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/.
 %%
 %% This reference covers the 2012-06-01 API, which supports Classic Load
 %% Balancers. The 2015-12-01 API supports Application Load Balancers and
@@ -104,8 +105,9 @@
 %% key is already associated with the load balancer, `AddTags' updates
 %% its value.
 %%
-%% For more information, see Tag Your Classic Load Balancer in the Classic
-%% Load Balancers Guide.
+%% For more information, see Tag Your Classic Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html
+%% in the Classic Load Balancers Guide.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -119,8 +121,9 @@ add_tags(Client, Input, Options)
 %% The specified security groups override the previously associated security
 %% groups.
 %%
-%% For more information, see Security Groups for Load Balancers in a VPC in
-%% the Classic Load Balancers Guide.
+%% For more information, see Security Groups for Load Balancers in a VPC:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups
+%% in the Classic Load Balancers Guide.
 apply_security_groups_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_security_groups_to_load_balancer(Client, Input, []).
@@ -133,7 +136,9 @@ apply_security_groups_to_load_balancer(Client, Input, Options)
 %%
 %% The load balancer evenly distributes requests across all registered
 %% subnets. For more information, see Add or Remove Subnets for Your Load
-%% Balancer in a VPC in the Classic Load Balancers Guide.
+%% Balancer in a VPC:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html
+%% in the Classic Load Balancers Guide.
 attach_load_balancer_to_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_to_subnets(Client, Input, []).
@@ -144,7 +149,8 @@ attach_load_balancer_to_subnets(Client, Input, Options)
 %% @doc Specifies the health check settings to use when evaluating the health
 %% state of your EC2 instances.
 %%
-%% For more information, see Configure Health Checks for Your Load Balancer
+%% For more information, see Configure Health Checks for Your Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html
 %% in the Classic Load Balancers Guide.
 configure_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -168,8 +174,9 @@ configure_health_check(Client, Input, Options)
 %% If the application cookie is explicitly removed or expires, the session
 %% stops being sticky until a new application cookie is issued.
 %%
-%% For more information, see Application-Controlled Session Stickiness in the
-%% Classic Load Balancers Guide.
+%% For more information, see Application-Controlled Session Stickiness:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application
+%% in the Classic Load Balancers Guide.
 create_app_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_cookie_stickiness_policy(Client, Input, []).
@@ -196,8 +203,9 @@ create_app_cookie_stickiness_policy(Client, Input, Options)
 %% the cookie expiration time, which is specified in the policy
 %% configuration.
 %%
-%% For more information, see Duration-Based Session Stickiness in the Classic
-%% Load Balancers Guide.
+%% For more information, see Duration-Based Session Stickiness:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration
+%% in the Classic Load Balancers Guide.
 create_lb_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lb_cookie_stickiness_policy(Client, Input, []).
@@ -219,8 +227,9 @@ create_lb_cookie_stickiness_policy(Client, Input, Options)
 %%
 %% You can create up to 20 load balancers per region per account. You can
 %% request an increase for the number of load balancers for your account. For
-%% more information, see Limits for Your Classic Load Balancer in the Classic
-%% Load Balancers Guide.
+%% more information, see Limits for Your Classic Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html
+%% in the Classic Load Balancers Guide.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
@@ -234,8 +243,9 @@ create_load_balancer(Client, Input, Options)
 %% created; otherwise, the properties of the new listener must match the
 %% properties of the existing listener.
 %%
-%% For more information, see Listeners for Your Classic Load Balancer in the
-%% Classic Load Balancers Guide.
+%% For more information, see Listeners for Your Classic Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html
+%% in the Classic Load Balancers Guide.
 create_load_balancer_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_listeners(Client, Input, []).
@@ -299,8 +309,9 @@ delete_load_balancer_policy(Client, Input, Options)
 %% You can use `DescribeLoadBalancers' to verify that the instance is
 %% deregistered from the load balancer.
 %%
-%% For more information, see Register or De-Register EC2 Instances in the
-%% Classic Load Balancers Guide.
+%% For more information, see Register or De-Register EC2 Instances:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html
+%% in the Classic Load Balancers Guide.
 deregister_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instances_from_load_balancer(Client, Input, []).
@@ -311,8 +322,9 @@ deregister_instances_from_load_balancer(Client, Input, Options)
 %% @doc Describes the current Elastic Load Balancing resource limits for your
 %% AWS account.
 %%
-%% For more information, see Limits for Your Classic Load Balancer in the
-%% Classic Load Balancers Guide.
+%% For more information, see Limits for Your Classic Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html
+%% in the Classic Load Balancers Guide.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -424,8 +436,9 @@ detach_load_balancer_from_subnets(Client, Input, Options)
 %% balancer attempts to equally balance the traffic among its remaining
 %% Availability Zones.
 %%
-%% For more information, see Add or Remove Availability Zones in the Classic
-%% Load Balancers Guide.
+%% For more information, see Add or Remove Availability Zones:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
+%% in the Classic Load Balancers Guide.
 disable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_availability_zones_for_load_balancer(Client, Input, []).
@@ -441,7 +454,9 @@ disable_availability_zones_for_load_balancer(Client, Input, Options)
 %%
 %% The load balancer evenly distributes requests across all its registered
 %% Availability Zones that contain instances. For more information, see Add
-%% or Remove Availability Zones in the Classic Load Balancers Guide.
+%% or Remove Availability Zones:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
+%% in the Classic Load Balancers Guide.
 enable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_availability_zones_for_load_balancer(Client, Input, []).
@@ -460,13 +475,17 @@ enable_availability_zones_for_load_balancer(Client, Input, Options)
 %% For more information, see the following in the Classic Load Balancers
 %% Guide:
 %%
-%% <ul> <li> Cross-Zone Load Balancing
+%% <ul> <li> Cross-Zone Load Balancing:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html
 %%
-%% </li> <li> Connection Draining
+%% </li> <li> Connection Draining:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html
 %%
-%% </li> <li> Access Logs
+%% </li> <li> Access Logs:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html
 %%
-%% </li> <li> Idle Connection Timeout
+%% </li> <li> Idle Connection Timeout:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html
 %%
 %% </li> </ul>
 modify_load_balancer_attributes(Client, Input)
@@ -499,8 +518,9 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% To deregister instances from a load balancer, use
 %% `DeregisterInstancesFromLoadBalancer'.
 %%
-%% For more information, see Register or De-Register EC2 Instances in the
-%% Classic Load Balancers Guide.
+%% For more information, see Register or De-Register EC2 Instances:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html
+%% in the Classic Load Balancers Guide.
 register_instances_with_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instances_with_load_balancer(Client, Input, []).
@@ -523,8 +543,9 @@ remove_tags(Client, Input, Options)
 %% the same load balancer and port.
 %%
 %% For more information about updating your SSL certificate, see Replace the
-%% SSL Certificate for Your Load Balancer in the Classic Load Balancers
-%% Guide.
+%% SSL Certificate for Your Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html
+%% in the Classic Load Balancers Guide.
 set_load_balancer_listener_ssl_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_listener_ssl_certificate(Client, Input, []).
@@ -548,9 +569,12 @@ set_load_balancer_listener_ssl_certificate(Client, Input, Options)
 %% with the EC2 instance.
 %%
 %% For more information about enabling back-end instance authentication, see
-%% Configure Back-end Instance Authentication in the Classic Load Balancers
-%% Guide. For more information about Proxy Protocol, see Configure Proxy
-%% Protocol Support in the Classic Load Balancers Guide.
+%% Configure Back-end Instance Authentication:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt
+%% in the Classic Load Balancers Guide. For more information about Proxy
+%% Protocol, see Configure Proxy Protocol Support:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html
+%% in the Classic Load Balancers Guide.
 set_load_balancer_policies_for_backend_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_for_backend_server(Client, Input, []).
@@ -565,9 +589,13 @@ set_load_balancer_policies_for_backend_server(Client, Input, Options)
 %% `SetLoadBalancerPoliciesForBackendServer'.
 %%
 %% For more information about setting policies, see Update the SSL
-%% Negotiation Configuration, Duration-Based Session Stickiness, and
-%% Application-Controlled Session Stickiness in the Classic Load Balancers
-%% Guide.
+%% Negotiation Configuration:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html,
+%% Duration-Based Session Stickiness:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration,
+%% and Application-Controlled Session Stickiness:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application
+%% in the Classic Load Balancers Guide.
 set_load_balancer_policies_of_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_of_listener(Client, Input, []).

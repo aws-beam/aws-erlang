@@ -7,7 +7,8 @@
 %%
 %% For example, you can create crowd simulations, large real-world
 %% environments, and immersive and interactive experiences. For more
-%% information about SimSpace Weaver, see the SimSpace Weaver User Guide .
+%% information about SimSpace Weaver, see the SimSpace Weaver User Guide:
+%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/ .
 %%
 %% This API reference describes the API operations and data types that you
 %% can use to communicate directly with SimSpace Weaver.
@@ -68,8 +69,9 @@
 %% time. The state data saved in a snapshot includes entity data from the
 %% State Fabric, the simulation configuration specified in the schema, and
 %% the clock tick number. You can use the snapshot to initialize a new
-%% simulation. For more information about snapshots, see Snapshots in the
-%% SimSpace Weaver User Guide.
+%% simulation. For more information about snapshots, see Snapshots:
+%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/working-with_snapshots.html
+%% in the SimSpace Weaver User Guide.
 %%
 %% You specify a `Destination' when you create a snapshot. The
 %% `Destination' is the name of an Amazon S3 bucket and an optional
@@ -359,9 +361,12 @@ start_clock(Client, Input0, Options0) ->
 %% @doc Starts a simulation with the given name.
 %%
 %% You must choose to start your simulation from a schema or from a snapshot.
-%% For more information about the schema, see the schema reference in the
-%% SimSpace Weaver User Guide. For more information about snapshots, see
-%% Snapshots in the SimSpace Weaver User Guide.
+%% For more information about the schema, see the schema reference:
+%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/schema-reference.html
+%% in the SimSpace Weaver User Guide. For more information about snapshots,
+%% see Snapshots:
+%% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/working-with_snapshots.html
+%% in the SimSpace Weaver User Guide.
 start_simulation(Client, Input) ->
     start_simulation(Client, Input, []).
 start_simulation(Client, Input0, Options0) ->
@@ -460,7 +465,8 @@ stop_simulation(Client, Input0, Options0) ->
 
 %% @doc Adds tags to a SimSpace Weaver resource.
 %%
-%% For more information about tags, see Tagging Amazon Web Services resources
+%% For more information about tags, see Tagging Amazon Web Services
+%% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the Amazon Web Services General Reference.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -486,7 +492,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes tags from a SimSpace Weaver resource.
 %%
-%% For more information about tags, see Tagging Amazon Web Services resources
+%% For more information about tags, see Tagging Amazon Web Services
+%% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the Amazon Web Services General Reference.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).

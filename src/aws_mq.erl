@@ -111,8 +111,11 @@
 %% </li> <li>ec2:DescribeVpcs
 %%
 %% </li></ul> For more information, see Create an IAM User and Get Your
-%% Amazon Web Services Credentials and Never Modify or Delete the Amazon MQ
-%% Elastic Network Interface in the Amazon MQ Developer Guide.
+%% Amazon Web Services Credentials:
+%% https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/amazon-mq-setting-up.html#create-iam-user
+%% and Never Modify or Delete the Amazon MQ Elastic Network Interface:
+%% https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface
+%% in the Amazon MQ Developer Guide.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 create_broker(Client, Input0, Options0) ->

@@ -7,8 +7,9 @@
 %% Use these actions to gain insight in your documents. Amazon Comprehend
 %% Medical only detects entities in English language texts. Amazon Comprehend
 %% Medical places limits on the sizes of files allowed for different API
-%% operations. To learn more, see Guidelines and quotas in the Amazon
-%% Comprehend Medical Developer Guide.
+%% operations. To learn more, see Guidelines and quotas:
+%% https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-quotas.html
+%% in the Amazon Comprehend Medical Developer Guide.
 -module(aws_comprehendmedical).
 
 -export([describe_entities_detection_v2_job/2,

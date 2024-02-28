@@ -15,7 +15,9 @@
 %% <ul> <li> https://freetier.us-east-1.api.aws
 %%
 %% </li> </ul> For more information, see Using the Amazon Web Services Free
-%% Tier in the Billing User Guide.
+%% Tier:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html
+%% in the Billing User Guide.
 -module(aws_freetier).
 
 -export([get_free_tier_usage/2,

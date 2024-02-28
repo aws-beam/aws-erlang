@@ -6,7 +6,8 @@
 %% capture, concatenate, or stream your Amazon Chime SDK meetings.
 %%
 %% For more information about media pipelines, see Amazon Chime SDK media
-%% pipelines.
+%% pipelines:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_Operations_Amazon_Chime_SDK_Media_Pipelines.html.
 -module(aws_chime_sdk_media_pipelines).
 
 -export([create_media_capture_pipeline/2,
@@ -625,8 +626,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %%
 %% Before starting any speaker search tasks, you must provide all notices and
 %% obtain all consents from the speaker as required under applicable privacy
-%% and biometrics laws, and as required under the AWS service terms for the
-%% Amazon Chime SDK.
+%% and biometrics laws, and as required under the AWS service terms:
+%% https://aws.amazon.com/service-terms/ for the Amazon Chime SDK.
 start_speaker_search_task(Client, Identifier, Input) ->
     start_speaker_search_task(Client, Identifier, Input, []).
 start_speaker_search_task(Client, Identifier, Input0, Options0) ->
@@ -652,12 +653,15 @@ start_speaker_search_task(Client, Identifier, Input0, Options0) ->
 %% @doc Starts a voice tone analysis task.
 %%
 %% For more information about voice tone analysis, see Using Amazon Chime SDK
-%% voice analytics in the Amazon Chime SDK Developer Guide.
+%% voice analytics:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/voice-analytics.html in
+%% the Amazon Chime SDK Developer Guide.
 %%
 %% Before starting any voice tone analysis tasks, you must provide all
 %% notices and obtain all consents from the speaker as required under
 %% applicable privacy and biometrics laws, and as required under the AWS
-%% service terms for the Amazon Chime SDK.
+%% service terms: https://aws.amazon.com/service-terms/ for the Amazon Chime
+%% SDK.
 start_voice_tone_analysis_task(Client, Identifier, Input) ->
     start_voice_tone_analysis_task(Client, Identifier, Input, []).
 start_voice_tone_analysis_task(Client, Identifier, Input0, Options0) ->

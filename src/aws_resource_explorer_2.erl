@@ -15,23 +15,27 @@
 %%
 %% Resource Explorer scans the resources in each of the Amazon Web Services
 %% Regions in your Amazon Web Services account in which you turn on Resource
-%% Explorer. Resource Explorer creates and maintains an index in each Region,
-%% with the details of that Region's resources.
+%% Explorer. Resource Explorer creates and maintains an index:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-terms-and-concepts.html#term-index
+%% in each Region, with the details of that Region's resources.
 %%
-%% You can search across all of the indexed Regions in your account by
-%% designating one of your Amazon Web Services Regions to contain the
+%% You can search across all of the indexed Regions in your account:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
+%% by designating one of your Amazon Web Services Regions to contain the
 %% aggregator index for the account. When you promote a local index in a
-%% Region to become the aggregator index for the account, Resource Explorer
-%% automatically replicates the index information from all local indexes in
-%% the other Regions to the aggregator index. Therefore, the Region with the
-%% aggregator index has a copy of all resource information for all Regions in
-%% the account where you turned on Resource Explorer. As a result, views in
-%% the aggregator index Region include resources from all of the indexed
-%% Regions in your account.
+%% Region to become the aggregator index for the account:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region-turn-on.html,
+%% Resource Explorer automatically replicates the index information from all
+%% local indexes in the other Regions to the aggregator index. Therefore, the
+%% Region with the aggregator index has a copy of all resource information
+%% for all Regions in the account where you turned on Resource Explorer. As a
+%% result, views in the aggregator index Region include resources from all of
+%% the indexed Regions in your account.
 %%
 %% For more information about Amazon Web Services Resource Explorer,
 %% including how to enable and configure the service, see the Amazon Web
-%% Services Resource Explorer User Guide.
+%% Services Resource Explorer User Guide:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/.
 -module(aws_resource_explorer_2).
 
 -export([associate_default_view/2,
@@ -152,17 +156,22 @@ batch_get_view(Client, Input0, Options0) ->
 %% one Amazon Web Services Region into the aggregator index for the Amazon
 %% Web Services account, use the `UpdateIndexType' operation. For more
 %% information, see Turning on cross-Region search by creating an aggregator
-%% index in the Amazon Web Services Resource Explorer User Guide.
+%% index:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% For more details about what happens when you turn on Resource Explorer in
 %% an Amazon Web Services Region, see Turn on Resource Explorer to index your
-%% resources in an Amazon Web Services Region in the Amazon Web Services
-%% Resource Explorer User Guide.
+%% resources in an Amazon Web Services Region:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-service-activate.html
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% If this is the first Amazon Web Services Region in which you've
 %% created an index for Resource Explorer, then this operation also creates a
-%% service-linked role in your Amazon Web Services account that allows
-%% Resource Explorer to enumerate your resources to populate the index.
+%% service-linked role:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html
+%% in your Amazon Web Services account that allows Resource Explorer to
+%% enumerate your resources to populate the index.
 %%
 %% <ul> <li> Action: `resource-explorer-2:CreateIndex'
 %%
@@ -187,8 +196,10 @@ batch_get_view(Client, Input0, Options0) ->
 %% This permission is required only the first time you create an index to
 %% turn on Resource Explorer in the account. Resource Explorer uses this to
 %% create the service-linked role needed to index the resources in your
-%% account. Resource Explorer uses the same service-linked role for all
-%% additional indexes you create afterwards.
+%% account:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html.
+%% Resource Explorer uses the same service-linked role for all additional
+%% indexes you create afterwards.
 %%
 %% </li> </ul>
 create_index(Client, Input) ->
@@ -218,13 +229,15 @@ create_index(Client, Input0, Options0) ->
 %%
 %% Results from queries that you make using this view include only resources
 %% that match the view's `Filters'. For more information about Amazon
-%% Web Services Resource Explorer views, see Managing views in the Amazon Web
-%% Services Resource Explorer User Guide.
+%% Web Services Resource Explorer views, see Managing views:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% Only the principals with an IAM identity-based policy that grants
 %% `Allow' to the `Search' action on a `Resource' with the Amazon
-%% resource name (ARN) of this view can `Search' using views you create
-%% with this operation.
+%% resource name (ARN):
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% of this view can `Search' using views you create with this operation.
 create_view(Client, Input) ->
     create_view(Client, Input, []).
 create_view(Client, Input0, Options0) ->
@@ -546,8 +559,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon resource names (ARNs) of the views available in the
-%% Amazon Web Services Region in which you call this operation.
+%% @doc Lists the Amazon resource names (ARNs):
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% of the views available in the Amazon Web Services Region in which you call
+%% this operation.
 %%
 %% Always check the `NextToken' response parameter for a `null' value
 %% when calling a paginated operation. These operations can occasionally
@@ -589,10 +604,12 @@ list_views(Client, Input0, Options0) ->
 %% `SearchFilter' parameter attached to the view.
 %%
 %% For the complete syntax supported by the `QueryString' parameter, see
-%% Search query syntax reference for Resource Explorer.
+%% Search query syntax reference for Resource Explorer:
+%% https://docs.aws.amazon.com/resource-explorer/latest/APIReference/about-query-syntax.html.
 %%
 %% If your search results are empty, or are missing results that you think
-%% should be there, see Troubleshooting Resource Explorer search.
+%% should be there, see Troubleshooting Resource Explorer search:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/troubleshooting_search.html.
 search(Client, Input) ->
     search(Client, Input, []).
 search(Client, Input0, Options0) ->
@@ -669,8 +686,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% For more information about indexes and the role they perform in Amazon Web
 %% Services Resource Explorer, see Turning on cross-Region search by creating
-%% an aggregator index in the Amazon Web Services Resource Explorer User
-%% Guide.
+%% an aggregator index:
+%% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% <ul> <li> `AGGREGATOR' index type
 %%

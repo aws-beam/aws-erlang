@@ -8,7 +8,8 @@
 %% and serve targeted ads to viewers while maintaining broadcast quality in
 %% over-the-top (OTT) video applications. For information about using the
 %% service, including detailed information about the settings covered in this
-%% guide, see the AWS Elemental MediaTailor User Guide.
+%% guide, see the AWS Elemental MediaTailor User Guide:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/.
 %%
 %% Through the SDKs and the CLI you manage AWS Elemental MediaTailor
 %% configurations and channels the same as you do through the console. For
@@ -175,8 +176,9 @@ configure_logs_for_playback_configuration(Client, Input0, Options0) ->
 
 %% @doc Creates a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 create_channel(Client, ChannelName, Input) ->
     create_channel(Client, ChannelName, Input, []).
 create_channel(Client, ChannelName, Input0, Options0) ->
@@ -226,7 +228,9 @@ create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %%
 %% A prefetch schedule allows you to tell MediaTailor to fetch and prepare
 %% certain ads before an ad break happens. For more information about ad
-%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
+%% prefetching, see Using ad prefetching:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
+%% the MediaTailor User Guide.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -251,8 +255,9 @@ create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 
 %% @doc Creates a program within a channel.
 %%
-%% For information about programs, see Working with programs in the
-%% MediaTailor User Guide.
+%% For information about programs, see Working with programs:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
+%% in the MediaTailor User Guide.
 create_program(Client, ChannelName, ProgramName, Input) ->
     create_program(Client, ChannelName, ProgramName, Input, []).
 create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -278,8 +283,9 @@ create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% @doc Creates a source location.
 %%
 %% A source location is a container for sources. For more information about
-%% source locations, see Working with source locations in the MediaTailor
-%% User Guide.
+%% source locations, see Working with source locations:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
+%% in the MediaTailor User Guide.
 create_source_location(Client, SourceLocationName, Input) ->
     create_source_location(Client, SourceLocationName, Input, []).
 create_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -327,8 +333,9 @@ create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 
 %% @doc Deletes a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 delete_channel(Client, ChannelName, Input0, Options0) ->
@@ -400,7 +407,8 @@ delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %% @doc Deletes a playback configuration.
 %%
 %% For information about MediaTailor configurations, see Working with
-%% configurations in AWS Elemental MediaTailor.
+%% configurations in AWS Elemental MediaTailor:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
 delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
 delete_playback_configuration(Client, Name, Input0, Options0) ->
@@ -427,7 +435,9 @@ delete_playback_configuration(Client, Name, Input0, Options0) ->
 %%
 %% If you call `DeletePrefetchSchedule' on an expired prefetch schedule,
 %% MediaTailor returns an HTTP 404 status code. For more information about ad
-%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
+%% prefetching, see Using ad prefetching:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
+%% the MediaTailor User Guide.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -452,8 +462,9 @@ delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 
 %% @doc Deletes a program within a channel.
 %%
-%% For information about programs, see Working with programs in the
-%% MediaTailor User Guide.
+%% For information about programs, see Working with programs:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
+%% in the MediaTailor User Guide.
 delete_program(Client, ChannelName, ProgramName, Input) ->
     delete_program(Client, ChannelName, ProgramName, Input, []).
 delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -479,8 +490,9 @@ delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% @doc Deletes a source location.
 %%
 %% A source location is a container for sources. For more information about
-%% source locations, see Working with source locations in the MediaTailor
-%% User Guide.
+%% source locations, see Working with source locations:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
+%% in the MediaTailor User Guide.
 delete_source_location(Client, SourceLocationName, Input) ->
     delete_source_location(Client, SourceLocationName, Input, []).
 delete_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -528,8 +540,9 @@ delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 
 %% @doc Describes a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 describe_channel(Client, ChannelName)
   when is_map(Client) ->
     describe_channel(Client, ChannelName, #{}, #{}).
@@ -577,8 +590,9 @@ describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, Heade
 
 %% @doc Describes a program within a channel.
 %%
-%% For information about programs, see Working with programs in the
-%% MediaTailor User Guide.
+%% For information about programs, see Working with programs:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
+%% in the MediaTailor User Guide.
 describe_program(Client, ChannelName, ProgramName)
   when is_map(Client) ->
     describe_program(Client, ChannelName, ProgramName, #{}, #{}).
@@ -604,8 +618,9 @@ describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options
 %% @doc Describes a source location.
 %%
 %% A source location is a container for sources. For more information about
-%% source locations, see Working with source locations in the MediaTailor
-%% User Guide.
+%% source locations, see Working with source locations:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
+%% in the MediaTailor User Guide.
 describe_source_location(Client, SourceLocationName)
   when is_map(Client) ->
     describe_source_location(Client, SourceLocationName, #{}, #{}).
@@ -709,7 +724,8 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a playback configuration.
 %%
 %% For information about MediaTailor configurations, see Working with
-%% configurations in AWS Elemental MediaTailor.
+%% configurations in AWS Elemental MediaTailor:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
 get_playback_configuration(Client, Name)
   when is_map(Client) ->
     get_playback_configuration(Client, Name, #{}, #{}).
@@ -736,7 +752,9 @@ get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
 %%
 %% A prefetch schedule allows you to tell MediaTailor to fetch and prepare
 %% certain ads before an ad break happens. For more information about ad
-%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
+%% prefetching, see Using ad prefetching:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
+%% the MediaTailor User Guide.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName)
   when is_map(Client) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, #{}, #{}).
@@ -851,7 +869,8 @@ list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves existing playback configurations.
 %%
 %% For information about MediaTailor configurations, see Working with
-%% Configurations in AWS Elemental MediaTailor.
+%% Configurations in AWS Elemental MediaTailor:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
 list_playback_configurations(Client)
   when is_map(Client) ->
     list_playback_configurations(Client, #{}, #{}).
@@ -937,7 +956,8 @@ list_source_locations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Tags are key-value pairs that you can associate with Amazon resources to
 %% help with organization, access control, and cost tracking. For more
-%% information, see Tagging AWS Elemental MediaTailor Resources.
+%% information, see Tagging AWS Elemental MediaTailor Resources:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1018,7 +1038,8 @@ put_channel_policy(Client, ChannelName, Input0, Options0) ->
 %% @doc Creates a playback configuration.
 %%
 %% For information about MediaTailor configurations, see Working with
-%% configurations in AWS Elemental MediaTailor.
+%% configurations in AWS Elemental MediaTailor:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
 put_playback_configuration(Client, Input) ->
     put_playback_configuration(Client, Input, []).
 put_playback_configuration(Client, Input0, Options0) ->
@@ -1043,8 +1064,9 @@ put_playback_configuration(Client, Input0, Options0) ->
 
 %% @doc Starts a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 start_channel(Client, ChannelName, Input) ->
     start_channel(Client, ChannelName, Input, []).
 start_channel(Client, ChannelName, Input0, Options0) ->
@@ -1069,8 +1091,9 @@ start_channel(Client, ChannelName, Input0, Options0) ->
 
 %% @doc Stops a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 stop_channel(Client, ChannelName, Input) ->
     stop_channel(Client, ChannelName, Input, []).
 stop_channel(Client, ChannelName, Input0, Options0) ->
@@ -1097,7 +1120,8 @@ stop_channel(Client, ChannelName, Input0, Options0) ->
 %%
 %% Tags are key-value pairs that you can associate with Amazon resources to
 %% help with organization, access control, and cost tracking. For more
-%% information, see Tagging AWS Elemental MediaTailor Resources.
+%% information, see Tagging AWS Elemental MediaTailor Resources:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1146,8 +1170,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a channel.
 %%
-%% For information about MediaTailor channels, see Working with channels in
-%% the MediaTailor User Guide.
+%% For information about MediaTailor channels, see Working with channels:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
+%% in the MediaTailor User Guide.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 update_channel(Client, ChannelName, Input0, Options0) ->
@@ -1219,8 +1244,9 @@ update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% @doc Updates a source location.
 %%
 %% A source location is a container for sources. For more information about
-%% source locations, see Working with source locations in the MediaTailor
-%% User Guide.
+%% source locations, see Working with source locations:
+%% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
+%% in the MediaTailor User Guide.
 update_source_location(Client, SourceLocationName, Input) ->
     update_source_location(Client, SourceLocationName, Input, []).
 update_source_location(Client, SourceLocationName, Input0, Options0) ->

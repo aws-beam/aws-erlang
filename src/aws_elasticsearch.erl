@@ -7,13 +7,17 @@
 %% manage Elasticsearch domains.
 %%
 %% For sample code that uses the Configuration API, see the Amazon
-%% Elasticsearch Service Developer Guide. The guide also contains sample code
-%% for sending signed HTTP requests to the Elasticsearch APIs.
+%% Elasticsearch Service Developer Guide:
+%% https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html.
+%% The guide also contains sample code for sending signed HTTP requests to
+%% the Elasticsearch APIs:
+%% https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html.
 %%
 %% The endpoint for configuration service requests is region-specific:
 %% es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
 %% current list of supported regions and endpoints, see Regions and
-%% Endpoints.
+%% Endpoints:
+%% http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions.
 -module(aws_elasticsearch).
 
 -export([accept_inbound_cross_cluster_search_connection/3,
@@ -173,7 +177,8 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 %%
 %% Tags are a set of case-sensitive key value pairs. An Elasticsearch domain
 %% may have up to 10 tags. See Tagging Amazon Elasticsearch Service Domains
-%% for more information.
+%% for more information.:
+%% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 add_tags(Client, Input0, Options0) ->
@@ -295,8 +300,9 @@ cancel_elasticsearch_service_software_update(Client, Input0, Options0) ->
 
 %% @doc Creates a new Elasticsearch domain.
 %%
-%% For more information, see Creating Elasticsearch Domains in the Amazon
-%% Elasticsearch Service Developer Guide.
+%% For more information, see Creating Elasticsearch Domains:
+%% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains
+%% in the Amazon Elasticsearch Service Developer Guide.
 create_elasticsearch_domain(Client, Input) ->
     create_elasticsearch_domain(Client, Input, []).
 create_elasticsearch_domain(Client, Input0, Options0) ->
@@ -420,8 +426,9 @@ delete_elasticsearch_domain(Client, DomainName, Input0, Options0) ->
 %%
 %% Role deletion will fail if any existing VPC domains use the role. You must
 %% delete any such Elasticsearch domains before deleting the role. See
-%% Deleting Elasticsearch Service Role in VPC Endpoints for Amazon
-%% Elasticsearch Service Domains.
+%% Deleting Elasticsearch Service Role:
+%% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr
+%% in VPC Endpoints for Amazon Elasticsearch Service Domains.
 delete_elasticsearch_service_role(Client, Input) ->
     delete_elasticsearch_service_role(Client, Input, []).
 delete_elasticsearch_service_role(Client, Input0, Options0) ->

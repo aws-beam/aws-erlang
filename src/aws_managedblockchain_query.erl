@@ -122,7 +122,8 @@ get_token_balance(Client, Input0, Options0) ->
 %% @doc Gets the details of a transaction.
 %%
 %% This action will return transaction details for all transactions that are
-%% confirmed on the blockchain, even if they have not reached finality.
+%% confirmed on the blockchain, even if they have not reached finality:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
 get_transaction(Client, Input0, Options0) ->
@@ -209,7 +210,8 @@ list_token_balances(Client, Input0, Options0) ->
 %% Each object contains details about the transaction event.
 %%
 %% This action will return transaction details for all transactions that are
-%% confirmed on the blockchain, even if they have not reached finality.
+%% confirmed on the blockchain, even if they have not reached finality:
+%% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
 list_transaction_events(Client, Input0, Options0) ->

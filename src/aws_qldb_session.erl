@@ -10,12 +10,15 @@
 %% provides a high-level abstraction layer above this QLDB Session data plane
 %% and manages `SendCommand' API calls for you. For information and a
 %% list of supported programming languages, see Getting started with the
-%% driver in the Amazon QLDB Developer Guide.
+%% driver:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html
+%% in the Amazon QLDB Developer Guide.
 %%
 %% If you are working with the AWS Command Line Interface (AWS CLI), use the
 %% QLDB shell. The shell is a command line interface that uses the QLDB
 %% driver to interact with a ledger. For information, see Accessing Amazon
-%% QLDB using the QLDB shell.
+%% QLDB using the QLDB shell:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html.
 -module(aws_qldb_session).
 
 -export([send_command/2,
@@ -36,12 +39,15 @@
 %% provides a high-level abstraction layer above this QLDB Session data plane
 %% and manages `SendCommand' API calls for you. For information and a
 %% list of supported programming languages, see Getting started with the
-%% driver in the Amazon QLDB Developer Guide.
+%% driver:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html
+%% in the Amazon QLDB Developer Guide.
 %%
 %% If you are working with the AWS Command Line Interface (AWS CLI), use the
 %% QLDB shell. The shell is a command line interface that uses the QLDB
 %% driver to interact with a ledger. For information, see Accessing Amazon
-%% QLDB using the QLDB shell.
+%% QLDB using the QLDB shell:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).

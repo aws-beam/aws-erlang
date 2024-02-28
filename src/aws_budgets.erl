@@ -48,7 +48,7 @@
 %%
 %% </li> </ul> For information about costs that are associated with the
 %% Amazon Web Services Budgets API, see Amazon Web Services Cost Management
-%% Pricing.
+%% Pricing: https://aws.amazon.com/aws-cost-management/pricing/.
 -module(aws_budgets).
 
 -export([create_budget/2,
@@ -109,7 +109,9 @@
 %% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
 %% in the syntax at one time. Use the syntax that matches your case. The
 %% Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples section.
+%% `PlannedBudgetLimits', see the Examples:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples
+%% section.
 create_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget(Client, Input, []).
@@ -192,7 +194,9 @@ delete_subscriber(Client, Input, Options)
 %% @doc Describes a budget.
 %%
 %% The Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples section.
+%% `PlannedBudgetLimits', see the Examples:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples
+%% section.
 describe_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget(Client, Input, []).
@@ -255,7 +259,9 @@ describe_budget_performance_history(Client, Input, Options)
 %% @doc Lists the budgets that are associated with an account.
 %%
 %% The Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples section.
+%% `PlannedBudgetLimits', see the Examples:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples
+%% section.
 describe_budgets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budgets(Client, Input, []).
@@ -297,7 +303,9 @@ execute_budget_action(Client, Input, Options)
 %% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
 %% in the syntax at one time. Use the syntax that matches your case. The
 %% Request Syntax section shows the `BudgetLimit' syntax. For
-%% `PlannedBudgetLimits', see the Examples section.
+%% `PlannedBudgetLimits', see the Examples:
+%% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples
+%% section.
 update_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget(Client, Input, []).

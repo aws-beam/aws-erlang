@@ -180,7 +180,8 @@
 %% with the exception of global replication group. When you add or remove
 %% tags on replication groups, those actions will be replicated to all nodes
 %% in the replication group. For more information, see Resource-level
-%% permissions.
+%% permissions:
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html.
 %%
 %% For example, you can use cost-allocation tags to your ElastiCache
 %% resources, Amazon generates a cost allocation report as a comma-separated
@@ -189,7 +190,9 @@
 %% application names, or owners) to organize your costs across multiple
 %% services.
 %%
-%% For more information, see Using Cost Allocation Tags in Amazon ElastiCache
+%% For more information, see Using Cost Allocation Tags in Amazon
+%% ElastiCache:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html
 %% in the ElastiCache User Guide.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -215,7 +218,8 @@ authorize_cache_security_group_ingress(Client, Input, Options)
 %% @doc Apply the service update.
 %%
 %% For more information on service updates and applying them, see Applying
-%% Service Updates.
+%% Service Updates:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html.
 batch_apply_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_apply_update_action(Client, Input, []).
@@ -226,7 +230,8 @@ batch_apply_update_action(Client, Input, Options)
 %% @doc Stop the service update.
 %%
 %% For more information on service updates and stopping them, see Stopping
-%% Service Updates.
+%% Service Updates:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html.
 batch_stop_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_stop_update_action(Client, Input, []).
@@ -261,7 +266,10 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 %% To control access to your snapshots, use an IAM policy to control who has
 %% the ability to use the `CopySnapshot' operation. For more information
 %% about using IAM to control the use of ElastiCache operations, see
-%% Exporting Snapshots and Authentication &amp; Access Control.
+%% Exporting Snapshots:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html
+%% and Authentication &amp; Access Control:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html.
 %%
 %% You could receive the following error messages.
 %%
@@ -270,21 +278,24 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 %% <ul> <li> Error Message: The S3 bucket %s is outside of the region.
 %%
 %% Solution: Create an Amazon S3 bucket in the same region as your snapshot.
-%% For more information, see Step 1: Create an Amazon S3 Bucket in the
-%% ElastiCache User Guide.
+%% For more information, see Step 1: Create an Amazon S3 Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket
+%% in the ElastiCache User Guide.
 %%
 %% </li> <li> Error Message: The S3 bucket %s does not exist.
 %%
 %% Solution: Create an Amazon S3 bucket in the same region as your snapshot.
-%% For more information, see Step 1: Create an Amazon S3 Bucket in the
-%% ElastiCache User Guide.
+%% For more information, see Step 1: Create an Amazon S3 Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket
+%% in the ElastiCache User Guide.
 %%
 %% </li> <li> Error Message: The S3 bucket %s is not owned by the
 %% authenticated user.
 %%
 %% Solution: Create an Amazon S3 bucket in the same region as your snapshot.
-%% For more information, see Step 1: Create an Amazon S3 Bucket in the
-%% ElastiCache User Guide.
+%% For more information, see Step 1: Create an Amazon S3 Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket
+%% in the ElastiCache User Guide.
 %%
 %% </li> <li> Error Message: The authenticated user does not have sufficient
 %% permissions to perform the desired activity.
@@ -302,22 +313,27 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 %% permissions %s on the S3 Bucket.
 %%
 %% Solution: Add List and Read permissions on the bucket. For more
-%% information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
+%% information, see Step 2: Grant ElastiCache Access to Your Amazon S3
+%% Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access
 %% in the ElastiCache User Guide.
 %%
 %% </li> <li> Error Message: ElastiCache has not been granted WRITE
 %% permissions %s on the S3 Bucket.
 %%
 %% Solution: Add Upload/Delete permissions on the bucket. For more
-%% information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
+%% information, see Step 2: Grant ElastiCache Access to Your Amazon S3
+%% Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access
 %% in the ElastiCache User Guide.
 %%
 %% </li> <li> Error Message: ElastiCache has not been granted READ_ACP
 %% permissions %s on the S3 Bucket.
 %%
 %% Solution: Add View Permissions on the bucket. For more information, see
-%% Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the
-%% ElastiCache User Guide.
+%% Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access
+%% in the ElastiCache User Guide.
 %%
 %% </li> </ul>
 copy_snapshot(Client, Input)
@@ -351,9 +367,13 @@ create_cache_cluster(Client, Input, Options)
 %% created CacheParameterGroup you can change the values of specific
 %% parameters. For more information, see:
 %%
-%% <ul> <li> ModifyCacheParameterGroup in the ElastiCache API Reference.
+%% <ul> <li> ModifyCacheParameterGroup:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html
+%% in the ElastiCache API Reference.
 %%
-%% </li> <li> Parameters and Parameter Groups in the ElastiCache User Guide.
+%% </li> <li> Parameters and Parameter Groups:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html
+%% in the ElastiCache User Guide.
 %%
 %% </li> </ul>
 create_cache_parameter_group(Client, Input)
@@ -370,7 +390,8 @@ create_cache_parameter_group(Client, Input, Options)
 %% Cache security groups are only used when you are creating a cluster
 %% outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are
 %% creating a cluster inside of a VPC, use a cache subnet group instead. For
-%% more information, see CreateCacheSubnetGroup.
+%% more information, see CreateCacheSubnetGroup:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html.
 create_cache_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_security_group(Client, Input, []).
@@ -395,7 +416,8 @@ create_cache_subnet_group(Client, Input, Options)
 %% Using Global Datastore for Redis, you can create cross-region read replica
 %% clusters for ElastiCache for Redis to enable low-latency reads and
 %% disaster recovery across regions. For more information, see Replication
-%% Across Regions Using Global Datastore.
+%% Across Regions Using Global Datastore:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html.
 %%
 %% <ul> <li> The GlobalReplicationGroupIdSuffix is the name of the Global
 %% datastore.
@@ -437,17 +459,22 @@ create_global_replication_group(Client, Input, Options)
 %% accommodate the increase. Common pitfalls include the subnets in the
 %% subnet group have too small a CIDR range or the subnets are shared and
 %% heavily used by other clusters. For more information, see Creating a
-%% Subnet Group. For versions below 5.0.6, the limit is 250 per cluster.
+%% Subnet Group:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html.
+%% For versions below 5.0.6, the limit is 250 per cluster.
 %%
-%% To request a limit increase, see Amazon Service Limits and choose the
-%% limit type Nodes per cluster per instance type.
+%% To request a limit increase, see Amazon Service Limits:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html and
+%% choose the limit type Nodes per cluster per instance type.
 %%
 %% When a Redis (cluster mode disabled) replication group has been
 %% successfully created, you can add one or more read replicas to it, up to a
 %% total of 5 read replicas. If you need to increase or decrease the number
 %% of node groups (console: shards), you can avail yourself of ElastiCache
 %% for Redis' scaling. For more information, see Scaling ElastiCache for
-%% Redis Clusters in the ElastiCache User Guide.
+%% Redis Clusters:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html
+%% in the ElastiCache User Guide.
 %%
 %% This operation is valid for Redis only.
 create_replication_group(Client, Input)
@@ -489,7 +516,8 @@ create_snapshot(Client, Input, Options)
 
 %% @doc For Redis engine version 6.0 onwards: Creates a Redis user.
 %%
-%% For more information, see Using Role Based Access Control (RBAC).
+%% For more information, see Using Role Based Access Control (RBAC):
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -499,7 +527,8 @@ create_user(Client, Input, Options)
 
 %% @doc For Redis engine version 6.0 onwards: Creates a Redis user group.
 %%
-%% For more information, see Using Role Based Access Control (RBAC)
+%% For more information, see Using Role Based Access Control (RBAC):
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html
 create_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_group(Client, Input, []).
@@ -674,7 +703,8 @@ delete_snapshot(Client, Input, Options)
 %%
 %% The user will be removed from all user groups and in turn removed from all
 %% replication groups. For more information, see Using Role Based Access
-%% Control (RBAC).
+%% Control (RBAC):
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
@@ -686,7 +716,8 @@ delete_user(Client, Input, Options)
 %%
 %% The user group must first be disassociated from the replication group
 %% before it can be deleted. For more information, see Using Role Based
-%% Access Control (RBAC).
+%% Access Control (RBAC):
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
 delete_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_group(Client, Input, []).
@@ -985,7 +1016,8 @@ list_allowed_node_type_modifications(Client, Input, Options)
 %% can use tags to categorize and track all your ElastiCache resources, with
 %% the exception of global replication group. When you add or remove tags on
 %% replication groups, those actions will be replicated to all nodes in the
-%% replication group. For more information, see Resource-level permissions.
+%% replication group. For more information, see Resource-level permissions:
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html.
 %%
 %% If the cluster is not in the available state, `ListTagsForResource'
 %% returns an error.
@@ -1038,11 +1070,13 @@ modify_global_replication_group(Client, Input, Options)
 %%
 %% This is limited to Redis 7 and newer.
 %%
-%% <ul> <li> Scaling for Amazon ElastiCache for Redis (cluster mode enabled)
+%% <ul> <li> Scaling for Amazon ElastiCache for Redis (cluster mode enabled):
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html
 %% in the ElastiCache User Guide
 %%
-%% </li> <li> ModifyReplicationGroupShardConfiguration in the ElastiCache API
-%% Reference
+%% </li> <li> ModifyReplicationGroupShardConfiguration:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html
+%% in the ElastiCache API Reference
 %%
 %% </li> </ul> This operation is valid for Redis only.
 modify_replication_group(Client, Input)
@@ -1089,8 +1123,11 @@ modify_user_group(Client, Input, Options)
 %% @doc Allows you to purchase a reserved cache node offering.
 %%
 %% Reserved nodes are not eligible for cancellation and are non-refundable.
-%% For more information, see Managing Costs with Reserved Nodes for Redis or
-%% Managing Costs with Reserved Nodes for Memcached.
+%% For more information, see Managing Costs with Reserved Nodes:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/reserved-nodes.html
+%% for Redis or Managing Costs with Reserved Nodes:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/reserved-nodes.html
+%% for Memcached.
 purchase_reserved_cache_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_cache_nodes_offering(Client, Input, []).
@@ -1126,7 +1163,9 @@ rebalance_slots_in_global_replication_group(Client, Input, Options)
 %%
 %% If you make changes to parameters that require a Redis (cluster mode
 %% enabled) cluster reboot for the changes to be applied, see Rebooting a
-%% Cluster for an alternate process.
+%% Cluster:
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html
+%% for an alternate process.
 reboot_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_cache_cluster(Client, Input, []).
@@ -1141,7 +1180,8 @@ reboot_cache_cluster(Client, Input, Options)
 %% can use tags to categorize and track all your ElastiCache resources, with
 %% the exception of global replication group. When you add or remove tags on
 %% replication groups, those actions will be replicated to all nodes in the
-%% replication group. For more information, see Resource-level permissions.
+%% replication group. For more information, see Resource-level permissions:
+%% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -1227,12 +1267,17 @@ start_migration(Client, Input, Options)
 %%
 %% </li> </ol> For more information see:
 %%
-%% <ul> <li> Viewing ElastiCache Events in the ElastiCache User Guide
+%% <ul> <li> Viewing ElastiCache Events:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html
+%% in the ElastiCache User Guide
 %%
-%% </li> <li> DescribeEvents in the ElastiCache API Reference
+%% </li> <li> DescribeEvents:
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html
+%% in the ElastiCache API Reference
 %%
-%% </li> </ul> </li> </ul> Also see, Testing Multi-AZ in the ElastiCache User
-%% Guide.
+%% </li> </ul> </li> </ul> Also see, Testing Multi-AZ :
+%% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test
+%% in the ElastiCache User Guide.
 test_failover(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_failover(Client, Input, []).

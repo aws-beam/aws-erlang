@@ -167,7 +167,9 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 
 %% @doc Creates Wisdom content.
 %%
-%% Before to calling this API, use StartContentUpload to upload an asset.
+%% Before to calling this API, use StartContentUpload:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
+%% to upload an asset.
 create_content(Client, KnowledgeBaseId, Input) ->
     create_content(Client, KnowledgeBaseId, Input, []).
 create_content(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -192,7 +194,8 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 
 %% @doc Creates a knowledge base.
 %%
-%% When using this API, you cannot reuse Amazon AppIntegrations
+%% When using this API, you cannot reuse Amazon AppIntegrations:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegrations with external knowledge bases such as Salesforce and
 %% ServiceNow. If you do, you'll get an `InvalidRequestException'
 %% error.
@@ -201,12 +204,15 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% base, and you want to add or remove one of the fields that is being
 %% ingested from Salesforce. Do the following:
 %%
-%% Call DeleteKnowledgeBase.
+%% Call DeleteKnowledgeBase:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_DeleteKnowledgeBase.html.
 %%
-%% Call DeleteDataIntegration.
+%% Call DeleteDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html.
 %%
-%% Call CreateDataIntegration to recreate the DataIntegration or a create
-%% different one.
+%% Call CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% to recreate the DataIntegration or a create different one.
 %%
 %% Call CreateKnowledgeBase.
 create_knowledge_base(Client, Input) ->
@@ -376,11 +382,15 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Deletes the knowledge base.
 %%
 %% When you use this API to delete an external knowledge base such as
-%% Salesforce or ServiceNow, you must also delete the Amazon AppIntegrations
+%% Salesforce or ServiceNow, you must also delete the Amazon AppIntegrations:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html
 %% DataIntegration. This is because you can't reuse the DataIntegration
 %% after it's been associated with an external knowledge base. However,
-%% you can delete and recreate it. See DeleteDataIntegration and
-%% CreateDataIntegration in the Amazon AppIntegrations API Reference.
+%% you can delete and recreate it. See DeleteDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html
+%% and CreateDataIntegration:
+%% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
+%% in the Amazon AppIntegrations API Reference.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -591,10 +601,13 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 %% @doc Retrieves recommendations for the specified session.
 %%
 %% To avoid retrieving the same recommendations in subsequent calls, use
-%% NotifyRecommendationsReceived. This API supports long-polling behavior
-%% with the `waitTimeSeconds' parameter. Short poll is the default
-%% behavior and only returns recommendations already available. To perform a
-%% manual query against an assistant, use QueryAssistant.
+%% NotifyRecommendationsReceived:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_NotifyRecommendationsReceived.html.
+%% This API supports long-polling behavior with the `waitTimeSeconds'
+%% parameter. Short poll is the default behavior and only returns
+%% recommendations already available. To perform a manual query against an
+%% assistant, use QueryAssistant:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_QueryAssistant.html.
 get_recommendations(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_recommendations(Client, AssistantId, SessionId, #{}, #{}).
@@ -839,8 +852,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Removes the specified recommendations from the specified
 %% assistant's queue of newly available recommendations.
 %%
-%% You can use this API in conjunction with GetRecommendations and a
-%% `waitTimeSeconds' input for long-polling behavior and avoiding
+%% You can use this API in conjunction with GetRecommendations:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_GetRecommendations.html
+%% and a `waitTimeSeconds' input for long-polling behavior and avoiding
 %% duplicate recommendations.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
@@ -866,7 +880,8 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 
 %% @doc Performs a manual search against the specified assistant.
 %%
-%% To retrieve recommendations for an assistant, use GetRecommendations.
+%% To retrieve recommendations for an assistant, use GetRecommendations:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_GetRecommendations.html.
 query_assistant(Client, AssistantId, Input) ->
     query_assistant(Client, AssistantId, Input, []).
 query_assistant(Client, AssistantId, Input0, Options0) ->
@@ -992,10 +1007,12 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 %% @doc Get a URL to upload content to a knowledge base.
 %%
 %% To upload content, first make a PUT request to the returned URL with your
-%% file, making sure to include the required headers. Then use CreateContent
-%% to finalize the content creation process or UpdateContent to modify an
-%% existing resource. You can only upload content to a knowledge base of type
-%% CUSTOM.
+%% file, making sure to include the required headers. Then use CreateContent:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_CreateContent.html
+%% to finalize the content creation process or UpdateContent:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_UpdateContent.html
+%% to modify an existing resource. You can only upload content to a knowledge
+%% base of type CUSTOM.
 start_content_upload(Client, KnowledgeBaseId, Input) ->
     start_content_upload(Client, KnowledgeBaseId, Input, []).
 start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
@@ -1021,12 +1038,14 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Start an asynchronous job to import Wisdom resources from an uploaded
 %% source file.
 %%
-%% Before calling this API, use StartContentUpload to upload an asset that
-%% contains the resource data.
+%% Before calling this API, use StartContentUpload:
+%% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
+%% to upload an asset that contains the resource data.
 %%
 %% <ul> <li> For importing Wisdom quick responses, you need to upload a csv
 %% file including the quick responses. For information about how to format
-%% the csv file for importing quick responses, see Import quick responses.
+%% the csv file for importing quick responses, see Import quick responses:
+%% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
 %%
 %% </li> </ul>
 start_import_job(Client, KnowledgeBaseId, Input) ->

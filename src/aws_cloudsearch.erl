@@ -13,7 +13,8 @@
 %% The endpoint for configuration service requests is region-specific:
 %% cloudsearch.region.amazonaws.com. For example,
 %% cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-%% regions and endpoints, see Regions and Endpoints.
+%% regions and endpoints, see Regions and Endpoints:
+%% http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region.
 -module(aws_cloudsearch).
 
 -export([build_suggesters/2,
@@ -77,8 +78,9 @@
 
 %% @doc Indexes the search suggestions.
 %%
-%% For more information, see Configuring Suggesters in the Amazon CloudSearch
-%% Developer Guide.
+%% For more information, see Configuring Suggesters:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters
+%% in the Amazon CloudSearch Developer Guide.
 build_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     build_suggesters(Client, Input, []).
@@ -88,8 +90,9 @@ build_suggesters(Client, Input, Options)
 
 %% @doc Creates a new search domain.
 %%
-%% For more information, see Creating a Search Domain in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Creating a Search Domain:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html
+%% in the Amazon CloudSearch Developer Guide.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -101,8 +104,9 @@ create_domain(Client, Input, Options)
 %% `text-array' field to define language-specific text processing
 %% options.
 %%
-%% For more information, see Configuring Analysis Schemes in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Configuring Analysis Schemes:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
+%% in the Amazon CloudSearch Developer Guide.
 define_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_analysis_scheme(Client, Input, []).
@@ -114,7 +118,9 @@ define_analysis_scheme(Client, Input, Options)
 %%
 %% Used to create new expressions and modify existing ones. If the expression
 %% exists, the new configuration replaces the old one. For more information,
-%% see Configuring Expressions in the Amazon CloudSearch Developer Guide.
+%% see Configuring Expressions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
+%% in the Amazon CloudSearch Developer Guide.
 define_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_expression(Client, Input, []).
@@ -130,7 +136,9 @@ define_expression(Client, Input, Options)
 %% type, and the options you want to configure for the field. The options you
 %% can specify depend on the ``IndexFieldType''. If the field exists,
 %% the new configuration replaces the old one. For more information, see
-%% Configuring Index Fields in the Amazon CloudSearch Developer Guide.
+%% Configuring Index Fields:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html
+%% in the Amazon CloudSearch Developer Guide.
 define_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_index_field(Client, Input, []).
@@ -144,7 +152,9 @@ define_index_field(Client, Input, Options)
 %% typing their queries. When you configure a suggester, you must specify the
 %% name of the text field you want to search for possible matches and a
 %% unique name for the suggester. For more information, see Getting Search
-%% Suggestions in the Amazon CloudSearch Developer Guide.
+%% Suggestions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
+%% in the Amazon CloudSearch Developer Guide.
 define_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_suggester(Client, Input, []).
@@ -154,8 +164,9 @@ define_suggester(Client, Input, Options)
 
 %% @doc Deletes an analysis scheme.
 %%
-%% For more information, see Configuring Analysis Schemes in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Configuring Analysis Schemes:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
+%% in the Amazon CloudSearch Developer Guide.
 delete_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_analysis_scheme(Client, Input, []).
@@ -166,8 +177,9 @@ delete_analysis_scheme(Client, Input, Options)
 %% @doc Permanently deletes a search domain and all of its data.
 %%
 %% Once a domain has been deleted, it cannot be recovered. For more
-%% information, see Deleting a Search Domain in the Amazon CloudSearch
-%% Developer Guide.
+%% information, see Deleting a Search Domain:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html
+%% in the Amazon CloudSearch Developer Guide.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -177,8 +189,9 @@ delete_domain(Client, Input, Options)
 
 %% @doc Removes an ``Expression'' from the search domain.
 %%
-%% For more information, see Configuring Expressions in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Configuring Expressions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
+%% in the Amazon CloudSearch Developer Guide.
 delete_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_expression(Client, Input, []).
@@ -188,8 +201,9 @@ delete_expression(Client, Input, Options)
 
 %% @doc Removes an ``IndexField'' from the search domain.
 %%
-%% For more information, see Configuring Index Fields in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Configuring Index Fields:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html
+%% in the Amazon CloudSearch Developer Guide.
 delete_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index_field(Client, Input, []).
@@ -199,8 +213,9 @@ delete_index_field(Client, Input, Options)
 
 %% @doc Deletes a suggester.
 %%
-%% For more information, see Getting Search Suggestions in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Getting Search Suggestions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
+%% in the Amazon CloudSearch Developer Guide.
 delete_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_suggester(Client, Input, []).
@@ -215,8 +230,9 @@ delete_suggester(Client, Input, Options)
 %% default, shows all analysis schemes and includes any pending changes to
 %% the configuration. Set the `Deployed' option to `true' to show the
 %% active configuration and exclude pending changes. For more information,
-%% see Configuring Analysis Schemes in the Amazon CloudSearch Developer
-%% Guide.
+%% see Configuring Analysis Schemes:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_analysis_schemes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_analysis_schemes(Client, Input, []).
@@ -229,7 +245,9 @@ describe_analysis_schemes(Client, Input, Options)
 %% By default, shows the configuration with any pending changes. Set the
 %% `Deployed' option to `true' to show the active configuration and
 %% exclude pending changes. For more information, see Configuring
-%% Availability Options in the Amazon CloudSearch Developer Guide.
+%% Availability Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_options(Client, Input, []).
@@ -240,8 +258,9 @@ describe_availability_options(Client, Input, Options)
 %% @doc Returns the domain's endpoint options, specifically whether all
 %% requests to the domain must arrive over HTTPS.
 %%
-%% For more information, see Configuring Domain Endpoint Options in the
-%% Amazon CloudSearch Developer Guide.
+%% For more information, see Configuring Domain Endpoint Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain_endpoint_options(Client, Input, []).
@@ -255,8 +274,9 @@ describe_domain_endpoint_options(Client, Input, Options)
 %% the number of searchable documents in a domain, use the console or submit
 %% a `matchall' request to your domain's search endpoint:
 %% `q=matchall&amp;amp;q.parser=structured&amp;amp;size=0'. For more
-%% information, see Getting Information about a Search Domain in the Amazon
-%% CloudSearch Developer Guide.
+%% information, see Getting Information about a Search Domain:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domains(Client, Input, []).
@@ -269,7 +289,9 @@ describe_domains(Client, Input, Options)
 %% Can be limited to specific expressions by name. By default, shows all
 %% expressions and includes any pending changes to the configuration. Set the
 %% `Deployed' option to `true' to show the active configuration and
-%% exclude pending changes. For more information, see Configuring Expressions
+%% exclude pending changes. For more information, see Configuring
+%% Expressions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
 %% in the Amazon CloudSearch Developer Guide.
 describe_expressions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -285,7 +307,9 @@ describe_expressions(Client, Input, Options)
 %% and includes any pending changes to the configuration. Set the
 %% `Deployed' option to `true' to show the active configuration and
 %% exclude pending changes. For more information, see Getting Domain
-%% Information in the Amazon CloudSearch Developer Guide.
+%% Information:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_index_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index_fields(Client, Input, []).
@@ -297,7 +321,9 @@ describe_index_fields(Client, Input, Options)
 %%
 %% A domain's scaling parameters specify the desired search instance type
 %% and replication count. For more information, see Configuring Scaling
-%% Options in the Amazon CloudSearch Developer Guide.
+%% Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_parameters(Client, Input, []).
@@ -311,7 +337,9 @@ describe_scaling_parameters(Client, Input, Options)
 %% By default, shows the configuration with any pending changes. Set the
 %% `Deployed' option to `true' to show the active configuration and
 %% exclude pending changes. For more information, see Configuring Access for
-%% a Search Domain in the Amazon CloudSearch Developer Guide.
+%% a Search Domain:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_access_policies(Client, Input, []).
@@ -326,7 +354,9 @@ describe_service_access_policies(Client, Input, Options)
 %% default, shows all suggesters and includes any pending changes to the
 %% configuration. Set the `Deployed' option to `true' to show the
 %% active configuration and exclude pending changes. For more information,
-%% see Getting Search Suggestions in the Amazon CloudSearch Developer Guide.
+%% see Getting Search Suggestions:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
+%% in the Amazon CloudSearch Developer Guide.
 describe_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_suggesters(Client, Input, []).
@@ -360,8 +390,9 @@ list_domain_names(Client, Input, Options)
 %% additional Availability Zone in the same Region to increase fault
 %% tolerance in the event of a service disruption. Changes to the Multi-AZ
 %% option can take about half an hour to become active. For more information,
-%% see Configuring Availability Options in the Amazon CloudSearch Developer
-%% Guide.
+%% see Configuring Availability Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html
+%% in the Amazon CloudSearch Developer Guide.
 update_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_options(Client, Input, []).
@@ -372,8 +403,9 @@ update_availability_options(Client, Input, Options)
 %% @doc Updates the domain's endpoint options, specifically whether all
 %% requests to the domain must arrive over HTTPS.
 %%
-%% For more information, see Configuring Domain Endpoint Options in the
-%% Amazon CloudSearch Developer Guide.
+%% For more information, see Configuring Domain Endpoint Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html
+%% in the Amazon CloudSearch Developer Guide.
 update_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_endpoint_options(Client, Input, []).
@@ -388,8 +420,9 @@ update_domain_endpoint_options(Client, Input, Options)
 %% your domain based on the volume of data and traffic, but not below the
 %% desired instance type and replication count. If the Multi-AZ option is
 %% enabled, these values control the resources used per Availability Zone.
-%% For more information, see Configuring Scaling Options in the Amazon
-%% CloudSearch Developer Guide.
+%% For more information, see Configuring Scaling Options:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html
+%% in the Amazon CloudSearch Developer Guide.
 update_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scaling_parameters(Client, Input, []).
@@ -401,7 +434,8 @@ update_scaling_parameters(Client, Input, Options)
 %% document and search endpoints.
 %%
 %% For more information, see Configuring Access for an Amazon CloudSearch
-%% Domain.
+%% Domain:
+%% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html.
 update_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_access_policies(Client, Input, []).

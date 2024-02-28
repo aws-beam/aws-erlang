@@ -15,14 +15,17 @@
 %%
 %% You can call the AppStream 2.0 API operations by using an interface VPC
 %% endpoint (interface endpoint). For more information, see Access AppStream
-%% 2.0 API Operations and CLI Commands Through an Interface VPC Endpoint in
-%% the Amazon AppStream 2.0 Administration Guide.
+%% 2.0 API Operations and CLI Commands Through an Interface VPC Endpoint:
+%% https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html
+%% in the Amazon AppStream 2.0 Administration Guide.
 %%
 %% To learn more about AppStream 2.0, see the following resources:
 %%
-%% <ul> <li> Amazon AppStream 2.0 product page
+%% <ul> <li> Amazon AppStream 2.0 product page:
+%% http://aws.amazon.com/appstream2
 %%
-%% </li> <li> Amazon AppStream 2.0 documentation
+%% </li> <li> Amazon AppStream 2.0 documentation:
+%% http://aws.amazon.com/documentation/appstream2
 %%
 %% </li> </ul>
 -module(aws_appstream).
@@ -385,7 +388,9 @@ create_streaming_url(Client, Input, Options)
 %%
 %% For more information, see the &quot;Update an Image by Using Managed
 %% AppStream 2.0 Image Updates&quot; section in Administer Your AppStream 2.0
-%% Images, in the Amazon AppStream 2.0 Administration Guide.
+%% Images:
+%% https://docs.aws.amazon.com/appstream2/latest/developerguide/administer-images.html,
+%% in the Amazon AppStream 2.0 Administration Guide.
 create_updated_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_updated_image(Client, Input, []).
@@ -787,8 +792,9 @@ list_entitled_applications(Client, Input, Options)
 %%
 %% You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 %%
-%% For more information about tags, see Tagging Your Resources in the Amazon
-%% AppStream 2.0 Administration Guide.
+%% For more information about tags, see Tagging Your Resources:
+%% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
+%% in the Amazon AppStream 2.0 Administration Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -866,8 +872,9 @@ stop_image_builder(Client, Input, Options)
 %% `ListTagsForResource'. To disassociate tags from your resources, use
 %% `UntagResource'.
 %%
-%% For more information about tags, see Tagging Your Resources in the Amazon
-%% AppStream 2.0 Administration Guide.
+%% For more information about tags, see Tagging Your Resources:
+%% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
+%% in the Amazon AppStream 2.0 Administration Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -881,8 +888,9 @@ tag_resource(Client, Input, Options)
 %% To list the current tags for your resources, use
 %% `ListTagsForResource'.
 %%
-%% For more information about tags, see Tagging Your Resources in the Amazon
-%% AppStream 2.0 Administration Guide.
+%% For more information about tags, see Tagging Your Resources:
+%% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
+%% in the Amazon AppStream 2.0 Administration Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

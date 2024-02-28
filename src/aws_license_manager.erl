@@ -154,8 +154,9 @@ checkout_license(Client, Input, Options)
 %%
 %% A grant shares the use of license entitlements with a specific Amazon Web
 %% Services account, an organization, or an organizational unit (OU). For
-%% more information, see Granted licenses in License Manager in the License
-%% Manager User Guide.
+%% more information, see Granted licenses in License Manager:
+%% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
+%% in the License Manager User Guide.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -165,8 +166,9 @@ create_grant(Client, Input, Options)
 
 %% @doc Creates a new version of the specified grant.
 %%
-%% For more information, see Granted licenses in License Manager in the
-%% License Manager User Guide.
+%% For more information, see Granted licenses in License Manager:
+%% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
+%% in the License Manager User Guide.
 create_grant_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant_version(Client, Input, []).

@@ -7,7 +7,8 @@
 %% field.
 %%
 %% For more information about how IoT Secure Tunneling works, see IoT Secure
-%% Tunneling.
+%% Tunneling:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html.
 -module(aws_iotsecuretunneling).
 
 -export([close_tunnel/2,
@@ -39,7 +40,9 @@
 %% connections between the client and proxy server so no data can be
 %% transmitted.
 %%
-%% Requires permission to access the CloseTunnel action.
+%% Requires permission to access the CloseTunnel:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 close_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_tunnel(Client, Input, []).
@@ -49,7 +52,9 @@ close_tunnel(Client, Input, Options)
 
 %% @doc Gets information about a tunnel identified by the unique tunnel id.
 %%
-%% Requires permission to access the DescribeTunnel action.
+%% Requires permission to access the DescribeTunnel:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 describe_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tunnel(Client, Input, []).
@@ -70,7 +75,9 @@ list_tags_for_resource(Client, Input, Options)
 %% Tunnels are listed by creation time in descending order, newer tunnels
 %% will be listed before older tunnels.
 %%
-%% Requires permission to access the ListTunnels action.
+%% Requires permission to access the ListTunnels:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_tunnels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tunnels(Client, Input, []).
@@ -81,7 +88,9 @@ list_tunnels(Client, Input, Options)
 %% @doc Creates a new tunnel, and returns two client access tokens for
 %% clients to use to connect to the IoT Secure Tunneling proxy server.
 %%
-%% Requires permission to access the OpenTunnel action.
+%% Requires permission to access the OpenTunnel:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
@@ -93,7 +102,9 @@ open_tunnel(Client, Input, Options)
 %% clients to use when reconnecting to secure tunneling to access the same
 %% tunnel.
 %%
-%% Requires permission to access the RotateTunnelAccessToken action.
+%% Requires permission to access the RotateTunnelAccessToken:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
 %% Rotating the CAT doesn't extend the tunnel duration. For example, say
 %% the tunnel duration is 12 hours and the tunnel has already been open for 4

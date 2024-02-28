@@ -51,8 +51,11 @@
 %%
 %% The `QueryStatement' is an SQL statement. Data Exports only supports a
 %% limited subset of the SQL syntax. For more information on the SQL syntax
-%% that is supported, see Data query. To view the available tables and
-%% columns, see the Data Exports table dictionary.
+%% that is supported, see Data query:
+%% https://docs.aws.amazon.com/cur/latest/userguide/de-data-query.html. To
+%% view the available tables and columns, see the Data Exports table
+%% dictionary:
+%% https://docs.aws.amazon.com/cur/latest/userguide/de-table-dictionary.html.
 %%
 %% The `TableConfigurations' is a collection of specified
 %% `TableProperties' for the table being queried in the
@@ -61,9 +64,13 @@
 %% different TableProperties. However, tables are not required to have any
 %% TableProperties. Each table property has a default value that it assumes
 %% if not specified. For more information on table configurations, see Data
-%% query. To view the table properties available for each table, see the Data
-%% Exports table dictionary or use the `ListTables' API to get a response
-%% of all tables and their available properties.
+%% query:
+%% https://docs.aws.amazon.com/cur/latest/userguide/de-data-query.html. To
+%% view the table properties available for each table, see the Data Exports
+%% table dictionary:
+%% https://docs.aws.amazon.com/cur/latest/userguide/de-table-dictionary.html
+%% or use the `ListTables' API to get a response of all tables and their
+%% available properties.
 create_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export(Client, Input, []).

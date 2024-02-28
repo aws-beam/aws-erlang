@@ -21,10 +21,12 @@
 %% cryptographically signing requests, managing errors, and retrying requests
 %% automatically. For more information about the Amazon Web Services SDKs,
 %% including how to download and install them, see Tools to Build on Amazon
-%% Web Services.
+%% Web Services: http://aws.amazon.com/tools/.
 %%
-%% See the CloudTrail User Guide for information about the data that is
-%% included with each Amazon Web Services API call listed in the log files.
+%% See the CloudTrail User Guide:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html
+%% for information about the data that is included with each Amazon Web
+%% Services API call listed in the log files.
 -module(aws_cloudtrail).
 
 -export([add_tags/2,
@@ -296,21 +298,24 @@ disable_federation(Client, Input, Options)
 %% @doc Enables Lake query federation on the specified event data store.
 %%
 %% Federating an event data store lets you view the metadata associated with
-%% the event data store in the Glue Data Catalog and run SQL queries against
-%% your event data using Amazon Athena. The table metadata stored in the Glue
-%% Data Catalog lets the Athena query engine know how to find, read, and
-%% process the data that you want to query.
+%% the event data store in the Glue Data Catalog:
+%% https://docs.aws.amazon.com/glue/latest/dg/components-overview.html#data-catalog-intro
+%% and run SQL queries against your event data using Amazon Athena. The table
+%% metadata stored in the Glue Data Catalog lets the Athena query engine know
+%% how to find, read, and process the data that you want to query.
 %%
 %% When you enable Lake query federation, CloudTrail creates a managed
 %% database named `aws:cloudtrail' (if the database doesn't already
 %% exist) and a managed federated table in the Glue Data Catalog. The event
 %% data store ID is used for the table name. CloudTrail registers the role
-%% ARN and event data store in Lake Formation, the service responsible for
-%% allowing fine-grained access control of the federated resources in the
-%% Glue Data Catalog.
+%% ARN and event data store in Lake Formation:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation-lake-formation.html,
+%% the service responsible for allowing fine-grained access control of the
+%% federated resources in the Glue Data Catalog.
 %%
 %% For more information about Lake query federation, see Federate an event
-%% data store.
+%% data store:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html.
 enable_federation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_federation(Client, Input, []).
@@ -352,9 +357,11 @@ get_event_data_store(Client, Input, Options)
 %% </li> </ul> For more information about logging management and data events,
 %% see the following topics in the CloudTrail User Guide:
 %%
-%% <ul> <li> Logging management events
+%% <ul> <li> Logging management events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html
 %%
-%% </li> <li> Logging data events
+%% </li> <li> Logging data events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
 %%
 %% </li> </ul>
 get_event_selectors(Client, Input)
@@ -386,8 +393,9 @@ get_import(Client, Input, Options)
 %% get Insights event selectors for a trail. You cannot specify these
 %% parameters together.
 %%
-%% For more information, see Logging CloudTrail Insights events in the
-%% CloudTrail User Guide.
+%% For more information, see Logging CloudTrail Insights events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
+%% in the CloudTrail User Guide.
 get_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_selectors(Client, Input, []).
@@ -551,8 +559,11 @@ list_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrails">>, Input, Options).
 
-%% @doc Looks up management events or CloudTrail Insights events that are
-%% captured by CloudTrail.
+%% @doc Looks up management events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events
+%% or CloudTrail Insights events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events
+%% that are captured by CloudTrail.
 %%
 %% You can look up events that occurred in a Region within the last 90 days.
 %%
@@ -607,10 +618,11 @@ lookup_events(Client, Input, Options)
 %% data event settings for your trail. If you want your trail to log Insights
 %% events, be sure the event selector enables logging of the Insights event
 %% types you want configured for your trail. For more information about
-%% logging Insights events, see Logging Insights events for trails in the
-%% CloudTrail User Guide. By default, trails created without specific event
-%% selectors are configured to log all read and write management events, and
-%% no data events.
+%% logging Insights events, see Logging Insights events for trails:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
+%% in the CloudTrail User Guide. By default, trails created without specific
+%% event selectors are configured to log all read and write management
+%% events, and no data events.
 %%
 %% When an event occurs in your account, CloudTrail evaluates the event
 %% selectors or advanced event selectors in all trails. For each trail, if
@@ -641,8 +653,13 @@ lookup_events(Client, Input, Options)
 %% `InvalidHomeRegionException' exception is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
-%% information, see Logging management events, Logging data events, and
-%% Quotas in CloudTrail in the CloudTrail User Guide.
+%% information, see Logging management events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html,
+%% Logging data events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html,
+%% and Quotas in CloudTrail:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html
+%% in the CloudTrail User Guide.
 %%
 %% You can add advanced event selectors, and conditions for your advanced
 %% event selectors, up to a maximum of 500 values for all conditions and
@@ -650,7 +667,9 @@ lookup_events(Client, Input, Options)
 %% `EventSelectors', but not both. If you apply
 %% `AdvancedEventSelectors' to a trail, any existing `EventSelectors'
 %% are overwritten. For more information about advanced event selectors, see
-%% Logging data events in the CloudTrail User Guide.
+%% Logging data events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html
+%% in the CloudTrail User Guide.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).
@@ -687,8 +706,9 @@ put_event_selectors(Client, Input, Options)
 %% management events. You can call `GetEventDataStore' on an event data
 %% store to check whether the event data store logs management events.
 %%
-%% For more information, see Logging CloudTrail Insights events in the
-%% CloudTrail User Guide.
+%% For more information, see Logging CloudTrail Insights events:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html
+%% in the CloudTrail User Guide.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -701,7 +721,9 @@ put_insight_selectors(Client, Input, Options)
 %% Services.
 %%
 %% For more information about resource-based policies, see CloudTrail
-%% resource-based policy examples in the CloudTrail User Guide.
+%% resource-based policy examples:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html
+%% in the CloudTrail User Guide.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -710,7 +732,8 @@ put_resource_policy(Client, Input, Options)
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Registers an organization’s member account as the CloudTrail
-%% delegated administrator.
+%% delegated administrator:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html.
 register_organization_delegated_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_organization_delegated_admin(Client, Input, []).
@@ -761,13 +784,15 @@ start_event_data_store_ingestion(Client, Input, Options)
 %% `CloudTrail' prefix, and does not check prefixes for other Amazon Web
 %% Services services. If you want to import CloudTrail events contained in
 %% another prefix, you must include the prefix in the `S3LocationUri'.
-%% For more considerations about importing trail events, see Considerations.
+%% For more considerations about importing trail events, see Considerations:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-copy-trail-to-lake.html#cloudtrail-trail-copy-considerations.
 %%
 %% When you start a new import, the `Destinations' and `ImportSource'
 %% parameters are required. Before starting a new import, disable any access
 %% control lists (ACLs) attached to the source S3 bucket. For more
 %% information about disabling ACLs, see Controlling ownership of objects and
-%% disabling ACLs for your bucket.
+%% disabling ACLs for your bucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html.
 %%
 %% When you retry an import, the `ImportID' parameter is required.
 %%
@@ -872,7 +897,8 @@ update_channel(Client, Input, Options)
 %% For event data stores for CloudTrail events, `AdvancedEventSelectors'
 %% includes or excludes management or data events in your event data store.
 %% For more information about `AdvancedEventSelectors', see
-%% AdvancedEventSelectors.
+%% AdvancedEventSelectors:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html.
 %%
 %% For event data stores for CloudTrail Insights events, Config configuration
 %% items, Audit Manager evidence, or non-Amazon Web Services events,

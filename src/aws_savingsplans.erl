@@ -6,7 +6,8 @@
 %%
 %% You commit to a consistent amount of usage, in USD per hour, for a term of
 %% 1 or 3 years, and receive a lower price for that usage. For more
-%% information, see the AWS Savings Plans User Guide.
+%% information, see the AWS Savings Plans User Guide:
+%% https://docs.aws.amazon.com/savingsplans/latest/userguide/.
 -module(aws_savingsplans).
 
 -export([create_savings_plan/2,

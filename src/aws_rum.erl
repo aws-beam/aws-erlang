@@ -70,7 +70,8 @@
 %%
 %% By default, RUM app monitors send some metrics to CloudWatch. These
 %% default metrics are listed in CloudWatch metrics that you can collect with
-%% CloudWatch RUM.
+%% CloudWatch RUM:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html.
 %%
 %% In addition to these default metrics, you can choose to send extended
 %% metrics, custom metrics, or both.
@@ -81,7 +82,8 @@
 %% names for the additional dimensions for extended metrics are
 %% `BrowserName', `CountryCode', `DeviceType', `FileType',
 %% `OSName', and `PageId'. For more information, see Extended metrics
-%% that you can send to CloudWatch and CloudWatch Evidently.
+%% that you can send to CloudWatch and CloudWatch Evidently:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-vended-metrics.html.
 %%
 %% </li> <li> Custom metrics are metrics that you define. You can send custom
 %% metrics to CloudWatch. CloudWatch Evidently, or both. With custom metrics,
@@ -105,10 +107,11 @@
 %% Extended metrics sent to CloudWatch and RUM custom metrics are charged as
 %% CloudWatch custom metrics. Each combination of additional dimension name
 %% and dimension value counts as a custom metric. For more information, see
-%% Amazon CloudWatch Pricing.
+%% Amazon CloudWatch Pricing: https://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% You must have already created a destination for the metrics before you
-%% send them. For more information, see PutRumMetricsDestination.
+%% send them. For more information, see PutRumMetricsDestination:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html.
 %%
 %% If some metric definitions specified in a
 %% `BatchCreateRumMetricDefinitions' operations are not valid, those
@@ -209,12 +212,15 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 %% load time, client-side errors, and user behavior.
 %%
 %% You use this operation only to create a new app monitor. To update an
-%% existing app monitor, use UpdateAppMonitor instead.
+%% existing app monitor, use UpdateAppMonitor:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_UpdateAppMonitor.html
+%% instead.
 %%
 %% After you create an app monitor, sign in to the CloudWatch RUM console to
 %% get the JavaScript code snippet to add to your web application. For more
 %% information, see How do I find a code snippet that I've already
-%% generated?
+%% generated?:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
 create_app_monitor(Client, Input) ->
     create_app_monitor(Client, Input, []).
 create_app_monitor(Client, Input0, Options0) ->
@@ -366,7 +372,8 @@ list_app_monitors(Client, Input0, Options0) ->
 %% @doc Returns a list of destinations that you have created to receive RUM
 %% extended metrics, for the specified app monitor.
 %%
-%% For more information about extended metrics, see AddRumMetrics.
+%% For more information about extended metrics, see AddRumMetrics:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_AddRumMetrcs.html.
 list_rum_metrics_destinations(Client, AppMonitorName)
   when is_map(Client) ->
     list_rum_metrics_destinations(Client, AppMonitorName, #{}, #{}).
@@ -454,7 +461,8 @@ put_rum_events(Client, Id, Input0, Options0) ->
 %% experiment.
 %%
 %% For more information about extended metrics, see
-%% BatchCreateRumMetricDefinitions.
+%% BatchCreateRumMetricDefinitions:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricDefinitions.html.
 put_rum_metrics_destination(Client, AppMonitorName, Input) ->
     put_rum_metrics_destination(Client, AppMonitorName, Input, []).
 put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
@@ -497,7 +505,8 @@ put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
 %%
 %% You can associate as many as 50 tags with a resource.
 %%
-%% For more information, see Tagging Amazon Web Services resources.
+%% For more information, see Tagging Amazon Web Services resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -551,14 +560,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% parameters that you omit, the existing values are kept.
 %%
 %% You can't use this operation to change the tags of an existing app
-%% monitor. To change the tags of an existing app monitor, use TagResource.
+%% monitor. To change the tags of an existing app monitor, use TagResource:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_TagResource.html.
 %%
-%% To create a new app monitor, use CreateAppMonitor.
+%% To create a new app monitor, use CreateAppMonitor:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_CreateAppMonitor.html.
 %%
 %% After you update an app monitor, sign in to the CloudWatch RUM console to
 %% get the updated JavaScript code snippet to add to your web application.
 %% For more information, see How do I find a code snippet that I've
-%% already generated?
+%% already generated?:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
 update_app_monitor(Client, Name, Input) ->
     update_app_monitor(Client, Name, Input, []).
 update_app_monitor(Client, Name, Input0, Options0) ->
@@ -585,7 +597,8 @@ update_app_monitor(Client, Name, Input0, Options0) ->
 %% metrics.
 %%
 %% For more information about extended metrics, see
-%% BatchCreateRumMetricsDefinitions.
+%% BatchCreateRumMetricsDefinitions:
+%% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricsDefinitions.html.
 update_rum_metric_definition(Client, AppMonitorName, Input) ->
     update_rum_metric_definition(Client, AppMonitorName, Input, []).
 update_rum_metric_definition(Client, AppMonitorName, Input0, Options0) ->

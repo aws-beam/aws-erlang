@@ -351,7 +351,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Creates or modifies tags for a resource.
 %%
 %% Tags are key/value pairs (metadata) that can be used to manage a resource.
-%% For more information, see AWS Tagging Strategies.
+%% For more information, see AWS Tagging Strategies:
+%% https://aws.amazon.com/answers/account-management/aws-tagging-strategies/.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

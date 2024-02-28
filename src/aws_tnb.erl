@@ -129,13 +129,15 @@ cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network. For more
-%% information, see Function packages in the Amazon Web Services Telco
-%% Network Builder User Guide.
+%% information, see Function packages:
+%% https://docs.aws.amazon.com/tnb/latest/ug/function-packages.html in the
+%% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% Creating a function package is the first step for creating a network in
 %% AWS TNB. This request creates an empty container with an ID. The next step
 %% is to upload the actual CSAR zip file into that empty container. To upload
-%% function package content, see PutSolFunctionPackageContent.
+%% function package content, see PutSolFunctionPackageContent:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
 create_sol_function_package(Client, Input) ->
     create_sol_function_package(Client, Input, []).
 create_sol_function_package(Client, Input0, Options0) ->
@@ -164,11 +166,13 @@ create_sol_function_package(Client, Input0, Options0) ->
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed. Creating a network instance is the
 %% third step after creating a network package. For more information about
-%% network instances, Network instances in the Amazon Web Services Telco
-%% Network Builder User Guide.
+%% network instances, Network instances:
+%% https://docs.aws.amazon.com/tnb/latest/ug/network-instances.html in the
+%% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% Once you create a network instance, you can instantiate it. To instantiate
-%% a network, see InstantiateSolNetworkInstance.
+%% a network, see InstantiateSolNetworkInstance:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_InstantiateSolNetworkInstance.html.
 create_sol_network_instance(Client, Input) ->
     create_sol_network_instance(Client, Input, []).
 create_sol_network_instance(Client, Input0, Options0) ->
@@ -196,8 +200,9 @@ create_sol_network_instance(Client, Input0, Options0) ->
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on. For more information,
-%% see Network instances in the Amazon Web Services Telco Network Builder
-%% User Guide.
+%% see Network instances:
+%% https://docs.aws.amazon.com/tnb/latest/ug/network-instances.html in the
+%% Amazon Web Services Telco Network Builder User Guide.
 %%
 %% A network package consists of a network service descriptor (NSD) file
 %% (required) and any additional files (optional), such as scripts specific
@@ -207,7 +212,8 @@ create_sol_network_instance(Client, Input0, Options0) ->
 %%
 %% This request creates an empty network package container with an ID. Once
 %% you create a network package, you can upload the network package content
-%% using PutSolNetworkPackageContent.
+%% using PutSolNetworkPackageContent:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
 create_sol_network_package(Client, Input) ->
     create_sol_network_package(Client, Input, []).
 create_sol_network_package(Client, Input0, Options0) ->
@@ -238,7 +244,8 @@ create_sol_network_package(Client, Input0, Options0) ->
 %% to describe how the network functions should run on your network.
 %%
 %% To delete a function package, the package must be in a disabled state. To
-%% disable a function package, see UpdateSolFunctionPackage.
+%% disable a function package, see UpdateSolFunctionPackage:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolFunctionPackage.html.
 delete_sol_function_package(Client, VnfPkgId, Input) ->
     delete_sol_function_package(Client, VnfPkgId, Input, []).
 delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
@@ -269,7 +276,8 @@ delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %%
 %% To delete a network instance, the instance must be in a stopped or
 %% terminated state. To terminate a network instance, see
-%% TerminateSolNetworkInstance.
+%% TerminateSolNetworkInstance:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_TerminateSolNetworkInstance.html.
 delete_sol_network_instance(Client, NsInstanceId, Input) ->
     delete_sol_network_instance(Client, NsInstanceId, Input, []).
 delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
@@ -299,7 +307,8 @@ delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% Services infrastructure you want to deploy them on.
 %%
 %% To delete a network package, the package must be in a disable state. To
-%% disable a network package, see UpdateSolNetworkPackage.
+%% disable a network package, see UpdateSolNetworkPackage:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolNetworkPackage.html.
 delete_sol_network_package(Client, NsdInfoId, Input) ->
     delete_sol_network_package(Client, NsdInfoId, Input, []).
 delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
@@ -657,7 +666,8 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Opti
 %% update, and delete) can be performed.
 %%
 %% Before you can instantiate a network instance, you have to create a
-%% network instance. For more information, see CreateSolNetworkInstance.
+%% network instance. For more information, see CreateSolNetworkInstance:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_CreateSolNetworkInstance.html.
 instantiate_sol_network_instance(Client, NsInstanceId, Input) ->
     instantiate_sol_network_instance(Client, NsInstanceId, Input, []).
 instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
@@ -1096,7 +1106,8 @@ update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 %% @doc Validates function package content.
 %%
 %% This can be used as a dry run before uploading function package content
-%% with PutSolFunctionPackageContent.
+%% with PutSolFunctionPackageContent:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
 %%
 %% A function package is a .zip file in CSAR (Cloud Service Archive) format
 %% that contains a network function (an ETSI standard telecommunication
@@ -1129,7 +1140,8 @@ validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 %% @doc Validates network package content.
 %%
 %% This can be used as a dry run before uploading network package content
-%% with PutSolNetworkPackageContent.
+%% with PutSolNetworkPackageContent:
+%% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
 %%
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web

@@ -133,8 +133,10 @@
 %% To update an existing category, see .
 %%
 %% To learn more about Call Analytics categories, see Creating categories for
-%% post-call transcriptions and Creating categories for real-time
-%% transcriptions.
+%% post-call transcriptions:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-batch.html
+%% and Creating categories for real-time transcriptions:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-stream.html.
 create_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_call_analytics_category(Client, Input, []).
@@ -175,10 +177,12 @@ create_language_model(Client, Input, Options)
 %%
 %% Each language has a character set that contains all allowed characters for
 %% that specific language. If you use unsupported characters, your custom
-%% vocabulary request fails. Refer to Character Sets for Custom Vocabularies
-%% to get the character set for your language.
+%% vocabulary request fails. Refer to Character Sets for Custom Vocabularies:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html to get the
+%% character set for your language.
 %%
-%% For more information, see Custom vocabularies.
+%% For more information, see Custom vocabularies:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html.
 create_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_medical_vocabulary(Client, Input, []).
@@ -195,10 +199,12 @@ create_medical_vocabulary(Client, Input, Options)
 %%
 %% Each language has a character set that contains all allowed characters for
 %% that specific language. If you use unsupported characters, your custom
-%% vocabulary request fails. Refer to Character Sets for Custom Vocabularies
-%% to get the character set for your language.
+%% vocabulary request fails. Refer to Character Sets for Custom Vocabularies:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html to get the
+%% character set for your language.
 %%
-%% For more information, see Custom vocabularies.
+%% For more information, see Custom vocabularies:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html.
 create_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary(Client, Input, []).
@@ -215,9 +221,12 @@ create_vocabulary(Client, Input, Options)
 %% Each language has a character set that contains all allowed characters for
 %% that specific language. If you use unsupported characters, your custom
 %% vocabulary filter request fails. Refer to Character Sets for Custom
-%% Vocabularies to get the character set for your language.
+%% Vocabularies:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html to get the
+%% character set for your language.
 %%
-%% For more information, see Vocabulary filtering.
+%% For more information, see Vocabulary filtering:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html.
 create_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary_filter(Client, Input, []).
@@ -558,7 +567,7 @@ list_medical_vocabularies(Client, Input, Options)
 %% vocabulary, model, or resource.
 %%
 %% To learn more about using tags with Amazon Transcribe, refer to Tagging
-%% resources.
+%% resources: https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -616,14 +625,17 @@ list_vocabulary_filters(Client, Input, Options)
 %% sentiment, and optional redaction of your text transcript and your audio
 %% file. You can also apply custom categories to flag specified conditions.
 %% To learn more about these features and insights, refer to Analyzing call
-%% center audio with Call Analytics.
+%% center audio with Call Analytics:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html.
 %%
 %% If you want to apply categories to your Call Analytics job, you must
 %% create them before submitting your job request. Categories cannot be
 %% retroactively applied to a job. To create a new category, use the
 %% operation. To learn more about Call Analytics categories, see Creating
-%% categories for post-call transcriptions and Creating categories for
-%% real-time transcriptions.
+%% categories for post-call transcriptions:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-batch.html
+%% and Creating categories for real-time transcriptions:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-stream.html.
 %%
 %% To make a `StartCallAnalyticsJob' request, you must first upload your
 %% media file into an Amazon S3 bucket; you can then specify the Amazon S3
@@ -636,7 +648,8 @@ list_vocabulary_filters(Client, Input, Options)
 %%
 %% <ul> <li> `region': The Amazon Web Services Region where you are
 %% making your request. For a list of Amazon Web Services Regions supported
-%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/transcribe.html.
 %%
 %% </li> <li> `CallAnalyticsJobName': A custom name that you create for
 %% your transcription job that's unique within your Amazon Web Services
@@ -668,7 +681,8 @@ start_call_analytics_job(Client, Input, Options)
 %% Amazon Web Services HealthScribe automatically provides rich conversation
 %% transcripts, identifies speaker roles, classifies dialogues, extracts
 %% medical terms, and generates preliminary clinical notes. To learn more
-%% about these features, refer to Amazon Web Services HealthScribe.
+%% about these features, refer to Amazon Web Services HealthScribe:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/health-scribe.html.
 %%
 %% To make a `StartMedicalScribeJob' request, you must first upload your
 %% media file into an Amazon S3 bucket; you can then specify the Amazon S3
@@ -718,7 +732,8 @@ start_medical_scribe_job(Client, Input, Options)
 %% Medical provides you with a robust medical vocabulary and, optionally,
 %% content identification, which adds flags to personal health information
 %% (PHI). To learn more about these features, refer to How Amazon Transcribe
-%% Medical works.
+%% Medical works:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works-med.html.
 %%
 %% To make a `StartMedicalTranscriptionJob' request, you must first
 %% upload your media file into an Amazon S3 bucket; you can then specify the
@@ -729,7 +744,8 @@ start_medical_scribe_job(Client, Input, Options)
 %%
 %% <ul> <li> `region': The Amazon Web Services Region where you are
 %% making your request. For a list of Amazon Web Services Regions supported
-%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/transcribe.html.
 %%
 %% </li> <li> `MedicalTranscriptionJobName': A custom name you create for
 %% your transcription job that is unique within your Amazon Web Services
@@ -769,7 +785,8 @@ start_medical_transcription_job(Client, Input, Options)
 %%
 %% <ul> <li> `region': The Amazon Web Services Region where you are
 %% making your request. For a list of Amazon Web Services Regions supported
-%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/transcribe.html.
 %%
 %% </li> <li> `TranscriptionJobName': A custom name you create for your
 %% transcription job that is unique within your Amazon Web Services account.
@@ -780,10 +797,11 @@ start_medical_transcription_job(Client, Input, Options)
 %% </li> <li> One of `LanguageCode', `IdentifyLanguage', or
 %% `IdentifyMultipleLanguages': If you know the language of your media
 %% file, specify it using the `LanguageCode' parameter; you can find all
-%% valid language codes in the Supported languages table. If you do not know
-%% the languages spoken in your media, use either `IdentifyLanguage' or
-%% `IdentifyMultipleLanguages' and let Amazon Transcribe identify the
-%% languages for you.
+%% valid language codes in the Supported languages:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html
+%% table. If you do not know the languages spoken in your media, use either
+%% `IdentifyLanguage' or `IdentifyMultipleLanguages' and let Amazon
+%% Transcribe identify the languages for you.
 %%
 %% </li> </ul>
 start_transcription_job(Client, Input)
@@ -797,7 +815,7 @@ start_transcription_job(Client, Input, Options)
 %% to the specified resource.
 %%
 %% To learn more about using tags with Amazon Transcribe, refer to Tagging
-%% resources.
+%% resources: https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

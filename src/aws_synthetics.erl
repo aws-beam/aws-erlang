@@ -14,11 +14,14 @@
 %% UI, logs, and metrics. The canaries seamlessly integrate with CloudWatch
 %% ServiceLens to help you trace the causes of impacted nodes in your
 %% applications. For more information, see Using ServiceLens to Monitor the
-%% Health of Your Applications in the Amazon CloudWatch User Guide.
+%% Health of Your Applications:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html
+%% in the Amazon CloudWatch User Guide.
 %%
 %% Before you create and manage canaries, be aware of the security
 %% considerations. For more information, see Security Considerations for
-%% Synthetics Canaries.
+%% Synthetics Canaries:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
 -module(aws_synthetics).
 
 -export([associate_resource/3,
@@ -111,18 +114,22 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% continuously or just once.
 %%
 %% Do not use `CreateCanary' to modify an existing canary. Use
-%% UpdateCanary instead.
+%% UpdateCanary:
+%% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html
+%% instead.
 %%
 %% To create canaries, you must have the `CloudWatchSyntheticsFullAccess'
 %% policy. If you are creating a new IAM role for the canary, you also need
 %% the `iam:CreateRole', `iam:CreatePolicy' and
 %% `iam:AttachRolePolicy' permissions. For more information, see
-%% Necessary Roles and Permissions.
+%% Necessary Roles and Permissions:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles.
 %%
 %% Do not include secrets or proprietary information in your canary names.
 %% The canary name makes up part of the Amazon Resource Name (ARN) for the
 %% canary, and the ARN is included in outbound calls over the internet. For
-%% more information, see Security Considerations for Synthetics Canaries.
+%% more information, see Security Considerations for Synthetics Canaries:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
 create_canary(Client, Input0, Options0) ->
@@ -162,7 +169,8 @@ create_canary(Client, Input0, Options0) ->
 %%
 %% Groups are supported in all Regions except the Regions that are disabled
 %% by default. For more information about these Regions, see Enabling a
-%% Region.
+%% Region:
+%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable.
 %%
 %% Each group can contain as many as 10 canaries. You can have as many as 20
 %% groups in your account. Any single canary can be a member of up to 10
@@ -280,7 +288,8 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
 %% You are required to use the `Names' parameter if you are logged on to
 %% a user or role that has an IAM policy that restricts which canaries that
 %% you are allowed to view. For more information, see Limiting a user to
-%% viewing specific canaries.
+%% viewing specific canaries:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 describe_canaries(Client, Input0, Options0) ->
@@ -315,7 +324,8 @@ describe_canaries(Client, Input0, Options0) ->
 %% You are required to use the `Names' parameter if you are logged on to
 %% a user or role that has an IAM policy that restricts which canaries that
 %% you are allowed to view. For more information, see Limiting a user to
-%% viewing specific canaries.
+%% viewing specific canaries:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
 describe_canaries_last_run(Client, Input0, Options0) ->
@@ -340,7 +350,8 @@ describe_canaries_last_run(Client, Input0, Options0) ->
 
 %% @doc Returns a list of Synthetics canary runtime versions.
 %%
-%% For more information, see Canary Runtime Versions.
+%% For more information, see Canary Runtime Versions:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
 describe_runtime_versions(Client, Input0, Options0) ->
@@ -391,7 +402,8 @@ disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% @doc Retrieves complete information about one canary.
 %%
 %% You must specify the name of the canary that you want. To get a list of
-%% canaries and their names, use DescribeCanaries.
+%% canaries and their names, use DescribeCanaries:
+%% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html.
 get_canary(Client, Name)
   when is_map(Client) ->
     get_canary(Client, Name, #{}, #{}).
@@ -566,7 +578,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% The frequency of the canary runs is determined by the value of the
 %% canary's `Schedule'. To see a canary's schedule, use
-%% GetCanary.
+%% GetCanary:
+%% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options0) ->
@@ -685,7 +698,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the configuration of a canary that has already been created.
 %%
 %% You can't use this operation to update the tags of an existing canary.
-%% To change the tags of an existing canary, use TagResource.
+%% To change the tags of an existing canary, use TagResource:
+%% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 update_canary(Client, Name, Input0, Options0) ->

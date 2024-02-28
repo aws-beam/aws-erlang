@@ -56,7 +56,8 @@
 %% rule in your account.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Notifications,
-%% see the Amazon Web Services Developer Tools Console User Guide.
+%% see the Amazon Web Services Developer Tools Console User Guide:
+%% https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html.
 -module(aws_codestar_notifications).
 
 -export([create_notification_rule/2,

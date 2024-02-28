@@ -369,7 +369,8 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For the list of actions supported for this operation, see
 %% Application
-%% Permissions
+%% Permissions:
+%% https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions
 %% .
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).

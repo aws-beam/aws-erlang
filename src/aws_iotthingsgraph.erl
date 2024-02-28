@@ -12,7 +12,8 @@
 %% interact at an abstract level.
 %%
 %% For more information about how AWS IoT Things Graph works, see the User
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html.
 %%
 %% The AWS IoT Things Graph service is discontinued.
 -module(aws_iotthingsgraph).
@@ -228,7 +229,8 @@ delete_system_template(Client, Input, Options)
 %%
 %% For information about the artifacts that get added to your Greengrass core
 %% device when you use this API, see AWS IoT Things Graph and AWS IoT
-%% Greengrass.
+%% Greengrass:
+%% https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-greengrass.html.
 deploy_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deploy_system_instance(Client, Input, []).

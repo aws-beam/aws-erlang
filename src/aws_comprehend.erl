@@ -190,7 +190,8 @@
 %% documents.
 %%
 %% For a list of languages that Amazon Comprehend can detect, see Amazon
-%% Comprehend Supported Languages.
+%% Comprehend Supported Languages:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html.
 batch_detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_dominant_language(Client, Input, []).
@@ -201,8 +202,9 @@ batch_detect_dominant_language(Client, Input, Options)
 %% @doc Inspects the text of a batch of documents for named entities and
 %% returns information about them.
 %%
-%% For more information about named entities, see Entities in the Comprehend
-%% Developer Guide.
+%% For more information about named entities, see Entities:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html in the
+%% Comprehend Developer Guide.
 batch_detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_entities(Client, Input, []).
@@ -231,7 +233,9 @@ batch_detect_sentiment(Client, Input, Options)
 %% @doc Inspects the text of a batch of documents for the syntax and part of
 %% speech of the words in the document and returns information about them.
 %%
-%% For more information, see Syntax in the Comprehend Developer Guide.
+%% For more information, see Syntax:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html in the
+%% Comprehend Developer Guide.
 batch_detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_syntax(Client, Input, []).
@@ -242,8 +246,9 @@ batch_detect_syntax(Client, Input, Options)
 %% @doc Inspects a batch of documents and returns a sentiment analysis for
 %% each entity identified in the documents.
 %%
-%% For more information about targeted sentiment, see Targeted sentiment in
-%% the Amazon Comprehend Developer Guide.
+%% For more information about targeted sentiment, see Targeted sentiment:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html
+%% in the Amazon Comprehend Developer Guide.
 batch_detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_targeted_sentiment(Client, Input, []).
@@ -259,15 +264,18 @@ batch_detect_targeted_sentiment(Client, Input, Options)
 %% <ul> <li> Custom classifier - a custom model that you have created and
 %% trained. For input, you can provide plain text, a single-page document
 %% (PDF, Word, or image), or Amazon Textract API output. For more
-%% information, see Custom classification in the Amazon Comprehend Developer
-%% Guide.
+%% information, see Custom classification:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-document-classification.html
+%% in the Amazon Comprehend Developer Guide.
 %%
 %% </li> <li> Prompt safety classifier - Amazon Comprehend provides a
 %% pre-trained model for classifying input prompts for generative AI
 %% applications. For input, you provide English plain text input. For prompt
 %% safety classification, the response includes only the `Classes' field.
 %% For more information about prompt safety classifiers, see Prompt safety
-%% classification in the Amazon Comprehend Developer Guide.
+%% classification:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification
+%% in the Amazon Comprehend Developer Guide.
 %%
 %% </li> </ul> If the system detects errors while processing a page in the
 %% input document, the API response includes an `Errors' field that
@@ -275,8 +283,9 @@ batch_detect_targeted_sentiment(Client, Input, Options)
 %%
 %% If the system detects a document-level error in your input document, the
 %% API returns an `InvalidRequestException' error response. For details
-%% about this exception, see Errors in semi-structured documents in the
-%% Comprehend Developer Guide.
+%% about this exception, see Errors in semi-structured documents:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync-err.html
+%% in the Comprehend Developer Guide.
 classify_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     classify_document(Client, Input, []).
@@ -297,8 +306,9 @@ contains_pii_entities(Client, Input, Options)
 %% @doc Creates a dataset to upload training or test data for a model
 %% associated with a flywheel.
 %%
-%% For more information about datasets, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about datasets, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
@@ -311,7 +321,9 @@ create_dataset(Client, Input, Options)
 %%
 %% To create a classifier, you provide a set of training documents that are
 %% labeled with the categories that you want to use. For more information,
-%% see Training classifier models in the Comprehend Developer Guide.
+%% see Training classifier models:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html
+%% in the Comprehend Developer Guide.
 create_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document_classifier(Client, Input, []).
@@ -321,7 +333,8 @@ create_document_classifier(Client, Input, Options)
 
 %% @doc Creates a model-specific endpoint for synchronous inference for a
 %% previously trained custom model For information about endpoints, see
-%% Managing endpoints.
+%% Managing endpoints:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -358,8 +371,9 @@ create_entity_recognizer(Client, Input, Options)
 %% To use the flywheel with a new model, you need to provide a dataset for
 %% training data (and optional test data) when you create the flywheel.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 create_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flywheel(Client, Input, []).
@@ -390,7 +404,8 @@ delete_document_classifier(Client, Input, Options)
 %% model.
 %%
 %% All endpoints must be deleted in order for the model to be deleted. For
-%% information about endpoints, see Managing endpoints.
+%% information about endpoints, see Managing endpoints:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -420,8 +435,9 @@ delete_entity_recognizer(Client, Input, Options)
 %% When you delete the flywheel, Amazon Comprehend does not delete the data
 %% lake or the model associated with the flywheel.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 delete_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flywheel(Client, Input, []).
@@ -439,8 +455,9 @@ delete_resource_policy(Client, Input, Options)
 
 %% @doc Returns information about the dataset that you specify.
 %%
-%% For more information about datasets, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about datasets, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -480,7 +497,8 @@ describe_dominant_language_detection_job(Client, Input, Options)
 %% @doc Gets the properties associated with a specific endpoint.
 %%
 %% Use this operation to get the status of an endpoint. For information about
-%% endpoints, see Managing endpoints.
+%% endpoints, see Managing endpoints:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
@@ -517,8 +535,9 @@ describe_events_detection_job(Client, Input, Options)
 
 %% @doc Provides configuration information about the flywheel.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 describe_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel(Client, Input, []).
@@ -528,8 +547,9 @@ describe_flywheel(Client, Input, Options)
 
 %% @doc Retrieve the configuration properties of a flywheel iteration.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 describe_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel_iteration(Client, Input, []).
@@ -600,7 +620,8 @@ describe_topics_detection_job(Client, Input, Options)
 %% @doc Determines the dominant language of the input text.
 %%
 %% For a list of languages that Amazon Comprehend can detect, see Amazon
-%% Comprehend Supported Languages.
+%% Comprehend Supported Languages:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html.
 detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_dominant_language(Client, Input, []).
@@ -614,8 +635,9 @@ detect_dominant_language(Client, Input, Options)
 %% Detects custom entities if you have a custom entity recognition model.
 %%
 %% When detecting named entities using the pre-trained model, use plain text
-%% as the input. For more information about named entities, see Entities in
-%% the Comprehend Developer Guide.
+%% as the input. For more information about named entities, see Entities:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html in the
+%% Comprehend Developer Guide.
 %%
 %% When you use a custom entity recognition model, you can input plain text
 %% or you can upload a single-page input document (text, PDF, Word, or
@@ -627,8 +649,9 @@ detect_dominant_language(Client, Input, Options)
 %%
 %% If the system detects a document-level error in your input document, the
 %% API returns an `InvalidRequestException' error response. For details
-%% about this exception, see Errors in semi-structured documents in the
-%% Comprehend Developer Guide.
+%% about this exception, see Errors in semi-structured documents:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync-err.html
+%% in the Comprehend Developer Guide.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -665,7 +688,9 @@ detect_sentiment(Client, Input, Options)
 %% @doc Inspects text for syntax and the part of speech of words in the
 %% document.
 %%
-%% For more information, see Syntax in the Comprehend Developer Guide.
+%% For more information, see Syntax:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html in the
+%% Comprehend Developer Guide.
 detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_syntax(Client, Input, []).
@@ -676,8 +701,9 @@ detect_syntax(Client, Input, Options)
 %% @doc Inspects the input text and returns a sentiment analysis for each
 %% entity identified in the text.
 %%
-%% For more information about targeted sentiment, see Targeted sentiment in
-%% the Amazon Comprehend Developer Guide.
+%% For more information about targeted sentiment, see Targeted sentiment:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html
+%% in the Amazon Comprehend Developer Guide.
 detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_targeted_sentiment(Client, Input, []).
@@ -690,7 +716,9 @@ detect_targeted_sentiment(Client, Input, Options)
 %%
 %% The API response contains a results list that matches the size of the
 %% input list. For more information about toxicity detection, see Toxicity
-%% detection in the Amazon Comprehend Developer Guide.
+%% detection:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/toxicity-detection.html
+%% in the Amazon Comprehend Developer Guide.
 detect_toxic_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_toxic_content(Client, Input, []).
@@ -719,8 +747,9 @@ import_model(Client, Input, Options)
 
 %% @doc List the datasets that you have configured in this Region.
 %%
-%% For more information about datasets, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about datasets, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -765,7 +794,8 @@ list_dominant_language_detection_jobs(Client, Input, Options)
 
 %% @doc Gets a list of all existing endpoints that you've created.
 %%
-%% For information about endpoints, see Managing endpoints.
+%% For information about endpoints, see Managing endpoints:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
@@ -816,8 +846,9 @@ list_events_detection_jobs(Client, Input, Options)
 
 %% @doc Information about the history of a flywheel iteration.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 list_flywheel_iteration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flywheel_iteration_history(Client, Input, []).
@@ -945,8 +976,9 @@ start_events_detection_job(Client, Input, Options)
 %% @doc Start the flywheel iteration.This operation uses any new datasets to
 %% train a new model version.
 %%
-%% For more information about flywheels, see Flywheel overview in the Amazon
-%% Comprehend Developer Guide.
+%% For more information about flywheels, see Flywheel overview:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
+%% the Amazon Comprehend Developer Guide.
 start_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_flywheel_iteration(Client, Input, []).
@@ -1175,7 +1207,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates information about the specified endpoint.
 %%
-%% For information about endpoints, see Managing endpoints.
+%% For information about endpoints, see Managing endpoints:
+%% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).

@@ -162,8 +162,9 @@
 %% @doc Associates an access policy and its scope to an access entry.
 %%
 %% For more information about associating access policies, see Associating
-%% and disassociating access policies to and from access entries in the
-%% Amazon EKS User Guide.
+%% and disassociating access policies to and from access entries:
+%% https://docs.aws.amazon.com/eks/latest/userguide/access-policies.html in
+%% the Amazon EKS User Guide.
 associate_access_policy(Client, ClusterName, PrincipalArn, Input) ->
     associate_access_policy(Client, ClusterName, PrincipalArn, Input, []).
 associate_access_policy(Client, ClusterName, PrincipalArn, Input0, Options0) ->
@@ -222,7 +223,9 @@ associate_encryption_config(Client, ClusterName, Input0, Options0) ->
 %% Kubernetes `Role' and `ClusterRole' objects, assign permissions to
 %% them, and then bind them to the identities using Kubernetes
 %% `RoleBinding' and `ClusterRoleBinding' objects. For more
-%% information see Using RBAC Authorization in the Kubernetes documentation.
+%% information see Using RBAC Authorization:
+%% https://kubernetes.io/docs/reference/access-authn-authz/rbac/ in the
+%% Kubernetes documentation.
 associate_identity_provider_config(Client, ClusterName, Input) ->
     associate_identity_provider_config(Client, ClusterName, Input, []).
 associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
@@ -259,8 +262,9 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 %% create and manage Kubernetes `Role', `ClusterRole',
 %% `RoleBinding', and `ClusterRoleBinding' objects.
 %%
-%% For more information about access entries, see Access entries in the
-%% Amazon EKS User Guide.
+%% For more information about access entries, see Access entries:
+%% https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html in
+%% the Amazon EKS User Guide.
 create_access_entry(Client, ClusterName, Input) ->
     create_access_entry(Client, ClusterName, Input, []).
 create_access_entry(Client, ClusterName, Input0, Options0) ->
@@ -287,7 +291,9 @@ create_access_entry(Client, ClusterName, Input0, Options0) ->
 %%
 %% Amazon EKS add-ons help to automate the provisioning and lifecycle
 %% management of common operational software for Amazon EKS clusters. For
-%% more information, see Amazon EKS add-ons in the Amazon EKS User Guide.
+%% more information, see Amazon EKS add-ons:
+%% https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html in the
+%% Amazon EKS User Guide.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
 create_addon(Client, ClusterName, Input0, Options0) ->
@@ -334,23 +340,29 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% parameters to enable or disable public and private access to your
 %% cluster's Kubernetes API server endpoint. By default, public access is
 %% enabled, and private access is disabled. For more information, see Amazon
-%% EKS Cluster Endpoint Access Control in the Amazon EKS User Guide .
+%% EKS Cluster Endpoint Access Control:
+%% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
+%% the Amazon EKS User Guide .
 %%
 %% You can use the `logging' parameter to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 %% default, cluster control plane logs aren't exported to CloudWatch
-%% Logs. For more information, see Amazon EKS Cluster Control Plane Logs in
-%% the Amazon EKS User Guide .
+%% Logs. For more information, see Amazon EKS Cluster Control Plane Logs:
+%% https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
+%% in the Amazon EKS User Guide .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
 %% to exported control plane logs. For more information, see CloudWatch
-%% Pricing.
+%% Pricing: http://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% In most cases, it takes several minutes to create a cluster. After you
 %% create an Amazon EKS cluster, you must configure your Kubernetes tooling
 %% to communicate with the API server and launch nodes into your cluster. For
-%% more information, see Managing Cluster Authentication and Launching Amazon
-%% EKS nodes in the Amazon EKS User Guide.
+%% more information, see Managing Cluster Authentication:
+%% https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html and
+%% Launching Amazon EKS nodes:
+%% https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html in
+%% the Amazon EKS User Guide.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 create_cluster(Client, Input0, Options0) ->
@@ -417,13 +429,15 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %%
 %% When you create a Fargate profile, you must specify a pod execution role
 %% to use with the pods that are scheduled with the profile. This role is
-%% added to the cluster's Kubernetes Role Based Access Control (RBAC) for
+%% added to the cluster's Kubernetes Role Based Access Control:
+%% https://kubernetes.io/docs/reference/access-authn-authz/rbac/ (RBAC) for
 %% authorization so that the `kubelet' that is running on the Fargate
 %% infrastructure can register with your Amazon EKS cluster so that it can
 %% appear in your cluster as a node. The pod execution role also provides IAM
 %% permissions to the Fargate infrastructure to allow read access to Amazon
-%% ECR image repositories. For more information, see Pod Execution Role in
-%% the Amazon EKS User Guide.
+%% ECR image repositories. For more information, see Pod Execution Role:
+%% https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html
+%% in the Amazon EKS User Guide.
 %%
 %% Fargate profiles are immutable. However, you can create a new updated
 %% profile to replace an existing profile and then delete the original after
@@ -433,7 +447,9 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %% must wait for that Fargate profile to finish deleting before you can
 %% create any other profiles in that cluster.
 %%
-%% For more information, see Fargate profile in the Amazon EKS User Guide.
+%% For more information, see Fargate profile:
+%% https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html in
+%% the Amazon EKS User Guide.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 create_fargate_profile(Client, ClusterName, Input0, Options0) ->
@@ -463,11 +479,13 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% with the latest AMI release version for the respective minor Kubernetes
 %% version of the cluster, unless you deploy a custom AMI using a launch
 %% template. For more information about using launch templates, see Launch
-%% template support.
+%% template support:
+%% https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by Amazon Web Services
-%% for an Amazon EKS cluster. For more information, see Managed node groups
+%% for an Amazon EKS cluster. For more information, see Managed node groups:
+%% https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 %% in the Amazon EKS User Guide.
 %%
 %% Windows AMI types are only supported for commercial Amazon Web Services
@@ -594,8 +612,9 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% load balancer, you must delete those services before deleting the cluster
 %% so that the load balancers are deleted properly. Otherwise, you can have
 %% orphaned resources in your VPC that prevent you from being able to delete
-%% the VPC. For more information, see Deleting a cluster in the Amazon EKS
-%% User Guide.
+%% the VPC. For more information, see Deleting a cluster:
+%% https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html in
+%% the Amazon EKS User Guide.
 %%
 %% If you have managed node groups or Fargate profiles attached to the
 %% cluster, you must delete them first. For more information, see
@@ -738,7 +757,8 @@ delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Opti
 %% control plane.
 %%
 %% A connected cluster is a Kubernetes cluster that you've connected to
-%% your control plane using the Amazon EKS Connector.
+%% your control plane using the Amazon EKS Connector:
+%% https://docs.aws.amazon.com/eks/latest/userguide/eks-connector.html.
 deregister_cluster(Client, Name, Input) ->
     deregister_cluster(Client, Name, Input, []).
 deregister_cluster(Client, Name, Input0, Options0) ->
@@ -877,7 +897,8 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 %% The API server endpoint and certificate authority data returned by this
 %% operation are required for `kubelet' and `kubectl' to communicate
 %% with your Kubernetes API server. For more information, see Creating or
-%% updating a `kubeconfig' file for an Amazon EKS cluster.
+%% updating a `kubeconfig' file for an Amazon EKS cluster:
+%% https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html.
 %%
 %% The API server endpoint and certificate authority data aren't
 %% available until the cluster reaches the `ACTIVE' state.
@@ -1515,9 +1536,11 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% `RegisterClusterRequest' ' to add it to the Amazon EKS control
 %% plane.
 %%
-%% Second, a Manifest containing the `activationID' and
-%% `activationCode' must be applied to the Kubernetes cluster through
-%% it's native provider to provide visibility.
+%% Second, a Manifest:
+%% https://amazon-eks.s3.us-west-2.amazonaws.com/eks-connector/manifests/eks-connector/latest/eks-connector.yaml
+%% containing the `activationID' and `activationCode' must be applied
+%% to the Kubernetes cluster through it's native provider to provide
+%% visibility.
 %%
 %% After the manifest is updated and applied, the connected cluster is
 %% visible to the Amazon EKS control plane. If the manifest isn't applied
@@ -1656,18 +1679,20 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% You can use this API operation to enable or disable exporting the
 %% Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 %% default, cluster control plane logs aren't exported to CloudWatch
-%% Logs. For more information, see Amazon EKS Cluster control plane logs in
-%% the Amazon EKS User Guide .
+%% Logs. For more information, see Amazon EKS Cluster control plane logs:
+%% https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
+%% in the Amazon EKS User Guide .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
 %% to exported control plane logs. For more information, see CloudWatch
-%% Pricing.
+%% Pricing: http://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% You can also use this API operation to enable or disable public and
 %% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is enabled, and private access is disabled. For
-%% more information, see Amazon EKS cluster endpoint access control in the
-%% Amazon EKS User Guide .
+%% more information, see Amazon EKS cluster endpoint access control:
+%% https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html in
+%% the Amazon EKS User Guide .
 %%
 %% You can also use this API operation to choose different subnets and
 %% security groups for the cluster. You must specify at least two subnets
@@ -1812,9 +1837,12 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% latest AMI version of your cluster's current Kubernetes version by
 %% specifying your cluster's Kubernetes version in the request. For
 %% information about Linux versions, see Amazon EKS optimized Amazon Linux
-%% AMI versions in the Amazon EKS User Guide. For information about Windows
-%% versions, see Amazon EKS optimized Windows AMI versions in the Amazon EKS
-%% User Guide.
+%% AMI versions:
+%% https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html
+%% in the Amazon EKS User Guide. For information about Windows versions, see
+%% Amazon EKS optimized Windows AMI versions:
+%% https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html
+%% in the Amazon EKS User Guide.
 %%
 %% You cannot roll back a node group to an earlier Kubernetes version or AMI
 %% version.

@@ -33,7 +33,8 @@
 %% </li> </ul> Resources
 %%
 %% The following resources contain information about your IVS live stream
-%% (see Getting Started with Amazon IVS Real-Time Streaming):
+%% (see Getting Started with Amazon IVS Real-Time Streaming:
+%% https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html):
 %%
 %% <ul> <li> Stage — A stage is a virtual space where participants can
 %% exchange video in real time.
@@ -43,14 +44,16 @@
 %% A tag is a metadata label that you assign to an AWS resource. A tag
 %% comprises a key and a value, both set by you. For example, you might set a
 %% tag as `topic:nature' to label a particular video category. See
-%% Tagging AWS Resources for more information, including restrictions that
-%% apply to tags and &quot;Tag naming limits and requirements&quot;; Amazon
-%% IVS stages has no service-specific constraints beyond what is documented
-%% there.
+%% Tagging AWS Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
+%% information, including restrictions that apply to tags and &quot;Tag
+%% naming limits and requirements&quot;; Amazon IVS stages has no
+%% service-specific constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
 %% you can use the same tag for different resources to indicate that they are
-%% related. You can also use tags to manage access (see Access Tags).
+%% related. You can also use tags to manage access (see Access Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS real-time API has these tag-related endpoints:
 %% `TagResource', `UntagResource', and `ListTagsForResource'. The

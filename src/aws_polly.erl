@@ -47,7 +47,8 @@
 %% nor is it possible to retrieve it using either the `GetLexicon' or
 %% `ListLexicon' APIs.
 %%
-%% For more information, see Managing Lexicons.
+%% For more information, see Managing Lexicons:
+%% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
 delete_lexicon(Client, Name, Input) ->
     delete_lexicon(Client, Name, Input, []).
 delete_lexicon(Client, Name, Input0, Options0) ->
@@ -123,7 +124,8 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the content of the specified pronunciation lexicon stored in
 %% an Amazon Web Services Region.
 %%
-%% For more information, see Managing Lexicons.
+%% For more information, see Managing Lexicons:
+%% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
 get_lexicon(Client, Name)
   when is_map(Client) ->
     get_lexicon(Client, Name, #{}, #{}).
@@ -176,7 +178,8 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of pronunciation lexicons stored in an Amazon Web
 %% Services Region.
 %%
-%% For more information, see Managing Lexicons.
+%% For more information, see Managing Lexicons:
+%% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
 list_lexicons(Client)
   when is_map(Client) ->
     list_lexicons(Client, #{}, #{}).
@@ -243,7 +246,8 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 %% consistency, therefore, it might take some time before the lexicon is
 %% available to the SynthesizeSpeech operation.
 %%
-%% For more information, see Managing Lexicons.
+%% For more information, see Managing Lexicons:
+%% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
 put_lexicon(Client, Name, Input) ->
     put_lexicon(Client, Name, Input, []).
 put_lexicon(Client, Name, Input0, Options0) ->
@@ -304,7 +308,8 @@ start_speech_synthesis_task(Client, Input0, Options0) ->
 %% SSML input must be valid, well-formed SSML. Some alphabets might not be
 %% available with all the voices (for example, Cyrillic might not be read at
 %% all by English voices) unless phoneme mapping is used. For more
-%% information, see How it Works.
+%% information, see How it Works:
+%% https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html.
 synthesize_speech(Client, Input) ->
     synthesize_speech(Client, Input, []).
 synthesize_speech(Client, Input0, Options0) ->

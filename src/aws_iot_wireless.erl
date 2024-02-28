@@ -1393,7 +1393,9 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap,
 %% @doc Get the position information for a given resource.
 %%
 %% This action is no longer supported. Calls to retrieve the position
-%% information should use the GetResourcePosition API operation instead.
+%% information should use the GetResourcePosition:
+%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% API operation instead.
 get_position(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -1423,7 +1425,9 @@ get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Opt
 %% @doc Get position configuration for a given resource.
 %%
 %% This action is no longer supported. Calls to retrieve the position
-%% configuration should use the GetResourcePosition API operation instead.
+%% configuration should use the GetResourcePosition:
+%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% API operation instead.
 get_position_configuration(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_position_configuration(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -1537,7 +1541,8 @@ get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, Heade
 %% @doc Get the position information for a given wireless device or a
 %% wireless gateway resource.
 %%
-%% The position information uses the World Geodetic System (WGS84).
+%% The position information uses the World Geodetic System (WGS84):
+%% https://gisgeography.com/wgs84-world-geodetic-system/.
 get_resource_position(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_resource_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -2095,7 +2100,9 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
 %% positioning solvers.
 %%
 %% This action is no longer supported. Calls to retrieve position information
-%% should use the GetResourcePosition API operation instead.
+%% should use the GetResourcePosition:
+%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% API operation instead.
 list_position_configurations(Client)
   when is_map(Client) ->
     list_position_configurations(Client, #{}, #{}).
@@ -2331,7 +2338,9 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
 %% @doc Put position configuration for a given resource.
 %%
 %% This action is no longer supported. Calls to update the position
-%% configuration should use the UpdateResourcePosition API operation instead.
+%% configuration should use the UpdateResourcePosition:
+%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_UpdateResourcePosition.html
+%% API operation instead.
 put_position_configuration(Client, ResourceIdentifier, Input) ->
     put_position_configuration(Client, ResourceIdentifier, Input, []).
 put_position_configuration(Client, ResourceIdentifier, Input0, Options0) ->
@@ -2862,7 +2871,9 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
 %% @doc Update the position information of a resource.
 %%
 %% This action is no longer supported. Calls to update the position
-%% information should use the UpdateResourcePosition API operation instead.
+%% information should use the UpdateResourcePosition:
+%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_UpdateResourcePosition.html
+%% API operation instead.
 update_position(Client, ResourceIdentifier, Input) ->
     update_position(Client, ResourceIdentifier, Input, []).
 update_position(Client, ResourceIdentifier, Input0, Options0) ->
@@ -2914,7 +2925,8 @@ update_resource_event_configuration(Client, Identifier, Input0, Options0) ->
 %% @doc Update the position information of a given wireless device or a
 %% wireless gateway resource.
 %%
-%% The position coordinates are based on the World Geodetic System (WGS84).
+%% The position coordinates are based on the World Geodetic System (WGS84):
+%% https://gisgeography.com/wgs84-world-geodetic-system/.
 update_resource_position(Client, ResourceIdentifier, Input) ->
     update_resource_position(Client, ResourceIdentifier, Input, []).
 update_resource_position(Client, ResourceIdentifier, Input0, Options0) ->

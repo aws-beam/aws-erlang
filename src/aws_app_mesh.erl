@@ -15,10 +15,13 @@
 %%
 %% App Mesh supports microservice applications that use service discovery
 %% naming for their components. For more information about service discovery
-%% on Amazon ECS, see Service Discovery in the Amazon Elastic Container
-%% Service Developer Guide. Kubernetes `kube-dns' and `coredns' are
-%% supported. For more information, see DNS for Services and Pods in the
-%% Kubernetes documentation.
+%% on Amazon ECS, see Service Discovery:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html
+%% in the Amazon Elastic Container Service Developer Guide. Kubernetes
+%% `kube-dns' and `coredns' are supported. For more information, see
+%% DNS for Services and Pods:
+%% https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+%% in the Kubernetes documentation.
 -module(aws_app_mesh).
 
 -export([create_gateway_route/4,
@@ -125,7 +128,8 @@
 %% existing virtual service. If a route matches a request, it can distribute
 %% traffic to a target virtual service.
 %%
-%% For more information about gateway routes, see Gateway routes.
+%% For more information about gateway routes, see Gateway routes:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
@@ -157,7 +161,8 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
 %% routers, and routes to distribute traffic between the applications in your
 %% mesh.
 %%
-%% For more information about service meshes, see Service meshes.
+%% For more information about service meshes, see Service meshes:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html.
 create_mesh(Client, Input) ->
     create_mesh(Client, Input, []).
 create_mesh(Client, Input0, Options0) ->
@@ -185,7 +190,8 @@ create_mesh(Client, Input0, Options0) ->
 %% You can route several different protocols and define a retry policy for a
 %% route. Traffic can be routed to one or more virtual nodes.
 %%
-%% For more information about routes, see Routes.
+%% For more information about routes, see Routes:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html.
 create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
 create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
@@ -218,7 +224,8 @@ create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
 %% running with an application, a virtual gateway represents Envoy deployed
 %% by itself.
 %%
-%% For more information about virtual gateways, see Virtual gateways.
+%% For more information about virtual gateways, see Virtual gateways:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html.
 create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
 create_virtual_gateway(Client, MeshName, Input0, Options0) ->
@@ -268,10 +275,13 @@ create_virtual_gateway(Client, MeshName, Input0, Options0) ->
 %% and traces. You can override this behavior by setting the
 %% `APPMESH_RESOURCE_CLUSTER' environment variable with your own name.
 %%
-%% For more information about virtual nodes, see Virtual nodes. You must be
-%% using `1.15.0' or later of the Envoy image when setting these
-%% variables. For more information aboutApp Mesh Envoy variables, see Envoy
-%% image in the App Mesh User Guide.
+%% For more information about virtual nodes, see Virtual nodes:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html.
+%% You must be using `1.15.0' or later of the Envoy image when setting
+%% these variables. For more information aboutApp Mesh Envoy variables, see
+%% Envoy image:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html in the
+%% App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 create_virtual_node(Client, MeshName, Input0, Options0) ->
@@ -304,7 +314,8 @@ create_virtual_node(Client, MeshName, Input0, Options0) ->
 %% associate routes for your virtual router that direct incoming requests to
 %% different virtual nodes.
 %%
-%% For more information about virtual routers, see Virtual routers.
+%% For more information about virtual routers, see Virtual routers:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html.
 create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
 create_virtual_router(Client, MeshName, Input0, Options0) ->
@@ -337,7 +348,8 @@ create_virtual_router(Client, MeshName, Input0, Options0) ->
 %% node or virtual router that is specified as the provider for the virtual
 %% service.
 %%
-%% For more information about virtual services, see Virtual services.
+%% For more information about virtual services, see Virtual services:
+%% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html.
 create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
 create_virtual_service(Client, MeshName, Input0, Options0) ->

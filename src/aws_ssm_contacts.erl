@@ -385,7 +385,8 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% The resource policy is used to share the contact or escalation plan using
 %% Resource Access Manager (RAM). For more information about cross-account
-%% sharing, see Setting up cross-account functionality.
+%% sharing, see Setting up cross-account functionality:
+%% https://docs.aws.amazon.com/incident-manager/latest/userguide/xa.html.
 put_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_contact_policy(Client, Input, []).

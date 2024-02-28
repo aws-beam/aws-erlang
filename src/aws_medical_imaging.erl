@@ -6,12 +6,13 @@
 %% AWS HealthImaging is a HIPAA-eligible service that helps health care
 %% providers and their medical imaging ISV partners store, transform, and
 %% apply machine learning to medical images. For an introduction to the
-%% service, see the AWS HealthImaging Developer Guide .
+%% service, see the AWS HealthImaging Developer Guide :
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/what-is.html.
 %%
 %% We recommend using one of the AWS Software Development Kits (SDKs) for
 %% your programming language, as they take care of request authentication,
 %% serialization, and connection management. For more information, see Tools
-%% to build on AWS.
+%% to build on AWS: http://aws.amazon.com/developer/tools.
 %%
 %% For information about using HealthImaging API actions in one of the
 %% language-specific AWS SDKs, refer to the See Also link at the end of each
@@ -25,51 +26,109 @@
 %%
 %% == Data store actions ==
 %%
-%% <ul> <li> CreateDatastore – See Creating a data store.
+%% <ul> <li> CreateDatastore:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_CreateDatastore.html
+%% – See Creating a data store:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/create-data-store.html.
 %%
-%% </li> <li> GetDatastore – See Getting data store properties.
+%% </li> <li> GetDatastore:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetDatastore.html
+%% – See Getting data store properties:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-data-store.html.
 %%
-%% </li> <li> ListDatastores – See Listing data stores.
+%% </li> <li> ListDatastores:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListDatastores.html
+%% – See Listing data stores:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-data-stores.html.
 %%
-%% </li> <li> DeleteDatastore – See Deleting a data store.
+%% </li> <li> DeleteDatastore:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_DeleteDatastore.html
+%% – See Deleting a data store:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/delete-data-store.html.
 %%
 %% </li> </ul> == Import job actions ==
 %%
-%% <ul> <li> StartDICOMImportJob – See Starting an import job.
+%% <ul> <li> StartDICOMImportJob:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_StartDICOMImportJob.html
+%% – See Starting an import job:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/start-dicom-import-job.html.
 %%
-%% </li> <li> GetDICOMImportJob – See Getting import job properties.
+%% </li> <li> GetDICOMImportJob:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetDICOMImportJob.html
+%% – See Getting import job properties:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-dicom-import-job.html.
 %%
-%% </li> <li> ListDICOMImportJobs – See Listing import jobs.
+%% </li> <li> ListDICOMImportJobs:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListDICOMImportJobs.html
+%% – See Listing import jobs:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-dicom-import-jobs.html.
 %%
 %% </li> </ul> == Image set access actions ==
 %%
-%% <ul> <li> SearchImageSets – See Searching image sets.
+%% <ul> <li> SearchImageSets:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_SearchImageSets.html
+%% – See Searching image sets:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/search-image-sets.html.
 %%
-%% </li> <li> GetImageSet – See Getting image set properties.
+%% </li> <li> GetImageSet:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageSet.html
+%% – See Getting image set properties:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-set-properties.html.
 %%
-%% </li> <li> GetImageSetMetadata – See Getting image set metadata.
+%% </li> <li> GetImageSetMetadata:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageSetMetadata.html
+%% – See Getting image set metadata:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-set-metadata.html.
 %%
-%% </li> <li> GetImageFrame – See Getting image set pixel data.
+%% </li> <li> GetImageFrame:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageFrame.html
+%% – See Getting image set pixel data:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/get-image-frame.html.
 %%
 %% </li> </ul> == Image set modification actions ==
 %%
-%% <ul> <li> ListImageSetVersions – See Listing image set versions.
+%% <ul> <li> ListImageSetVersions:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListImageSetVersions.html
+%% – See Listing image set versions:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/list-image-set-versions.html.
 %%
-%% </li> <li> UpdateImageSetMetadata – See Updating image set metadata.
+%% </li> <li> UpdateImageSetMetadata:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_UpdateImageSetMetadata.html
+%% – See Updating image set metadata:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/update-image-set-metadata.html.
 %%
-%% </li> <li> CopyImageSet – See Copying an image set.
+%% </li> <li> CopyImageSet:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_CopyImageSet.html
+%% – See Copying an image set:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/copy-image-set.html.
 %%
-%% </li> <li> DeleteImageSet – See Deleting an image set.
+%% </li> <li> DeleteImageSet:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_DeleteImageSet.html
+%% – See Deleting an image set:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/delete-image-set.html.
 %%
 %% </li> </ul> == Tagging actions ==
 %%
-%% <ul> <li> TagResource – See Tagging a data store and Tagging an image set.
+%% <ul> <li> TagResource:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_TagResource.html
+%% – See Tagging a data store:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
+%% and Tagging an image set:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
 %%
-%% </li> <li> ListTagsForResource – See Tagging a data store and Tagging an
-%% image set.
+%% </li> <li> ListTagsForResource:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_ListTagsForResource.html
+%% – See Tagging a data store:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
+%% and Tagging an image set:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
 %%
-%% </li> <li> UntagResource – See Tagging a data store and Tagging an image
-%% set.
+%% </li> <li> UntagResource:
+%% https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_UntagResource.html
+%% – See Tagging a data store:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-data-store.html
+%% and Tagging an image set:
+%% https://docs.aws.amazon.com/healthimaging/latest/devguide/tag-list-untag-image-set.html.
 %%
 %% </li> </ul>
 -module(aws_medical_imaging).

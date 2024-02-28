@@ -8,7 +8,8 @@
 %%
 %% It automatically identifies servers, virtual machines (VMs), and network
 %% dependencies in your on-premises data centers. For more information, see
-%% the Amazon Web Services Application Discovery Service FAQ.
+%% the Amazon Web Services Application Discovery Service FAQ:
+%% http://aws.amazon.com/application-discovery/faqs/.
 %%
 %% Application Discovery Service offers three ways of performing discovery
 %% and collecting data about your on-premises servers:
@@ -37,7 +38,8 @@
 %% </li> <li> The information collected by agents is secured at rest and in
 %% transit to the Application Discovery Service database in the Amazon Web
 %% Services cloud. For more information, see Amazon Web Services Application
-%% Discovery Agent.
+%% Discovery Agent:
+%% https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-agent.html.
 %%
 %% </li> </ul> </li> </ul> <ul> <li> Amazon Web Services Partner Network
 %% (APN) solutions integrate with Application Discovery Service, enabling you
@@ -60,7 +62,8 @@
 %% topic for each action shows the API request parameters and the response.
 %% Alternatively, you can use one of the Amazon Web Services SDKs to access
 %% an API that is tailored to the programming language or platform that
-%% you're using. For more information, see Amazon Web Services SDKs.
+%% you're using. For more information, see Amazon Web Services SDKs:
+%% http://aws.amazon.com/tools/#SDKs.
 %%
 %% Remember that you must set your Migration Hub home Region before you call
 %% any of these APIs.
@@ -80,11 +83,13 @@
 %% Region.
 %%
 %% This guide is intended for use with the Amazon Web Services Application
-%% Discovery Service User Guide.
+%% Discovery Service User Guide:
+%% https://docs.aws.amazon.com/application-discovery/latest/userguide/.
 %%
-%% All data is handled according to the Amazon Web Services Privacy Policy.
-%% You can operate Application Discovery Service offline to inspect collected
-%% data before it is shared with the service.
+%% All data is handled according to the Amazon Web Services Privacy Policy:
+%% https://aws.amazon.com/privacy/. You can operate Application Discovery
+%% Service offline to inspect collected data before it is shared with the
+%% service.
 -module(aws_application_discovery).
 
 -export([associate_configuration_items_to_application/2,
@@ -269,8 +274,9 @@ describe_batch_delete_configuration_task(Client, Input, Options)
 %% etc.
 %%
 %% For a complete list of outputs for each asset type, see Using the
-%% DescribeConfigurations Action in the Amazon Web Services Application
-%% Discovery Service User Guide.
+%% DescribeConfigurations Action:
+%% https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#DescribeConfigurations
+%% in the Amazon Web Services Application Discovery Service User Guide.
 describe_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configurations(Client, Input, []).
@@ -291,7 +297,9 @@ describe_continuous_exports(Client, Input, Options)
 
 %% @doc `DescribeExportConfigurations' is deprecated.
 %%
-%% Use DescribeExportTasks, instead.
+%% Use DescribeExportTasks:
+%% https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html,
+%% instead.
 describe_export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_configurations(Client, Input, []).
@@ -485,13 +493,15 @@ start_export_task(Client, Input, Options)
 %% the records from your file.
 %%
 %% </li> </ol> For more information, including step-by-step procedures, see
-%% Migration Hub Import in the Amazon Web Services Application Discovery
-%% Service User Guide.
+%% Migration Hub Import:
+%% https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html
+%% in the Amazon Web Services Application Discovery Service User Guide.
 %%
 %% There are limits to the number of import tasks you can create (and delete)
 %% in an Amazon Web Services account. For more information, see Amazon Web
-%% Services Application Discovery Service Limits in the Amazon Web Services
-%% Application Discovery Service User Guide.
+%% Services Application Discovery Service Limits:
+%% https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html
+%% in the Amazon Web Services Application Discovery Service User Guide.
 start_import_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_task(Client, Input, []).

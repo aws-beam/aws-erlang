@@ -76,7 +76,9 @@
 %% use the `GetModelCustomizationJob' operation to retrieve the job
 %% status.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 create_model_customization_job(Client, Input) ->
     create_model_customization_job(Client, Input, []).
 create_model_customization_job(Client, Input0, Options0) ->
@@ -102,8 +104,9 @@ create_model_customization_job(Client, Input0, Options0) ->
 %% @doc Creates a provisioned throughput with dedicated capacity for a
 %% foundation model or a fine-tuned model.
 %%
-%% For more information, see Provisioned throughput in the Bedrock User
-%% Guide.
+%% For more information, see Provisioned throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 create_provisioned_model_throughput(Client, Input) ->
     create_provisioned_model_throughput(Client, Input, []).
 create_provisioned_model_throughput(Client, Input0, Options0) ->
@@ -128,7 +131,9 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 
 %% @doc Deletes a custom model that you created earlier.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 delete_custom_model(Client, ModelIdentifier, Input) ->
     delete_custom_model(Client, ModelIdentifier, Input, []).
 delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
@@ -176,8 +181,9 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes a provisioned throughput.
 %%
-%% For more information, see Provisioned throughput in the Bedrock User
-%% Guide.
+%% For more information, see Provisioned throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     delete_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->
@@ -201,8 +207,9 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the properties associated with a Amazon Bedrock custom model that
-%% you have created.For more information, see Custom models in the Bedrock
-%% User Guide.
+%% you have created.For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 get_custom_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_custom_model(Client, ModelIdentifier, #{}, #{}).
@@ -251,7 +258,9 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the properties associated with a model-customization job,
 %% including the status of the job.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 get_model_customization_job(Client, JobIdentifier)
   when is_map(Client) ->
     get_model_customization_job(Client, JobIdentifier, #{}, #{}).
@@ -299,8 +308,9 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 
 %% @doc Get details for a provisioned throughput.
 %%
-%% For more information, see Provisioned throughput in the Bedrock User
-%% Guide.
+%% For more information, see Provisioned throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 get_provisioned_model_throughput(Client, ProvisionedModelId)
   when is_map(Client) ->
     get_provisioned_model_throughput(Client, ProvisionedModelId, #{}, #{}).
@@ -326,7 +336,9 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 %% @doc Returns a list of the custom models that you have created with the
 %% `CreateModelCustomizationJob' operation.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 list_custom_models(Client)
   when is_map(Client) ->
     list_custom_models(Client, #{}, #{}).
@@ -363,7 +375,9 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List of Amazon Bedrock foundation models that you can use.
 %%
-%% For more information, see Foundation models in the Bedrock User Guide.
+%% For more information, see Foundation models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html
+%% in the Bedrock User Guide.
 list_foundation_models(Client)
   when is_map(Client) ->
     list_foundation_models(Client, #{}, #{}).
@@ -397,7 +411,9 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can filter the jobs to return based on one or more criteria.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 list_model_customization_jobs(Client)
   when is_map(Client) ->
     list_model_customization_jobs(Client, #{}, #{}).
@@ -433,8 +449,9 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the provisioned capacities.
 %%
-%% For more information, see Provisioned throughput in the Bedrock User
-%% Guide.
+%% For more information, see Provisioned throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 list_provisioned_model_throughputs(Client)
   when is_map(Client) ->
     list_provisioned_model_throughputs(Client, #{}, #{}).
@@ -471,7 +488,9 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the tags associated with the specified resource.
 %%
-%% For more information, see Tagging resources in the Bedrock User Guide.
+%% For more information, see Tagging resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options0) ->
@@ -519,7 +538,9 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
 %% @doc Stops an active model customization job.
 %%
-%% For more information, see Custom models in the Bedrock User Guide.
+%% For more information, see Custom models:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
+%% the Bedrock User Guide.
 stop_model_customization_job(Client, JobIdentifier, Input) ->
     stop_model_customization_job(Client, JobIdentifier, Input, []).
 stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
@@ -544,7 +565,9 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 
 %% @doc Associate tags with a resource.
 %%
-%% For more information, see Tagging resources in the Bedrock User Guide.
+%% For more information, see Tagging resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -569,7 +592,9 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Remove one or more tags from a resource.
 %%
-%% For more information, see Tagging resources in the Bedrock User Guide.
+%% For more information, see Tagging resources:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -594,8 +619,9 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Update a provisioned throughput.
 %%
-%% For more information, see Provisioned throughput in the Bedrock User
-%% Guide.
+%% For more information, see Provisioned throughput:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
+%% in the Bedrock User Guide.
 update_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     update_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 update_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0) ->

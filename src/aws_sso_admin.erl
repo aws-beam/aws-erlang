@@ -15,12 +15,14 @@
 %% This reference guide provides information on single sign-on operations
 %% which could be used for access management of Amazon Web Services accounts.
 %% For information about IAM Identity Center features, see the IAM Identity
-%% Center User Guide.
+%% Center User Guide:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
 %%
 %% Many operations in the IAM Identity Center APIs rely on identifiers for
 %% users and groups, known as principals. For more information about how to
 %% work with principals and principal IDs in IAM Identity Center, see the
-%% Identity Store API Reference.
+%% Identity Store API Reference:
+%% https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
 %% code for various programming languages and platforms (Java, Ruby, .Net,
@@ -28,7 +30,7 @@
 %% programmatic access to IAM Identity Center and other Amazon Web Services
 %% services. For more information about the Amazon Web Services SDKs,
 %% including how to download and install them, see Tools for Amazon Web
-%% Services.
+%% Services: http://aws.amazon.com/tools/.
 -module(aws_sso_admin).
 
 -export([attach_customer_managed_policy_reference_to_permission_set/2,
@@ -275,7 +277,8 @@ create_instance(Client, Input, Options)
 %%
 %% You can also specify new attributes to add to your ABAC configuration
 %% during the enabling process. For more information about ABAC, see
-%% Attribute-Based Access Control in the IAM Identity Center User Guide.
+%% Attribute-Based Access Control: /singlesignon/latest/userguide/abac.html
+%% in the IAM Identity Center User Guide.
 %%
 %% After a successful response, call
 %% `DescribeInstanceAccessControlAttributeConfiguration' to validate that
@@ -398,8 +401,9 @@ delete_instance(Client, Input, Options)
 %%
 %% Once deleted, any attributes that are received from an identity source and
 %% any custom attributes you have previously configured will not be passed.
-%% For more information about ABAC, see Attribute-Based Access Control in the
-%% IAM Identity Center User Guide.
+%% For more information about ABAC, see Attribute-Based Access Control:
+%% /singlesignon/latest/userguide/abac.html in the IAM Identity Center User
+%% Guide.
 delete_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_access_control_attribute_configuration(Client, Input, []).
@@ -514,7 +518,8 @@ describe_instance(Client, Input, Options)
 %%
 %% This will not return attributes configured and sent by an external
 %% identity provider. For more information about ABAC, see Attribute-Based
-%% Access Control in the IAM Identity Center User Guide.
+%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
+%% Identity Center User Guide.
 describe_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_access_control_attribute_configuration(Client, Input, []).
@@ -824,10 +829,12 @@ put_application_access_scope(Client, Input, Options)
 %%
 %% If `AssignmentsRequired' is `true' (default value), users don’t
 %% have access to the application unless an assignment is created using the
-%% CreateApplicationAssignment API. If `false', all users have access to
-%% the application. If an assignment is created using
-%% CreateApplicationAssignment., the user retains access if
-%% `AssignmentsRequired' is set to `true'.
+%% CreateApplicationAssignment API:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.
+%% If `false', all users have access to the application. If an assignment
+%% is created using CreateApplicationAssignment:
+%% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.,
+%% the user retains access if `AssignmentsRequired' is set to `true'.
 put_application_assignment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_application_assignment_configuration(Client, Input, []).
@@ -916,7 +923,8 @@ update_instance(Client, Input, Options)
 %% SAML assertion passes any of these attributes, IAM Identity Center
 %% replaces the attribute value with the value from the IAM Identity Center
 %% identity store. For more information about ABAC, see Attribute-Based
-%% Access Control in the IAM Identity Center User Guide.
+%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
+%% Identity Center User Guide.
 update_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_access_control_attribute_configuration(Client, Input, []).

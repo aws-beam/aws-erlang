@@ -9,12 +9,15 @@
 %% infrastructure to set up or manage. You pay only for the queries you run.
 %% Athena scales automatically—executing queries in parallel—so results are
 %% fast, even with large datasets and complex queries. For more information,
-%% see What is Amazon Athena in the Amazon Athena User Guide.
+%% see What is Amazon Athena:
+%% http://docs.aws.amazon.com/athena/latest/ug/what-is.html in the Amazon
+%% Athena User Guide.
 %%
 %% If you connect to Athena using the JDBC driver, use version 1.1.0 of the
 %% driver or later with the Amazon Athena API. Earlier version drivers do not
 %% support the API. For more information and to download the driver, see
-%% Accessing Amazon Athena with JDBC.
+%% Accessing Amazon Athena with JDBC:
+%% https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html.
 -module(aws_athena).
 
 -export([batch_get_named_query/2,
@@ -279,7 +282,8 @@ create_prepared_statement(Client, Input, Options)
 %% During programmatic access, `CreatePresignedNotebookUrl' must be
 %% called every 10 minutes to refresh the authentication token. For
 %% information about granting programmatic access, see Grant programmatic
-%% access.
+%% access:
+%% https://docs.aws.amazon.com/athena/latest/ug/setting-up.html#setting-up-grant-programmatic-access.
 create_presigned_notebook_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_url(Client, Input, []).
@@ -468,9 +472,9 @@ get_query_execution(Client, Input, Options)
 %% S3.
 %%
 %% For more information, see Working with query results, recent queries, and
-%% output files in the Amazon Athena User Guide. This request does not
-%% execute the query but returns results. Use `StartQueryExecution' to
-%% run a query.
+%% output files: https://docs.aws.amazon.com/athena/latest/ug/querying.html
+%% in the Amazon Athena User Guide. This request does not execute the query
+%% but returns results. Use `StartQueryExecution' to run a query.
 %%
 %% To stream query results successfully, the IAM principal with permission to
 %% call `GetQueryResults' also must have permissions to the Amazon S3
@@ -741,8 +745,9 @@ start_calculation_execution(Client, Input, Options)
 %% Requires you to have access to the workgroup in which the query ran.
 %% Running queries against an external catalog requires `GetDataCatalog'
 %% permission to the catalog. For code samples using the Amazon Web Services
-%% SDK for Java, see Examples and Code Samples in the Amazon Athena User
-%% Guide.
+%% SDK for Java, see Examples and Code Samples:
+%% http://docs.aws.amazon.com/athena/latest/ug/code-samples.html in the
+%% Amazon Athena User Guide.
 start_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query_execution(Client, Input, []).
@@ -794,12 +799,13 @@ stop_query_execution(Client, Input, Options)
 %% tags to categorize Athena workgroups, data catalogs, or capacity
 %% reservations by purpose, owner, or environment. Use a consistent set of
 %% tag keys to make it easier to search and filter the resources in your
-%% account. For best practices, see Tagging Best Practices. Tag keys can be
-%% from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to
-%% 256 UTF-8 Unicode characters. Tags can use letters and numbers
-%% representable in UTF-8, and the following characters: + - = . _ : / @. Tag
-%% keys and values are case-sensitive. Tag keys must be unique per resource.
-%% If you specify more than one tag, separate them by commas.
+%% account. For best practices, see Tagging Best Practices:
+%% https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/tagging-best-practices.html.
+%% Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values can
+%% be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
+%% numbers representable in UTF-8, and the following characters: + - = . _ :
+%% / @. Tag keys and values are case-sensitive. Tag keys must be unique per
+%% resource. If you specify more than one tag, separate them by commas.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

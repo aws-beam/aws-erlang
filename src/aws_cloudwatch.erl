@@ -113,8 +113,9 @@
 %%
 %% If you specify an incorrect alarm name or make any other error in the
 %% operation, no alarms are deleted. To confirm that alarms were deleted
-%% successfully, you can use the DescribeAlarms operation after using
-%% `DeleteAlarms'.
+%% successfully, you can use the DescribeAlarms:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html
+%% operation after using `DeleteAlarms'.
 %%
 %% It is possible to create a loop or cycle of composite alarms, where
 %% composite alarm A depends on composite alarm B, and composite alarm B also
@@ -139,7 +140,9 @@ delete_alarms(Client, Input, Options)
 %% @doc Deletes the specified anomaly detection model from your account.
 %%
 %% For more information about how to delete an anomaly detection model, see
-%% Deleting an anomaly detection model in the CloudWatch User Guide.
+%% Deleting an anomaly detection model:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html#Delete_Anomaly_Detection_Model
+%% in the CloudWatch User Guide.
 delete_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_detector(Client, Input, []).
@@ -249,7 +252,8 @@ describe_anomaly_detectors(Client, Input, Options)
 %% @doc Returns a list of all the Contributor Insights rules in your account.
 %%
 %% For more information about Contributor Insights, see Using Contributor
-%% Insights to Analyze High-Cardinality Data.
+%% Insights to Analyze High-Cardinality Data:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html.
 describe_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_insight_rules(Client, Input, []).
@@ -367,19 +371,22 @@ get_insight_rule_report(Client, Input, Options)
 %% series that represent new insights into your data. For example, using
 %% Lambda metrics, you could divide the Errors metric by the Invocations
 %% metric to get an error rate time series. For more information about metric
-%% math expressions, see Metric Math Syntax and Functions in the Amazon
-%% CloudWatch User Guide.
+%% math expressions, see Metric Math Syntax and Functions:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax
+%% in the Amazon CloudWatch User Guide.
 %%
 %% If you include a Metrics Insights query, each `GetMetricData'
 %% operation can include only one query. But the same `GetMetricData'
 %% operation can also retrieve other metrics. Metrics Insights queries can
 %% query only the most recent three hours of metric data. For more
 %% information about Metrics Insights, see Query your metrics with CloudWatch
-%% Metrics Insights.
+%% Metrics Insights:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/query_with_cloudwatch-metrics-insights.html.
 %%
 %% Calls to the `GetMetricData' API have a different pricing structure
 %% than calls to `GetMetricStatistics'. For more information about
-%% pricing, see Amazon CloudWatch Pricing.
+%% pricing, see Amazon CloudWatch Pricing:
+%% https://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% Amazon CloudWatch retains metric data as follows:
 %%
@@ -486,7 +493,9 @@ get_metric_data(Client, Input, Options)
 %%
 %% For information about metrics and dimensions supported by Amazon Web
 %% Services services, see the Amazon CloudWatch Metrics and Dimensions
-%% Reference in the Amazon CloudWatch User Guide.
+%% Reference:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html
+%% in the Amazon CloudWatch User Guide.
 get_metric_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_statistics(Client, Input, []).
@@ -564,24 +573,33 @@ list_metric_streams(Client, Input, Options)
 
 %% @doc List the specified metrics.
 %%
-%% You can use the returned metrics with GetMetricData or GetMetricStatistics
+%% You can use the returned metrics with GetMetricData:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html
+%% or GetMetricStatistics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html
 %% to get statistical data.
 %%
 %% Up to 500 results are returned for any one call. To retrieve additional
 %% results, use the returned token with subsequent calls.
 %%
 %% After you create a metric, allow up to 15 minutes for the metric to
-%% appear. To see metric statistics sooner, use GetMetricData or
-%% GetMetricStatistics.
+%% appear. To see metric statistics sooner, use GetMetricData:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html
+%% or GetMetricStatistics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view metrics from the linked source
 %% accounts. For more information, see CloudWatch cross-account
-%% observability.
+%% observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 %%
 %% `ListMetrics' doesn't return information about metrics if those
 %% metrics haven't reported data in the past two weeks. To retrieve those
-%% metrics, use GetMetricData or GetMetricStatistics.
+%% metrics, use GetMetricData:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html
+%% or GetMetricStatistics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html.
 list_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metrics(Client, Input, []).
@@ -604,7 +622,8 @@ list_tags_for_resource(Client, Input, Options)
 %% You can use the model to display a band of expected normal values when the
 %% metric is graphed.
 %%
-%% For more information, see CloudWatch Anomaly Detection.
+%% For more information, see CloudWatch Anomaly Detection:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html.
 put_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_anomaly_detector(Client, Input, []).
@@ -705,7 +724,8 @@ put_dashboard(Client, Input, Options)
 %% Rules evaluate log events in a CloudWatch Logs log group, enabling you to
 %% find contributor data for the log events in that log group. For more
 %% information, see Using Contributor Insights to Analyze High-Cardinality
-%% Data.
+%% Data:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html.
 %%
 %% If you create a rule, delete it, and then re-create it with the same name,
 %% historical data from the first time the rule was created might not be
@@ -739,7 +759,8 @@ put_managed_insight_rules(Client, Input, Options)
 %% Insights query.
 %%
 %% For more information about using a Metrics Insights query for an alarm,
-%% see Create alarms on Metrics Insights queries.
+%% see Create alarms on Metrics Insights queries:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html.
 %%
 %% Alarms based on anomaly detection models cannot have Auto Scaling actions.
 %%
@@ -765,7 +786,8 @@ put_managed_insight_rules(Client, Input, Options)
 %% CloudWatch creates the necessary service-linked role for you. The
 %% service-linked roles are called `AWSServiceRoleForCloudWatchEvents'
 %% and `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more
-%% information, see Amazon Web Services service-linked role.
+%% information, see Amazon Web Services service-linked role:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role.
 %%
 %% Each `PutMetricAlarm' action has a maximum uncompressed payload of 120
 %% KB.
@@ -780,15 +802,18 @@ put_managed_insight_rules(Client, Input, Options)
 %% must already have a sharing role named CloudWatch-CrossAccountSharingRole.
 %% If it does not already have this role, you must create it using the
 %% instructions in Set up a sharing account in Cross-account cross-Region
-%% CloudWatch console. The policy for that role must grant access to the ID
-%% of the account where you are creating the alarm.
+%% CloudWatch console:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Cross-Account-Cross-Region.html#enable-cross-account-cross-Region.
+%% The policy for that role must grant access to the ID of the account where
+%% you are creating the alarm.
 %%
 %% </li> <li> The account where you are creating the alarm (the monitoring
 %% account) must already have a service-linked role named
 %% AWSServiceRoleForCloudWatchCrossAccount to allow CloudWatch to assume the
 %% sharing role in the sharing account. If it does not, you must create it
 %% following the directions in Set up a monitoring account in Cross-account
-%% cross-Region CloudWatch console.
+%% cross-Region CloudWatch console:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Cross-Account-Cross-Region.html#enable-cross-account-cross-Region.
 %%
 %% </li> </ul>
 put_metric_alarm(Client, Input)
@@ -803,7 +828,8 @@ put_metric_alarm(Client, Input, Options)
 %% CloudWatch associates the data points with the specified metric. If the
 %% specified metric does not exist, CloudWatch creates the metric. When
 %% CloudWatch creates a metric, it can take up to fifteen minutes for the
-%% metric to appear in calls to ListMetrics.
+%% metric to appear in calls to ListMetrics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html.
 %%
 %% You can publish either individual data points in the `Value' field, or
 %% arrays of values and the number of times each value occurred during the
@@ -824,18 +850,25 @@ put_metric_alarm(Client, Input, Options)
 %%
 %% You can use up to 30 dimensions per metric to further clarify what data
 %% the metric collects. Each dimension consists of a Name and Value pair. For
-%% more information about specifying dimensions, see Publishing Metrics in
-%% the Amazon CloudWatch User Guide.
+%% more information about specifying dimensions, see Publishing Metrics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html
+%% in the Amazon CloudWatch User Guide.
 %%
 %% You specify the time stamp to be associated with each data point. You can
 %% specify time stamps that are as much as two weeks before the current date,
 %% and as much as 2 hours after the current day and time.
 %%
 %% Data points with time stamps from 24 hours ago or longer can take at least
-%% 48 hours to become available for GetMetricData or GetMetricStatistics from
-%% the time they are submitted. Data points with time stamps between 3 and 24
-%% hours ago can take as much as 2 hours to become available for for
-%% GetMetricData or GetMetricStatistics.
+%% 48 hours to become available for GetMetricData:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html
+%% or GetMetricStatistics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html
+%% from the time they are submitted. Data points with time stamps between 3
+%% and 24 hours ago can take as much as 2 hours to become available for for
+%% GetMetricData:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html
+%% or GetMetricStatistics:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html.
 %%
 %% CloudWatch needs raw data points to calculate percentile statistics. If
 %% you publish data using a statistic set instead, you can only retrieve
@@ -862,7 +895,8 @@ put_metric_data(Client, Input, Options)
 %% Services destinations, including Amazon S3, and to many third-party
 %% solutions.
 %%
-%% For more information, see Using Metric Streams.
+%% For more information, see Using Metric Streams:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html.
 %%
 %% To create a metric stream, you must be signed in to an account that has
 %% the `iam:PassRole' permission and either the
@@ -885,7 +919,8 @@ put_metric_data(Client, Input, Options)
 %% that is streamed. You can use the `StatisticsConfigurations' parameter
 %% to have the metric stream send additional statistics in the stream.
 %% Streaming additional statistics incurs additional costs. For more
-%% information, see Amazon CloudWatch Pricing.
+%% information, see Amazon CloudWatch Pricing:
+%% https://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% When you use `PutMetricStream' to create a new metric stream, the
 %% stream is created in the `running' state. If you use it to update an
@@ -894,7 +929,8 @@ put_metric_data(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability and you create a
 %% metric stream in a monitoring account, you can choose whether to include
 %% metrics from source accounts in the stream. For more information, see
-%% CloudWatch cross-account observability.
+%% CloudWatch cross-account observability:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
 put_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_stream(Client, Input, []).
@@ -913,7 +949,8 @@ put_metric_stream(Client, Input, Options)
 %% Metric alarms returns to their actual state quickly, often within seconds.
 %% Because the metric alarm state change happens quickly, it is typically
 %% only visible in the alarm's History tab in the Amazon CloudWatch
-%% console or through DescribeAlarmHistory.
+%% console or through DescribeAlarmHistory:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html.
 %%
 %% If you use `SetAlarmState' on a composite alarm, the composite alarm
 %% is not guaranteed to return to its actual state. It returns to its actual

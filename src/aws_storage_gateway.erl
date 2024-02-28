@@ -14,22 +14,29 @@
 %% Use the following links to get started using the Storage Gateway Service
 %% API Reference:
 %%
-%% <ul> <li> Storage Gateway required request headers: Describes the required
-%% headers that you must send with every POST request to Storage Gateway.
+%% <ul> <li> Storage Gateway required request headers:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders:
+%% Describes the required headers that you must send with every POST request
+%% to Storage Gateway.
 %%
-%% </li> <li> Signing requests: Storage Gateway requires that you
-%% authenticate every request you send; this topic describes how sign such a
-%% request.
+%% </li> <li> Signing requests:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests:
+%% Storage Gateway requires that you authenticate every request you send;
+%% this topic describes how sign such a request.
 %%
-%% </li> <li> Error responses: Provides reference information about Storage
-%% Gateway errors.
+%% </li> <li> Error responses:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses:
+%% Provides reference information about Storage Gateway errors.
 %%
-%% </li> <li> Operations in Storage Gateway: Contains detailed descriptions
-%% of all Storage Gateway operations, their request parameters, response
-%% elements, possible errors, and examples of requests and responses.
+%% </li> <li> Operations in Storage Gateway:
+%% https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html:
+%% Contains detailed descriptions of all Storage Gateway operations, their
+%% request parameters, response elements, possible errors, and examples of
+%% requests and responses.
 %%
-%% </li> <li> Storage Gateway endpoints and quotas: Provides a list of each
-%% Amazon Web Services Region and the endpoints available for use with
+%% </li> <li> Storage Gateway endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/sg.html: Provides a list of
+%% each Amazon Web Services Region and the endpoints available for use with
 %% Storage Gateway.
 %%
 %% </li> </ul> Storage Gateway resource IDs are in uppercase. When you use
@@ -45,7 +52,8 @@
 %% 2016, all new volumes and snapshots will be created with a 17-character
 %% string. Starting in April 2016, you will be able to use these longer IDs
 %% so you can test your systems with the new format. For more information,
-%% see Longer EC2 and EBS resource IDs.
+%% see Longer EC2 and EBS resource IDs:
+%% http://aws.amazon.com/ec2/faqs/#longer-ids.
 %%
 %% For example, a volume Amazon Resource Name (ARN) with the longer volume ID
 %% format looks like the following:
@@ -56,7 +64,8 @@
 %% `snap-78e226633445566ee'.
 %%
 %% For more information, see Announcement: Heads-up – Longer Storage Gateway
-%% volume and snapshot IDs coming in 2016.
+%% volume and snapshot IDs coming in 2016:
+%% http://forums.aws.amazon.com/ann.jspa?annID=3557.
 -module(aws_storage_gateway).
 
 -export([activate_gateway/2,
@@ -266,7 +275,8 @@ activate_gateway(Client, Input, Options)
 %% @doc Configures one or more gateway local disks as cache for a gateway.
 %%
 %% This operation is only supported in the cached volume, tape, and file
-%% gateway type (see How Storage Gateway works (architecture).
+%% gateway type (see How Storage Gateway works (architecture):
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html.
 %%
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to add cache, and one or more disk IDs that you want to
@@ -444,8 +454,9 @@ create_cached_iscsi_volume(Client, Input, Options)
 %% creating your S3 File Gateway in. If Amazon Web Services STS is not
 %% activated in the Amazon Web Services Region, activate it. For information
 %% about how to activate Amazon Web Services STS, see Activating and
-%% deactivating Amazon Web Services STS in an Amazon Web Services Region in
-%% the Identity and Access Management User Guide.
+%% deactivating Amazon Web Services STS in an Amazon Web Services Region:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html
+%% in the Identity and Access Management User Guide.
 %%
 %% S3 File Gateways do not support creating hard or symbolic links on a file
 %% share.
@@ -469,8 +480,9 @@ create_nfs_file_share(Client, Input, Options)
 %% are creating your S3 File Gateway in. If Amazon Web Services STS is not
 %% activated in this Amazon Web Services Region, activate it. For information
 %% about how to activate Amazon Web Services STS, see Activating and
-%% deactivating Amazon Web Services STS in an Amazon Web Services Region in
-%% the Identity and Access Management User Guide.
+%% deactivating Amazon Web Services STS in an Amazon Web Services Region:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html
+%% in the Identity and Access Management User Guide.
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
@@ -489,7 +501,8 @@ create_smb_file_share(Client, Input, Options)
 %% volume in Amazon Elastic Compute Cloud (EC2). You can take snapshots of
 %% your gateway volume on a scheduled or ad hoc basis. This API enables you
 %% to take an ad hoc snapshot. For more information, see Editing a snapshot
-%% schedule.
+%% schedule:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot.
 %%
 %% In the `CreateSnapshot' request, you identify the volume by providing
 %% its Amazon Resource Name (ARN). You must also provide description for the
@@ -501,11 +514,16 @@ create_smb_file_share(Client, Input, Options)
 %% stored and cached volume gateway type.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
-%% information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic
-%% Compute Cloud API Reference.
+%% information, see DescribeSnapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html
+%% or DeleteSnapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html
+%% in the Amazon Elastic Compute Cloud API Reference.
 %%
 %% Volume and snapshot IDs are changing to a longer length ID format. For
-%% more information, see the important note on the Welcome page.
+%% more information, see the important note on the Welcome:
+%% https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html
+%% page.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -531,8 +549,11 @@ create_snapshot(Client, Input, Options)
 %% use it when you want to create a volume from a snapshot.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
-%% information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic
-%% Compute Cloud API Reference.
+%% information, see DescribeSnapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html
+%% or DeleteSnapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html
+%% in the Amazon Elastic Compute Cloud API Reference.
 create_snapshot_from_volume_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_from_volume_recovery_point(Client, Input, []).
@@ -670,7 +691,7 @@ delete_file_share(Client, Input, Options)
 %% EBS snapshots by canceling your Amazon EC2 subscription.  If you prefer
 %% not to cancel your Amazon EC2 subscription, you can delete your snapshots
 %% using the Amazon EC2 console. For more information, see the Storage
-%% Gateway detail page.
+%% Gateway detail page: http://aws.amazon.com/storagegateway.
 delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
@@ -682,14 +703,16 @@ delete_gateway(Client, Input, Options)
 %%
 %% You can take snapshots of your gateway volumes on a scheduled or ad hoc
 %% basis. This API action enables you to delete a snapshot schedule for a
-%% volume. For more information, see Backing up your volumes. In the
-%% `DeleteSnapshotSchedule' request, you identify the volume by providing
-%% its Amazon Resource Name (ARN). This operation is only supported for
-%% cached volume gateway types.
+%% volume. For more information, see Backing up your volumes:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/backing-up-volumes.html.
+%% In the `DeleteSnapshotSchedule' request, you identify the volume by
+%% providing its Amazon Resource Name (ARN). This operation is only supported
+%% for cached volume gateway types.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
-%% information, go to DescribeSnapshots in the Amazon Elastic Compute Cloud
-%% API Reference.
+%% information, go to DescribeSnapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html
+%% in the Amazon Elastic Compute Cloud API Reference.
 delete_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_schedule(Client, Input, []).
@@ -742,8 +765,9 @@ delete_tape_pool(Client, Input, Options)
 %% the volume you are deleting. You should also make sure there is no
 %% snapshot in progress. You can use the Amazon Elastic Compute Cloud (Amazon
 %% EC2) API to query snapshots on the volume you are deleting and check the
-%% snapshot status. For more information, go to DescribeSnapshots in the
-%% Amazon Elastic Compute Cloud API Reference.
+%% snapshot status. For more information, go to DescribeSnapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html
+%% in the Amazon Elastic Compute Cloud API Reference.
 %%
 %% In the request, you must provide the Amazon Resource Name (ARN) of the
 %% storage volume you want to delete.
@@ -1289,8 +1313,9 @@ list_volumes(Client, Input, Options)
 %% notification through event targets such as Amazon SNS or Lambda function.
 %% This operation is only supported for S3 File Gateways.
 %%
-%% For more information, see Getting file upload notification in the Amazon
-%% S3 File Gateway User Guide.
+%% For more information, see Getting file upload notification:
+%% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
+%% in the Amazon S3 File Gateway User Guide.
 notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
@@ -1310,8 +1335,10 @@ notify_when_uploaded(Client, Input, Options)
 %%
 %% You can subscribe to be notified through an Amazon CloudWatch event when
 %% your `RefreshCache' operation completes. For more information, see
-%% Getting notified about file operations in the Amazon S3 File Gateway User
-%% Guide. This operation is Only supported for S3 File Gateways.
+%% Getting notified about file operations:
+%% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
+%% in the Amazon S3 File Gateway User Guide. This operation is Only supported
+%% for S3 File Gateways.
 %%
 %% When this API is called, it only initiates the refresh operation. When the
 %% API call completes and returns a success code, it doesn't necessarily
@@ -1324,7 +1351,9 @@ notify_when_uploaded(Client, Input, Options)
 %% Throttle limit: This API is asynchronous, so the gateway will accept no
 %% more than two refreshes at any time. We recommend using the
 %% refresh-complete CloudWatch event notification before issuing additional
-%% requests. For more information, see Getting notified about file operations
+%% requests. For more information, see Getting notified about file
+%% operations:
+%% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
 %% in the Amazon S3 File Gateway User Guide.
 %%
 %% Wait at least 60 seconds between consecutive RefreshCache API requests.
@@ -1337,8 +1366,9 @@ notify_when_uploaded(Client, Input, Options)
 %% The S3 bucket name does not need to be included when entering the list of
 %% folders in the FolderList parameter.
 %%
-%% For more information, see Getting notified about file operations in the
-%% Amazon S3 File Gateway User Guide.
+%% For more information, see Getting notified about file operations:
+%% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
+%% in the Amazon S3 File Gateway User Guide.
 refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
@@ -1620,7 +1650,10 @@ update_gateway_information(Client, Input, Options)
 %% minimize the chance of any disruption to your applications by increasing
 %% your iSCSI Initiators' timeouts. For more information about increasing
 %% iSCSI Initiator timeouts for Windows and Linux, see Customizing your
-%% Windows iSCSI settings and Customizing your Linux iSCSI settings,
+%% Windows iSCSI settings:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings
+%% and Customizing your Linux iSCSI settings:
+%% https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings,
 %% respectively.
 update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1680,8 +1713,9 @@ update_nfs_file_share(Client, Input, Options)
 %% creating your file gateway in. If Amazon Web Services STS is not activated
 %% in this Amazon Web Services Region, activate it. For information about how
 %% to activate Amazon Web Services STS, see Activating and deactivating
-%% Amazon Web Services STS in an Amazon Web Services Region in the Identity
-%% and Access Management User Guide.
+%% Amazon Web Services STS in an Amazon Web Services Region:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html
+%% in the Identity and Access Management User Guide.
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.

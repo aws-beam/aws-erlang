@@ -68,13 +68,17 @@
 %%
 %% CodeDeploy Information Resources
 %%
-%% <ul> <li> CodeDeploy User Guide
+%% <ul> <li> CodeDeploy User Guide:
+%% https://docs.aws.amazon.com/codedeploy/latest/userguide
 %%
-%% </li> <li> CodeDeploy API Reference Guide
+%% </li> <li> CodeDeploy API Reference Guide:
+%% https://docs.aws.amazon.com/codedeploy/latest/APIReference/
 %%
-%% </li> <li> CLI Reference for CodeDeploy
+%% </li> <li> CLI Reference for CodeDeploy:
+%% https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html
 %%
-%% </li> <li> CodeDeploy Developer Forum
+%% </li> <li> CodeDeploy Developer Forum:
+%% https://forums.aws.amazon.com/forum.jspa?forumID=179
 %%
 %% </li> </ul>
 -module(aws_codedeploy).
@@ -561,8 +565,10 @@ list_tags_for_resource(Client, Input, Options)
 %% `AfterAllowTestTraffic', `BeforeAllowTraffic', and
 %% `AfterAllowTraffic'. Lambda validation functions return
 %% `Succeeded' or `Failed'. For more information, see AppSpec
-%% 'hooks' Section for an Lambda Deployment and AppSpec
-%% 'hooks' Section for an Amazon ECS Deployment.
+%% 'hooks' Section for an Lambda Deployment :
+%% https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda
+%% and AppSpec 'hooks' Section for an Amazon ECS Deployment:
+%% https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs.
 put_lifecycle_event_hook_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_event_hook_execution_status(Client, Input, []).

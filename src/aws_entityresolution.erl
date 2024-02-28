@@ -16,7 +16,8 @@
 %% marketing system containing campaign information.
 %%
 %% To learn more about Entity Resolution concepts, procedures, and best
-%% practices, see the Entity Resolution User Guide.
+%% practices, see the Entity Resolution User Guide:
+%% https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html.
 -module(aws_entityresolution).
 
 -export([create_id_mapping_workflow/2,

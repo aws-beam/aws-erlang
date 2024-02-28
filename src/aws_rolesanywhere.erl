@@ -20,7 +20,8 @@
 %%
 %% This guide describes the IAM Roles Anywhere operations that you can call
 %% programmatically. For more information about IAM Roles Anywhere, see the
-%% IAM Roles Anywhere User Guide.
+%% IAM Roles Anywhere User Guide:
+%% https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html.
 -module(aws_rolesanywhere).
 
 -export([create_profile/2,

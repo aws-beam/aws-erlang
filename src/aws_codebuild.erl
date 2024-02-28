@@ -13,7 +13,8 @@
 %% fully customize build environments in CodeBuild to use your own build
 %% tools. CodeBuild scales automatically to meet peak build requests. You pay
 %% only for the build time you consume. For more information about CodeBuild,
-%% see the CodeBuild User Guide.
+%% see the CodeBuild User Guide:
+%% https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html.
 -module(aws_codebuild).
 
 -export([batch_delete_builds/2,
@@ -217,7 +218,8 @@ create_report_group(Client, Input, Options)
 %% both builds. Therefore, if you are using CodePipeline, we recommend that
 %% you disable webhooks in CodeBuild. In the CodeBuild console, clear the
 %% Webhook box. For more information, see step 5 in Change a Build
-%% Project's Settings.
+%% Project's Settings:
+%% https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console.
 create_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_webhook(Client, Input, []).
@@ -543,8 +545,9 @@ update_project(Client, Input, Options)
 %% @doc Changes the public visibility for a project.
 %%
 %% The project's build results, logs, and artifacts are available to the
-%% general public. For more information, see Public build projects in the
-%% CodeBuild User Guide.
+%% general public. For more information, see Public build projects:
+%% https://docs.aws.amazon.com/codebuild/latest/userguide/public-builds.html
+%% in the CodeBuild User Guide.
 %%
 %% The following should be kept in mind when making your projects public:
 %%
@@ -561,10 +564,11 @@ update_project(Client, Input, Options)
 %% you use an Amazon EC2 Systems Manager Parameter Store or Secrets Manager
 %% to store sensitive values.
 %%
-%% Follow Best practices for using webhooks in the CodeBuild User Guide to
-%% limit which entities can trigger a build, and do not store the buildspec
-%% in the project itself, to ensure that your webhooks are as secure as
-%% possible.
+%% Follow Best practices for using webhooks:
+%% https://docs.aws.amazon.com/codebuild/latest/userguide/webhooks.html#webhook-best-practices
+%% in the CodeBuild User Guide to limit which entities can trigger a build,
+%% and do not store the buildspec in the project itself, to ensure that your
+%% webhooks are as secure as possible.
 %%
 %% A malicious user can use public builds to distribute malicious artifacts.
 %% We recommend that you review all pull requests to verify that the pull

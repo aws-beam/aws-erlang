@@ -22,7 +22,7 @@
 %% key-value pairs.
 %%
 %% For more information about Resource Groups, see the Resource Groups User
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html.
 %%
 %% Resource Groups uses a REST-compliant API that you can use to perform the
 %% following types of operations.
@@ -91,9 +91,12 @@
 %%
 %% You can optionally include either a resource query or a service
 %% configuration. For more information about constructing a resource query,
-%% see Build queries and groups in Resource Groups in the Resource Groups
-%% User Guide. For more information about service-linked groups and service
-%% configurations, see Service configurations for Resource Groups.
+%% see Build queries and groups in Resource Groups:
+%% https://docs.aws.amazon.com/ARG/latest/userguide/getting_started-query.html
+%% in the Resource Groups User Guide. For more information about
+%% service-linked groups and service configurations, see Service
+%% configurations for Resource Groups:
+%% https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html.
 %%
 %% Minimum permissions
 %%
@@ -216,7 +219,8 @@ get_group(Client, Input0, Options0) ->
 %% resource group.
 %%
 %% For details about the service configuration syntax, see Service
-%% configurations for Resource Groups.
+%% configurations for Resource Groups:
+%% https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html.
 %%
 %% Minimum permissions
 %%
@@ -251,7 +255,8 @@ get_group_configuration(Client, Input0, Options0) ->
 %% group.
 %%
 %% For more information about resource queries, see Create a tag-based group
-%% in Resource Groups.
+%% in Resource Groups:
+%% https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag.
 %%
 %% Minimum permissions
 %%
@@ -671,7 +676,8 @@ update_group(Client, Input0, Options0) ->
 %% @doc Updates the resource query of a group.
 %%
 %% For more information about resource queries, see Create a tag-based group
-%% in Resource Groups.
+%% in Resource Groups:
+%% https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag.
 %%
 %% Minimum permissions
 %%

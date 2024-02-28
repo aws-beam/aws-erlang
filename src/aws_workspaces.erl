@@ -15,16 +15,20 @@
 %% types, parameters, and errors of the WorkSpaces service. For more
 %% information about the supported Amazon Web Services Regions, endpoints,
 %% and service quotas of the Amazon WorkSpaces service, see WorkSpaces
-%% endpoints and quotas in the Amazon Web Services General Reference.
+%% endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/wsp.html in the Amazon Web
+%% Services General Reference.
 %%
 %% You can also manage your WorkSpaces resources using the WorkSpaces
 %% console, Command Line Interface (CLI), and SDKs. For more information
 %% about administering WorkSpaces, see the Amazon WorkSpaces Administration
-%% Guide. For more information about using the Amazon WorkSpaces client
-%% application or web browser to access provisioned WorkSpaces, see the
-%% Amazon WorkSpaces User Guide. For more information about using the CLI to
-%% manage your WorkSpaces resources, see the WorkSpaces section of the CLI
-%% Reference.
+%% Guide: https://docs.aws.amazon.com/workspaces/latest/adminguide/. For more
+%% information about using the Amazon WorkSpaces client application or web
+%% browser to access provisioned WorkSpaces, see the Amazon WorkSpaces User
+%% Guide: https://docs.aws.amazon.com/workspaces/latest/userguide/. For more
+%% information about using the CLI to manage your WorkSpaces resources, see
+%% the WorkSpaces section of the CLI Reference:
+%% https://docs.aws.amazon.com/cli/latest/reference/workspaces/index.html.
 -module(aws_workspaces).
 
 -export([associate_connection_alias/2,
@@ -183,10 +187,13 @@
 %% @doc Associates the specified connection alias with the specified
 %% directory to enable cross-Region redirection.
 %%
-%% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+%% For more information, see Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 %%
-%% Before performing this operation, call DescribeConnectionAliases to make
-%% sure that the current state of the connection alias is `CREATED'.
+%% Before performing this operation, call DescribeConnectionAliases:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html
+%% to make sure that the current state of the connection alias is
+%% `CREATED'.
 associate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_connection_alias(Client, Input, []).
@@ -226,7 +233,8 @@ authorize_ip_rules(Client, Input, Options)
 %% Region.
 %%
 %% For more information about copying images, see Copy a Custom WorkSpaces
-%% Image.
+%% Image:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html.
 %%
 %% In the China (Ningxia) Region, you can copy images only within the same
 %% Region.
@@ -237,8 +245,11 @@ authorize_ip_rules(Client, Input, Options)
 %% Before copying a shared image, be sure to verify that it has been shared
 %% from the correct Amazon Web Services account. To determine if an image has
 %% been shared and to see the ID of the Amazon Web Services account that owns
-%% an image, use the DescribeWorkSpaceImages and
-%% DescribeWorkspaceImagePermissions API operations.
+%% an image, use the DescribeWorkSpaceImages:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html
+%% and DescribeWorkspaceImagePermissions:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html
+%% API operations.
 copy_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_workspace_image(Client, Input, []).
@@ -262,7 +273,8 @@ create_connect_client_add_in(Client, Input, Options)
 %% @doc Creates the specified connection alias for use with cross-Region
 %% redirection.
 %%
-%% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+%% For more information, see Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 create_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection_alias(Client, Input, []).
@@ -313,7 +325,8 @@ create_tags(Client, Input, Options)
 %% required by the Amazon WorkSpaces components.
 %%
 %% To determine which WorkSpace images need to be updated with the latest
-%% Amazon WorkSpaces requirements, use DescribeWorkspaceImages.
+%% Amazon WorkSpaces requirements, use DescribeWorkspaceImages:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html.
 %%
 %% Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace
 %% images can be programmatically updated at this time.
@@ -333,7 +346,8 @@ create_updated_workspace_image(Client, Input, Options)
 %% @doc Creates the specified WorkSpace bundle.
 %%
 %% For more information about creating WorkSpace bundles, see Create a Custom
-%% WorkSpaces Image and Bundle.
+%% WorkSpaces Image and Bundle:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html.
 create_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspace_bundle(Client, Input, []).
@@ -356,7 +370,8 @@ create_workspace_image(Client, Input, Options)
 %%
 %% The `MANUAL' running mode value is only supported by Amazon WorkSpaces
 %% Core. Contact your account team to be allow-listed to use this value. For
-%% more information, see Amazon WorkSpaces Core.
+%% more information, see Amazon WorkSpaces Core:
+%% http://aws.amazon.com/workspaces/core/.
 %%
 %% You don't need to specify the `PCOIP' protocol for Linux bundles
 %% because `WSP' is the default protocol for those bundles.
@@ -394,12 +409,14 @@ delete_connect_client_add_in(Client, Input, Options)
 
 %% @doc Deletes the specified connection alias.
 %%
-%% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+%% For more information, see Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 %%
 %% If you will no longer be using a fully qualified domain name (FQDN) as the
 %% registration code for your WorkSpaces users, you must take certain
 %% precautions to prevent potential security issues. For more information,
-%% see Security Considerations if You Stop Using Cross-Region Redirection.
+%% see Security Considerations if You Stop Using Cross-Region Redirection:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html#cross-region-redirection-security-considerations.
 %%
 %% To delete a connection alias that has been shared, the shared account must
 %% first disassociate the connection alias from any directories it has been
@@ -436,7 +453,8 @@ delete_tags(Client, Input, Options)
 %% @doc Deletes the specified WorkSpace bundle.
 %%
 %% For more information about deleting WorkSpace bundles, see Delete a Custom
-%% WorkSpaces Bundle or Image.
+%% WorkSpaces Bundle or Image:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html.
 delete_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_bundle(Client, Input, []).
@@ -473,9 +491,11 @@ deploy_workspace_applications(Client, Input, Options)
 %% with WorkSpaces. If there are no WorkSpaces being used with your Simple AD
 %% or AD Connector directory for 30 consecutive days, this directory will be
 %% automatically deregistered for use with Amazon WorkSpaces, and you will be
-%% charged for this directory as per the Directory Service pricing terms.
+%% charged for this directory as per the Directory Service pricing terms:
+%% http://aws.amazon.com/directoryservice/pricing/.
 %%
-%% To delete empty directories, see Delete the Directory for Your WorkSpaces.
+%% To delete empty directories, see Delete the Directory for Your WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html.
 %% If you delete your Simple AD or AD Connector directory, you can always
 %% create a new one when you want to start using WorkSpaces again.
 deregister_workspace_directory(Client, Input)
@@ -568,7 +588,8 @@ describe_connect_client_add_ins(Client, Input, Options)
 %% granted to another Amazon Web Services account for the specified
 %% connection alias.
 %%
-%% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+%% For more information, see Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 describe_connection_alias_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_alias_permissions(Client, Input, []).
@@ -579,7 +600,8 @@ describe_connection_alias_permissions(Client, Input, Options)
 %% @doc Retrieves a list that describes the connection aliases used for
 %% cross-Region redirection.
 %%
-%% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+%% For more information, see Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 describe_connection_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_aliases(Client, Input, []).
@@ -691,10 +713,13 @@ describe_workspaces_connection_status(Client, Input, Options)
 %%
 %% Disassociating a connection alias disables cross-Region redirection
 %% between two directories in different Regions. For more information, see
-%% Cross-Region Redirection for Amazon WorkSpaces.
+%% Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 %%
-%% Before performing this operation, call DescribeConnectionAliases to make
-%% sure that the current state of the connection alias is `CREATED'.
+%% Before performing this operation, call DescribeConnectionAliases:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html
+%% to make sure that the current state of the connection alias is
+%% `CREATED'.
 disassociate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connection_alias(Client, Input, []).
@@ -754,7 +779,8 @@ import_client_branding(Client, Input, Options)
 %% The image must be an already licensed Amazon EC2 image that is in your
 %% Amazon Web Services account, and you must own the image. For more
 %% information about creating BYOL images, see Bring Your Own Windows Desktop
-%% Licenses.
+%% Licenses:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html.
 import_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_workspace_image(Client, Input, []).
@@ -793,7 +819,8 @@ list_available_management_cidr_ranges(Client, Input, Options)
 %% files in the old user profile are moved to the new user profile.
 %%
 %% For available migration scenarios, details about what happens during
-%% migration, and best practices, see Migrate a WorkSpace.
+%% migration, and best practices, see Migrate a WorkSpace:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html.
 migrate_workspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     migrate_workspace(Client, Input, []).
@@ -842,7 +869,8 @@ modify_saml_properties(Client, Input, Options)
 %% users.
 %%
 %% For more information, see Enable Self-Service WorkSpace Management
-%% Capabilities for Your Users.
+%% Capabilities for Your Users:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html.
 modify_selfservice_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_selfservice_permissions(Client, Input, []).
@@ -853,7 +881,8 @@ modify_selfservice_permissions(Client, Input, Options)
 %% @doc Specifies which devices and operating systems users can use to access
 %% their WorkSpaces.
 %%
-%% For more information, see Control Device Access.
+%% For more information, see Control Device Access:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access.
 modify_workspace_access_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_access_properties(Client, Input, []).
@@ -872,11 +901,13 @@ modify_workspace_creation_properties(Client, Input, Options)
 %% @doc Modifies the specified WorkSpace properties.
 %%
 %% For important information about how to modify the size of the root and
-%% user volumes, see Modify a WorkSpace.
+%% user volumes, see Modify a WorkSpace:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html.
 %%
 %% The `MANUAL' running mode value is only supported by Amazon WorkSpaces
 %% Core. Contact your account team to be allow-listed to use this value. For
-%% more information, see Amazon WorkSpaces Core.
+%% more information, see Amazon WorkSpaces Core:
+%% http://aws.amazon.com/workspaces/core/.
 modify_workspace_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_properties(Client, Input, []).
@@ -918,7 +949,8 @@ reboot_workspaces(Client, Input, Options)
 %% `ERROR', `UNHEALTHY', `STOPPED', or `REBOOTING'.
 %%
 %% Rebuilding a WorkSpace is a potentially destructive action that can result
-%% in the loss of data. For more information, see Rebuild a WorkSpace.
+%% in the loss of data. For more information, see Rebuild a WorkSpace:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html.
 %%
 %% This operation is asynchronous and returns before the WorkSpaces have been
 %% completely rebuilt.
@@ -935,7 +967,8 @@ rebuild_workspaces(Client, Input, Options)
 %% is registered. If this is the first time you are registering a directory,
 %% you will need to create the workspaces_DefaultRole role before you can
 %% register a directory. For more information, see Creating the
-%% workspaces_DefaultRole Role.
+%% workspaces_DefaultRole Role:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role.
 register_workspace_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workspace_directory(Client, Input, []).
@@ -949,7 +982,8 @@ register_workspace_directory(Client, Input, Options)
 %% `ERROR', `UNHEALTHY', or `STOPPED'.
 %%
 %% Restoring a WorkSpace is a potentially destructive action that can result
-%% in the loss of data. For more information, see Restore a WorkSpace.
+%% in the loss of data. For more information, see Restore a WorkSpace:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html.
 %%
 %% This operation is asynchronous and returns before the WorkSpace is
 %% completely restored.
@@ -1004,16 +1038,20 @@ stop_workspaces(Client, Input, Options)
 %% `TERMINATED' state is returned only briefly before the WorkSpace
 %% directory metadata is cleaned up, so this state is rarely returned. To
 %% confirm that a WorkSpace is terminated, check for the WorkSpace ID by
-%% using DescribeWorkSpaces. If the WorkSpace ID isn't returned, then the
-%% WorkSpace has been successfully terminated.
+%% using DescribeWorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html.
+%% If the WorkSpace ID isn't returned, then the WorkSpace has been
+%% successfully terminated.
 %%
 %% Simple AD and AD Connector are made available to you free of charge to use
 %% with WorkSpaces. If there are no WorkSpaces being used with your Simple AD
 %% or AD Connector directory for 30 consecutive days, this directory will be
 %% automatically deregistered for use with Amazon WorkSpaces, and you will be
-%% charged for this directory as per the Directory Service pricing terms.
+%% charged for this directory as per the Directory Service pricing terms:
+%% http://aws.amazon.com/directoryservice/pricing/.
 %%
-%% To delete empty directories, see Delete the Directory for Your WorkSpaces.
+%% To delete empty directories, see Delete the Directory for Your WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html.
 %% If you delete your Simple AD or AD Connector directory, you can always
 %% create a new one when you want to start using WorkSpaces again.
 terminate_workspaces(Client, Input)
@@ -1041,10 +1079,13 @@ update_connect_client_add_in(Client, Input, Options)
 %% If the association permission is granted, the connection alias is shared
 %% with that account. If the association permission is revoked, the
 %% connection alias is unshared with the account. For more information, see
-%% Cross-Region Redirection for Amazon WorkSpaces.
+%% Cross-Region Redirection for Amazon WorkSpaces:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
 %%
-%% Before performing this operation, call DescribeConnectionAliases to make
-%% sure that the current state of the connection alias is `CREATED'.
+%% Before performing this operation, call DescribeConnectionAliases:
+%% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html
+%% to make sure that the current state of the connection alias is
+%% `CREATED'.
 %%
 %% To delete a connection alias that has been shared, the shared account must
 %% first disassociate the connection alias from any directories it has been
@@ -1071,7 +1112,8 @@ update_rules_of_ip_group(Client, Input, Options)
 %% @doc Updates a WorkSpace bundle with a new image.
 %%
 %% For more information about updating WorkSpace bundles, see Update a Custom
-%% WorkSpaces Bundle.
+%% WorkSpaces Bundle:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html.
 %%
 %% Existing WorkSpaces aren't automatically updated when you update the
 %% bundle that they're based on. To update existing WorkSpaces that are
@@ -1102,7 +1144,8 @@ update_workspace_bundle(Client, Input, Options)
 %% Regions, contact Amazon Web Services Support.
 %%
 %% For more information about sharing images, see Share or Unshare a Custom
-%% WorkSpaces Image.
+%% WorkSpaces Image:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/share-custom-image.html.
 %%
 %% To delete an image that has been shared, you must unshare the image before
 %% you delete it.

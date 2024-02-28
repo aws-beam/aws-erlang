@@ -8,7 +8,8 @@
 %%
 %% This guide provides descriptions of the Secrets Manager API. For more
 %% information about using this service, see the Amazon Web Services Secrets
-%% Manager User Guide.
+%% Manager User Guide:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html.
 %%
 %% API Version
 %%
@@ -16,15 +17,18 @@
 %% Manager API version 2017-10-17.
 %%
 %% For a list of endpoints, see Amazon Web Services Secrets Manager
-%% endpoints.
+%% endpoints:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/asm_access.html#endpoints.
 %%
 %% Support and Feedback for Amazon Web Services Secrets Manager
 %%
 %% We welcome your feedback. Send your comments to
-%% awssecretsmanager-feedback@amazon.com, or post your feedback and questions
-%% in the Amazon Web Services Secrets Manager Discussion Forum. For more
-%% information about the Amazon Web Services Discussion Forums, see Forums
-%% Help.
+%% awssecretsmanager-feedback@amazon.com:
+%% mailto:awssecretsmanager-feedback@amazon.com, or post your feedback and
+%% questions in the Amazon Web Services Secrets Manager Discussion Forum:
+%% http://forums.aws.amazon.com/forum.jspa?forumID=296. For more information
+%% about the Amazon Web Services Discussion Forums, see Forums Help:
+%% http://forums.aws.amazon.com/help.jspa.
 %%
 %% Logging API Requests
 %%
@@ -36,9 +40,12 @@
 %% Manager, who made the request, when it was made, and so on. For more about
 %% Amazon Web Services Secrets Manager and support for Amazon Web Services
 %% CloudTrail, see Logging Amazon Web Services Secrets Manager Events with
-%% Amazon Web Services CloudTrail in the Amazon Web Services Secrets Manager
-%% User Guide. To learn more about CloudTrail, including enabling it and find
-%% your log files, see the Amazon Web Services CloudTrail User Guide.
+%% Amazon Web Services CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail
+%% in the Amazon Web Services Secrets Manager User Guide. To learn more about
+%% CloudTrail, including enabling it and find your log files, see the Amazon
+%% Web Services CloudTrail User Guide:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html.
 -module(aws_secrets_manager).
 
 -export([batch_get_secret_value/2,
@@ -107,7 +114,8 @@
 %% Secrets Manager generates CloudTrail `GetSecretValue' log entries for
 %% each secret you request when you call this action. Do not include
 %% sensitive information in request parameters because it might be logged.
-%% For more information, see Logging Secrets Manager events with CloudTrail.
+%% For more information, see Logging Secrets Manager events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:BatchGetSecretValue', and you
 %% must have `secretsmanager:GetSecretValue' for each secret. If you use
@@ -115,8 +123,10 @@
 %% secrets are encrypted using customer-managed keys instead of the Amazon
 %% Web Services managed key `aws/secretsmanager', then you also need
 %% `kms:Decrypt' permissions for the keys. For more information, see IAM
-%% policy actions for Secrets Manager and Authentication and access control
-%% in Secrets Manager.
+%% policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 batch_get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_secret_value(Client, Input, []).
@@ -134,18 +144,22 @@ batch_get_secret_value(Client, Input, Options)
 %% moving the staging label `AWSCURRENT' to the version that has
 %% `AWSPENDING'. To determine which version has a specific staging label,
 %% call `ListSecretVersionIds'. Then use `UpdateSecretVersionStage'
-%% to change staging labels. For more information, see How rotation works.
+%% to change staging labels. For more information, see How rotation works:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html.
 %%
 %% To turn on automatic rotation again, call `RotateSecret'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:CancelRotateSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 cancel_rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_rotate_secret(Client, Input, []).
@@ -165,10 +179,12 @@ cancel_rotate_secret(Client, Input, Options)
 %%
 %% For secrets that use managed rotation, you need to create the secret
 %% through the managing service. For more information, see Secrets Manager
-%% secrets managed by other Amazon Web Services services.
+%% secrets managed by other Amazon Web Services services:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/service-linked-secrets.html.
 %%
 %% For information about creating a secret in the console, see Create a
-%% secret.
+%% secret:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_create-basic-secret.html.
 %%
 %% To create a secret, you can provide the secret value to be encrypted in
 %% either the `SecretString' parameter or the `SecretBinary'
@@ -178,7 +194,8 @@ cancel_rotate_secret(Client, Input, Options)
 %%
 %% For database credentials you want to rotate, for Secrets Manager to be
 %% able to rotate the secret, you must make sure the JSON you store in the
-%% `SecretString' matches the JSON structure of a database secret.
+%% `SecretString' matches the JSON structure of a database secret:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_secret_json_structure.html.
 %%
 %% If you don't specify an KMS encryption key, Secrets Manager uses the
 %% Amazon Web Services managed key `aws/secretsmanager'. If this key
@@ -196,12 +213,15 @@ cancel_rotate_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
 %% `SecretBinary' or `SecretString' because it might be logged. For
-%% more information, see Logging Secrets Manager events with CloudTrail.
+%% more information, see Logging Secrets Manager events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:CreateSecret'. If you include
 %% tags in the secret, you also need `secretsmanager:TagResource'. For
-%% more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% more information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 %%
 %% To encrypt the secret with a KMS key other than `aws/secretsmanager',
 %% you need `kms:GenerateDataKey' and `kms:Decrypt' permission to the
@@ -220,11 +240,14 @@ create_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:DeleteResourcePolicy'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -253,7 +276,8 @@ delete_resource_policy(Client, Input, Options)
 %% To determine whether an application still uses a secret, you can create an
 %% Amazon CloudWatch alarm to alert you to any attempts to access a secret
 %% during the recovery window. For more information, see Monitor secrets
-%% scheduled for deletion.
+%% scheduled for deletion:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring_cloudwatch_deleted-secrets.html.
 %%
 %% Secrets Manager performs the permanent secret deletion at the end of the
 %% waiting period as a background task with low priority. There is no
@@ -270,11 +294,14 @@ delete_resource_policy(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:DeleteSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
@@ -290,11 +317,14 @@ delete_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:DescribeSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 describe_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_secret(Client, Input, []).
@@ -313,11 +343,14 @@ describe_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:GetRandomPassword'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 get_random_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_random_password(Client, Input, []).
@@ -329,16 +362,20 @@ get_random_password(Client, Input, Options)
 %% attached to the secret.
 %%
 %% For more information about permissions policies attached to a secret, see
-%% Permissions policies attached to a secret.
+%% Permissions policies attached to a secret:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:GetResourcePolicy'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -355,23 +392,28 @@ get_resource_policy(Client, Input, Options)
 %%
 %% We recommend that you cache your secret values by using client-side
 %% caching. Caching secrets improves speed and reduces your costs. For more
-%% information, see Cache secrets for your applications.
+%% information, see Cache secrets for your applications:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieving-secrets.html.
 %%
 %% To retrieve the previous version of a secret, use `VersionStage' and
 %% specify AWSPREVIOUS. To revert to the previous version of a secret, call
-%% UpdateSecretVersionStage.
+%% UpdateSecretVersionStage:
+%% https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/update-secret-version-stage.html.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:GetSecretValue'. If the secret
 %% is encrypted using a customer-managed key instead of the Amazon Web
 %% Services managed key `aws/secretsmanager', then you also need
 %% `kms:Decrypt' permissions for that key. For more information, see IAM
-%% policy actions for Secrets Manager and Authentication and access control
-%% in Secrets Manager.
+%% policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
@@ -382,18 +424,22 @@ get_secret_value(Client, Input, Options)
 %% @doc Lists the versions of a secret.
 %%
 %% Secrets Manager uses staging labels to indicate the different versions of
-%% a secret. For more information, see Secrets Manager concepts: Versions.
+%% a secret. For more information, see Secrets Manager concepts: Versions:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version.
 %%
 %% To list the secrets in the account, use `ListSecrets'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:ListSecretVersionIds'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 list_secret_version_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secret_version_ids(Client, Input, []).
@@ -416,16 +462,20 @@ list_secret_version_ids(Client, Input, Options)
 %% `GetSecretValue'.
 %%
 %% For information about finding secrets in the console, see Find secrets in
-%% Secrets Manager.
+%% Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_search-secret.html.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:ListSecrets'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
@@ -436,19 +486,24 @@ list_secrets(Client, Input, Options)
 %% @doc Attaches a resource-based permission policy to a secret.
 %%
 %% A resource-based policy is optional. For more information, see
-%% Authentication and access control for Secrets Manager
+%% Authentication and access control for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html
 %%
 %% For information about attaching a policy in the console, see Attach a
-%% permissions policy to a secret.
+%% permissions policy to a secret:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:PutResourcePolicy'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -490,11 +545,14 @@ put_resource_policy(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
 %% `SecretBinary' or `SecretString' because it might be logged. For
-%% more information, see Logging Secrets Manager events with CloudTrail.
+%% more information, see Logging Secrets Manager events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:PutSecretValue'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 put_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_secret_value(Client, Input, []).
@@ -508,11 +566,14 @@ put_secret_value(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:RemoveRegionsFromReplication'.
-%% For more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% For more information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_regions_from_replication(Client, Input, []).
@@ -522,12 +583,14 @@ remove_regions_from_replication(Client, Input, Options)
 
 %% @doc Replicates the secret to a new Regions.
 %%
-%% See Multi-Region secrets.
+%% See Multi-Region secrets:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:ReplicateSecretToRegions'. If
 %% the primary secret is encrypted with a KMS key other than
@@ -535,8 +598,10 @@ remove_regions_from_replication(Client, Input, Options)
 %% the key. To encrypt the replicated secret with a KMS key other than
 %% `aws/secretsmanager', you need `kms:GenerateDataKey' and
 %% `kms:Encrypt' to the key. For more information, see IAM policy actions
-%% for Secrets Manager and Authentication and access control in Secrets
-%% Manager.
+%% for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
@@ -552,11 +617,14 @@ replicate_secret_to_regions(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:RestoreSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 restore_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_secret(Client, Input, []).
@@ -567,11 +635,13 @@ restore_secret(Client, Input, Options)
 %% @doc Configures and starts the asynchronous process of rotating the
 %% secret.
 %%
-%% For information about rotation, see Rotate secrets in the Secrets Manager
-%% User Guide. If you include the configuration parameters, the operation
-%% sets the values for the secret and then immediately starts a rotation. If
-%% you don't include the configuration parameters, the operation starts a
-%% rotation with the values already stored in the secret.
+%% For information about rotation, see Rotate secrets:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html
+%% in the Secrets Manager User Guide. If you include the configuration
+%% parameters, the operation sets the values for the secret and then
+%% immediately starts a rotation. If you don't include the configuration
+%% parameters, the operation starts a rotation with the values already stored
+%% in the secret.
 %%
 %% When rotation is successful, the `AWSPENDING' staging label might be
 %% attached to the same version as the `AWSCURRENT' version, or it might
@@ -580,19 +650,24 @@ restore_secret(Client, Input, Options)
 %% later invocation of `RotateSecret' assumes that a previous rotation
 %% request is still in progress and returns an error. When rotation is
 %% unsuccessful, the `AWSPENDING' staging label might be attached to an
-%% empty secret version. For more information, see Troubleshoot rotation in
-%% the Secrets Manager User Guide.
+%% empty secret version. For more information, see Troubleshoot rotation:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot_rotation.html
+%% in the Secrets Manager User Guide.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:RotateSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager. You also need
-%% `lambda:InvokeFunction' permissions on the rotation function. For more
-%% information, see Permissions for rotation.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+%% You also need `lambda:InvokeFunction' permissions on the rotation
+%% function. For more information, see Permissions for rotation:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets-required-permissions-function.html.
 rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
@@ -609,11 +684,14 @@ rotate_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:StopReplicationToReplica'. For
-%% more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% more information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
@@ -627,8 +705,9 @@ stop_replication_to_replica(Client, Input, Options)
 %% metadata. They are not associated with specific versions of the secret.
 %% This operation appends tags to the existing list of tags.
 %%
-%% For tag quotas and naming restrictions, see Service quotas for Tagging in
-%% the Amazon Web Services General Reference guide.
+%% For tag quotas and naming restrictions, see Service quotas for Tagging:
+%% https://docs.aws.amazon.com/general/latest/gr/arg.html#taged-reference-quotas
+%% in the Amazon Web Services General Reference guide.
 %%
 %% If you use tags as part of your security strategy, then adding or removing
 %% a tag can change permissions. If successfully completing this operation
@@ -638,11 +717,14 @@ stop_replication_to_replica(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:TagResource'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -663,11 +745,14 @@ tag_resource(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:UntagResource'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -685,7 +770,8 @@ untag_resource(Client, Input, Options)
 %%
 %% To change a secret so that it is managed by another service, you need to
 %% recreate the secret in that service. See Secrets Manager secrets managed
-%% by other Amazon Web Services services.
+%% by other Amazon Web Services services:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/service-linked-secrets.html.
 %%
 %% We recommend you avoid calling `UpdateSecret' at a sustained rate of
 %% more than once every 10 minutes. When you call `UpdateSecret' to
@@ -710,16 +796,21 @@ untag_resource(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
 %% `SecretBinary' or `SecretString' because it might be logged. For
-%% more information, see Logging Secrets Manager events with CloudTrail.
+%% more information, see Logging Secrets Manager events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:UpdateSecret'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager. If you use a customer managed key,
-%% you must also have `kms:GenerateDataKey', `kms:Encrypt', and
-%% `kms:Decrypt' permissions on the key. If you change the KMS key and
-%% you don't have `kms:Encrypt' permission to the new key, Secrets
-%% Manager does not re-ecrypt existing secret versions with the new key. For
-%% more information, see Secret encryption and decryption.
+%% information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+%% If you use a customer managed key, you must also have
+%% `kms:GenerateDataKey', `kms:Encrypt', and `kms:Decrypt'
+%% permissions on the key. If you change the KMS key and you don't have
+%% `kms:Encrypt' permission to the new key, Secrets Manager does not
+%% re-ecrypt existing secret versions with the new key. For more information,
+%% see Secret encryption and decryption:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
@@ -734,7 +825,8 @@ update_secret(Client, Input, Options)
 %% only one version at a time. To add a staging label to a version when it is
 %% already attached to another version, Secrets Manager first removes it from
 %% the other version first and then attaches it to this one. For more
-%% information about versions and staging labels, see Concepts: Version.
+%% information about versions and staging labels, see Concepts: Version:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version.
 %%
 %% The staging labels that you specify in the `VersionStage' parameter
 %% are added to the existing list of staging labels for the version.
@@ -753,11 +845,14 @@ update_secret(Client, Input, Options)
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
-%% events with CloudTrail.
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:UpdateSecretVersionStage'. For
-%% more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% more information, see IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
@@ -772,9 +867,11 @@ update_secret_version_stage(Client, Input, Options)
 %%
 %% The API performs three checks when validating the policy:
 %%
-%% <ul> <li> Sends a call to Zelkova, an automated reasoning engine, to
-%% ensure your resource policy does not allow broad access to your secret,
-%% for example policies that use a wildcard for the principal.
+%% <ul> <li> Sends a call to Zelkova:
+%% https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/,
+%% an automated reasoning engine, to ensure your resource policy does not
+%% allow broad access to your secret, for example policies that use a
+%% wildcard for the principal.
 %%
 %% </li> <li> Checks for correct syntax in a policy.
 %%
@@ -783,12 +880,15 @@ update_secret_version_stage(Client, Input, Options)
 %% </li> </ul> Secrets Manager generates a CloudTrail log entry when you call
 %% this action. Do not include sensitive information in request parameters
 %% because it might be logged. For more information, see Logging Secrets
-%% Manager events with CloudTrail.
+%% Manager events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
 %%
 %% Required permissions: `secretsmanager:ValidateResourcePolicy' and
 %% `secretsmanager:PutResourcePolicy'. For more information, see IAM
-%% policy actions for Secrets Manager and Authentication and access control
-%% in Secrets Manager.
+%% policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

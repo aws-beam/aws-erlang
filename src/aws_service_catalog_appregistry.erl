@@ -117,7 +117,8 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 %%
 %% </li> </ul> You must also have these additional permissions if you
 %% don't use the `AWSServiceCatalogAppRegistryFullAccess' policy. For
-%% more information, see AWSServiceCatalogAppRegistryFullAccess in the
+%% more information, see AWSServiceCatalogAppRegistryFullAccess:
+%% https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html in the
 %% AppRegistry Administrator Guide.
 %%
 %% <ul> <li> `resource-groups:AssociateResource'
@@ -128,8 +129,9 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 %%
 %% </li> </ul> In addition, you must have the tagging permission defined by
 %% the Amazon Web Services service that creates the resource. For more
-%% information, see TagResources in the Resource Groups Tagging API
-%% Reference.
+%% information, see TagResources:
+%% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_TagResources.html
+%% in the Resource Groups Tagging API Reference.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
     associate_resource(Client, Application, Resource, ResourceType, Input, []).
 associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
@@ -291,7 +293,8 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %%
 %% You must have the following permissions to remove a resource that's
 %% been associated with an application using the `APPLY_APPLICATION_TAG'
-%% option for AssociateResource.
+%% option for AssociateResource:
+%% https://docs.aws.amazon.com/servicecatalog/latest/dg/API_app-registry_AssociateResource.html.
 %%
 %% <ul> <li> `tag:GetResources'
 %%
@@ -299,8 +302,9 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %%
 %% </li> </ul> You must also have the following permissions if you don't
 %% use the `AWSServiceCatalogAppRegistryFullAccess' policy. For more
-%% information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry
-%% Administrator Guide.
+%% information, see AWSServiceCatalogAppRegistryFullAccess:
+%% https://docs.aws.amazon.com/servicecatalog/latest/arguide/full.html in the
+%% AppRegistry Administrator Guide.
 %%
 %% <ul> <li> `resource-groups:DisassociateResource'
 %%
@@ -310,8 +314,9 @@ disassociate_attribute_group(Client, Application, AttributeGroup, Input0, Option
 %%
 %% </li> </ul> In addition, you must have the tagging permission defined by
 %% the Amazon Web Services service that creates the resource. For more
-%% information, see UntagResources in the Resource Groups Tagging API
-%% Reference.
+%% information, see UntagResources:
+%% https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_UntTagResources.html
+%% in the Resource Groups Tagging API Reference.
 disassociate_resource(Client, Application, Resource, ResourceType, Input) ->
     disassociate_resource(Client, Application, Resource, ResourceType, Input, []).
 disassociate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->

@@ -7,25 +7,35 @@
 %% secure operations at scale.
 %%
 %% This reference is intended to be used with the Amazon Web Services Systems
-%% Manager User Guide. To get started, see Setting up Amazon Web Services
-%% Systems Manager.
+%% Manager User Guide:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/. To get
+%% started, see Setting up Amazon Web Services Systems Manager:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html.
 %%
 %% == Related resources ==
 %%
 %% <ul> <li> For information about each of the capabilities that comprise
-%% Systems Manager, see Systems Manager capabilities in the Amazon Web
-%% Services Systems Manager User Guide.
+%% Systems Manager, see Systems Manager capabilities:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% </li> <li> For details about predefined runbooks for Automation, a
 %% capability of Amazon Web Services Systems Manager, see the Systems Manager
-%% Automation runbook reference .
+%% Automation runbook reference:
+%% https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html
+%% .
 %%
 %% </li> <li> For information about AppConfig, a capability of Systems
-%% Manager, see the AppConfig User Guide and the AppConfig API Reference .
+%% Manager, see the AppConfig User Guide:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/ and the AppConfig
+%% API Reference:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/ .
 %%
 %% </li> <li> For information about Incident Manager, a capability of Systems
-%% Manager, see the Systems Manager Incident Manager User Guide and the
-%% Systems Manager Incident Manager API Reference .
+%% Manager, see the Systems Manager Incident Manager User Guide:
+%% https://docs.aws.amazon.com/incident-manager/latest/userguide/ and the
+%% Systems Manager Incident Manager API Reference:
+%% https://docs.aws.amazon.com/incident-manager/latest/APIReference/ .
 %%
 %% </li> </ul>
 -module(aws_ssm).
@@ -347,7 +357,8 @@
 %% are interpreted strictly as a string of characters.
 %%
 %% For more information about using tags with Amazon Elastic Compute Cloud
-%% (Amazon EC2) instances, see Tagging your Amazon EC2 resources in the
+%% (Amazon EC2) instances, see Tagging your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon EC2 User Guide.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -399,8 +410,9 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %% code and ID when installing SSM Agent on machines in your hybrid
 %% environment. For more information about requirements for managing
 %% on-premises machines using Systems Manager, see Setting up Amazon Web
-%% Services Systems Manager for hybrid environments in the Amazon Web
-%% Services Systems Manager User Guide.
+%% Services Systems Manager for hybrid environments:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
 %% on-premises servers and VMs that are configured for Systems Manager are
@@ -457,8 +469,9 @@ create_association_batch(Client, Input, Options)
 %% An SSM document defines the actions that Systems Manager performs on your
 %% managed nodes. For more information about SSM documents, including
 %% information about supported schemas, features, and syntax, see Amazon Web
-%% Services Systems Manager Documents in the Amazon Web Services Systems
-%% Manager User Guide.
+%% Services Systems Manager Documents:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html
+%% in the Amazon Web Services Systems Manager User Guide.
 create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
@@ -485,14 +498,17 @@ create_maintenance_window(Client, Input, Options)
 %% @doc Creates a new OpsItem.
 %%
 %% You must have permission in Identity and Access Management (IAM) to create
-%% a new OpsItem. For more information, see Set up OpsCenter in the Amazon
-%% Web Services Systems Manager User Guide.
+%% a new OpsItem. For more information, see Set up OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
 %% impacting the performance and health of their Amazon Web Services
 %% resources. For more information, see Amazon Web Services Systems Manager
-%% OpsCenter in the Amazon Web Services Systems Manager User Guide.
+%% OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
+%% in the Amazon Web Services Systems Manager User Guide.
 create_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_item(Client, Input, []).
@@ -531,7 +547,9 @@ create_patch_baseline(Client, Input, Options)
 %% `SyncToDestination' type to synchronize Inventory data from multiple
 %% Amazon Web Services Regions to a single Amazon Simple Storage Service
 %% (Amazon S3) bucket. For more information, see Configuring resource data
-%% sync for Inventory in the Amazon Web Services Systems Manager User Guide.
+%% sync for Inventory:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% You can configure Systems Manager Explorer to use the `SyncFromSource'
 %% type to synchronize operational work items (OpsItems) and operational data
@@ -540,7 +558,9 @@ create_patch_baseline(Client, Input, Options)
 %% Amazon Web Services accounts and Amazon Web Services Regions or
 %% `EntireOrganization' by using Organizations. For more information, see
 %% Setting up Systems Manager Explorer to display data from multiple accounts
-%% and Regions in the Amazon Web Services Systems Manager User Guide.
+%% and Regions:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% A resource data sync is an asynchronous operation that returns
 %% immediately. After a successful initial sync is completed, the system
@@ -645,8 +665,9 @@ delete_maintenance_window(Client, Input, Options)
 %% administrator or management account can't delete OpsItems in other
 %% accounts, even if OpsCenter has been set up for cross-account
 %% administration. For more information about cross-account administration,
-%% see Setting up OpsCenter to centrally manage OpsItems across accounts in
-%% the Systems Manager User Guide.
+%% see Setting up OpsCenter to centrally manage OpsItems across accounts:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setting-up-cross-account.html
+%% in the Systems Manager User Guide.
 delete_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ops_item(Client, Input, []).
@@ -718,8 +739,9 @@ delete_resource_data_sync(Client, Input, Options)
 %% </li> <li> `Parameter' - The resource policy is used to share a
 %% parameter with other accounts using Resource Access Manager (RAM). For
 %% more information about cross-account sharing of parameters, see Working
-%% with shared parameters in the Amazon Web Services Systems Manager User
-%% Guide.
+%% with shared parameters:
+%% systems-manager/latest/userguide/parameter-store-shared-parameters.html in
+%% the Amazon Web Services Systems Manager User Guide.
 %%
 %% </li> </ul>
 delete_resource_policy(Client, Input)
@@ -1019,14 +1041,16 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 %% @doc Query a set of OpsItems.
 %%
 %% You must have permission in Identity and Access Management (IAM) to query
-%% a list of OpsItems. For more information, see Set up OpsCenter in the
-%% Amazon Web Services Systems Manager User Guide.
+%% a list of OpsItems. For more information, see Set up OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
 %% impacting the performance and health of their Amazon Web Services
-%% resources. For more information, see OpsCenter in the Amazon Web Services
-%% Systems Manager User Guide.
+%% resources. For more information, see OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
+%% in the Amazon Web Services Systems Manager User Guide.
 describe_ops_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ops_items(Client, Input, []).
@@ -1035,7 +1059,9 @@ describe_ops_items(Client, Input, Options)
     request(Client, <<"DescribeOpsItems">>, Input, Options).
 
 %% @doc Lists the parameters in your Amazon Web Services account or the
-%% parameters shared with you when you enable the Shared option.
+%% parameters shared with you when you enable the Shared:
+%% https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeParameters.html#systemsmanager-DescribeParameters-request-Shared
+%% option.
 %%
 %% Request results are returned on a best-effort basis. If you specify
 %% `MaxResults' in the request, the response includes information up to
@@ -1177,7 +1203,9 @@ get_automation_execution(Client, Input, Options)
 %%
 %% For more information about Change Calendar, a capability of Amazon Web
 %% Services Systems Manager, see Amazon Web Services Systems Manager Change
-%% Calendar in the Amazon Web Services Systems Manager User Guide.
+%% Calendar:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html
+%% in the Amazon Web Services Systems Manager User Guide.
 get_calendar_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calendar_state(Client, Input, []).
@@ -1328,14 +1356,16 @@ get_maintenance_window_task(Client, Input, Options)
 %% @doc Get information about an OpsItem by using the ID.
 %%
 %% You must have permission in Identity and Access Management (IAM) to view
-%% information about an OpsItem. For more information, see Set up OpsCenter
+%% information about an OpsItem. For more information, see Set up OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html
 %% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
 %% impacting the performance and health of their Amazon Web Services
-%% resources. For more information, see OpsCenter in the Amazon Web Services
-%% Systems Manager User Guide.
+%% resources. For more information, see OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
+%% in the Amazon Web Services Systems Manager User Guide.
 get_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_item(Client, Input, []).
@@ -1801,27 +1831,36 @@ put_parameter(Client, Input, Options)
 %% parameter with other accounts using Resource Access Manager (RAM).
 %%
 %% To share a parameter, it must be in the advanced parameter tier. For
-%% information about parameter tiers, see Managing parameter tiers. For
+%% information about parameter tiers, see Managing parameter tiers:
+%% https://docs.aws.amazon.com/parameter-store- advanced-parameters.html. For
 %% information about changing an existing standard parameter to an advanced
-%% parameter, see Changing a standard parameter to an advanced parameter.
+%% parameter, see Changing a standard parameter to an advanced parameter:
+%% https://docs.aws.amazon.com/parameter-store-advanced-parameters.html#parameter-
+%% store-advanced-parameters-enabling.
 %%
 %% To share a `SecureString' parameter, it must be encrypted with a
 %% customer managed key, and you must share the key separately through Key
 %% Management Service. Amazon Web Services managed keys cannot be shared.
 %% Parameters encrypted with the default Amazon Web Services managed key can
 %% be updated to use a customer managed key instead. For KMS key definitions,
-%% see KMS concepts in the Key Management Service Developer Guide.
+%% see KMS concepts:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt
+%% in the Key Management Service Developer Guide.
 %%
 %% While you can share a parameter using the Systems Manager
 %% `PutResourcePolicy' operation, we recommend using Resource Access
 %% Manager (RAM) instead. This is because using `PutResourcePolicy'
 %% requires the extra step of promoting the parameter to a standard RAM
-%% Resource Share using the RAM PromoteResourceShareCreatedFromPolicy API
-%% operation. Otherwise, the parameter won't be returned by the Systems
-%% Manager DescribeParameters API operation using the `--shared' option.
+%% Resource Share using the RAM PromoteResourceShareCreatedFromPolicy:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
+%% API operation. Otherwise, the parameter won't be returned by the
+%% Systems Manager DescribeParameters:
+%% https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeParameters.html
+%% API operation using the `--shared' option.
 %%
-%% For more information, see Sharing a parameter in the Amazon Web Services
-%% Systems Manager User Guide
+%% For more information, see Sharing a parameter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html#share
+%% in the Amazon Web Services Systems Manager User Guide
 %%
 %% </li> </ul>
 put_resource_policy(Client, Input)
@@ -1976,8 +2015,9 @@ start_change_request_execution(Client, Input, Options)
 %% Amazon Web Services CLI usage: `start-session' is an interactive
 %% command that requires the Session Manager plugin to be installed on the
 %% client machine making the call. For information, see Install the Session
-%% Manager plugin for the Amazon Web Services CLI in the Amazon Web Services
-%% Systems Manager User Guide.
+%% Manager plugin for the Amazon Web Services CLI:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Amazon Web Services Tools for PowerShell usage: Start-SSMSession isn't
 %% currently supported by Amazon Web Services Tools for PowerShell on Windows
@@ -2157,7 +2197,8 @@ update_maintenance_window_target(Client, Input, Options)
 %% Run Command-type tasks. Depending on the task, targets are optional for
 %% other maintenance window task types (Automation, Lambda, and Step
 %% Functions). For more information about running tasks that don't
-%% specify targets, see Registering maintenance window tasks without targets
+%% specify targets, see Registering maintenance window tasks without targets:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html
 %% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% If the value for a parameter in `UpdateMaintenanceWindowTask' is null,
@@ -2198,14 +2239,16 @@ update_managed_instance_role(Client, Input, Options)
 %% @doc Edit or change an OpsItem.
 %%
 %% You must have permission in Identity and Access Management (IAM) to update
-%% an OpsItem. For more information, see Set up OpsCenter in the Amazon Web
-%% Services Systems Manager User Guide.
+%% an OpsItem. For more information, see Set up OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% Operations engineers and IT professionals use Amazon Web Services Systems
 %% Manager OpsCenter to view, investigate, and remediate operational issues
 %% impacting the performance and health of their Amazon Web Services
-%% resources. For more information, see OpsCenter in the Amazon Web Services
-%% Systems Manager User Guide.
+%% resources. For more information, see OpsCenter:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
+%% in the Amazon Web Services Systems Manager User Guide.
 update_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_item(Client, Input, []).

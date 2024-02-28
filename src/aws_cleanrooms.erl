@@ -10,10 +10,12 @@
 %% other party's raw data.
 %%
 %% To learn more about Clean Rooms concepts, procedures, and best practices,
-%% see the Clean Rooms User Guide.
+%% see the Clean Rooms User Guide:
+%% https://docs.aws.amazon.com/clean-rooms/latest/userguide/what-is.html.
 %%
 %% To learn more about SQL commands, functions, and conditions supported in
-%% Clean Rooms, see the Clean Rooms SQL Reference.
+%% Clean Rooms, see the Clean Rooms SQL Reference:
+%% https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html.
 -module(aws_cleanrooms).
 
 -export([batch_get_collaboration_analysis_template/3,

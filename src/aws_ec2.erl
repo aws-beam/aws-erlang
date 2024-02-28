@@ -18,13 +18,17 @@
 %%
 %% To learn more, see the following resources:
 %%
-%% <ul> <li> Amazon EC2: Amazon EC2 product page, Amazon EC2 documentation
+%% <ul> <li> Amazon EC2: Amazon EC2 product page: http://aws.amazon.com/ec2,
+%% Amazon EC2 documentation: https://docs.aws.amazon.com/ec2/index.html
 %%
-%% </li> <li> Amazon EBS: Amazon EBS product page, Amazon EBS documentation
+%% </li> <li> Amazon EBS: Amazon EBS product page: http://aws.amazon.com/ebs,
+%% Amazon EBS documentation: https://docs.aws.amazon.com/ebs/index.html
 %%
-%% </li> <li> Amazon VPC: Amazon VPC product page, Amazon VPC documentation
+%% </li> <li> Amazon VPC: Amazon VPC product page: http://aws.amazon.com/vpc,
+%% Amazon VPC documentation: https://docs.aws.amazon.com/vpc/index.html
 %%
-%% </li> <li> VPN: VPN product page, VPN documentation
+%% </li> <li> VPN: VPN product page: http://aws.amazon.com/vpn, VPN
+%% documentation: https://docs.aws.amazon.com/vpn/index.html
 %%
 %% </li> </ul>
 -module(aws_ec2).
@@ -1268,8 +1272,9 @@
 
 %% @doc Accepts an Elastic IP address transfer.
 %%
-%% For more information, see Accept a transferred Elastic IP address in the
-%% Amazon Virtual Private Cloud User Guide.
+%% For more information, see Accept a transferred Elastic IP address:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept
+%% in the Amazon Virtual Private Cloud User Guide.
 accept_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_address_transfer(Client, Input, []).
@@ -1378,16 +1383,18 @@ advertise_byoip_cidr(Client, Input, Options)
 %% Amazon Web Services or from an address pool created from a public IPv4
 %% address range that you have brought to Amazon Web Services for use with
 %% your Amazon Web Services resources using bring your own IP addresses
-%% (BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP) in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% (BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP):
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 %%
 %% If you release an Elastic IP address, you might be able to recover it. You
 %% cannot recover an Elastic IP address that you released after it is
 %% allocated to another Amazon Web Services account. To attempt to recover an
 %% Elastic IP address that you released, specify it in this operation.
 %%
-%% For more information, see Elastic IP Addresses in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Elastic IP Addresses:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% You can allocate a carrier IP address which is a public IP address from a
 %% telecommunication carrier, to a network interface which resides in a
@@ -1418,7 +1425,8 @@ allocate_hosts(Client, Input, Options)
 %% allocations.
 %%
 %% In IPAM, an allocation is a CIDR assignment from an IPAM pool to another
-%% IPAM pool or to a resource. For more information, see Allocate CIDRs in
+%% IPAM pool or to a resource. For more information, see Allocate CIDRs:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/allocate-cidrs-ipam.html in
 %% the Amazon VPC IPAM User Guide.
 %%
 %% This action creates an allocation with strong consistency. The returned
@@ -1450,8 +1458,9 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses
 %% to a network interface as you can assign private IPv4 addresses, and the
 %% limit varies per instance type. For information, see IP Addresses Per
-%% Network Interface Per Instance Type in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% Network Interface Per Instance Type:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% You must specify either the IPv6 addresses or the IPv6 address count in
 %% the request.
@@ -1459,7 +1468,9 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% You can optionally use Prefix Delegation on the network interface. You
 %% must specify either the IPV6 Prefix Delegation prefixes, or the IPv6
 %% Prefix Delegation count. For information, see Assigning prefixes to Amazon
-%% EC2 network interfaces in the Amazon Elastic Compute Cloud User Guide.
+%% EC2 network interfaces:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 assign_ipv6_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_ipv6_addresses(Client, Input, []).
@@ -1474,9 +1485,12 @@ assign_ipv6_addresses(Client, Input, Options)
 %% specify the number of secondary IP addresses to be automatically assigned
 %% within the subnet's CIDR block range. The number of secondary IP
 %% addresses that you can assign to an instance varies by instance type. For
-%% information about instance types, see Instance Types in the Amazon Elastic
-%% Compute Cloud User Guide. For more information about Elastic IP addresses,
-%% see Elastic IP Addresses in the Amazon Elastic Compute Cloud User Guide.
+%% information about instance types, see Instance Types:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html in
+%% the Amazon Elastic Compute Cloud User Guide. For more information about
+%% Elastic IP addresses, see Elastic IP Addresses:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% When you move a secondary private IP address to another network interface,
 %% any Elastic IP address that is associated with the IP address is also
@@ -1493,7 +1507,9 @@ assign_ipv6_addresses(Client, Input, Options)
 %% You can optionally use Prefix Delegation on the network interface. You
 %% must specify either the IPv4 Prefix Delegation prefixes, or the IPv4
 %% Prefix Delegation count. For information, see Assigning prefixes to Amazon
-%% EC2 network interfaces in the Amazon Elastic Compute Cloud User Guide.
+%% EC2 network interfaces:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 assign_private_ip_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_private_ip_addresses(Client, Input, []).
@@ -1503,8 +1519,9 @@ assign_private_ip_addresses(Client, Input, Options)
 
 %% @doc Assigns one or more private IPv4 addresses to a private NAT gateway.
 %%
-%% For more information, see Work with NAT gateways in the Amazon VPC User
-%% Guide.
+%% For more information, see Work with NAT gateways:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with
+%% in the Amazon VPC User Guide.
 assign_private_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_private_nat_gateway_address(Client, Input, []).
@@ -1535,7 +1552,7 @@ assign_private_nat_gateway_address(Client, Input, Options)
 %% once, Amazon EC2 doesn't return an error, and you may be charged for
 %% each time the Elastic IP address is remapped to the same instance. For
 %% more information, see the Elastic IP Addresses section of Amazon EC2
-%% Pricing.
+%% Pricing: http://aws.amazon.com/ec2/pricing/.
 associate_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_address(Client, Input, []).
@@ -1572,7 +1589,9 @@ associate_client_vpn_target_network(Client, Input, Options)
 %% instance renews its DHCP lease. You can explicitly renew the lease using
 %% the operating system on the instance.
 %%
-%% For more information, see DHCP options sets in the Amazon VPC User Guide.
+%% For more information, see DHCP options sets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
+%% the Amazon VPC User Guide.
 associate_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_dhcp_options(Client, Input, []).
@@ -1585,8 +1604,9 @@ associate_dhcp_options(Client, Input, Options)
 %%
 %% This enables the certificate to be used by the ACM for Nitro Enclaves
 %% application inside an enclave. For more information, see Certificate
-%% Manager for Nitro Enclaves in the Amazon Web Services Nitro Enclaves User
-%% Guide.
+%% Manager for Nitro Enclaves:
+%% https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html
+%% in the Amazon Web Services Nitro Enclaves User Guide.
 %%
 %% When the IAM role is associated with the ACM certificate, the certificate,
 %% certificate chain, and encrypted private key are placed in an Amazon S3
@@ -1599,8 +1619,9 @@ associate_dhcp_options(Client, Input, Options)
 %% the command. To enable the IAM role to access the KMS key, you must grant
 %% it permission to call `kms:Decrypt' on the KMS key returned by the
 %% command. For more information, see Grant the role permission to access the
-%% certificate and encryption key in the Amazon Web Services Nitro Enclaves
-%% User Guide.
+%% certificate and encryption key:
+%% https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html#add-policy
+%% in the Amazon Web Services Nitro Enclaves User Guide.
 associate_enclave_certificate_iam_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_enclave_certificate_iam_role(Client, Input, []).
@@ -1624,8 +1645,9 @@ associate_iam_instance_profile(Client, Input, Options)
 %% Only one type of target (instance IDs, Dedicated Host IDs, or tags) can be
 %% specified with an event window.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 associate_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_instance_event_window(Client, Input, []).
@@ -1636,12 +1658,15 @@ associate_instance_event_window(Client, Input, Options)
 %% @doc Associates your Autonomous System Number (ASN) with a BYOIP CIDR that
 %% you own in the same Amazon Web Services Region.
 %%
-%% For more information, see Tutorial: Bring your ASN to IPAM in the Amazon
-%% VPC IPAM guide.
+%% For more information, see Tutorial: Bring your ASN to IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
+%% Amazon VPC IPAM guide.
 %%
 %% After the association succeeds, the ASN is eligible for advertisement. You
-%% can view the association with DescribeByoipCidrs. You can advertise the
-%% CIDR with AdvertiseByoipCidr.
+%% can view the association with DescribeByoipCidrs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeByoipCidrs.html.
+%% You can advertise the CIDR with AdvertiseByoipCidr:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AdvertiseByoipCidr.html.
 associate_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ipam_byoasn(Client, Input, []).
@@ -1663,13 +1688,15 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %% @doc Associates Elastic IP addresses (EIPs) and private IPv4 addresses
 %% with a public NAT gateway.
 %%
-%% For more information, see Work with NAT gateways in the Amazon VPC User
-%% Guide.
+%% For more information, see Work with NAT gateways:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with
+%% in the Amazon VPC User Guide.
 %%
 %% By default, you can associate up to 2 Elastic IP addresses per public NAT
 %% gateway. You can increase the limit by requesting a quota adjustment. For
-%% more information, see Elastic IP address quotas in the Amazon VPC User
-%% Guide.
+%% more information, see Elastic IP address quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-eips
+%% in the Amazon VPC User Guide.
 %%
 %% When you associate an EIP or secondary EIPs with a public NAT gateway, the
 %% network border group of the EIPs must match the network border group of
@@ -1678,8 +1705,9 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %% border group for the subnet's AZ by viewing the details of the subnet.
 %% Similarly, you can view the network border group of an EIP by viewing the
 %% details of the EIP address. For more information about network border
-%% groups and EIPs, see Allocate an Elastic IP address in the Amazon VPC User
-%% Guide.
+%% groups and EIPs, see Allocate an Elastic IP address:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
+%% in the Amazon VPC User Guide.
 associate_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_nat_gateway_address(Client, Input, []).
@@ -1695,7 +1723,9 @@ associate_nat_gateway_address(Client, Input, Options)
 %% association ID, which you need in order to disassociate the route table
 %% later. A route table can be associated with multiple subnets.
 %%
-%% For more information, see Route tables in the Amazon VPC User Guide.
+%% For more information, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 associate_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_route_table(Client, Input, []).
@@ -1717,8 +1747,9 @@ associate_subnet_cidr_block(Client, Input, Options)
 %% the specified transit gateway multicast domain.
 %%
 %% The transit gateway attachment must be in the available state before you
-%% can add a resource. Use DescribeTransitGatewayAttachments to see the state
-%% of the attachment.
+%% can add a resource. Use DescribeTransitGatewayAttachments:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html
+%% to see the state of the attachment.
 associate_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_transit_gateway_multicast_domain(Client, Input, []).
@@ -1748,7 +1779,8 @@ associate_transit_gateway_route_table(Client, Input, Options)
 
 %% @doc Associates a branch network interface with a trunk network interface.
 %%
-%% Before you create the association, run the create-network-interface
+%% Before you create the association, run the create-network-interface:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html
 %% command and set `--interface-type' to `trunk'. You must also
 %% create a network interface for each branch network interface that you want
 %% to associate with the trunk network interface.
@@ -1763,13 +1795,15 @@ associate_trunk_interface(Client, Input, Options)
 %%
 %% You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6
 %% CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you
-%% provisioned through bring your own IP addresses (BYOIP).
+%% provisioned through bring your own IP addresses (BYOIP:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html).
 %%
 %% You must specify one of the following in the request: an IPv4 CIDR block,
 %% an IPv6 pool, or an Amazon-provided IPv6 CIDR block.
 %%
 %% For more information about associating CIDR blocks with your VPC and
-%% applicable restrictions, see IP addressing for your VPCs and subnets in
+%% applicable restrictions, see IP addressing for your VPCs and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html in
 %% the Amazon VPC User Guide.
 associate_vpc_cidr_block(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1803,7 +1837,9 @@ attach_classic_link_vpc(Client, Input, Options)
 %% @doc Attaches an internet gateway or a virtual private gateway to a VPC,
 %% enabling connectivity between the internet and the VPC.
 %%
-%% For more information, see Internet gateways in the Amazon VPC User Guide.
+%% For more information, see Internet gateways:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+%% in the Amazon VPC User Guide.
 attach_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_internet_gateway(Client, Input, []).
@@ -1832,11 +1868,13 @@ attach_verified_access_trust_provider(Client, Input, Options)
 %% it to the instance with the specified device name.
 %%
 %% Encrypted EBS volumes must be attached to instances that support Amazon
-%% EBS encryption. For more information, see Amazon EBS encryption in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% EBS encryption. For more information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% After you attach an EBS volume, you must make it available. For more
-%% information, see Make an EBS volume available for use.
+%% information, see Make an EBS volume available for use:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html.
 %%
 %% If a volume has an Amazon Web Services Marketplace product code:
 %%
@@ -1852,7 +1890,9 @@ attach_verified_access_trust_provider(Client, Input, Options)
 %% Windows instance and attach it to a Linux instance.
 %%
 %% </li> </ul> For more information, see Attach an Amazon EBS volume to an
-%% instance in the Amazon Elastic Compute Cloud User Guide.
+%% instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
@@ -1864,8 +1904,9 @@ attach_volume(Client, Input, Options)
 %%
 %% You can attach one virtual private gateway to one VPC at a time.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 attach_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_vpn_gateway(Client, Input, []).
@@ -1902,12 +1943,14 @@ authorize_client_vpn_ingress(Client, Input, Options)
 %% Rule changes are propagated to affected instances as quickly as possible.
 %% However, a small delay might occur.
 %%
-%% For information about VPC security group quotas, see Amazon VPC quotas.
+%% For information about VPC security group quotas, see Amazon VPC quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
 %%
 %% If you want to reference a security group across VPCs attached to a
-%% transit gateway using the security group referencing feature, note that
-%% you can only reference security groups for ingress rules. You cannot
-%% reference a security group for egress rules.
+%% transit gateway using the security group referencing feature:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw,
+%% note that you can only reference security groups for ingress rules. You
+%% cannot reference a security group for egress rules.
 authorize_security_group_egress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_egress(Client, Input, []).
@@ -1932,7 +1975,8 @@ authorize_security_group_egress(Client, Input, Options)
 %% quickly as possible. However, a small delay might occur.
 %%
 %% For more information about VPC security group quotas, see Amazon VPC
-%% quotas.
+%% quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
 authorize_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_ingress(Client, Input, []).
@@ -2009,7 +2053,8 @@ cancel_capacity_reservation_fleets(Client, Input, Options)
 %% exception.
 %%
 %% For more information, see Importing a Virtual Machine Using the Amazon EC2
-%% CLI.
+%% CLI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html.
 cancel_conversion_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_conversion_task(Client, Input, []).
@@ -2034,7 +2079,9 @@ cancel_export_task(Client, Input, Options)
 %% for the specified AMI.
 %%
 %% For more information, see Cancel having an AMI shared with your Amazon Web
-%% Services account in the Amazon EC2 User Guide.
+%% Services account:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html
+%% in the Amazon EC2 User Guide.
 cancel_image_launch_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_image_launch_permission(Client, Input, []).
@@ -2053,8 +2100,9 @@ cancel_import_task(Client, Input, Options)
 %% @doc Cancels the specified Reserved Instance listing in the Reserved
 %% Instance Marketplace.
 %%
-%% For more information, see Reserved Instance Marketplace in the Amazon EC2
-%% User Guide.
+%% For more information, see Reserved Instance Marketplace:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
+%% in the Amazon EC2 User Guide.
 cancel_reserved_instances_listing(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_reserved_instances_listing(Client, Input, []).
@@ -2116,7 +2164,8 @@ copy_fpga_image(Client, Input, Options)
 %% You can copy an AMI from one Region to another, or from a Region to an
 %% Outpost. You can't copy an AMI from an Outpost to a Region, from one
 %% Outpost to another, or within the same Outpost. To copy an AMI to another
-%% partition, see CreateStoreImageTask.
+%% partition, see CreateStoreImageTask:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To copy an AMI from one Region to another, specify the source Region using
 %% the SourceRegion parameter, and specify the destination Region using its
@@ -2131,10 +2180,14 @@ copy_fpga_image(Client, Input, Options)
 %% Outpost are encrypted by default using the default encryption key for the
 %% Region, or a different key that you specify in the request using KmsKeyId.
 %% Outposts do not support unencrypted snapshots. For more information,
-%% Amazon EBS local snapshots on Outposts in the Amazon EC2 User Guide.
+%% Amazon EBS local snapshots on Outposts:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami
+%% in the Amazon EC2 User Guide.
 %%
 %% For more information about the prerequisites and limits when copying an
-%% AMI, see Copy an AMI in the Amazon EC2 User Guide.
+%% AMI, see Copy an AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html in
+%% the Amazon EC2 User Guide.
 copy_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_image(Client, Input, []).
@@ -2164,14 +2217,16 @@ copy_image(Client, Input, Options)
 %% Snapshots copied to an Outpost are encrypted by default using the default
 %% encryption key for the Region, or a different key that you specify in the
 %% request using KmsKeyId. Outposts do not support unencrypted snapshots. For
-%% more information, Amazon EBS local snapshots on Outposts in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% more information, Amazon EBS local snapshots on Outposts:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% Snapshots created by copying another snapshot have an arbitrary volume ID
 %% that should not be used for any purpose.
 %%
-%% For more information, see Copy an Amazon EBS snapshot in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Copy an Amazon EBS snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
@@ -2187,7 +2242,9 @@ copy_snapshot(Client, Input, Options)
 %% Regional RI discounts for that usage. By creating Capacity Reservations,
 %% you ensure that you always have access to Amazon EC2 capacity when you
 %% need it, for as long as you need it. For more information, see Capacity
-%% Reservations in the Amazon EC2 User Guide.
+%% Reservations:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html
+%% in the Amazon EC2 User Guide.
 %%
 %% Your request to create a Capacity Reservation could fail if Amazon EC2
 %% does not have sufficient capacity to fulfill the request. If your request
@@ -2201,8 +2258,9 @@ copy_snapshot(Client, Input, Options)
 %% On-Demand Instance limit for the selected instance type. If your request
 %% fails due to limit constraints, increase your On-Demand Instance limit for
 %% the required instance type and try again. For more information about
-%% increasing your instance limits, see Amazon EC2 Service Quotas in the
-%% Amazon EC2 User Guide.
+%% increasing your instance limits, see Amazon EC2 Service Quotas:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html
+%% in the Amazon EC2 User Guide.
 create_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_reservation(Client, Input, []).
@@ -2212,8 +2270,9 @@ create_capacity_reservation(Client, Input, Options)
 
 %% @doc Creates a Capacity Reservation Fleet.
 %%
-%% For more information, see Create a Capacity Reservation Fleet in the
-%% Amazon EC2 User Guide.
+%% For more information, see Create a Capacity Reservation Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet
+%% in the Amazon EC2 User Guide.
 create_capacity_reservation_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_reservation_fleet(Client, Input, []).
@@ -2223,8 +2282,9 @@ create_capacity_reservation_fleet(Client, Input, Options)
 
 %% @doc Creates a carrier gateway.
 %%
-%% For more information about carrier gateways, see Carrier gateways in the
-%% Amazon Web Services Wavelength Developer Guide.
+%% For more information about carrier gateways, see Carrier gateways:
+%% https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway
+%% in the Amazon Web Services Wavelength Developer Guide.
 create_carrier_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_carrier_gateway(Client, Input, []).
@@ -2284,8 +2344,9 @@ create_coip_pool(Client, Input, Options)
 %% the device's BGP Autonomous System Number (ASN). You can use an
 %% existing ASN assigned to your network. If you don't have an ASN
 %% already, you can use a private ASN. For more information, see Customer
-%% gateway options for your Site-to-Site VPN connection in the Amazon Web
-%% Services Site-to-Site VPN User Guide.
+%% gateway options for your Site-to-Site VPN connection:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/cgw-options.html in the
+%% Amazon Web Services Site-to-Site VPN User Guide.
 %%
 %% To create more than one customer gateway with the same VPN type, IP
 %% address, and BGP ASN, specify a unique device name for each customer
@@ -2302,7 +2363,9 @@ create_customer_gateway(Client, Input, Options)
 %% specified Availability Zone in your default VPC.
 %%
 %% You can have only one default subnet per Availability Zone. For more
-%% information, see Create a default subnet in the Amazon VPC User Guide.
+%% information, see Create a default subnet:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet
+%% in the Amazon VPC User Guide.
 create_default_subnet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_default_subnet(Client, Input, []).
@@ -2314,8 +2377,9 @@ create_default_subnet(Client, Input, Options)
 %% default subnet in each Availability Zone.
 %%
 %% For more information about the components of a default VPC, see Default
-%% VPCs in the Amazon VPC User Guide. You cannot specify the components of
-%% the default VPC yourself.
+%% VPCs: https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html in
+%% the Amazon VPC User Guide. You cannot specify the components of the
+%% default VPC yourself.
 %%
 %% If you deleted your previous default VPC, you can create a default VPC.
 %% You cannot have more than one default VPC per Region.
@@ -2331,7 +2395,8 @@ create_default_vpc(Client, Input, Options)
 %% After creating the set, you must associate it with the VPC, causing all
 %% existing and new instances that you launch in the VPC to use this set of
 %% DHCP options. The following are the individual DHCP options you can
-%% specify. For more information about the options, see RFC 2132.
+%% specify. For more information about the options, see RFC 2132:
+%% http://www.ietf.org/rfc/rfc2132.txt.
 %%
 %% <ul> <li> `domain-name-servers' - The IP addresses of up to four
 %% domain name servers, or AmazonProvidedDNS. The default DHCP option set
@@ -2362,14 +2427,16 @@ create_default_vpc(Client, Input, Options)
 %% </li> <li> `netbios-node-type' - The NetBIOS node type (1, 2, 4, or
 %% 8). We recommend that you specify 2 (broadcast and multicast are not
 %% currently supported). For more information about these node types, see RFC
-%% 2132.
+%% 2132: http://www.ietf.org/rfc/rfc2132.txt.
 %%
 %% </li> </ul> Your VPC automatically starts out with a set of DHCP options
 %% that includes only a DNS server that we provide (AmazonProvidedDNS). If
 %% you create a set of options, and if your VPC has an internet gateway, make
 %% sure to set the `domain-name-servers' option either to
 %% `AmazonProvidedDNS' or to a domain name server of your choice. For
-%% more information, see DHCP options sets in the Amazon VPC User Guide.
+%% more information, see DHCP options sets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
+%% the Amazon VPC User Guide.
 create_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dhcp_options(Client, Input, []).
@@ -2397,7 +2464,9 @@ create_egress_only_internet_gateway(Client, Input, Options)
 %% A single EC2 Fleet can include multiple launch specifications that vary by
 %% instance type, AMI, Availability Zone, or subnet.
 %%
-%% For more information, see EC2 Fleet in the Amazon EC2 User Guide.
+%% For more information, see EC2 Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html in the
+%% Amazon EC2 User Guide.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -2410,8 +2479,9 @@ create_fleet(Client, Input, Options)
 %%
 %% Flow log data for a monitored network interface is recorded as flow log
 %% records, which are log events consisting of fields that describe the
-%% traffic flow. For more information, see Flow log records in the Amazon
-%% Virtual Private Cloud User Guide.
+%% traffic flow. For more information, see Flow log records:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records
+%% in the Amazon Virtual Private Cloud User Guide.
 %%
 %% When publishing to CloudWatch Logs, flow log records are published to a
 %% log group, and each network interface has a unique log stream in the log
@@ -2419,8 +2489,9 @@ create_fleet(Client, Input, Options)
 %% monitored network interfaces are published to a single log file object
 %% that is stored in the specified bucket.
 %%
-%% For more information, see VPC Flow Logs in the Amazon Virtual Private
-%% Cloud User Guide.
+%% For more information, see VPC Flow Logs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html in the
+%% Amazon Virtual Private Cloud User Guide.
 create_flow_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_logs(Client, Input, []).
@@ -2437,7 +2508,7 @@ create_flow_logs(Client, Input, Options)
 %% An AFI contains the FPGA bitstream that is ready to download to an FPGA.
 %% You can securely deploy an AFI on multiple FPGA-accelerated instances. For
 %% more information, see the Amazon Web Services FPGA Hardware Development
-%% Kit.
+%% Kit: https://github.com/aws/aws-fpga/.
 create_fpga_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fpga_image(Client, Input, []).
@@ -2454,8 +2525,9 @@ create_fpga_image(Client, Input, Options)
 %% from this new AMI, the instance automatically launches with those
 %% additional volumes.
 %%
-%% For more information, see Create an Amazon EBS-backed Linux AMI in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information, see Create an Amazon EBS-backed Linux AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -2468,7 +2540,9 @@ create_image(Client, Input, Options)
 %% An EC2 Instance Connect Endpoint allows you to connect to an instance,
 %% without requiring the instance to have a public IPv4 address. For more
 %% information, see Connect to your instances without requiring a public IPv4
-%% address using EC2 Instance Connect Endpoint in the Amazon EC2 User Guide.
+%% address using EC2 Instance Connect Endpoint:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
+%% in the Amazon EC2 User Guide.
 create_instance_connect_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_connect_endpoint(Client, Input, []).
@@ -2499,8 +2573,9 @@ create_instance_connect_endpoint(Client, Input, Options)
 %%
 %% Unscheduled maintenance such as AutoRecovery and unplanned reboots.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 create_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_event_window(Client, Input, []).
@@ -2513,7 +2588,9 @@ create_instance_event_window(Client, Input, Options)
 %% For information about the prerequisites for your Amazon S3 bucket,
 %% supported operating systems, image formats, and known limitations for the
 %% types of instances you can export, see Exporting an instance as a VM Using
-%% VM Import/Export in the VM Import/Export User Guide.
+%% VM Import/Export:
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html in
+%% the VM Import/Export User Guide.
 create_instance_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_export_task(Client, Input, []).
@@ -2526,7 +2603,9 @@ create_instance_export_task(Client, Input, Options)
 %% After creating the internet gateway, you attach it to a VPC using
 %% `AttachInternetGateway'.
 %%
-%% For more information, see Internet gateways in the Amazon VPC User Guide.
+%% For more information, see Internet gateways:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+%% in the Amazon VPC User Guide.
 create_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_internet_gateway(Client, Input, []).
@@ -2542,8 +2621,9 @@ create_internet_gateway(Client, Input, Options)
 %% Services Regions and accounts throughout your Amazon Web Services
 %% Organization.
 %%
-%% For more information, see Create an IPAM in the Amazon VPC IPAM User
-%% Guide.
+%% For more information, see Create an IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html in the Amazon
+%% VPC IPAM User Guide.
 create_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam(Client, Input, []).
@@ -2559,8 +2639,9 @@ create_ipam(Client, Input, Options)
 %% needs for development and production applications, you can create a pool
 %% for each.
 %%
-%% For more information, see Create a top-level pool in the Amazon VPC IPAM
-%% User Guide.
+%% For more information, see Create a top-level pool:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/create-top-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 create_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam_pool(Client, Input, []).
@@ -2588,7 +2669,9 @@ create_ipam_resource_discovery(Client, Input, Options)
 %% Scopes enable you to reuse IP addresses across multiple unconnected
 %% networks without causing IP address overlap or conflict.
 %%
-%% For more information, see Add a scope in the Amazon VPC IPAM User Guide.
+%% For more information, see Add a scope:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/add-scope-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 create_ipam_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam_scope(Client, Input, []).
@@ -2612,8 +2695,9 @@ create_ipam_scope(Client, Input, Options)
 %%
 %% You can have up to 5,000 key pairs per Amazon Web Services Region.
 %%
-%% For more information, see Amazon EC2 key pairs in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Amazon EC2 key pairs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 create_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key_pair(Client, Input, []).
@@ -2626,14 +2710,16 @@ create_key_pair(Client, Input, Options)
 %% A launch template contains the parameters to launch an instance. When you
 %% launch an instance using `RunInstances', you can specify a launch
 %% template instead of providing the launch parameters in the request. For
-%% more information, see Launch an instance from a launch template in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% more information, see Launch an instance from a launch template:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% If you want to clone an existing launch template as the basis for creating
 %% a new launch template, you can use the Amazon EC2 console. The API, SDKs,
 %% and CLI do not support cloning a template. For more information, see
-%% Create a launch template from an existing launch template in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% Create a launch template from an existing launch template:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template
+%% in the Amazon Elastic Compute Cloud User Guide.
 create_launch_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_template(Client, Input, []).
@@ -2655,7 +2741,9 @@ create_launch_template(Client, Input, Options)
 %% template that includes any changes you require.
 %%
 %% For more information, see Modify a launch template (manage launch template
-%% versions) in the Amazon Elastic Compute Cloud User Guide.
+%% versions):
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions
+%% in the Amazon Elastic Compute Cloud User Guide.
 create_launch_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_template_version(Client, Input, []).
@@ -2732,7 +2820,9 @@ create_managed_prefix_list(Client, Input, Options)
 %% pool of allowlisted IPv4 addresses, preserving private IPv4 addresses, and
 %% communicating between overlapping networks.
 %%
-%% For more information, see NAT gateways in the Amazon VPC User Guide.
+%% For more information, see NAT gateways:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html in
+%% the Amazon VPC User Guide.
 %%
 %% When you create a public NAT gateway and assign it an EIP or secondary
 %% EIPs, the network border group of the EIPs must match the network border
@@ -2741,8 +2831,9 @@ create_managed_prefix_list(Client, Input, Options)
 %% the network border group for the subnet's AZ by viewing the details of
 %% the subnet. Similarly, you can view the network border group of an EIP by
 %% viewing the details of the EIP address. For more information about network
-%% border groups and EIPs, see Allocate an Elastic IP address in the Amazon
-%% VPC User Guide.
+%% border groups and EIPs, see Allocate an Elastic IP address:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
+%% in the Amazon VPC User Guide.
 create_nat_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_nat_gateway(Client, Input, []).
@@ -2755,7 +2846,9 @@ create_nat_gateway(Client, Input, Options)
 %% Network ACLs provide an optional layer of security (in addition to
 %% security groups) for the instances in your VPC.
 %%
-%% For more information, see Network ACLs in the Amazon VPC User Guide.
+%% For more information, see Network ACLs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
+%% the Amazon VPC User Guide.
 create_network_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_acl(Client, Input, []).
@@ -2780,8 +2873,9 @@ create_network_acl(Client, Input, Options)
 %% After you add an entry, you can't modify it; you must either replace
 %% it, or create an entry and delete the old one.
 %%
-%% For more information about network ACLs, see Network ACLs in the Amazon
-%% VPC User Guide.
+%% For more information about network ACLs, see Network ACLs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
+%% the Amazon VPC User Guide.
 create_network_acl_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_acl_entry(Client, Input, []).
@@ -2795,7 +2889,7 @@ create_network_acl_entry(Client, Input, Options)
 %% cloud operations teams to verify that their networks on Amazon Web
 %% Services conform to their network security and governance objectives. For
 %% more information, see the Amazon Web Services Network Access Analyzer
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/vpc/latest/network-access-analyzer/.
 create_network_insights_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_insights_access_scope(Client, Input, []).
@@ -2807,7 +2901,8 @@ create_network_insights_access_scope(Client, Input, Options)
 %%
 %% Reachability Analyzer enables you to analyze and debug network
 %% reachability between two resources in your virtual private cloud (VPC).
-%% For more information, see the Reachability Analyzer Guide.
+%% For more information, see the Reachability Analyzer Guide:
+%% https://docs.aws.amazon.com/vpc/latest/reachability/.
 create_network_insights_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_insights_path(Client, Input, []).
@@ -2819,10 +2914,14 @@ create_network_insights_path(Client, Input, Options)
 %%
 %% The number of IP addresses you can assign to a network interface varies by
 %% instance type. For more information, see IP Addresses Per ENI Per Instance
-%% Type in the Amazon Virtual Private Cloud User Guide.
+%% Type:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI
+%% in the Amazon Virtual Private Cloud User Guide.
 %%
 %% For more information about network interfaces, see Elastic network
-%% interfaces in the Amazon Elastic Compute Cloud User Guide.
+%% interfaces:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 create_network_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_interface(Client, Input, []).
@@ -2854,7 +2953,9 @@ create_network_interface_permission(Client, Input, Options)
 %% instances in different partitions, where instances in one partition do not
 %% share the same hardware with instances in another partition.
 %%
-%% For more information, see Placement groups in the Amazon EC2 User Guide.
+%% For more information, see Placement groups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+%% in the Amazon EC2 User Guide.
 create_placement_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_placement_group(Client, Input, []).
@@ -2867,7 +2968,8 @@ create_placement_group(Client, Input, Options)
 %% A public IPv4 pool is an EC2 IP address pool required for the public IPv4
 %% CIDRs that you own and bring to Amazon Web Services to manage with IPAM.
 %% IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools
-%% only. To monitor the status of pool creation, use DescribePublicIpv4Pools.
+%% only. To monitor the status of pool creation, use DescribePublicIpv4Pools:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePublicIpv4Pools.html.
 create_public_ipv4_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_ipv4_pool(Client, Input, []).
@@ -2881,8 +2983,9 @@ create_public_ipv4_pool(Client, Input, Options)
 %% root volume, or that is restored from an AMI that has the same key
 %% characteristics as that of the instance.
 %%
-%% For more information, see Replace a root volume in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Replace a root volume:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 create_replace_root_volume_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replace_root_volume_task(Client, Input, []).
@@ -2915,8 +3018,9 @@ create_replace_root_volume_task(Client, Input, Options)
 %% Standard Reserved Instance listing, you can use the
 %% `DescribeReservedInstancesListings' operation.
 %%
-%% For more information, see Reserved Instance Marketplace in the Amazon EC2
-%% User Guide.
+%% For more information, see Reserved Instance Marketplace:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
+%% in the Amazon EC2 User Guide.
 create_reserved_instances_listing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_reserved_instances_listing(Client, Input, []).
@@ -2925,14 +3029,18 @@ create_reserved_instances_listing(Client, Input, Options)
     request(Client, <<"CreateReservedInstancesListing">>, Input, Options).
 
 %% @doc Starts a task that restores an AMI from an Amazon S3 object that was
-%% previously created by using CreateStoreImageTask.
+%% previously created by using CreateStoreImageTask:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html.
 %%
 %% To use this API, you must have the required permissions. For more
 %% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3 in the Amazon EC2 User Guide.
+%% S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% in the Amazon EC2 User Guide.
 %%
-%% For more information, see Store and restore an AMI using Amazon S3 in the
-%% Amazon EC2 User Guide.
+%% For more information, see Store and restore an AMI using Amazon S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
+%% in the Amazon EC2 User Guide.
 create_restore_image_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_restore_image_task(Client, Input, []).
@@ -2959,8 +3067,9 @@ create_restore_image_task(Client, Input, Options)
 %% addresses and is therefore more specific, so we use that route to
 %% determine where to target the traffic.
 %%
-%% For more information about route tables, see Route tables in the Amazon
-%% VPC User Guide.
+%% For more information about route tables, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 create_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_route(Client, Input, []).
@@ -2973,7 +3082,9 @@ create_route(Client, Input, Options)
 %% After you create a route table, you can add routes and associate the table
 %% with a subnet.
 %%
-%% For more information, see Route tables in the Amazon VPC User Guide.
+%% For more information, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 create_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_route_table(Client, Input, []).
@@ -2985,9 +3096,12 @@ create_route_table(Client, Input, Options)
 %%
 %% A security group acts as a virtual firewall for your instance to control
 %% inbound and outbound traffic. For more information, see Amazon EC2
-%% security groups in the Amazon Elastic Compute Cloud User Guide and
-%% Security groups for your VPC in the Amazon Virtual Private Cloud User
-%% Guide.
+%% security groups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html
+%% in the Amazon Elastic Compute Cloud User Guide and Security groups for
+%% your VPC:
+%% https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html
+%% in the Amazon Virtual Private Cloud User Guide.
 %%
 %% When you create a security group, you specify a friendly name of your
 %% choice. You can't have two security groups for the same VPC with the
@@ -3004,7 +3118,8 @@ create_route_table(Client, Input, Options)
 %% `RevokeSecurityGroupIngress', and `RevokeSecurityGroupEgress'.
 %%
 %% For more information about VPC security group limits, see Amazon VPC
-%% Limits.
+%% Limits:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
 create_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_group(Client, Input, []).
@@ -3047,10 +3162,15 @@ create_security_group(Client, Input, Options)
 %% snapshots always remain protected.
 %%
 %% You can tag your snapshots during creation. For more information, see Tag
-%% your Amazon EC2 resources in the Amazon Elastic Compute Cloud User Guide.
+%% your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 %%
-%% For more information, see Amazon Elastic Block Store and Amazon EBS
-%% encryption in the Amazon Elastic Compute Cloud User Guide.
+%% For more information, see Amazon Elastic Block Store:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html and
+%% Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -3085,8 +3205,9 @@ create_snapshots(Client, Input, Options)
 %% Instance usage logs.
 %%
 %% You can create one data feed per Amazon Web Services account. For more
-%% information, see Spot Instance data feed in the Amazon EC2 User Guide for
-%% Linux Instances.
+%% information, see Spot Instance data feed:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
+%% in the Amazon EC2 User Guide for Linux Instances.
 create_spot_datafeed_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_spot_datafeed_subscription(Client, Input, []).
@@ -3098,10 +3219,13 @@ create_spot_datafeed_subscription(Client, Input, Options)
 %%
 %% To use this API, you must have the required permissions. For more
 %% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3 in the Amazon EC2 User Guide.
+%% S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% in the Amazon EC2 User Guide.
 %%
-%% For more information, see Store and restore an AMI using Amazon S3 in the
-%% Amazon EC2 User Guide.
+%% For more information, see Store and restore an AMI using Amazon S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
+%% in the Amazon EC2 User Guide.
 create_store_image_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_store_image_task(Client, Input, []).
@@ -3136,7 +3260,9 @@ create_store_image_task(Client, Input, Options)
 %% instances (they're all stopped), but no remaining IP addresses
 %% available.
 %%
-%% For more information, see Subnets in the Amazon VPC User Guide.
+%% For more information, see Subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html in
+%% the Amazon VPC User Guide.
 create_subnet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet(Client, Input, []).
@@ -3146,9 +3272,12 @@ create_subnet(Client, Input, Options)
 
 %% @doc Creates a subnet CIDR reservation.
 %%
-%% For more information, see Subnet CIDR reservations in the Amazon Virtual
-%% Private Cloud User Guide and Assign prefixes to network interfaces in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information, see Subnet CIDR reservations:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html
+%% in the Amazon Virtual Private Cloud User Guide and Assign prefixes to
+%% network interfaces:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 create_subnet_cidr_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_cidr_reservation(Client, Input, []).
@@ -3163,10 +3292,12 @@ create_subnet_cidr_reservation(Client, Input, Options)
 %% new value. Each resource can have a maximum of 50 tags. Each tag consists
 %% of a key and optional value. Tag keys must be unique per resource.
 %%
-%% For more information about tags, see Tag your Amazon EC2 resources in the
+%% For more information about tags, see Tag your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User Guide. For more information about
 %% creating IAM policies that control users' access to resources based on
-%% tags, see Supported resource-level permissions for Amazon EC2 API actions
+%% tags, see Supported resource-level permissions for Amazon EC2 API actions:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html
 %% in the Amazon Elastic Compute Cloud User Guide.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3181,10 +3312,13 @@ create_tags(Client, Input, Options)
 %% mirror.
 %%
 %% By default, no traffic is mirrored. To mirror traffic, use
-%% CreateTrafficMirrorFilterRule to add Traffic Mirror rules to the filter.
-%% The rules you add define what traffic gets mirrored. You can also use
-%% ModifyTrafficMirrorFilterNetworkServices to mirror supported network
-%% services.
+%% CreateTrafficMirrorFilterRule:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.htm
+%% to add Traffic Mirror rules to the filter. The rules you add define what
+%% traffic gets mirrored. You can also use
+%% ModifyTrafficMirrorFilterNetworkServices:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html
+%% to mirror supported network services.
 create_traffic_mirror_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_filter(Client, Input, []).
@@ -3215,8 +3349,9 @@ create_traffic_mirror_filter_rule(Client, Input, Options)
 %% appliances) can be in the same VPC, or in a different VPC connected via
 %% VPC peering or a transit gateway.
 %%
-%% By default, no traffic is mirrored. Use CreateTrafficMirrorFilter to
-%% create filter rules that specify the traffic to mirror.
+%% By default, no traffic is mirrored. Use CreateTrafficMirrorFilter:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm
+%% to create filter rules that specify the traffic to mirror.
 create_traffic_mirror_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_session(Client, Input, []).
@@ -3235,7 +3370,8 @@ create_traffic_mirror_session(Client, Input, Options)
 %% Balancer, or a Gateway Load Balancer endpoint.
 %%
 %% To use the target in a Traffic Mirror session, use
-%% CreateTrafficMirrorSession.
+%% CreateTrafficMirrorSession:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.htm.
 create_traffic_mirror_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_target(Client, Input, []).
@@ -3295,7 +3431,9 @@ create_transit_gateway_connect(Client, Input, Options)
 %% The peer address and transit gateway address must be the same IP address
 %% family (IPv4 or IPv6).
 %%
-%% For more information, see Connect peers in the Transit Gateways Guide.
+%% For more information, see Connect peers:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer
+%% in the Transit Gateways Guide.
 create_transit_gateway_connect_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_connect_peer(Client, Input, []).
@@ -3306,7 +3444,9 @@ create_transit_gateway_connect_peer(Client, Input, Options)
 %% @doc Creates a multicast domain using the specified transit gateway.
 %%
 %% The transit gateway must be in the available state before you create a
-%% domain. Use DescribeTransitGateways to see the state of transit gateway.
+%% domain. Use DescribeTransitGateways:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html
+%% to see the state of transit gateway.
 create_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_multicast_domain(Client, Input, []).
@@ -3442,14 +3582,18 @@ create_verified_access_trust_provider(Client, Input, Options)
 %% You can create encrypted volumes. Encrypted volumes must be attached to
 %% instances that support Amazon EBS encryption. Volumes that are created
 %% from encrypted snapshots are also automatically encrypted. For more
-%% information, see Amazon EBS encryption in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% You can tag your volumes during creation. For more information, see Tag
-%% your Amazon EC2 resources in the Amazon Elastic Compute Cloud User Guide.
+%% your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 %%
-%% For more information, see Create an Amazon EBS volume in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Create an Amazon EBS volume:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
@@ -3459,22 +3603,27 @@ create_volume(Client, Input, Options)
 
 %% @doc Creates a VPC with the specified CIDR blocks.
 %%
-%% For more information, see IP addressing for your VPCs and subnets in the
-%% Amazon VPC User Guide.
+%% For more information, see IP addressing for your VPCs and subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html in
+%% the Amazon VPC User Guide.
 %%
 %% You can optionally request an IPv6 CIDR block for the VPC. You can request
 %% an Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6
 %% addresses or an IPv6 CIDR block from an IPv6 address pool that you
-%% provisioned through bring your own IP addresses (BYOIP).
+%% provisioned through bring your own IP addresses (BYOIP:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html).
 %%
 %% By default, each instance that you launch in the VPC has the default DHCP
 %% options, which include only a default DNS server that we provide
-%% (AmazonProvidedDNS). For more information, see DHCP option sets in the
-%% Amazon VPC User Guide.
+%% (AmazonProvidedDNS). For more information, see DHCP option sets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
+%% the Amazon VPC User Guide.
 %%
 %% You can specify the instance tenancy value for the VPC when you create it.
 %% You can't change this value for the VPC after you create it. For more
-%% information, see Dedicated Instances in the Amazon EC2 User Guide.
+%% information, see Dedicated Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
+%% in the Amazon EC2 User Guide.
 create_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc(Client, Input, []).
@@ -3488,7 +3637,8 @@ create_vpc(Client, Input, Options)
 %% the specified endpoint service. You can use an endpoint service provided
 %% by Amazon Web Services, an Amazon Web Services Marketplace Partner, or
 %% another Amazon Web Services account. For more information, see the Amazon
-%% Web Services PrivateLink User Guide.
+%% Web Services PrivateLink User Guide:
+%% https://docs.aws.amazon.com/vpc/latest/privatelink/.
 create_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint(Client, Input, []).
@@ -3501,8 +3651,9 @@ create_vpc_endpoint(Client, Input, Options)
 %%
 %% A connection notification notifies you of specific endpoint events. You
 %% must create an SNS topic to receive notifications. For more information,
-%% see Create a Topic in the Amazon Simple Notification Service Developer
-%% Guide.
+%% see Create a Topic:
+%% https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html in the Amazon
+%% Simple Notification Service Developer Guide.
 %%
 %% You can create a connection notification for interface endpoints only.
 create_vpc_endpoint_connection_notification(Client, Input)
@@ -3518,16 +3669,19 @@ create_vpc_endpoint_connection_notification(Client, Input, Options)
 %% Before you create an endpoint service, you must create one of the
 %% following for your service:
 %%
-%% <ul> <li> A Network Load Balancer. Service consumers connect to your
-%% service using an interface endpoint.
+%% <ul> <li> A Network Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/. Service
+%% consumers connect to your service using an interface endpoint.
 %%
-%% </li> <li> A Gateway Load Balancer. Service consumers connect to your
-%% service using a Gateway Load Balancer endpoint.
+%% </li> <li> A Gateway Load Balancer:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/. Service
+%% consumers connect to your service using a Gateway Load Balancer endpoint.
 %%
 %% </li> </ul> If you set the private DNS name, you must prove that you own
 %% the private DNS domain name.
 %%
-%% For more information, see the Amazon Web Services PrivateLink Guide.
+%% For more information, see the Amazon Web Services PrivateLink Guide:
+%% https://docs.aws.amazon.com/vpc/latest/privatelink/.
 create_vpc_endpoint_service_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint_service_configuration(Client, Input, []).
@@ -3543,7 +3697,9 @@ create_vpc_endpoint_service_configuration(Client, Input, Options)
 %% accepter VPC cannot have overlapping CIDR blocks.
 %%
 %% Limitations and rules apply to a VPC peering connection. For more
-%% information, see the limitations section in the VPC Peering Guide.
+%% information, see the limitations:
+%% https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations
+%% section in the VPC Peering Guide.
 %%
 %% The owner of the accepter VPC must accept the peering request to activate
 %% the peering connection. The VPC peering connection request expires after 7
@@ -3578,8 +3734,9 @@ create_vpc_peering_connection(Client, Input, Options)
 %% This is an idempotent operation. If you perform the operation more than
 %% once, Amazon EC2 doesn't return an error.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 create_vpn_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_connection(Client, Input, []).
@@ -3593,8 +3750,9 @@ create_vpn_connection(Client, Input, Options)
 %% The static route allows traffic to be routed from the virtual private
 %% gateway to the VPN customer gateway.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 create_vpn_connection_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_connection_route(Client, Input, []).
@@ -3608,8 +3766,9 @@ create_vpn_connection_route(Client, Input, Options)
 %% connection. You can create a virtual private gateway before creating the
 %% VPC itself.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 create_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_gateway(Client, Input, []).
@@ -3621,7 +3780,8 @@ create_vpn_gateway(Client, Input, Options)
 %%
 %% If you do not delete the route that contains the carrier gateway as the
 %% Target, the route is a blackhole route. For information about how to
-%% delete a route, see DeleteRoute.
+%% delete a route, see DeleteRoute:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRoute.html.
 delete_carrier_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_carrier_gateway(Client, Input, []).
@@ -3726,8 +3886,9 @@ delete_egress_only_internet_gateway(Client, Input, Options)
 %% </li> <li> Up to 1000 instances can be terminated in a single request to
 %% delete `instant' fleets.
 %%
-%% </li> </ul> For more information, see Delete an EC2 Fleet in the Amazon
-%% EC2 User Guide.
+%% </li> </ul> For more information, see Delete an EC2 Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet
+%% in the Amazon EC2 User Guide.
 delete_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleets(Client, Input, []).
@@ -3761,8 +3922,9 @@ delete_instance_connect_endpoint(Client, Input, Options)
 
 %% @doc Deletes the specified event window.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 delete_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_event_window(Client, Input, []).
@@ -3786,8 +3948,9 @@ delete_internet_gateway(Client, Input, Options)
 %% Deleting an IPAM removes all monitored data associated with the IPAM
 %% including the historical data for CIDRs.
 %%
-%% For more information, see Delete an IPAM in the Amazon VPC IPAM User
-%% Guide.
+%% For more information, see Delete an IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/delete-ipam.html in the Amazon
+%% VPC IPAM User Guide.
 delete_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam(Client, Input, []).
@@ -3798,10 +3961,14 @@ delete_ipam(Client, Input, Options)
 %% @doc Delete an IPAM pool.
 %%
 %% You cannot delete an IPAM pool if there are allocations in it or CIDRs
-%% provisioned to it. To release allocations, see ReleaseIpamPoolAllocation.
-%% To deprovision pool CIDRs, see DeprovisionIpamPoolCidr.
+%% provisioned to it. To release allocations, see ReleaseIpamPoolAllocation:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseIpamPoolAllocation.html.
+%% To deprovision pool CIDRs, see DeprovisionIpamPoolCidr:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprovisionIpamPoolCidr.html.
 %%
-%% For more information, see Delete a pool in the Amazon VPC IPAM User Guide.
+%% For more information, see Delete a pool:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/delete-pool-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 delete_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam_pool(Client, Input, []).
@@ -3824,8 +3991,9 @@ delete_ipam_resource_discovery(Client, Input, Options)
 %%
 %% You cannot delete the default scopes.
 %%
-%% For more information, see Delete a scope in the Amazon VPC IPAM User
-%% Guide.
+%% For more information, see Delete a scope:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/delete-scope-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 delete_ipam_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam_scope(Client, Input, []).
@@ -3864,8 +4032,9 @@ delete_launch_template(Client, Input, Options)
 %% `DeleteLaunchTemplate', which deletes the launch template and all of
 %% its versions.
 %%
-%% For more information, see Delete a launch template version in the EC2 User
-%% Guide.
+%% For more information, see Delete a launch template version:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html#delete-launch-template-version
+%% in the EC2 User Guide.
 delete_launch_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_template_versions(Client, Input, []).
@@ -4008,8 +4177,9 @@ delete_network_interface_permission(Client, Input, Options)
 %% @doc Deletes the specified placement group.
 %%
 %% You must terminate all instances in the placement group before you can
-%% delete the placement group. For more information, see Placement groups in
-%% the Amazon EC2 User Guide.
+%% delete the placement group. For more information, see Placement groups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+%% in the Amazon EC2 User Guide.
 delete_placement_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_placement_group(Client, Input, []).
@@ -4083,8 +4253,9 @@ delete_security_group(Client, Input, Options)
 %% registered AMI. You must first de-register the AMI before you can delete
 %% the snapshot.
 %%
-%% For more information, see Delete an Amazon EBS snapshot in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Delete an Amazon EBS snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -4123,8 +4294,9 @@ delete_subnet_cidr_reservation(Client, Input, Options)
 %% resources.
 %%
 %% To list the current tags, use `DescribeTags'. For more information
-%% about tags, see Tag your Amazon EC2 resources in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% about tags, see Tag your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -4305,8 +4477,9 @@ delete_verified_access_trust_provider(Client, Input, Options)
 %%
 %% The volume can remain in the `deleting' state for several minutes.
 %%
-%% For more information, see Delete an Amazon EBS volume in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Delete an Amazon EBS volume:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
@@ -4445,9 +4618,11 @@ deprovision_byoip_cidr(Client, Input, Options)
 %% Services account.
 %%
 %% This action can only be called after any BYOIP CIDR associations are
-%% removed from your Amazon Web Services account with DisassociateIpamByoasn.
-%% For more information, see Tutorial: Bring your ASN to IPAM in the Amazon
-%% VPC IPAM guide.
+%% removed from your Amazon Web Services account with DisassociateIpamByoasn:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIpamByoasn.html.
+%% For more information, see Tutorial: Bring your ASN to IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
+%% Amazon VPC IPAM guide.
 deprovision_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_ipam_byoasn(Client, Input, []).
@@ -4459,7 +4634,9 @@ deprovision_ipam_byoasn(Client, Input, Options)
 %%
 %% If you deprovision a CIDR from a pool that has a source pool, the CIDR is
 %% recycled back into the source pool. For more information, see Deprovision
-%% pool CIDRs in the Amazon VPC IPAM User Guide.
+%% pool CIDRs:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/depro-pool-cidr-ipam.html in
+%% the Amazon VPC IPAM User Guide.
 deprovision_ipam_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_ipam_pool_cidr(Client, Input, []).
@@ -4481,7 +4658,9 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 %%
 %% If you deregister an AMI that matches a Recycle Bin retention rule, the
 %% AMI is retained in the Recycle Bin for the specified retention period. For
-%% more information, see Recycle Bin in the Amazon EC2 User Guide.
+%% more information, see Recycle Bin:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
+%% the Amazon EC2 User Guide.
 %%
 %% When you deregister an AMI, it doesn't affect any instances that
 %% you've already launched from the AMI. You'll continue to incur
@@ -4536,7 +4715,8 @@ deregister_transit_gateway_multicast_group_sources(Client, Input, Options)
 %%
 %% </li> <li> `max-instances': This attribute is no longer supported. The
 %% returned value does not reflect your actual vCPU limit for running
-%% On-Demand Instances. For more information, see On-Demand Instance Limits
+%% On-Demand Instances. For more information, see On-Demand Instance Limits:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html#ec2-on-demand-instances-limits
 %% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% </li> <li> `max-elastic-ips': The maximum number of Elastic IP
@@ -4560,8 +4740,9 @@ describe_account_attributes(Client, Input, Options)
 
 %% @doc Describes an Elastic IP address transfer.
 %%
-%% For more information, see Transfer Elastic IP addresses in the Amazon
-%% Virtual Private Cloud User Guide.
+%% For more information, see Transfer Elastic IP addresses:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
+%% in the Amazon Virtual Private Cloud User Guide.
 %%
 %% When you transfer an Elastic IP address, there is a two-step handshake
 %% between the source and transfer Amazon Web Services accounts. When the
@@ -4589,7 +4770,8 @@ describe_addresses(Client, Input, Options)
 
 %% @doc Describes the attributes of the specified Elastic IP addresses.
 %%
-%% For requirements, see Using reverse DNS for email applications.
+%% For requirements, see Using reverse DNS for email applications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
 describe_addresses_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses_attribute(Client, Input, []).
@@ -4632,8 +4814,9 @@ describe_aggregate_id_format(Client, Input, Options)
 %% the state and any provided messages for that zone.
 %%
 %% For more information about Availability Zones, Local Zones, and Wavelength
-%% Zones, see Regions and zones in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% Zones, see Regions and zones:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 describe_availability_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_zones(Client, Input, []).
@@ -4783,10 +4966,12 @@ describe_coip_pools(Client, Input, Options)
 %% @doc Describes the specified conversion tasks or all your conversion
 %% tasks.
 %%
-%% For more information, see the VM Import/Export User Guide.
+%% For more information, see the VM Import/Export User Guide:
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/.
 %%
 %% For information about the import manifest referenced by this API action,
-%% see VM Import Manifest.
+%% see VM Import Manifest:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
 describe_conversion_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conversion_tasks(Client, Input, []).
@@ -4796,8 +4981,9 @@ describe_conversion_tasks(Client, Input, Options)
 
 %% @doc Describes one or more of your VPN customer gateways.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 describe_customer_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_customer_gateways(Client, Input, []).
@@ -4807,7 +4993,9 @@ describe_customer_gateways(Client, Input, Options)
 
 %% @doc Describes one or more of your DHCP options sets.
 %%
-%% For more information, see DHCP options sets in the Amazon VPC User Guide.
+%% For more information, see DHCP options sets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
+%% the Amazon VPC User Guide.
 describe_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dhcp_options(Client, Input, []).
@@ -4829,7 +5017,8 @@ describe_egress_only_internet_gateways(Client, Input, Options)
 %% use Amazon EC2 G4ad, G4dn, or G5 instances.
 %%
 %% Describes the Elastic Graphics accelerator associated with your instances.
-%% For more information about Elastic Graphics, see Amazon Elastic Graphics.
+%% For more information about Elastic Graphics, see Amazon Elastic Graphics:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html.
 describe_elastic_gpus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_gpus(Client, Input, []).
@@ -4879,7 +5068,8 @@ describe_fast_snapshot_restores(Client, Input, Options)
 %% described. This ensures that you can query by the last evaluated time and
 %% not miss a recorded event. EC2 Fleet events are available for 48 hours.
 %%
-%% For more information, see Monitor fleet events using Amazon EventBridge in
+%% For more information, see Monitor fleet events using Amazon EventBridge:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-monitor.html in
 %% the Amazon EC2 User Guide.
 describe_fleet_history(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -4890,8 +5080,9 @@ describe_fleet_history(Client, Input, Options)
 
 %% @doc Describes the running instances for the specified EC2 Fleet.
 %%
-%% For more information, see Monitor your EC2 Fleet in the Amazon EC2 User
-%% Guide.
+%% For more information, see Monitor your EC2 Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
+%% in the Amazon EC2 User Guide.
 describe_fleet_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_instances(Client, Input, []).
@@ -4901,8 +5092,9 @@ describe_fleet_instances(Client, Input, Options)
 
 %% @doc Describes the specified EC2 Fleets or all of your EC2 Fleets.
 %%
-%% For more information, see Monitor your EC2 Fleet in the Amazon EC2 User
-%% Guide.
+%% For more information, see Monitor your EC2 Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
+%% in the Amazon EC2 User Guide.
 describe_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleets(Client, Input, []).
@@ -4950,8 +5142,9 @@ describe_fpga_images(Client, Input, Options)
 %% your Dedicated Hosts. When purchasing an offering, ensure that the
 %% instance family and Region of the offering matches that of the Dedicated
 %% Hosts with which it is to be associated. For more information about
-%% supported instance types, see Dedicated Hosts in the Amazon EC2 User
-%% Guide.
+%% supported instance types, see Dedicated Hosts:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html
+%% in the Amazon EC2 User Guide.
 describe_host_reservation_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_host_reservation_offerings(Client, Input, []).
@@ -5030,8 +5223,9 @@ describe_id_format(Client, Input, Options)
 %% For example, you can view the resource types that are enabled for longer
 %% IDs. This request only returns information about resource types whose ID
 %% formats can be modified; it does not return information about other
-%% resource types. For more information, see Resource IDs in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% resource types. For more information, see Resource IDs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% The following resource types support longer IDs: `bundle' |
 %% `conversion-task' | `customer-gateway' | `dhcp-options' |
@@ -5149,8 +5343,9 @@ describe_instance_connect_endpoints(Client, Input, Options)
 %% IDs at all, the call fails. If you specify only instance IDs in an
 %% unaffected zone, the call works normally.
 %%
-%% For more information, see Burstable performance instances in the Amazon
-%% EC2 User Guide.
+%% For more information, see Burstable performance instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+%% in the Amazon EC2 User Guide.
 describe_instance_credit_specifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_credit_specifications(Client, Input, []).
@@ -5177,8 +5372,9 @@ describe_instance_event_notification_attributes(Client, Input, Options)
 %% recommend that you use pagination to ensure that the operation returns
 %% quickly and successfully.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 describe_instance_event_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_event_windows(Client, Input, []).
@@ -5196,17 +5392,24 @@ describe_instance_event_windows(Client, Input, Options)
 %%
 %% <ul> <li> Status checks - Amazon EC2 performs status checks on running EC2
 %% instances to identify hardware and software issues. For more information,
-%% see Status checks for your instances and Troubleshoot instances with
-%% failed status checks in the Amazon EC2 User Guide.
+%% see Status checks for your instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html
+%% and Troubleshoot instances with failed status checks:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html
+%% in the Amazon EC2 User Guide.
 %%
 %% </li> <li> Scheduled events - Amazon EC2 can schedule events (such as
 %% reboot, stop, or terminate) for your instances related to hardware issues,
 %% software updates, or system maintenance. For more information, see
-%% Scheduled events for your instances in the Amazon EC2 User Guide.
+%% Scheduled events for your instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html
+%% in the Amazon EC2 User Guide.
 %%
 %% </li> <li> Instance state - You can manage your instances from the moment
 %% you launch them through their termination. For more information, see
-%% Instance lifecycle in the Amazon EC2 User Guide.
+%% Instance lifecycle:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+%% in the Amazon EC2 User Guide.
 %%
 %% </li> </ul>
 describe_instance_status(Client, Input)
@@ -5244,7 +5447,9 @@ describe_instance_status(Client, Input, Options)
 %% </li> <li> `trn1.2xlarge' | `trn1.32xlarge' | `trn1n.32xlarge'
 %%
 %% </li> </ul> </li> </ul> For more information, see Amazon EC2 instance
-%% topology in the Amazon EC2 User Guide.
+%% topology:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology.html
+%% in the Amazon EC2 User Guide.
 describe_instance_topology(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_topology(Client, Input, []).
@@ -5314,8 +5519,9 @@ describe_internet_gateways(Client, Input, Options)
 %% @doc Describes your Autonomous System Numbers (ASNs), their provisioning
 %% statuses, and the BYOIP CIDRs with which they are associated.
 %%
-%% For more information, see Tutorial: Bring your ASN to IPAM in the Amazon
-%% VPC IPAM guide.
+%% For more information, see Tutorial: Bring your ASN to IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
+%% Amazon VPC IPAM guide.
 describe_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_byoasn(Client, Input, []).
@@ -5363,7 +5569,9 @@ describe_ipam_scopes(Client, Input, Options)
 
 %% @doc Get information about your IPAM pools.
 %%
-%% For more information, see What is IPAM? in the Amazon VPC IPAM User Guide.
+%% For more information, see What is IPAM?:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/what-is-it-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 describe_ipams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipams(Client, Input, []).
@@ -5381,8 +5589,9 @@ describe_ipv6_pools(Client, Input, Options)
 
 %% @doc Describes the specified key pairs or all of your key pairs.
 %%
-%% For more information about key pairs, see Amazon EC2 key pairs in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information about key pairs, see Amazon EC2 key pairs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 describe_key_pairs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key_pairs(Client, Input, []).
@@ -5508,7 +5717,9 @@ describe_nat_gateways(Client, Input, Options)
 
 %% @doc Describes one or more of your network ACLs.
 %%
-%% For more information, see Network ACLs in the Amazon VPC User Guide.
+%% For more information, see Network ACLs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
+%% the Amazon VPC User Guide.
 describe_network_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_acls(Client, Input, []).
@@ -5582,7 +5793,9 @@ describe_network_interfaces(Client, Input, Options)
 %% @doc Describes the specified placement groups or all of your placement
 %% groups.
 %%
-%% For more information, see Placement groups in the Amazon EC2 User Guide.
+%% For more information, see Placement groups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+%% in the Amazon EC2 User Guide.
 describe_placement_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_placement_groups(Client, Input, []).
@@ -5642,11 +5855,13 @@ describe_public_ipv4_pools(Client, Input, Options)
 %% Regions.
 %%
 %% For a list of the Regions supported by Amazon EC2, see Amazon Elastic
-%% Compute Cloud endpoints and quotas.
+%% Compute Cloud endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/ec2-service.html.
 %%
 %% For information about enabling and disabling Regions for your account, see
-%% Managing Amazon Web Services Regions in the Amazon Web Services General
-%% Reference.
+%% Managing Amazon Web Services Regions:
+%% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
+%% Amazon Web Services General Reference.
 describe_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_regions(Client, Input, []).
@@ -5656,8 +5871,9 @@ describe_regions(Client, Input, Options)
 
 %% @doc Describes a root volume replacement task.
 %%
-%% For more information, see Replace a root volume in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Replace a root volume:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 describe_replace_root_volume_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replace_root_volume_tasks(Client, Input, []).
@@ -5667,8 +5883,9 @@ describe_replace_root_volume_tasks(Client, Input, Options)
 
 %% @doc Describes one or more of the Reserved Instances that you purchased.
 %%
-%% For more information about Reserved Instances, see Reserved Instances in
-%% the Amazon EC2 User Guide.
+%% For more information about Reserved Instances, see Reserved Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html
+%% in the Amazon EC2 User Guide.
 describe_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances(Client, Input, []).
@@ -5697,8 +5914,9 @@ describe_reserved_instances(Client, Input, Options)
 %% Instance listings to you until your demand is met. You are charged based
 %% on the total price of all of the listings that you purchase.
 %%
-%% For more information, see Reserved Instance Marketplace in the Amazon EC2
-%% User Guide.
+%% For more information, see Reserved Instance Marketplace:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
+%% in the Amazon EC2 User Guide.
 describe_reserved_instances_listings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_listings(Client, Input, []).
@@ -5712,8 +5930,9 @@ describe_reserved_instances_listings(Client, Input, Options)
 %% Instances modification requests is returned. If a modification ID is
 %% specified, only information about the specific modification is returned.
 %%
-%% For more information, see Modifying Reserved Instances in the Amazon EC2
-%% User Guide.
+%% For more information, see Modifying Reserved Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
+%% the Amazon EC2 User Guide.
 describe_reserved_instances_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_modifications(Client, Input, []).
@@ -5733,8 +5952,9 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% Instance Marketplace, they will be excluded from these results. This is to
 %% ensure that you do not purchase your own Reserved Instances.
 %%
-%% For more information, see Reserved Instance Marketplace in the Amazon EC2
-%% User Guide.
+%% For more information, see Reserved Instance Marketplace:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
+%% in the Amazon EC2 User Guide.
 describe_reserved_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_offerings(Client, Input, []).
@@ -5749,7 +5969,9 @@ describe_reserved_instances_offerings(Client, Input, Options)
 %% associated with the main route table. This command does not return the
 %% subnet ID for implicit associations.
 %%
-%% For more information, see Route tables in the Amazon VPC User Guide.
+%% For more information, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 describe_route_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_route_tables(Client, Input, []).
@@ -5814,8 +6036,9 @@ describe_security_groups(Client, Input, Options)
 %%
 %% You can specify only one attribute at a time.
 %%
-%% For more information about EBS snapshots, see Amazon EBS snapshots in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information about EBS snapshots, see Amazon EBS snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 describe_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_attribute(Client, Input, []).
@@ -5875,13 +6098,15 @@ describe_snapshot_tier_status(Client, Input, Options)
 %%
 %% If you are describing a long list of snapshots, we recommend that you
 %% paginate the output to make the list more manageable. For more
-%% information, see Pagination.
+%% information, see Pagination:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination.
 %%
 %% To get the state of fast snapshot restores for a snapshot, use
 %% `DescribeFastSnapshotRestores'.
 %%
-%% For more information about EBS snapshots, see Amazon EBS snapshots in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information about EBS snapshots, see Amazon EBS snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
@@ -5891,8 +6116,9 @@ describe_snapshots(Client, Input, Options)
 
 %% @doc Describes the data feed for Spot Instances.
 %%
-%% For more information, see Spot Instance data feed in the Amazon EC2 User
-%% Guide for Linux Instances.
+%% For more information, see Spot Instance data feed:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
+%% in the Amazon EC2 User Guide for Linux Instances.
 describe_spot_datafeed_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_datafeed_subscription(Client, Input, []).
@@ -5915,7 +6141,8 @@ describe_spot_fleet_instances(Client, Input, Options)
 %% described. This ensures that you can query by the last evaluated time and
 %% not miss a recorded event. Spot Fleet events are available for 48 hours.
 %%
-%% For more information, see Monitor fleet events using Amazon EventBridge in
+%% For more information, see Monitor fleet events using Amazon EventBridge:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-monitor.html in
 %% the Amazon EC2 User Guide.
 describe_spot_fleet_request_history(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -5940,7 +6167,8 @@ describe_spot_fleet_requests(Client, Input, Options)
 %% You can use `DescribeSpotInstanceRequests' to find a running Spot
 %% Instance by examining the response. If the status of the Spot Instance is
 %% `fulfilled', the instance ID appears in the response and contains the
-%% identifier of the instance. Alternatively, you can use DescribeInstances
+%% identifier of the instance. Alternatively, you can use DescribeInstances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances
 %% with a filter to look for instances where the instance lifecycle is
 %% `spot'.
 %%
@@ -5963,8 +6191,9 @@ describe_spot_instance_requests(Client, Input, Options)
 
 %% @doc Describes the Spot price history.
 %%
-%% For more information, see Spot Instance pricing history in the Amazon EC2
-%% User Guide for Linux Instances.
+%% For more information, see Spot Instance pricing history:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html
+%% in the Amazon EC2 User Guide for Linux Instances.
 %%
 %% When you specify a start and end time, the operation returns the prices of
 %% the instance types within that time range. It also returns the last price
@@ -5982,10 +6211,12 @@ describe_spot_price_history(Client, Input, Options)
 %%
 %% Rules are stale when they reference a deleted security group in the same
 %% VPC, peered VPC, or in separate VPCs attached to a transit gateway (with
-%% security group referencing support enabled). Rules can also be stale if
-%% they reference a security group in a peer VPC for which the VPC peering
-%% connection has been deleted or if they reference a security group in a VPC
-%% that has been detached from a transit gateway.
+%% security group referencing support:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw
+%% enabled). Rules can also be stale if they reference a security group in a
+%% peer VPC for which the VPC peering connection has been deleted or if they
+%% reference a security group in a VPC that has been detached from a transit
+%% gateway.
 describe_stale_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stale_security_groups(Client, Input, []).
@@ -6008,10 +6239,13 @@ describe_stale_security_groups(Client, Input, Options)
 %%
 %% To use this API, you must have the required permissions. For more
 %% information, see Permissions for storing and restoring AMIs using Amazon
-%% S3 in the Amazon EC2 User Guide.
+%% S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions
+%% in the Amazon EC2 User Guide.
 %%
-%% For more information, see Store and restore an AMI using Amazon S3 in the
-%% Amazon EC2 User Guide.
+%% For more information, see Store and restore an AMI using Amazon S3:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
+%% in the Amazon EC2 User Guide.
 describe_store_image_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_store_image_tasks(Client, Input, []).
@@ -6021,7 +6255,9 @@ describe_store_image_tasks(Client, Input, Options)
 
 %% @doc Describes one or more of your subnets.
 %%
-%% For more information, see Subnets in the Amazon VPC User Guide.
+%% For more information, see Subnets:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html in
+%% the Amazon VPC User Guide.
 describe_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnets(Client, Input, []).
@@ -6031,7 +6267,8 @@ describe_subnets(Client, Input, Options)
 
 %% @doc Describes the specified tags for your EC2 resources.
 %%
-%% For more information about tags, see Tag your Amazon EC2 resources in the
+%% For more information about tags, see Tag your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User Guide.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6217,7 +6454,8 @@ describe_verified_access_trust_providers(Client, Input, Options)
 %%
 %% You can specify only one attribute at a time.
 %%
-%% For more information about EBS volumes, see Amazon EBS volumes in the
+%% For more information about EBS volumes, see Amazon EBS volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
 %% Amazon Elastic Compute Cloud User Guide.
 describe_volume_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6246,8 +6484,9 @@ describe_volume_attribute(Client, Input, Options)
 %% check fails, the overall status is `impaired'. If the status is
 %% `insufficient-data', then the checks might still be taking place on
 %% your volume at the time. We recommend that you retry the request. For more
-%% information about volume status, see Monitor the status of your volumes in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% information about volume status, see Monitor the status of your volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% Events: Reflect the cause of a volume status and might require you to take
 %% action. For example, if your volume returns an `impaired' status, then
@@ -6277,9 +6516,11 @@ describe_volume_status(Client, Input, Options)
 %%
 %% If you are describing a long list of volumes, we recommend that you
 %% paginate the output to make the list more manageable. For more
-%% information, see Pagination.
+%% information, see Pagination:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination.
 %%
-%% For more information about EBS volumes, see Amazon EBS volumes in the
+%% For more information about EBS volumes, see Amazon EBS volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
 %% Amazon Elastic Compute Cloud User Guide.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6297,9 +6538,11 @@ describe_volumes(Client, Input, Options)
 %%
 %% You can also use CloudWatch Events to check the status of a modification
 %% to an EBS volume. For information about CloudWatch Events, see the Amazon
-%% CloudWatch Events User Guide. For more information, see Monitor the
-%% progress of volume modifications in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% CloudWatch Events User Guide:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/. For more
+%% information, see Monitor the progress of volume modifications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 describe_volumes_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes_modifications(Client, Input, []).
@@ -6420,8 +6663,9 @@ describe_vpcs(Client, Input, Options)
 
 %% @doc Describes one or more of your VPN connections.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 describe_vpn_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpn_connections(Client, Input, []).
@@ -6431,8 +6675,9 @@ describe_vpn_connections(Client, Input, Options)
 
 %% @doc Describes one or more of your virtual private gateways.
 %%
-%% For more information, see Amazon Web Services Site-to-Site VPN in the
-%% Amazon Web Services Site-to-Site VPN User Guide.
+%% For more information, see Amazon Web Services Site-to-Site VPN:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 describe_vpn_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpn_gateways(Client, Input, []).
@@ -6502,8 +6747,9 @@ detach_verified_access_trust_provider(Client, Input, Options)
 %% `UnsupportedOperationException' exception with the `Unable to detach
 %% volume attached to ECS tasks' error message.
 %%
-%% For more information, see Detach an Amazon EBS volume in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Detach an Amazon EBS volume:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
@@ -6530,8 +6776,9 @@ detach_vpn_gateway(Client, Input, Options)
 
 %% @doc Disables Elastic IP address transfer.
 %%
-%% For more information, see Transfer Elastic IP addresses in the Amazon
-%% Virtual Private Cloud User Guide.
+%% For more information, see Transfer Elastic IP addresses:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
+%% in the Amazon Virtual Private Cloud User Guide.
 disable_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_address_transfer(Client, Input, []).
@@ -6556,8 +6803,9 @@ disable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% Disabling encryption by default does not change the encryption status of
 %% your existing volumes.
 %%
-%% For more information, see Amazon EBS encryption in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 disable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_ebs_encryption_by_default(Client, Input, []).
@@ -6600,13 +6848,18 @@ disable_fast_snapshot_restores(Client, Input, Options)
 %% Services account, organization, or Organizational Unit, they lose access
 %% to the disabled AMI.
 %%
-%% A disabled AMI does not appear in DescribeImages API calls by default.
+%% A disabled AMI does not appear in DescribeImages:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html
+%% API calls by default.
 %%
 %% Only the AMI owner can disable an AMI.
 %%
-%% You can re-enable a disabled AMI using EnableImage.
+%% You can re-enable a disabled AMI using EnableImage:
+%% http://amazonaws.com/AWSEC2/latest/APIReference/API_EnableImage.html.
 %%
-%% For more information, see Disable an AMI in the Amazon EC2 User Guide.
+%% For more information, see Disable an AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html in
+%% the Amazon EC2 User Guide.
 disable_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image(Client, Input, []).
@@ -6622,12 +6875,14 @@ disable_image(Client, Input, Options)
 %% Amazon Web Services Region.
 %%
 %% The API can take up to 10 minutes to configure this setting. During this
-%% time, if you run GetImageBlockPublicAccessState, the response will be
-%% `block-new-sharing'. When the API has completed the configuration, the
-%% response will be `unblocked'.
+%% time, if you run GetImageBlockPublicAccessState:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageBlockPublicAccessState.html,
+%% the response will be `block-new-sharing'. When the API has completed
+%% the configuration, the response will be `unblocked'.
 %%
-%% For more information, see Block public access to your AMIs in the Amazon
-%% EC2 User Guide.
+%% For more information, see Block public access to your AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% in the Amazon EC2 User Guide.
 disable_image_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image_block_public_access(Client, Input, []).
@@ -6637,7 +6892,9 @@ disable_image_block_public_access(Client, Input, Options)
 
 %% @doc Cancels the deprecation of the specified AMI.
 %%
-%% For more information, see Deprecate an AMI in the Amazon EC2 User Guide.
+%% For more information, see Deprecate an AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
+%% the Amazon EC2 User Guide.
 disable_image_deprecation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image_deprecation(Client, Input, []).
@@ -6647,7 +6904,8 @@ disable_image_deprecation(Client, Input, Options)
 
 %% @doc Disable the IPAM account.
 %%
-%% For more information, see Enable integration with Organizations in the
+%% For more information, see Enable integration with Organizations:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/enable-integ-ipam.html in the
 %% Amazon VPC IPAM User Guide.
 disable_ipam_organization_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6660,7 +6918,8 @@ disable_ipam_organization_admin_account(Client, Input, Options)
 %% account.
 %%
 %% By default, access to the EC2 serial console is disabled for your account.
-%% For more information, see Manage account access to the EC2 serial console
+%% For more information, see Manage account access to the EC2 serial console:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2 User Guide.
 disable_serial_console_access(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -6680,8 +6939,9 @@ disable_serial_console_access(Client, Input, Options)
 %% shared are no longer treated as private and they become publicly
 %% accessible again.
 %%
-%% For more information, see Block public access for snapshots in the Amazon
-%% Elastic Compute Cloud User Guide .
+%% For more information, see Block public access for snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
+%% in the Amazon Elastic Compute Cloud User Guide .
 disable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_block_public_access(Client, Input, []).
@@ -6796,8 +7056,9 @@ disassociate_iam_instance_profile(Client, Input, Options)
 
 %% @doc Disassociates one or more targets from an event window.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 disassociate_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_instance_event_window(Client, Input, []).
@@ -6810,7 +7071,8 @@ disassociate_instance_event_window(Client, Input, Options)
 %%
 %% You may want to use this action to disassociate an ASN from a CIDR or if
 %% you want to swap ASNs. For more information, see Tutorial: Bring your ASN
-%% to IPAM in the Amazon VPC IPAM guide.
+%% to IPAM: https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html
+%% in the Amazon VPC IPAM guide.
 disassociate_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ipam_byoasn(Client, Input, []).
@@ -6833,7 +7095,9 @@ disassociate_ipam_resource_discovery(Client, Input, Options)
 %% gateway.
 %%
 %% You cannot disassociate your primary EIP. For more information, see Edit
-%% secondary IP address associations in the Amazon VPC User Guide.
+%% secondary IP address associations:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary
+%% in the Amazon VPC User Guide.
 %%
 %% While disassociating is in progress, you cannot associate/disassociate
 %% additional EIPs while the connections are being drained. You are, however,
@@ -6855,8 +7119,9 @@ disassociate_nat_gateway_address(Client, Input, Options)
 %%
 %% After you perform this action, the subnet no longer uses the routes in the
 %% route table. Instead, it uses the routes in the VPC's main route
-%% table. For more information about route tables, see Route tables in the
-%% Amazon VPC User Guide.
+%% table. For more information about route tables, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 disassociate_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_route_table(Client, Input, []).
@@ -6929,8 +7194,9 @@ disassociate_vpc_cidr_block(Client, Input, Options)
 
 %% @doc Enables Elastic IP address transfer.
 %%
-%% For more information, see Transfer Elastic IP addresses in the Amazon
-%% Virtual Private Cloud User Guide.
+%% For more information, see Transfer Elastic IP addresses:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
+%% in the Amazon Virtual Private Cloud User Guide.
 enable_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_address_transfer(Client, Input, []).
@@ -6952,7 +7218,9 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% After you enable encryption by default, the EBS volumes that you create
 %% are always encrypted, either using the default KMS key or the KMS key that
 %% you specified when you created each volume. For more information, see
-%% Amazon EBS encryption in the Amazon Elastic Compute Cloud User Guide.
+%% Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% You can specify the default KMS key for encryption by default using
 %% `ModifyEbsDefaultKmsKeyId' or `ResetEbsDefaultKmsKeyId'.
@@ -6962,7 +7230,8 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %%
 %% After you enable encryption by default, you can no longer launch instances
 %% using instance types that do not support encryption. For more information,
-%% see Supported instance types.
+%% see Supported instance types:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances.
 enable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ebs_encryption_by_default(Client, Input, []).
@@ -6996,8 +7265,9 @@ enable_fast_launch(Client, Input, Options)
 %% use `DescribeFastSnapshotRestores'. To disable fast snapshot restores,
 %% use `DisableFastSnapshotRestores'.
 %%
-%% For more information, see Amazon EBS fast snapshot restore in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Amazon EBS fast snapshot restore:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 enable_fast_snapshot_restores(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_fast_snapshot_restores(Client, Input, []).
@@ -7016,7 +7286,9 @@ enable_fast_snapshot_restores(Client, Input, Options)
 %%
 %% Only the AMI owner can re-enable a disabled AMI.
 %%
-%% For more information, see Disable an AMI in the Amazon EC2 User Guide.
+%% For more information, see Disable an AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html in
+%% the Amazon EC2 User Guide.
 enable_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image(Client, Input, []).
@@ -7031,12 +7303,14 @@ enable_image(Client, Input, Options)
 %% have public AMIs, they will remain publicly available.
 %%
 %% The API can take up to 10 minutes to configure this setting. During this
-%% time, if you run GetImageBlockPublicAccessState, the response will be
-%% `unblocked'. When the API has completed the configuration, the
-%% response will be `block-new-sharing'.
+%% time, if you run GetImageBlockPublicAccessState:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageBlockPublicAccessState.html,
+%% the response will be `unblocked'. When the API has completed the
+%% configuration, the response will be `block-new-sharing'.
 %%
-%% For more information, see Block public access to your AMIs in the Amazon
-%% EC2 User Guide.
+%% For more information, see Block public access to your AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% in the Amazon EC2 User Guide.
 enable_image_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image_block_public_access(Client, Input, []).
@@ -7047,7 +7321,9 @@ enable_image_block_public_access(Client, Input, Options)
 %% @doc Enables deprecation of the specified AMI at the specified date and
 %% time.
 %%
-%% For more information, see Deprecate an AMI in the Amazon EC2 User Guide.
+%% For more information, see Deprecate an AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
+%% the Amazon EC2 User Guide.
 enable_image_deprecation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image_deprecation(Client, Input, []).
@@ -7058,8 +7334,9 @@ enable_image_deprecation(Client, Input, Options)
 %% @doc Enable an Organizations member account as the IPAM admin account.
 %%
 %% You cannot select the Organizations management account as the IPAM admin
-%% account. For more information, see Enable integration with Organizations
-%% in the Amazon VPC IPAM User Guide.
+%% account. For more information, see Enable integration with Organizations:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/enable-integ-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 enable_ipam_organization_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ipam_organization_admin_account(Client, Input, []).
@@ -7087,7 +7364,8 @@ enable_reachability_analyzer_organization_sharing(Client, Input, Options)
 %% account.
 %%
 %% By default, access to the EC2 serial console is disabled for your account.
-%% For more information, see Manage account access to the EC2 serial console
+%% For more information, see Manage account access to the EC2 serial console:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2 User Guide.
 enable_serial_console_access(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -7109,8 +7387,9 @@ enable_serial_console_access(Client, Input, Options)
 %% previously publicly shared are no longer treated as private and they
 %% become publicly accessible again.
 %%
-%% For more information, see Block public access for snapshots in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Block public access for snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 enable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_snapshot_block_public_access(Client, Input, []).
@@ -7202,7 +7481,9 @@ export_client_vpn_client_configuration(Client, Input, Options)
 %% @doc Exports an Amazon Machine Image (AMI) to a VM file.
 %%
 %% For more information, see Exporting a VM directly from an Amazon Machine
-%% Image (AMI) in the VM Import/Export User Guide.
+%% Image (AMI):
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html
+%% in the VM Import/Export User Guide.
 export_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_image(Client, Input, []).
@@ -7217,7 +7498,9 @@ export_image(Client, Input, Options)
 %% range.
 %%
 %% The routes are saved to the specified bucket in a JSON file. For more
-%% information, see Export Route Tables to Amazon S3 in Transit Gateways.
+%% information, see Export Route Tables to Amazon S3:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables
+%% in Transit Gateways.
 export_transit_gateway_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_transit_gateway_routes(Client, Input, []).
@@ -7295,8 +7578,9 @@ get_coip_pool_usage(Client, Input, Options)
 %% during the instance lifecycle. This option is supported on instance types
 %% that use the Nitro hypervisor.
 %%
-%% For more information, see Instance console output in the Amazon EC2 User
-%% Guide.
+%% For more information, see Instance console output:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output
+%% in the Amazon EC2 User Guide.
 get_console_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_console_output(Client, Input, []).
@@ -7318,8 +7602,9 @@ get_console_screenshot(Client, Input, Options)
 %% @doc Describes the default credit option for CPU usage of a burstable
 %% performance instance family.
 %%
-%% For more information, see Burstable performance instances in the Amazon
-%% EC2 User Guide.
+%% For more information, see Burstable performance instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+%% in the Amazon EC2 User Guide.
 get_default_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_credit_specification(Client, Input, []).
@@ -7333,8 +7618,9 @@ get_default_credit_specification(Client, Input, Options)
 %% You can change the default KMS key for encryption by default using
 %% `ModifyEbsDefaultKmsKeyId' or `ResetEbsDefaultKmsKeyId'.
 %%
-%% For more information, see Amazon EBS encryption in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 get_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_default_kms_key_id(Client, Input, []).
@@ -7345,8 +7631,9 @@ get_ebs_default_kms_key_id(Client, Input, Options)
 %% @doc Describes whether EBS encryption by default is enabled for your
 %% account in the current Region.
 %%
-%% For more information, see Amazon EBS encryption in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 get_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_encryption_by_default(Client, Input, []).
@@ -7408,8 +7695,9 @@ get_host_reservation_purchase_preview(Client, Input, Options)
 %% @doc Gets the current state of block public access for AMIs at the account
 %% level in the specified Amazon Web Services Region.
 %%
-%% For more information, see Block public access to your AMIs in the Amazon
-%% EC2 User Guide.
+%% For more information, see Block public access to your AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
+%% in the Amazon EC2 User Guide.
 get_image_block_public_access_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_image_block_public_access_state(Client, Input, []).
@@ -7429,11 +7717,18 @@ get_image_block_public_access_state(Client, Input, Options)
 %% values.
 %%
 %% For more information, see Preview instance types with specified
-%% attributes, Attribute-based instance type selection for EC2 Fleet,
-%% Attribute-based instance type selection for Spot Fleet, and Spot placement
-%% score in the Amazon EC2 User Guide, and Creating an Auto Scaling group
-%% using attribute-based instance type selection in the Amazon EC2 Auto
-%% Scaling User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-attribute-based-instance-type-selection.html#spotfleet-get-instance-types-from-instance-requirements,
+%% Attribute-based instance type selection for EC2 Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-attribute-based-instance-type-selection.html,
+%% Attribute-based instance type selection for Spot Fleet:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-attribute-based-instance-type-selection.html,
+%% and Spot placement score:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html
+%% in the Amazon EC2 User Guide, and Creating an Auto Scaling group using
+%% attribute-based instance type selection:
+%% https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html
+%% in the Amazon EC2 Auto Scaling User Guide.
 get_instance_types_from_instance_requirements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_types_from_instance_requirements(Client, Input, []).
@@ -7446,14 +7741,19 @@ get_instance_types_from_instance_requirements(Client, Input, Options)
 %% Only non-volatile variables are stored. This is a base64 encoded and zlib
 %% compressed binary value that must be properly encoded.
 %%
-%% When you use register-image to create an AMI, you can create an exact copy
-%% of your variable store by passing the UEFI data in the `UefiData'
-%% parameter. You can modify the UEFI data by using the python-uefivars tool
-%% on GitHub. You can use the tool to convert the UEFI data into a
-%% human-readable format (JSON), which you can inspect and modify, and then
-%% convert back into the binary format to use with register-image.
+%% When you use register-image:
+%% https://docs.aws.amazon.com/cli/latest/reference/ec2/register-image.html
+%% to create an AMI, you can create an exact copy of your variable store by
+%% passing the UEFI data in the `UefiData' parameter. You can modify the
+%% UEFI data by using the python-uefivars tool:
+%% https://github.com/awslabs/python-uefivars on GitHub. You can use the tool
+%% to convert the UEFI data into a human-readable format (JSON), which you
+%% can inspect and modify, and then convert back into the binary format to
+%% use with register-image.
 %%
-%% For more information, see UEFI Secure Boot in the Amazon EC2 User Guide.
+%% For more information, see UEFI Secure Boot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html
+%% in the Amazon EC2 User Guide.
 get_instance_uefi_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_uefi_data(Client, Input, []).
@@ -7463,8 +7763,9 @@ get_instance_uefi_data(Client, Input, Options)
 
 %% @doc Retrieve historical information about a CIDR within an IPAM scope.
 %%
-%% For more information, see View the history of IP addresses in the Amazon
-%% VPC IPAM User Guide.
+%% For more information, see View the history of IP addresses:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/view-history-cidr-ipam.html in
+%% the Amazon VPC IPAM User Guide.
 get_ipam_address_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_address_history(Client, Input, []).
@@ -7513,9 +7814,13 @@ get_ipam_discovered_resource_cidrs(Client, Input, Options)
 %% Amazon Web Services Region where this IPAM pool is available for
 %% allocations.
 %%
-%% If you use this action after AllocateIpamPoolCidr or
-%% ReleaseIpamPoolAllocation, note that all EC2 API actions follow an
-%% eventual consistency model.
+%% If you use this action after AllocateIpamPoolCidr:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllocateIpamPoolCidr.html
+%% or ReleaseIpamPoolAllocation:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseIpamPoolAllocation.html,
+%% note that all EC2 API actions follow an eventual consistency:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
+%% model.
 get_ipam_pool_allocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_pool_allocations(Client, Input, []).
@@ -7601,7 +7906,11 @@ get_network_insights_access_scope_content(Client, Input, Options)
 %% The Windows password is generated at boot by the `EC2Config' service
 %% or `EC2Launch' scripts (Windows Server 2016 and later). This usually
 %% only happens the first time an instance is launched. For more information,
-%% see EC2Config and EC2Launch in the Amazon EC2 User Guide.
+%% see EC2Config:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html
+%% and EC2Launch:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html in
+%% the Amazon EC2 User Guide.
 %%
 %% For the `EC2Config' service, the password is not generated for
 %% rebundled AMIs unless `Ec2SetPassword' is enabled before bundling.
@@ -7649,7 +7958,8 @@ get_security_groups_for_vpc(Client, Input, Options)
 %% of all instances.
 %%
 %% By default, access to the EC2 serial console is disabled for your account.
-%% For more information, see Manage account access to the EC2 serial console
+%% For more information, see Manage account access to the EC2 serial console:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2 User Guide.
 get_serial_console_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -7661,8 +7971,9 @@ get_serial_console_access_status(Client, Input, Options)
 %% @doc Gets the current state of block public access for snapshots setting
 %% for the account and Region.
 %%
-%% For more information, see Block public access for snapshots in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Block public access for snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 get_snapshot_block_public_access_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot_block_public_access_state(Client, Input, []).
@@ -7678,8 +7989,9 @@ get_snapshot_block_public_access_state(Client, Input, Options)
 %% optimal instance types to fulfill your Spot request, or you can specify
 %% the instance types by using `InstanceTypes'.
 %%
-%% For more information, see Spot placement score in the Amazon EC2 User
-%% Guide.
+%% For more information, see Spot placement score:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html
+%% in the Amazon EC2 User Guide.
 get_spot_placement_scores(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_spot_placement_scores(Client, Input, []).
@@ -7788,7 +8100,9 @@ get_vpn_connection_device_sample_configuration(Client, Input, Options)
 %%
 %% The request has no additional parameters. You can also see the list of
 %% device types with sample configuration files available under Your customer
-%% gateway device in the Amazon Web Services Site-to-Site VPN User Guide.
+%% gateway device:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html in the Amazon
+%% Web Services Site-to-Site VPN User Guide.
 get_vpn_connection_device_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpn_connection_device_types(Client, Input, []).
@@ -7821,9 +8135,11 @@ import_client_vpn_client_certificate_revocation_list(Client, Input, Options)
 
 %% @doc To import your virtual machines (VMs) with a console-based
 %% experience, you can use the Import virtual machine images to Amazon Web
-%% Services template in the Migration Hub Orchestrator console.
+%% Services template in the Migration Hub Orchestrator console:
+%% https://console.aws.amazon.com/migrationhub/orchestrator.
 %%
-%% For more information, see the Migration Hub Orchestrator User Guide .
+%% For more information, see the Migration Hub Orchestrator User Guide :
+%% https://docs.aws.amazon.com/migrationhub-orchestrator/latest/userguide/import-vm-images.html.
 %%
 %% Import single or multi-volume disk images or EBS snapshots into an Amazon
 %% Machine Image (AMI).
@@ -7834,7 +8150,9 @@ import_client_vpn_client_certificate_revocation_list(Client, Input, Options)
 %% operating system is licensed appropriately and your billing is optimized.
 %%
 %% For more information, see Importing a VM as an image using VM
-%% Import/Export in the VM Import/Export User Guide.
+%% Import/Export:
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
+%% in the VM Import/Export User Guide.
 import_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_image(Client, Input, []).
@@ -7842,23 +8160,30 @@ import_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportImage">>, Input, Options).
 
-%% @doc We recommend that you use the `ImportImage' API.
+%% @doc We recommend that you use the `ImportImage' :
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html
+%% API.
 %%
 %% For more information, see Importing a VM as an image using VM
-%% Import/Export in the VM Import/Export User Guide.
+%% Import/Export:
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
+%% in the VM Import/Export User Guide.
 %%
 %% Creates an import instance task using metadata from the specified disk
 %% image.
 %%
 %% This API action is not supported by the Command Line Interface (CLI). For
 %% information about using the Amazon EC2 CLI, which is deprecated, see
-%% Importing a VM to Amazon EC2 in the Amazon EC2 CLI Reference PDF file.
+%% Importing a VM to Amazon EC2:
+%% https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#UsingVirtualMachinesinAmazonEC2
+%% in the Amazon EC2 CLI Reference PDF file.
 %%
 %% This API action supports only single-volume VMs. To import multi-volume
 %% VMs, use `ImportImage' instead.
 %%
 %% For information about the import manifest referenced by this API action,
-%% see VM Import Manifest.
+%% see VM Import Manifest:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
 import_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_instance(Client, Input, []).
@@ -7875,8 +8200,9 @@ import_instance(Client, Input, Options)
 %% give Amazon Web Services just the public key. The private key is never
 %% transferred between you and Amazon Web Services.
 %%
-%% For more information about key pairs, see Amazon EC2 key pairs in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information about key pairs, see Amazon EC2 key pairs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 import_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_pair(Client, Input, []).
@@ -7887,7 +8213,9 @@ import_key_pair(Client, Input, Options)
 %% @doc Imports a disk into an EBS snapshot.
 %%
 %% For more information, see Importing a disk as a snapshot using VM
-%% Import/Export in the VM Import/Export User Guide.
+%% Import/Export:
+%% https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-import-snapshot.html
+%% in the VM Import/Export User Guide.
 import_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_snapshot(Client, Input, []).
@@ -7904,10 +8232,13 @@ import_snapshot(Client, Input, Options)
 %%
 %% This API action is not supported by the Command Line Interface (CLI). For
 %% information about using the Amazon EC2 CLI, which is deprecated, see
-%% Importing Disks to Amazon EBS in the Amazon EC2 CLI Reference PDF file.
+%% Importing Disks to Amazon EBS:
+%% https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#importing-your-volumes-into-amazon-ebs
+%% in the Amazon EC2 CLI Reference PDF file.
 %%
 %% For information about the import manifest referenced by this API action,
-%% see VM Import Manifest.
+%% see VM Import Manifest:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
 import_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_volume(Client, Input, []).
@@ -7917,7 +8248,9 @@ import_volume(Client, Input, Options)
 
 %% @doc Lists one or more AMIs that are currently in the Recycle Bin.
 %%
-%% For more information, see Recycle Bin in the Amazon EC2 User Guide.
+%% For more information, see Recycle Bin:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
+%% the Amazon EC2 User Guide.
 list_images_in_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images_in_recycle_bin(Client, Input, []).
@@ -7964,7 +8297,8 @@ lock_snapshot(Client, Input, Options)
 
 %% @doc Modifies an attribute of the specified Elastic IP address.
 %%
-%% For requirements, see Using reverse DNS for email applications.
+%% For requirements, see Using reverse DNS for email applications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
 modify_address_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_address_attribute(Client, Input, []).
@@ -7975,7 +8309,9 @@ modify_address_attribute(Client, Input, Options)
 %% @doc Changes the opt-in status of the Local Zone and Wavelength Zone group
 %% for your account.
 %%
-%% Use DescribeAvailabilityZones to view the value for `GroupName'.
+%% Use DescribeAvailabilityZones:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html
+%% to view the value for `GroupName'.
 modify_availability_zone_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_availability_zone_group(Client, Input, []).
@@ -8040,8 +8376,9 @@ modify_client_vpn_endpoint(Client, Input, Options)
 %% `GetDefaultCreditSpecification' and check
 %% `DefaultCreditSpecification' for updates.
 %%
-%% For more information, see Burstable performance instances in the Amazon
-%% EC2 User Guide.
+%% For more information, see Burstable performance instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+%% in the Amazon EC2 User Guide.
 modify_default_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_default_credit_specification(Client, Input, []).
@@ -8063,8 +8400,9 @@ modify_default_credit_specification(Client, Input, Options)
 %% If you delete or disable the customer managed KMS key that you specified
 %% for use with encryption by default, your instances will fail to launch.
 %%
-%% For more information, see Amazon EBS encryption in the Amazon Elastic
-%% Compute Cloud User Guide.
+%% For more information, see Amazon EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 modify_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ebs_default_kms_key_id(Client, Input, []).
@@ -8162,8 +8500,9 @@ modify_hosts(Client, Input, Options)
 %% defaults to the same settings as the root user. If you're using this
 %% action as the root user, then these settings apply to the entire account,
 %% unless an IAM user explicitly overrides these settings for themselves. For
-%% more information, see Resource IDs in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% more information, see Resource IDs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% Resources created with longer IDs are visible to all IAM roles and users,
 %% regardless of these settings and provided that they have permission to use
@@ -8195,8 +8534,9 @@ modify_id_format(Client, Input, Options)
 %% | `vpc' | `vpc-cidr-block-association' | `vpc-endpoint' |
 %% `vpc-peering-connection' | `vpn-connection' | `vpn-gateway'.
 %%
-%% For more information, see Resource IDs in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% For more information, see Resource IDs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% This setting applies to the principal specified in the request; it does
 %% not apply to the principal that makes the request.
@@ -8242,7 +8582,9 @@ modify_image_attribute(Client, Input, Options)
 %% recommend that you use the `ModifyNetworkInterfaceAttribute' action.
 %%
 %% To modify some attributes, the instance must be stopped. For more
-%% information, see Modify a stopped instance in the Amazon EC2 User Guide.
+%% information, see Modify a stopped instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html
+%% in the Amazon EC2 User Guide.
 modify_instance_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_attribute(Client, Input, []).
@@ -8267,8 +8609,9 @@ modify_instance_capacity_reservation_attributes(Client, Input, Options)
 %%
 %% The credit options are `standard' and `unlimited'.
 %%
-%% For more information, see Burstable performance instances in the Amazon
-%% EC2 User Guide.
+%% For more information, see Burstable performance instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+%% in the Amazon EC2 User Guide.
 modify_instance_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_credit_specification(Client, Input, []).
@@ -8296,8 +8639,9 @@ modify_instance_event_start_time(Client, Input, Options)
 %% If Amazon Web Services has already scheduled an event, modifying an event
 %% window won't change the time of the scheduled event.
 %%
-%% For more information, see Define event windows for scheduled events in the
-%% Amazon EC2 User Guide.
+%% For more information, see Define event windows for scheduled events:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
+%% the Amazon EC2 User Guide.
 modify_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_event_window(Client, Input, []).
@@ -8310,7 +8654,8 @@ modify_instance_event_window(Client, Input, Options)
 %%
 %% The default configuration will not enable simplified automatic recovery
 %% for an unsupported instance type. For more information, see Simplified
-%% automatic recovery.
+%% automatic recovery:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery.
 modify_instance_maintenance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_maintenance_options(Client, Input, []).
@@ -8327,7 +8672,9 @@ modify_instance_maintenance_options(Client, Input, Options)
 %% modifications are successfully applied to the instance, the state of the
 %% modifications changes from “pending” to “applied” in subsequent
 %% describe-instances API calls. For more information, see Instance metadata
-%% and user data in the Amazon EC2 User Guide.
+%% and user data:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+%% in the Amazon EC2 User Guide.
 modify_instance_metadata_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_metadata_options(Client, Input, []).
@@ -8339,7 +8686,8 @@ modify_instance_metadata_options(Client, Input, Options)
 %%
 %% You can do the following:
 %%
-%% <ul> <li> Modify the affinity between an instance and a Dedicated Host.
+%% <ul> <li> Modify the affinity between an instance and a Dedicated Host:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html.
 %% When affinity is set to `host' and the instance is not associated with
 %% a specific Dedicated Host, the next time the instance is launched, it is
 %% automatically associated with the host on which it lands. If the instance
@@ -8349,7 +8697,8 @@ modify_instance_metadata_options(Client, Input, Options)
 %%
 %% </li> <li> Change the instance tenancy of an instance.
 %%
-%% </li> <li> Move an instance to or from a placement group.
+%% </li> <li> Move an instance to or from a placement group:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html.
 %%
 %% </li> </ul> At least one attribute for affinity, host ID, tenancy, or
 %% placement group name must be specified in the request. Affinity and
@@ -8374,7 +8723,9 @@ modify_ipam(Client, Input, Options)
 
 %% @doc Modify the configurations of an IPAM pool.
 %%
-%% For more information, see Modify a pool in the Amazon VPC IPAM User Guide.
+%% For more information, see Modify a pool:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/mod-pool-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 modify_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_pool(Client, Input, []).
@@ -8389,8 +8740,11 @@ modify_ipam_pool(Client, Input, Options)
 %% resource will not be tracked for overlap, it cannot be auto-imported into
 %% a pool, and it will be removed from any pool it has an allocation in.
 %%
-%% For more information, see Move resource CIDRs between scopes and Change
-%% the monitoring state of resource CIDRs in the Amazon VPC IPAM User Guide.
+%% For more information, see Move resource CIDRs between scopes:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/move-resource-ipam.html and
+%% Change the monitoring state of resource CIDRs:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/change-monitoring-state-ipam.html
+%% in the Amazon VPC IPAM User Guide.
 modify_ipam_resource_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_resource_cidr(Client, Input, []).
@@ -8478,8 +8832,9 @@ modify_private_dns_name_options(Client, Input, Options)
 %% The Reserved Instances to be modified must be identical, except for
 %% Availability Zone, network platform, and instance type.
 %%
-%% For more information, see Modifying Reserved Instances in the Amazon EC2
-%% User Guide.
+%% For more information, see Modifying Reserved Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
+%% the Amazon EC2 User Guide.
 modify_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_reserved_instances(Client, Input, []).
@@ -8508,7 +8863,9 @@ modify_security_group_rules(Client, Input, Options)
 %% KMS key cannot be shared with other accounts.
 %%
 %% For more information about modifying snapshot permissions, see Share a
-%% snapshot in the Amazon Elastic Compute Cloud User Guide.
+%% snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 modify_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_attribute(Client, Input, []).
@@ -8521,8 +8878,9 @@ modify_snapshot_attribute(Client, Input, Options)
 %% When you archive a snapshot, it is converted to a full snapshot that
 %% includes all of the blocks of data that were written to the volume at the
 %% time the snapshot was created, and moved from the standard tier to the
-%% archive tier. For more information, see Archive Amazon EBS snapshots in
-%% the Amazon Elastic Compute Cloud User Guide.
+%% archive tier. For more information, see Archive Amazon EBS snapshots:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-archive.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 modify_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_tier(Client, Input, []).
@@ -8586,9 +8944,11 @@ modify_spot_fleet_request(Client, Input, Options)
 %% </li> </ul> For more information about Amazon Web Services Outposts, see
 %% the following:
 %%
-%% <ul> <li> Outpost servers
+%% <ul> <li> Outpost servers:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/how-servers-work.html
 %%
-%% </li> <li> Outpost racks
+%% </li> <li> Outpost racks:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/how-racks-work.html
 %%
 %% </li> </ul>
 modify_subnet_attribute(Client, Input)
@@ -8731,20 +9091,28 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% If your EBS volume is attached to a current-generation EC2 instance type,
 %% you might be able to apply these changes without stopping the instance or
 %% detaching the volume from it. For more information about modifying EBS
-%% volumes, see Amazon EBS Elastic Volumes (Linux instances) or Amazon EBS
-%% Elastic Volumes (Windows instances).
+%% volumes, see Amazon EBS Elastic Volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html
+%% (Linux instances) or Amazon EBS Elastic Volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html
+%% (Windows instances).
 %%
 %% When you complete a resize operation on your volume, you need to extend
 %% the volume's file-system size to take advantage of the new storage
-%% capacity. For more information, see Extend a Linux file system or Extend a
-%% Windows file system.
+%% capacity. For more information, see Extend a Linux file system:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux
+%% or Extend a Windows file system:
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows.
 %%
 %% You can use CloudWatch Events to check the status of a modification to an
 %% EBS volume. For information about CloudWatch Events, see the Amazon
-%% CloudWatch Events User Guide. You can also track the status of a
-%% modification using `DescribeVolumesModifications'. For information
-%% about tracking status changes using either method, see Monitor the
-%% progress of volume modifications.
+%% CloudWatch Events User Guide:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/. You can also
+%% track the status of a modification using
+%% `DescribeVolumesModifications'. For information about tracking status
+%% changes using either method, see Monitor the progress of volume
+%% modifications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html.
 %%
 %% With previous-generation instance types, resizing an EBS volume might
 %% require detaching and reattaching the volume or stopping and restarting
@@ -8791,7 +9159,8 @@ modify_vpc_attribute(Client, Input, Options)
 %%
 %% The attributes that you can modify depend on the type of VPC endpoint
 %% (interface, gateway, or Gateway Load Balancer). For more information, see
-%% the Amazon Web Services PrivateLink Guide.
+%% the Amazon Web Services PrivateLink Guide:
+%% https://docs.aws.amazon.com/vpc/latest/privatelink/.
 modify_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint(Client, Input, []).
@@ -8884,8 +9253,9 @@ modify_vpc_peering_connection_options(Client, Input, Options)
 %% during launch. The tenancy of any existing instances in the VPC is not
 %% affected.
 %%
-%% For more information, see Dedicated Instances in the Amazon EC2 User
-%% Guide.
+%% For more information, see Dedicated Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
+%% in the Amazon EC2 User Guide.
 modify_vpc_tenancy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_tenancy(Client, Input, []).
@@ -8924,8 +9294,9 @@ modify_vpc_tenancy(Client, Input, Options)
 %%
 %% After you migrate to the new gateway, you might need to modify your VPC
 %% route table. Use `CreateRoute' and `DeleteRoute' to make the
-%% changes described in Update VPC route tables in the Amazon Web Services
-%% Site-to-Site VPN User Guide.
+%% changes described in Update VPC route tables:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-target.html#step-update-routing
+%% in the Amazon Web Services Site-to-Site VPN User Guide.
 %%
 %% When the new gateway is a transit gateway, modify the transit gateway
 %% route table to allow traffic between the VPC and the Amazon Web Services
@@ -8972,8 +9343,9 @@ modify_vpn_tunnel_certificate(Client, Input, Options)
 %%
 %% You can modify multiple options for a tunnel in a single request, but you
 %% can only modify one tunnel at a time. For more information, see
-%% Site-to-Site VPN tunnel options for your Site-to-Site VPN connection in
-%% the Amazon Web Services Site-to-Site VPN User Guide.
+%% Site-to-Site VPN tunnel options for your Site-to-Site VPN connection:
+%% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html in the
+%% Amazon Web Services Site-to-Site VPN User Guide.
 modify_vpn_tunnel_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpn_tunnel_options(Client, Input, []).
@@ -8984,9 +9356,12 @@ modify_vpn_tunnel_options(Client, Input, Options)
 %% @doc Enables detailed monitoring for a running instance.
 %%
 %% Otherwise, basic monitoring is enabled. For more information, see Monitor
-%% your instances using CloudWatch in the Amazon EC2 User Guide.
+%% your instances using CloudWatch:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
+%% in the Amazon EC2 User Guide.
 %%
-%% To disable detailed monitoring, see UnmonitorInstances.
+%% To disable detailed monitoring, see UnmonitorInstances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnmonitorInstances.html.
 monitor_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     monitor_instances(Client, Input, []).
@@ -9016,7 +9391,8 @@ move_address_to_vpc(Client, Input, Options)
 %% If you already have a BYOIPv4 CIDR with Amazon Web Services, you can move
 %% the CIDR to IPAM from a public IPv4 pool. You cannot move an IPv6 CIDR to
 %% IPAM. If you are bringing a new IP address to Amazon Web Services for the
-%% first time, complete the steps in Tutorial: BYOIP address CIDRs to IPAM.
+%% first time, complete the steps in Tutorial: BYOIP address CIDRs to IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoip-ipam.html.
 move_byoip_cidr_to_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_byoip_cidr_to_ipam(Client, Input, []).
@@ -9035,8 +9411,9 @@ move_byoip_cidr_to_ipam(Client, Input, Options)
 %% authorized to advertise it. You must ensure that the address range is
 %% registered to you and that you created an RPKI ROA to authorize Amazon
 %% ASNs 16509 and 14618 to advertise the address range. For more information,
-%% see Bring your own IP addresses (BYOIP) in the Amazon Elastic Compute
-%% Cloud User Guide.
+%% see Bring your own IP addresses (BYOIP):
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html in the
+%% Amazon Elastic Compute Cloud User Guide.
 %%
 %% Provisioning an address range is an asynchronous operation, so the call
 %% returns immediately, but the address range is not ready to use until its
@@ -9057,7 +9434,9 @@ provision_byoip_cidr(Client, Input, Options)
 %%
 %% This action requires authorization context for Amazon to bring the ASN to
 %% an Amazon Web Services account. For more information, see Tutorial: Bring
-%% your ASN to IPAM in the Amazon VPC IPAM guide.
+%% your ASN to IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
+%% Amazon VPC IPAM guide.
 provision_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_ipam_byoasn(Client, Input, []).
@@ -9070,8 +9449,9 @@ provision_ipam_byoasn(Client, Input, Options)
 %% You can use this action to provision new CIDRs to a top-level pool or to
 %% transfer a CIDR from a top-level pool to a pool within it.
 %%
-%% For more information, see Provision CIDRs to pools in the Amazon VPC IPAM
-%% User Guide.
+%% For more information, see Provision CIDRs to pools:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/prov-cidr-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 provision_ipam_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_ipam_pool_cidr(Client, Input, []).
@@ -9081,8 +9461,9 @@ provision_ipam_pool_cidr(Client, Input, Options)
 
 %% @doc Provision a CIDR to a public IPv4 pool.
 %%
-%% For more information about IPAM, see What is IPAM? in the Amazon VPC IPAM
-%% User Guide.
+%% For more information about IPAM, see What is IPAM?:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/what-is-it-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 provision_public_ipv4_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_public_ipv4_pool_cidr(Client, Input, []).
@@ -9128,8 +9509,11 @@ purchase_host_reservation(Client, Input, Options)
 %% To queue a purchase for a future date and time, specify a purchase time.
 %% If you do not specify a purchase time, the default is the current time.
 %%
-%% For more information, see Reserved Instances and Reserved Instance
-%% Marketplace in the Amazon EC2 User Guide.
+%% For more information, see Reserved Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html
+%% and Reserved Instance Marketplace:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
+%% in the Amazon EC2 User Guide.
 purchase_reserved_instances_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_instances_offering(Client, Input, []).
@@ -9167,7 +9551,9 @@ purchase_scheduled_instances(Client, Input, Options)
 %% performs a hard reboot.
 %%
 %% For more information about troubleshooting, see Troubleshoot an
-%% unreachable instance in the Amazon EC2 User Guide.
+%% unreachable instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html
+%% in the Amazon EC2 User Guide.
 reboot_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instances(Client, Input, []).
@@ -9179,8 +9565,9 @@ reboot_instances(Client, Input, Options)
 %%
 %% When you're creating an AMI, this is the final step you must complete
 %% before you can launch an instance from the AMI. For more information about
-%% creating AMIs, see Create your own AMI in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% creating AMIs, see Create your own AMI:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 %%
 %% For Amazon EBS-backed instances, `CreateImage' creates and registers
 %% the AMI in a single request, so you don't have to register the AMI
@@ -9201,9 +9588,11 @@ reboot_instances(Client, Input, Options)
 %% encryption by default is enabled, the root volume of an instance launched
 %% from the AMI is encrypted.
 %%
-%% For more information, see Create a Linux AMI from a snapshot and Use
-%% encryption with Amazon EBS-backed AMIs in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% For more information, see Create a Linux AMI from a snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot
+%% and Use encryption with Amazon EBS-backed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 %%
 %% Amazon Web Services Marketplace product codes
 %%
@@ -9230,8 +9619,9 @@ reboot_instances(Client, Input, Options)
 %% you purchase a Reserved Instance without the matching billing product
 %% code, the Reserved Instance will not be applied to the On-Demand Instance.
 %% For information about how to obtain the platform details and billing
-%% information of an AMI, see Understand AMI billing information in the
-%% Amazon EC2 User Guide.
+%% information of an AMI, see Understand AMI billing information:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html
+%% in the Amazon EC2 User Guide.
 register_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_image(Client, Input, []).
@@ -9242,7 +9632,8 @@ register_image(Client, Input, Options)
 %% @doc Registers a set of tag keys to include in scheduled event
 %% notifications for your resources.
 %%
-%% To remove tags, use DeregisterInstanceEventNotificationAttributes.
+%% To remove tags, use DeregisterInstanceEventNotificationAttributes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterInstanceEventNotificationAttributes.html.
 register_instance_event_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance_event_notification_attributes(Client, Input, []).
@@ -9255,10 +9646,14 @@ register_instance_event_notification_attributes(Client, Input, Options)
 %%
 %% A member is a network interface associated with a supported EC2 instance
 %% that receives multicast traffic. For information about supported
-%% instances, see Multicast Consideration in Amazon VPC Transit Gateways.
+%% instances, see Multicast Consideration:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits
+%% in Amazon VPC Transit Gateways.
 %%
-%% After you add the members, use SearchTransitGatewayMulticastGroups to
-%% verify that the members were added to the transit gateway multicast group.
+%% After you add the members, use SearchTransitGatewayMulticastGroups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
+%% to verify that the members were added to the transit gateway multicast
+%% group.
 register_transit_gateway_multicast_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_transit_gateway_multicast_group_members(Client, Input, []).
@@ -9271,10 +9666,13 @@ register_transit_gateway_multicast_group_members(Client, Input, Options)
 %%
 %% A multicast source is a network interface attached to a supported instance
 %% that sends multicast traffic. For information about supported instances,
-%% see Multicast Considerations in Amazon VPC Transit Gateways.
+%% see Multicast Considerations:
+%% https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits
+%% in Amazon VPC Transit Gateways.
 %%
-%% After you add the source, use SearchTransitGatewayMulticastGroups to
-%% verify that the source was added to the multicast group.
+%% After you add the source, use SearchTransitGatewayMulticastGroups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
+%% to verify that the source was added to the multicast group.
 register_transit_gateway_multicast_group_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_transit_gateway_multicast_group_sources(Client, Input, []).
@@ -9387,10 +9785,15 @@ release_hosts(Client, Input, Options)
 %% Amazon Web Services Region where this IPAM pool is available for
 %% allocations. You can only use this action to release manual allocations.
 %% To remove an allocation for a resource without deleting the resource, set
-%% its monitored state to false using ModifyIpamResourceCidr. For more
-%% information, see Release an allocation in the Amazon VPC IPAM User Guide.
+%% its monitored state to false using ModifyIpamResourceCidr:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamResourceCidr.html.
+%% For more information, see Release an allocation:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/release-alloc-ipam.html in the
+%% Amazon VPC IPAM User Guide.
 %%
-%% All EC2 API actions follow an eventual consistency model.
+%% All EC2 API actions follow an eventual consistency:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
+%% model.
 release_ipam_pool_allocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_ipam_pool_allocation(Client, Input, []).
@@ -9416,7 +9819,8 @@ replace_iam_instance_profile_association(Client, Input, Options)
 %% @doc Changes which network ACL a subnet is associated with.
 %%
 %% By default when you create a subnet, it's automatically associated
-%% with the default network ACL. For more information, see Network ACLs in
+%% with the default network ACL. For more information, see Network ACLs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
 %% the Amazon VPC User Guide.
 %%
 %% This is an idempotent operation.
@@ -9429,7 +9833,9 @@ replace_network_acl_association(Client, Input, Options)
 
 %% @doc Replaces an entry (rule) in a network ACL.
 %%
-%% For more information, see Network ACLs in the Amazon VPC User Guide.
+%% For more information, see Network ACLs:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
+%% the Amazon VPC User Guide.
 replace_network_acl_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_network_acl_entry(Client, Input, []).
@@ -9443,7 +9849,9 @@ replace_network_acl_entry(Client, Input, Options)
 %% must also specify exactly one of the resources from the parameter list, or
 %% reset the local route to its default target.
 %%
-%% For more information, see Route tables in the Amazon VPC User Guide.
+%% For more information, see Route tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 replace_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_route(Client, Input, []).
@@ -9456,7 +9864,9 @@ replace_route(Client, Input, Options)
 %%
 %% After the operation completes, the subnet or gateway uses the routes in
 %% the new route table. For more information about route tables, see Route
-%% tables in the Amazon VPC User Guide.
+%% tables:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
+%% the Amazon VPC User Guide.
 %%
 %% You can also use this operation to change which table is the main route
 %% table in the VPC. Specify the main route table's association ID and
@@ -9528,13 +9938,15 @@ report_instance_status(Client, Input, Options)
 %% because only the `spot-fleet-request' and `instance' resource
 %% types are supported.
 %%
-%% For more information, see Spot Fleet requests in the Amazon EC2 User
-%% Guide.
+%% For more information, see Spot Fleet requests:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html
+%% in the Amazon EC2 User Guide.
 %%
 %% We strongly discourage using the RequestSpotFleet API because it is a
 %% legacy API with no planned investment. For options for requesting Spot
-%% Instances, see Which is the best Spot request method to use? in the Amazon
-%% EC2 User Guide.
+%% Instances, see Which is the best Spot request method to use?:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use
+%% in the Amazon EC2 User Guide.
 request_spot_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_spot_fleet(Client, Input, []).
@@ -9544,13 +9956,15 @@ request_spot_fleet(Client, Input, Options)
 
 %% @doc Creates a Spot Instance request.
 %%
-%% For more information, see Spot Instance requests in the Amazon EC2 User
-%% Guide for Linux Instances.
+%% For more information, see Spot Instance requests:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html in
+%% the Amazon EC2 User Guide for Linux Instances.
 %%
 %% We strongly discourage using the RequestSpotInstances API because it is a
 %% legacy API with no planned investment. For options for requesting Spot
-%% Instances, see Which is the best Spot request method to use? in the Amazon
-%% EC2 User Guide for Linux Instances.
+%% Instances, see Which is the best Spot request method to use?:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use
+%% in the Amazon EC2 User Guide for Linux Instances.
 request_spot_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_spot_instances(Client, Input, []).
@@ -9560,7 +9974,8 @@ request_spot_instances(Client, Input, Options)
 
 %% @doc Resets the attribute of the specified IP address.
 %%
-%% For requirements, see Using reverse DNS for email applications.
+%% For requirements, see Using reverse DNS for email applications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
 reset_address_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_address_attribute(Client, Input, []).
@@ -9574,7 +9989,9 @@ reset_address_attribute(Client, Input, Options)
 %% After resetting the default KMS key to the Amazon Web Services managed KMS
 %% key, you can continue to encrypt by a customer managed KMS key by
 %% specifying it when you create the volume. For more information, see Amazon
-%% EBS encryption in the Amazon Elastic Compute Cloud User Guide.
+%% EBS encryption:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 reset_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_ebs_default_kms_key_id(Client, Input, []).
@@ -9610,7 +10027,9 @@ reset_image_attribute(Client, Input, Options)
 %% The `sourceDestCheck' attribute controls whether source/destination
 %% checking is enabled. The default value is `true', which means checking
 %% is enabled. This value must be `false' for a NAT instance to perform
-%% NAT. For more information, see NAT Instances in the Amazon VPC User Guide.
+%% NAT. For more information, see NAT Instances:
+%% https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html
+%% in the Amazon VPC User Guide.
 reset_instance_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_instance_attribute(Client, Input, []).
@@ -9631,7 +10050,9 @@ reset_network_interface_attribute(Client, Input, Options)
 %% @doc Resets permission settings for the specified snapshot.
 %%
 %% For more information about modifying snapshot permissions, see Share a
-%% snapshot in the Amazon Elastic Compute Cloud User Guide.
+%% snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
+%% in the Amazon Elastic Compute Cloud User Guide.
 reset_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_snapshot_attribute(Client, Input, []).
@@ -9654,7 +10075,9 @@ restore_address_to_classic(Client, Input, Options)
 
 %% @doc Restores an AMI from the Recycle Bin.
 %%
-%% For more information, see Recycle Bin in the Amazon EC2 User Guide.
+%% For more information, see Recycle Bin:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
+%% the Amazon EC2 User Guide.
 restore_image_from_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_image_from_recycle_bin(Client, Input, []).
@@ -9673,8 +10096,9 @@ restore_managed_prefix_list_version(Client, Input, Options)
 
 %% @doc Restores a snapshot from the Recycle Bin.
 %%
-%% For more information, see Restore snapshots from the Recycle Bin in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information, see Restore snapshots from the Recycle Bin:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps
+%% in the Amazon Elastic Compute Cloud User Guide.
 restore_snapshot_from_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_from_recycle_bin(Client, Input, []).
@@ -9686,9 +10110,12 @@ restore_snapshot_from_recycle_bin(Client, Input, Options)
 %% permanently, or modifies the restore period or restore type for a snapshot
 %% that was previously temporarily restored.
 %%
-%% For more information see Restore an archived snapshot and modify the
-%% restore period or restore type for a temporarily restored snapshot in the
-%% Amazon Elastic Compute Cloud User Guide.
+%% For more information see Restore an archived snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#restore-archived-snapshot
+%% and modify the restore period or restore type for a temporarily restored
+%% snapshot:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#modify-temp-restore-period
+%% in the Amazon Elastic Compute Cloud User Guide.
 restore_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_tier(Client, Input, []).
@@ -9780,18 +10207,21 @@ revoke_security_group_ingress(Client, Input, Options)
 %% the IPv4 range of your subnet.
 %%
 %% </li> <li> Not all instance types support IPv6 addresses. For more
-%% information, see Instance types.
+%% information, see Instance types:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html.
 %%
 %% </li> <li> If you don't specify a security group ID, we use the
-%% default security group. For more information, see Security groups.
+%% default security group. For more information, see Security groups:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html.
 %%
 %% </li> <li> If any of the AMIs have a product code attached for which the
 %% user has not subscribed, the request fails.
 %%
-%% </li> </ul> You can create a launch template, which is a resource that
-%% contains the parameters to launch an instance. When you launch an instance
-%% using `RunInstances', you can specify the launch template instead of
-%% specifying the launch parameters.
+%% </li> </ul> You can create a launch template:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html,
+%% which is a resource that contains the parameters to launch an instance.
+%% When you launch an instance using `RunInstances', you can specify the
+%% launch template instead of specifying the launch parameters.
 %%
 %% To ensure faster instance launches, break up large requests into smaller
 %% batches. For example, create five separate launch requests for 100
@@ -9801,15 +10231,19 @@ revoke_security_group_ingress(Client, Input, Options)
 %% state. You can check the state of your instance using
 %% `DescribeInstances'. You can tag instances and EBS volumes during
 %% launch, after launch, or both. For more information, see `CreateTags'
-%% and Tagging your Amazon EC2 resources.
+%% and Tagging your Amazon EC2 resources:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html.
 %%
 %% Linux instances have access to the public key of the key pair at boot. You
 %% can use this key to provide secure access to the instance. Amazon EC2
 %% public images use this feature to provide secure access without passwords.
-%% For more information, see Key pairs.
+%% For more information, see Key pairs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 %%
-%% For troubleshooting, see What to do if an instance immediately terminates,
-%% and Troubleshooting connecting to your instance.
+%% For troubleshooting, see What to do if an instance immediately terminates:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html,
+%% and Troubleshooting connecting to your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html.
 run_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_instances(Client, Input, []).
@@ -9826,7 +10260,9 @@ run_instances(Client, Input, Options)
 %% can't stop or reboot a Scheduled Instance, but you can terminate it as
 %% needed. If you terminate a Scheduled Instance before the current scheduled
 %% time period ends, you can launch it again after a few minutes. For more
-%% information, see Scheduled Instances in the Amazon EC2 User Guide.
+%% information, see Scheduled Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html
+%% in the Amazon EC2 User Guide.
 run_scheduled_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_scheduled_instances(Client, Input, []).
@@ -9876,8 +10312,11 @@ search_transit_gateway_routes(Client, Input, Options)
 %%
 %% For more information about configuring your operating system to generate a
 %% crash dump when a kernel panic or stop error occurs, see Send a diagnostic
-%% interrupt (for advanced users) (Linux instances) or Send a diagnostic
-%% interrupt (for advanced users) (Windows instances).
+%% interrupt (for advanced users):
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html
+%% (Linux instances) or Send a diagnostic interrupt (for advanced users):
+%% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html
+%% (Windows instances).
 send_diagnostic_interrupt(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_diagnostic_interrupt(Client, Input, []).
@@ -9909,8 +10348,9 @@ send_diagnostic_interrupt(Client, Input, Options)
 %% the instance, either change its CPU credit option to `standard', or
 %% change its tenancy to `default' or `dedicated'.
 %%
-%% For more information, see Stop and start your instance in the Amazon EC2
-%% User Guide.
+%% For more information, see Stop and start your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
+%% Amazon EC2 User Guide.
 start_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instances(Client, Input, []).
@@ -9954,13 +10394,18 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 
 %% @doc Stops an Amazon EBS-backed instance.
 %%
-%% For more information, see Stop and start your instance in the Amazon EC2
-%% User Guide.
+%% For more information, see Stop and start your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
+%% Amazon EC2 User Guide.
 %%
 %% You can use the Stop action to hibernate an instance if the instance is
-%% enabled for hibernation and it meets the hibernation prerequisites. For
-%% more information, see Hibernate your instance in the Amazon EC2 User
-%% Guide.
+%% enabled for hibernation:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enabling-hibernation.html
+%% and it meets the hibernation prerequisites:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html.
+%% For more information, see Hibernate your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html in the
+%% Amazon EC2 User Guide.
 %%
 %% We don't charge usage for a stopped instance, or data transfer fees;
 %% however, your root partition Amazon EBS volume remains and continues to
@@ -9972,7 +10417,9 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% can't use the Stop action to hibernate Spot Instances, but you can
 %% specify that Amazon EC2 should hibernate Spot Instances when they are
 %% interrupted. For more information, see Hibernating interrupted Spot
-%% Instances in the Amazon EC2 User Guide.
+%% Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances
+%% in the Amazon EC2 User Guide.
 %%
 %% When you stop or hibernate an instance, we shut it down. You can restart
 %% your instance at any time. Before stopping or hibernating an instance,
@@ -9987,14 +10434,16 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% you terminate an instance, the root device and any other devices attached
 %% during the instance launch are automatically deleted. For more information
 %% about the differences between rebooting, stopping, hibernating, and
-%% terminating instances, see Instance lifecycle in the Amazon EC2 User
-%% Guide.
+%% terminating instances, see Instance lifecycle:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+%% in the Amazon EC2 User Guide.
 %%
 %% When you stop an instance, we attempt to shut it down forcibly after a
 %% short while. If your instance appears stuck in the stopping state after a
 %% period of time, there may be an issue with the underlying host computer.
-%% For more information, see Troubleshoot stopping your instance in the
-%% Amazon EC2 User Guide.
+%% For more information, see Troubleshoot stopping your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html
+%% in the Amazon EC2 User Guide.
 stop_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instances(Client, Input, []).
@@ -10068,11 +10517,14 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% persist. When you terminate an instance, any attached EBS volumes with the
 %% `DeleteOnTermination' block device mapping parameter set to `true'
 %% are automatically deleted. For more information about the differences
-%% between stopping and terminating instances, see Instance lifecycle in the
-%% Amazon EC2 User Guide.
+%% between stopping and terminating instances, see Instance lifecycle:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+%% in the Amazon EC2 User Guide.
 %%
 %% For more information about troubleshooting, see Troubleshooting
-%% terminating your instance in the Amazon EC2 User Guide.
+%% terminating your instance:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html
+%% in the Amazon EC2 User Guide.
 terminate_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_instances(Client, Input, []).
@@ -10102,7 +10554,9 @@ unassign_private_ip_addresses(Client, Input, Options)
 %% gateway.
 %%
 %% You cannot unassign your primary private IP. For more information, see
-%% Edit secondary IP address associations in the Amazon VPC User Guide.
+%% Edit secondary IP address associations:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary
+%% in the Amazon VPC User Guide.
 %%
 %% While unassigning is in progress, you cannot assign/unassign additional IP
 %% addresses while the connections are being drained. You are, however,
@@ -10135,8 +10589,9 @@ unlock_snapshot(Client, Input, Options)
 
 %% @doc Disables detailed monitoring for a running instance.
 %%
-%% For more information, see Monitoring your instances and volumes in the
-%% Amazon EC2 User Guide.
+%% For more information, see Monitoring your instances and volumes:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
+%% in the Amazon EC2 User Guide.
 unmonitor_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     unmonitor_instances(Client, Input, []).

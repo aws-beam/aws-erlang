@@ -31,8 +31,9 @@
 %% are specific to the locations and ASNs (typically, internet service
 %% providers or ISPs) that communicate with your application.
 %%
-%% For more information, see Using Amazon CloudWatch Internet Monitor in the
-%% Amazon CloudWatch User Guide.
+%% For more information, see Using Amazon CloudWatch Internet Monitor:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html
+%% in the Amazon CloudWatch User Guide.
 -module(aws_internetmonitor).
 
 -export([create_monitor/2,
@@ -85,8 +86,9 @@
 %% publishes internet measurements from Amazon Web Services that are specific
 %% to the city-networks. That is, the locations and ASNs (typically internet
 %% service providers or ISPs), where clients access your application. For
-%% more information, see Using Amazon CloudWatch Internet Monitor in the
-%% Amazon CloudWatch User Guide.
+%% more information, see Using Amazon CloudWatch Internet Monitor:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html
+%% in the Amazon CloudWatch User Guide.
 %%
 %% When you create a monitor, you choose the percentage of traffic that you
 %% want to monitor. You can also set a maximum limit for the number of
@@ -95,8 +97,9 @@
 %% limit of city-networks, but you only pay for the number of city-networks
 %% that are actually monitored. You can update your monitor at any time to
 %% change the percentage of traffic to monitor or the city-networks maximum.
-%% For more information, see Choosing a city-network maximum value in the
-%% Amazon CloudWatch User Guide.
+%% For more information, see Choosing a city-network maximum value:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
+%% in the Amazon CloudWatch User Guide.
 create_monitor(Client, Input) ->
     create_monitor(Client, Input, []).
 create_monitor(Client, Input0, Options0) ->
@@ -211,8 +214,9 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% `QueryId' and a monitor name.
 %%
 %% For more information about using the query interface, including examples,
-%% see Using the Amazon CloudWatch Internet Monitor query interface in the
-%% Amazon CloudWatch Internet Monitor User Guide.
+%% see Using the Amazon CloudWatch Internet Monitor query interface:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
+%% in the Amazon CloudWatch Internet Monitor User Guide.
 get_query_results(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_results(Client, MonitorName, QueryId, #{}, #{}).
@@ -382,8 +386,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% by providing parameters that you specify with `FilterParameters'.
 %%
 %% For more information about using the query interface, including examples,
-%% see Using the Amazon CloudWatch Internet Monitor query interface in the
-%% Amazon CloudWatch Internet Monitor User Guide.
+%% see Using the Amazon CloudWatch Internet Monitor query interface:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
+%% in the Amazon CloudWatch Internet Monitor User Guide.
 start_query(Client, MonitorName, Input) ->
     start_query(Client, MonitorName, Input, []).
 start_query(Client, MonitorName, Input0, Options0) ->
@@ -491,8 +496,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The city-network maximum that you choose is the limit, but you only pay
 %% for the number of city-networks that are actually monitored. For more
-%% information, see Choosing a city-network maximum value in the Amazon
-%% CloudWatch User Guide.
+%% information, see Choosing a city-network maximum value:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
+%% in the Amazon CloudWatch User Guide.
 update_monitor(Client, MonitorName, Input) ->
     update_monitor(Client, MonitorName, Input, []).
 update_monitor(Client, MonitorName, Input0, Options0) ->

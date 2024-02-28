@@ -110,7 +110,7 @@ add_application_input(Client, Input, Options)
 %%
 %% An input processor pre-processes records on the input stream before the
 %% application's SQL code executes. Currently, the only input processor
-%% available is Amazon Lambda.
+%% available is Amazon Lambda: https://docs.aws.amazon.com/lambda/.
 add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
@@ -185,7 +185,8 @@ add_application_vpc_configuration(Client, Input, Options)
 %% @doc Creates a Kinesis Data Analytics application.
 %%
 %% For information about creating a Kinesis Data Analytics application, see
-%% Creating an Application.
+%% Creating an Application:
+%% https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
@@ -391,7 +392,8 @@ list_applications(Client, Input, Options)
 
 %% @doc Retrieves the list of key-value tags assigned to the application.
 %%
-%% For more information, see Using Tagging.
+%% For more information, see Using Tagging:
+%% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -453,7 +455,8 @@ stop_application(Client, Input, Options)
 %%
 %% Note that the maximum number of application tags includes system tags. The
 %% maximum number of user-defined application tags is 50. For more
-%% information, see Using Tagging.
+%% information, see Using Tagging:
+%% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -463,7 +466,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes one or more tags from a Kinesis Data Analytics application.
 %%
-%% For more information, see Using Tagging.
+%% For more information, see Using Tagging:
+%% https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -508,7 +512,8 @@ update_application(Client, Input, Options)
 %% the `DescribeApplication' operation.
 %%
 %% For information about application maintenance, see Kinesis Data Analytics
-%% for Apache Flink Maintenance.
+%% for Apache Flink Maintenance:
+%% https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html.
 %%
 %% This operation is supported only for Amazon Kinesis Data Analytics for
 %% Apache Flink.

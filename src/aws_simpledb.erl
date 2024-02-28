@@ -156,6 +156,7 @@ batch_put_attributes(Client, Input, Options)
 %% The client can create up to 100 domains per account.
 %%
 %% If the client requires additional domains, go to
+%% http://aws.amazon.com/contact-us/simpledb-limit-request/:
 %% http://aws.amazon.com/contact-us/simpledb-limit-request/.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -232,12 +233,12 @@ get_attributes(Client, Input, Options)
 %% @doc The `ListDomains' operation lists all domains associated with the
 %% Access Key ID.
 %%
-%% It returns domain names up to the limit set by MaxNumberOfDomains. A
-%% NextToken is returned if there are more than `MaxNumberOfDomains'
-%% domains. Calling `ListDomains' successive times with the
-%% `NextToken' provided by the operation returns up to
-%% `MaxNumberOfDomains' more domain names with each successive operation
-%% call.
+%% It returns domain names up to the limit set by MaxNumberOfDomains:
+%% #MaxNumberOfDomains. A NextToken: #NextToken is returned if there are more
+%% than `MaxNumberOfDomains' domains. Calling `ListDomains'
+%% successive times with the `NextToken' provided by the operation
+%% returns up to `MaxNumberOfDomains' more domain names with each
+%% successive operation call.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).

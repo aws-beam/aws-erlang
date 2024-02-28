@@ -13,7 +13,8 @@
 %% an Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store
 %% (EBS) volume, an elastic network Interface (ENI), or a security group. For
 %% a complete list of resources currently supported by Config, see Supported
-%% Amazon Web Services resources.
+%% Amazon Web Services resources:
+%% https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources.
 %%
 %% You can access and manage Config through the Amazon Web Services
 %% Management Console, the Amazon Web Services Command Line Interface (Amazon
@@ -22,10 +23,13 @@
 %% the Amazon Web Services CLI commands that you can use to manage Config.
 %% The Config API uses the Signature Version 4 protocol for signing requests.
 %% For more information about how to sign a request with this protocol, see
-%% Signature Version 4 Signing Process. For detailed information about Config
-%% features and their associated actions or commands, as well as how to work
-%% with Amazon Web Services Management Console, see What Is Config in the
-%% Config Developer Guide.
+%% Signature Version 4 Signing Process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+%% For detailed information about Config features and their associated
+%% actions or commands, as well as how to work with Amazon Web Services
+%% Management Console, see What Is Config:
+%% https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html
+%% in the Config Developer Guide.
 -module(aws_config).
 
 -export([batch_get_aggregate_resource_config/2,
@@ -1083,7 +1087,8 @@ get_organization_custom_rule_policy(Client, Input, Options)
 %% @doc For accurate reporting on the compliance status, you must record the
 %% `AWS::Config::ResourceCompliance' resource type.
 %%
-%% For more information, see Selecting Which Resources Config Records.
+%% For more information, see Selecting Which Resources Config Records:
+%% https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html.
 %%
 %% Returns a list of `ConfigurationItems' for the specified resource. The
 %% list contains details about each state of the resource during the
@@ -1119,7 +1124,10 @@ get_resource_config_history(Client, Input, Options)
 %%
 %% To see additional information about the evaluation result, such as which
 %% rule flagged a resource as NON_COMPLIANT, use the
-%% GetComplianceDetailsByResource API. For more information, see the Examples
+%% GetComplianceDetailsByResource:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_GetComplianceDetailsByResource.html
+%% API. For more information, see the Examples:
+%% https://docs.aws.amazon.com/config/latest/APIReference/API_GetResourceEvaluationSummary.html#API_GetResourceEvaluationSummary_Examples
 %% section.
 get_resource_evaluation_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1244,20 +1252,26 @@ put_aggregation_authorization(Client, Input, Options)
 %% Services resources comply with your desired configurations.
 %%
 %% For information on how many Config rules you can have per account, see
-%% Service Limits in the Config Developer Guide.
+%% Service Limits :
+%% https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html
+%% in the Config Developer Guide.
 %%
 %% There are two types of rules: Config Managed Rules and Config Custom
 %% Rules. You can use `PutConfigRule' to create both Config Managed Rules
 %% and Config Custom Rules.
 %%
 %% Config Managed Rules are predefined, customizable rules created by Config.
-%% For a list of managed rules, see List of Config Managed Rules. If you are
-%% adding an Config managed rule, you must specify the rule's identifier
-%% for the `SourceIdentifier' key.
+%% For a list of managed rules, see List of Config Managed Rules:
+%% https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html.
+%% If you are adding an Config managed rule, you must specify the rule's
+%% identifier for the `SourceIdentifier' key.
 %%
 %% Config Custom Rules are rules that you create from scratch. There are two
 %% ways to create Config custom rules: with Lambda functions ( Lambda
-%% Developer Guide) and with Guard (Guard GitHub Repository), a
+%% Developer Guide:
+%% https://docs.aws.amazon.com/config/latest/developerguide/gettingstarted-concepts.html#gettingstarted-concepts-function)
+%% and with Guard (Guard GitHub Repository:
+%% https://github.com/aws-cloudformation/cloudformation-guard), a
 %% policy-as-code language. Config custom rules created with Lambda are
 %% called Config Custom Lambda Rules and Config custom rules created with
 %% Guard are called Config Custom Policy Rules.
@@ -1279,7 +1293,9 @@ put_aggregation_authorization(Client, Input, Options)
 %% in the `ConfigRule' data type that you use in this request.
 %%
 %% For more information about developing and using Config rules, see
-%% Evaluating Resources with Config Rules in the Config Developer Guide.
+%% Evaluating Resources with Config Rules:
+%% https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html
+%% in the Config Developer Guide.
 %%
 %% `PutConfigRule' is an idempotent API. Subsequent requests won’t create
 %% a duplicate resource if one was already created. If a following request
@@ -1316,7 +1332,9 @@ put_config_rule(Client, Input, Options)
 %% valid delegated administrator.
 %%
 %% To register a delegated administrator, see Register a Delegated
-%% Administrator in the Config developer guide.
+%% Administrator:
+%% https://docs.aws.amazon.com/config/latest/developerguide/set-up-aggregator-cli.html#register-a-delegated-administrator-cli
+%% in the Config developer guide.
 %%
 %% `PutConfigurationAggregator' is an idempotent API. Subsequent requests
 %% won’t create a duplicate resource if one was already created. If a
@@ -1335,7 +1353,9 @@ put_configuration_aggregator(Client, Input, Options)
 %%
 %% You can also use this action to change the `roleARN' or the
 %% `recordingGroup' of an existing recorder. For more information, see
-%% Managing the Configuration Recorder in the Config Developer Guide.
+%% Managing the Configuration Recorder :
+%% https://docs.aws.amazon.com/config/latest/developerguide/stop-start-recorder.html
+%% in the Config Developer Guide.
 %%
 %% You can specify only one configuration recorder for each Amazon Web
 %% Services Region for each account.
@@ -1354,7 +1374,9 @@ put_configuration_recorder(Client, Input, Options)
 %% A conformance pack is a collection of Config rules that can be easily
 %% deployed in an account and a region and across an organization. For
 %% information on how many conformance packs you can have per account, see
-%% Service Limits in the Config Developer Guide.
+%% Service Limits :
+%% https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html
+%% in the Config Developer Guide.
 %%
 %% This API creates a service-linked role
 %% `AWSServiceRoleForConfigConforms' in your account. The service-linked
@@ -1374,7 +1396,8 @@ put_conformance_pack(Client, Input, Options)
 %% Amazon SNS topic.
 %%
 %% For more information, see Notifications that Config Sends to an Amazon SNS
-%% topic.
+%% topic:
+%% https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html.
 %%
 %% Before you can create a delivery channel, you must create a configuration
 %% recorder.
@@ -1421,7 +1444,9 @@ put_external_evaluation(Client, Input, Options)
 %% configurations.
 %%
 %% For information on how many organization Config rules you can have per
-%% account, see Service Limits in the Config Developer Guide.
+%% account, see Service Limits :
+%% https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html
+%% in the Config Developer Guide.
 %%
 %% Only a management account and a delegated administrator can create or
 %% update an organization Config rule. When calling this API with a delegated
@@ -1446,13 +1471,17 @@ put_external_evaluation(Client, Input, Options)
 %% Managed Rules and Config Custom Rules.
 %%
 %% Config Managed Rules are predefined, customizable rules created by Config.
-%% For a list of managed rules, see List of Config Managed Rules. If you are
-%% adding an Config managed rule, you must specify the rule's identifier
-%% for the `RuleIdentifier' key.
+%% For a list of managed rules, see List of Config Managed Rules:
+%% https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html.
+%% If you are adding an Config managed rule, you must specify the rule's
+%% identifier for the `RuleIdentifier' key.
 %%
 %% Config Custom Rules are rules that you create from scratch. There are two
 %% ways to create Config custom rules: with Lambda functions ( Lambda
-%% Developer Guide) and with Guard (Guard GitHub Repository), a
+%% Developer Guide:
+%% https://docs.aws.amazon.com/config/latest/developerguide/gettingstarted-concepts.html#gettingstarted-concepts-function)
+%% and with Guard (Guard GitHub Repository:
+%% https://github.com/aws-cloudformation/cloudformation-guard), a
 %% policy-as-code language. Config custom rules created with Lambda are
 %% called Config Custom Lambda Rules and Config custom rules created with
 %% Guard are called Config Custom Policy Rules.
@@ -1483,8 +1512,9 @@ put_organization_config_rule(Client, Input, Options)
 %% Services Organization.
 %%
 %% For information on how many organization conformance packs and how many
-%% Config rules you can have per account, see Service Limits in the Config
-%% Developer Guide.
+%% Config rules you can have per account, see Service Limits :
+%% https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html
+%% in the Config Developer Guide.
 %%
 %% Only a management account and a delegated administrator can call this API.
 %% When calling this API with a delegated administrator, you must ensure
@@ -1553,12 +1583,14 @@ put_organization_conformance_pack(Client, Input, Options)
 %% Auto remediation can be initiated even for compliant resources
 %%
 %% If you enable auto remediation for a specific Config rule using the
-%% PutRemediationConfigurations API or the Config console, it initiates the
-%% remediation process for all non-compliant resources for that specific
-%% rule. The auto remediation process relies on the compliance data snapshot
-%% which is captured on a periodic basis. Any non-compliant resource that is
-%% updated between the snapshot schedule will continue to be remediated based
-%% on the last known compliance data snapshot.
+%% PutRemediationConfigurations:
+%% https://docs.aws.amazon.com/config/latest/APIReference/emAPI_PutRemediationConfigurations.html
+%% API or the Config console, it initiates the remediation process for all
+%% non-compliant resources for that specific rule. The auto remediation
+%% process relies on the compliance data snapshot which is captured on a
+%% periodic basis. Any non-compliant resource that is updated between the
+%% snapshot schedule will continue to be remediated based on the last known
+%% compliance data snapshot.
 %%
 %% This means that in some cases auto remediation can be initiated even for
 %% compliant resources, since the bootstrap processor uses a database that
@@ -1601,18 +1633,21 @@ put_remediation_configurations(Client, Input, Options)
 %% `NON_COMPLIANT'. If you use this API for `COMPLIANT' resources or
 %% resources that are `NOT_APPLICABLE', a remediation exception will not
 %% be generated. For more information on the conditions that initiate the
-%% possible Config evaluation results, see Concepts | Config Rules in the
-%% Config Developer Guide.
+%% possible Config evaluation results, see Concepts | Config Rules:
+%% https://docs.aws.amazon.com/config/latest/developerguide/config-concepts.html#aws-config-rules
+%% in the Config Developer Guide.
 %%
 %% Auto remediation can be initiated even for compliant resources
 %%
 %% If you enable auto remediation for a specific Config rule using the
-%% PutRemediationConfigurations API or the Config console, it initiates the
-%% remediation process for all non-compliant resources for that specific
-%% rule. The auto remediation process relies on the compliance data snapshot
-%% which is captured on a periodic basis. Any non-compliant resource that is
-%% updated between the snapshot schedule will continue to be remediated based
-%% on the last known compliance data snapshot.
+%% PutRemediationConfigurations:
+%% https://docs.aws.amazon.com/config/latest/APIReference/emAPI_PutRemediationConfigurations.html
+%% API or the Config console, it initiates the remediation process for all
+%% non-compliant resources for that specific rule. The auto remediation
+%% process relies on the compliance data snapshot which is captured on a
+%% periodic basis. Any non-compliant resource that is updated between the
+%% snapshot schedule will continue to be remediated based on the last known
+%% compliance data snapshot.
 %%
 %% This means that in some cases auto remediation can be initiated even for
 %% compliant resources, since the bootstrap processor uses a database that
@@ -1690,7 +1725,8 @@ put_stored_query(Client, Input, Options)
 %% across multiple accounts and regions, performs the corresponding search,
 %% and returns resource configurations matching the properties.
 %%
-%% For more information about query components, see the Query Components
+%% For more information about query components, see the Query Components :
+%% https://docs.aws.amazon.com/config/latest/developerguide/query-components.html
 %% section in the Config Developer Guide.
 %%
 %% If you run an aggregation query (i.e., using `GROUP BY' or using
@@ -1714,7 +1750,8 @@ select_aggregate_resource_config(Client, Input, Options)
 %% performs the corresponding search, and returns resource configurations
 %% matching the properties.
 %%
-%% For more information about query components, see the Query Components
+%% For more information about query components, see the Query Components :
+%% https://docs.aws.amazon.com/config/latest/developerguide/query-components.html
 %% section in the Config Developer Guide.
 select_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1807,14 +1844,19 @@ start_remediation_execution(Client, Input, Options)
 %% Ensure you have the `cloudformation:DescribeType' role setup to
 %% validate the resource type schema.
 %%
-%% You can find the Resource type schema in &quot;Amazon Web Services public
-%% extensions&quot; within the CloudFormation registry or with the following
-%% CLI commmand: `aws cloudformation describe-type --type-name
-%% &quot;AWS::S3::Bucket&quot; --type RESOURCE'.
+%% You can find the Resource type schema:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-schema.html
+%% in &quot;Amazon Web Services public extensions&quot; within the
+%% CloudFormation registry or with the following CLI commmand: `aws
+%% cloudformation describe-type --type-name &quot;AWS::S3::Bucket&quot;
+%% --type RESOURCE'.
 %%
 %% For more information, see Managing extensions through the CloudFormation
-%% registry and Amazon Web Services resource and property types reference in
-%% the CloudFormation User Guide.
+%% registry:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-view
+%% and Amazon Web Services resource and property types reference:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+%% in the CloudFormation User Guide.
 start_resource_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_evaluation(Client, Input, []).

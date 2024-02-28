@@ -152,7 +152,8 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 %%
 %% If the optional post-fulfillment response is specified, the messages are
 %% returned as follows. For more information, see
-%% PostFulfillmentStatusSpecification.
+%% PostFulfillmentStatusSpecification:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
 %% <ul> <li> Success message - Returned if the Lambda function completes
 %% successfully and the intent state is fulfilled or ready fulfillment if the
@@ -167,7 +168,8 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 %% seconds, the timeout message is returned. If you configure a timeout, the
 %% timeout message is returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message.
+%% </li> </ul> For more information, see Completion message:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -223,7 +225,8 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %%
 %% If the optional post-fulfillment response is specified, the messages are
 %% returned as follows. For more information, see
-%% PostFulfillmentStatusSpecification.
+%% PostFulfillmentStatusSpecification:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
 %% <ul> <li> Success message - Returned if the Lambda function completes
 %% successfully and the intent state is fulfilled or ready fulfillment if the
@@ -238,7 +241,8 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %% seconds, the timeout message is returned. If you configure a timeout, the
 %% timeout message is returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message.
+%% </li> </ul> For more information, see Completion message:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -302,7 +306,8 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %%
 %% If the optional post-fulfillment response is specified, the messages are
 %% returned as follows. For more information, see
-%% PostFulfillmentStatusSpecification.
+%% PostFulfillmentStatusSpecification:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/API_PostFulfillmentStatusSpecification.html.
 %%
 %% <ul> <li> Success message - Returned if the Lambda function completes
 %% successfully and the intent state is fulfilled or ready fulfillment if the
@@ -317,23 +322,28 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %% seconds, the timeout message is returned. If you configure a timeout, the
 %% timeout message is returned when the period times out.
 %%
-%% </li> </ul> For more information, see Completion message.
+%% </li> </ul> For more information, see Completion message:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
 %%
 %% If the optional update message is configured, it is played at the
 %% specified frequency while the Lambda function is running and the update
 %% message state is active. If the fulfillment update message is not active,
 %% the Lambda function runs with a 30 second timeout.
 %%
-%% For more information, see Update message
+%% For more information, see Update message :
+%% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-update.html
 %%
 %% The `StartConversation' operation is supported only in the following
 %% SDKs:
 %%
-%% <ul> <li> AWS SDK for C++
+%% <ul> <li> AWS SDK for C++:
+%% https://docs.aws.amazon.com/goto/SdkForCpp/runtime.lex.v2-2020-08-07/StartConversation
 %%
-%% </li> <li> AWS SDK for Java V2
+%% </li> <li> AWS SDK for Java V2:
+%% https://docs.aws.amazon.com/goto/SdkForJavaV2/runtime.lex.v2-2020-08-07/StartConversation
 %%
-%% </li> <li> AWS SDK for Ruby V3
+%% </li> <li> AWS SDK for Ruby V3:
+%% https://docs.aws.amazon.com/goto/SdkForRubyV3/runtime.lex.v2-2020-08-07/StartConversation
 %%
 %% </li> </ul>
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->

@@ -9,7 +9,8 @@
 %% <ul> <li> The REST API requires you to handle connection details, such as
 %% calculating signatures, handling request retries, and error handling. For
 %% general information about using the Amazon Web Services REST APIs, see
-%% Amazon Web Services APIs.
+%% Amazon Web Services APIs:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-apis.html.
 %%
 %% To access Network Firewall using the REST API endpoint:
 %% `https://network-firewall.&lt;region&gt;.amazonaws.com '
@@ -17,11 +18,12 @@
 %% </li> <li> Alternatively, you can use one of the Amazon Web Services SDKs
 %% to access an API that's tailored to the programming language or
 %% platform that you're using. For more information, see Amazon Web
-%% Services SDKs.
+%% Services SDKs: http://aws.amazon.com/tools/#SDKs.
 %%
 %% </li> <li> For descriptions of Network Firewall features, including and
 %% step-by-step instructions on how to use them through the Network Firewall
-%% console, see the Network Firewall Developer Guide.
+%% console, see the Network Firewall Developer Guide:
+%% https://docs.aws.amazon.com/network-firewall/latest/developerguide/.
 %%
 %% </li> </ul> Network Firewall is a stateful, managed, network firewall and
 %% intrusion detection and prevention service for Amazon Virtual Private
@@ -31,7 +33,7 @@
 %% Network Firewall uses rules that are compatible with Suricata, a free,
 %% open source network analysis and threat detection engine. Network Firewall
 %% supports Suricata version 6.0.9. For information about Suricata, see the
-%% Suricata website.
+%% Suricata website: https://suricata.io/.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways. The following are just a few examples:
@@ -51,7 +53,8 @@
 %%
 %% </li> </ul> To enable Network Firewall for your VPCs, you perform steps in
 %% both Amazon VPC and in Network Firewall. For information about using
-%% Amazon VPC, see Amazon VPC User Guide.
+%% Amazon VPC, see Amazon VPC User Guide:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/.
 %%
 %% To start using Network Firewall, do the following:
 %%
@@ -264,8 +267,9 @@ create_rule_group(Client, Input, Options)
 %% `DescribeTLSInspectionConfiguration'.
 %%
 %% For more information about TLS inspection configurations, see Inspecting
-%% SSL/TLS traffic with TLS inspection configurations in the Network Firewall
-%% Developer Guide.
+%% SSL/TLS traffic with TLS inspection configurations:
+%% https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection.html
+%% in the Network Firewall Developer Guide.
 create_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_t_l_s_inspection_configuration(Client, Input, []).
@@ -486,14 +490,18 @@ list_tags_for_resource(Client, Input, Options)
 %% Resource Access Manager (RAM) operations to access and accept the shared
 %% rule group or firewall policy.
 %%
-%% <ul> <li> GetResourceShareInvitations - Returns the Amazon Resource Names
-%% (ARNs) of the resource share invitations.
+%% <ul> <li> GetResourceShareInvitations:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_GetResourceShareInvitations.html
+%% - Returns the Amazon Resource Names (ARNs) of the resource share
+%% invitations.
 %%
-%% </li> <li> AcceptResourceShareInvitation - Accepts the share invitation
-%% for a specified resource share.
+%% </li> <li> AcceptResourceShareInvitation:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_AcceptResourceShareInvitation.html
+%% - Accepts the share invitation for a specified resource share.
 %%
 %% </li> </ul> For additional information about resource sharing using RAM,
-%% see Resource Access Manager User Guide.
+%% see Resource Access Manager User Guide:
+%% https://docs.aws.amazon.com/ram/latest/userguide/what-is.html.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).

@@ -13,7 +13,8 @@
 %% server and operating system maintenance, capacity provisioning and
 %% automatic scaling, code monitoring and logging. With Lambda, you can run
 %% code for virtually any type of application or backend service. For more
-%% information about the Lambda service, see What is Lambda in the Lambda
+%% information about the Lambda service, see What is Lambda:
+%% https://docs.aws.amazon.com/lambda/latest/dg/welcome.html in the Lambda
 %% Developer Guide.
 %%
 %% The Lambda API Reference provides information about each of the API
@@ -22,15 +23,19 @@
 %%
 %% You can use Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE) Toolkits, and command line tools to access the API. For
-%% installation instructions, see Tools for Amazon Web Services.
+%% installation instructions, see Tools for Amazon Web Services:
+%% http://aws.amazon.com/tools/.
 %%
 %% For a list of Region-specific endpoints that Lambda supports, see Lambda
-%% endpoints and quotas in the Amazon Web Services General Reference..
+%% endpoints and quotas :
+%% https://docs.aws.amazon.com/general/latest/gr/lambda-service.html/ in the
+%% Amazon Web Services General Reference..
 %%
 %% When making the API calls, you will need to authenticate your request by
 %% providing a signature. Lambda supports signature version 4. For more
-%% information, see Signature Version 4 signing process in the Amazon Web
-%% Services General Reference..
+%% information, see Signature Version 4 signing process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html in
+%% the Amazon Web Services General Reference..
 %%
 %% CA certificates
 %%
@@ -70,9 +75,11 @@
 %% </li> <li> Starfield Class 2 Certification Authority
 %%
 %% </li> </ul> Root certificates from the first two authorities are available
-%% from Amazon trust services, but keeping your computer up-to-date is the
-%% more straightforward solution. To learn more about ACM-provided
-%% certificates, see Amazon Web Services Certificate Manager FAQs.
+%% from Amazon trust services: https://www.amazontrust.com/repository/, but
+%% keeping your computer up-to-date is the more straightforward solution. To
+%% learn more about ACM-provided certificates, see Amazon Web Services
+%% Certificate Manager FAQs.:
+%% http://aws.amazon.com/certificate-manager/faqs/#certificates
 -module(aws_lambda).
 
 -export([add_layer_version_permission/4,
@@ -243,7 +250,8 @@
 %%====================================================================
 
 %% @doc Adds permissions to the resource-based policy of a version of an
-%% Lambda layer.
+%% Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% Use this action to grant layer usage permission to other accounts. You can
 %% grant permission to a single account, all accounts in an organization, or
@@ -296,7 +304,8 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %%
 %% This operation adds a statement to a resource-based permissions policy for
 %% the function. For more information about function policies, see Using
-%% resource-based policies for Lambda.
+%% resource-based policies for Lambda:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html.
 add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
 add_permission(Client, FunctionName, Input0, Options0) ->
@@ -320,7 +329,9 @@ add_permission(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an alias for a Lambda function version.
+%% @doc Creates an alias:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
+%% for a Lambda function version.
 %%
 %% Use aliases to provide clients with a function identifier that you can
 %% update to invoke a different version.
@@ -352,9 +363,11 @@ create_alias(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Creates a code signing configuration.
 %%
-%% A code signing configuration defines a list of allowed signing profiles
-%% and defines the code-signing validation policy (action to be taken if
-%% deployment validation checks fail).
+%% A code signing configuration:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html
+%% defines a list of allowed signing profiles and defines the code-signing
+%% validation policy (action to be taken if deployment validation checks
+%% fail).
 create_code_signing_config(Client, Input) ->
     create_code_signing_config(Client, Input, []).
 create_code_signing_config(Client, Input0, Options0) ->
@@ -384,19 +397,26 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% For details about how to configure different event sources, see the
 %% following topics.
 %%
-%% <ul> <li> Amazon DynamoDB Streams
+%% <ul> <li> Amazon DynamoDB Streams:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-dynamodb-eventsourcemapping
 %%
-%% </li> <li> Amazon Kinesis
+%% </li> <li> Amazon Kinesis:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-eventsourcemapping
 %%
-%% </li> <li> Amazon SQS
+%% </li> <li> Amazon SQS:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-eventsource
 %%
-%% </li> <li> Amazon MQ and RabbitMQ
+%% </li> <li> Amazon MQ and RabbitMQ:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-eventsourcemapping
 %%
-%% </li> <li> Amazon MSK
+%% </li> <li> Amazon MSK:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html
 %%
-%% </li> <li> Apache Kafka
+%% </li> <li> Apache Kafka:
+%% https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html
 %%
-%% </li> <li> Amazon DocumentDB
+%% </li> <li> Amazon DocumentDB:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html
 %%
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
@@ -421,19 +441,26 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% </li> </ul> For information about which configuration parameters apply to
 %% each event source, see the following topics.
 %%
-%% <ul> <li> Amazon DynamoDB Streams
+%% <ul> <li> Amazon DynamoDB Streams:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-ddb-params
 %%
-%% </li> <li> Amazon Kinesis
+%% </li> <li> Amazon Kinesis:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-params
 %%
-%% </li> <li> Amazon SQS
+%% </li> <li> Amazon SQS:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-params
 %%
-%% </li> <li> Amazon MQ and RabbitMQ
+%% </li> <li> Amazon MQ and RabbitMQ:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-params
 %%
-%% </li> <li> Amazon MSK
+%% </li> <li> Amazon MSK:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#services-msk-parms
 %%
-%% </li> <li> Apache Kafka
+%% </li> <li> Apache Kafka:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html#services-kafka-parms
 %%
-%% </li> <li> Amazon DocumentDB
+%% </li> <li> Amazon DocumentDB:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
 %%
 %% </li> </ul>
 create_event_source_mapping(Client, Input) ->
@@ -460,24 +487,29 @@ create_event_source_mapping(Client, Input0, Options0) ->
 
 %% @doc Creates a Lambda function.
 %%
-%% To create a function, you need a deployment package and an execution role.
+%% To create a function, you need a deployment package:
+%% https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html
+%% and an execution role:
+%% https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.
 %% The deployment package is a .zip file archive or container image that
 %% contains your function code. The execution role grants the function
 %% permission to use Amazon Web Services, such as Amazon CloudWatch Logs for
 %% log streaming and X-Ray for request tracing.
 %%
-%% If the deployment package is a container image, then you set the package
-%% type to `Image'. For a container image, the code property must include
-%% the URI of a container image in the Amazon ECR registry. You do not need
-%% to specify the handler and runtime properties.
+%% If the deployment package is a container image:
+%% https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html, then you
+%% set the package type to `Image'. For a container image, the code
+%% property must include the URI of a container image in the Amazon ECR
+%% registry. You do not need to specify the handler and runtime properties.
 %%
-%% If the deployment package is a .zip file archive, then you set the package
-%% type to `Zip'. For a .zip file archive, the code property specifies
-%% the location of the .zip file. You must also specify the handler and
-%% runtime properties. The code in the deployment package must be compatible
-%% with the target instruction set architecture of the function (`x86-64'
-%% or `arm64'). If you do not specify the architecture, then the default
-%% value is `x86-64'.
+%% If the deployment package is a .zip file archive:
+%% https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip,
+%% then you set the package type to `Zip'. For a .zip file archive, the
+%% code property specifies the location of the .zip file. You must also
+%% specify the handler and runtime properties. The code in the deployment
+%% package must be compatible with the target instruction set architecture of
+%% the function (`x86-64' or `arm64'). If you do not specify the
+%% architecture, then the default value is `x86-64'.
 %%
 %% When you create a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
@@ -485,7 +517,8 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% modify the function. The `State', `StateReason', and
 %% `StateReasonCode' fields in the response from
 %% `GetFunctionConfiguration' indicate when the function is ready to
-%% invoke. For more information, see Lambda function states.
+%% invoke. For more information, see Lambda function states:
+%% https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html.
 %%
 %% A function has an unpublished version, and can have published versions and
 %% aliases. The unpublished version changes when you update your
@@ -519,7 +552,8 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% function in response to events in other Amazon Web Services, create an
 %% event source mapping (`CreateEventSourceMapping'), or configure a
 %% function trigger in the other service. For more information, see Invoking
-%% Lambda functions.
+%% Lambda functions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 create_function(Client, Input0, Options0) ->
@@ -570,7 +604,8 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Lambda function alias.
+%% @doc Deletes a Lambda function alias:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
 delete_alias(Client, FunctionName, Name, Input0, Options0) ->
@@ -619,7 +654,8 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an event source mapping.
+%% @doc Deletes an event source mapping:
+%% https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html.
 %%
 %% You can get the identifier of a mapping from the output of
 %% `ListEventSourceMappings'.
@@ -782,7 +818,8 @@ delete_function_url_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a version of an Lambda layer.
+%% @doc Deletes a version of an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% Deleted versions can no longer be viewed or added to functions. To avoid
 %% breaking functions, a copy of the version remains in Lambda until no
@@ -833,7 +870,8 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves details about your account's limits and usage in an
+%% @doc Retrieves details about your account's limits:
+%% https://docs.aws.amazon.com/lambda/latest/dg/limits.html and usage in an
 %% Amazon Web Services Region.
 get_account_settings(Client)
   when is_map(Client) ->
@@ -857,7 +895,8 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns details about a Lambda function alias.
+%% @doc Returns details about a Lambda function alias:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 get_alias(Client, FunctionName, Name)
   when is_map(Client) ->
     get_alias(Client, FunctionName, Name, #{}, #{}).
@@ -1102,8 +1141,9 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a version of an Lambda layer, with a link
-%% to download the layer archive that's valid for 10 minutes.
+%% @doc Returns information about a version of an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
+%% with a link to download the layer archive that's valid for 10 minutes.
 get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
@@ -1126,8 +1166,9 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a version of an Lambda layer, with a link
-%% to download the layer archive that's valid for 10 minutes.
+%% @doc Returns information about a version of an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
+%% with a link to download the layer archive that's valid for 10 minutes.
 get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
     get_layer_version_by_arn(Client, Arn, #{}, #{}).
@@ -1154,7 +1195,8 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the permission policy for a version of an Lambda layer.
+%% @doc Returns the permission policy for a version of an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% For more information, see `AddLayerVersionPermission'.
 get_layer_version_policy(Client, LayerName, VersionNumber)
@@ -1179,8 +1221,9 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the resource-based IAM policy for a function, version, or
-%% alias.
+%% @doc Returns the resource-based IAM policy:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
+%% for a function, version, or alias.
 get_policy(Client, FunctionName)
   when is_map(Client) ->
     get_policy(Client, FunctionName, #{}, #{}).
@@ -1241,7 +1284,8 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 %% If the runtime update mode is Manual, this includes the ARN of the runtime
 %% version and the runtime update mode. If the runtime update mode is Auto or
 %% Function update, this includes the runtime update mode and `null' is
-%% returned for the ARN. For more information, see Runtime updates.
+%% returned for the ARN. For more information, see Runtime updates:
+%% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
 get_runtime_management_config(Client, FunctionName)
   when is_map(Client) ->
     get_runtime_management_config(Client, FunctionName, #{}, #{}).
@@ -1277,31 +1321,38 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% passes the `ClientContext' object to your function for synchronous
 %% invocations only.
 %%
-%% For synchronous invocation, details about the function response, including
-%% errors, are included in the response body and headers. For either
-%% invocation type, you can find more information in the execution log and
-%% trace.
+%% For synchronous invocation:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html, details
+%% about the function response, including errors, are included in the
+%% response body and headers. For either invocation type, you can find more
+%% information in the execution log:
+%% https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html and
+%% trace: https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html.
 %%
 %% When an error occurs, your function may be invoked multiple times. Retry
 %% behavior varies by error type, client, event source, and invocation type.
 %% For example, if you invoke a function asynchronously and it returns an
 %% error, Lambda executes the function up to two more times. For more
-%% information, see Error handling and automatic retries in Lambda.
+%% information, see Error handling and automatic retries in Lambda:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html.
 %%
-%% For asynchronous invocation, Lambda adds events to a queue before sending
-%% them to your function. If your function does not have enough capacity to
-%% keep up with the queue, events may be lost. Occasionally, your function
-%% may receive the same event multiple times, even if no error occurs. To
-%% retain events that were not processed, configure your function with a
-%% dead-letter queue.
+%% For asynchronous invocation:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html, Lambda
+%% adds events to a queue before sending them to your function. If your
+%% function does not have enough capacity to keep up with the queue, events
+%% may be lost. Occasionally, your function may receive the same event
+%% multiple times, even if no error occurs. To retain events that were not
+%% processed, configure your function with a dead-letter queue:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq.
 %%
 %% The status code in the API response doesn't reflect function errors.
 %% Error codes are reserved for errors that prevent your function from
-%% executing, such as permissions errors, quota errors, or issues with your
-%% function's code and configuration. For example, Lambda returns
-%% `TooManyRequestsException' if running the function would cause you to
-%% exceed a concurrency limit at either the account level
-%% (`ConcurrentInvocationLimitExceeded') or function level
+%% executing, such as permissions errors, quota:
+%% https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html
+%% errors, or issues with your function's code and configuration. For
+%% example, Lambda returns `TooManyRequestsException' if running the
+%% function would cause you to exceed a concurrency limit at either the
+%% account level (`ConcurrentInvocationLimitExceeded') or function level
 %% (`ReservedFunctionConcurrentInvocationLimitExceeded').
 %%
 %% For functions with a long timeout, your client might disconnect during
@@ -1309,9 +1360,11 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% client, SDK, firewall, proxy, or operating system to allow for long
 %% connections with timeout or keep-alive settings.
 %%
-%% This operation requires permission for the lambda:InvokeFunction action.
-%% For details on how to set up permissions for cross-account invocations,
-%% see Granting function access to other accounts.
+%% This operation requires permission for the lambda:InvokeFunction:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html
+%% action. For details on how to set up permissions for cross-account
+%% invocations, see Granting function access to other accounts:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
 invoke(Client, FunctionName, Input0, Options0) ->
@@ -1390,11 +1443,14 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 %% clients.
 %%
 %% For more information, see Configuring a Lambda function to stream
-%% responses.
+%% responses:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html.
 %%
-%% This operation requires permission for the lambda:InvokeFunction action.
-%% For details on how to set up permissions for cross-account invocations,
-%% see Granting function access to other accounts.
+%% This operation requires permission for the lambda:InvokeFunction:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html
+%% action. For details on how to set up permissions for cross-account
+%% invocations, see Granting function access to other accounts:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
 invoke_with_response_stream(Client, FunctionName, Input) ->
     invoke_with_response_stream(Client, FunctionName, Input, []).
 invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
@@ -1439,7 +1495,9 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
         Result
     end.
 
-%% @doc Returns a list of aliases for a Lambda function.
+%% @doc Returns a list of aliases:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
+%% for a Lambda function.
 list_aliases(Client, FunctionName)
   when is_map(Client) ->
     list_aliases(Client, FunctionName, #{}, #{}).
@@ -1468,7 +1526,8 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of code signing configurations.
+%% @doc Returns a list of code signing configurations:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuring-codesigning.html.
 %%
 %% A request returns up to 10,000 configurations per call. You can use the
 %% `MaxItems' parameter to return fewer configurations per call.
@@ -1665,12 +1724,15 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the versions of an Lambda layer.
+%% @doc Lists the versions of an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% Versions that have been deleted aren't listed. Specify a runtime
-%% identifier to list only versions that indicate that they're compatible
-%% with that runtime. Specify a compatible architecture to include only layer
-%% versions that are compatible with that architecture.
+%% identifier:
+%% https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html to list
+%% only versions that indicate that they're compatible with that runtime.
+%% Specify a compatible architecture to include only layer versions that are
+%% compatible with that architecture.
 list_layer_versions(Client, LayerName)
   when is_map(Client) ->
     list_layer_versions(Client, LayerName, #{}, #{}).
@@ -1700,13 +1762,16 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists Lambda layers and shows information about the latest version of
-%% each.
+%% @doc Lists Lambda layers:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html and
+%% shows information about the latest version of each.
 %%
-%% Specify a runtime identifier to list only layers that indicate that
-%% they're compatible with that runtime. Specify a compatible
-%% architecture to include only layers that are compatible with that
-%% instruction set architecture.
+%% Specify a runtime identifier:
+%% https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html to list
+%% only layers that indicate that they're compatible with that runtime.
+%% Specify a compatible architecture to include only layers that are
+%% compatible with that instruction set architecture:
+%% https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html.
 list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
@@ -1765,7 +1830,8 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a function's tags.
+%% @doc Returns a function's tags:
+%% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html.
 %%
 %% You can also view tags with `GetFunction'.
 list_tags(Client, Resource)
@@ -1790,8 +1856,9 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of versions, with the version-specific configuration
-%% of each.
+%% @doc Returns a list of versions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html, with
+%% the version-specific configuration of each.
 %%
 %% Lambda returns up to 50 versions per call.
 list_versions_by_function(Client, FunctionName)
@@ -1821,7 +1888,9 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates an Lambda layer from a ZIP archive.
+%% @doc Creates an Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html
+%% from a ZIP archive.
 %%
 %% Each time you call `PublishLayerVersion' with the same layer name, a
 %% new version is created.
@@ -1850,8 +1919,9 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a version from the current code and configuration of a
-%% function.
+%% @doc Creates a version:
+%% https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html from
+%% the current code and configuration of a function.
 %%
 %% Use versions to create a snapshot of your function code and configuration
 %% that doesn't change.
@@ -1924,7 +1994,8 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 %% can reserve concurrency for as many functions as you like, as long as you
 %% leave at least 100 simultaneous executions unreserved for functions that
 %% aren't configured with a per-function limit. For more information, see
-%% Lambda function scaling.
+%% Lambda function scaling:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html.
 put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
 put_function_concurrency(Client, FunctionName, Input0, Options0) ->
@@ -1947,8 +2018,9 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Configures options for asynchronous invocation on a function,
-%% version, or alias.
+%% @doc Configures options for asynchronous invocation:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html on a
+%% function, version, or alias.
 %%
 %% If a configuration already exists for a function, version, or alias, this
 %% operation overwrites it. If you exclude any settings, they are removed. To
@@ -1963,10 +2035,12 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
 %% `UpdateFunctionConfiguration'.
 %%
 %% To send an invocation record to a queue, topic, function, or event bus,
-%% specify a destination. You can configure separate destinations for
-%% successful invocations (on-success) and events that fail all processing
-%% attempts (on-failure). You can configure destinations in addition to or
-%% instead of a dead-letter queue.
+%% specify a destination:
+%% https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations.
+%% You can configure separate destinations for successful invocations
+%% (on-success) and events that fail all processing attempts (on-failure).
+%% You can configure destinations in addition to or instead of a dead-letter
+%% queue.
 put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
 put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
@@ -2018,7 +2092,8 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 %% @doc Sets the runtime management configuration for a function's
 %% version.
 %%
-%% For more information, see Runtime updates.
+%% For more information, see Runtime updates:
+%% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
 put_runtime_management_config(Client, FunctionName, Input) ->
     put_runtime_management_config(Client, FunctionName, Input, []).
 put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
@@ -2043,7 +2118,8 @@ put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a statement from the permissions policy for a version of an
-%% Lambda layer.
+%% Lambda layer:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% For more information, see `AddLayerVersionPermission'.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
@@ -2097,7 +2173,8 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to a function.
+%% @doc Adds tags: https://docs.aws.amazon.com/lambda/latest/dg/tagging.html
+%% to a function.
 tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
 tag_resource(Client, Resource, Input0, Options0) ->
@@ -2120,7 +2197,8 @@ tag_resource(Client, Resource, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from a function.
+%% @doc Removes tags:
+%% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html from a function.
 untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
 untag_resource(Client, Resource, Input0, Options0) ->
@@ -2144,7 +2222,8 @@ untag_resource(Client, Resource, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of a Lambda function alias.
+%% @doc Updates the configuration of a Lambda function alias:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
 update_alias(Client, FunctionName, Name, Input0, Options0) ->
@@ -2201,19 +2280,26 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% For details about how to configure different event sources, see the
 %% following topics.
 %%
-%% <ul> <li> Amazon DynamoDB Streams
+%% <ul> <li> Amazon DynamoDB Streams:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-dynamodb-eventsourcemapping
 %%
-%% </li> <li> Amazon Kinesis
+%% </li> <li> Amazon Kinesis:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-eventsourcemapping
 %%
-%% </li> <li> Amazon SQS
+%% </li> <li> Amazon SQS:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-eventsource
 %%
-%% </li> <li> Amazon MQ and RabbitMQ
+%% </li> <li> Amazon MQ and RabbitMQ:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-eventsourcemapping
 %%
-%% </li> <li> Amazon MSK
+%% </li> <li> Amazon MSK:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html
 %%
-%% </li> <li> Apache Kafka
+%% </li> <li> Apache Kafka:
+%% https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html
 %%
-%% </li> <li> Amazon DocumentDB
+%% </li> <li> Amazon DocumentDB:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html
 %%
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
@@ -2238,19 +2324,26 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% </li> </ul> For information about which configuration parameters apply to
 %% each event source, see the following topics.
 %%
-%% <ul> <li> Amazon DynamoDB Streams
+%% <ul> <li> Amazon DynamoDB Streams:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-ddb-params
 %%
-%% </li> <li> Amazon Kinesis
+%% </li> <li> Amazon Kinesis:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-params
 %%
-%% </li> <li> Amazon SQS
+%% </li> <li> Amazon SQS:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-params
 %%
-%% </li> <li> Amazon MQ and RabbitMQ
+%% </li> <li> Amazon MQ and RabbitMQ:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-params
 %%
-%% </li> <li> Amazon MSK
+%% </li> <li> Amazon MSK:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#services-msk-parms
 %%
-%% </li> <li> Apache Kafka
+%% </li> <li> Apache Kafka:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html#services-kafka-parms
 %%
-%% </li> <li> Amazon DocumentDB
+%% </li> <li> Amazon DocumentDB:
+%% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
 %%
 %% </li> </ul>
 update_event_source_mapping(Client, UUID, Input) ->
@@ -2279,16 +2372,19 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %%
 %% If code signing is enabled for the function, the code package must be
 %% signed by a trusted publisher. For more information, see Configuring code
-%% signing for Lambda.
+%% signing for Lambda:
+%% https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html.
 %%
 %% If the function's package type is `Image', then you must specify
-%% the code package in `ImageUri' as the URI of a container image in the
+%% the code package in `ImageUri' as the URI of a container image:
+%% https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html in the
 %% Amazon ECR registry.
 %%
 %% If the function's package type is `Zip', then you must specify the
-%% deployment package as a .zip file archive. Enter the Amazon S3 bucket and
-%% key of the code .zip file location. You can also provide the function code
-%% inline using the `ZipFile' field.
+%% deployment package as a .zip file archive:
+%% https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip.
+%% Enter the Amazon S3 bucket and key of the code .zip file location. You can
+%% also provide the function code inline using the `ZipFile' field.
 %%
 %% The code in the deployment package must be compatible with the target
 %% instruction set architecture of the function (`x86-64' or
@@ -2332,7 +2428,8 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %% `LastUpdateStatusReason', and `LastUpdateStatusReasonCode' fields
 %% in the response from `GetFunctionConfiguration' indicate when the
 %% update is complete and the function is processing events with the new
-%% configuration. For more information, see Lambda function states.
+%% configuration. For more information, see Lambda function states:
+%% https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html.
 %%
 %% These settings can vary between versions of a function and are locked when
 %% you publish a version. You can't modify the configuration of a

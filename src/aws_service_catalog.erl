@@ -3,11 +3,13 @@
 
 %% @doc Service Catalog
 %%
-%% Service Catalog enables organizations to create and manage catalogs of IT
-%% services that are approved for Amazon Web Services.
+%% Service Catalog: http://aws.amazon.com/servicecatalog enables
+%% organizations to create and manage catalogs of IT services that are
+%% approved for Amazon Web Services.
 %%
 %% To get the most out of this documentation, you should be familiar with the
-%% terminology discussed in Service Catalog Concepts.
+%% terminology discussed in Service Catalog Concepts:
+%% http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html.
 -module(aws_service_catalog).
 
 -export([accept_portfolio_share/2,
@@ -738,8 +740,9 @@ disassociate_budget_from_resource(Client, Input, Options)
 %% be able to provision products in this portfolio using a role matching the
 %% name of the associated principal.
 %%
-%% For more information, review associate-principal-with-portfolio in the
-%% Amazon Web Services CLI Command Reference.
+%% For more information, review associate-principal-with-portfolio:
+%% https://docs.aws.amazon.com/cli/latest/reference/servicecatalog/associate-principal-with-portfolio.html#options
+%% in the Amazon Web Services CLI Command Reference.
 %%
 %% If you disassociate a principal from a portfolio, with PrincipalType as
 %% `IAM', the same principal will still have access to the portfolio if
@@ -923,7 +926,9 @@ list_constraints_for_portfolio(Client, Input, Options)
 %%
 %% When provisioning a product that's been added to a portfolio, you must
 %% grant your user, group, or role access to the portfolio. For more
-%% information, see Granting users access in the Service Catalog User Guide.
+%% information, see Granting users access:
+%% https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html
+%% in the Service Catalog User Guide.
 list_launch_paths(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_launch_paths(Client, Input, []).
@@ -1101,7 +1106,9 @@ notify_update_provisioned_product_engine_workflow_result(Client, Input, Options)
 %%
 %% When provisioning a product that's been added to a portfolio, you must
 %% grant your user, group, or role access to the portfolio. For more
-%% information, see Granting users access in the Service Catalog User Guide.
+%% information, see Granting users access:
+%% https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html
+%% in the Service Catalog User Guide.
 provision_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_product(Client, Input, []).

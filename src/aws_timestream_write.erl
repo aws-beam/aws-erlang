@@ -75,7 +75,12 @@
 %% location. For the report, if the KMS key is not specified, the report will
 %% be encrypted with an S3 managed key when `SSE_S3' is the option.
 %% Otherwise an error is thrown. For more information, see Amazon Web
-%% Services managed keys. Service quotas apply. For details, see code sample.
+%% Services managed keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% For details, see code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html.
 create_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_load_task(Client, Input, []).
@@ -87,8 +92,12 @@ create_batch_load_task(Client, Input, Options)
 %%
 %% If the KMS key is not specified, the database will be encrypted with a
 %% Timestream managed KMS key located in your account. For more information,
-%% see Amazon Web Services managed keys. Service quotas apply. For details,
-%% see code sample.
+%% see Amazon Web Services managed keys:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% For details, see code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html.
 create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
@@ -102,8 +111,11 @@ create_database(Client, Input, Options)
 %% within each Region if they are in the same database. You might have
 %% identical table names in the same Region if the tables are in separate
 %% databases. While creating the table, you must specify the table name,
-%% database name, and the retention properties. Service quotas apply. See
-%% code sample for details.
+%% database name, and the retention properties. Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html
+%% for details.
 create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
@@ -123,7 +135,9 @@ create_table(Client, Input, Options)
 %% success or a ResourceNotFoundException. Clients should consider them
 %% equivalent.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-db.html
+%% for details.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
@@ -140,7 +154,9 @@ delete_database(Client, Input, Options)
 %% success or a ResourceNotFoundException. Clients should consider them
 %% equivalent.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-table.html
+%% for details.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -151,7 +167,11 @@ delete_table(Client, Input, Options)
 %% @doc Returns information about the batch load task, including
 %% configurations, mappings, progress, and other details.
 %%
-%% Service quotas apply. See code sample for details.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html
+%% for details.
 describe_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_load_task(Client, Input, []).
@@ -163,7 +183,11 @@ describe_batch_load_task(Client, Input, Options)
 %% time that the database was created, and the total number of tables found
 %% within the database.
 %%
-%% Service quotas apply. See code sample for details.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html
+%% for details.
 describe_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_database(Client, Input, []).
@@ -182,7 +206,8 @@ describe_database(Client, Input, Options)
 %% unless:
 %%
 %% <ul> <li> You are using VPC endpoints (Amazon Web Services PrivateLink)
-%% with Timestream
+%% with Timestream:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints
 %%
 %% </li> <li> Your application uses a programming language that does not yet
 %% have SDK support
@@ -190,7 +215,8 @@ describe_database(Client, Input, Options)
 %% </li> <li> You require better control over the client-side implementation
 %%
 %% </li> </ul> For detailed information on how and when to use and implement
-%% DescribeEndpoints, see The Endpoint Discovery Pattern.
+%% DescribeEndpoints, see The Endpoint Discovery Pattern:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -202,7 +228,11 @@ describe_endpoints(Client, Input, Options)
 %% database name, retention duration of the memory store and the magnetic
 %% store.
 %%
-%% Service quotas apply. See code sample for details.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html
+%% for details.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -213,7 +243,9 @@ describe_table(Client, Input, Options)
 %% @doc Provides a list of batch load tasks, along with the name, status,
 %% when the task is resumable until, and other details.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html
+%% for details.
 list_batch_load_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_load_tasks(Client, Input, []).
@@ -223,7 +255,11 @@ list_batch_load_tasks(Client, Input, Options)
 
 %% @doc Returns a list of your Timestream databases.
 %%
-%% Service quotas apply. See code sample for details.
+%% Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html
+%% for details.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
@@ -234,7 +270,9 @@ list_databases(Client, Input, Options)
 %% @doc Provides a list of tables, along with the name, status, and retention
 %% properties of each table.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html
+%% for details.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
@@ -283,7 +321,9 @@ untag_resource(Client, Input, Options)
 %% identifier of the new KMS key to be used (`KmsKeyId'). If there are
 %% any concurrent `UpdateDatabase' requests, first writer wins.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-db.html
+%% for details.
 update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
@@ -301,7 +341,9 @@ update_database(Client, Input, Options)
 %% hours after this change was made. Timestream does not retrieve data from
 %% the magnetic store to populate the memory store.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-table.html
+%% for details.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
@@ -322,9 +364,12 @@ update_table(Client, Input, Options)
 %% Timestream, the query results might not reflect the results of a recently
 %% completed write operation. The results may also include some stale data.
 %% If you repeat the query request after a short time, the results should
-%% return the latest data. Service quotas apply.
+%% return the latest data. Service quotas apply:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html.
 %%
-%% See code sample for details.
+%% See code sample:
+%% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.write.html
+%% for details.
 %%
 %% Upserts
 %%

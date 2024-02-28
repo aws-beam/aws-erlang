@@ -775,7 +775,8 @@ create_job(Client, Input, Options)
 %% your behalf as part of learning from your data and creating a high-quality
 %% machine learning transform. These parameters include `Role', and
 %% optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'.
-%% For more information, see Jobs.
+%% For more information, see Jobs:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html.
 create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ml_transform(Client, Input, []).
@@ -843,7 +844,8 @@ create_script(Client, Input, Options)
 %% A security configuration is a set of security properties that can be used
 %% by Glue. You can use a security configuration to encrypt data at rest. For
 %% information about using security configurations in Glue, see Encrypting
-%% Data Written by Crawlers, Jobs, and Development Endpoints.
+%% Data Written by Crawlers, Jobs, and Development Endpoints:
+%% https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html.
 create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
@@ -1425,11 +1427,14 @@ get_job(Client, Input, Options)
 %%
 %% For more information about enabling and using job bookmarks, see:
 %%
-%% <ul> <li> Tracking processed data using job bookmarks
+%% <ul> <li> Tracking processed data using job bookmarks:
+%% https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 %%
-%% </li> <li> Job parameters used by Glue
+%% </li> <li> Job parameters used by Glue:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
 %%
-%% </li> <li> Job structure
+%% </li> <li> Job structure:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html#aws-glue-api-jobs-job-Job
 %%
 %% </li> </ul>
 get_job_bookmark(Client, Input)
@@ -2154,11 +2159,14 @@ remove_schema_version_metadata(Client, Input, Options)
 %%
 %% For more information about enabling and using job bookmarks, see:
 %%
-%% <ul> <li> Tracking processed data using job bookmarks
+%% <ul> <li> Tracking processed data using job bookmarks:
+%% https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 %%
-%% </li> <li> Job parameters used by Glue
+%% </li> <li> Job parameters used by Glue:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
 %%
-%% </li> <li> Job structure
+%% </li> <li> Job structure:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html#aws-glue-api-jobs-job-Job
 %%
 %% </li> </ul>
 reset_job_bookmark(Client, Input)
@@ -2227,7 +2235,8 @@ start_column_statistics_task_run(Client, Input, Options)
 %% @doc Starts a crawl using the specified crawler, regardless of what is
 %% scheduled.
 %%
-%% If the crawler is already running, returns a CrawlerRunningException.
+%% If the crawler is already running, returns a CrawlerRunningException:
+%% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException.
 start_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler(Client, Input, []).
@@ -2378,8 +2387,9 @@ start_ml_labeling_set_generation_task_run(Client, Input, Options)
 
 %% @doc Starts an existing trigger.
 %%
-%% See Triggering Jobs for information about how different types of trigger
-%% are started.
+%% See Triggering Jobs:
+%% https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html for
+%% information about how different types of trigger are started.
 start_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_trigger(Client, Input, []).
@@ -2449,7 +2459,8 @@ stop_workflow_run(Client, Input, Options)
 %%
 %% A tag is a label you can assign to an Amazon Web Services resource. In
 %% Glue, you can tag only certain resources. For information about what
-%% resources you can tag, see Amazon Web Services Tags in Glue.
+%% resources you can tag, see Amazon Web Services Tags in Glue:
+%% https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

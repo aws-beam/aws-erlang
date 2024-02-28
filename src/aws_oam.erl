@@ -70,7 +70,10 @@
 %% by granting permission to an entire organization or to individual
 %% accounts.
 %%
-%% For more information, see CreateSink and PutSinkPolicy.
+%% For more information, see CreateSink:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_CreateSink.html
+%% and PutSinkPolicy:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each monitoring account can be linked to as many as 100,000 source
 %% accounts.
@@ -105,7 +108,8 @@ create_link(Client, Input0, Options0) ->
 %% account. Source accounts can link to the sink to send observability data.
 %%
 %% After you create a sink, you must create a sink policy that allows source
-%% accounts to attach to it. For more information, see PutSinkPolicy.
+%% accounts to attach to it. For more information, see PutSinkPolicy:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_PutSinkPolicy.html.
 %%
 %% Each account can contain one sink. If you delete a sink, you can then
 %% create a new one in that account.
@@ -185,7 +189,8 @@ delete_sink(Client, Input0, Options0) ->
 %% @doc Returns complete information about one link.
 %%
 %% To use this operation, provide the link ARN. To retrieve a list of link
-%% ARNs, use ListLinks.
+%% ARNs, use ListLinks:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListLinks.html.
 get_link(Client, Input) ->
     get_link(Client, Input, []).
 get_link(Client, Input0, Options0) ->
@@ -211,7 +216,8 @@ get_link(Client, Input0, Options0) ->
 %% @doc Returns complete information about one monitoring account sink.
 %%
 %% To use this operation, provide the sink ARN. To retrieve a list of sink
-%% ARNs, use ListSinks.
+%% ARNs, use ListSinks:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListSinks.html.
 get_sink(Client, Input) ->
     get_sink(Client, Input, []).
 get_sink(Client, Input0, Options0) ->
@@ -264,9 +270,11 @@ get_sink_policy(Client, Input0, Options0) ->
 %% monitoring account sink.
 %%
 %% To use this operation, provide the sink ARN. To retrieve a list of sink
-%% ARNs, use ListSinks.
+%% ARNs, use ListSinks:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListSinks.html.
 %%
-%% To find a list of links for one source account, use ListLinks.
+%% To find a list of links for one source account, use ListLinks:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListLinks.html.
 list_attached_links(Client, Input) ->
     list_attached_links(Client, Input, []).
 list_attached_links(Client, Input0, Options0) ->
@@ -293,7 +301,9 @@ list_attached_links(Client, Input0, Options0) ->
 %% monitoring account sinks that this source account has.
 %%
 %% To find a list of links for one monitoring account sink, use
-%% ListAttachedLinks from within the monitoring account.
+%% ListAttachedLinks:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListAttachedLinks.html
+%% from within the monitoring account.
 list_links(Client, Input) ->
     list_links(Client, Input, []).
 list_links(Client, Input0, Options0) ->
@@ -487,7 +497,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% You can't change the sink or change the monitoring account with this
 %% operation.
 %%
-%% To update the list of tags associated with the sink, use TagResource.
+%% To update the list of tags associated with the sink, use TagResource:
+%% https://docs.aws.amazon.com/OAM/latest/APIReference/API_TagResource.html.
 update_link(Client, Input) ->
     update_link(Client, Input, []).
 update_link(Client, Input0, Options0) ->

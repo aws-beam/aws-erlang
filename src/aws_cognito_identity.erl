@@ -18,9 +18,11 @@
 %% AWS credentials.
 %%
 %% For a description of the authentication flow from the Amazon Cognito
-%% Developer Guide see Authentication Flow.
+%% Developer Guide see Authentication Flow:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html.
 %%
-%% For more information see Amazon Cognito Federated Identities.
+%% For more information see Amazon Cognito Federated Identities:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html.
 -module(aws_cognito_identity).
 
 -export([create_identity_pool/2,

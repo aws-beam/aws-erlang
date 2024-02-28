@@ -6,40 +6,52 @@
 %% This section contains the Amazon Managed Workflows for Apache Airflow
 %% (MWAA) API reference documentation.
 %%
-%% For more information, see What is Amazon MWAA?.
+%% For more information, see What is Amazon MWAA?:
+%% https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html.
 %%
 %% Endpoints
 %%
 %% <ul> <li> `api.airflow.{region}.amazonaws.com' - This endpoint is used
 %% for environment management.
 %%
-%% <ul> <li> CreateEnvironment
+%% <ul> <li> CreateEnvironment:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateEnvironment.html
 %%
-%% </li> <li> DeleteEnvironment
+%% </li> <li> DeleteEnvironment:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_DeleteEnvironment.html
 %%
-%% </li> <li> GetEnvironment
+%% </li> <li> GetEnvironment:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_GetEnvironment.html
 %%
-%% </li> <li> ListEnvironments
+%% </li> <li> ListEnvironments:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_ListEnvironments.html
 %%
-%% </li> <li> ListTagsForResource
+%% </li> <li> ListTagsForResource:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_ListTagsForResource.html
 %%
-%% </li> <li> TagResource
+%% </li> <li> TagResource:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_TagResource.html
 %%
-%% </li> <li> UntagResource
+%% </li> <li> UntagResource:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_UntagResource.html
 %%
-%% </li> <li> UpdateEnvironment
+%% </li> <li> UpdateEnvironment:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_UpdateEnvironment.html
 %%
 %% </li> </ul> </li> <li> `env.airflow.{region}.amazonaws.com' - This
 %% endpoint is used to operate the Airflow environment.
 %%
-%% <ul> <li> CreateCliToken
+%% <ul> <li> CreateCliToken:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateCliToken.html
 %%
-%% </li> <li> CreateWebLoginToken
+%% </li> <li> CreateWebLoginToken:
+%% https://docs.aws.amazon.com/mwaa/latest/API/API_CreateWebLoginToken.html
 %%
 %% </li> </ul> </li> </ul> Regions
 %%
-%% For a list of supported regions, see Amazon MWAA endpoints and quotas in
-%% the Amazon Web Services General Reference.
+%% For a list of supported regions, see Amazon MWAA endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/mwaa.html in the Amazon Web
+%% Services General Reference.
 -module(aws_mwaa).
 
 -export([create_cli_token/3,
@@ -76,7 +88,8 @@
 
 %% @doc Creates a CLI token for the Airflow CLI.
 %%
-%% To learn more, see Creating an Apache Airflow CLI token.
+%% To learn more, see Creating an Apache Airflow CLI token:
+%% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html.
 create_cli_token(Client, Name, Input) ->
     create_cli_token(Client, Name, Input, []).
 create_cli_token(Client, Name, Input0, Options0) ->
@@ -125,7 +138,8 @@ create_environment(Client, Name, Input0, Options0) ->
 
 %% @doc Creates a web login token for the Airflow Web UI.
 %%
-%% To learn more, see Creating an Apache Airflow web login token.
+%% To learn more, see Creating an Apache Airflow web login token:
+%% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html.
 create_web_login_token(Client, Name, Input) ->
     create_web_login_token(Client, Name, Input, []).
 create_web_login_token(Client, Name, Input0, Options0) ->

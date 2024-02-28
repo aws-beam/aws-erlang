@@ -10,8 +10,9 @@
 %% usage dimensions.
 %%
 %% For information on the permissions you need to use this API, see AWS
-%% Marketplace metering and entitlement API permissions in the AWS
-%% Marketplace Seller Guide.
+%% Marketplace metering and entitlement API permissions:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html
+%% in the AWS Marketplace Seller Guide.
 %%
 %% Submitting Metering Records
 %%
@@ -40,14 +41,16 @@
 %% and BYOL products for Amazon ECS or Amazon EKS aren't required to call
 %% `RegisterUsage', but you can do so if you want to receive usage data
 %% in your seller reports. For more information on using the
-%% `RegisterUsage' operation, see Container-Based Products.
+%% `RegisterUsage' operation, see Container-Based Products:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html.
 %%
 %% </li> </ul> `BatchMeterUsage' API calls are captured by AWS
 %% CloudTrail. You can use Cloudtrail to verify that the SaaS metering
 %% records that you sent are accurate by searching for records with the
 %% `eventName' of `BatchMeterUsage'. You can also use CloudTrail to
 %% audit records over time. For more information, see the AWS CloudTrail User
-%% Guide.
+%% Guide:
+%% http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html.
 -module(aws_marketplace_metering).
 
 -export([batch_meter_usage/2,
@@ -93,7 +96,9 @@
 %% `BatchMeterUsage' requests must be less than 1MB in size.
 %%
 %% For an example of using `BatchMeterUsage', see BatchMeterUsage code
-%% example in the AWS Marketplace Seller Guide.
+%% example:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-example
+%% in the AWS Marketplace Seller Guide.
 batch_meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_meter_usage(Client, Input, []).
@@ -180,7 +185,9 @@ register_usage(Client, Input, Options)
 %% SaaS application to successfully resolve the token.
 %%
 %% For an example of using `ResolveCustomer', see ResolveCustomer code
-%% example in the AWS Marketplace Seller Guide.
+%% example:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-resolvecustomer-example
+%% in the AWS Marketplace Seller Guide.
 resolve_customer(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_customer(Client, Input, []).

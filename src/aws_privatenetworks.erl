@@ -150,7 +150,9 @@ activate_network_site(Client, Input0, Options0) ->
 %% Use this action to specify the geographic position of the hardware. You
 %% must provide Certified Professional Installer (CPI) credentials in the
 %% request so that we can obtain spectrum grants. For more information, see
-%% Radio units in the Amazon Web Services Private 5G User Guide.
+%% Radio units:
+%% https://docs.aws.amazon.com/private-networks/latest/userguide/radio-units.html
+%% in the Amazon Web Services Private 5G User Guide.
 configure_access_point(Client, Input) ->
     configure_access_point(Client, Input, []).
 configure_access_point(Client, Input0, Options0) ->
@@ -245,8 +247,9 @@ deactivate_device_identifier(Client, Input0, Options0) ->
 %% @doc Deletes the specified network.
 %%
 %% You must delete network sites before you delete the network. For more
-%% information, see DeleteNetworkSite in the API Reference for Amazon Web
-%% Services Private 5G.
+%% information, see DeleteNetworkSite:
+%% https://docs.aws.amazon.com/private-networks/latest/APIReference/API_DeleteNetworkSite.html
+%% in the API Reference for Amazon Web Services Private 5G.
 delete_network(Client, NetworkArn, Input) ->
     delete_network(Client, NetworkArn, Input, []).
 delete_network(Client, NetworkArn, Input0, Options0) ->
@@ -273,8 +276,9 @@ delete_network(Client, NetworkArn, Input0, Options0) ->
 %% @doc Deletes the specified network site.
 %%
 %% Return the hardware after you delete the network site. You are responsible
-%% for minimum charges. For more information, see Hardware returns in the
-%% Amazon Web Services Private 5G User Guide.
+%% for minimum charges. For more information, see Hardware returns:
+%% https://docs.aws.amazon.com/private-networks/latest/userguide/hardware-maintenance.html
+%% in the Amazon Web Services Private 5G User Guide.
 delete_network_site(Client, NetworkSiteArn, Input) ->
     delete_network_site(Client, NetworkSiteArn, Input, []).
 delete_network_site(Client, NetworkSiteArn, Input0, Options0) ->
@@ -617,7 +621,8 @@ ping(Client, QueryMap, HeadersMap, Options0)
 %% `CREATING_SHIPPING_LABEL'. The shipping label is available when the
 %% status of the network resource is `PENDING_RETURN'. After the network
 %% resource is successfully returned, its status changes to `DELETED'.
-%% For more information, see Return a radio unit.
+%% For more information, see Return a radio unit:
+%% https://docs.aws.amazon.com/private-networks/latest/userguide/radio-units.html#return-radio-unit.
 start_network_resource_update(Client, Input) ->
     start_network_resource_update(Client, Input, []).
 start_network_resource_update(Client, Input0, Options0) ->

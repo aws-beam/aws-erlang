@@ -11,12 +11,14 @@
 %%
 %% The API is an Amazon Web Services regional service. For a list of
 %% supported regions and Amazon IVS HTTPS service endpoints, see the Amazon
-%% IVS page in the Amazon Web Services General Reference.
+%% IVS page: https://docs.aws.amazon.com/general/latest/gr/ivs.html in the
+%% Amazon Web Services General Reference.
 %%
 %% All API request parameters and URLs are case sensitive.
 %%
 %% For a summary of notable documentation changes in each release, see
-%% Document History.
+%% Document History:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/doc-history.html.
 %%
 %% Allowed Header Values
 %%
@@ -29,7 +31,8 @@
 %% </li> </ul> Resources
 %%
 %% The following resources contain information about your IVS live stream
-%% (see Getting Started with Amazon IVS):
+%% (see Getting Started with Amazon IVS:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html):
 %%
 %% <ul> <li> Channel — Stores configuration data related to your live stream.
 %% You first create a channel and then use the channel’s stream key to start
@@ -60,15 +63,17 @@
 %% A tag is a metadata label that you assign to an Amazon Web Services
 %% resource. A tag comprises a key and a value, both set by you. For example,
 %% you might set a tag as `topic:nature' to label a particular video
-%% category. See Tagging Amazon Web Services Resources for more information,
-%% including restrictions that apply to tags and &quot;Tag naming limits and
-%% requirements&quot;; Amazon IVS has no service-specific constraints beyond
-%% what is documented there.
+%% category. See Tagging Amazon Web Services Resources:
+%% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for more
+%% information, including restrictions that apply to tags and &quot;Tag
+%% naming limits and requirements&quot;; Amazon IVS has no service-specific
+%% constraints beyond what is documented there.
 %%
 %% Tags can help you identify and organize your Amazon Web Services
 %% resources. For example, you can use the same tag for different resources
 %% to indicate that they are related. You can also use tags to manage access
-%% (see Access Tags).
+%% (see Access Tags:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS API has these tag-related endpoints: `TagResource',
 %% `UntagResource', and `ListTagsForResource'. The following
@@ -86,8 +91,9 @@
 %%
 %% </li> <li> Authorization is about granting permissions. Your IAM roles
 %% need to have permissions for Amazon IVS API requests. In addition,
-%% authorization is needed to view Amazon IVS private channels. (Private
-%% channels are channels that are enabled for &quot;playback
+%% authorization is needed to view Amazon IVS private channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
+%% (Private channels are channels that are enabled for &quot;playback
 %% authorization.&quot;)
 %%
 %% </li> </ul> Authentication
@@ -106,18 +112,22 @@
 %% For more information:
 %%
 %% <ul> <li> Authentication and generating signatures — See Authenticating
-%% Requests (Amazon Web Services Signature Version 4) in the Amazon Web
-%% Services General Reference.
+%% Requests (Amazon Web Services Signature Version 4):
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+%% in the Amazon Web Services General Reference.
 %%
 %% </li> <li> Managing Amazon IVS permissions — See Identity and Access
-%% Management on the Security page of the Amazon IVS User Guide.
+%% Management:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html on the
+%% Security page of the Amazon IVS User Guide.
 %%
 %% </li> </ul> Amazon Resource Names (ARNs)
 %%
 %% ARNs uniquely identify AWS resources. An ARN is required when you need to
 %% specify a resource unambiguously across all of AWS, such as in IAM
-%% policies and API calls. For more information, see Amazon Resource Names in
-%% the AWS General Reference.
+%% policies and API calls. For more information, see Amazon Resource Names:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the AWS General Reference.
 %%
 %% Channel Endpoints
 %%
@@ -162,8 +172,9 @@
 %%
 %% </li> </ul> Private Channel Endpoints
 %%
-%% For more information, see Setting Up Private Channels in the Amazon IVS
-%% User Guide.
+%% For more information, see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
+%% the Amazon IVS User Guide.
 %%
 %% <ul> <li> `ImportPlaybackKeyPair' — Imports the public portion of a
 %% new key pair and returns its `arn' and `fingerprint'. The
@@ -531,7 +542,8 @@ create_stream_key(Client, Input0, Options0) ->
 %% ConflictException). To delete a channel that is live, call
 %% `StopStream', wait for the Amazon EventBridge &quot;Stream End&quot;
 %% event (to verify that the stream's state is no longer Live), then call
-%% DeleteChannel. (See Using EventBridge with Amazon IVS.)
+%% DeleteChannel. (See Using EventBridge with Amazon IVS:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html.)
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
 delete_channel(Client, Input0, Options0) ->
@@ -557,7 +569,8 @@ delete_channel(Client, Input0, Options0) ->
 %% @doc Deletes a specified authorization key pair.
 %%
 %% This invalidates future viewer tokens generated using the key pair’s
-%% `privateKey'. For more information, see Setting Up Private Channels in
+%% `privateKey'. For more information, see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
@@ -687,8 +700,9 @@ get_channel(Client, Input0, Options0) ->
 %%
 %% The `privateKey' held by the caller can be used to generate viewer
 %% authorization tokens, to grant viewers access to private channels. For
-%% more information, see Setting Up Private Channels in the Amazon IVS User
-%% Guide.
+%% more information, see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
+%% the Amazon IVS User Guide.
 get_playback_key_pair(Client, Input) ->
     get_playback_key_pair(Client, Input, []).
 get_playback_key_pair(Client, Input0, Options0) ->
@@ -832,7 +846,9 @@ get_stream_session(Client, Input0, Options0) ->
 %%
 %% The `privateKey' can then be used to generate viewer authorization
 %% tokens, to grant viewers access to private channels. For more information,
-%% see Setting Up Private Channels in the Amazon IVS User Guide.
+%% see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
+%% the Amazon IVS User Guide.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
 import_playback_key_pair(Client, Input0, Options0) ->
@@ -886,8 +902,9 @@ list_channels(Client, Input0, Options0) ->
 
 %% @doc Gets summary information about playback key pairs.
 %%
-%% For more information, see Setting Up Private Channels in the Amazon IVS
-%% User Guide.
+%% For more information, see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
+%% the Amazon IVS User Guide.
 list_playback_key_pairs(Client, Input) ->
     list_playback_key_pairs(Client, Input, []).
 list_playback_key_pairs(Client, Input0, Options0) ->
@@ -1060,7 +1077,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend
 %% batching your data into a single PutMetadata call.) At most 155 requests
 %% per second per account are allowed. Also see Embedding Metadata within a
-%% Video Stream in the Amazon IVS User Guide.
+%% Video Stream:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html in the
+%% Amazon IVS User Guide.
 put_metadata(Client, Input) ->
     put_metadata(Client, Input, []).
 put_metadata(Client, Input0, Options0) ->
@@ -1088,7 +1107,8 @@ put_metadata(Client, Input0, Options0) ->
 %%
 %% Optionally, you can provide a version to revoke viewer sessions less than
 %% and including that version. For instructions on associating a viewer ID
-%% with a viewer session, see Setting Up Private Channels.
+%% with a viewer session, see Setting Up Private Channels:
+%% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
 start_viewer_session_revocation(Client, Input) ->
     start_viewer_session_revocation(Client, Input, []).
 start_viewer_session_revocation(Client, Input0, Options0) ->

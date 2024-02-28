@@ -20,19 +20,25 @@
 %%
 %% Use the following links to get started with the Audit Manager API:
 %%
-%% <ul> <li> Actions: An alphabetical list of all Audit Manager API
-%% operations.
+%% <ul> <li> Actions:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html:
+%% An alphabetical list of all Audit Manager API operations.
 %%
-%% </li> <li> Data types: An alphabetical list of all Audit Manager data
-%% types.
+%% </li> <li> Data types:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html:
+%% An alphabetical list of all Audit Manager data types.
 %%
-%% </li> <li> Common parameters: Parameters that all operations can use.
+%% </li> <li> Common parameters:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html:
+%% Parameters that all operations can use.
 %%
-%% </li> <li> Common errors: Client and server errors that all operations can
-%% return.
+%% </li> <li> Common errors:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html:
+%% Client and server errors that all operations can return.
 %%
 %% </li> </ul> If you're new to Audit Manager, we recommend that you
-%% review the Audit Manager User Guide.
+%% review the Audit Manager User Guide:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html.
 -module(aws_auditmanager).
 
 -export([associate_assessment_report_evidence_folder/3,
@@ -331,10 +337,13 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 %% </li> <li> Number of daily manual evidence uploads per control: 100
 %%
 %% </li> <li> Supported file formats: See Supported file types for manual
-%% evidence in the Audit Manager User Guide
+%% evidence:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files
+%% in the Audit Manager User Guide
 %%
 %% </li> </ul> For more information about Audit Manager service restrictions,
-%% see Quotas and restrictions for Audit Manager.
+%% see Quotas and restrictions for Audit Manager:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
@@ -539,10 +548,13 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 %% that your S3 bucket is available, and that you configured the correct
 %% permissions for Audit Manager to delete resources in your S3 bucket. For
 %% an example permissions policy that you can use, see Assessment report
-%% destination permissions in the Audit Manager User Guide. For information
-%% about the issues that could cause a `403 (Forbidden)' or `404 (Not
-%% Found') error from Amazon S3, see List of Error Codes in the Amazon
-%% Simple Storage Service API Reference.
+%% destination permissions:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/security_iam_id-based-policy-examples.html#full-administrator-access-assessment-report-destination
+%% in the Audit Manager User Guide. For information about the issues that
+%% could cause a `403 (Forbidden)' or `404 (Not Found') error from
+%% Amazon S3, see List of Error Codes:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList
+%% in the Amazon Simple Storage Service API Reference.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
@@ -596,13 +608,16 @@ delete_control(Client, ControlId, Input0, Options0) ->
 
 %% @doc Deregisters an account in Audit Manager.
 %%
-%% Before you deregister, you can use the UpdateSettings API operation to set
-%% your preferred data retention policy. By default, Audit Manager retains
-%% your data. If you want to delete your data, you can use the
-%% `DeregistrationPolicy' attribute to request the deletion of your data.
+%% Before you deregister, you can use the UpdateSettings:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateSettings.html
+%% API operation to set your preferred data retention policy. By default,
+%% Audit Manager retains your data. If you want to delete your data, you can
+%% use the `DeregistrationPolicy' attribute to request the deletion of
+%% your data.
 %%
-%% For more information about data retention, see Data Protection in the
-%% Audit Manager User Guide.
+%% For more information about data retention, see Data Protection:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/data-protection.html
+%% in the Audit Manager User Guide.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 deregister_account(Client, Input0, Options0) ->
@@ -644,7 +659,8 @@ deregister_account(Client, Input0, Options0) ->
 %% created in their account when they enabled evidence finder. If this task
 %% isn’t completed, the event data store remains in their account. In this
 %% case, we recommend that the original delegated administrator goes to
-%% CloudTrail Lake and manually deletes the event data store.
+%% CloudTrail Lake and manually deletes the event data store:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-eds-disable-termination.html.
 %%
 %% This cleanup task is necessary to ensure that you don't end up with
 %% multiple event data stores. Audit Manager ignores an unused event data
@@ -662,20 +678,35 @@ deregister_account(Client, Input0, Options0) ->
 %% To delete your Audit Manager resource data, see the following
 %% instructions:
 %%
-%% <ul> <li> DeleteAssessment (see also: Deleting an assessment in the Audit
-%% Manager User Guide)
-%%
-%% </li> <li> DeleteAssessmentFramework (see also: Deleting a custom
-%% framework in the Audit Manager User Guide)
-%%
-%% </li> <li> DeleteAssessmentFrameworkShare (see also: Deleting a share
-%% request in the Audit Manager User Guide)
-%%
-%% </li> <li> DeleteAssessmentReport (see also: Deleting an assessment report
+%% <ul> <li> DeleteAssessment:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessment.html
+%% (see also: Deleting an assessment:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-assessment.html
 %% in the Audit Manager User Guide)
 %%
-%% </li> <li> DeleteControl (see also: Deleting a custom control in the Audit
-%% Manager User Guide)
+%% </li> <li> DeleteAssessmentFramework:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFramework.html
+%% (see also: Deleting a custom framework:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-custom-framework.html
+%% in the Audit Manager User Guide)
+%%
+%% </li> <li> DeleteAssessmentFrameworkShare:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFrameworkShare.html
+%% (see also: Deleting a share request:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/deleting-shared-framework-requests.html
+%% in the Audit Manager User Guide)
+%%
+%% </li> <li> DeleteAssessmentReport:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentReport.html
+%% (see also: Deleting an assessment report:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#delete-assessment-report-steps
+%% in the Audit Manager User Guide)
+%%
+%% </li> <li> DeleteControl:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteControl.html
+%% (see also: Deleting a custom control:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html
+%% in the Audit Manager User Guide)
 %%
 %% </li> </ul> At this time, Audit Manager doesn't provide an option to
 %% delete evidence for a specific delegated administrator. Instead, when your
@@ -955,7 +986,9 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 %% as manual evidence.
 %%
 %% For instructions on how to use this operation, see Upload a file from your
-%% browser in the Audit Manager User Guide.
+%% browser :
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#how-to-upload-manual-evidence-files
+%% in the Audit Manager User Guide.
 %%
 %% The following restrictions apply to this operation:
 %%
@@ -964,10 +997,13 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 %% </li> <li> Number of daily manual evidence uploads per control: 100
 %%
 %% </li> <li> Supported file formats: See Supported file types for manual
-%% evidence in the Audit Manager User Guide
+%% evidence:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files
+%% in the Audit Manager User Guide
 %%
 %% </li> </ul> For more information about Audit Manager service restrictions,
-%% see Quotas and restrictions for Audit Manager.
+%% see Quotas and restrictions for Audit Manager:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
 get_evidence_file_upload_url(Client, FileName)
   when is_map(Client) ->
     get_evidence_file_upload_url(Client, FileName, #{}, #{}).
@@ -1149,8 +1185,11 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of all of the Amazon Web Services that you can choose to
 %% include in your assessment.
 %%
-%% When you create an assessment, specify which of these services you want to
-%% include to narrow the assessment's scope.
+%% When you create an assessment:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html,
+%% specify which of these services you want to include to narrow the
+%% assessment's scope:
+%% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html.
 get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
@@ -1635,9 +1674,10 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% </li> <li> The share request expires before the recipient responds to the
 %% request.
 %%
-%% </li> </ul> When a sender resends a share request, the snapshot is
-%% replaced with an updated version that corresponds with the latest version
-%% of the custom framework.
+%% </li> </ul> When a sender resends a share request:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/framework-sharing.html#framework-sharing-resend,
+%% the snapshot is replaced with an updated version that corresponds with the
+%% latest version of the custom framework.
 %%
 %% When a recipient accepts a share request, the snapshot is replicated into
 %% their Amazon Web Services account under the Amazon Web Services Region
@@ -1649,8 +1689,9 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% if the standard framework is designated as not eligible for sharing by
 %% Amazon Web Services, unless you have obtained permission to do so from the
 %% owner of the standard framework. To learn more about which standard
-%% frameworks are eligible for sharing, see Framework sharing eligibility in
-%% the Audit Manager User Guide.
+%% frameworks are eligible for sharing, see Framework sharing eligibility:
+%% https://docs.aws.amazon.com/audit-manager/latest/userguide/share-custom-framework-concepts-and-terminology.html#eligibility
+%% in the Audit Manager User Guide.
 start_assessment_framework_share(Client, FrameworkId, Input) ->
     start_assessment_framework_share(Client, FrameworkId, Input, []).
 start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->

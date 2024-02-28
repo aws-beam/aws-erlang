@@ -29,7 +29,8 @@
 %% (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for OIDC token
 %% refresh and configurable IAM Identity Center session durations. For more
 %% information, see Configure Amazon Web Services access portal session
-%% duration .
+%% duration :
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html.
 %%
 %% </li> <li> The access tokens provided by this service grant access to all
 %% Amazon Web Services account entitlements assigned to an IAM Identity
@@ -38,11 +39,14 @@
 %% </li> <li> The documentation in this guide does not describe the mechanism
 %% to convert the access token into Amazon Web Services Auth (“sigv4”)
 %% credentials for use with IAM-protected Amazon Web Services service
-%% endpoints. For more information, see GetRoleCredentials in the IAM
-%% Identity Center Portal API Reference Guide.
+%% endpoints. For more information, see GetRoleCredentials:
+%% https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html
+%% in the IAM Identity Center Portal API Reference Guide.
 %%
 %% </li> </ul> For general information about IAM Identity Center, see What is
-%% IAM Identity Center? in the IAM Identity Center User Guide.
+%% IAM Identity Center?:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html in
+%% the IAM Identity Center User Guide.
 -module(aws_sso_oidc).
 
 -export([create_token/2,

@@ -11,7 +11,8 @@
 %% Although AWS Single Sign-On was renamed, the `sso' and
 %% `identitystore' API namespaces will continue to retain their original
 %% name for backward compatibility purposes. For more information, see IAM
-%% Identity Center rename.
+%% Identity Center rename:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed.
 %%
 %% This reference guide describes the IAM Identity Center Portal operations
 %% that you can call programatically and includes detailed information on
@@ -22,7 +23,7 @@
 %% Android. The SDKs provide a convenient way to create programmatic access
 %% to IAM Identity Center and other AWS services. For more information about
 %% the AWS SDKs, including how to download and install them, see Tools for
-%% Amazon Web Services.
+%% Amazon Web Services: http://aws.amazon.com/tools/.
 -module(aws_sso).
 
 -export([get_role_credentials/4,
@@ -113,8 +114,10 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options
 %% @doc Lists all AWS accounts assigned to the user.
 %%
 %% These AWS accounts are assigned by the administrator of the account. For
-%% more information, see Assign User Access in the IAM Identity Center User
-%% Guide. This operation returns a paginated response.
+%% more information, see Assign User Access:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers
+%% in the IAM Identity Center User Guide. This operation returns a paginated
+%% response.
 list_accounts(Client, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, AccessToken, #{}, #{}).
@@ -160,7 +163,9 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
 %% After user logout, any existing IAM role sessions that were created by
 %% using IAM Identity Center permission sets continue based on the duration
 %% configured in the permission set. For more information, see User
-%% authentications in the IAM Identity Center User Guide.
+%% authentications:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/authconcept.html
+%% in the IAM Identity Center User Guide.
 logout(Client, Input) ->
     logout(Client, Input, []).
 logout(Client, Input0, Options0) ->

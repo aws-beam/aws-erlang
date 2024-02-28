@@ -142,7 +142,7 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> In addition, Amazon Lex also returns your application-specific
 %% `sessionAttributes'. For more information, see Managing Conversation
-%% Context.
+%% Context: https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
 post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
@@ -258,7 +258,7 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %%
 %% </li> </ul> In addition, Amazon Lex also returns your application-specific
 %% `sessionAttributes'. For more information, see Managing Conversation
-%% Context.
+%% Context: https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
 post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
@@ -286,7 +286,8 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %%
 %% Use this operation to enable your application to set the state of the bot.
 %%
-%% For more information, see Managing Sessions.
+%% For more information, see Managing Sessions:
+%% https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
 put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->

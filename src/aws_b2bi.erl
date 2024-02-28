@@ -16,7 +16,8 @@
 %% `--generate-cli-skeleton' parameter with any API call to generate and
 %% display a parameter template. You can then use the generated template to
 %% customize and use as input on a later command. For details, see Generate
-%% and use a parameter skeleton file.
+%% and use a parameter skeleton file:
+%% https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-skeleton.html#cli-usage-skeleton-generate.
 -module(aws_b2bi).
 
 -export([create_capability/2,

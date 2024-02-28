@@ -25,8 +25,11 @@
 %% recipe.
 %%
 %% For more information about PERSONALIZED_ACTIONS recipes, see
-%% PERSONALIZED_ACTIONS recipes. For more information about getting action
-%% recommendations, see Getting action recommendations.
+%% PERSONALIZED_ACTIONS recipes:
+%% https://docs.aws.amazon.com/personalize/latest/dg/nexts-best-action-recipes.html.
+%% For more information about getting action recommendations, see Getting
+%% action recommendations:
+%% https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html.
 get_action_recommendations(Client, Input) ->
     get_action_recommendations(Client, Input, []).
 get_action_recommendations(Client, Input0, Options0) ->
@@ -95,7 +98,8 @@ get_personalized_ranking(Client, Input0, Options0) ->
 %% For recommenders, the recommender's ARN is required and the required
 %% item and user input depends on the use case (domain-based recipe) backing
 %% the recommender. For information on use case requirements see Choosing
-%% recommender use cases.
+%% recommender use cases:
+%% https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 get_recommendations(Client, Input0, Options0) ->

@@ -21,8 +21,9 @@
 %% recommendations for applications written in other JVM languages and
 %% Python.
 %%
-%% For more information, see What is Amazon CodeGuru Profiler in the Amazon
-%% CodeGuru Profiler User Guide.
+%% For more information, see What is Amazon CodeGuru Profiler:
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
+%% in the Amazon CodeGuru Profiler User Guide.
 -module(aws_codeguruprofiler).
 
 -export([add_notification_channels/3,
@@ -213,8 +214,9 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a `ProfilingGroupDescription' object that contains
-%% information about the requested profiling group.
+%% @doc Returns a `ProfilingGroupDescription' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
+%% object that contains information about the requested profiling group.
 describe_profiling_group(Client, ProfilingGroupName)
   when is_map(Client) ->
     describe_profiling_group(Client, ProfilingGroupName, #{}, #{}).
@@ -237,8 +239,10 @@ describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `FindingsReportSummary' objects that contain
-%% analysis results for all profiling groups in your AWS account.
+%% @doc Returns a list of `FindingsReportSummary' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html
+%% objects that contain analysis results for all profiling groups in your AWS
+%% account.
 get_findings_report_account_summary(Client)
   when is_map(Client) ->
     get_findings_report_account_summary(Client, #{}, #{}).
@@ -411,11 +415,15 @@ get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns a list of `Recommendation' objects that contain
-%% recommendations for a profiling group for a given time period.
+%% @doc Returns a list of `Recommendation' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html
+%% objects that contain recommendations for a profiling group for a given
+%% time period.
 %%
-%% A list of `Anomaly' objects that contains details about anomalies
-%% detected in the profiling group for the same time period is also returned.
+%% A list of `Anomaly' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html
+%% objects that contains details about anomalies detected in the profiling
+%% group for the same time period is also returned.
 get_recommendations(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
@@ -511,7 +519,8 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, Query
 
 %% @doc Returns a list of profiling groups.
 %%
-%% The profiling groups are returned as `ProfilingGroupDescription'
+%% The profiling groups are returned as `ProfilingGroupDescription' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
 %% objects.
 list_profiling_groups(Client)
   when is_map(Client) ->
@@ -567,7 +576,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Submits profiling data to an aggregated profile of a profiling group.
 %%
 %% To get an aggregated profile that is created with this profiling data, use
-%% `GetProfile' .
+%% `GetProfile' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html.
 post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
 post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
@@ -670,8 +680,12 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
 %% The one supported action group that can be removed is
 %% `agentPermission' which grants `ConfigureAgent' and
 %% `PostAgent' permissions. For more information, see Resource-based
-%% policies in CodeGuru Profiler in the Amazon CodeGuru Profiler User Guide,
-%% `ConfigureAgent' , and `PostAgentProfile' .
+%% policies in CodeGuru Profiler:
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html
+%% in the Amazon CodeGuru Profiler User Guide, `ConfigureAgent' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html,
+%% and `PostAgentProfile' :
+%% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html.
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->

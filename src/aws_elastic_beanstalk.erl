@@ -7,17 +7,21 @@
 %% scalable, fault-tolerant applications running on the Amazon Web Services
 %% cloud.
 %%
-%% For more information about this product, go to the AWS Elastic Beanstalk
-%% details page. The location of the latest AWS Elastic Beanstalk WSDL is
+%% For more information about this product, go to the AWS Elastic Beanstalk:
+%% http://aws.amazon.com/elasticbeanstalk/ details page. The location of the
+%% latest AWS Elastic Beanstalk WSDL is
 %% [https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl].
 %% To install the Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE) Toolkits, and command line tools that enable you to
-%% access the API, go to Tools for Amazon Web Services.
+%% access the API, go to Tools for Amazon Web Services:
+%% http://aws.amazon.com/tools/.
 %%
 %% Endpoints
 %%
 %% For a list of region-specific endpoints that AWS Elastic Beanstalk
-%% supports, go to Regions and Endpoints in the Amazon Web Services Glossary.
+%% supports, go to Regions and Endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region
+%% in the Amazon Web Services Glossary.
 -module(aws_elastic_beanstalk).
 
 -export([abort_environment_update/2,
@@ -146,8 +150,9 @@ apply_environment_managed_action(Client, Input, Options)
 %%
 %% After this call is made, Elastic Beanstalk uses the associated operations
 %% role for permissions to downstream services during subsequent calls acting
-%% on this environment. For more information, see Operations roles in the AWS
-%% Elastic Beanstalk Developer Guide.
+%% on this environment. For more information, see Operations roles:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
+%% in the AWS Elastic Beanstalk Developer Guide.
 associate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_environment_operations_role(Client, Input, []).
@@ -169,8 +174,9 @@ check_dns_availability(Client, Input, Options)
 %% Takes a list of version labels that specify application source bundles for
 %% each of the environments to create or update. The name of each environment
 %% and other required information must be included in the source bundles in
-%% an environment manifest named `env.yaml'. See Compose Environments for
-%% details.
+%% an environment manifest named `env.yaml'. See Compose Environments:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html
+%% for details.
 compose_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     compose_environments(Client, Input, []).
@@ -455,7 +461,8 @@ describe_events(Client, Input, Options)
 %% @doc Retrieves detailed information about the health of instances in your
 %% AWS Elastic Beanstalk.
 %%
-%% This operation requires enhanced health reporting.
+%% This operation requires enhanced health reporting:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html.
 describe_instances_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances_health(Client, Input, []).
@@ -469,7 +476,8 @@ describe_instances_health(Client, Input, Options)
 %% provides summary information about a list of platform versions.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% AWS Elastic Beanstalk Platforms Glossary.
+%% AWS Elastic Beanstalk Platforms Glossary:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
 describe_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_platform_version(Client, Input, []).
@@ -481,8 +489,9 @@ describe_platform_version(Client, Input, Options)
 %%
 %% After this call is made, Elastic Beanstalk uses the caller's
 %% permissions for permissions to downstream services during subsequent calls
-%% acting on this environment. For more information, see Operations roles in
-%% the AWS Elastic Beanstalk Developer Guide.
+%% acting on this environment. For more information, see Operations roles:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
+%% in the AWS Elastic Beanstalk Developer Guide.
 disassociate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_environment_operations_role(Client, Input, []).
@@ -505,7 +514,8 @@ list_available_solution_stacks(Client, Input, Options)
 %% Provides summary information about each platform branch.
 %%
 %% For definitions of platform branch and other platform-related terms, see
-%% AWS Elastic Beanstalk Platforms Glossary.
+%% AWS Elastic Beanstalk Platforms Glossary:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
 list_platform_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_branches(Client, Input, []).
@@ -521,7 +531,8 @@ list_platform_branches(Client, Input, Options)
 %% platform version.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% AWS Elastic Beanstalk Platforms Glossary.
+%% AWS Elastic Beanstalk Platforms Glossary:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
 list_platform_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_versions(Client, Input, []).
@@ -534,7 +545,8 @@ list_platform_versions(Client, Input, Options)
 %% The response contains a list of tag key-value pairs.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see Tagging Application Resources.
+%% about resource tagging, see Tagging Application Resources:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -692,7 +704,8 @@ update_environment(Client, Input, Options)
 %% `TagsToRemove'.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see Tagging Application Resources.
+%% about resource tagging, see Tagging Application Resources:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html.
 %%
 %% If you create a custom IAM user policy to control permission to this
 %% operation, specify one of the following two virtual actions (or both)
@@ -707,7 +720,8 @@ update_environment(Client, Input, Options)
 %% the `TagsToRemove' parameter.
 %%
 %% </dd> </dl> For details about creating a custom user policy, see Creating
-%% a Custom User Policy.
+%% a Custom User Policy:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies.
 update_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_resource(Client, Input, []).

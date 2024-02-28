@@ -17,7 +17,8 @@
 %% Glacier is a great storage choice when low storage cost is paramount and
 %% your data is rarely retrieved. If your application requires fast or
 %% frequent access to your data, consider using Amazon S3. For more
-%% information, see Amazon Simple Storage Service (Amazon S3).
+%% information, see Amazon Simple Storage Service (Amazon S3):
+%% http://aws.amazon.com/s3/.
 %%
 %% You can store any kind of data in any format. There is no maximum limit on
 %% the total amount of data you can store in Glacier.
@@ -25,14 +26,17 @@
 %% If you are a first-time user of Glacier, we recommend that you begin by
 %% reading the following sections in the Amazon S3 Glacier Developer Guide:
 %%
-%% <ul> <li> What is Amazon S3 Glacier - This section of the Developer Guide
-%% describes the underlying data model, the operations it supports, and the
-%% AWS SDKs that you can use to interact with the service.
+%% <ul> <li> What is Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html -
+%% This section of the Developer Guide describes the underlying data model,
+%% the operations it supports, and the AWS SDKs that you can use to interact
+%% with the service.
 %%
-%% </li> <li> Getting Started with Amazon S3 Glacier - The Getting Started
-%% section walks you through the process of creating a vault, uploading
-%% archives, creating jobs to download archives, retrieving the job output,
-%% and deleting archives.
+%% </li> <li> Getting Started with Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html
+%% - The Getting Started section walks you through the process of creating a
+%% vault, uploading archives, creating jobs to download archives, retrieving
+%% the job output, and deleting archives.
 %%
 %% </li> </ul>
 -module(aws_glacier).
@@ -138,11 +142,15 @@
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Working with
-%% Archives in Amazon S3 Glacier and Abort Multipart Upload in the Amazon
-%% Glacier Developer Guide.
+%% Archives in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html
+%% and Abort Multipart Upload:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html
+%% in the Amazon Glacier Developer Guide.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
@@ -177,9 +185,11 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0)
 %% `InitiateVaultLock'. A vault lock is put into the `Locked' state
 %% by calling `CompleteVaultLock'. You can get the state of a vault lock
 %% by calling `GetVaultLock'. For more information about the vault
-%% locking process, see Amazon Glacier Vault Lock. For more information about
-%% vault lock policies, see Amazon Glacier Access Control with Vault Lock
-%% Policies.
+%% locking process, see Amazon Glacier Vault Lock:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html. For
+%% more information about vault lock policies, see Amazon Glacier Access
+%% Control with Vault Lock Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html.
 %%
 %% This operation is idempotent. You can successfully invoke this operation
 %% multiple times, if the vault lock is in the `InProgress' state or if
@@ -213,7 +223,8 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% exceeded, the operation throws the `LimitExceededException' error. If
 %% a tag already exists on the vault under a specified key, the existing key
 %% value will be overwritten. For more information about tags, see Tagging
-%% Amazon S3 Glacier Resources.
+%% Amazon S3 Glacier Resources:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
 add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
 add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
@@ -249,13 +260,14 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %%
 %% In the request, you must include the computed SHA256 tree hash of the
 %% entire archive you have uploaded. For information about computing a SHA256
-%% tree hash, see Computing Checksums. On the server side, Glacier also
-%% constructs the SHA256 tree hash of the assembled archive. If the values
-%% match, Glacier saves the archive to the vault; otherwise, it returns an
-%% error, and the operation fails. The `ListParts' operation returns a
-%% list of parts uploaded for a specific multipart upload. It includes
-%% checksum information for each uploaded part that can be used to debug a
-%% bad checksum issue.
+%% tree hash, see Computing Checksums:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html.
+%% On the server side, Glacier also constructs the SHA256 tree hash of the
+%% assembled archive. If the values match, Glacier saves the archive to the
+%% vault; otherwise, it returns an error, and the operation fails. The
+%% `ListParts' operation returns a list of parts uploaded for a specific
+%% multipart upload. It includes checksum information for each uploaded part
+%% that can be used to debug a bad checksum issue.
 %%
 %% Additionally, Glacier also checks for any missing content ranges when
 %% assembling the archive, if missing content ranges are found, Glacier
@@ -276,11 +288,15 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Uploading Large
-%% Archives in Parts (Multipart Upload) and Complete Multipart Upload in the
-%% Amazon Glacier Developer Guide.
+%% Archives in Parts (Multipart Upload):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html
+%% and Complete Multipart Upload:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html
+%% in the Amazon Glacier Developer Guide.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
@@ -331,7 +347,8 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
 %% A vault lock is put into the `InProgress' state by calling
 %% `InitiateVaultLock'. You can obtain the state of the vault lock by
 %% calling `GetVaultLock'. For more information about the vault locking
-%% process, Amazon Glacier Vault Lock.
+%% process, Amazon Glacier Vault Lock:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html.
 %%
 %% This operation is idempotent. This request is always successful if the
 %% vault lock is in the `Locked' state and the provided lock ID matches
@@ -383,10 +400,15 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Creating a Vault
-%% in Amazon Glacier and Create Vault in the Amazon Glacier Developer Guide.
+%% in Amazon Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html
+%% and Create Vault :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html in
+%% the Amazon Glacier Developer Guide.
 create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
 create_vault(Client, AccountId, VaultName, Input0, Options0) ->
@@ -446,11 +468,15 @@ create_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Deleting an
-%% Archive in Amazon Glacier and Delete Archive in the Amazon Glacier
-%% Developer Guide.
+%% Archive in Amazon Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-an-archive.html
+%% and Delete Archive:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html
+%% in the Amazon Glacier Developer Guide.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
@@ -480,10 +506,12 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
 %% since the last inventory. If either of these conditions is not satisfied,
 %% the vault deletion fails (that is, the vault is not removed) and Amazon S3
 %% Glacier returns an error. You can use `DescribeVault' to return the
-%% number of archives in a vault, and you can use Initiate a Job (POST jobs)
+%% number of archives in a vault, and you can use Initiate a Job (POST jobs):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html
 %% to initiate a new inventory retrieval for a vault. The inventory contains
 %% the archive IDs you use to delete archives using Delete Archive (DELETE
-%% archive).
+%% archive):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html.
 %%
 %% This operation is idempotent.
 %%
@@ -491,11 +519,15 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Deleting a Vault
-%% in Amazon Glacier and Delete Vault in the Amazon S3 Glacier Developer
-%% Guide.
+%% in Amazon Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html
+%% and Delete Vault :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html
+%% in the Amazon S3 Glacier Developer Guide.
 delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
 delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
@@ -529,7 +561,8 @@ delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% This operation is idempotent. You can invoke delete multiple times, even
 %% if there is no policy associated with the vault. For more information
 %% about vault access policies, see Amazon Glacier Access Control with Vault
-%% Access Policies.
+%% Access Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
 delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
 delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
@@ -564,11 +597,15 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Configuring Vault
-%% Notifications in Amazon S3 Glacier and Delete Vault Notification
-%% Configuration in the Amazon S3 Glacier Developer Guide.
+%% Notifications in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html
+%% and Delete Vault Notification Configuration :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html
+%% in the Amazon S3 Glacier Developer Guide.
 delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
 delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
@@ -610,11 +647,13 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For more information about using this operation, see the documentation for
-%% the underlying REST API Describe Job in the Amazon Glacier Developer
-%% Guide.
+%% the underlying REST API Describe Job:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html
+%% in the Amazon Glacier Developer Guide.
 describe_job(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     describe_job(Client, AccountId, JobId, VaultName, #{}, #{}).
@@ -648,17 +687,22 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0
 %% be immediately reflected. If you want to retrieve the latest inventory of
 %% the vault, use `InitiateJob'. Amazon S3 Glacier generates vault
 %% inventories approximately daily. For more information, see Downloading a
-%% Vault Inventory in Amazon S3 Glacier.
+%% Vault Inventory in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html.
 %%
 %% An AWS account has full permission to perform all operations (actions).
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Retrieving Vault
-%% Metadata in Amazon S3 Glacier and Describe Vault in the Amazon Glacier
-%% Developer Guide.
+%% Metadata in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html
+%% and Describe Vault :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html in
+%% the Amazon Glacier Developer Guide.
 describe_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     describe_vault(Client, AccountId, VaultName, #{}, #{}).
@@ -685,7 +729,8 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% account and region specified in the GET request.
 %%
 %% For more information about data retrieval policies, see Amazon Glacier
-%% Data Retrieval Policies.
+%% Data Retrieval Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
 get_data_retrieval_policy(Client, AccountId)
   when is_map(Client) ->
     get_data_retrieval_policy(Client, AccountId, #{}, #{}).
@@ -749,10 +794,16 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and the underlying REST API, see Downloading a
-%% Vault Inventory, Downloading an Archive, and Get Job Output
+%% Vault Inventory:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html,
+%% Downloading an Archive:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html,
+%% and Get Job Output :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html
 get_job_output(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     get_job_output(Client, AccountId, JobId, VaultName, #{}, #{}).
@@ -801,11 +852,13 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Option
 
 %% @doc This operation retrieves the `access-policy' subresource set on
 %% the vault; for more information on setting this subresource, see Set Vault
-%% Access Policy (PUT access-policy).
+%% Access Policy (PUT access-policy):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html.
 %%
 %% If there is no access policy set on the vault, the operation returns a
 %% `404 Not found' error. For more information about vault access
-%% policies, see Amazon Glacier Access Control with Vault Access Policies.
+%% policies, see Amazon Glacier Access Control with Vault Access Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
 get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_access_policy(Client, AccountId, VaultName, #{}, #{}).
@@ -846,11 +899,13 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% `InitiateVaultLock'. A vault lock is put into the `Locked' state
 %% by calling `CompleteVaultLock'. You can abort the vault locking
 %% process by calling `AbortVaultLock'. For more information about the
-%% vault locking process, Amazon Glacier Vault Lock.
+%% vault locking process, Amazon Glacier Vault Lock:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html.
 %%
 %% If there is no vault lock policy set on the vault, the operation returns a
 %% `404 Not found' error. For more information about vault lock policies,
-%% Amazon Glacier Access Control with Vault Lock Policies.
+%% Amazon Glacier Access Control with Vault Lock Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html.
 get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_lock(Client, AccountId, VaultName, #{}, #{}).
@@ -880,17 +935,22 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% `SetVaultNotifications'. If a notification configuration for a vault
 %% is not set, the operation returns a `404 Not Found' error. For more
 %% information about vault notifications, see Configuring Vault Notifications
-%% in Amazon S3 Glacier.
+%% in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html.
 %%
 %% An AWS account has full permission to perform all operations (actions).
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Configuring Vault
-%% Notifications in Amazon S3 Glacier and Get Vault Notification
-%% Configuration in the Amazon Glacier Developer Guide.
+%% Notifications in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html
+%% and Get Vault Notification Configuration :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html
+%% in the Amazon Glacier Developer Guide.
 get_vault_notifications(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_notifications(Client, AccountId, VaultName, #{}, #{}).
@@ -917,7 +977,8 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% select, an archival retrieval, or a vault retrieval.
 %%
 %% For more information about using this operation, see the documentation for
-%% the underlying REST API Initiate a Job.
+%% the underlying REST API Initiate a Job:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html.
 initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
 initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
@@ -989,11 +1050,15 @@ initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Uploading Large
-%% Archives in Parts (Multipart Upload) and Initiate Multipart Upload in the
-%% Amazon Glacier Developer Guide.
+%% Archives in Parts (Multipart Upload):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html
+%% and Initiate Multipart Upload:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html
+%% in the Amazon Glacier Developer Guide.
 initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
 initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
@@ -1048,7 +1113,8 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
 %%
 %% </li> </ul> You can set one vault lock policy for each vault and this
 %% policy can be up to 20 KB in size. For more information about vault lock
-%% policies, see Amazon Glacier Access Control with Vault Lock Policies.
+%% policies, see Amazon Glacier Access Control with Vault Lock Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html.
 %%
 %% You must complete the vault locking process within 24 hours after the
 %% vault lock enters the `InProgress' state. After the 24 hour window
@@ -1063,7 +1129,8 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
 %% You can abort the vault locking process by calling `AbortVaultLock'.
 %% You can get the state of the vault lock by calling `GetVaultLock'. For
 %% more information about the vault locking process, Amazon Glacier Vault
-%% Lock.
+%% Lock:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html.
 %%
 %% If this operation is called when the vault lock is in the `InProgress'
 %% state, the operation returns an `AccessDeniedException' error. When
@@ -1145,7 +1212,8 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% (`false').
 %%
 %% For more information about using this operation, see the documentation for
-%% the underlying REST API List Jobs.
+%% the underlying REST API List Jobs:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html.
 list_jobs(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_jobs(Client, AccountId, VaultName, #{}, #{}).
@@ -1203,11 +1271,15 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and the underlying REST API, see Working with
-%% Archives in Amazon S3 Glacier and List Multipart Uploads in the Amazon
-%% Glacier Developer Guide.
+%% Archives in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html
+%% and List Multipart Uploads :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html
+%% in the Amazon Glacier Developer Guide.
 list_multipart_uploads(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_multipart_uploads(Client, AccountId, VaultName, #{}, #{}).
@@ -1256,11 +1328,15 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Optio
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and the underlying REST API, see Working with
-%% Archives in Amazon S3 Glacier and List Parts in the Amazon Glacier
-%% Developer Guide.
+%% Archives in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html
+%% and List Parts:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html
+%% in the Amazon Glacier Developer Guide.
 list_parts(Client, AccountId, UploadId, VaultName)
   when is_map(Client) ->
     list_parts(Client, AccountId, UploadId, VaultName, #{}, #{}).
@@ -1315,7 +1391,8 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc This operation lists all the tags attached to a vault.
 %%
 %% The operation returns an empty map if there are no tags. For more
-%% information about tags, see Tagging Amazon S3 Glacier Resources.
+%% information about tags, see Tagging Amazon S3 Glacier Resources:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
 list_tags_for_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_tags_for_vault(Client, AccountId, VaultName, #{}, #{}).
@@ -1356,11 +1433,15 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Retrieving Vault
-%% Metadata in Amazon S3 Glacier and List Vaults in the Amazon Glacier
-%% Developer Guide.
+%% Metadata in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html
+%% and List Vaults :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html
+%% in the Amazon Glacier Developer Guide.
 list_vaults(Client, AccountId)
   when is_map(Client) ->
     list_vaults(Client, AccountId, #{}, #{}).
@@ -1431,9 +1512,10 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
 %% @doc This operation removes one or more tags from the set of tags attached
 %% to a vault.
 %%
-%% For more information about tags, see Tagging Amazon S3 Glacier Resources.
-%% This operation is idempotent. The operation will be successful, even if
-%% there are no tags attached to the vault.
+%% For more information about tags, see Tagging Amazon S3 Glacier Resources:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html. This
+%% operation is idempotent. The operation will be successful, even if there
+%% are no tags attached to the vault.
 remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
 remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
@@ -1464,7 +1546,8 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %%
 %% The set policy operation does not affect retrieval jobs that were in
 %% progress before the policy was enacted. For more information about data
-%% retrieval policies, see Amazon Glacier Data Retrieval Policies.
+%% retrieval policies, see Amazon Glacier Data Retrieval Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
 set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
 set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
@@ -1495,7 +1578,8 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
 %% to a vault and is also called a vault subresource. You can set one access
 %% policy per vault and the policy can be up to 20 KB in size. For more
 %% information about vault access policies, see Amazon Glacier Access Control
-%% with Vault Access Policies.
+%% with Vault Access Policies:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
 set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
 set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
@@ -1549,11 +1633,15 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% (actions). However, AWS Identity and Access Management (IAM) users
 %% don't have any permissions by default. You must grant them explicit
 %% permission to perform specific actions. For more information, see Access
-%% Control Using AWS Identity and Access Management (IAM).
+%% Control Using AWS Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Configuring Vault
-%% Notifications in Amazon S3 Glacier and Set Vault Notification
-%% Configuration in the Amazon Glacier Developer Guide.
+%% Notifications in Amazon S3 Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html
+%% and Set Vault Notification Configuration :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html
+%% in the Amazon Glacier Developer Guide.
 set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
 set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
@@ -1593,7 +1681,8 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% information, see `InitiateJob'.
 %%
 %% You must provide a SHA256 tree hash of the data you are uploading. For
-%% information about computing a SHA256 tree hash, see Computing Checksums.
+%% information about computing a SHA256 tree hash, see Computing Checksums:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html.
 %%
 %% You can optionally specify an archive description of up to 1,024 printable
 %% ASCII characters. You can get the archive description when you either
@@ -1609,11 +1698,15 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Uploading an
-%% Archive in Amazon Glacier and Upload Archive in the Amazon Glacier
-%% Developer Guide.
+%% Archive in Amazon Glacier:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html
+%% and Upload Archive:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html
+%% in the Amazon Glacier Developer Guide.
 upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
 upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
@@ -1670,7 +1763,8 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
 %% include it in your request. Upon receiving the part data, Amazon S3
 %% Glacier also computes a SHA256 tree hash. If these hash values don't
 %% match, the operation fails. For information about computing a SHA256 tree
-%% hash, see Computing Checksums.
+%% hash, see Computing Checksums:
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html.
 %%
 %% </li> <li> Part size does not matchThe size of each part except the last
 %% must match the size specified in the corresponding
@@ -1697,11 +1791,15 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
 %% However, AWS Identity and Access Management (IAM) users don't have any
 %% permissions by default. You must grant them explicit permission to perform
 %% specific actions. For more information, see Access Control Using AWS
-%% Identity and Access Management (IAM).
+%% Identity and Access Management (IAM):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html.
 %%
 %% For conceptual information and underlying REST API, see Uploading Large
-%% Archives in Parts (Multipart Upload) and Upload Part in the Amazon Glacier
-%% Developer Guide.
+%% Archives in Parts (Multipart Upload):
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html
+%% and Upload Part :
+%% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html
+%% in the Amazon Glacier Developer Guide.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) ->

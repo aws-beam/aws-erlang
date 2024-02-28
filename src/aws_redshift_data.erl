@@ -7,8 +7,9 @@
 %% You can run SQL statements, which are committed if the statement succeeds.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
-%% examples, see Using the Amazon Redshift Data API in the Amazon Redshift
-%% Management Guide.
+%% examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 -module(aws_redshift_data).
 
 -export([batch_execute_statement/2,
@@ -75,8 +76,9 @@
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -89,8 +91,9 @@ batch_execute_statement(Client, Input, Options)
 %% To be canceled, a query must be running.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
-%% examples, see Using the Amazon Redshift Data API in the Amazon Redshift
-%% Management Guide.
+%% examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
@@ -105,8 +108,9 @@ cancel_statement(Client, Input, Options)
 %% query status, the number of rows returned, and the SQL statement.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
-%% examples, see Using the Amazon Redshift Data API in the Amazon Redshift
-%% Management Guide.
+%% examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 describe_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_statement(Client, Input, []).
@@ -152,8 +156,9 @@ describe_statement(Client, Input, Options)
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -199,8 +204,9 @@ describe_table(Client, Input, Options)
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
@@ -213,8 +219,9 @@ execute_statement(Client, Input, Options)
 %% A token is returned to page through the statement results.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
-%% examples, see Using the Amazon Redshift Data API in the Amazon Redshift
-%% Management Guide.
+%% examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 get_statement_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement_result(Client, Input, []).
@@ -259,8 +266,9 @@ get_statement_result(Client, Input, Options)
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
@@ -305,8 +313,9 @@ list_databases(Client, Input, Options)
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
@@ -320,8 +329,9 @@ list_schemas(Client, Input, Options)
 %% page through the statement list.
 %%
 %% For more information about the Amazon Redshift Data API and CLI usage
-%% examples, see Using the Amazon Redshift Data API in the Amazon Redshift
-%% Management Guide.
+%% examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
@@ -367,8 +377,9 @@ list_statements(Client, Input, Options)
 %% required.
 %%
 %% </li> </ul> </li> </ul> For more information about the Amazon Redshift
-%% Data API and CLI usage examples, see Using the Amazon Redshift Data API in
-%% the Amazon Redshift Management Guide.
+%% Data API and CLI usage examples, see Using the Amazon Redshift Data API:
+%% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
+%% Amazon Redshift Management Guide.
 list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).

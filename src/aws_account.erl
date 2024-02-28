@@ -33,13 +33,15 @@
 %% account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts.
+%% see Access or updating the alternate contacts:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
 %% Before you can update the alternate contact information for an Amazon Web
 %% Services account that is managed by Organizations, you must first enable
 %% integration between Amazon Web Services Account Management and
 %% Organizations. For more information, see Enabling trusted access for
-%% Amazon Web Services Account Management.
+%% Amazon Web Services Account Management:
+%% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 delete_alternate_contact(Client, Input) ->
     delete_alternate_contact(Client, Input, []).
 delete_alternate_contact(Client, Input0, Options0) ->
@@ -112,13 +114,15 @@ enable_region(Client, Input0, Options0) ->
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts.
+%% see Access or updating the alternate contacts:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
 %% Before you can update the alternate contact information for an Amazon Web
 %% Services account that is managed by Organizations, you must first enable
 %% integration between Amazon Web Services Account Management and
 %% Organizations. For more information, see Enabling trusted access for
-%% Amazon Web Services Account Management.
+%% Amazon Web Services Account Management:
+%% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 get_alternate_contact(Client, Input) ->
     get_alternate_contact(Client, Input, []).
 get_alternate_contact(Client, Input0, Options0) ->
@@ -145,7 +149,8 @@ get_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update the primary and alternate contact information.
+%% Update the primary and alternate contact information:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 get_contact_information(Client, Input) ->
     get_contact_information(Client, Input, []).
 get_contact_information(Client, Input0, Options0) ->
@@ -222,13 +227,15 @@ list_regions(Client, Input0, Options0) ->
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
-%% see Access or updating the alternate contacts.
+%% see Access or updating the alternate contacts:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 %%
 %% Before you can update the alternate contact information for an Amazon Web
 %% Services account that is managed by Organizations, you must first enable
 %% integration between Amazon Web Services Account Management and
 %% Organizations. For more information, see Enabling trusted access for
-%% Amazon Web Services Account Management.
+%% Amazon Web Services Account Management:
+%% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
 put_alternate_contact(Client, Input) ->
     put_alternate_contact(Client, Input, []).
 put_alternate_contact(Client, Input0, Options0) ->
@@ -255,7 +262,8 @@ put_alternate_contact(Client, Input0, Options0) ->
 %% account.
 %%
 %% For complete details about how to use the primary contact operations, see
-%% Update the primary and alternate contact information.
+%% Update the primary and alternate contact information:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
 put_contact_information(Client, Input) ->
     put_contact_information(Client, Input, []).
 put_contact_information(Client, Input0, Options0) ->

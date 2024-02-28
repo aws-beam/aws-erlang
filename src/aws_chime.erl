@@ -4,11 +4,14 @@
 %% @doc Most of these APIs are no longer supported and will not be updated.
 %%
 %% We recommend using the latest versions in the Amazon Chime SDK API
-%% reference, in the Amazon Chime SDK.
+%% reference:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/welcome.html, in
+%% the Amazon Chime SDK.
 %%
 %% Using the latest versions requires migrating to dedicated namespaces. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% The Amazon Chime application programming interface (API) is designed so
 %% administrators can perform key tasks, such as creating and managing Amazon
@@ -25,25 +28,33 @@
 %% <dl> <dt>Using an AWS SDK</dt> <dd> You don't need to write code to
 %% calculate a signature for request authentication. The SDK clients
 %% authenticate your requests by using access keys that you provide. For more
-%% information about AWS SDKs, see the AWS Developer Center.
+%% information about AWS SDKs, see the AWS Developer Center:
+%% http://aws.amazon.com/developer/.
 %%
 %% </dd> <dt>Using the AWS CLI</dt> <dd> Use your access keys with the AWS
 %% CLI to make API calls. For information about setting up the AWS CLI, see
-%% Installing the AWS Command Line Interface in the AWS Command Line
-%% Interface User Guide. For a list of available Amazon Chime commands, see
-%% the Amazon Chime commands in the AWS CLI Command Reference.
+%% Installing the AWS Command Line Interface:
+%% https://docs.aws.amazon.com/cli/latest/userguide/installing.html in the
+%% AWS Command Line Interface User Guide. For a list of available Amazon
+%% Chime commands, see the Amazon Chime commands:
+%% https://docs.aws.amazon.com/cli/latest/reference/chime/index.html in the
+%% AWS CLI Command Reference.
 %%
 %% </dd> <dt>Using REST APIs</dt> <dd> If you use REST to make API calls, you
 %% must authenticate your request by providing a signature. Amazon Chime
 %% supports Signature Version 4. For more information, see Signature Version
-%% 4 Signing Process in the Amazon Web Services General Reference.
+%% 4 Signing Process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html in
+%% the Amazon Web Services General Reference.
 %%
 %% When making REST API calls, use the service name `chime' and REST
 %% endpoint `https://service.chime.aws.amazon.com'.
 %%
 %% </dd> </dl> Administrative permissions are controlled using AWS Identity
 %% and Access Management (IAM). For more information, see Identity and Access
-%% Management for Amazon Chime in the Amazon Chime Administration Guide.
+%% Management for Amazon Chime:
+%% https://docs.aws.amazon.com/chime/latest/ag/security-iam.html in the
+%% Amazon Chime Administration Guide.
 -module(aws_chime).
 
 -export([associate_phone_number_with_user/4,
@@ -534,12 +545,14 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
 %% Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, AssociatePhoneNumbersWithVoiceConnector, in the
-%% Amazon Chime SDK.
+%% using the latest version, AssociatePhoneNumbersWithVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_AssociatePhoneNumbersWithVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -566,12 +579,14 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 %% Connector group.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, AssociatePhoneNumbersWithVoiceConnectorGroup, in
-%% the Amazon Chime SDK.
+%% using the latest version, AssociatePhoneNumbersWithVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_AssociatePhoneNumbersWithVoiceConnectorGroup.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -622,14 +637,19 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% meeting.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, BatchCreateAttendee, in the Amazon Chime SDK.
+%% using the latest version, BatchCreateAttendee:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_BatchCreateAttendee.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -655,12 +675,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% @doc Adds a specified number of users to a channel.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, BatchCreateChannelMembership, in the Amazon
-%% Chime SDK.
+%% using the latest version, BatchCreateChannelMembership:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_BatchCreateChannelMembership.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
 batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
@@ -745,7 +767,9 @@ batch_delete_phone_number(Client, Input0, Options0) ->
 %% Amazon Chime account.
 %%
 %% For more information about different account types, see Managing Your
-%% Amazon Chime Accounts in the Amazon Chime Administration Guide.
+%% Amazon Chime Accounts:
+%% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
+%% the Amazon Chime Administration Guide.
 %%
 %% Users suspended from a `Team' account are disassociated from the
 %% account,but they can continue to use Amazon Chime as free users. To remove
@@ -787,8 +811,9 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
 %%
 %% Only users on `EnterpriseLWA' accounts can be unsuspended using this
 %% action. For more information about different account types, see Managing
-%% Your Amazon Chime Accounts in the account types, in the Amazon Chime
-%% Administration Guide.
+%% Your Amazon Chime Accounts :
+%% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
+%% the account types, in the Amazon Chime Administration Guide.
 %%
 %% Previously suspended users who are unsuspended using this action are
 %% returned to `Registered' status. Users who are not previously
@@ -881,7 +906,9 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
 %%
 %% Only `Team' account types are currently supported for this action. For
 %% more information about different account types, see Managing Your Amazon
-%% Chime Accounts in the Amazon Chime Administration Guide.
+%% Chime Accounts:
+%% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
+%% the Amazon Chime Administration Guide.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
 create_account(Client, Input0, Options0) ->
@@ -911,11 +938,14 @@ create_account(Client, Input0, Options0) ->
 %% supports idempotency behavior as described in the AWS API Standard.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateAppInstance, in the Amazon Chime SDK.
+%% using the latest version, CreateAppInstance:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_CreateAppInstance.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
 create_app_instance(Client, Input0, Options0) ->
@@ -943,11 +973,14 @@ create_app_instance(Client, Input0, Options0) ->
 %% The promoted user can perform the following actions.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateAppInstanceAdmin, in the Amazon Chime SDK.
+%% using the latest version, CreateAppInstanceAdmin:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_CreateAppInstanceAdmin.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% <ul> <li> `ChannelModerator' actions across all channels in the
 %% `AppInstance'.
@@ -984,11 +1017,14 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 %% for that user.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateAppInstanceUser, in the Amazon Chime SDK.
+%% using the latest version, CreateAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_CreateAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 create_app_instance_user(Client, Input0, Options0) ->
@@ -1014,14 +1050,19 @@ create_app_instance_user(Client, Input0, Options0) ->
 %% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateAttendee, in the Amazon Chime SDK.
+%% using the latest version, CreateAttendee:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_CreateAttendee.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -1076,11 +1117,14 @@ create_bot(Client, AccountId, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateChannel, in the Amazon Chime SDK.
+%% using the latest version, CreateChannel:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_CreateChannel.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 create_channel(Client, Input0, Options0) ->
@@ -1120,11 +1164,14 @@ create_channel(Client, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateChannelBan, in the Amazon Chime SDK.
+%% using the latest version, CreateChannelBan:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_CreateChannelBan.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 create_channel_ban(Client, ChannelArn, Input0, Options0) ->
@@ -1177,12 +1224,14 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% value in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateChannelMembership, in the Amazon Chime
-%% SDK.
+%% using the latest version, CreateChannelMembership:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_CreateChannelMembership.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 create_channel_membership(Client, ChannelArn, Input0, Options0) ->
@@ -1226,11 +1275,14 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% value in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateChannelModerator, in the Amazon Chime SDK.
+%% using the latest version, CreateChannelModerator:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_CreateChannelModerator.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
@@ -1258,12 +1310,14 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %% @doc Creates a media capture pipeline.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateMediaCapturePipeline, in the Amazon Chime
-%% SDK.
+%% using the latest version, CreateMediaCapturePipeline:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_CreateMediaCapturePipeline,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
 create_media_capture_pipeline(Client, Input0, Options0) ->
@@ -1290,16 +1344,22 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% with no initial attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime SDK Developer Guide . For more
-%% information about the Amazon Chime SDK, see Using the Amazon Chime SDK in
-%% the Amazon Chime SDK Developer Guide.
+%% Media Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html
+%% in the Amazon Chime SDK Developer Guide . For more information about the
+%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateMeeting, in the Amazon Chime SDK.
+%% using the latest version, CreateMeeting:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_CreateMeeting.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options0) ->
@@ -1359,17 +1419,22 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 %% with attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime SDK Developer Guide . For more
-%% information about the Amazon Chime SDK, see Using the Amazon Chime SDK in
-%% the Amazon Chime SDK Developer Guide .
+%% Media Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html
+%% in the Amazon Chime SDK Developer Guide . For more information about the
+%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide .
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateMeetingWithAttendees, in the Amazon Chime
-%% SDK.
+%% using the latest version, CreateMeetingWithAttendees:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_CreateMeetingWithAttendees.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options0) ->
@@ -1423,11 +1488,14 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% for the specified participant phone numbers.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateProxySession, in the Amazon Chime SDK.
+%% using the latest version, CreateProxySession:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateProxySession.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1503,12 +1571,14 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %% @doc Creates a SIP media application.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateSipMediaApplication, in the Amazon Chime
-%% SDK.
+%% using the latest version, CreateSipMediaApplication:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateSipMediaApplication.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 create_sip_media_application(Client, Input0, Options0) ->
@@ -1536,12 +1606,14 @@ create_sip_media_application(Client, Input0, Options0) ->
 %% `sipMediaApplicationId'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateSipMediaApplicationCall, in the Amazon
-%% Chime SDK.
+%% using the latest version, CreateSipMediaApplicationCall:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateSipMediaApplicationCall.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -1568,11 +1640,14 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% as a target for a specific trigger type.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateSipRule, in the Amazon Chime SDK.
+%% using the latest version, CreateSipRule:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateSipRule.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 create_sip_rule(Client, Input0, Options0) ->
@@ -1630,11 +1705,14 @@ create_user(Client, AccountId, Input0, Options0) ->
 %% unencrypted outbound calls are blocked.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateVoiceConnector, in the Amazon Chime SDK.
+%% using the latest version, CreateVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 create_voice_connector(Client, Input0, Options0) ->
@@ -1669,12 +1747,14 @@ create_voice_connector(Client, Input0, Options0) ->
 %% case of availability events.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, CreateVoiceConnectorGroup, in the Amazon Chime
-%% SDK.
+%% using the latest version, CreateVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_CreateVoiceConnectorGroup.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 create_voice_connector_group(Client, Input0, Options0) ->
@@ -1737,11 +1817,14 @@ delete_account(Client, AccountId, Input0, Options0) ->
 %% @doc Deletes an `AppInstance' and all associated data asynchronously.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstance, in the Amazon Chime SDK.
+%% using the latest version, DeleteAppInstance:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstance.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
 delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
@@ -1769,11 +1852,14 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% This action does not delete the user.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstanceAdmin, in the Amazon Chime SDK.
+%% using the latest version, DeleteAppInstanceAdmin:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstanceAdmin.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
@@ -1799,12 +1885,14 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 %% @doc Deletes the streaming configurations of an `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstanceStreamingConfigurations, in the
-%% Amazon Chime SDK.
+%% using the latest version, DeleteAppInstanceStreamingConfigurations:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstanceStreamingConfigurations.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
@@ -1830,11 +1918,14 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
 %% @doc Deletes an `AppInstanceUser'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAppInstanceUser, in the Amazon Chime SDK.
+%% using the latest version, DeleteAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DeleteAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
 delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
@@ -1862,14 +1953,19 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteAttendee, in the Amazon Chime SDK.
+%% using the latest version, DeleteAttendee:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_DeleteAttendee.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
@@ -1902,11 +1998,14 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteChannel, in the Amazon Chime SDK.
+%% using the latest version, DeleteChannel:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DeleteChannel.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 delete_channel(Client, ChannelArn, Input0, Options0) ->
@@ -1938,11 +2037,14 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteChannelBan, in the Amazon Chime SDK.
+%% using the latest version, DeleteChannelBan:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DeleteChannelBan.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
@@ -1974,12 +2076,14 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteChannelMembership, in the Amazon Chime
-%% SDK.
+%% using the latest version, DeleteChannelMembership:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DeleteChannelMembership.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
@@ -2015,11 +2119,14 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteChannelMessage, in the Amazon Chime SDK.
+%% using the latest version, DeleteChannelMessage:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DeleteChannelMessage.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -2051,11 +2158,14 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteChannelModerator, in the Amazon Chime SDK.
+%% using the latest version, DeleteChannelModerator:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DeleteChannelModerator.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
@@ -2107,12 +2217,14 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% @doc Deletes the media capture pipeline.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteMediaCapturePipeline, in the Amazon Chime
-%% SDK.
+%% using the latest version, DeleteMediaCapturePipeline:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_DeleteMediaCapturePipeline.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
 delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
@@ -2139,15 +2251,19 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %%
 %% The operation deletes all attendees, disconnects all clients, and prevents
 %% new clients from joining the meeting. For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime SDK
-%% Developer Guide.
+%% Amazon Chime SDK, see Using the Amazon Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteMeeting, in the Amazon Chime SDK.
+%% using the latest version, DeleteMeeting:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_DeleteMeeting.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options0) ->
@@ -2203,11 +2319,14 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteProxySession, in the Amazon Chime SDK.
+%% using the latest version, DeleteProxySession:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteProxySession.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
@@ -2280,12 +2399,14 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% @doc Deletes a SIP media application.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteSipMediaApplication, in the Amazon Chime
-%% SDK.
+%% using the latest version, DeleteSipMediaApplication:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteSipMediaApplication.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -2313,11 +2434,14 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% You must disable a SIP rule before you can delete it.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteSipRule, in the Amazon Chime SDK.
+%% using the latest version, DeleteSipRule:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteSipRule.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
@@ -2346,11 +2470,14 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% disassociated from it before it can be deleted.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnector, in the Amazon Chime SDK.
+%% using the latest version, DeleteVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2378,12 +2505,14 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %%
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the latest version,
-%% DeleteVoiceConnectorEmergencyCallingConfiguration, in the Amazon Chime
-%% SDK.
+%% DeleteVoiceConnectorEmergencyCallingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorEmergencyCallingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2412,12 +2541,14 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% must be removed before it can be deleted.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnectorGroup, in the Amazon Chime
-%% SDK.
+%% using the latest version, DeleteVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorGroup.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -2447,12 +2578,14 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% it must be deleted prior to deleting the origination settings.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnectorOrigination, in the Amazon
-%% Chime SDK.
+%% using the latest version, DeleteVoiceConnectorOrigination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorOrigination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2479,11 +2612,14 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 %% Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceProxy, in the Amazon Chime SDK.
+%% using the latest version, DeleteVoiceProxy:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorProxy.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2510,12 +2646,14 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnectorStreamingConfiguration, in
-%% the Amazon Chime SDK.
+%% using the latest version, DeleteVoiceConnectorStreamingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorStreamingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2545,12 +2683,14 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% it must be deleted prior to deleting the termination settings.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnectorTermination, in the Amazon
-%% Chime SDK.
+%% using the latest version, DeleteVoiceConnectorTermination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorTermination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2577,12 +2717,14 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 %% authenticate during call termination.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DeleteVoiceConnectorTerminationCredentials, in
-%% the Amazon Chime SDK.
+%% using the latest version, DeleteVoiceConnectorTerminationCredentials:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DeleteVoiceConnectorTerminationCredentials.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2608,11 +2750,14 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% @doc Returns the full details of an `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeAppInstance, in the Amazon Chime SDK.
+%% using the latest version, DescribeAppInstance:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DescribeAppInstance.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
@@ -2638,12 +2783,14 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% @doc Returns the full details of an `AppInstanceAdmin'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeAppInstanceAdmin, in the Amazon Chime
-%% SDK.
+%% using the latest version, DescribeAppInstanceAdmin:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DescribeAppInstanceAdmin.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
@@ -2669,12 +2816,14 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 %% @doc Returns the full details of an `AppInstanceUser'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeAppInstanceUser, in the Amazon Chime
-%% SDK.
+%% using the latest version, DescribeAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_DescribeAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
@@ -2705,11 +2854,14 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannel, in the Amazon Chime SDK.
+%% using the latest version, DescribeChannel:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannel.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel(Client, ChannelArn)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, #{}, #{}).
@@ -2743,11 +2895,14 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannelBan, in the Amazon Chime SDK.
+%% using the latest version, DescribeChannelBan:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannelBan.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel_ban(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, #{}, #{}).
@@ -2781,12 +2936,14 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannelMembership, in the Amazon Chime
-%% SDK.
+%% using the latest version, DescribeChannelMembership:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannelMembership.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel_membership(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, #{}, #{}).
@@ -2821,12 +2978,14 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannelMembershipForAppInstanceUser, in
-%% the Amazon Chime SDK.
+%% using the latest version, DescribeChannelMembershipForAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannelMembershipForAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
@@ -2865,12 +3024,14 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannelModeratedByAppInstanceUser, in
-%% the Amazon Chime SDK.
+%% using the latest version, DescribeChannelModeratedByAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannelModeratedByAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn)
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
@@ -2908,12 +3069,14 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DescribeChannelModerator, in the Amazon Chime
-%% SDK.
+%% using the latest version, DescribeChannelModerator:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_DescribeChannelModerator.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, #{}, #{}).
@@ -2968,12 +3131,14 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
 %% Chime Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DisassociatePhoneNumbersFromVoiceConnector, in
-%% the Amazon Chime SDK.
+%% using the latest version, DisassociatePhoneNumbersFromVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DisassociatePhoneNumbersFromVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -3000,12 +3165,14 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% Chime Voice Connector group.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, DisassociatePhoneNumbersFromVoiceConnectorGroup,
+%% using the latest version, DisassociatePhoneNumbersFromVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_DisassociatePhoneNumbersFromVoiceConnectorGroup.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -3079,8 +3246,9 @@ get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves account settings for the specified Amazon Chime account ID,
 %% such as remote control and dialout settings.
 %%
-%% For more information about these settings, see Use the Policies Page in
-%% the Amazon Chime Administration Guide.
+%% For more information about these settings, see Use the Policies Page:
+%% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
+%% Chime Administration Guide.
 get_account_settings(Client, AccountId)
   when is_map(Client) ->
     get_account_settings(Client, AccountId, #{}, #{}).
@@ -3106,12 +3274,14 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc Gets the retention settings for an `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetMessagingRetentionSettings, in the Amazon
-%% Chime SDK.
+%% using the latest version, GetMessagingRetentionSettings:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_GetAppInstanceRetentionSettings.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
@@ -3137,12 +3307,14 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 %% @doc Gets the streaming settings for an `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetMessagingStreamingConfigurations, in the
-%% Amazon Chime SDK.
+%% using the latest version, GetMessagingStreamingConfigurations:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_GetMessagingStreamingConfigurations.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_app_instance_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
@@ -3169,14 +3341,19 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 %% and attendee ID.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetAttendee, in the Amazon Chime SDK.
+%% using the latest version, GetAttendee:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_GetAttendee.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
@@ -3230,11 +3407,14 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetChannelMessage, in the Amazon Chime SDK.
+%% using the latest version, GetChannelMessage:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_GetChannelMessage.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_channel_message(Client, ChannelArn, MessageId)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, #{}, #{}).
@@ -3313,12 +3493,14 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets an existing media capture pipeline.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetMediaCapturePipeline, in the Amazon Chime
-%% SDK.
+%% using the latest version, GetMediaCapturePipeline:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_GetMediaCapturePipeline.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
@@ -3343,16 +3525,20 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 
 %% @doc This API is is no longer supported and will not be updated.
 %%
-%% We recommend using the latest version, GetMeeting, in the Amazon Chime
-%% SDK.
+%% We recommend using the latest version, GetMeeting:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_GetMeeting.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide .
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide .
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
@@ -3378,12 +3564,14 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% @doc The details of the endpoint for the messaging session.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetMessagingSessionEndpoint, in the Amazon Chime
-%% SDK.
+%% using the latest version, GetMessagingSessionEndpoint:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_GetMessagingSessionEndpoint.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_messaging_session_endpoint(Client)
   when is_map(Client) ->
     get_messaging_session_endpoint(Client, #{}, #{}).
@@ -3483,11 +3671,14 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 %% Chime Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetProxySession, in the Amazon Chime SDK.
+%% using the latest version, GetProxySession:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetProxySession.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
@@ -3514,7 +3705,8 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 %% account.
 %%
 %% For more information about retention settings, see Managing Chat Retention
-%% Policies in the Amazon Chime Administration Guide.
+%% Policies: https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
+%% in the Amazon Chime Administration Guide.
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, #{}, #{}).
@@ -3565,11 +3757,14 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %% name, AWS Region, and endpoints.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetSipMediaApplication, in the Amazon Chime SDK.
+%% using the latest version, GetSipMediaApplication:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetSipMediaApplication.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
@@ -3596,12 +3791,14 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 %% application.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetSipMediaApplicationLoggingConfiguration, in
-%% the Amazon Chime SDK.
+%% using the latest version, GetSipMediaApplicationLoggingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetSipMediaApplicationLoggingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -3628,11 +3825,14 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 %% triggers, and target endpoints.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetSipRule, in the Amazon Chime SDK.
+%% using the latest version, GetSipRule:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetSipRule.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
@@ -3710,11 +3910,14 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 %% such as timestamps,name, outbound host, and encryption requirements.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnector, in the Amazon Chime SDK.
+%% using the latest version, GetVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -3741,12 +3944,14 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% Amazon Chime Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorEmergencyCallingConfiguration,
+%% using the latest version, GetVoiceConnectorEmergencyCallingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorEmergencyCallingConfiguration.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3773,11 +3978,14 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 %% group, such as timestamps,name, and associated `VoiceConnectorItems'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorGroup, in the Amazon Chime SDK.
+%% using the latest version, GetVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorGroup.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -3807,12 +4015,14 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %% CloudWatch Logs.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorLoggingConfiguration, in the
-%% Amazon Chime SDK.
+%% using the latest version, GetVoiceConnectorLoggingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorLoggingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3839,12 +4049,14 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorOrigination, in the Amazon
-%% Chime SDK.
+%% using the latest version, GetVoiceConnectorOrigination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorOrigination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
@@ -3871,11 +4083,14 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorProxy, in the Amazon Chime SDK.
+%% using the latest version, GetVoiceConnectorProxy:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorProxy.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
@@ -3905,12 +4120,14 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% also shows the retention period, in hours, for the Amazon Kinesis data.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorStreamingConfiguration, in the
-%% Amazon Chime SDK.
+%% using the latest version, GetVoiceConnectorStreamingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorStreamingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -3937,12 +4154,14 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, GetVoiceConnectorTermination, in the Amazon
-%% Chime SDK.
+%% using the latest version, GetVoiceConnectorTermination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorTermination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
@@ -3967,12 +4186,14 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 
 %% @doc This API is is no longer supported and will not be updated.
 %%
-%% We recommend using the latest version, GetVoiceConnectorTerminationHealth,
+%% We recommend using the latest version, GetVoiceConnectorTerminationHealth:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_GetVoiceConnectorTerminationHealth.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 %%
 %% Retrieves information about the last time a SIP `OPTIONS' ping was
 %% received from your SIP infrastructure for the specified Amazon Chime Voice
@@ -4063,11 +4284,14 @@ list_accounts(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of the administrators in the `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListAppInstanceAdmins, in the Amazon Chime SDK.
+%% using the latest version, ListAppInstanceAdmins:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_ListAppInstanceAdmins.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
@@ -4099,11 +4323,14 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListAppInstanceUsers, in the Amazon Chime SDK.
+%% using the latest version, ListAppInstanceUsers:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_ListAppInstanceUsers.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
@@ -4136,11 +4363,14 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListAppInstances, in the Amazon Chime SDK.
+%% using the latest version, ListAppInstances:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_ListAppInstances.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
@@ -4197,14 +4427,19 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListAttendees, in the Amazon Chime SDK.
+%% using the latest version, ListAttendees:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_ListAttendees.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -4268,11 +4503,14 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelBans, in the Amazon Chime SDK.
+%% using the latest version, ListChannelBans:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelBans.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channel_bans(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, #{}, #{}).
@@ -4311,11 +4549,14 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelMemberships, in the Amazon Chime SDK.
+%% using the latest version, ListChannelMemberships:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelMemberships.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channel_memberships(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, #{}, #{}).
@@ -4359,12 +4600,14 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelMembershipsForAppInstanceUser, in the
-%% Amazon Chime SDK.
+%% using the latest version, ListChannelMembershipsForAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channel_memberships_for_app_instance_user(Client)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, #{}, #{}).
@@ -4411,11 +4654,14 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelMessages, in the Amazon Chime SDK.
+%% using the latest version, ListChannelMessages:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelMessages.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channel_messages(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, #{}, #{}).
@@ -4457,11 +4703,14 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelModerators, in the Amazon Chime SDK.
+%% using the latest version, ListChannelModerators:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelModerators.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channel_moderators(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, #{}, #{}).
@@ -4511,11 +4760,14 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% value in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannels, in the Amazon Chime SDK.
+%% using the latest version, ListChannels:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannels.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channels(Client, AppInstanceArn)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, #{}, #{}).
@@ -4556,12 +4808,14 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListChannelsModeratedByAppInstanceUser, in the
-%% Amazon Chime SDK.
+%% using the latest version, ListChannelsModeratedByAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelsModeratedByAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_channels_moderated_by_app_instance_user(Client)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, #{}, #{}).
@@ -4597,12 +4851,14 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
 %% @doc Returns a list of media capture pipelines.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListMediaCapturePipelines, in the Amazon Chime
-%% SDK.
+%% using the latest version, ListMediaCapturePipelines:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_media-pipelines-chime_ListMediaCapturePipelines.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
@@ -4633,11 +4889,14 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the tags applied to an Amazon Chime SDK meeting resource.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListTagsForResource, in the Amazon Chime SDK.
+%% using the latest version, ListTagsForResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_ListTagsForResource.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
     list_meeting_tags(Client, MeetingId, #{}, #{}).
@@ -4666,7 +4925,9 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% Update your application to remove calls to this API.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime SDK Developer Guide.
+%% Chime SDK:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
+%% Amazon Chime SDK Developer Guide.
 list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
@@ -4761,11 +5022,14 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListProxySessions, in the Amazon Chime SDK.
+%% using the latest version, ListProxySessions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListProxySessions.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
@@ -4861,12 +5125,14 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListSipMediaApplications, in the Amazon Chime
-%% SDK.
+%% using the latest version, ListSipMediaApplications:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListSipMediaApplications.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
@@ -4897,11 +5163,14 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the SIP rules under the administrator's AWS account.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListSipRules, in the Amazon Chime SDK.
+%% using the latest version, ListSipRules:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListSipRules.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
@@ -4963,13 +5232,16 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 %% This API is is no longer supported and will not be updated. We recommend
 %% using the applicable latest version in the Amazon Chime SDK.
 %%
-%% For meetings: ListTagsForResource.
+%% For meetings: ListTagsForResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_ListTagsForResource.html.
 %%
-%% For messaging: ListTagsForResource.
+%% For messaging: ListTagsForResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListTagsForResource.html.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -5033,12 +5305,14 @@ list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% administrator's AWS account.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListVoiceConnectorGroups, in the Amazon Chime
-%% SDK.
+%% using the latest version, ListVoiceConnectorGroups:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListVoiceConnectorGroups.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -5070,12 +5344,14 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 %% Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListVoiceConnectorTerminationCredentials, in the
-%% Amazon Chime SDK.
+%% using the latest version, ListVoiceConnectorTerminationCredentials:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListVoiceConnectorTerminationCredentials.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
@@ -5102,11 +5378,14 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 %% AWS account.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ListVoiceConnectors, in the Amazon Chime SDK.
+%% using the latest version, ListVoiceConnectors:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ListVoiceConnectors.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
@@ -5162,12 +5441,14 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
 %% retains data.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutAppInstanceRetentionSettings, in the Amazon
-%% Chime SDK.
+%% using the latest version, PutAppInstanceRetentionSettings:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_PutAppInstanceRetentionSettings.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
@@ -5193,12 +5474,14 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% @doc The data streaming configurations of an `AppInstance'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutMessagingStreamingConfigurations, in the
-%% Amazon Chime SDK.
+%% using the latest version, PutMessagingStreamingConfigurations:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_PutMessagingStreamingConfigurations.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
@@ -5253,12 +5536,14 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %%
 %% We recommend using AWS CloudTrail to monitor usage of this API for your
 %% account. For more information, see Logging Amazon Chime API Calls with AWS
-%% CloudTrail in the Amazon Chime Administration Guide.
+%% CloudTrail: https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html in
+%% the Amazon Chime Administration Guide.
 %%
 %% To turn off existing retention settings, remove the number of days from
 %% the corresponding RetentionDays field in the RetentionSettings object. For
 %% more information about retention settings, see Managing Chat Retention
-%% Policies in the Amazon Chime Administration Guide.
+%% Policies: https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
+%% in the Amazon Chime Administration Guide.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
 put_retention_settings(Client, AccountId, Input0, Options0) ->
@@ -5285,12 +5570,14 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
 %% application.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutSipMediaApplicationLoggingConfiguration, in
-%% the Amazon Chime SDK.
+%% using the latest version, PutSipMediaApplicationLoggingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutSipMediaApplicationLoggingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -5321,12 +5608,14 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% Voice Connector before emergency calling can be configured.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorEmergencyCallingConfiguration,
+%% using the latest version, PutVoiceConnectorEmergencyCallingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorEmergencyCallingConfiguration.html,
 %% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5356,12 +5645,14 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% for sending to Amazon CloudWatch Logs.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorLoggingConfiguration, in the
-%% Amazon Chime SDK.
+%% using the latest version, PutVoiceConnectorLoggingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorLoggingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5391,12 +5682,14 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% it must be deleted prior to turning off origination settings.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorOrigination, in the Amazon
-%% Chime SDK.
+%% using the latest version, PutVoiceConnectorOrigination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorOrigination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5423,11 +5716,14 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 %% Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorProxy, in the Amazon Chime SDK.
+%% using the latest version, PutVoiceConnectorProxy:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorProxy.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5458,12 +5754,14 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% the Amazon Kinesis data.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorStreamingConfiguration, in the
-%% Amazon Chime SDK.
+%% using the latest version, PutVoiceConnectorStreamingConfiguration:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorStreamingConfiguration.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5493,12 +5791,14 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% it must be deleted prior to turning off termination settings.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorTermination, in the Amazon
-%% Chime SDK.
+%% using the latest version, PutVoiceConnectorTermination:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorTermination.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5525,12 +5825,14 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 %% Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, PutVoiceConnectorTerminationCredentials, in the
-%% Amazon Chime SDK.
+%% using the latest version, PutVoiceConnectorTerminationCredentials:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_PutVoiceConnectorTerminationCredentials.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5563,11 +5865,14 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, RedactChannelMessage, in the Amazon Chime SDK.
+%% using the latest version, RedactChannelMessage:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_RedactChannelMessage.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -5763,11 +6068,14 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% metadata.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, SendChannelMessage, in the Amazon Chime SDK.
+%% using the latest version, SendChannelMessage:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_SendChannelMessage.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
 send_channel_message(Client, ChannelArn, Input0, Options0) ->
@@ -5794,27 +6102,31 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Starts transcription for the specified `meetingId'.
 %%
-%% For more information, refer to Using Amazon Chime SDK live transcription
+%% For more information, refer to Using Amazon Chime SDK live transcription :
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meeting-transcription.html
 %% in the Amazon Chime SDK Developer Guide.
 %%
 %% If you specify an invalid configuration, a `TranscriptFailed' event
 %% will be sent with the contents of the `BadRequestException' generated
 %% by Amazon Transcribe. For more information on each parameter and which
-%% combinations are valid, refer to the StartStreamTranscription API in the
-%% Amazon Transcribe Developer Guide.
+%% combinations are valid, refer to the StartStreamTranscription:
+%% https://docs.aws.amazon.com/transcribe/latest/APIReference/API_streaming_StartStreamTranscription.html
+%% API in the Amazon Transcribe Developer Guide.
 %%
 %% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
-%% of Amazon Transcribe is subject to the AWS Service Terms, including the
-%% terms specific to the AWS Machine Learning and Artificial Intelligence
-%% Services.
+%% of Amazon Transcribe is subject to the AWS Service Terms:
+%% https://aws.amazon.com/service-terms/, including the terms specific to the
+%% AWS Machine Learning and Artificial Intelligence Services.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, StartMeetingTranscription, in the Amazon Chime
-%% SDK.
+%% using the latest version, StartMeetingTranscription:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_StartMeetingTranscription.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
@@ -5840,12 +6152,14 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% @doc Stops transcription for the specified `meetingId'.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, StopMeetingTranscription, in the Amazon Chime
-%% SDK.
+%% using the latest version, StopMeetingTranscription:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_StopMeetingTranscription.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
@@ -5897,11 +6211,14 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% @doc Applies the specified tags to the specified Amazon Chime SDK meeting.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, TagResource, in the Amazon Chime SDK.
+%% using the latest version, TagResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_TagResource.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
 tag_meeting(Client, MeetingId, Input0, Options0) ->
@@ -5928,11 +6245,14 @@ tag_meeting(Client, MeetingId, Input0, Options0) ->
 %% resource.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, TagResource, in the Amazon Chime SDK.
+%% using the latest version, TagResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_TagResource.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -5986,11 +6306,14 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% meeting.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UntagResource, in the Amazon Chime SDK.
+%% using the latest version, UntagResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_UntagResource.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
 untag_meeting(Client, MeetingId, Input0, Options0) ->
@@ -6020,11 +6343,14 @@ untag_meeting(Client, MeetingId, Input0, Options0) ->
 %% resource.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UntagResource, in the Amazon Chime SDK.
+%% using the latest version, UntagResource:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_meeting-chime_UntagResource.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -6077,7 +6403,8 @@ update_account(Client, AccountId, Input0, Options0) ->
 %%
 %% You can update settings for remote control of shared screens, or for the
 %% dial-out option. For more information about these settings, see Use the
-%% Policies Page in the Amazon Chime Administration Guide.
+%% Policies Page: https://docs.aws.amazon.com/chime/latest/ag/policies.html
+%% in the Amazon Chime Administration Guide.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
 update_account_settings(Client, AccountId, Input0, Options0) ->
@@ -6103,11 +6430,14 @@ update_account_settings(Client, AccountId, Input0, Options0) ->
 %% @doc Updates `AppInstance' metadata.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateAppInstance, in the Amazon Chime SDK.
+%% using the latest version, UpdateAppInstance:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_UpdateAppInstance.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
 update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
@@ -6135,11 +6465,14 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% You can update names and metadata.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateAppInstanceUser, in the Amazon Chime SDK.
+%% using the latest version, UpdateAppInstanceUser:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_identity-chime_UpdateAppInstanceUser.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
@@ -6195,11 +6528,14 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateChannel, in the Amazon Chime SDK.
+%% using the latest version, UpdateChannel:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_UpdateChannel.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 update_channel(Client, ChannelArn, Input0, Options0) ->
@@ -6231,11 +6567,14 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateChannelMessage, in the Amazon Chime SDK.
+%% using the latest version, UpdateChannelMessage:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_UpdateChannelMessage.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -6267,12 +6606,14 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% in the header.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateChannelReadMarker, in the Amazon Chime
-%% SDK.
+%% using the latest version, UpdateChannelReadMarker:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_UpdateChannelReadMarker.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
@@ -6388,11 +6729,14 @@ update_phone_number_settings(Client, Input0, Options0) ->
 %% capabilities.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateProxySession, in the Amazon Chime SDK.
+%% using the latest version, UpdateProxySession:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateProxySession.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
@@ -6470,12 +6814,14 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% @doc Updates the details of the specified SIP media application.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateSipMediaApplication, in the Amazon Chime
-%% SDK.
+%% using the latest version, UpdateSipMediaApplication:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateSipMediaApplication.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -6504,12 +6850,14 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% The Lambda function can then return a new set of actions.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateSipMediaApplicationCall, in the Amazon
-%% Chime SDK.
+%% using the latest version, UpdateSipMediaApplicationCall:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateSipMediaApplicationCall.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
@@ -6535,11 +6883,14 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 %% @doc Updates the details of the specified SIP rule.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateSipRule, in the Amazon Chime SDK.
+%% using the latest version, UpdateSipRule:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateSipRule.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 update_sip_rule(Client, SipRuleId, Input0, Options0) ->
@@ -6614,11 +6965,14 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
 %% @doc Updates details for the specified Amazon Chime Voice Connector.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateVoiceConnector, in the Amazon Chime SDK.
+%% using the latest version, UpdateVoiceConnector:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateVoiceConnector.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -6645,12 +6999,14 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% such as the name and Amazon Chime Voice Connector priority ranking.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, UpdateVoiceConnectorGroup, in the Amazon Chime
-%% SDK.
+%% using the latest version, UpdateVoiceConnectorGroup:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_UpdateVoiceConnectorGroup.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -6682,11 +7038,14 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% Point.
 %%
 %% This API is is no longer supported and will not be updated. We recommend
-%% using the latest version, ValidateE911Address, in the Amazon Chime SDK.
+%% using the latest version, ValidateE911Address:
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_voice-chime_ValidateE911Address.html,
+%% in the Amazon Chime SDK.
 %%
 %% Using the latest version requires migrating to a dedicated namespace. For
-%% more information, refer to Migrating from the Amazon Chime namespace in
-%% the Amazon Chime SDK Developer Guide.
+%% more information, refer to Migrating from the Amazon Chime namespace:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
+%% in the Amazon Chime SDK Developer Guide.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 validate_e911_address(Client, Input0, Options0) ->

@@ -9,7 +9,7 @@
 %% Shield Advanced API actions, data types, and errors. For detailed
 %% information about WAF and Shield Advanced features and an overview of how
 %% to use the WAF and Shield Advanced APIs, see the WAF and Shield Developer
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
 -module(aws_shield).
 
 -export([associate_drt_log_bucket/2,
@@ -98,8 +98,9 @@
 %% You can associate up to 10 Amazon S3 buckets with your subscription.
 %%
 %% To use the services of the SRT and make an `AssociateDRTLogBucket'
-%% request, you must be subscribed to the Business Support plan or the
-%% Enterprise Support plan.
+%% request, you must be subscribed to the Business Support plan:
+%% http://aws.amazon.com/premiumsupport/business-support/ or the Enterprise
+%% Support plan: http://aws.amazon.com/premiumsupport/enterprise-support/.
 associate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_drt_log_bucket(Client, Input, []).
@@ -122,10 +123,14 @@ associate_drt_log_bucket(Client, Input, Options)
 %% Prior to making the `AssociateDRTRole' request, you must attach the
 %% `AWSShieldDRTAccessPolicy' managed policy to the role that you'll
 %% specify in the request. You can access this policy in the IAM console at
-%% AWSShieldDRTAccessPolicy. For more information see Adding and removing IAM
-%% identity permissions. The role must also trust the service principal
+%% AWSShieldDRTAccessPolicy:
+%% https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy.
+%% For more information see Adding and removing IAM identity permissions:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html.
+%% The role must also trust the service principal
 %% `drt.shield.amazonaws.com'. For more information, see IAM JSON policy
-%% elements: Principal.
+%% elements: Principal:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html.
 %%
 %% The SRT will have access only to your WAF and Shield resources. By
 %% submitting this request, you authorize the SRT to inspect your WAF and
@@ -134,11 +139,13 @@ associate_drt_log_bucket(Client, Input, Options)
 %%
 %% You must have the `iam:PassRole' permission to make an
 %% `AssociateDRTRole' request. For more information, see Granting a user
-%% permissions to pass a role to an Amazon Web Services service.
+%% permissions to pass a role to an Amazon Web Services service:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html.
 %%
 %% To use the services of the SRT and make an `AssociateDRTRole' request,
-%% you must be subscribed to the Business Support plan or the Enterprise
-%% Support plan.
+%% you must be subscribed to the Business Support plan:
+%% http://aws.amazon.com/premiumsupport/business-support/ or the Enterprise
+%% Support plan: http://aws.amazon.com/premiumsupport/enterprise-support/.
 associate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_drt_role(Client, Input, []).
@@ -155,7 +162,9 @@ associate_drt_role(Client, Input, Options)
 %%
 %% You define the health check in Route 53 and then associate it with your
 %% Shield Advanced protection. For more information, see Shield Advanced
-%% Health-Based Detection in the WAF Developer Guide.
+%% Health-Based Detection:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option
+%% in the WAF Developer Guide.
 associate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_health_check(Client, Input, []).
@@ -199,8 +208,10 @@ associate_proactive_engagement_details(Client, Input, Options)
 %% `CreateProtection' request. You can add protection to multiple
 %% resources at once through the Shield Advanced console at
 %% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information
-%% see Getting Started with Shield Advanced and Adding Shield Advanced
-%% protection to Amazon Web Services resources.
+%% see Getting Started with Shield Advanced:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html
+%% and Adding Shield Advanced protection to Amazon Web Services resources:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html.
 create_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_protection(Client, Input, []).
@@ -388,7 +399,9 @@ disassociate_drt_role(Client, Input, Options)
 %%
 %% You define the health check in Route 53 and then associate or disassociate
 %% it with your Shield Advanced protection. For more information, see Shield
-%% Advanced Health-Based Detection in the WAF Developer Guide.
+%% Advanced Health-Based Detection:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option
+%% in the WAF Developer Guide.
 disassociate_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_health_check(Client, Input, []).
@@ -407,7 +420,8 @@ disassociate_health_check(Client, Input, Options)
 %% rules in a Shield rule group inside the web ACL that you've associated
 %% with the resource. For information about how automatic mitigation works
 %% and the requirements for using it, see Shield Advanced automatic
-%% application layer DDoS mitigation.
+%% application layer DDoS mitigation:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-automatic-app-layer-response.html.
 %%
 %% Don't use this action to make changes to automatic mitigation settings
 %% when it's already enabled for a resource. Instead, use
@@ -417,10 +431,12 @@ disassociate_health_check(Client, Input, Options)
 %% resource. The web ACL must be created using the latest version of WAF
 %% (v2). You can associate the web ACL through the Shield Advanced console at
 %% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information,
-%% see Getting Started with Shield Advanced. You can also associate the web
-%% ACL to the resource through the WAF console or the WAF API, but you must
-%% manage Shield Advanced automatic mitigation through Shield Advanced. For
-%% information about WAF, see WAF Developer Guide.
+%% see Getting Started with Shield Advanced:
+%% https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html.
+%% You can also associate the web ACL to the resource through the WAF console
+%% or the WAF API, but you must manage Shield Advanced automatic mitigation
+%% through Shield Advanced. For information about WAF, see WAF Developer
+%% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
 enable_application_layer_automatic_response(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_application_layer_automatic_response(Client, Input, []).

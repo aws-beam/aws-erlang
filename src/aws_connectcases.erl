@@ -7,8 +7,9 @@
 %%
 %% A case represents a customer issue. It records the issue, the steps and
 %% interactions taken to resolve the issue, and the outcome. For more
-%% information, see Amazon Connect Cases in the Amazon Connect Administrator
-%% Guide.
+%% information, see Amazon Connect Cases:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/cases.html in the
+%% Amazon Connect Administrator Guide.
 -module(aws_connectcases).
 
 -export([batch_get_field/3,
@@ -130,8 +131,9 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser permission on the User ARN resource that you
-%% provide
+%% have connect:DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the User ARN resource that you provide
 %%
 %% &lt;p&gt;Creates a case in the specified Cases domain.
 %%
@@ -172,9 +174,11 @@ create_case(Client, DomainId, Input0, Options0) ->
 %% Each Amazon Connect instance can be associated with only one Cases domain.
 %%
 %% This will not associate your connect instance to Cases domain. Instead,
-%% use the Amazon Connect CreateIntegrationAssociation API. You need specific
-%% IAM permissions to successfully associate the Cases domain. For more
-%% information, see Onboard to Cases.
+%% use the Amazon Connect CreateIntegrationAssociation:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html
+%% API. You need specific IAM permissions to successfully associate the Cases
+%% domain. For more information, see Onboard to Cases:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam.
 %%
 %% &lt;/important&gt;
 create_domain(Client, Input) ->
@@ -268,7 +272,9 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% `comments' and `contacts'.
 %%
 %% If you provide a value for `performedBy.userArn' you must also have
-%% DescribeUser permission on the ARN of the user that you provide.
+%% DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the ARN of the user that you provide.
 %%
 %% &lt;/note&gt;
 create_related_item(Client, CaseId, DomainId, Input) ->
@@ -674,7 +680,9 @@ list_templates(Client, DomainId, Input0, Options0) ->
 %% @doc Adds case event publishing configuration.
 %%
 %% For a complete list of fields you can add to the event message, see Create
-%% case fields in the Amazon Connect Administrator Guide
+%% case fields:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html in
+%% the Amazon Connect Administrator Guide
 put_case_event_configuration(Client, DomainId, Input) ->
     put_case_event_configuration(Client, DomainId, Input, []).
 put_case_event_configuration(Client, DomainId, Input0, Options0) ->
@@ -801,8 +809,9 @@ untag_resource(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser permission on the User ARN resource that you
-%% provide
+%% have connect:DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the User ARN resource that you provide
 %%
 %% &lt;p&gt;Updates the values of fields on a case.
 %%

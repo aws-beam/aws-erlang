@@ -43,7 +43,8 @@
 %% application when a dependency or other external factor impacts the system.
 %%
 %% </li> </ul> This reference is intended to be used with the AppConfig User
-%% Guide.
+%% Guide:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html.
 -module(aws_appconfig).
 
 -export([create_application/2,
@@ -218,7 +219,9 @@ create_application(Client, Input0, Options0) ->
 %% include either a JSON Schema or an Amazon Web Services Lambda function.
 %%
 %% </li> </ul> For more information, see Create a Configuration and a
-%% Configuration Profile in the AppConfig User Guide.
+%% Configuration Profile:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html
+%% in the AppConfig User Guide.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
@@ -325,7 +328,9 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% of an Amazon SQS message queue in the `Uri' field.
 %%
 %% </li> </ul> For more information about extensions, see Working with
-%% AppConfig extensions in the AppConfig User Guide.
+%% AppConfig extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 create_extension(Client, Input) ->
     create_extension(Client, Input, []).
 create_extension(Client, Input0, Options0) ->
@@ -362,7 +367,9 @@ create_extension(Client, Input0, Options0) ->
 %% extension association is a specified relationship between an extension and
 %% an AppConfig resource, such as an application or a configuration profile.
 %% For more information about extensions and associations, see Working with
-%% AppConfig extensions in the AppConfig User Guide.
+%% AppConfig extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 create_extension_association(Client, Input) ->
     create_extension_association(Client, Input, []).
 create_extension_association(Client, Input0, Options0) ->
@@ -642,10 +649,14 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% Note the following important information.
 %%
 %% This API action is deprecated. Calls to receive configuration data should
-%% use the StartConfigurationSession and GetLatestConfiguration APIs instead.
+%% use the StartConfigurationSession:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
+%% and GetLatestConfiguration:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
+%% APIs instead.
 %%
 %% `GetConfiguration' is a priced call. For more information, see
-%% Pricing.
+%% Pricing: https://aws.amazon.com/systems-manager/pricing/.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
@@ -825,7 +836,9 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about an AppConfig extension association.
 %%
 %% For more information about extensions and associations, see Working with
-%% AppConfig extensions in the AppConfig User Guide.
+%% AppConfig extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 get_extension_association(Client, ExtensionAssociationId)
   when is_map(Client) ->
     get_extension_association(Client, ExtensionAssociationId, #{}, #{}).
@@ -1038,7 +1051,9 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Lists all AppConfig extension associations in the account.
 %%
 %% For more information about extensions and associations, see Working with
-%% AppConfig extensions in the AppConfig User Guide.
+%% AppConfig extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 list_extension_associations(Client)
   when is_map(Client) ->
     list_extension_associations(Client, #{}, #{}).
@@ -1073,7 +1088,9 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 %% extensions in the account.
 %%
 %% For more information about extensions, see Working with AppConfig
-%% extensions in the AppConfig User Guide.
+%% extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 list_extensions(Client)
   when is_map(Client) ->
     list_extensions(Client, #{}, #{}).
@@ -1351,7 +1368,9 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% @doc Updates an AppConfig extension.
 %%
 %% For more information about extensions, see Working with AppConfig
-%% extensions in the AppConfig User Guide.
+%% extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 update_extension(Client, ExtensionIdentifier, Input) ->
     update_extension(Client, ExtensionIdentifier, Input, []).
 update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
@@ -1377,7 +1396,9 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 %% @doc Updates an association.
 %%
 %% For more information about extensions and associations, see Working with
-%% AppConfig extensions in the AppConfig User Guide.
+%% AppConfig extensions:
+%% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
+%% in the AppConfig User Guide.
 update_extension_association(Client, ExtensionAssociationId, Input) ->
     update_extension_association(Client, ExtensionAssociationId, Input, []).
 update_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->

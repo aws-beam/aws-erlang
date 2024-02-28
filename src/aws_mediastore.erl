@@ -141,7 +141,8 @@ describe_container(Client, Input, Options)
 %% @doc Retrieves the access policy for the specified container.
 %%
 %% For information about the data that is included in an access policy, see
-%% the AWS Identity and Access Management User Guide.
+%% the AWS Identity and Access Management User Guide:
+%% https://aws.amazon.com/documentation/iam/.
 get_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_policy(Client, Input, []).
@@ -210,7 +211,8 @@ list_tags_for_resource(Client, Input, Options)
 %% users and clients that can access it.
 %%
 %% For information about the data that is included in an access policy, see
-%% the AWS Identity and Access Management User Guide.
+%% the AWS Identity and Access Management User Guide:
+%% https://aws.amazon.com/documentation/iam/.
 %%
 %% For this release of the REST API, you can create only one policy for a
 %% container. If you enter `PutContainerPolicy' twice, the second command
@@ -238,7 +240,8 @@ put_container_policy(Client, Input, Options)
 %% listed.
 %%
 %% To learn more about CORS, see Cross-Origin Resource Sharing (CORS) in AWS
-%% Elemental MediaStore.
+%% Elemental MediaStore:
+%% https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html.
 put_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cors_policy(Client, Input, []).
@@ -253,7 +256,8 @@ put_cors_policy(Client, Input, Options)
 %% minutes for the change to take effect.
 %%
 %% For information about how to construct an object lifecycle policy, see
-%% Components of an Object Lifecycle Policy.
+%% Components of an Object Lifecycle Policy:
+%% https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
@@ -302,7 +306,8 @@ stop_access_logging(Client, Input, Options)
 %% be &quot;companyA.&quot; You can specify one or more tags to add to each
 %% container. You can add up to 50 tags to each container. For more
 %% information about tagging, including naming and usage conventions, see
-%% Tagging Resources in MediaStore.
+%% Tagging Resources in MediaStore:
+%% https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

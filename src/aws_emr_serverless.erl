@@ -18,7 +18,8 @@
 %% </li> <li> It is the prefix before IAM policy actions for Amazon EMR
 %% Serverless. For example, `&quot;Action&quot;:
 %% [&quot;emr-serverless:StartJobRun&quot;]'. For more information, see
-%% Policy actions for Amazon EMR Serverless.
+%% Policy actions for Amazon EMR Serverless:
+%% https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions.
 %%
 %% </li> <li> It is the prefix used in Amazon EMR Serverless service
 %% endpoints. For example, `emr-serverless.us-east-2.amazonaws.com'.

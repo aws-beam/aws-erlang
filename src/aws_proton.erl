@@ -4,14 +4,19 @@
 %% @doc This is the Proton Service API Reference.
 %%
 %% It provides descriptions, syntax and usage examples for each of the
-%% actions and data types for the Proton service.
+%% actions:
+%% https://docs.aws.amazon.com/proton/latest/APIReference/API_Operations.html
+%% and data types:
+%% https://docs.aws.amazon.com/proton/latest/APIReference/API_Types.html for
+%% the Proton service.
 %%
 %% The documentation for each action shows the Query API request parameters
 %% and the XML response.
 %%
 %% Alternatively, you can use the Amazon Web Services CLI to access an API.
 %% For more information, see the Amazon Web Services Command Line Interface
-%% User Guide.
+%% User Guide:
+%% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html.
 %%
 %% The Proton service is a two-pronged automation framework. Administrators
 %% create service templates to provide standardized infrastructure and
@@ -29,7 +34,8 @@
 %% and delete API operations and the service instance list and update API
 %% operations.
 %%
-%% To learn more about Proton, see the Proton User Guide.
+%% To learn more about Proton, see the Proton User Guide:
+%% https://docs.aws.amazon.com/proton/latest/userguide/Welcome.html.
 %%
 %% Ensuring Idempotency
 %%
@@ -345,8 +351,9 @@
 %% use the associated IAM role to provision environment infrastructure
 %% resources in the associated environment account.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 accept_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_environment_account_connection(Client, Input, []).
@@ -357,8 +364,9 @@ accept_environment_account_connection(Client, Input, Options)
 %% @doc Attempts to cancel a component deployment (for a component that is in
 %% the `IN_PROGRESS' deployment status).
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 cancel_component_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_component_deployment(Client, Input, []).
@@ -369,7 +377,9 @@ cancel_component_deployment(Client, Input, Options)
 %% @doc Attempts to cancel an environment deployment on an
 %% `UpdateEnvironment' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update an environment in the Proton User guide.
+%% For more information, see Update an environment:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html in
+%% the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -395,8 +405,9 @@ cancel_environment_deployment(Client, Input, Options)
 %% `UpdateServiceInstance' action, if the deployment is
 %% `IN_PROGRESS'.
 %%
-%% For more information, see Update a service instance in the Proton User
-%% guide.
+%% For more information, see Update a service instance:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html
+%% in the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -422,8 +433,9 @@ cancel_service_instance_deployment(Client, Input, Options)
 %% `UpdateServicePipeline' action, if the deployment is
 %% `IN_PROGRESS'.
 %%
-%% For more information, see Update a service pipeline in the Proton User
-%% guide.
+%% For more information, see Update a service pipeline:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-pipeline-update.html
+%% in the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -449,8 +461,9 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 %%
 %% A component is an infrastructure extension for a service instance.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
@@ -472,8 +485,11 @@ create_component(Client, Input, Options)
 %% repository to provide compiled infrastructure as code (IaC) files that
 %% your IaC engine uses to provision resources.
 %%
-%% </li> </ul> For more information, see Environments and Provisioning
-%% methods in the Proton User Guide.
+%% </li> </ul> For more information, see Environments:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-environments.html
+%% and Provisioning methods:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html
+%% in the Proton User Guide.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -488,7 +504,9 @@ create_environment(Client, Input, Options)
 %% An environment account connection is a secure bi-directional connection
 %% between a management account and an environment account that maintains
 %% authorization and permissions. For more information, see Environment
-%% account connections in the Proton User guide.
+%% account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 create_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_account_connection(Client, Input, []).
@@ -498,7 +516,9 @@ create_environment_account_connection(Client, Input, Options)
 
 %% @doc Create an environment template for Proton.
 %%
-%% For more information, see Environment Templates in the Proton User Guide.
+%% For more information, see Environment Templates:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html in
+%% the Proton User Guide.
 %%
 %% You can create an environment template in one of the two following ways:
 %%
@@ -511,7 +531,9 @@ create_environment_account_connection(Client, Input, Options)
 %% infrastructure. To create an environment template for customer provisioned
 %% and managed infrastructure, include the `provisioning' parameter and
 %% set the value to `CUSTOMER_MANAGED'. For more information, see
-%% Register and publish an environment template in the Proton User Guide.
+%% Register and publish an environment template:
+%% https://docs.aws.amazon.com/proton/latest/userguide/template-create.html
+%% in the Proton User Guide.
 %%
 %% </li> </ul>
 create_environment_template(Client, Input)
@@ -539,10 +561,17 @@ create_environment_template_version(Client, Input, Options)
 %% to it (self-managed provisioning) or pull from it (template sync). You can
 %% share a linked repository across multiple resources (like environments
 %% using self-managed provisioning, or synced templates). When you create a
-%% repository link, Proton creates a service-linked role for you.
+%% repository link, Proton creates a service-linked role:
+%% https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html
+%% for you.
 %%
-%% For more information, see Self-managed provisioning, Template bundles, and
-%% Template sync configurations in the Proton User Guide.
+%% For more information, see Self-managed provisioning:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html#ag-works-prov-methods-self,
+%% Template bundles:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-template-authoring.html#ag-template-bundles,
+%% and Template sync configurations:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html
+%% in the Proton User Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -554,7 +583,9 @@ create_repository(Client, Input, Options)
 %%
 %% An Proton service is an instantiation of a service template and often
 %% includes several service instances and pipeline. For more information, see
-%% Services in the Proton User Guide.
+%% Services:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html in
+%% the Proton User Guide.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -586,7 +617,9 @@ create_service_sync_config(Client, Input, Options)
 %% template includes a service pipeline definition, they provide a link to
 %% their source code repository. Proton then deploys and manages the
 %% infrastructure defined by the selected service template. For more
-%% information, see Proton templates in the Proton User Guide.
+%% information, see Proton templates:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html in
+%% the Proton User Guide.
 create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
@@ -616,7 +649,9 @@ create_service_template_version(Client, Input, Options)
 %% changes to your repository template bundles. If it detects a template
 %% bundle change, a new major or minor version of its template is created, if
 %% the version doesn’t already exist. For more information, see Template sync
-%% configurations in the Proton User Guide.
+%% configurations:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html
+%% in the Proton User Guide.
 create_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template_sync_config(Client, Input, []).
@@ -626,8 +661,9 @@ create_template_sync_config(Client, Input, Options)
 
 %% @doc Delete an Proton component resource.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
@@ -660,8 +696,9 @@ delete_environment(Client, Input, Options)
 %% cleaning up provisioned resources that remain without an environment
 %% connection.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 delete_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_account_connection(Client, Input, []).
@@ -712,8 +749,9 @@ delete_repository(Client, Input, Options)
 %% You can't delete a service if it has any service instances that have
 %% components attached to them.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -777,8 +815,9 @@ get_account_settings(Client, Input, Options)
 
 %% @doc Get detailed data for a component.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 get_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_component(Client, Input, []).
@@ -805,8 +844,9 @@ get_environment(Client, Input, Options)
 %% @doc In an environment account, get the detailed data for an environment
 %% account connection.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 get_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_account_connection(Client, Input, []).
@@ -849,7 +889,9 @@ get_repository(Client, Input, Options)
 %% these tags to control access to this action using Attribute-based access
 %% control (ABAC).
 %%
-%% For more information about ABAC, see ABAC in the Proton User Guide.
+%% For more information about ABAC, see ABAC:
+%% https://docs.aws.amazon.com/proton/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-tags
+%% in the Proton User Guide.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -874,7 +916,9 @@ get_repository_sync_status(Client, Input, Options)
 %% For context, the action also returns the total number of each type of
 %% Proton template in the Amazon Web Services account.
 %%
-%% For more information, see Proton dashboard in the Proton User Guide.
+%% For more information, see Proton dashboard:
+%% https://docs.aws.amazon.com/proton/latest/userguide/monitoring-dashboard.html
+%% in the Proton User Guide.
 get_resources_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources_summary(Client, Input, []).
@@ -959,8 +1003,9 @@ get_template_sync_status(Client, Input, Options)
 
 %% @doc Get a list of component Infrastructure as Code (IaC) outputs.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 list_component_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_outputs(Client, Input, []).
@@ -970,8 +1015,9 @@ list_component_outputs(Client, Input, Options)
 
 %% @doc List provisioned resources for a component with details.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 list_component_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_provisioned_resources(Client, Input, []).
@@ -984,8 +1030,9 @@ list_component_provisioned_resources(Client, Input, Options)
 %% You can filter the result list by environment, service, or a single
 %% service instance.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
@@ -1006,8 +1053,9 @@ list_deployments(Client, Input, Options)
 
 %% @doc View a list of environment account connections.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 list_environment_account_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_account_connections(Client, Input, []).
@@ -1141,8 +1189,9 @@ list_services(Client, Input, Options)
 
 %% @doc List tags for a resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton User
-%% Guide.
+%% For more information, see Proton resources and tagging:
+%% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in the
+%% Proton User Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1153,8 +1202,9 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Notify Proton of status changes to a provisioned resource when you
 %% use self-managed provisioning.
 %%
-%% For more information, see Self-managed provisioning in the Proton User
-%% Guide.
+%% For more information, see Self-managed provisioning:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html#ag-works-prov-methods-self
+%% in the Proton User Guide.
 notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
@@ -1171,8 +1221,9 @@ notify_resource_deployment_status_change(Client, Input, Options)
 %% You can’t reject an environment account connection that's connected to
 %% an environment.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 reject_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_environment_account_connection(Client, Input, []).
@@ -1185,8 +1236,9 @@ reject_environment_account_connection(Client, Input, Options)
 %% A tag is a key-value pair of metadata that you associate with an Proton
 %% resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton User
-%% Guide.
+%% For more information, see Proton resources and tagging:
+%% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in the
+%% Proton User Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1198,8 +1250,9 @@ tag_resource(Client, Input, Options)
 %%
 %% A tag is a key-value pair of metadata associated with an Proton resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton User
-%% Guide.
+%% For more information, see Proton resources and tagging:
+%% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in the
+%% Proton User Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1225,8 +1278,9 @@ update_account_settings(Client, Input, Options)
 %% deployment status of a service instance attached to it, is
 %% `IN_PROGRESS'.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
@@ -1263,8 +1317,11 @@ update_component(Client, Input, Options)
 %% `protonServiceRoleArn' and `environmentAccountConnectionId'
 %% parameters.
 %%
-%% For more information, see Environments and Provisioning methods in the
-%% Proton User Guide.
+%% For more information, see Environments:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-environments.html
+%% and Provisioning methods:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html
+%% in the Proton User Guide.
 %%
 %% There are four modes for updating an environment. The `deploymentType'
 %% field defines the mode.
@@ -1305,8 +1362,9 @@ update_environment(Client, Input, Options)
 %% @doc In an environment account, update an environment account connection
 %% to use a new IAM role.
 %%
-%% For more information, see Environment account connections in the Proton
-%% User guide.
+%% For more information, see Environment account connections:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
+%% in the Proton User guide.
 update_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_account_connection(Client, Input, []).
@@ -1343,8 +1401,9 @@ update_environment_template_version(Client, Input, Options)
 %% You can't delete a service instance (remove it from the spec) if it
 %% has an attached component.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -1360,8 +1419,9 @@ update_service(Client, Input, Options)
 %% You can't update a service instance while its deployment status, or
 %% the deployment status of a component attached to it, is `IN_PROGRESS'.
 %%
-%% For more information about components, see Proton components in the Proton
-%% User Guide.
+%% For more information about components, see Proton components:
+%% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
+%% the Proton User Guide.
 update_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_instance(Client, Input, []).

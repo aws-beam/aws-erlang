@@ -253,9 +253,12 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
 %% Use CloudTrail to monitor this action or Amazon Web Services managed
 %% policy for Amazon Web Services Outposts to secure it. For more
 %% information, see Amazon Web Services managed policies for Amazon Web
-%% Services Outposts and Logging Amazon Web Services Outposts API calls with
-%% Amazon Web Services CloudTrail in the Amazon Web Services Outposts User
-%% Guide.
+%% Services Outposts:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/security-iam-awsmanpol.html
+%% and Logging Amazon Web Services Outposts API calls with Amazon Web
+%% Services CloudTrail:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
+%% in the Amazon Web Services Outposts User Guide.
 get_connection(Client, ConnectionId)
   when is_map(Client) ->
     get_connection(Client, ConnectionId, #{}, #{}).
@@ -610,9 +613,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Use CloudTrail to monitor this action or Amazon Web Services managed
 %% policy for Amazon Web Services Outposts to secure it. For more
 %% information, see Amazon Web Services managed policies for Amazon Web
-%% Services Outposts and Logging Amazon Web Services Outposts API calls with
-%% Amazon Web Services CloudTrail in the Amazon Web Services Outposts User
-%% Guide.
+%% Services Outposts:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/security-iam-awsmanpol.html
+%% and Logging Amazon Web Services Outposts API calls with Amazon Web
+%% Services CloudTrail:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
+%% in the Amazon Web Services Outposts User Guide.
 start_connection(Client, Input) ->
     start_connection(Client, Input, []).
 start_connection(Client, Input0, Options0) ->
@@ -760,7 +766,9 @@ update_site_address(Client, SiteId, Input0, Options0) ->
 %% @doc Update the physical and logistical details for a rack at a site.
 %%
 %% For more information about hardware requirements for racks, see Network
-%% readiness checklist in the Amazon Web Services Outposts User Guide.
+%% readiness checklist:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/outposts-requirements.html#checklist
+%% in the Amazon Web Services Outposts User Guide.
 %%
 %% To update a rack at a site with an order of `IN_PROGRESS', you must
 %% wait for the order to complete or cancel the order.

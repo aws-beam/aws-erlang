@@ -7,13 +7,15 @@
 %%
 %% You can encrypt, decrypt, generate, verify, and translate payment-related
 %% cryptographic operations in Amazon Web Services Payment Cryptography. For
-%% more information, see Data operations in the Amazon Web Services Payment
-%% Cryptography User Guide.
+%% more information, see Data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% To manage your encryption keys, you use the Amazon Web Services Payment
-%% Cryptography Control Plane. You can create, import, export, share, manage,
-%% and delete keys. You can also manage Identity and Access Management (IAM)
-%% policies for keys.
+%% Cryptography Control Plane:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/Welcome.html.
+%% You can create, import, export, share, manage, and delete keys. You can
+%% also manage Identity and Access Management (IAM) policies for keys.
 -module(aws_payment_cryptography_data).
 
 -export([decrypt_data/3,
@@ -48,17 +50,21 @@
 %% @doc Decrypts ciphertext data to plaintext using symmetric, asymmetric, or
 %% DUKPT data encryption key.
 %%
-%% For more information, see Decrypt data in the Amazon Web Services Payment
-%% Cryptography User Guide.
+%% For more information, see Decrypt data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% You can use an encryption key generated within Amazon Web Services Payment
 %% Cryptography, or you can import your own encryption key by calling
-%% ImportKey. For this operation, the key must have `KeyModesOfUse' set
-%% to `Decrypt'. In asymmetric decryption, Amazon Web Services Payment
+%% ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% For this operation, the key must have `KeyModesOfUse' set to
+%% `Decrypt'. In asymmetric decryption, Amazon Web Services Payment
 %% Cryptography decrypts the ciphertext using the private component of the
 %% asymmetric encryption key pair. For data encryption outside of Amazon Web
 %% Services Payment Cryptography, you can export the public component of the
-%% asymmetric key pair by calling GetPublicCertificate.
+%% asymmetric key pair by calling GetPublicCertificate:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html.
 %%
 %% For symmetric and DUKPT decryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. For asymmetric
@@ -68,8 +74,11 @@
 %% data length must be a multiple of 32 bytes.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -78,9 +87,11 @@
 %%
 %% <ul> <li> `EncryptData'
 %%
-%% </li> <li> GetPublicCertificate
+%% </li> <li> GetPublicCertificate:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey
+%% </li> <li> ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% </li> </ul>
 decrypt_data(Client, KeyIdentifier, Input) ->
@@ -108,27 +119,36 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% @doc Encrypts plaintext data to ciphertext using symmetric, asymmetric, or
 %% DUKPT data encryption key.
 %%
-%% For more information, see Encrypt data in the Amazon Web Services Payment
-%% Cryptography User Guide.
+%% For more information, see Encrypt data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% You can generate an encryption key within Amazon Web Services Payment
-%% Cryptography by calling CreateKey. You can import your own encryption key
-%% by calling ImportKey. For this operation, the key must have
-%% `KeyModesOfUse' set to `Encrypt'. In asymmetric encryption,
-%% plaintext is encrypted using public component. You can import the public
-%% component of an asymmetric key pair created outside Amazon Web Services
-%% Payment Cryptography by calling ImportKey).
+%% Cryptography by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
+%% You can import your own encryption key by calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% For this operation, the key must have `KeyModesOfUse' set to
+%% `Encrypt'. In asymmetric encryption, plaintext is encrypted using
+%% public component. You can import the public component of an asymmetric key
+%% pair created outside Amazon Web Services Payment Cryptography by calling
+%% ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
 %%
 %% for symmetric and DUKPT encryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. For asymmetric
 %% encryption, Amazon Web Services Payment Cryptography supports `RSA'.
 %% To encrypt using DUKPT, you must already have a DUKPT key in your account
 %% with `KeyModesOfUse' set to `DeriveKey', or you can generate a new
-%% DUKPT key by calling CreateKey.
+%% DUKPT key by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -137,9 +157,11 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %%
 %% <ul> <li> `DecryptData'
 %%
-%% </li> <li> GetPublicCertificate
+%% </li> <li> GetPublicCertificate:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey
+%% </li> <li> ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% </li> <li> `ReEncryptData'
 %%
@@ -170,28 +192,36 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% Verification Values (CVV/CVV2), Dynamic Card Verification Values
 %% (dCVV/dCVV2), or Card Security Codes (CSC).
 %%
-%% For more information, see Generate card data in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% For more information, see Generate card data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/generate-card-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% This operation generates a CVV or CSC value that is printed on a payment
 %% credit or debit card during card production. The CVV or CSC, PAN (Primary
 %% Account Number) and expiration date of the card are required to check its
 %% validity during transaction processing. To begin this operation, a CVK
-%% (Card Verification Key) encryption key is required. You can use CreateKey
-%% or ImportKey to establish a CVK within Amazon Web Services Payment
-%% Cryptography. The `KeyModesOfUse' should be set to `Generate' and
-%% `Verify' for a CVK encryption key.
+%% (Card Verification Key) encryption key is required. You can use CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% or ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+%% to establish a CVK within Amazon Web Services Payment Cryptography. The
+%% `KeyModesOfUse' should be set to `Generate' and `Verify' for a
+%% CVK encryption key.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
 %%
 %% Related operations:
 %%
-%% <ul> <li> ImportKey
+%% <ul> <li> ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% </li> <li> `VerifyCardValidationData'
 %%
@@ -232,8 +262,11 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% `Generate' and `Verify'.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -268,8 +301,9 @@ generate_mac(Client, Input0, Options0) ->
 %% @doc Generates pin-related data such as PIN, PIN Verification Value (PVV),
 %% PIN Block, and PIN Offset during new card issuance or reissuance.
 %%
-%% For more information, see Generate PIN data in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% For more information, see Generate PIN data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/generate-pin-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% PIN data is never transmitted in clear to or from Amazon Web Services
 %% Payment Cryptography. This operation generates PIN, PVV, or PIN Offset and
@@ -279,8 +313,11 @@ generate_mac(Client, Input0, Options0) ->
 %% for VISA PVV generation.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -320,23 +357,32 @@ generate_pin_data(Client, Input0, Options0) ->
 %% Encryption Keys.
 %%
 %% You can either generate an encryption key within Amazon Web Services
-%% Payment Cryptography by calling CreateKey or import your own encryption
-%% key by calling ImportKey. The `KeyArn' for use with this operation
-%% must be in a compatible key state with `KeyModesOfUse' set to
-%% `Encrypt'. In asymmetric encryption, ciphertext is encrypted using
-%% public component (imported by calling ImportKey) of the asymmetric key
-%% pair created outside of Amazon Web Services Payment Cryptography.
+%% Payment Cryptography by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% or import your own encryption key by calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% The `KeyArn' for use with this operation must be in a compatible key
+%% state with `KeyModesOfUse' set to `Encrypt'. In asymmetric
+%% encryption, ciphertext is encrypted using public component (imported by
+%% calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+%% of the asymmetric key pair created outside of Amazon Web Services Payment
+%% Cryptography.
 %%
 %% For symmetric and DUKPT encryption, Amazon Web Services Payment
 %% Cryptography supports `TDES' and `AES' algorithms. For asymmetric
 %% encryption, Amazon Web Services Payment Cryptography supports `RSA'.
 %% To encrypt using DUKPT, a DUKPT key must already exist within your account
 %% with `KeyModesOfUse' set to `DeriveKey' or a new DUKPT can be
-%% generated by calling CreateKey.
+%% generated by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -347,9 +393,11 @@ generate_pin_data(Client, Input0, Options0) ->
 %%
 %% </li> <li> `EncryptData'
 %%
-%% </li> <li> GetPublicCertificate
+%% </li> <li> GetPublicCertificate:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
 %%
-%% </li> <li> ImportKey
+%% </li> <li> ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% </li> </ul>
 re_encrypt_data(Client, IncomingKeyIdentifier, Input) ->
@@ -376,8 +424,9 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 
 %% @doc Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4.
 %%
-%% For more information, see Translate PIN data in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% For more information, see Translate PIN data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/translate-pin-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% PIN block translation involves changing the encrytion of PIN block from
 %% one encryption key to another encryption key and changing PIN block format
@@ -398,8 +447,11 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% generation.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% At this time, Amazon Web Services Payment Cryptography does not support
 %% translations to PIN format 4.
@@ -439,24 +491,30 @@ translate_pin_data(Client, Input0, Options0) ->
 %% @doc Verifies Authorization Request Cryptogram (ARQC) for a EMV chip
 %% payment card authorization.
 %%
-%% For more information, see Verify auth request cryptogram in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% For more information, see Verify auth request cryptogram:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.verifyauthrequestcryptogram.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% ARQC generation is done outside of Amazon Web Services Payment
 %% Cryptography and is typically generated on a point of sale terminal for an
 %% EMV chip card to obtain payment authorization during transaction time. For
 %% ARQC verification, you must first import the ARQC generated outside of
-%% Amazon Web Services Payment Cryptography by calling ImportKey. This
-%% operation uses the imported ARQC and an major encryption key (DUKPT)
-%% created by calling CreateKey to either provide a boolean ARQC verification
-%% result or provide an APRC (Authorization Response Cryptogram) response
-%% using Method 1 or Method 2. The `ARPC_METHOD_1' uses
-%% `AuthResponseCode' to generate ARPC and `ARPC_METHOD_2' uses
-%% `CardStatusUpdate' to generate ARPC.
+%% Amazon Web Services Payment Cryptography by calling ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html.
+%% This operation uses the imported ARQC and an major encryption key (DUKPT)
+%% created by calling CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%% to either provide a boolean ARQC verification result or provide an APRC
+%% (Authorization Response Cryptogram) response using Method 1 or Method 2.
+%% The `ARPC_METHOD_1' uses `AuthResponseCode' to generate ARPC and
+%% `ARPC_METHOD_2' uses `CardStatusUpdate' to generate ARPC.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -494,8 +552,9 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %% Verification Values (CVV/CVV2), Dynamic Card Verification Values
 %% (dCVV/dCVV2) and Card Security Codes (CSC).
 %%
-%% For more information, see Verify card data in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% For more information, see Verify card data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/verify-card-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% This operation validates the CVV or CSC codes that is printed on a payment
 %% credit or debit card during card payment transaction. The input values are
@@ -508,8 +567,11 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %% `GenerateCardValidationData'.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -556,8 +618,11 @@ verify_card_validation_data(Client, Input0, Options0) ->
 %% verification as you use for `GenerateMac'.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -592,8 +657,9 @@ verify_mac(Client, Input0, Options0) ->
 %% @doc Verifies pin-related data such as PIN and PIN Offset using algorithms
 %% including VISA PVV and IBM3624.
 %%
-%% For more information, see Verify PIN data in the Amazon Web Services
-%% Payment Cryptography User Guide.
+%% For more information, see Verify PIN data:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/verify-pin-data.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% This operation verifies PIN data for user payment card. A card holder PIN
 %% data is never transmitted in clear to or from Amazon Web Services Payment
@@ -603,8 +669,11 @@ verify_mac(Client, Input0, Options0) ->
 %% Services Payment Cryptography.
 %%
 %% For information about valid keys for this operation, see Understanding key
-%% attributes and Key types for specific data operations in the Amazon Web
-%% Services Payment Cryptography User Guide.
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.

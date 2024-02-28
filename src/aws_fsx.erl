@@ -108,10 +108,12 @@
 %% A file system can have a maximum of 50 DNS aliases associated with it at
 %% any one time. If you try to associate a DNS alias that is already
 %% associated with the file system, FSx takes no action on that alias in the
-%% request. For more information, see Working with DNS Aliases and
-%% Walkthrough 5: Using DNS aliases to access your file system, including
-%% additional steps you must take to be able to access your file system using
-%% a DNS alias.
+%% request. For more information, see Working with DNS Aliases:
+%% https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html
+%% and Walkthrough 5: Using DNS aliases to access your file system:
+%% https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html,
+%% including additional steps you must take to be able to access your file
+%% system using a DNS alias.
 %%
 %% The system response shows the DNS aliases that Amazon FSx is attempting to
 %% associate with the file system. Use the API operation to monitor the
@@ -173,10 +175,13 @@ cancel_data_repository_task(Client, Input, Options)
 %% specify a Region, the backup copy is created in the same Region where the
 %% request is sent from (in-Region copy).
 %%
-%% For more information about creating backup copies, see Copying backups in
-%% the Amazon FSx for Windows User Guide, Copying backups in the Amazon FSx
-%% for Lustre User Guide, and Copying backups in the Amazon FSx for OpenZFS
-%% User Guide.
+%% For more information about creating backup copies, see Copying backups:
+%% https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html#copy-backups
+%% in the Amazon FSx for Windows User Guide, Copying backups:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html#copy-backups
+%% in the Amazon FSx for Lustre User Guide, and Copying backups:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/using-backups.html#copy-backups
+%% in the Amazon FSx for OpenZFS User Guide.
 copy_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_backup(Client, Input, []).
@@ -187,8 +192,9 @@ copy_backup(Client, Input, Options)
 %% @doc Updates an existing volume by using a snapshot from another Amazon
 %% FSx for OpenZFS file system.
 %%
-%% For more information, see on-demand data replication in the Amazon FSx for
-%% OpenZFS User Guide.
+%% For more information, see on-demand data replication:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/on-demand-replication.html
+%% in the Amazon FSx for OpenZFS User Guide.
 copy_snapshot_and_update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot_and_update_volume(Client, Input, []).
@@ -214,16 +220,20 @@ copy_snapshot_and_update_volume(Client, Input, Options)
 %% </li> </ul> For more information about backups, see the following:
 %%
 %% <ul> <li> For Amazon FSx for Lustre, see Working with FSx for Lustre
-%% backups.
+%% backups:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html.
 %%
 %% </li> <li> For Amazon FSx for Windows, see Working with FSx for Windows
-%% backups.
+%% backups:
+%% https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html.
 %%
 %% </li> <li> For Amazon FSx for NetApp ONTAP, see Working with FSx for
-%% NetApp ONTAP backups.
+%% NetApp ONTAP backups:
+%% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/using-backups.html.
 %%
 %% </li> <li> For Amazon FSx for OpenZFS, see Working with FSx for OpenZFS
-%% backups.
+%% backups:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/using-backups.html.
 %%
 %% </li> </ul> If a backup with the specified client request token exists and
 %% the parameters match, this operation returns the description of the
@@ -246,8 +256,9 @@ copy_snapshot_and_update_volume(Client, Input, Options)
 %%
 %% The `CreateBackup' operation returns while the backup's lifecycle
 %% state is still `CREATING'. You can check the backup creation status by
-%% calling the DescribeBackups operation, which returns the backup state
-%% along with other information.
+%% calling the DescribeBackups:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeBackups.html
+%% operation, which returns the backup state along with other information.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -268,7 +279,8 @@ create_backup(Client, Input, Options)
 %% configure a data repository association for automatic import only, for
 %% automatic export only, or for both. To learn more about linking a data
 %% repository to your file system, see Linking your file system to an S3
-%% bucket.
+%% bucket:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html.
 %%
 %% `CreateDataRepositoryAssociation' isn't supported on Amazon File
 %% Cache resources. To create a DRA on Amazon File Cache, use the
@@ -297,9 +309,11 @@ create_data_repository_association(Client, Input, Options)
 %% released files by reading the files again, which will restore data from
 %% Amazon S3 to the FSx for Lustre file system.
 %%
-%% To learn more about data repository tasks, see Data Repository Tasks. To
-%% learn more about linking a data repository to your file system, see
-%% Linking your file system to an S3 bucket.
+%% To learn more about data repository tasks, see Data Repository Tasks:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html.
+%% To learn more about linking a data repository to your file system, see
+%% Linking your file system to an S3 bucket:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html.
 create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
@@ -325,8 +339,9 @@ create_data_repository_task(Client, Input, Options)
 %%
 %% </li> </ul> The `CreateFileCache' call returns while the cache's
 %% lifecycle state is still `CREATING'. You can check the cache creation
-%% status by calling the DescribeFileCaches operation, which returns the
-%% cache state along with other information.
+%% status by calling the DescribeFileCaches:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileCaches.html
+%% operation, which returns the cache state along with other information.
 create_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_cache(Client, Input, []).
@@ -374,8 +389,10 @@ create_file_cache(Client, Input, Options)
 %%
 %% </li> </ul> The `CreateFileSystem' call returns while the file
 %% system's lifecycle state is still `CREATING'. You can check the
-%% file-system creation status by calling the DescribeFileSystems operation,
-%% which returns the file system state along with other information.
+%% file-system creation status by calling the DescribeFileSystems:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html
+%% operation, which returns the file system state along with other
+%% information.
 create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
@@ -415,8 +432,10 @@ create_file_system(Client, Input, Options)
 %%
 %% The `CreateFileSystemFromBackup' call returns while the file
 %% system's lifecycle state is still `CREATING'. You can check the
-%% file-system creation status by calling the DescribeFileSystems operation,
-%% which returns the file system state along with other information.
+%% file-system creation status by calling the DescribeFileSystems:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html
+%% operation, which returns the file system state along with other
+%% information.
 create_file_system_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system_from_backup(Client, Input, []).
@@ -451,8 +470,9 @@ create_file_system_from_backup(Client, Input, Options)
 %%
 %% The `CreateSnapshot' operation returns while the snapshot's
 %% lifecycle state is still `CREATING'. You can check the snapshot
-%% creation status by calling the DescribeSnapshots operation, which returns
-%% the snapshot state along with other information.
+%% creation status by calling the DescribeSnapshots:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeSnapshots.html
+%% operation, which returns the snapshot state along with other information.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -524,10 +544,11 @@ delete_data_repository_association(Client, Input, Options)
 %%
 %% The `DeleteFileCache' operation returns while the cache has the
 %% `DELETING' status. You can check the cache deletion status by calling
-%% the DescribeFileCaches operation, which returns a list of caches in your
-%% account. If you pass the cache ID for a deleted cache, the
-%% `DescribeFileCaches' operation returns a `FileCacheNotFound'
-%% error.
+%% the DescribeFileCaches:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileCaches.html
+%% operation, which returns a list of caches in your account. If you pass the
+%% cache ID for a deleted cache, the `DescribeFileCaches' operation
+%% returns a `FileCacheNotFound' error.
 %%
 %% The data in a deleted cache is also deleted and can't be recovered by
 %% any means.
@@ -552,26 +573,33 @@ delete_file_cache(Client, Input, Options)
 %% isn't subject to the file system's retention policy, and must be
 %% manually deleted.
 %%
-%% To delete an Amazon FSx for Lustre file system, first unmount it from
-%% every connected Amazon EC2 instance, then provide a `FileSystemId'
-%% value to the `DeleFileSystem' operation. By default, Amazon FSx will
-%% not take a final backup when the `DeleteFileSystem' operation is
-%% invoked. On file systems not linked to an Amazon S3 bucket, set
-%% `SkipFinalBackup' to `false' to take a final backup of the file
-%% system you are deleting. Backups cannot be enabled on S3-linked file
-%% systems. To ensure all of your data is written back to S3 before deleting
-%% your file system, you can either monitor for the AgeOfOldestQueuedMessage
+%% To delete an Amazon FSx for Lustre file system, first unmount:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/unmounting-fs.html it
+%% from every connected Amazon EC2 instance, then provide a
+%% `FileSystemId' value to the `DeleFileSystem' operation. By
+%% default, Amazon FSx will not take a final backup when the
+%% `DeleteFileSystem' operation is invoked. On file systems not linked to
+%% an Amazon S3 bucket, set `SkipFinalBackup' to `false' to take a
+%% final backup of the file system you are deleting. Backups cannot be
+%% enabled on S3-linked file systems. To ensure all of your data is written
+%% back to S3 before deleting your file system, you can either monitor for
+%% the AgeOfOldestQueuedMessage:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/monitoring-cloudwatch.html#auto-import-export-metrics
 %% metric to be zero (if using automatic export) or you can run an export
-%% data repository task. If you have automatic export enabled and want to use
-%% an export data repository task, you have to disable automatic export
-%% before executing the export data repository task.
+%% data repository task:
+%% https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repo-task-dra.html.
+%% If you have automatic export enabled and want to use an export data
+%% repository task, you have to disable automatic export before executing the
+%% export data repository task.
 %%
 %% The `DeleteFileSystem' operation returns while the file system has the
 %% `DELETING' status. You can check the file system deletion status by
-%% calling the DescribeFileSystems operation, which returns a list of file
-%% systems in your account. If you pass the file system ID for a deleted file
-%% system, the `DescribeFileSystems' operation returns a
-%% `FileSystemNotFound' error.
+%% calling the DescribeFileSystems:
+%% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html
+%% operation, which returns a list of file systems in your account. If you
+%% pass the file system ID for a deleted file system, the
+%% `DescribeFileSystems' operation returns a `FileSystemNotFound'
+%% error.
 %%
 %% If a data repository task is in a `PENDING' or `EXECUTING' state,
 %% deleting an Amazon FSx for Lustre file system will fail with an HTTP
@@ -808,7 +836,8 @@ describe_file_systems(Client, Input, Options)
 %% create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that
 %% are shared by a virtual private cloud (VPC) owner.
 %%
-%% For more information, see the Amazon FSx for NetApp ONTAP User Guide.
+%% For more information, see the Amazon FSx for NetApp ONTAP User Guide:
+%% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html.
 describe_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_shared_vpc_configuration(Client, Input, []).
@@ -877,7 +906,8 @@ describe_volumes(Client, Input, Options)
 %%
 %% If you attempt to disassociate a DNS alias that is not associated with the
 %% file system, Amazon FSx responds with an HTTP status code 400 (Bad
-%% Request). For more information, see Working with DNS Aliases.
+%% Request). For more information, see Working with DNS Aliases:
+%% https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html.
 %%
 %% The system generated response showing the DNS aliases that Amazon FSx is
 %% attempting to disassociate from the file system. Use the API operation to
@@ -1094,14 +1124,16 @@ update_file_system(Client, Input, Options)
 %% create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that
 %% are shared by a virtual private cloud (VPC) owner.
 %%
-%% For more information, see the Amazon FSx for NetApp ONTAP User Guide.
+%% For more information, see the Amazon FSx for NetApp ONTAP User Guide:
+%% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html.
 %%
 %% We strongly recommend that participant-created Multi-AZ file systems in
 %% the shared VPC are deleted before you disable this feature. Once the
 %% feature is disabled, these file systems will enter a `MISCONFIGURED'
 %% state and behave like Single-AZ file systems. For more information, see
 %% Important considerations before disabling shared VPC support for Multi-AZ
-%% file systems.
+%% file systems:
+%% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html#disabling-maz-vpc-sharing.
 update_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_shared_vpc_configuration(Client, Input, []).

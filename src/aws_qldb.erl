@@ -149,8 +149,9 @@ delete_ledger(Client, Name, Input0, Options0) ->
 %% request.
 %%
 %% This action does not return any expired journal streams. For more
-%% information, see Expiration for terminal streams in the Amazon QLDB
-%% Developer Guide.
+%% information, see Expiration for terminal streams:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration
+%% in the Amazon QLDB Developer Guide.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
@@ -178,7 +179,9 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 %% original export creation request.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export job expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
+%% in the Amazon QLDB Developer Guide.
 %%
 %% If the export job with the given `ExportId' doesn't exist, then
 %% throws `ResourceNotFoundException'.
@@ -273,7 +276,8 @@ export_journal_to_s3(Client, Name, Input0, Options0) ->
 %% Also returns a proof of the specified block for verification if
 %% `DigestTipAddress' is provided.
 %%
-%% For information about the data contents in a block, see Journal contents
+%% For information about the data contents in a block, see Journal contents:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html
 %% in the Amazon QLDB Developer Guide.
 %%
 %% If the specified ledger doesn't exist or is in `DELETING' status,
@@ -362,8 +366,9 @@ get_revision(Client, Name, Input0, Options0) ->
 %% @doc Returns all Amazon QLDB journal streams for a given ledger.
 %%
 %% This action does not return any expired journal streams. For more
-%% information, see Expiration for terminal streams in the Amazon QLDB
-%% Developer Guide.
+%% information, see Expiration for terminal streams:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration
+%% in the Amazon QLDB Developer Guide.
 %%
 %% This action returns a maximum of `MaxResults' items. It is paginated
 %% so that you can retrieve all the items by calling
@@ -403,7 +408,9 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
 %% `ListJournalS3Exports' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export job expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
+%% in the Amazon QLDB Developer Guide.
 list_journal_s3_exports(Client)
   when is_map(Client) ->
     list_journal_s3_exports(Client, #{}, #{}).
@@ -438,7 +445,9 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
 %% `ListJournalS3ExportsForLedger' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export job expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
+%% in the Amazon QLDB Developer Guide.
 list_journal_s3_exports_for_ledger(Client, Name)
   when is_map(Client) ->
     list_journal_s3_exports_for_ledger(Client, Name, #{}, #{}).
@@ -628,7 +637,8 @@ update_ledger(Client, Name, Input0, Options0) ->
 %%
 %% Before you switch to the `STANDARD' permissions mode, you must first
 %% create all required IAM policies and table tags to avoid disruption to
-%% your users. To learn more, see Migrating to the standard permissions mode
+%% your users. To learn more, see Migrating to the standard permissions mode:
+%% https://docs.aws.amazon.com/qldb/latest/developerguide/ledger-management.basics.html#ledger-mgmt.basics.update-permissions.migrating
 %% in the Amazon QLDB Developer Guide.
 update_ledger_permissions_mode(Client, Name, Input) ->
     update_ledger_permissions_mode(Client, Name, Input, []).

@@ -3,9 +3,9 @@
 
 %% @doc Product update
 %%
-%% We recommend Amazon Web Services Application Migration Service (Amazon Web
-%% Services MGN) as the primary migration service for lift-and-shift
-%% migrations.
+%% We recommend Amazon Web Services Application Migration Service:
+%% http://aws.amazon.com/application-migration-service (Amazon Web Services
+%% MGN) as the primary migration service for lift-and-shift migrations.
 %%
 %% If Amazon Web Services MGN is unavailable in a specific Amazon Web
 %% Services Region, you can use the Server Migration Service APIs through
@@ -16,9 +16,11 @@
 %% Services. To learn more about Server Migration Service, see the following
 %% resources:
 %%
-%% <ul> <li> Server Migration Service product page
+%% <ul> <li> Server Migration Service product page:
+%% http://aws.amazon.com/server-migration-service/
 %%
-%% </li> <li> Server Migration Service User Guide
+%% </li> <li> Server Migration Service User Guide:
+%% https://docs.aws.amazon.com/server-migration-service/latest/userguide/
 %%
 %% </li> </ul>
 -module(aws_sms).

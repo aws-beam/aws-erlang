@@ -117,7 +117,9 @@
 %% the destination. The role should allow the Firehose principal to assume
 %% the role, and the role should have permissions that allow the service to
 %% deliver the data. For more information, see Grant Firehose Access to an
-%% Amazon S3 Destination in the Amazon Firehose Developer Guide.
+%% Amazon S3 Destination:
+%% https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3
+%% in the Amazon Firehose Developer Guide.
 create_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery_stream(Client, Input, []).
@@ -209,7 +211,8 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% second, 5,000 records per second, or 5 MB per second. If you use
 %% `PutRecord' and `PutRecordBatch', the limits are an aggregate
 %% across these two operations for each delivery stream. For more information
-%% about limits and how to request an increase, see Amazon Firehose Limits.
+%% about limits and how to request an increase, see Amazon Firehose Limits:
+%% https://docs.aws.amazon.com/firehose/latest/dev/limits.html.
 %%
 %% Firehose accumulates and publishes a particular metric for a customer
 %% account in one minute intervals. It is possible that the bursts of
@@ -270,7 +273,8 @@ put_record(Client, Input, Options)
 %% seconds. Due to this, the actual spikes in the traffic might not be fully
 %% visible in the customer's 1 minute CloudWatch metrics.
 %%
-%% For information about service quota, see Amazon Firehose Quota.
+%% For information about service quota, see Amazon Firehose Quota:
+%% https://docs.aws.amazon.com/firehose/latest/dev/limits.html.
 %%
 %% Each `PutRecordBatch' request supports up to 500 records. Each record
 %% in the request can be as large as 1,000 KB (before base64 encoding), up to
@@ -437,8 +441,9 @@ stop_delivery_stream_encryption(Client, Input, Options)
 %% value is replaced with the value that you specify in the request. Tags are
 %% metadata. For example, you can add friendly names and descriptions or
 %% other types of information that can help you distinguish the delivery
-%% stream. For more information about tags, see Using Cost Allocation Tags in
-%% the Amazon Web Services Billing and Cost Management User Guide.
+%% stream. For more information about tags, see Using Cost Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Amazon Web Services Billing and Cost Management User Guide.
 %%
 %% Each delivery stream can have up to 50 tags.
 %%

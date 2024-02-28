@@ -7,7 +7,8 @@
 %% OpenSearch Ingestion is a fully managed data collector that delivers
 %% real-time log and trace data to OpenSearch Service domains. For more
 %% information, see Getting data into your cluster using OpenSearch
-%% Ingestion.
+%% Ingestion:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ingestion.html.
 -module(aws_osis).
 
 -export([create_pipeline/2,
@@ -52,7 +53,8 @@
 
 %% @doc Creates an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Creating Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 create_pipeline(Client, Input0, Options0) ->
@@ -77,7 +79,8 @@ create_pipeline(Client, Input0, Options0) ->
 
 %% @doc Deletes an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Deleting Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Deleting Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/delete-pipeline.html.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 delete_pipeline(Client, PipelineName, Input0, Options0) ->
@@ -128,7 +131,8 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 %%
 %% Blueprints are templates for the configuration needed for a
 %% `CreatePipeline' request. For more information, see Using blueprints
-%% to create a pipeline.
+%% to create a pipeline:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
 get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
     get_pipeline_blueprint(Client, BlueprintName, #{}, #{}).
@@ -157,7 +161,8 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
 %% Currently, this operation only returns information when a pipeline is
 %% being created.
 %%
-%% For more information, see Tracking the status of pipeline creation.
+%% For more information, see Tracking the status of pipeline creation:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#get-pipeline-progress.
 get_pipeline_change_progress(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline_change_progress(Client, PipelineName, #{}, #{}).
@@ -182,7 +187,8 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves a list of all available blueprints for Data Prepper.
 %%
-%% For more information, see Using blueprints to create a pipeline.
+%% For more information, see Using blueprints to create a pipeline:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
 list_pipeline_blueprints(Client, Input) ->
     list_pipeline_blueprints(Client, Input, []).
 list_pipeline_blueprints(Client, Input0, Options0) ->
@@ -208,7 +214,8 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 %% @doc Lists all OpenSearch Ingestion pipelines in the current Amazon Web
 %% Services account and Region.
 %%
-%% For more information, see Viewing Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Viewing Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/list-pipeline.html.
 list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
@@ -239,7 +246,8 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all resource tags associated with an OpenSearch Ingestion
 %% pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
@@ -268,7 +276,8 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Starting an OpenSearch Ingestion pipeline.
+%% For more information, see Starting an OpenSearch Ingestion pipeline:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--start.
 start_pipeline(Client, PipelineName, Input) ->
     start_pipeline(Client, PipelineName, Input, []).
 start_pipeline(Client, PipelineName, Input0, Options0) ->
@@ -293,7 +302,8 @@ start_pipeline(Client, PipelineName, Input0, Options0) ->
 
 %% @doc Stops an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Stopping an OpenSearch Ingestion pipeline.
+%% For more information, see Stopping an OpenSearch Ingestion pipeline:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--stop.
 stop_pipeline(Client, PipelineName, Input) ->
     stop_pipeline(Client, PipelineName, Input, []).
 stop_pipeline(Client, PipelineName, Input0, Options0) ->
@@ -318,7 +328,8 @@ stop_pipeline(Client, PipelineName, Input0, Options0) ->
 
 %% @doc Tags an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -344,7 +355,8 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -370,7 +382,8 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Updating Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Updating Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 update_pipeline(Client, PipelineName, Input0, Options0) ->
@@ -396,7 +409,8 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 %% @doc Checks whether an OpenSearch Ingestion pipeline configuration is
 %% valid prior to creation.
 %%
-%% For more information, see Creating Amazon OpenSearch Ingestion pipelines.
+%% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
 validate_pipeline(Client, Input) ->
     validate_pipeline(Client, Input, []).
 validate_pipeline(Client, Input0, Options0) ->

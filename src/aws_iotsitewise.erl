@@ -4,10 +4,14 @@
 %% @doc Welcome to the IoT SiteWise API Reference.
 %%
 %% IoT SiteWise is an Amazon Web Services service that connects Industrial
-%% Internet of Things (IIoT) devices to the power of the Amazon Web Services
-%% Cloud. For more information, see the IoT SiteWise User Guide. For
-%% information about IoT SiteWise quotas, see Quotas in the IoT SiteWise User
-%% Guide.
+%% Internet of Things (IIoT):
+%% https://en.wikipedia.org/wiki/Internet_of_things#Industrial_applications
+%% devices to the power of the Amazon Web Services Cloud. For more
+%% information, see the IoT SiteWise User Guide:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/. For
+%% information about IoT SiteWise quotas, see Quotas:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html in
+%% the IoT SiteWise User Guide.
 -module(aws_iotsitewise).
 
 -export([associate_assets/3,
@@ -227,8 +231,9 @@
 %% @doc Associates a child asset with the given parent asset through a
 %% hierarchy defined in the parent asset's model.
 %%
-%% For more information, see Associating assets in the IoT SiteWise User
-%% Guide.
+%% For more information, see Associating assets:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html
+%% in the IoT SiteWise User Guide.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
 associate_assets(Client, AssetId, Input0, Options0) ->
@@ -328,8 +333,9 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
 %% @doc Gets aggregated values (for example, average, minimum, and maximum)
 %% for one or more asset properties.
 %%
-%% For more information, see Querying aggregates in the IoT SiteWise User
-%% Guide.
+%% For more information, see Querying aggregates:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
+%% in the IoT SiteWise User Guide.
 batch_get_asset_property_aggregates(Client, Input) ->
     batch_get_asset_property_aggregates(Client, Input, []).
 batch_get_asset_property_aggregates(Client, Input0, Options0) ->
@@ -354,8 +360,9 @@ batch_get_asset_property_aggregates(Client, Input0, Options0) ->
 
 %% @doc Gets the current value for one or more asset properties.
 %%
-%% For more information, see Querying current values in the IoT SiteWise User
-%% Guide.
+%% For more information, see Querying current values:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
+%% in the IoT SiteWise User Guide.
 batch_get_asset_property_value(Client, Input) ->
     batch_get_asset_property_value(Client, Input, []).
 batch_get_asset_property_value(Client, Input0, Options0) ->
@@ -380,8 +387,9 @@ batch_get_asset_property_value(Client, Input0, Options0) ->
 
 %% @doc Gets the historical values for one or more asset properties.
 %%
-%% For more information, see Querying historical values in the IoT SiteWise
-%% User Guide.
+%% For more information, see Querying historical values:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
+%% in the IoT SiteWise User Guide.
 batch_get_asset_property_value_history(Client, Input) ->
     batch_get_asset_property_value_history(Client, Input, []).
 batch_get_asset_property_value_history(Client, Input0, Options0) ->
@@ -407,8 +415,9 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %% @doc Sends a list of asset property values to IoT SiteWise.
 %%
 %% Each value is a timestamp-quality-value (TQV) data point. For more
-%% information, see Ingesting data using the API in the IoT SiteWise User
-%% Guide.
+%% information, see Ingesting data using the API:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ingest-api.html
+%% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
@@ -416,7 +425,8 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %%
 %% </li> <li> A `propertyAlias', which is a data stream alias (for
 %% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty.
+%% asset property's alias, see UpdateAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
 %% </li> </ul> With respect to Unix epoch time, IoT SiteWise accepts only
 %% TQVs that have a timestamp of no more than 7 days in the past and no more
@@ -431,7 +441,9 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %%
 %% IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue'
 %% entry individually. For more information, see BatchPutAssetPropertyValue
-%% authorization in the IoT SiteWise User Guide.
+%% authorization:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action
+%% in the IoT SiteWise User Guide.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
 batch_put_asset_property_value(Client, Input0, Options0) ->
@@ -481,7 +493,9 @@ create_access_policy(Client, Input0, Options0) ->
 
 %% @doc Creates an asset from an existing asset model.
 %%
-%% For more information, see Creating assets in the IoT SiteWise User Guide.
+%% For more information, see Creating assets:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html
+%% in the IoT SiteWise User Guide.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
 create_asset(Client, Input0, Options0) ->
@@ -510,8 +524,9 @@ create_asset(Client, Input0, Options0) ->
 %% You create assets from asset models. With asset models, you can easily
 %% create assets of the same type that have standardized definitions. Each
 %% asset created from a model inherits the asset model's property and
-%% hierarchy definitions. For more information, see Defining asset models in
-%% the IoT SiteWise User Guide.
+%% hierarchy definitions. For more information, see Defining asset models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html
+%% in the IoT SiteWise User Guide.
 %%
 %% You can create two types of asset models, `ASSET_MODEL' or
 %% `COMPONENT_MODEL'.
@@ -559,7 +574,9 @@ create_asset_model(Client, Input0, Options0) ->
 %% references. A component-model-based custom composite model has no
 %% properties of its own; its referenced component model provides its
 %% associated properties to any created assets. For more information, see
-%% Custom composite models (Components) in the IoT SiteWise User Guide.
+%% Custom composite models (Components):
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
+%% in the IoT SiteWise User Guide.
 %%
 %% Use inline custom composite models to organize the properties of an asset
 %% model. The properties of inline custom composite models are local to the
@@ -597,12 +614,14 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 
 %% @doc Defines a job to ingest data to IoT SiteWise from Amazon S3.
 %%
-%% For more information, see Create a bulk import job (CLI) in the Amazon
-%% Simple Storage Service User Guide.
+%% For more information, see Create a bulk import job (CLI):
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/CreateBulkImportJob.html
+%% in the Amazon Simple Storage Service User Guide.
 %%
 %% Before you create a bulk import job, you must enable IoT SiteWise warm
 %% tier or IoT SiteWise cold tier. For more information about how to
-%% configure storage settings, see PutStorageConfiguration.
+%% configure storage settings, see PutStorageConfiguration:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_PutStorageConfiguration.html.
 %%
 %% Bulk import is designed to store historical data to IoT SiteWise. It does
 %% not trigger computations or notifications on IoT SiteWise warm or cold
@@ -655,8 +674,9 @@ create_dashboard(Client, Input0, Options0) ->
 %% @doc Creates a gateway, which is a virtual or edge device that delivers
 %% industrial data streams from local servers to IoT SiteWise.
 %%
-%% For more information, see Ingesting data using a gateway in the IoT
-%% SiteWise User Guide.
+%% For more information, see Ingesting data using a gateway:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html
+%% in the IoT SiteWise User Guide.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 create_gateway(Client, Input0, Options0) ->
@@ -686,7 +706,9 @@ create_gateway(Client, Input0, Options0) ->
 %%
 %% Before you can sign in to a new portal, you must add at least one identity
 %% to that portal. For more information, see Adding or removing portal
-%% administrators in the IoT SiteWise User Guide.
+%% administrators:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins
+%% in the IoT SiteWise User Guide.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
 create_portal(Client, Input0, Options0) ->
@@ -766,10 +788,13 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% @doc Deletes an asset.
 %%
 %% This action can't be undone. For more information, see Deleting assets
-%% and models in the IoT SiteWise User Guide.
+%% and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 %%
 %% You can't delete an asset that's associated to another asset. For
-%% more information, see DisassociateAssets.
+%% more information, see DisassociateAssets:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
 delete_asset(Client, AssetId, Input0, Options0) ->
@@ -799,8 +824,9 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 %% an asset model before you can delete the model. Also, you can't delete
 %% an asset model if a parent asset model exists that contains a property
 %% formula expression that depends on the asset model that you want to
-%% delete. For more information, see Deleting assets and models in the IoT
-%% SiteWise User Guide.
+%% delete. For more information, see Deleting assets and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
 delete_asset_model(Client, AssetModelId, Input0, Options0) ->
@@ -830,8 +856,9 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% composite model before you can delete the model. Also, you can't
 %% delete a composite model if a parent asset model exists that contains a
 %% property formula expression that depends on the asset model that you want
-%% to delete. For more information, see Deleting assets and models in the IoT
-%% SiteWise User Guide.
+%% to delete. For more information, see Deleting assets and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input0, Options0) ->
@@ -1077,7 +1104,8 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 %%
 %% An `AssetCompositeModel' is an instance of an
 %% `AssetModelCompositeModel'. If you want to see information about the
-%% model this is based on, call DescribeAssetModelCompositeModel.
+%% model this is based on, call DescribeAssetModelCompositeModel:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModelCompositeModel.html.
 describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
   when is_map(Client) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, #{}, #{}).
@@ -1130,8 +1158,9 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about an asset model composite model (also
 %% known as an asset model component).
 %%
-%% For more information, see Custom composite models (Components) in the IoT
-%% SiteWise User Guide.
+%% For more information, see Custom composite models (Components):
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
+%% in the IoT SiteWise User Guide.
 describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId)
   when is_map(Client) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, #{}, #{}).
@@ -1162,7 +1191,8 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 %% response includes the new default value.
 %%
 %% This operation doesn't return the value of the asset property. To get
-%% the value of an asset property, use GetAssetPropertyValue.
+%% the value of an asset property, use GetAssetPropertyValue:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
     describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
@@ -1187,8 +1217,9 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves information about a bulk import job request.
 %%
-%% For more information, see Describe a bulk import job (CLI) in the Amazon
-%% Simple Storage Service User Guide.
+%% For more information, see Describe a bulk import job (CLI):
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/DescribeBulkImportJob.html
+%% in the Amazon Simple Storage Service User Guide.
 describe_bulk_import_job(Client, JobId)
   when is_map(Client) ->
     describe_bulk_import_job(Client, JobId, #{}, #{}).
@@ -1237,7 +1268,9 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about the default encryption configuration for
 %% the Amazon Web Services account in the default or specified Region.
 %%
-%% For more information, see Key management in the IoT SiteWise User Guide.
+%% For more information, see Key management:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
+%% in the IoT SiteWise User Guide.
 describe_default_encryption_configuration(Client)
   when is_map(Client) ->
     describe_default_encryption_configuration(Client, #{}, #{}).
@@ -1289,7 +1322,8 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 %% configuration can contain multiple data source configurations. If you
 %% define OPC-UA sources for a gateway in the IoT SiteWise console, all of
 %% your OPC-UA sources are stored in one capability configuration. To list
-%% all capability configurations for a gateway, use DescribeGateway.
+%% all capability configurations for a gateway, use DescribeGateway:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
 describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId)
   when is_map(Client) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, #{}, #{}).
@@ -1548,8 +1582,9 @@ execute_query(Client, Input0, Options0) ->
 
 %% @doc Gets aggregated values for an asset property.
 %%
-%% For more information, see Querying aggregates in the IoT SiteWise User
-%% Guide.
+%% For more information, see Querying aggregates:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
+%% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
@@ -1557,7 +1592,8 @@ execute_query(Client, Input0, Options0) ->
 %%
 %% </li> <li> A `propertyAlias', which is a data stream alias (for
 %% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty.
+%% asset property's alias, see UpdateAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
 %% </li> </ul>
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
@@ -1598,8 +1634,9 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 
 %% @doc Gets an asset property's current value.
 %%
-%% For more information, see Querying current values in the IoT SiteWise User
-%% Guide.
+%% For more information, see Querying current values:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
+%% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
@@ -1607,7 +1644,8 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 %%
 %% </li> <li> A `propertyAlias', which is a data stream alias (for
 %% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty.
+%% asset property's alias, see UpdateAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
 %% </li> </ul>
 get_asset_property_value(Client)
@@ -1640,8 +1678,9 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the history of an asset property's values.
 %%
-%% For more information, see Querying historical values in the IoT SiteWise
-%% User Guide.
+%% For more information, see Querying historical values:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
+%% in the IoT SiteWise User Guide.
 %%
 %% To identify an asset property, you must specify one of the following:
 %%
@@ -1649,7 +1688,8 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> A `propertyAlias', which is a data stream alias (for
 %% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty.
+%% asset property's alias, see UpdateAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
 %% </li> </ul>
 get_asset_property_value_history(Client)
@@ -1702,7 +1742,8 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> A `propertyAlias', which is a data stream alias (for
 %% example, `/company/windfarm/3/turbine/7/temperature'). To define an
-%% asset property's alias, see UpdateAssetProperty.
+%% asset property's alias, see UpdateAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
 %%
 %% </li> </ul>
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type)
@@ -1972,9 +2013,10 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 %% </li> <li> List top-level assets.
 %%
 %% </li> </ul> You can't use this operation to list all assets. To
-%% retrieve summaries for all of your assets, use ListAssetModels to get all
-%% of your asset model IDs. Then, use ListAssets to get all assets for each
-%% asset model.
+%% retrieve summaries for all of your assets, use ListAssetModels:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html
+%% to get all of your asset model IDs. Then, use ListAssets to get all assets
+%% for each asset model.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
@@ -2045,8 +2087,9 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of bulk import job requests.
 %%
-%% For more information, see List bulk import jobs (CLI) in the IoT SiteWise
-%% User Guide.
+%% For more information, see List bulk import jobs (CLI):
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ListBulkImportJobs.html
+%% in the IoT SiteWise User Guide.
 list_bulk_import_jobs(Client)
   when is_map(Client) ->
     list_bulk_import_jobs(Client, #{}, #{}).
@@ -2310,7 +2353,9 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
 %% @doc Sets the default encryption configuration for the Amazon Web Services
 %% account.
 %%
-%% For more information, see Key management in the IoT SiteWise User Guide.
+%% For more information, see Key management:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
+%% in the IoT SiteWise User Guide.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
 put_default_encryption_configuration(Client, Input0, Options0) ->
@@ -2457,8 +2502,9 @@ update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 
 %% @doc Updates an asset's name.
 %%
-%% For more information, see Updating assets and models in the IoT SiteWise
-%% User Guide.
+%% For more information, see Updating assets and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
 update_asset(Client, AssetId, Input0, Options0) ->
@@ -2486,12 +2532,15 @@ update_asset(Client, AssetId, Input0, Options0) ->
 %%
 %% Each asset created from the model inherits the updated asset model's
 %% property and hierarchy definitions. For more information, see Updating
-%% assets and models in the IoT SiteWise User Guide.
+%% assets and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 %%
 %% This operation overwrites the existing model with the provided model. To
 %% avoid deleting your asset model's properties or hierarchies, you must
 %% include their IDs and definitions in the updated asset model payload. For
-%% more information, see DescribeAssetModel.
+%% more information, see DescribeAssetModel:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html.
 %%
 %% If you remove a property from an asset model, IoT SiteWise deletes all
 %% previous data for that property. If you remove a hierarchy definition from
@@ -2525,7 +2574,9 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %%
 %% Each asset created from the model inherits the updated asset model's
 %% property and hierarchy definitions. For more information, see Updating
-%% assets and models in the IoT SiteWise User Guide.
+%% assets and models:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
+%% in the IoT SiteWise User Guide.
 %%
 %% If you remove a property from a composite asset model, IoT SiteWise
 %% deletes all previous data for that property. You can’t change the type or
@@ -2568,7 +2619,8 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 %% notification state. To keep your existing property's alias or
 %% notification state, you must include the existing values in the
 %% UpdateAssetProperty request. For more information, see
-%% DescribeAssetProperty.
+%% DescribeAssetProperty:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
 update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
@@ -2644,7 +2696,8 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 %% configuration can contain multiple data source configurations. If you
 %% define OPC-UA sources for a gateway in the IoT SiteWise console, all of
 %% your OPC-UA sources are stored in one capability configuration. To list
-%% all capability configurations for a gateway, use DescribeGateway.
+%% all capability configurations for a gateway, use DescribeGateway:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
 update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->

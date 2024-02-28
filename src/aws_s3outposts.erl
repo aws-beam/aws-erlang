@@ -30,9 +30,11 @@
 %%
 %% Related actions include:
 %%
-%% <ul> <li> DeleteEndpoint
+%% <ul> <li> DeleteEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
 %%
-%% </li> <li> ListEndpoints
+%% </li> <li> ListEndpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
 %%
 %% </li> </ul>
 create_endpoint(Client, Input) ->
@@ -63,9 +65,11 @@ create_endpoint(Client, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint
+%% <ul> <li> CreateEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> ListEndpoints
+%% </li> <li> ListEndpoints:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
 %%
 %% </li> </ul>
 delete_endpoint(Client, Input) ->
@@ -96,9 +100,11 @@ delete_endpoint(Client, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint
+%% <ul> <li> CreateEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> DeleteEndpoint
+%% </li> <li> DeleteEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
 %%
 %% </li> </ul>
 list_endpoints(Client)
@@ -165,9 +171,11 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreateEndpoint
+%% <ul> <li> CreateEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html
 %%
-%% </li> <li> DeleteEndpoint
+%% </li> <li> DeleteEndpoint:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
 %%
 %% </li> </ul>
 list_shared_endpoints(Client, OutpostId)

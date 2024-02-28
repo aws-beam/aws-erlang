@@ -82,8 +82,9 @@
 %% DNS.
 %%
 %% For the current quota on the number of namespaces that you can create
-%% using the same Amazon Web Services account, see Cloud Map quotas in the
-%% Cloud Map Developer Guide.
+%% using the same Amazon Web Services account, see Cloud Map quotas:
+%% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
+%% the Cloud Map Developer Guide.
 create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
@@ -100,8 +101,9 @@ create_http_namespace(Client, Input, Options)
 %% instances that are registered using a private DNS namespace can be
 %% discovered using either a `DiscoverInstances' request or using DNS.
 %% For the current quota on the number of namespaces that you can create
-%% using the same Amazon Web Services account, see Cloud Map quotas in the
-%% Cloud Map Developer Guide.
+%% using the same Amazon Web Services account, see Cloud Map quotas:
+%% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
+%% the Cloud Map Developer Guide.
 create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
@@ -118,8 +120,9 @@ create_private_dns_namespace(Client, Input, Options)
 %% discover instances that were registered with a public DNS namespace by
 %% using either a `DiscoverInstances' request or using DNS. For the
 %% current quota on the number of namespaces that you can create using the
-%% same Amazon Web Services account, see Cloud Map quotas in the Cloud Map
-%% Developer Guide.
+%% same Amazon Web Services account, see Cloud Map quotas:
+%% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
+%% the Cloud Map Developer Guide.
 %%
 %% The `CreatePublicDnsNamespace' API operation is not supported in the
 %% Amazon Web Services GovCloud (US) Regions.
@@ -150,12 +153,15 @@ create_public_dns_namespace(Client, Input, Options)
 %% </li> </ul> </li> <li> Optionally, a health check
 %%
 %% </li> </ul> After you create the service, you can submit a
-%% RegisterInstance request, and Cloud Map uses the values in the
-%% configuration to create the specified entities.
+%% RegisterInstance:
+%% https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html
+%% request, and Cloud Map uses the values in the configuration to create the
+%% specified entities.
 %%
 %% For the current quota on the number of instances that you can register
-%% using the same namespace and using the same service, see Cloud Map quotas
-%% in the Cloud Map Developer Guide.
+%% using the same namespace and using the same service, see Cloud Map quotas:
+%% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
+%% the Cloud Map Developer Guide.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -248,7 +254,8 @@ get_namespace(Client, Input, Options)
 %% the response, such as a `CreateHttpNamespace' request.
 %%
 %% To get a list of operations that match specified criteria, see
-%% ListOperations.
+%% ListOperations:
+%% https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html.
 get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
@@ -326,7 +333,8 @@ list_tags_for_resource(Client, Input, Options)
 %% can submit another request and specify the same service ID and instance
 %% ID.
 %%
-%% For more information, see CreateService.
+%% For more information, see CreateService:
+%% https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html.
 %%
 %% When Cloud Map receives a DNS query for the specified DNS name, it returns
 %% the applicable value:
@@ -341,7 +349,9 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% </li> </ul> For the current quota on the number of instances that you can
 %% register using the same namespace and using the same service, see Cloud
-%% Map quotas in the Cloud Map Developer Guide.
+%% Map quotas:
+%% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
+%% the Cloud Map Developer Guide.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
@@ -382,7 +392,8 @@ update_http_namespace(Client, Input, Options)
 %% it to change the status for Route 53 health checks, which you define using
 %% `HealthCheckConfig'.
 %%
-%% For more information, see HealthCheckCustomConfig.
+%% For more information, see HealthCheckCustomConfig:
+%% https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html.
 update_instance_custom_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_custom_health_status(Client, Input, []).

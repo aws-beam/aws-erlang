@@ -17,8 +17,9 @@
 %%
 %% `aws iot describe-endpoint --endpoint-type iot:Data-ATS'
 %%
-%% The service name used by Amazon Web ServicesSignature Version 4 to sign
-%% requests is: iotdevicegateway.
+%% The service name used by Amazon Web ServicesSignature Version 4:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html to
+%% sign requests is: iotdevicegateway.
 -module(aws_iot_data_plane).
 
 -export([delete_thing_shadow/3,
@@ -48,9 +49,13 @@
 
 %% @doc Deletes the shadow for the specified thing.
 %%
-%% Requires permission to access the DeleteThingShadow action.
+%% Requires permission to access the DeleteThingShadow:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
-%% For more information, see DeleteThingShadow in the IoT Developer Guide.
+%% For more information, see DeleteThingShadow:
+%% http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html
+%% in the IoT Developer Guide.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 delete_thing_shadow(Client, ThingName, Input0, Options0) ->
@@ -79,12 +84,16 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %%
 %% This action returns the message payload of the retained message, which can
 %% incur messaging costs. To list only the topic names of the retained
-%% messages, call ListRetainedMessages.
+%% messages, call ListRetainedMessages:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_ListRetainedMessages.html.
 %%
-%% Requires permission to access the GetRetainedMessage action.
+%% Requires permission to access the GetRetainedMessage:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions
+%% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging.
+%% Core pricing - Messaging:
+%% http://aws.amazon.com/iot-core/pricing/#Messaging.
 get_retained_message(Client, Topic)
   when is_map(Client) ->
     get_retained_message(Client, Topic, #{}, #{}).
@@ -109,9 +118,13 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the shadow for the specified thing.
 %%
-%% Requires permission to access the GetThingShadow action.
+%% Requires permission to access the GetThingShadow:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
-%% For more information, see GetThingShadow in the IoT Developer Guide.
+%% For more information, see GetThingShadow:
+%% http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html
+%% in the IoT Developer Guide.
 get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, #{}, #{}).
@@ -140,7 +153,9 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the shadows for the specified thing.
 %%
-%% Requires permission to access the ListNamedShadowsForThing action.
+%% Requires permission to access the ListNamedShadowsForThing:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 list_named_shadows_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_named_shadows_for_thing(Client, ThingName, #{}, #{}).
@@ -175,13 +190,17 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% doesn't return any message payloads. Although this action doesn't
 %% return a message payload, it can still incur messaging costs.
 %%
-%% To get the message payload of a retained message, call GetRetainedMessage
+%% To get the message payload of a retained message, call GetRetainedMessage:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_GetRetainedMessage.html
 %% with the topic name of the retained message.
 %%
-%% Requires permission to access the ListRetainedMessages action.
+%% Requires permission to access the ListRetainedMessages:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions
+%% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging.
+%% Core pricing - Messaging:
+%% http://aws.amazon.com/iot-core/pricing/#Messaging.
 list_retained_messages(Client)
   when is_map(Client) ->
     list_retained_messages(Client, #{}, #{}).
@@ -211,13 +230,17 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Publishes an MQTT message.
 %%
-%% Requires permission to access the Publish action.
+%% Requires permission to access the Publish:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
-%% For more information about MQTT messages, see MQTT Protocol in the IoT
+%% For more information about MQTT messages, see MQTT Protocol:
+%% http://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html in the IoT
 %% Developer Guide.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
-%% Core pricing - Messaging.
+%% Core pricing - Messaging:
+%% http://aws.amazon.com/iot-core/pricing/#Messaging.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options0) ->
@@ -251,9 +274,13 @@ publish(Client, Topic, Input0, Options0) ->
 
 %% @doc Updates the shadow for the specified thing.
 %%
-%% Requires permission to access the UpdateThingShadow action.
+%% Requires permission to access the UpdateThingShadow:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
+%% action.
 %%
-%% For more information, see UpdateThingShadow in the IoT Developer Guide.
+%% For more information, see UpdateThingShadow:
+%% http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html
+%% in the IoT Developer Guide.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 update_thing_shadow(Client, ThingName, Input0, Options0) ->

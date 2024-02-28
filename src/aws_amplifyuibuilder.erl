@@ -10,12 +10,15 @@
 %%
 %% You can also use the Amplify Studio visual designer to create UI
 %% components and model data for an app. For more information, see
-%% Introduction in the Amplify Docs.
+%% Introduction: https://docs.amplify.aws/console/adminui/intro in the
+%% Amplify Docs.
 %%
 %% The Amplify Framework is a comprehensive set of SDKs, libraries, tools,
 %% and documentation for client app development. For more information, see
-%% the Amplify Framework. For more information about deploying an Amplify
-%% application to Amazon Web Services, see the Amplify User Guide.
+%% the Amplify Framework: https://docs.amplify.aws/. For more information
+%% about deploying an Amplify application to Amazon Web Services, see the
+%% Amplify User Guide:
+%% https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html.
 -module(aws_amplifyuibuilder).
 
 -export([create_component/4,

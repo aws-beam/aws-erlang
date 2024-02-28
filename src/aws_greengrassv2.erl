@@ -17,8 +17,9 @@
 %% reference to learn how to use the IoT Greengrass V2 API operations to
 %% manage components, manage deployments, and core devices.
 %%
-%% For more information, see What is IoT Greengrass? in the IoT Greengrass V2
-%% Developer Guide.
+%% For more information, see What is IoT Greengrass?:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/what-is-iot-greengrass.html
+%% in the IoT Greengrass V2 Developer Guide.
 -module(aws_greengrassv2).
 
 -export([associate_service_role_to_account/2,
@@ -106,10 +107,13 @@
 %%
 %% IoT Greengrass uses this role to verify the identity of client devices and
 %% manage core device connectivity information. The role must include the
-%% AWSGreengrassResourceAccessRolePolicy managed policy or a custom policy
-%% that defines equivalent permissions for the IoT Greengrass features that
-%% you use. For more information, see Greengrass service role in the IoT
-%% Greengrass Version 2 Developer Guide.
+%% AWSGreengrassResourceAccessRolePolicy:
+%% https://console.aws.amazon.com/iam/home#/policies/arn:awsiam::aws:policy/service-role/AWSGreengrassResourceAccessRolePolicy
+%% managed policy or a custom policy that defines equivalent permissions for
+%% the IoT Greengrass features that you use. For more information, see
+%% Greengrass service role:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
+%% in the IoT Greengrass Version 2 Developer Guide.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 associate_service_role_to_account(Client, Input0, Options0) ->
@@ -138,14 +142,17 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 %% device through cloud discovery. With cloud discovery, client devices
 %% connect to IoT Greengrass to retrieve associated core devices'
 %% connectivity information and certificates. For more information, see
-%% Configure cloud discovery in the IoT Greengrass V2 Developer Guide.
+%% Configure cloud discovery:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/configure-cloud-discovery.html
+%% in the IoT Greengrass V2 Developer Guide.
 %%
 %% Client devices are local IoT devices that connect to and communicate with
 %% an IoT Greengrass core device over MQTT. You can connect client devices to
 %% a core device to sync MQTT messages and data to Amazon Web Services IoT
 %% Core and interact with client devices in Greengrass components. For more
-%% information, see Interact with local IoT devices in the IoT Greengrass V2
-%% Developer Guide.
+%% information, see Interact with local IoT devices:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-local-iot-devices.html
+%% in the IoT Greengrass V2 Developer Guide.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
     batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input, []).
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
@@ -236,7 +243,9 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %% Create a component from a recipe, which is a file that defines the
 %% component's metadata, parameters, dependencies, lifecycle, artifacts,
 %% and platform capability. For more information, see IoT Greengrass
-%% component recipe reference in the IoT Greengrass V2 Developer Guide.
+%% component recipe reference:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/component-recipe-reference.html
+%% in the IoT Greengrass V2 Developer Guide.
 %%
 %% To create a component from a recipe, specify `inlineRecipe' when you
 %% call this operation.
@@ -314,8 +323,9 @@ create_component_version(Client, Input0, Options0) ->
 %% revisions you define for a target. Use this operation to create a new
 %% revision of an existing deployment.
 %%
-%% For more information, see the Create deployments in the IoT Greengrass V2
-%% Developer Guide.
+%% For more information, see the Create deployments:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/create-deployments.html
+%% in the IoT Greengrass V2 Developer Guide.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 create_deployment(Client, Input0, Options0) ->
@@ -371,7 +381,9 @@ delete_component(Client, Arn, Input0, Options0) ->
 %%
 %% This operation removes the core device from the list of core devices. This
 %% operation doesn't delete the IoT thing. For more information about how
-%% to delete the IoT thing, see DeleteThing in the IoT API Reference.
+%% to delete the IoT thing, see DeleteThing:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteThing.html
+%% in the IoT API Reference.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
@@ -397,7 +409,8 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 %% @doc Deletes a deployment.
 %%
 %% To delete an active deployment, you must first cancel it. For more
-%% information, see CancelDeployment.
+%% information, see CancelDeployment:
+%% https://docs.aws.amazon.com/iot/latest/apireference/API_CancelDeployment.html.
 %%
 %% Deleting a deployment doesn't affect core devices that run that
 %% deployment, because core devices store the deployment's configuration
@@ -453,8 +466,9 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% Without a service role, IoT Greengrass can't verify the identity of
 %% client devices or manage core device connectivity information. For more
-%% information, see Greengrass service role in the IoT Greengrass Version 2
-%% Developer Guide.
+%% information, see Greengrass service role:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
+%% in the IoT Greengrass Version 2 Developer Guide.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 disassociate_service_role_from_account(Client, Input0, Options0) ->
@@ -535,10 +549,13 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 %%
 %% Connectivity information includes endpoints and ports where client devices
 %% can connect to an MQTT broker on the core device. When a client device
-%% calls the IoT Greengrass discovery API, IoT Greengrass returns
-%% connectivity information for all of the core devices where the client
-%% device can connect. For more information, see Connect client devices to
-%% core devices in the IoT Greengrass Version 2 Developer Guide.
+%% calls the IoT Greengrass discovery API:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-discover-api.html,
+%% IoT Greengrass returns connectivity information for all of the core
+%% devices where the client device can connect. For more information, see
+%% Connect client devices to core devices:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
+%% in the IoT Greengrass Version 2 Developer Guide.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
@@ -579,7 +596,9 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %%
 %% When the status of any component on the core device becomes `BROKEN'
 %%
-%% At a regular interval that you can configure, which defaults to 24 hours
+%% At a regular interval that you can configure:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
+%% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and cloud deployment
@@ -635,7 +654,9 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 %%
 %% IoT Greengrass uses this role to verify the identity of client devices and
 %% manage core device connectivity information. For more information, see
-%% Greengrass service role in the IoT Greengrass Version 2 Developer Guide.
+%% Greengrass service role:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
+%% in the IoT Greengrass Version 2 Developer Guide.
 get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
@@ -766,7 +787,9 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %%
 %% When the status of any component on the core device becomes `BROKEN'
 %%
-%% At a regular interval that you can configure, which defaults to 24 hours
+%% At a regular interval that you can configure:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
+%% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and cloud deployment
@@ -882,7 +905,9 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %%
 %% When the status of any component on the core device becomes `BROKEN'
 %%
-%% At a regular interval that you can configure, which defaults to 24 hours
+%% At a regular interval that you can configure:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-nucleus-component.html#greengrass-nucleus-component-configuration-fss,
+%% which defaults to 24 hours
 %%
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and cloud deployment
@@ -957,7 +982,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% To use this operation, you must use the data plane API endpoint and
 %% authenticate with an IoT device certificate. For more information, see IoT
-%% Greengrass endpoints and quotas.
+%% Greengrass endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/greengrass.html.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
 resolve_component_candidates(Client, Input0, Options0) ->
@@ -1034,10 +1060,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Connectivity information includes endpoints and ports where client devices
 %% can connect to an MQTT broker on the core device. When a client device
-%% calls the IoT Greengrass discovery API, IoT Greengrass returns
-%% connectivity information for all of the core devices where the client
-%% device can connect. For more information, see Connect client devices to
-%% core devices in the IoT Greengrass Version 2 Developer Guide.
+%% calls the IoT Greengrass discovery API:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-discover-api.html,
+%% IoT Greengrass returns connectivity information for all of the core
+%% devices where the client device can connect. For more information, see
+%% Connect client devices to core devices:
+%% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
+%% in the IoT Greengrass Version 2 Developer Guide.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 update_connectivity_info(Client, ThingName, Input0, Options0) ->

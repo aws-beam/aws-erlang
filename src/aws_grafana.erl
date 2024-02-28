@@ -70,7 +70,8 @@
 %% @doc Assigns a Grafana Enterprise license to a workspace.
 %%
 %% Upgrading to Grafana Enterprise incurs additional fees. For more
-%% information, see Upgrade a workspace to Grafana Enterprise.
+%% information, see Upgrade a workspace to Grafana Enterprise:
+%% https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html.
 associate_license(Client, LicenseType, WorkspaceId, Input) ->
     associate_license(Client, LicenseType, WorkspaceId, Input, []).
 associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
@@ -100,7 +101,8 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% package, or deploy any hardware to run the Grafana server.
 %%
 %% Don't use `CreateWorkspace' to modify an existing workspace.
-%% Instead, use UpdateWorkspace.
+%% Instead, use UpdateWorkspace:
+%% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspace.html.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 create_workspace(Client, Input0, Options0) ->
@@ -390,7 +392,8 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of Amazon Managed Grafana workspaces in the account,
 %% with some information about each workspace.
 %%
-%% For more complete information about one workspace, use DescribeWorkspace.
+%% For more complete information about one workspace, use DescribeWorkspace:
+%% https://docs.aws.amazon.com/AAMG/latest/APIReference/API_DescribeWorkspace.html.
 list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
@@ -504,10 +507,12 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 %% values of those parameters are not changed.
 %%
 %% To modify the user authentication methods that the workspace uses, such as
-%% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication.
+%% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication:
+%% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspaceAuthentication.html.
 %%
 %% To modify which users in the workspace have the `Admin' and
-%% `Editor' Grafana roles, use UpdatePermissions.
+%% `Editor' Grafana roles, use UpdatePermissions:
+%% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdatePermissions.html.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
 update_workspace(Client, WorkspaceId, Input0, Options0) ->

@@ -36,7 +36,9 @@
 %% streamed to Amazon Transcribe and the transcription results are streamed
 %% to your application.
 %%
-%% Use this operation for Call Analytics transcriptions.
+%% Use this operation for Call Analytics:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html
+%% transcriptions.
 %%
 %% The following parameters are required:
 %%
@@ -47,7 +49,8 @@
 %% </li> <li> `sample-rate'
 %%
 %% </li> </ul> For more information on streaming with Amazon Transcribe, see
-%% Transcribing streaming audio.
+%% Transcribing streaming audio:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_call_analytics_stream_transcription(Client, Input) ->
     start_call_analytics_stream_transcription(Client, Input, []).
 start_call_analytics_stream_transcription(Client, Input0, Options0) ->
@@ -126,7 +129,8 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
 %% </li> <li> `sample-rate'
 %%
 %% </li> </ul> For more information on streaming with Amazon Transcribe
-%% Medical, see Transcribing streaming audio.
+%% Medical, see Transcribing streaming audio:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 start_medical_stream_transcription(Client, Input0, Options0) ->
@@ -202,7 +206,8 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 %% </li> <li> `sample-rate'
 %%
 %% </li> </ul> For more information on streaming with Amazon Transcribe, see
-%% Transcribing streaming audio.
+%% Transcribing streaming audio:
+%% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 start_stream_transcription(Client, Input0, Options0) ->

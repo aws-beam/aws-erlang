@@ -22,7 +22,8 @@
 %% an Amazon EBS volume.
 %%
 %% </li> </ul> For more information about the features of Amazon EventBridge,
-%% see the Amazon EventBridge User Guide.
+%% see the Amazon EventBridge User Guide:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide.
 -module(aws_cloudwatch_events).
 
 -export([activate_event_source/2,
@@ -243,7 +244,8 @@ create_partner_event_source(Client, Input, Options)
 %% state. If it remains in PENDING state for more than two weeks, it is
 %% deleted.
 %%
-%% To activate a deactivated partner event source, use ActivateEventSource.
+%% To activate a deactivated partner event source, use ActivateEventSource:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ActivateEventSource.html.
 deactivate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_event_source(Client, Input, []).
@@ -314,7 +316,8 @@ delete_partner_event_source(Client, Input, Options)
 %% @doc Deletes the specified rule.
 %%
 %% Before you can delete the rule, you must remove all targets, using
-%% RemoveTargets.
+%% RemoveTargets:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RemoveTargets.html.
 %%
 %% When you delete a rule, incoming events might continue to match to the
 %% deleted rule. Allow a short period of time for changes to take effect.
@@ -367,9 +370,11 @@ describe_connection(Client, Input, Options)
 %% name, ARN, policy, state, and creation time.
 %%
 %% To enable your account to receive events from other accounts on its
-%% default event bus, use PutPermission.
+%% default event bus, use PutPermission:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPermission.html.
 %%
-%% For more information about partner event buses, see CreateEventBus.
+%% For more information about partner event buses, see CreateEventBus:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
 describe_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_bus(Client, Input, []).
@@ -390,8 +395,9 @@ describe_event_source(Client, Input, Options)
 %% partner event source that they have created.
 %%
 %% Amazon Web Services customers do not use this operation. Instead, Amazon
-%% Web Services customers can use DescribeEventSource to see details about a
-%% partner event source that is shared with them.
+%% Web Services customers can use DescribeEventSource:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventSource.html
+%% to see details about a partner event source that is shared with them.
 describe_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partner_event_source(Client, Input, []).
@@ -421,7 +427,8 @@ describe_replay(Client, Input, Options)
 %% @doc Describes the specified rule.
 %%
 %% DescribeRule does not list the targets of a rule. To see the targets
-%% associated with a rule, use ListTargetsByRule.
+%% associated with a rule, use ListTargetsByRule:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
 describe_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule(Client, Input, []).
@@ -497,7 +504,8 @@ list_event_buses(Client, Input, Options)
 %% @doc You can use this to see all the partner event sources that have been
 %% shared with your Amazon Web Services account.
 %%
-%% For more information about partner event sources, see CreateEventBus.
+%% For more information about partner event sources, see CreateEventBus:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
 list_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_sources(Client, Input, []).
@@ -556,7 +564,8 @@ list_rule_names_by_target(Client, Input, Options)
 %% the rule names.
 %%
 %% ListRules does not list the targets of a rule. To see the targets
-%% associated with a rule, use ListTargetsByRule.
+%% associated with a rule, use ListTargetsByRule:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
@@ -625,7 +634,9 @@ put_partner_events(Client, Input, Options)
 %% organization must specify a `RoleArn' with proper permissions when
 %% they use `PutTarget' to add your account's event bus as a target.
 %% For more information, see Sending and Receiving Events Between Amazon Web
-%% Services Accounts in the Amazon EventBridge User Guide.
+%% Services Accounts:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html
+%% in the Amazon EventBridge User Guide.
 %%
 %% The permission policy on the event bus cannot exceed 10 KB in size.
 put_permission(Client, Input)
@@ -638,7 +649,8 @@ put_permission(Client, Input, Options)
 %% @doc Creates or updates the specified rule.
 %%
 %% Rules are enabled by default, or based on value of the state. You can
-%% disable a rule using DisableRule.
+%% disable a rule using DisableRule:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DisableRule.html.
 %%
 %% A single rule watches for events from a single event bus. Events generated
 %% by Amazon Web Services services go to your account's default event
@@ -646,7 +658,8 @@ put_permission(Client, Input, Options)
 %% matching partner event bus. If you have custom applications or services,
 %% you can specify whether their events go to your default event bus or a
 %% custom event bus that you have created. For more information, see
-%% CreateEventBus.
+%% CreateEventBus:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
 %%
 %% If you are updating an existing rule, the rule is replaced with what you
 %% specify in this `PutRule' command. If you omit arguments in
@@ -672,7 +685,10 @@ put_permission(Client, Input, Options)
 %%
 %% If you are updating an existing rule, any tags you specify in the
 %% `PutRule' operation are ignored. To update the tags of an existing
-%% rule, use TagResource and UntagResource.
+%% rule, use TagResource:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_TagResource.html
+%% and UntagResource:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UntagResource.html.
 %%
 %% Most services in Amazon Web Services treat : or / as the same character in
 %% Amazon Resource Names (ARNs). However, EventBridge uses an exact match in
@@ -694,7 +710,8 @@ put_permission(Client, Input, Options)
 %% An infinite loop can quickly cause higher than expected charges. We
 %% recommend that you use budgeting, which alerts you when charges exceed
 %% your specified limit. For more information, see Managing Your Costs with
-%% Budgets.
+%% Budgets:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html.
 put_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_rule(Client, Input, []).
@@ -709,7 +726,8 @@ put_rule(Client, Input, Options)
 %%
 %% You can configure the following as targets for Events:
 %%
-%% <ul> <li> API destination
+%% <ul> <li> API destination:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html
 %%
 %% </li> <li> Amazon API Gateway REST API endpoints
 %%
@@ -778,7 +796,9 @@ put_rule(Client, Input, Options)
 %% instances, Kinesis Data Streams, Step Functions state machines and API
 %% Gateway REST APIs, EventBridge relies on IAM roles that you specify in the
 %% `RoleARN' argument in `PutTargets'. For more information, see
-%% Authentication and Access Control in the Amazon EventBridge User Guide.
+%% Authentication and Access Control:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html
+%% in the Amazon EventBridge User Guide.
 %%
 %% If another Amazon Web Services account is in the same region and has
 %% granted you permission (using `PutPermission'), you can send events to
@@ -788,7 +808,8 @@ put_rule(Client, Input, Options)
 %% `PutTargets'. If your account sends events to another account, your
 %% account is charged for each sent event. Each event sent to another account
 %% is charged as a custom event. The account receiving the event is not
-%% charged. For more information, see Amazon EventBridge Pricing.
+%% charged. For more information, see Amazon EventBridge Pricing:
+%% http://aws.amazon.com/eventbridge/pricing/.
 %%
 %% `Input', `InputPath', and `InputTransformer' are not available
 %% with `PutTarget' if the target is an event bus of a different Amazon
@@ -799,10 +820,13 @@ put_rule(Client, Input, Options)
 %% instead of directly by the account ID, then you must specify a
 %% `RoleArn' with proper permissions in the `Target' structure. For
 %% more information, see Sending and Receiving Events Between Amazon Web
-%% Services Accounts in the Amazon EventBridge User Guide.
+%% Services Accounts:
+%% https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html
+%% in the Amazon EventBridge User Guide.
 %%
 %% For more information about enabling cross-account events, see
-%% PutPermission.
+%% PutPermission:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPermission.html.
 %%
 %% Input, InputPath, and InputTransformer are mutually exclusive and optional
 %% parameters of a target. When a rule is triggered due to a matched event:
@@ -848,7 +872,8 @@ put_targets(Client, Input, Options)
 %% Specify the account to revoke by the `StatementId' value that you
 %% associated with the account when you granted it permission with
 %% `PutPermission'. You can find the `StatementId' by using
-%% DescribeEventBus.
+%% DescribeEventBus:
+%% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventBus.html.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).

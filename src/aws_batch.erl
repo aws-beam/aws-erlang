@@ -128,7 +128,8 @@ cancel_job(Client, Input0, Options0) ->
 %%
 %% In a managed compute environment, Batch manages the capacity and instance
 %% types of the compute resources within the environment. This is based on
-%% the compute resource specification that you define or the launch template
+%% the compute resource specification that you define or the launch template:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
 %% that you specify when you create the compute environment. Either, you can
 %% choose to use EC2 On-Demand Instances and EC2 Spot Instances. Or, you can
 %% use Fargate and Fargate Spot capacity in your managed compute environment.
@@ -142,14 +143,16 @@ cancel_job(Client, Input0, Options0) ->
 %% resources and have flexibility with how you configure your compute
 %% resources. For example, you can use custom AMIs. However, you must verify
 %% that each of your AMIs meet the Amazon ECS container instance AMI
-%% specification. For more information, see container instance AMIs in the
-%% Amazon Elastic Container Service Developer Guide. After you created your
-%% unmanaged compute environment, you can use the
+%% specification. For more information, see container instance AMIs:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html
+%% in the Amazon Elastic Container Service Developer Guide. After you created
+%% your unmanaged compute environment, you can use the
 %% `DescribeComputeEnvironments' operation to find the Amazon ECS cluster
 %% that's associated with it. Then, launch your container instances into
 %% that Amazon ECS cluster. For more information, see Launching an Amazon ECS
-%% container instance in the Amazon Elastic Container Service Developer
-%% Guide.
+%% container instance:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html
+%% in the Amazon Elastic Container Service Developer Guide.
 %%
 %% To create a compute environment that uses EKS resources, the caller must
 %% have permissions to call `eks:DescribeCluster'.
@@ -173,9 +176,10 @@ cancel_job(Client, Input0, Options0) ->
 %% Delete the earlier compute environment.
 %%
 %% In April 2022, Batch added enhanced support for updating compute
-%% environments. For more information, see Updating compute environments. To
-%% use the enhanced updating of compute environments to update AMIs, follow
-%% these rules:
+%% environments. For more information, see Updating compute environments:
+%% https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html.
+%% To use the enhanced updating of compute environments to update AMIs,
+%% follow these rules:
 %%
 %% Either don't set the service role (`serviceRole') parameter or set
 %% it to the AWSBatchServiceRole service-linked role.
@@ -190,19 +194,21 @@ cancel_job(Client, Input0, Options0) ->
 %% you create a compute environment.
 %%
 %% Don't specify an AMI ID in `imageId', `imageIdOverride' (in
-%% `ec2Configuration' ), or in the launch template
-%% (`launchTemplate'). In that case, Batch selects the latest Amazon ECS
-%% optimized AMI that's supported by Batch at the time the infrastructure
-%% update is initiated. Alternatively, you can specify the AMI ID in the
-%% `imageId' or `imageIdOverride' parameters, or the launch template
-%% identified by the `LaunchTemplate' properties. Changing any of these
-%% properties starts an infrastructure update. If the AMI ID is specified in
-%% the launch template, it can't be replaced by specifying an AMI ID in
-%% either the `imageId' or `imageIdOverride' parameters. It can only
-%% be replaced by specifying a different launch template, or if the launch
-%% template version is set to `$Default' or `$Latest', by setting
-%% either a new default version for the launch template (if `$Default')
-%% or by adding a new version to the launch template (if `$Latest').
+%% `ec2Configuration' :
+%% https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html),
+%% or in the launch template (`launchTemplate'). In that case, Batch
+%% selects the latest Amazon ECS optimized AMI that's supported by Batch
+%% at the time the infrastructure update is initiated. Alternatively, you can
+%% specify the AMI ID in the `imageId' or `imageIdOverride'
+%% parameters, or the launch template identified by the `LaunchTemplate'
+%% properties. Changing any of these properties starts an infrastructure
+%% update. If the AMI ID is specified in the launch template, it can't be
+%% replaced by specifying an AMI ID in either the `imageId' or
+%% `imageIdOverride' parameters. It can only be replaced by specifying a
+%% different launch template, or if the launch template version is set to
+%% `$Default' or `$Latest', by setting either a new default version
+%% for the launch template (if `$Default') or by adding a new version to
+%% the launch template (if `$Latest').
 %%
 %% If these rules are followed, any update that starts an infrastructure
 %% update causes the AMI ID to be re-selected. If the `version' setting

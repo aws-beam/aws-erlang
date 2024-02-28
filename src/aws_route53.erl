@@ -8,17 +8,20 @@
 %%
 %% <ul> <li> Register domain names.
 %%
-%% For more information, see How domain registration works.
+%% For more information, see How domain registration works:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html.
 %%
 %% </li> <li> Route internet traffic to the resources for your domain
 %%
 %% For more information, see How internet traffic is routed to your website
-%% or web application.
+%% or web application:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html.
 %%
 %% </li> <li> Check the health of your resources.
 %%
 %% For more information, see How Route 53 checks the health of your
-%% resources.
+%% resources:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html.
 %%
 %% </li> </ul>
 -module(aws_route53).
@@ -258,8 +261,9 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %%
 %% `aws-us-gov' - Amazon Web Services GovCloud (US) Region
 %%
-%% For more information, see Access Management in the Amazon Web Services
-%% General Reference.
+%% For more information, see Access Management:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the Amazon Web Services General Reference.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_vpc_with_hosted_zone(Client, HostedZoneId, Input, []).
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
@@ -373,7 +377,9 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% www.example.com), in the same hosted zone or in multiple hosted zones. You
 %% can roll back the updates if the new configuration isn't performing as
 %% expected. For more information, see Using Traffic Flow to Route DNS
-%% Traffic in the Amazon Route 53 Developer Guide.
+%% Traffic:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% Create, Delete, and Upsert
 %%
@@ -414,12 +420,15 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% `GetChange' returns a status of `PENDING'. When propagation is
 %% complete, `GetChange' returns a status of `INSYNC'. Changes
 %% generally propagate to all Route 53 name servers managing the hosted zone
-%% within 60 seconds. For more information, see GetChange.
+%% within 60 seconds. For more information, see GetChange:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html.
 %%
 %% Limits on ChangeResourceRecordSets Requests
 %%
 %% For information about the limits on a `ChangeResourceRecordSets'
-%% request, see Limits in the Amazon Route 53 Developer Guide.
+%% request, see Limits:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
+%% in the Amazon Route 53 Developer Guide.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
 change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
@@ -445,7 +454,9 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 %% @doc Adds, edits, or deletes tags for a health check or a hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the Billing and Cost Management User Guide.
+%% Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management User Guide.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
 change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
@@ -510,7 +521,10 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% @doc Creates a new health check.
 %%
 %% For information about adding health checks to resource record sets, see
-%% HealthCheckId in ChangeResourceRecordSets.
+%% HealthCheckId:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId
+%% in ChangeResourceRecordSets:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html.
 %%
 %% ELB Load Balancers
 %%
@@ -538,7 +552,8 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% status of the Amazon EC2 `StatusCheckFailed' metric, add an alarm to
 %% the metric, and then create a health check that is based on the state of
 %% the alarm. For information about creating CloudWatch metrics and alarms by
-%% using the CloudWatch console, see the Amazon CloudWatch User Guide.
+%% using the CloudWatch console, see the Amazon CloudWatch User Guide:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html.
 %%
 %% </li> </ul>
 create_health_check(Client, Input) ->
@@ -593,7 +608,7 @@ create_health_check(Client, Input0, Options0) ->
 %% and create new resource record sets.
 %%
 %% For more information about charges for hosted zones, see Amazon Route 53
-%% Pricing.
+%% Pricing: http://aws.amazon.com/route53/pricing/.
 %%
 %% Note the following:
 %%
@@ -603,7 +618,9 @@ create_health_check(Client, Input0, Options0) ->
 %% </li> <li> For public hosted zones, Route 53 automatically creates a
 %% default SOA record and four NS records for the zone. For more information
 %% about SOA and NS records, see NS and SOA Records that Route 53 Creates for
-%% a Hosted Zone in the Amazon Route 53 Developer Guide.
+%% a Hosted Zone:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% If you want to use the same name servers for multiple public hosted zones,
 %% you can optionally associate a reusable delegation set with the hosted
@@ -612,8 +629,9 @@ create_health_check(Client, Input0, Options0) ->
 %% </li> <li> If your domain is registered with a registrar other than
 %% Route 53, you must update the name servers with your registrar to make
 %% Route 53 the DNS service for the domain. For more information, see
-%% Migrating DNS Service for an Existing Domain to Amazon Route 53 in the
-%% Amazon Route 53 Developer Guide.
+%% Migrating DNS Service for an Existing Domain to Amazon Route 53:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% </li> </ul> When you submit a `CreateHostedZone' request, the initial
 %% status of the hosted zone is `PENDING'. For public hosted zones, this
@@ -637,8 +655,9 @@ create_health_check(Client, Input0, Options0) ->
 %%
 %% `aws-us-gov' - Amazon Web Services GovCloud (US) Region
 %%
-%% For more information, see Access Management in the Amazon Web Services
-%% General Reference.
+%% For more information, see Access Management:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the Amazon Web Services General Reference.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
 create_hosted_zone(Client, Input0, Options0) ->
@@ -785,8 +804,9 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% account that creates the query logging configuration. For example,
 %% `aws:SourceAccount:111111111111'.
 %%
-%% </li> </ul> For more information, see The confused deputy problem in the
-%% Amazon Web Services IAM User Guide.
+%% </li> </ul> For more information, see The confused deputy problem:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html in
+%% the Amazon Web Services IAM User Guide.
 %%
 %% You can't use the CloudWatch console to create or edit a resource
 %% policy. You must use the CloudWatch API, one of the Amazon Web Services
@@ -812,7 +832,8 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% with the International Air Transport Association airport code for an
 %% airport near the edge location. (These abbreviations might change in the
 %% future.) For a list of edge locations, see &quot;The Route 53 Global
-%% Network&quot; on the Route 53 Product Details page.
+%% Network&quot; on the Route 53 Product Details:
+%% http://aws.amazon.com/route53/details/ page.
 %%
 %% </dd> <dt>Queries That Are Logged</dt> <dd> Query logs contain only the
 %% queries that DNS resolvers forward to Route 53. If a DNS resolver has
@@ -824,19 +845,22 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% TTL for that resource record set, query logs might contain information
 %% about only one query out of every several thousand queries that are
 %% submitted to DNS. For more information about how DNS works, see Routing
-%% Internet Traffic to Your Website or Web Application in the Amazon Route 53
-%% Developer Guide.
+%% Internet Traffic to Your Website or Web Application:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% </dd> <dt>Log File Format</dt> <dd> For a list of the values in each query
-%% log and the format of each value, see Logging DNS Queries in the Amazon
-%% Route 53 Developer Guide.
+%% log and the format of each value, see Logging DNS Queries:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% </dd> <dt>Pricing</dt> <dd> For information about charges for query logs,
-%% see Amazon CloudWatch Pricing.
+%% see Amazon CloudWatch Pricing: http://aws.amazon.com/cloudwatch/pricing/.
 %%
 %% </dd> <dt>How to Stop Logging</dt> <dd> If you want Route 53 to stop
 %% sending query logs to CloudWatch Logs, delete the query logging
-%% configuration. For more information, see DeleteQueryLoggingConfig.
+%% configuration. For more information, see DeleteQueryLoggingConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html.
 %%
 %% </dd> </dl>
 create_query_logging_config(Client, Input) ->
@@ -889,7 +913,8 @@ create_query_logging_config(Client, Input0, Options0) ->
 %% zone.
 %%
 %% For information about using a reusable delegation set to configure white
-%% label name servers, see Configuring White Label Name Servers.
+%% label name servers, see Configuring White Label Name Servers:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html.
 %%
 %% The process for migrating existing hosted zones to use a reusable
 %% delegation set is comparable to the process for configuring white label
@@ -1203,7 +1228,9 @@ delete_cidr_collection(Client, Id, Input0, Options0) ->
 %% record sets, the future status of the health check can't be predicted
 %% and may change. This will affect the routing of DNS queries for your DNS
 %% failover configuration. For more information, see Replacing and Deleting
-%% Health Checks in the Amazon Route 53 Developer Guide.
+%% Health Checks:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% If you're using Cloud Map and you configured Cloud Map to create a
 %% Route 53 health check when you register an instance, you can't use the
@@ -1236,9 +1263,10 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% @doc Deletes a hosted zone.
 %%
 %% If the hosted zone was created by another service, such as Cloud Map, see
-%% Deleting Public Hosted Zones That Were Created by Another Service in the
-%% Amazon Route 53 Developer Guide for information about how to delete it.
-%% (The process is the same for public and private hosted zones that were
+%% Deleting Public Hosted Zones That Were Created by Another Service:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service
+%% in the Amazon Route 53 Developer Guide for information about how to delete
+%% it. (The process is the same for public and private hosted zones that were
 %% created by another service.)
 %%
 %% If you want to keep your domain registration but you want to stop routing
@@ -1258,11 +1286,13 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% transfer DNS service for the domain to a free DNS service. When you
 %% transfer DNS service, you have to update the name servers for the domain
 %% registration. If the domain is registered with Route 53, see
-%% UpdateDomainNameservers for information about how to replace Route 53 name
-%% servers with name servers for the new DNS service. If the domain is
-%% registered with another registrar, use the method provided by the
-%% registrar to update name servers for the domain registration. For more
-%% information, perform an internet search on &quot;free DNS service.&quot;
+%% UpdateDomainNameservers:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html
+%% for information about how to replace Route 53 name servers with name
+%% servers for the new DNS service. If the domain is registered with another
+%% registrar, use the method provided by the registrar to update name servers
+%% for the domain registration. For more information, perform an internet
+%% search on &quot;free DNS service.&quot;
 %%
 %% You can delete a hosted zone only if it contains only the default SOA
 %% record and NS resource record sets. If the hosted zone contains other
@@ -1270,7 +1300,8 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% hosted zone. If you try to delete a hosted zone that contains other
 %% resource record sets, the request fails, and Route 53 returns a
 %% `HostedZoneNotEmpty' error. For information about deleting records
-%% from your hosted zone, see ChangeResourceRecordSets.
+%% from your hosted zone, see ChangeResourceRecordSets:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html.
 %%
 %% To verify that the hosted zone has been deleted, do one of the following:
 %%
@@ -1309,10 +1340,13 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %% deactivated before you can delete it regardless of whether the hosted zone
 %% is enabled for DNSSEC signing.
 %%
-%% You can use DeactivateKeySigningKey to deactivate the key before you
-%% delete it.
+%% You can use DeactivateKeySigningKey:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeactivateKeySigningKey.html
+%% to deactivate the key before you delete it.
 %%
-%% Use GetDNSSEC to verify that the KSK is in an `INACTIVE' status.
+%% Use GetDNSSEC:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetDNSSEC.html
+%% to verify that the KSK is in an `INACTIVE' status.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
 delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
@@ -1341,7 +1375,8 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% CloudWatch Logs. Route 53 doesn't delete any logs that are already in
 %% CloudWatch Logs.
 %%
-%% For more information about DNS query logs, see CreateQueryLoggingConfig.
+%% For more information about DNS query logs, see CreateQueryLoggingConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
 delete_query_logging_config(Client, Id, Input) ->
     delete_query_logging_config(Client, Id, Input, []).
 delete_query_logging_config(Client, Id, Input0, Options0) ->
@@ -1370,8 +1405,10 @@ delete_query_logging_config(Client, Id, Input0, Options0) ->
 %% with any hosted zones.
 %%
 %% To verify that the reusable delegation set is not associated with any
-%% hosted zones, submit a GetReusableDelegationSet request and specify the ID
-%% of the reusable delegation set that you want to delete.
+%% hosted zones, submit a GetReusableDelegationSet:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html
+%% request and specify the ID of the reusable delegation set that you want to
+%% delete.
 delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
 delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
@@ -1401,13 +1438,15 @@ delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
 %% the traffic policy. Note the following:
 %%
 %% <ul> <li> Deleted traffic policies aren't listed if you run
-%% ListTrafficPolicies.
+%% ListTrafficPolicies:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html.
 %%
 %% </li> <li> There's no way to get a list of deleted policies.
 %%
 %% </li> <li> If you retain the ID of the policy, you can get information
 %% about the policy, including the traffic policy document, by running
-%% GetTrafficPolicy.
+%% GetTrafficPolicy:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html.
 %%
 %% </li> </ul>
 delete_traffic_policy(Client, Id, Version, Input) ->
@@ -1541,9 +1580,11 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% using its own account. You can disassociate a VPC from a hosted zone only
 %% if the service created the hosted zone using your account.
 %%
-%% When you run DisassociateVPCFromHostedZone, if the hosted zone has a value
-%% for `OwningAccount', you can use `DisassociateVPCFromHostedZone'.
-%% If the hosted zone has a value for `OwningService', you can't use
+%% When you run DisassociateVPCFromHostedZone:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html,
+%% if the hosted zone has a value for `OwningAccount', you can use
+%% `DisassociateVPCFromHostedZone'. If the hosted zone has a value for
+%% `OwningService', you can't use
 %% `DisassociateVPCFromHostedZone'.
 %%
 %% </li> </ul> When revoking access, the hosted zone and the Amazon VPC must
@@ -1559,8 +1600,9 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %%
 %% `aws-us-gov' - Amazon Web Services GovCloud (US) Region
 %%
-%% For more information, see Access Management in the Amazon Web Services
-%% General Reference.
+%% For more information, see Access Management:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the Amazon Web Services General Reference.
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
     disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input, []).
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
@@ -1609,13 +1651,17 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% @doc Gets the specified limit for the current account, for example, the
 %% maximum number of health checks that you can create using the account.
 %%
-%% For the default limit, see Limits in the Amazon Route 53 Developer Guide.
-%% To request a higher limit, open a case.
+%% For the default limit, see Limits:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
+%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
+%% case:
+%% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 %%
 %% You can also view account limits in Amazon Web Services Trusted Advisor.
 %% Sign in to the Amazon Web Services Management Console and open the Trusted
-%% Advisor console at https://console.aws.amazon.com/trustedadvisor/. Then
-%% choose Service limits in the navigation pane.
+%% Advisor console at https://console.aws.amazon.com/trustedadvisor/:
+%% https://console.aws.amazon.com/trustedadvisor. Then choose Service limits
+%% in the navigation pane.
 get_account_limit(Client, Type)
   when is_map(Client) ->
     get_account_limit(Client, Type, #{}, #{}).
@@ -1678,7 +1724,9 @@ get_change(Client, Id, QueryMap, HeadersMap, Options0)
 %% `GetCheckerIpRanges' still works, but we recommend that you download
 %% ip-ranges.json, which includes IP address ranges for all Amazon Web
 %% Services services. For more information, see IP Address Ranges of Amazon
-%% Route 53 Servers in the Amazon Route 53 Developer Guide.
+%% Route 53 Servers:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html
+%% in the Amazon Route 53 Developer Guide.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, #{}, #{}).
@@ -1923,8 +1971,11 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets the specified limit for a specified hosted zone, for example,
 %% the maximum number of records that you can create in the hosted zone.
 %%
-%% For the default limit, see Limits in the Amazon Route 53 Developer Guide.
-%% To request a higher limit, open a case.
+%% For the default limit, see Limits:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
+%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
+%% case:
+%% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 get_hosted_zone_limit(Client, HostedZoneId, Type)
   when is_map(Client) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, #{}, #{}).
@@ -1950,8 +2001,10 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0
 %% @doc Gets information about a specified configuration for DNS query
 %% logging.
 %%
-%% For more information about DNS query logs, see CreateQueryLoggingConfig
-%% and Logging DNS Queries.
+%% For more information about DNS query logs, see CreateQueryLoggingConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html
+%% and Logging DNS Queries:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html.
 get_query_logging_config(Client, Id)
   when is_map(Client) ->
     get_query_logging_config(Client, Id, #{}, #{}).
@@ -2001,8 +2054,11 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets the maximum number of hosted zones that you can associate with
 %% the specified reusable delegation set.
 %%
-%% For the default limit, see Limits in the Amazon Route 53 Developer Guide.
-%% To request a higher limit, open a case.
+%% For the default limit, see Limits:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
+%% in the Amazon Route 53 Developer Guide. To request a higher limit, open a
+%% case:
+%% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
   when is_map(Client) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, #{}, #{}).
@@ -2028,7 +2084,8 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
 %% @doc Gets information about a specific traffic policy version.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `GetTrafficPolicy', see DeleteTrafficPolicy.
+%% response from `GetTrafficPolicy', see DeleteTrafficPolicy:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
 get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
     get_traffic_policy(Client, Id, Version, #{}, #{}).
@@ -2203,7 +2260,9 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% Route 53 does not perform authorization for this API because it retrieves
 %% information that is already available to the public.
 %%
-%% For a list of supported geolocation codes, see the GeoLocation data type.
+%% For a list of supported geolocation codes, see the GeoLocation:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html
+%% data type.
 list_geo_locations(Client)
   when is_map(Client) ->
     list_geo_locations(Client, #{}, #{}).
@@ -2324,8 +2383,9 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %%
 %% The labels are reversed and alphabetized using the escaped value. For more
 %% information about valid domain name formats, including internationalized
-%% domain names, see DNS Domain Name Format in the Amazon Route 53 Developer
-%% Guide.
+%% domain names, see DNS Domain Name Format:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html
+%% in the Amazon Route 53 Developer Guide.
 %%
 %% Route 53 returns up to 100 items in each response. If you have a lot of
 %% hosted zones, use the `MaxItems' parameter to list them in groups of
@@ -2416,8 +2476,9 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
 %%
 %% `aws-us-gov' - Amazon Web Services GovCloud (US) Region
 %%
-%% For more information, see Access Management in the Amazon Web Services
-%% General Reference.
+%% For more information, see Access Management:
+%% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+%% in the Amazon Web Services General Reference.
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion)
   when is_map(Client) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, #{}, #{}).
@@ -2451,9 +2512,12 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options
 %% with the current Amazon Web Services account or the configuration that is
 %% associated with a specified hosted zone.
 %%
-%% For more information about DNS query logs, see CreateQueryLoggingConfig.
+%% For more information about DNS query logs, see CreateQueryLoggingConfig:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
 %% Additional information, including the format of DNS query logs, appears in
-%% Logging DNS Queries in the Amazon Route 53 Developer Guide.
+%% Logging DNS Queries:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
+%% in the Amazon Route 53 Developer Guide.
 list_query_logging_configs(Client)
   when is_map(Client) ->
     list_query_logging_configs(Client, #{}, #{}).
@@ -2608,7 +2672,9 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists tags for one health check or hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the Billing and Cost Management User Guide.
+%% Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management User Guide.
 list_tags_for_resource(Client, ResourceId, ResourceType)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, #{}, #{}).
@@ -2634,7 +2700,9 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% @doc Lists tags for up to 10 health checks or hosted zones.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the Billing and Cost Management User Guide.
+%% Allocation Tags:
+%% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+%% in the Billing and Cost Management User Guide.
 list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
 list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
@@ -2663,7 +2731,8 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
 %% Policies are listed in the order that they were created in.
 %%
 %% For information about how of deleting a traffic policy affects the
-%% response from `ListTrafficPolicies', see DeleteTrafficPolicy.
+%% response from `ListTrafficPolicies', see DeleteTrafficPolicy:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
 list_traffic_policies(Client)
   when is_map(Client) ->
     list_traffic_policies(Client, #{}, #{}).
@@ -2928,7 +2997,9 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 %% Note that some values can't be updated.
 %%
 %% For more information about updating health checks, see Creating, Updating,
-%% and Deleting Health Checks in the Amazon Route 53 Developer Guide.
+%% and Deleting Health Checks:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html
+%% in the Amazon Route 53 Developer Guide.
 update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
 update_health_check(Client, HealthCheckId, Input0, Options0) ->

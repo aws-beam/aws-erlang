@@ -18,7 +18,9 @@
 %% If the retention period expires and the resource is not restored, the
 %% resource is permanently deleted from the Recycle Bin and is no longer
 %% available for recovery. For more information about Recycle Bin, see
-%% Recycle Bin in the Amazon Elastic Compute Cloud User Guide.
+%% Recycle Bin:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
+%% the Amazon Elastic Compute Cloud User Guide.
 -module(aws_rbin).
 
 -export([create_rule/2,
@@ -52,8 +54,9 @@
 
 %% @doc Creates a Recycle Bin retention rule.
 %%
-%% For more information, see Create Recycle Bin retention rules in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Create Recycle Bin retention rules:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule
+%% in the Amazon Elastic Compute Cloud User Guide.
 create_rule(Client, Input) ->
     create_rule(Client, Input, []).
 create_rule(Client, Input0, Options0) ->
@@ -78,8 +81,9 @@ create_rule(Client, Input0, Options0) ->
 
 %% @doc Deletes a Recycle Bin retention rule.
 %%
-%% For more information, see Delete Recycle Bin retention rules in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% For more information, see Delete Recycle Bin retention rules:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule
+%% in the Amazon Elastic Compute Cloud User Guide.
 delete_rule(Client, Identifier, Input) ->
     delete_rule(Client, Identifier, Input, []).
 delete_rule(Client, Identifier, Input0, Options0) ->
@@ -274,8 +278,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% You can update a retention rule's description, resource tags, and
 %% retention period at any time after creation. You can't update a
 %% retention rule's resource type after creation. For more information,
-%% see Update Recycle Bin retention rules in the Amazon Elastic Compute Cloud
-%% User Guide.
+%% see Update Recycle Bin retention rules:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule
+%% in the Amazon Elastic Compute Cloud User Guide.
 update_rule(Client, Identifier, Input) ->
     update_rule(Client, Identifier, Input, []).
 update_rule(Client, Identifier, Input0, Options0) ->

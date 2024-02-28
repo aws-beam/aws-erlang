@@ -7,8 +7,9 @@
 %% You can use IoT Events Data API commands to send inputs to detectors, list
 %% detectors, and view or update a detector's status.
 %%
-%% For more information, see What is IoT Events? in the IoT Events Developer
-%% Guide.
+%% For more information, see What is IoT Events?:
+%% https://docs.aws.amazon.com/iotevents/latest/developerguide/what-is-iotevents.html
+%% in the IoT Events Developer Guide.
 -module(aws_iot_events_data).
 
 -export([batch_acknowledge_alarm/2,
@@ -76,7 +77,9 @@ batch_acknowledge_alarm(Client, Input0, Options0) ->
 %%
 %% When a detector is deleted, its state will be cleared and the detector
 %% will be removed from the list of detectors. The deleted detector will no
-%% longer appear if referenced in the ListDetectors API call.
+%% longer appear if referenced in the ListDetectors:
+%% https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_ListDetectors.html
+%% API call.
 batch_delete_detector(Client, Input) ->
     batch_delete_detector(Client, Input, []).
 batch_delete_detector(Client, Input0, Options0) ->

@@ -203,7 +203,8 @@ create_additional_assignments_for_hit(Client, Input, Options)
 %% associated `HitLayoutParameters'.
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
-%% additional fee. For more information, see Amazon Mechanical Turk Pricing.
+%% additional fee. For more information, see Amazon Mechanical Turk Pricing:
+%% https://requester.mturk.com/pricing.
 create_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit(Client, Input, []).
@@ -238,7 +239,8 @@ create_hit_type(Client, Input, Options)
 %% associated `HitLayoutParameters'.
 %%
 %% If a HIT is created with 10 or more maximum assignments, there is an
-%% additional fee. For more information, see Amazon Mechanical Turk Pricing.
+%% additional fee. For more information, see Amazon Mechanical Turk Pricing:
+%% https://requester.mturk.com/pricing.
 create_hit_with_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_with_hit_type(Client, Input, []).

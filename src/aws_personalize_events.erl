@@ -5,7 +5,8 @@
 %% stream or click data, and use it for model training either alone or
 %% combined with historical data.
 %%
-%% For more information see Recording item interaction events.
+%% For more information see Recording item interaction events:
+%% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
 -module(aws_personalize_events).
 
 -export([put_action_interactions/2,
@@ -32,8 +33,11 @@
 %% membership program or downloading your app.
 %%
 %% For more information about recording action interactions, see Recording
-%% action interaction events. For more information about actions in an
-%% Actions dataset, see Actions dataset.
+%% action interaction events:
+%% https://docs.aws.amazon.com/personalize/latest/dg/recording-action-interaction-events.html.
+%% For more information about actions in an Actions dataset, see Actions
+%% dataset:
+%% https://docs.aws.amazon.com/personalize/latest/dg/actions-datasets.html.
 put_action_interactions(Client, Input) ->
     put_action_interactions(Client, Input, []).
 put_action_interactions(Client, Input0, Options0) ->
@@ -58,7 +62,8 @@ put_action_interactions(Client, Input0, Options0) ->
 
 %% @doc Adds one or more actions to an Actions dataset.
 %%
-%% For more information see Importing actions individually.
+%% For more information see Importing actions individually:
+%% https://docs.aws.amazon.com/personalize/latest/dg/importing-actions.html.
 put_actions(Client, Input) ->
     put_actions(Client, Input, []).
 put_actions(Client, Input0, Options0) ->
@@ -83,7 +88,8 @@ put_actions(Client, Input0, Options0) ->
 
 %% @doc Records item interaction event data.
 %%
-%% For more information see Recording item interaction events.
+%% For more information see Recording item interaction events:
+%% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 put_events(Client, Input0, Options0) ->
@@ -108,7 +114,8 @@ put_events(Client, Input0, Options0) ->
 
 %% @doc Adds one or more items to an Items dataset.
 %%
-%% For more information see Importing items individually.
+%% For more information see Importing items individually:
+%% https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 put_items(Client, Input0, Options0) ->
@@ -133,7 +140,8 @@ put_items(Client, Input0, Options0) ->
 
 %% @doc Adds one or more users to a Users dataset.
 %%
-%% For more information see Importing users individually.
+%% For more information see Importing users individually:
+%% https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 put_users(Client, Input0, Options0) ->

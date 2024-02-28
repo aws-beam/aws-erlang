@@ -21,25 +21,31 @@
 %% Slack, see the following documentation in the Amazon Web Services Support
 %% User Guide:
 %%
-%% <ul> <li> Amazon Web Services Support App in Slack
+%% <ul> <li> Amazon Web Services Support App in Slack:
+%% https://docs.aws.amazon.com/awssupport/latest/user/aws-support-app-for-slack.html
 %%
-%% </li> <li> Joining a live chat session with Amazon Web Services Support
+%% </li> <li> Joining a live chat session with Amazon Web Services Support:
+%% https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html
 %%
-%% </li> <li> Requesting service quota increases
+%% </li> <li> Requesting service quota increases:
+%% https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html
 %%
-%% </li> <li> Amazon Web Services Support App commands in Slack
+%% </li> <li> Amazon Web Services Support App commands in Slack:
+%% https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html
 %%
 %% </li> </ul> You can also use the Amazon Web Services Management Console
 %% instead of the Amazon Web Services Support App API to manage your Slack
 %% configurations. For more information, see Authorize a Slack workspace to
-%% enable the Amazon Web Services Support App.
+%% enable the Amazon Web Services Support App:
+%% https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html.
 %%
 %% You must have a Business or Enterprise Support plan to use the Amazon Web
 %% Services Support App API.
 %%
 %% For more information about the Amazon Web Services Support App endpoints,
-%% see the Amazon Web Services Support App in Slack endpoints in the Amazon
-%% Web Services General Reference.
+%% see the Amazon Web Services Support App in Slack endpoints:
+%% https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region
+%% in the Amazon Web Services General Reference.
 -module(aws_support_app).
 
 -export([create_slack_channel_configuration/2,
@@ -299,10 +305,12 @@ put_account_alias(Client, Input0, Options0) ->
 %% If you're the management account and you want to register Slack
 %% workspaces for your organization, you must complete the following tasks:
 %%
-%% <ol> <li> Sign in to the Amazon Web Services Support Center and authorize
-%% the Slack workspaces where you want your organization to have access to.
-%% See Authorize a Slack workspace in the Amazon Web Services Support User
-%% Guide.
+%% <ol> <li> Sign in to the Amazon Web Services Support Center:
+%% https://console.aws.amazon.com/support/app and authorize the Slack
+%% workspaces where you want your organization to have access to. See
+%% Authorize a Slack workspace:
+%% https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html
+%% in the Amazon Web Services Support User Guide.
 %%
 %% </li> <li> Call the `RegisterSlackWorkspaceForOrganization' API to
 %% authorize each Slack workspace for the organization.
@@ -311,18 +319,20 @@ put_account_alias(Client, Input0, Options0) ->
 %% member accounts can call this API to authorize the same Slack workspace
 %% for their individual accounts. Member accounts don't need to authorize
 %% the Slack workspace manually through the Amazon Web Services Support
-%% Center.
+%% Center: https://console.aws.amazon.com/support/app.
 %%
 %% To use the Amazon Web Services Support App, each account must then
 %% complete the following tasks:
 %%
 %% <ul> <li> Create an Identity and Access Management (IAM) role with the
 %% required permission. For more information, see Managing access to the
-%% Amazon Web Services Support App.
+%% Amazon Web Services Support App:
+%% https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html.
 %%
 %% </li> <li> Configure a Slack channel to use the Amazon Web Services
 %% Support App for support cases for that account. For more information, see
-%% Configuring a Slack channel.
+%% Configuring a Slack channel:
+%% https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html.
 %%
 %% </li> </ul>
 register_slack_workspace_for_organization(Client, Input) ->

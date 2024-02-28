@@ -4,24 +4,31 @@
 %% @doc Amazon Simple Email Service
 %%
 %% This document contains reference information for the Amazon Simple Email
-%% Service (Amazon SES) API, version 2010-12-01.
+%% Service: https://aws.amazon.com/ses/ (Amazon SES) API, version 2010-12-01.
 %%
 %% This document is best used in conjunction with the Amazon SES Developer
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html.
 %%
 %% For a list of Amazon SES endpoints to use in service requests, see Regions
-%% and Amazon SES in the Amazon SES Developer Guide.
+%% and Amazon SES:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html in the
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html.
 %%
 %% This documentation contains reference information related to the
 %% following:
 %%
-%% <ul> <li> Amazon SES API Actions
+%% <ul> <li> Amazon SES API Actions:
+%% https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html
 %%
-%% </li> <li> Amazon SES API Data Types
+%% </li> <li> Amazon SES API Data Types:
+%% https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html
 %%
-%% </li> <li> Common Parameters
+%% </li> <li> Common Parameters:
+%% https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html
 %%
-%% </li> <li> Common Errors
+%% </li> <li> Common Errors:
+%% https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html
 %%
 %% </li> </ul>
 -module(aws_ses).
@@ -181,7 +188,8 @@
 %% set and are completely independent of the source rule set.
 %%
 %% For information about setting up rule sets, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
 clone_receipt_rule_set(Client, Input)
@@ -195,7 +203,8 @@ clone_receipt_rule_set(Client, Input, Options)
 %%
 %% Configuration sets enable you to publish email sending events. For
 %% information about using configuration sets, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
 create_configuration_set(Client, Input)
@@ -214,7 +223,8 @@ create_configuration_set(Client, Input, Options)
 %% An event destination is the Amazon Web Services service to which Amazon
 %% SES publishes the email sending events associated with a configuration
 %% set. For information about using configuration sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
 create_configuration_set_event_destination(Client, Input)
@@ -230,7 +240,8 @@ create_configuration_set_event_destination(Client, Input, Options)
 %% By default, images and links used for tracking open and click events are
 %% hosted on domains operated by Amazon SES. You can configure a subdomain of
 %% your own to handle these events. For information about using custom
-%% domains, see the Amazon SES Developer Guide.
+%% domains, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
 create_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_tracking_options(Client, Input, []).
@@ -241,7 +252,9 @@ create_configuration_set_tracking_options(Client, Input, Options)
 %% @doc Creates a new custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% Custom Verification Email Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_custom_verification_email_template(Client, Input)
@@ -254,7 +267,8 @@ create_custom_verification_email_template(Client, Input, Options)
 %% @doc Creates a new IP address filter.
 %%
 %% For information about setting up IP address filters, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 create_receipt_filter(Client, Input)
@@ -267,7 +281,8 @@ create_receipt_filter(Client, Input, Options)
 %% @doc Creates a receipt rule.
 %%
 %% For information about setting up receipt rules, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 create_receipt_rule(Client, Input)
@@ -280,7 +295,8 @@ create_receipt_rule(Client, Input, Options)
 %% @doc Creates an empty receipt rule set.
 %%
 %% For information about setting up receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
 create_receipt_rule_set(Client, Input)
@@ -294,7 +310,8 @@ create_receipt_rule_set(Client, Input, Options)
 %%
 %% Email templates enable you to send personalized email to one or more
 %% destinations in a single operation. For more information, see the Amazon
-%% SES Developer Guide.
+%% SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
 create_template(Client, Input)
@@ -308,7 +325,8 @@ create_template(Client, Input, Options)
 %%
 %% Configuration sets enable you to publish email sending events. For
 %% information about using configuration sets, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_configuration_set(Client, Input)
@@ -322,7 +340,8 @@ delete_configuration_set(Client, Input, Options)
 %%
 %% Configuration set event destinations are associated with configuration
 %% sets, which enable you to publish email sending events. For information
-%% about using configuration sets, see the Amazon SES Developer Guide.
+%% about using configuration sets, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_configuration_set_event_destination(Client, Input)
@@ -338,7 +357,8 @@ delete_configuration_set_event_destination(Client, Input, Options)
 %% By default, images and links used for tracking open and click events are
 %% hosted on domains operated by Amazon SES. You can configure a subdomain of
 %% your own to handle these events. For information about using custom
-%% domains, see the Amazon SES Developer Guide.
+%% domains, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
 %%
 %% Deleting this kind of association results in emails sent using the
 %% specified configuration set to capture open and click events using the
@@ -353,7 +373,9 @@ delete_configuration_set_tracking_options(Client, Input, Options)
 %% @doc Deletes an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% Custom Verification Email Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_custom_verification_email_template(Client, Input)
@@ -385,7 +407,8 @@ delete_identity(Client, Input, Options)
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_identity_policy(Client, Input)
@@ -398,7 +421,8 @@ delete_identity_policy(Client, Input, Options)
 %% @doc Deletes the specified IP address filter.
 %%
 %% For information about managing IP address filters, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_receipt_filter(Client, Input)
@@ -411,7 +435,8 @@ delete_receipt_filter(Client, Input, Options)
 %% @doc Deletes the specified receipt rule.
 %%
 %% For information about managing receipt rules, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_receipt_rule(Client, Input)
@@ -427,7 +452,8 @@ delete_receipt_rule(Client, Input, Options)
 %% The currently active rule set cannot be deleted.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 delete_receipt_rule_set(Client, Input)
@@ -462,7 +488,8 @@ delete_verified_email_address(Client, Input, Options)
 %% is currently active.
 %%
 %% For information about setting up receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
 describe_active_receipt_rule_set(Client, Input)
@@ -475,7 +502,8 @@ describe_active_receipt_rule_set(Client, Input, Options)
 %% @doc Returns the details of the specified configuration set.
 %%
 %% For information about using configuration sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
 describe_configuration_set(Client, Input)
@@ -488,7 +516,8 @@ describe_configuration_set(Client, Input, Options)
 %% @doc Returns the details of the specified receipt rule.
 %%
 %% For information about setting up receipt rules, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 describe_receipt_rule(Client, Input)
@@ -501,7 +530,8 @@ describe_receipt_rule(Client, Input, Options)
 %% @doc Returns the details of the specified receipt rule set.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 describe_receipt_rule_set(Client, Input)
@@ -526,7 +556,9 @@ get_account_sending_enabled(Client, Input, Options)
 %% you specify.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% Custom Verification Email Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_custom_verification_email_template(Client, Input)
@@ -559,7 +591,8 @@ get_custom_verification_email_template(Client, Input, Options)
 %% only get DKIM attributes for up to 100 identities at a time.
 %%
 %% For more information about creating DNS records using DKIM tokens, go to
-%% the Amazon SES Developer Guide.
+%% the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy-managing.html.
 get_identity_dkim_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_dkim_attributes(Client, Input, []).
@@ -586,7 +619,8 @@ get_identity_mail_from_domain_attributes(Client, Input, Options)
 %% notification attributes for up to 100 identities at a time.
 %%
 %% For more information about using notifications with Amazon SES, see the
-%% Amazon SES Developer Guide.
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
 get_identity_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_notification_attributes(Client, Input, []).
@@ -605,7 +639,8 @@ get_identity_notification_attributes(Client, Input, Options)
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 get_identity_policies(Client, Input)
@@ -685,7 +720,9 @@ get_template(Client, Input, Options)
 %% SES account in the current Amazon Web Services Region.
 %%
 %% For information about using configuration sets, see Monitoring Your Amazon
-%% SES Sending Activity in the Amazon SES Developer Guide.
+%% SES Sending Activity:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html in
+%% the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second. This
 %% operation returns up to 1,000 configuration sets each time it is run. If
@@ -705,7 +742,9 @@ list_configuration_sets(Client, Input, Options)
 %% account in the current Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% Custom Verification Email Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 list_custom_verification_email_templates(Client, Input)
@@ -748,7 +787,8 @@ list_identities(Client, Input, Options)
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 list_identity_policies(Client, Input)
@@ -762,7 +802,8 @@ list_identity_policies(Client, Input, Options)
 %% account in the current Amazon Web Services Region.
 %%
 %% For information about managing IP address filters, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 list_receipt_filters(Client, Input)
@@ -780,7 +821,8 @@ list_receipt_filters(Client, Input, Options)
 %% `ListReceiptRuleSets' to retrieve the additional entries.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 list_receipt_rule_sets(Client, Input)
@@ -828,7 +870,8 @@ put_configuration_set_delivery_options(Client, Input, Options)
 %%
 %% Sending authorization is a feature that enables an identity owner to
 %% authorize other senders to use its identities. For information about using
-%% sending authorization, see the Amazon SES Developer Guide.
+%% sending authorization, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
 put_identity_policy(Client, Input)
@@ -845,7 +888,8 @@ put_identity_policy(Client, Input, Options)
 %% of the rules.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 reorder_receipt_rule_set(Client, Input)
@@ -865,7 +909,8 @@ reorder_receipt_rule_set(Client, Input, Options)
 %% not received by Amazon SES.
 %%
 %% For information about receiving email through Amazon SES, see the Amazon
-%% SES Developer Guide.
+%% SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html.
 %%
 %% You can execute this operation no more than once per second.
 send_bounce(Client, Input)
@@ -891,8 +936,9 @@ send_bounce(Client, Input, Options)
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
 %% send only to verified addresses or domains, or to email addresses
 %% associated with the Amazon SES Mailbox Simulator. For more information,
-%% see Verifying Email Addresses and Domains in the Amazon SES Developer
-%% Guide.
+%% see Verifying Email Addresses and Domains:
+%% https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html
+%% in the Amazon SES Developer Guide.
 %%
 %% </li> <li> The maximum message size is 10 MB.
 %%
@@ -930,7 +976,9 @@ send_bulk_templated_email(Client, Input, Options)
 %% To use this operation, you must first create a custom verification email
 %% template. For more information about creating and using custom
 %% verification email templates, see Using Custom Verification Email
-%% Templates in the Amazon SES Developer Guide.
+%% Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 send_custom_verification_email(Client, Input)
@@ -953,8 +1001,9 @@ send_custom_verification_email(Client, Input, Options)
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
 %% only send to verified addresses or domains, or to email addresses
 %% associated with the Amazon SES Mailbox Simulator. For more information,
-%% see Verifying Email Addresses and Domains in the Amazon SES Developer
-%% Guide.
+%% see Verifying Email Addresses and Domains:
+%% https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html
+%% in the Amazon SES Developer Guide.
 %%
 %% </li> <li> The maximum message size is 10 MB.
 %%
@@ -974,8 +1023,9 @@ send_custom_verification_email(Client, Input, Options)
 %% recipients (including each recipient in the To:, CC: and BCC: fields) is
 %% counted against the maximum number of emails you can send in a 24-hour
 %% period (your sending quota). For more information about sending quotas in
-%% Amazon SES, see Managing Your Amazon SES Sending Limits in the Amazon SES
-%% Developer Guide.
+%% Amazon SES, see Managing Your Amazon SES Sending Limits:
+%% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
+%% the Amazon SES Developer Guide.
 send_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_email(Client, Input, []).
@@ -995,12 +1045,16 @@ send_email(Client, Input, Options)
 %% The `SendRawEmail' operation has the following requirements:
 %%
 %% <ul> <li> You can only send email from verified email addresses or
-%% domains. If you try to send email from an address that isn't verified,
-%% the operation results in an &quot;Email address not verified&quot; error.
+%% domains:
+%% https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html.
+%% If you try to send email from an address that isn't verified, the
+%% operation results in an &quot;Email address not verified&quot; error.
 %%
-%% </li> <li> If your account is still in the Amazon SES sandbox, you can
-%% only send email to other verified addresses in your account, or to
-%% addresses that are associated with the Amazon SES mailbox simulator.
+%% </li> <li> If your account is still in the Amazon SES sandbox:
+%% https://docs.aws.amazon.com/ses/latest/dg/request-production-access.html,
+%% you can only send email to other verified addresses in your account, or to
+%% addresses that are associated with the Amazon SES mailbox simulator:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-an-email-from-console.html.
 %%
 %% </li> <li> The maximum message size, including attachments, is 10 MB.
 %%
@@ -1024,8 +1078,9 @@ send_email(Client, Input, Options)
 %% has to modify the contents of your message (for example, if you use open
 %% and click tracking), 8-bit content isn't preserved. For this reason,
 %% we highly recommend that you encode all content that isn't 7-bit
-%% ASCII. For more information, see MIME Encoding in the Amazon SES Developer
-%% Guide.
+%% ASCII. For more information, see MIME Encoding:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html#send-email-mime-encoding
+%% in the Amazon SES Developer Guide.
 %%
 %% </li> </ul> Additionally, keep the following considerations in mind when
 %% using the `SendRawEmail' operation:
@@ -1057,14 +1112,17 @@ send_email(Client, Input, Options)
 %% specified.
 %%
 %% For more information about sending authorization, see the Using Sending
-%% Authorization with Amazon SES in the Amazon SES Developer Guide.
+%% Authorization with Amazon SES:
+%% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html in
+%% the Amazon SES Developer Guide.
 %%
 %% </li> <li> For every message that you send, the total number of recipients
 %% (including each recipient in the To:, CC: and BCC: fields) is counted
 %% against the maximum number of emails you can send in a 24-hour period
 %% (your sending quota). For more information about sending quotas in Amazon
-%% SES, see Managing Your Amazon SES Sending Limits in the Amazon SES
-%% Developer Guide.
+%% SES, see Managing Your Amazon SES Sending Limits:
+%% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
+%% the Amazon SES Developer Guide.
 %%
 %% </li> </ul>
 send_raw_email(Client, Input)
@@ -1089,8 +1147,9 @@ send_raw_email(Client, Input, Options)
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
 %% only send to verified addresses or domains, or to email addresses
 %% associated with the Amazon SES Mailbox Simulator. For more information,
-%% see Verifying Email Addresses and Domains in the Amazon SES Developer
-%% Guide.
+%% see Verifying Email Addresses and Domains:
+%% https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html
+%% in the Amazon SES Developer Guide.
 %%
 %% </li> <li> The maximum message size is 10 MB.
 %%
@@ -1116,8 +1175,9 @@ send_raw_email(Client, Input, Options)
 %%
 %% For these reasons, we highly recommend that you set up Amazon SES to send
 %% you notifications when Rendering Failure events occur. For more
-%% information, see Sending Personalized Email Using the Amazon SES API in
-%% the Amazon Simple Email Service Developer Guide.
+%% information, see Sending Personalized Email Using the Amazon SES API:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html
+%% in the Amazon Simple Email Service Developer Guide.
 send_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_templated_email(Client, Input, []).
@@ -1131,7 +1191,8 @@ send_templated_email(Client, Input, Options)
 %% call this operation with `RuleSetName' set to null.
 %%
 %% For information about managing receipt rule sets, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 set_active_receipt_rule_set(Client, Input)
@@ -1159,7 +1220,8 @@ set_active_receipt_rule_set(Client, Input, Options)
 %% You can execute this operation no more than once per second.
 %%
 %% For more information about Easy DKIM signing, go to the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html.
 set_identity_dkim_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_dkim_enabled(Client, Input, []).
@@ -1179,7 +1241,8 @@ set_identity_dkim_enabled(Client, Input, Options)
 %% You can execute this operation no more than once per second.
 %%
 %% For more information about using notifications with Amazon SES, see the
-%% Amazon SES Developer Guide.
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
 set_identity_feedback_forwarding_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_feedback_forwarding_enabled(Client, Input, []).
@@ -1194,7 +1257,8 @@ set_identity_feedback_forwarding_enabled(Client, Input, Options)
 %% You can execute this operation no more than once per second.
 %%
 %% For more information about using notifications with Amazon SES, see the
-%% Amazon SES Developer Guide.
+%% Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
 set_identity_headers_in_notifications_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_headers_in_notifications_enabled(Client, Input, []).
@@ -1209,7 +1273,7 @@ set_identity_headers_in_notifications_enabled(Client, Input, Options)
 %% record to your MAIL FROM domain's DNS settings. To ensure that your
 %% emails pass Sender Policy Framework (SPF) checks, you must also add or
 %% update an SPF record. For more information, see the Amazon SES Developer
-%% Guide.
+%% Guide: https://docs.aws.amazon.com/ses/latest/dg/mail-from.html.
 %%
 %% You can execute this operation no more than once per second.
 set_identity_mail_from_domain(Client, Input)
@@ -1232,7 +1296,8 @@ set_identity_mail_from_domain(Client, Input, Options)
 %% You can execute this operation no more than once per second.
 %%
 %% For more information about feedback notification, see the Amazon SES
-%% Developer Guide.
+%% Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
 set_identity_notification_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_notification_topic(Client, Input, []).
@@ -1244,7 +1309,8 @@ set_identity_notification_topic(Client, Input, Options)
 %% set.
 %%
 %% For information about managing receipt rules, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 set_receipt_rule_position(Client, Input)
@@ -1287,7 +1353,9 @@ update_account_sending_enabled(Client, Input, Options)
 %% you to publish email sending events to Amazon CloudWatch, Amazon Kinesis
 %% Firehose, or Amazon Simple Notification Service (Amazon SNS). For
 %% information about using configuration sets, see Monitoring Your Amazon SES
-%% Sending Activity in the Amazon SES Developer Guide.
+%% Sending Activity:
+%% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html in
+%% the Amazon SES Developer Guide.
 %%
 %% When you create or update an event destination, you must provide one, and
 %% only one, destination. The destination can be Amazon CloudWatch, Amazon
@@ -1339,7 +1407,8 @@ update_configuration_set_sending_enabled(Client, Input, Options)
 %% By default, images and links used for tracking open and click events are
 %% hosted on domains operated by Amazon SES. You can configure a subdomain of
 %% your own to handle these events. For information about using custom
-%% domains, see the Amazon SES Developer Guide.
+%% domains, see the Amazon SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
 update_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_tracking_options(Client, Input, []).
@@ -1350,7 +1419,9 @@ update_configuration_set_tracking_options(Client, Input, Options)
 %% @doc Updates an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% Custom Verification Email Templates:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_custom_verification_email_template(Client, Input)
@@ -1363,7 +1434,8 @@ update_custom_verification_email_template(Client, Input, Options)
 %% @doc Updates a receipt rule.
 %%
 %% For information about managing receipt rules, see the Amazon SES Developer
-%% Guide.
+%% Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
 update_receipt_rule(Client, Input)
@@ -1377,7 +1449,8 @@ update_receipt_rule(Client, Input, Options)
 %%
 %% Email templates enable you to send personalized email to one or more
 %% destinations in a single operation. For more information, see the Amazon
-%% SES Developer Guide.
+%% SES Developer Guide:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
 update_template(Client, Input)
@@ -1394,7 +1467,10 @@ update_template(Client, Input, Options)
 %% account. This is true even if you haven't already associated the
 %% domain with your account by using the `VerifyDomainIdentity'
 %% operation. However, you can't send email from the domain until you
-%% either successfully verify it or you successfully set up DKIM for it.
+%% either successfully verify it:
+%% https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#verify-domain-procedure
+%% or you successfully set up DKIM for it:
+%% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html.
 %%
 %% You use the tokens that are generated by this operation to create CNAME
 %% records. When Amazon SES detects that you've added these records to
@@ -1430,7 +1506,9 @@ verify_domain_dkim(Client, Input, Options)
 %% in the current Amazon Web Services Region and attempts to verify it.
 %%
 %% For more information about verifying domains, see Verifying Email
-%% Addresses and Domains in the Amazon SES Developer Guide.
+%% Addresses and Domains:
+%% https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html
+%% in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 verify_domain_identity(Client, Input)
