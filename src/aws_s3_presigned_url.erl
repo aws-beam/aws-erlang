@@ -36,6 +36,7 @@ make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key, Style) ->
     Now = calendar:universal_time(),
     Options0 = [ {ttl, ExpireSeconds}
                , {body_digest, <<"UNSIGNED-PAYLOAD">>}
+               , {uri_encode_path, false} %% We already encode in build_path/4
                ],
     Options = case SecurityToken of
                 undefined ->
