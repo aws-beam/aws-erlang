@@ -40,6 +40,8 @@
          get_anomaly_monitors/3,
          get_anomaly_subscriptions/2,
          get_anomaly_subscriptions/3,
+         get_approximate_usage_records/2,
+         get_approximate_usage_records/3,
          get_cost_and_usage/2,
          get_cost_and_usage/3,
          get_cost_and_usage_with_resources/2,
@@ -206,6 +208,15 @@ get_anomaly_subscriptions(Client, Input)
 get_anomaly_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAnomalySubscriptions">>, Input, Options).
+
+%% @doc Retrieves estimated usage records for hourly granularity or
+%% resource-level data at daily granularity.
+get_approximate_usage_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_approximate_usage_records(Client, Input, []).
+get_approximate_usage_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetApproximateUsageRecords">>, Input, Options).
 
 %% @doc Retrieves cost and usage metrics for your account.
 %%
