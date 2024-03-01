@@ -5,18 +5,21 @@
 %% about each of the actions and data types for AWS Migration Hub
 %% Orchestrator.
 %%
-%% he topic for each action shows the API request parameters and the
-%% response. Alternatively, you can use one of the AWS SDKs to access an API
-%% that is tailored to the programming language or platform that you're
-%% using.
+%% The topic for each action shows the API request parameters and responses.
+%% Alternatively, you can use one of the AWS SDKs to access an API that is
+%% tailored to the programming language or platform that you're using.
 -module(aws_migrationhuborchestrator).
 
--export([create_workflow/2,
+-export([create_template/2,
+         create_template/3,
+         create_workflow/2,
          create_workflow/3,
          create_workflow_step/2,
          create_workflow_step/3,
          create_workflow_step_group/2,
          create_workflow_step_group/3,
+         delete_template/3,
+         delete_template/4,
          delete_workflow/3,
          delete_workflow/4,
          delete_workflow_step/3,
@@ -75,6 +78,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_template/3,
+         update_template/4,
          update_workflow/3,
          update_workflow/4,
          update_workflow_step/3,
@@ -87,6 +92,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a migration workflow template.
+create_template(Client, Input) ->
+    create_template(Client, Input, []).
+create_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/template"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a workflow to orchestrate your migrations.
 create_workflow(Client, Input) ->
@@ -140,6 +168,29 @@ create_workflow_step_group(Client, Input) ->
 create_workflow_step_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workflowstepgroups"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a migration workflow template.
+delete_template(Client, Id, Input) ->
+    delete_template(Client, Id, Input, []).
+delete_template(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/template/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -730,6 +781,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a migration workflow template.
+update_template(Client, Id, Input) ->
+    update_template(Client, Id, Input, []).
+update_template(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/template/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a migration workflow.

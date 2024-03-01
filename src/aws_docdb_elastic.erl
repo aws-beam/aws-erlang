@@ -1,10 +1,33 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The new Amazon Elastic DocumentDB service endpoint.
+%% @doc Amazon DocumentDB elastic clusters
+%%
+%% Amazon DocumentDB elastic-clusters support workloads with millions of
+%% reads/writes per second and petabytes of storage capacity.
+%%
+%% Amazon DocumentDB elastic clusters also simplify how developers interact
+%% with Amazon DocumentDB elastic-clusters by eliminating the need to choose,
+%% manage or upgrade instances.
+%%
+%% Amazon DocumentDB elastic-clusters were created to:
+%%
+%% <ul> <li> provide a solution for customers looking for a database that
+%% provides virtually limitless scale with rich query capabilities and
+%% MongoDB API compatibility.
+%%
+%% </li> <li> give customers higher connection limits, and to reduce downtime
+%% from patching.
+%%
+%% </li> <li> continue investing in a cloud-native, elastic, and class
+%% leading architecture for JSON workloads.
+%%
+%% </li> </ul>
 -module(aws_docdb_elastic).
 
--export([create_cluster/2,
+-export([copy_cluster_snapshot/3,
+         copy_cluster_snapshot/4,
+         create_cluster/2,
          create_cluster/3,
          create_cluster_snapshot/2,
          create_cluster_snapshot/3,
@@ -29,6 +52,10 @@
          list_tags_for_resource/5,
          restore_cluster_from_snapshot/3,
          restore_cluster_from_snapshot/4,
+         start_cluster/3,
+         start_cluster/4,
+         stop_cluster/3,
+         stop_cluster/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -42,8 +69,31 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new Elastic DocumentDB cluster and returns its Cluster
-%% structure.
+%% @doc Copies a snapshot of an elastic cluster.
+copy_cluster_snapshot(Client, SnapshotArn, Input) ->
+    copy_cluster_snapshot(Client, SnapshotArn, Input, []).
+copy_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster-snapshot/", aws_util:encode_uri(SnapshotArn), "/copy"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Amazon DocumentDB elastic cluster and returns its
+%% cluster structure.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 create_cluster(Client, Input0, Options0) ->
@@ -66,7 +116,7 @@ create_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a snapshot of a cluster.
+%% @doc Creates a snapshot of an elastic cluster.
 create_cluster_snapshot(Client, Input) ->
     create_cluster_snapshot(Client, Input, []).
 create_cluster_snapshot(Client, Input0, Options0) ->
@@ -89,7 +139,7 @@ create_cluster_snapshot(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a Elastic DocumentDB cluster.
+%% @doc Delete an elastic cluster.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
 delete_cluster(Client, ClusterArn, Input0, Options0) ->
@@ -112,7 +162,7 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a Elastic DocumentDB snapshot.
+%% @doc Delete an elastic cluster snapshot.
 delete_cluster_snapshot(Client, SnapshotArn, Input) ->
     delete_cluster_snapshot(Client, SnapshotArn, Input, []).
 delete_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
@@ -135,7 +185,7 @@ delete_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns information about a specific Elastic DocumentDB cluster.
+%% @doc Returns information about a specific elastic cluster.
 get_cluster(Client, ClusterArn)
   when is_map(Client) ->
     get_cluster(Client, ClusterArn, #{}, #{}).
@@ -158,7 +208,7 @@ get_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a specific Elastic DocumentDB snapshot
+%% @doc Returns information about a specific elastic cluster snapshot
 get_cluster_snapshot(Client, SnapshotArn)
   when is_map(Client) ->
     get_cluster_snapshot(Client, SnapshotArn, #{}, #{}).
@@ -181,8 +231,7 @@ get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about Elastic DocumentDB snapshots for a
-%% specified cluster.
+%% @doc Returns information about snapshots for a specified elastic cluster.
 list_cluster_snapshots(Client)
   when is_map(Client) ->
     list_cluster_snapshots(Client, #{}, #{}).
@@ -205,13 +254,15 @@ list_cluster_snapshots(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"clusterArn">>, maps:get(<<"clusterArn">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"snapshotType">>, maps:get(<<"snapshotType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about provisioned Elastic DocumentDB clusters.
+%% @doc Returns information about provisioned Amazon DocumentDB elastic
+%% clusters.
 list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
@@ -239,7 +290,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all tags on a Elastic DocumentDB resource
+%% @doc Lists all tags on a elastic cluster resource
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -262,7 +313,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Restores a Elastic DocumentDB cluster from a snapshot.
+%% @doc Restores an elastic cluster from a snapshot.
 restore_cluster_from_snapshot(Client, SnapshotArn, Input) ->
     restore_cluster_from_snapshot(Client, SnapshotArn, Input, []).
 restore_cluster_from_snapshot(Client, SnapshotArn, Input0, Options0) ->
@@ -285,7 +336,57 @@ restore_cluster_from_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds metadata tags to a Elastic DocumentDB resource
+%% @doc Restarts the stopped elastic cluster that is specified by
+%% `clusterARN'.
+start_cluster(Client, ClusterArn, Input) ->
+    start_cluster(Client, ClusterArn, Input, []).
+start_cluster(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster/", aws_util:encode_uri(ClusterArn), "/start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops the running elastic cluster that is specified by
+%% `clusterArn'.
+%%
+%% The elastic cluster must be in the available state.
+stop_cluster(Client, ClusterArn, Input) ->
+    stop_cluster(Client, ClusterArn, Input, []).
+stop_cluster(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster/", aws_util:encode_uri(ClusterArn), "/stop"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds metadata tags to an elastic cluster resource
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -308,7 +409,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes metadata tags to a Elastic DocumentDB resource
+%% @doc Removes metadata tags from an elastic cluster resource
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -332,10 +433,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Modifies a Elastic DocumentDB cluster.
+%% @doc Modifies an elastic cluster.
 %%
-%% This includes updating admin-username/password, upgrading API version
-%% setting up a backup window and maintenance window
+%% This includes updating admin-username/password, upgrading the API version,
+%% and setting up a backup window and maintenance window
 update_cluster(Client, ClusterArn, Input) ->
     update_cluster(Client, ClusterArn, Input, []).
 update_cluster(Client, ClusterArn, Input0, Options0) ->

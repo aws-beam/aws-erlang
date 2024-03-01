@@ -1466,11 +1466,6 @@ create_labeling_job(Client, Input, Options)
 %% `CreateEndpoint' API. SageMaker then deploys all of the containers
 %% that you defined for the model in the hosting environment.
 %%
-%% For an example that calls this method when deploying a model to SageMaker
-%% hosting services, see Create a Model (Amazon Web Services SDK for Python
-%% (Boto 3)).:
-%% https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-deployment.html#realtime-endpoints-deployment-create-model
-%%
 %% To run a batch transform using your model, you start a job with the
 %% `CreateTransformJob' API. SageMaker uses your model and your dataset
 %% to get inferences which are then saved to a specified S3 location.
@@ -4400,7 +4395,9 @@ update_experiment(Client, Input, Options)
 %% the feature group after the feature group is updated. If a record level
 %% `TtlDuration' exists from using the `PutRecord' API, the record
 %% level `TtlDuration' applies to that record instead of the default
-%% `TtlDuration'.
+%% `TtlDuration'. To remove the default `TtlDuration' from an
+%% existing feature group, use the `UpdateFeatureGroup' API and set the
+%% `TtlDuration' `Unit' and `Value' to `null'.
 update_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_group(Client, Input, []).
