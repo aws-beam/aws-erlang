@@ -4859,7 +4859,8 @@ describe_byoip_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeByoipCidrs">>, Input, Options).
 
-%% @doc Describes Capacity Block offerings available for purchase.
+%% @doc Describes Capacity Block offerings available for purchase in the
+%% Amazon Web Services Region that you're currently using.
 %%
 %% With Capacity Blocks, you purchase a specific instance type for a period
 %% of time.
@@ -5080,7 +5081,11 @@ describe_fleet_history(Client, Input, Options)
 
 %% @doc Describes the running instances for the specified EC2 Fleet.
 %%
-%% For more information, see Monitor your EC2 Fleet:
+%% Currently, `DescribeFleetInstances' does not support fleets of type
+%% `instant'. Instead, use `DescribeFleets', specifying the
+%% `instant' fleet ID in the request.
+%%
+%% For more information, see Describe your EC2 Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
 %% in the Amazon EC2 User Guide.
 describe_fleet_instances(Client, Input)
@@ -5090,9 +5095,12 @@ describe_fleet_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFleetInstances">>, Input, Options).
 
-%% @doc Describes the specified EC2 Fleets or all of your EC2 Fleets.
+%% @doc Describes the specified EC2 Fleet or all of your EC2 Fleets.
 %%
-%% For more information, see Monitor your EC2 Fleet:
+%% If a fleet is of type `instant', you must specify the fleet ID in the
+%% request, otherwise the fleet does not appear in the response.
+%%
+%% For more information, see Describe your EC2 Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
 %% in the Amazon EC2 User Guide.
 describe_fleets(Client, Input)
@@ -5411,7 +5419,9 @@ describe_instance_event_windows(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
-%% </li> </ul>
+%% </li> </ul> The order of the elements in the response, including those
+%% within nested structures, might vary. Applications should not assume the
+%% elements appear in a particular order.
 describe_instance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_status(Client, Input, []).
@@ -5501,6 +5511,10 @@ describe_instance_types(Client, Input, Options)
 %% the affected zone, or do not specify any instance IDs at all, the call
 %% fails. If you describe instances and specify only instance IDs that are in
 %% an unaffected zone, the call works normally.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
@@ -5886,6 +5900,10 @@ describe_replace_root_volume_tasks(Client, Input, Options)
 %% For more information about Reserved Instances, see Reserved Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html
 %% in the Amazon EC2 User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances(Client, Input, []).
@@ -5917,6 +5935,10 @@ describe_reserved_instances(Client, Input, Options)
 %% For more information, see Reserved Instance Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_reserved_instances_listings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_listings(Client, Input, []).
@@ -5933,6 +5955,10 @@ describe_reserved_instances_listings(Client, Input, Options)
 %% For more information, see Modifying Reserved Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
 %% the Amazon EC2 User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_reserved_instances_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_modifications(Client, Input, []).
@@ -5955,6 +5981,10 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% For more information, see Reserved Instance Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_reserved_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_offerings(Client, Input, []).
@@ -8689,7 +8719,7 @@ modify_instance_metadata_options(Client, Input, Options)
 %% <ul> <li> Modify the affinity between an instance and a Dedicated Host:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html.
 %% When affinity is set to `host' and the instance is not associated with
-%% a specific Dedicated Host, the next time the instance is launched, it is
+%% a specific Dedicated Host, the next time the instance is started, it is
 %% automatically associated with the host on which it lands. If the instance
 %% is restarted or rebooted, this relationship persists.
 %%
