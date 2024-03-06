@@ -2688,8 +2688,9 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 
 %% @doc Updates a contact's preferences for a list.
 %%
-%% It is not necessary to specify all existing topic preferences in the
-%% TopicPreferences object, just the ones that need updating.
+%% You must specify all existing topic preferences in the
+%% `TopicPreferences' object, not just the ones that need updating;
+%% otherwise, all your existing preferences will be removed.
 update_contact(Client, ContactListName, EmailAddress, Input) ->
     update_contact(Client, ContactListName, EmailAddress, Input, []).
 update_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
