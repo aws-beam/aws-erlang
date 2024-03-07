@@ -193,8 +193,8 @@ batch_is_authorized(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 create_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_source(Client, Input, []).
@@ -223,8 +223,8 @@ create_identity_source(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
@@ -242,8 +242,8 @@ create_policy(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
@@ -263,8 +263,8 @@ create_policy_store(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 create_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_template(Client, Input, []).
@@ -463,8 +463,8 @@ list_policy_templates(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 put_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema(Client, Input, []).
@@ -478,8 +478,8 @@ put_schema(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 update_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_source(Client, Input, []).
@@ -501,7 +501,7 @@ update_identity_source(Client, Input, Options)
 %% the schema in the policy store. If the updated static policy doesn't
 %% pass validation, the operation fails and the update isn't stored.
 %%
-%% When you edit a static policy, You can change only certain elements of a
+%% When you edit a static policy, you can change only certain elements of a
 %% static policy:
 %%
 %% The action referenced by the policy.
@@ -522,8 +522,8 @@ update_identity_source(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
@@ -535,8 +535,8 @@ update_policy(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 update_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_store(Client, Input, []).
@@ -557,8 +557,8 @@ update_policy_store(Client, Input, Options)
 %%
 %% Verified Permissions is eventually consistent:
 %% https://wikipedia.org/wiki/Eventual_consistency . It can take a few
-%% seconds for a new or changed element to be propagate through the service
-%% and be visible in the results of other Verified Permissions operations.
+%% seconds for a new or changed element to propagate through the service and
+%% be visible in the results of other Verified Permissions operations.
 update_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_template(Client, Input, []).
