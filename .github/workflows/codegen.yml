@@ -53,6 +53,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Remove any previously generated files
+        run: find src/ -type f -name "*.erl" -exec grep -l "DO NOT EDIT, AUTO-GENERATED CODE" {} \; | xargs rm -f
+
       - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{ env.OTP_VERSION }}
@@ -84,9 +87,6 @@ jobs:
           TEMPLATE_PATH: priv
           ERLANG_OUTPUT_PATH: ../../src
         run: |
-          # Remove any previously generated files
-          find $ERLANG_OUTPUT_PATH -type f -name "*.erl" -exec grep -l "DO NOT EDIT, AUTO-GENERATED CODE" {} \; | xargs rm -f
-
           # Jump to the codegen
           cd tmp/aws-codegen
           mix deps.get
