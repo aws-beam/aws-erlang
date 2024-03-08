@@ -1,48 +1,144 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Use AppConfig, a capability of Amazon Web Services Systems Manager,
-%% to create, manage, and quickly deploy application configurations.
+%% @doc AppConfig feature flags and dynamic configurations help software
+%% builders quickly and securely adjust application behavior in production
+%% environments without full code deployments.
 %%
-%% AppConfig supports controlled deployments to applications of any size and
-%% includes built-in validation checks and monitoring. You can use AppConfig
-%% with applications hosted on Amazon EC2 instances, Lambda, containers,
-%% mobile applications, or IoT devices.
+%% AppConfig speeds up software release frequency, improves application
+%% resiliency, and helps you address emergent issues more quickly. With
+%% feature flags, you can gradually release new capabilities to users and
+%% measure the impact of those changes before fully deploying the new
+%% capabilities to all users. With operational flags and dynamic
+%% configurations, you can update block lists, allow lists, throttling
+%% limits, logging verbosity, and perform other operational tuning to quickly
+%% respond to issues in production environments.
 %%
-%% To prevent errors when deploying application configurations, especially
-%% for production systems where a simple typo could cause an unexpected
-%% outage, AppConfig includes validators. A validator provides a syntactic or
-%% semantic check to ensure that the configuration you want to deploy works
-%% as intended. To validate your application configuration data, you provide
-%% a schema or an Amazon Web Services Lambda function that runs against the
-%% configuration. The configuration deployment or update can only proceed
-%% when the configuration data is valid.
+%% AppConfig is a capability of Amazon Web Services Systems Manager.
 %%
-%% During a configuration deployment, AppConfig monitors the application to
-%% ensure that the deployment is successful. If the system encounters an
-%% error, AppConfig rolls back the change to minimize impact for your
-%% application users. You can configure a deployment strategy for each
-%% application or environment that includes deployment criteria, including
-%% velocity, bake time, and alarms to monitor. Similar to error monitoring,
-%% if a deployment triggers an alarm, AppConfig automatically rolls back to
-%% the previous version.
+%% Despite the fact that application configuration content can vary greatly
+%% from application to application, AppConfig supports the following use
+%% cases, which cover a broad spectrum of customer needs:
 %%
-%% AppConfig supports multiple use cases. Here are some examples:
+%% <ul> <li> Feature flags and toggles - Safely release new capabilities to
+%% your customers in a controlled environment. Instantly roll back changes if
+%% you experience a problem.
 %%
-%% <ul> <li> Feature flags: Use AppConfig to turn on new features that
-%% require a timely deployment, such as a product launch or announcement.
+%% </li> <li> Application tuning - Carefully introduce application changes
+%% while testing the impact of those changes with users in production
+%% environments.
 %%
-%% </li> <li> Application tuning: Use AppConfig to carefully introduce
-%% changes to your application that can only be tested with production
-%% traffic.
+%% </li> <li> Allow list or block list - Control access to premium features
+%% or instantly block specific users without deploying new code.
 %%
-%% </li> <li> Allow list: Use AppConfig to allow premium subscribers to
-%% access paid content.
+%% </li> <li> Centralized configuration storage - Keep your configuration
+%% data organized and consistent across all of your workloads. You can use
+%% AppConfig to deploy configuration data stored in the AppConfig hosted
+%% configuration store, Secrets Manager, Systems Manager, Parameter Store, or
+%% Amazon S3.
 %%
-%% </li> <li> Operational issues: Use AppConfig to reduce stress on your
-%% application when a dependency or other external factor impacts the system.
+%% </li> </ul> How AppConfig works
 %%
-%% </li> </ul> This reference is intended to be used with the AppConfig User
+%% This section provides a high-level description of how AppConfig works and
+%% how you get started.
+%%
+%% <dl> <dt>1. Identify configuration values in code you want to manage in
+%% the cloud</dt> <dd> Before you start creating AppConfig artifacts, we
+%% recommend you identify configuration data in your code that you want to
+%% dynamically manage using AppConfig. Good examples include feature flags or
+%% toggles, allow and block lists, logging verbosity, service limits, and
+%% throttling rules, to name a few.
+%%
+%% If your configuration data already exists in the cloud, you can take
+%% advantage of AppConfig validation, deployment, and extension features to
+%% further streamline configuration data management.
+%%
+%% </dd> <dt>2. Create an application namespace</dt> <dd> To create a
+%% namespace, you create an AppConfig artifact called an application. An
+%% application is simply an organizational construct like a folder.
+%%
+%% </dd> <dt>3. Create environments</dt> <dd> For each AppConfig application,
+%% you define one or more environments. An environment is a logical grouping
+%% of targets, such as applications in a `Beta' or `Production'
+%% environment, Lambda functions, or containers. You can also define
+%% environments for application subcomponents, such as the `Web',
+%% `Mobile', and `Back-end'.
+%%
+%% You can configure Amazon CloudWatch alarms for each environment. The
+%% system monitors alarms during a configuration deployment. If an alarm is
+%% triggered, the system rolls back the configuration.
+%%
+%% </dd> <dt>4. Create a configuration profile</dt> <dd> A configuration
+%% profile includes, among other things, a URI that enables AppConfig to
+%% locate your configuration data in its stored location and a profile type.
+%% AppConfig supports two configuration profile types: feature flags and
+%% freeform configurations. Feature flag configuration profiles store their
+%% data in the AppConfig hosted configuration store and the URI is simply
+%% `hosted'. For freeform configuration profiles, you can store your data
+%% in the AppConfig hosted configuration store or any Amazon Web Services
+%% service that integrates with AppConfig, as described in Creating a free
+%% form configuration profile:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-free-form-configurations-creating.html
+%% in the the AppConfig User Guide.
+%%
+%% A configuration profile can also include optional validators to ensure
+%% your configuration data is syntactically and semantically correct.
+%% AppConfig performs a check using the validators when you start a
+%% deployment. If any errors are detected, the deployment rolls back to the
+%% previous configuration data.
+%%
+%% </dd> <dt>5. Deploy configuration data</dt> <dd> When you create a new
+%% deployment, you specify the following:
+%%
+%% <ul> <li> An application ID
+%%
+%% </li> <li> A configuration profile ID
+%%
+%% </li> <li> A configuration version
+%%
+%% </li> <li> An environment ID where you want to deploy the configuration
+%% data
+%%
+%% </li> <li> A deployment strategy ID that defines how fast you want the
+%% changes to take effect
+%%
+%% </li> </ul> When you call the StartDeployment:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_StartDeployment.html
+%% API action, AppConfig performs the following tasks:
+%%
+%% <ol> <li> Retrieves the configuration data from the underlying data store
+%% by using the location URI in the configuration profile.
+%%
+%% </li> <li> Verifies the configuration data is syntactically and
+%% semantically correct by using the validators you specified when you
+%% created your configuration profile.
+%%
+%% </li> <li> Caches a copy of the data so it is ready to be retrieved by
+%% your application. This cached copy is called the deployed data.
+%%
+%% </li> </ol> </dd> <dt>6. Retrieve the configuration</dt> <dd> You can
+%% configure AppConfig Agent as a local host and have the agent poll
+%% AppConfig for configuration updates. The agent calls the
+%% StartConfigurationSession:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
+%% and GetLatestConfiguration:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
+%% API actions and caches your configuration data locally. To retrieve the
+%% data, your application makes an HTTP call to the localhost server.
+%% AppConfig Agent supports several use cases, as described in Simplified
+%% retrieval methods:
+%% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-simplified-methods.html
+%% in the the AppConfig User Guide.
+%%
+%% If AppConfig Agent isn't supported for your use case, you can
+%% configure your application to poll AppConfig for configuration updates by
+%% directly calling the StartConfigurationSession:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_StartConfigurationSession.html
+%% and GetLatestConfiguration:
+%% https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/API_appconfigdata_GetLatestConfiguration.html
+%% API actions.
+%%
+%% </dd> </dl> This reference is intended to be used with the AppConfig User
 %% Guide:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html.
 -module(aws_appconfig).
@@ -327,8 +423,8 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% </li> <li> For a custom Amazon SQS notification extension, enter the ARN
 %% of an Amazon SQS message queue in the `Uri' field.
 %%
-%% </li> </ul> For more information about extensions, see Working with
-%% AppConfig extensions:
+%% </li> </ul> For more information about extensions, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 create_extension(Client, Input) ->
@@ -366,8 +462,8 @@ create_extension(Client, Input0, Options0) ->
 %% with an AppConfig resource is called an extension association. An
 %% extension association is a specified relationship between an extension and
 %% an AppConfig resource, such as an application or a configuration profile.
-%% For more information about extensions and associations, see Working with
-%% AppConfig extensions:
+%% For more information about extensions and associations, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 create_extension_association(Client, Input) ->
@@ -835,8 +931,8 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about an AppConfig extension association.
 %%
-%% For more information about extensions and associations, see Working with
-%% AppConfig extensions:
+%% For more information about extensions and associations, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 get_extension_association(Client, ExtensionAssociationId)
@@ -1050,8 +1146,8 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all AppConfig extension associations in the account.
 %%
-%% For more information about extensions and associations, see Working with
-%% AppConfig extensions:
+%% For more information about extensions and associations, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 list_extension_associations(Client)
@@ -1087,8 +1183,7 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all custom and Amazon Web Services authored AppConfig
 %% extensions in the account.
 %%
-%% For more information about extensions, see Working with AppConfig
-%% extensions:
+%% For more information about extensions, see Extending workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 list_extensions(Client)
@@ -1367,8 +1462,7 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 
 %% @doc Updates an AppConfig extension.
 %%
-%% For more information about extensions, see Working with AppConfig
-%% extensions:
+%% For more information about extensions, see Extending workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 update_extension(Client, ExtensionIdentifier, Input) ->
@@ -1395,8 +1489,8 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 
 %% @doc Updates an association.
 %%
-%% For more information about extensions and associations, see Working with
-%% AppConfig extensions:
+%% For more information about extensions and associations, see Extending
+%% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
 update_extension_association(Client, ExtensionAssociationId, Input) ->

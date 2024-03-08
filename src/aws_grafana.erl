@@ -83,8 +83,10 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options0],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"Grafana-Token">>, <<"grafanaToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

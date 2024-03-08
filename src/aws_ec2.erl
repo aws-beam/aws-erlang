@@ -4839,6 +4839,10 @@ describe_aws_network_performance_metric_subscriptions(Client, Input, Options)
 %% task is no longer in the list, you can still register an AMI from it. Just
 %% use `RegisterImage' with the Amazon S3 bucket name and image manifest
 %% name you provided to the bundle task.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_bundle_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bundle_tasks(Client, Input, []).
@@ -5260,6 +5264,10 @@ describe_identity_id_format(Client, Input, Options)
 %% @doc Describes the specified attribute of the specified AMI.
 %%
 %% You can specify only one attribute at a time.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_attribute(Client, Input, []).
@@ -5278,6 +5286,10 @@ describe_image_attribute(Client, Input, Options)
 %% interval and then return empty results. After all instances that reference
 %% a deregistered AMI are terminated, specifying the ID of the image will
 %% eventually return an error indicating that the AMI ID cannot be found.
+%%
+%% The order of the elements in the response, including those within nested
+%% structures, might vary. Applications should not assume the elements appear
+%% in a particular order.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -9593,8 +9605,8 @@ reboot_instances(Client, Input, Options)
 
 %% @doc Registers an AMI.
 %%
-%% When you're creating an AMI, this is the final step you must complete
-%% before you can launch an instance from the AMI. For more information about
+%% When you're creating an instance-store backed AMI, registering the AMI
+%% is the final step in the creation process. For more information about
 %% creating AMIs, see Create your own AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html
 %% in the Amazon Elastic Compute Cloud User Guide.
